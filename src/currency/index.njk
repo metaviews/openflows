@@ -1,0 +1,17 @@
+---
+layout: layouts/base.njk
+title: Currency
+permalink: /currency/
+---
+<p>Currency includes two entry types: Currents and Circuits.</p>
+<p class="meta">Index view: all entries across types, newest first.</p>
+
+<h3>All Currency</h3>
+{% set items = collections.currency %}
+{% include "currency-list.njk" %}
+
+<h3>Types</h3>
+<ul>
+  <li><a href="/currency/currents/">Currents</a></li>
+  <li><a href="/currency/circuits/">Circuits</a></li>
+</ul>

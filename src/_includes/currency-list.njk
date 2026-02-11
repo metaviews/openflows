@@ -1,0 +1,16 @@
+{% if items and items.length %}
+<p class="meta">{{ items.length }} entr{% if items.length == 1 %}y{% else %}ies{% endif %}. Sorted newest first.</p>
+<ul class="currency-list">
+  {% for item in items %}
+  <li>
+    <a href="{{ item.url }}">{{ item.data.title }}</a>
+    <div class="item-meta">
+      <span class="chip">{{ item.data.currencyType }}</span>
+      <span class="muted">{{ item.date | readableDate }}</span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No entries yet.</p>
+{% endif %}

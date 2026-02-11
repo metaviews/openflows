@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+---
+<h2>{{ title }}</h2>
+<p class="muted">Type: {{ currencyType }}</p>
+{{ content | safe }}
+
+{% if mediation %}
+<section class="mediation-note">
+  <h3>Mediation note</h3>
+  <p><strong>Tooling:</strong> {{ mediation.tooling }}</p>
+  {% if mediation.use and mediation.use.length %}
+  <p><strong>Use:</strong> {{ mediation.use | join(", ") }}</p>
+  {% endif %}
+  <p><strong>Human role:</strong> {{ mediation.humanRole }}</p>
+  <p><strong>Limits:</strong> {{ mediation.limits }}</p>
+</section>
+{% endif %}

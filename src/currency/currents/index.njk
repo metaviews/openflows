@@ -1,0 +1,9 @@
+---
+layout: layouts/base.njk
+title: Currents
+permalink: /currency/currents/
+---
+<p>Currents are directional movement signals captured as entries.</p>
+<p class="meta">Filtered by type: current. Sorted newest first.</p>
+{% set items = collections.currents %}
+{% include "currency-list.njk" %}

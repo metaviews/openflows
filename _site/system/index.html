@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>System</title>
+  <style>
+    :root {
+      --bg: #f9f8f4;
+      --ink: #1b1e1f;
+      --muted: #596266;
+      --line: #d6d4cb;
+      --panel: #f0eee7;
+      --accent: #1d5f57;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 2rem 1rem 3rem;
+      background: radial-gradient(circle at top, #ffffff 0%, var(--bg) 38%);
+      color: var(--ink);
+      font-family: "Palatino Linotype", Palatino, "Book Antiqua", serif;
+      line-height: 1.6;
+    }
+    .wrap { max-width: 46rem; margin: 0 auto; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: 0.01em; }
+    h1 { margin-bottom: 0.5rem; }
+    a { color: var(--accent); text-underline-offset: 0.15em; }
+    nav { display: flex; gap: 1rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+    nav a { text-decoration: none; border-bottom: 1px solid transparent; }
+    nav a:hover { border-color: var(--accent); }
+    hr { border: 0; border-top: 1px solid var(--line); margin: 0.75rem 0 1.25rem; }
+    .muted { color: var(--muted); }
+    .meta {
+      margin: 0.25rem 0 1rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .chip {
+      display: inline-block;
+      padding: 0.08rem 0.45rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: #fff;
+      text-transform: capitalize;
+      letter-spacing: 0.02em;
+    }
+    .currency-list {
+      list-style: none;
+      margin: 0.65rem 0 0;
+      padding: 0;
+    }
+    .currency-list li {
+      padding: 0.7rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .currency-list li:last-child { border-bottom: 1px solid var(--line); }
+    .item-meta {
+      margin-top: 0.2rem;
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .mediation-note {
+      border: 1px solid var(--line);
+      padding: 0.9rem 1rem;
+      margin-top: 1.25rem;
+      background: var(--panel);
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1><a href="/">Openflows</a></h1>
+      <nav>
+        <a href="/system/">System</a>
+        <a href="/methods/">Methods</a>
+        <a href="/currency/">Currency</a>
+      </nav>
+      <hr>
+    </header>
+    <main>
+      <p>System outlines the base structure and relationships that Openflows operates through.</p>
+    </main>
+  </div>
+</body>
+</html>
