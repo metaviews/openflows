@@ -3,14 +3,27 @@ layout: layouts/base.njk
 title: Currency
 permalink: /currency/
 ---
-<p>Currency includes two entry types: Currents and Circuits.</p>
+<p>Currency is the living layer of Openflows: what is currently moving through the system as conditions change.</p>
+
+<p>Currency contains two forms with different levels of stability.</p>
+
+<h2>Types of currency</h2>
+
+<h3>Currents</h3>
+<p>Provisional movement: tensions, questions, early patterning, and partial insights. Currents preserve sensitivity to change and resist premature certainty.</p>
+
+<h3>Circuits</h3>
+<p>Completed loops: moments where convergence and interpretation reconnect to produce a durable shift, where something becomes clarified, integrated, or reusable across contexts.</p>
+
+<p>Some entries include a mediation note documenting when AI assisted the artifact and what role humans played in shaping the outcome.</p>
+
 <p class="meta">Index view: all entries across types, newest first.</p>
 
 <h3>All Currency</h3>
 {% set items = collections.currency %}
 {% include "currency-list.njk" %}
 
-<h3>Types</h3>
+<h3>Browse by type</h3>
 <ul>
   <li><a href="/currency/currents/">Currents</a></li>
   <li><a href="/currency/circuits/">Circuits</a></li>

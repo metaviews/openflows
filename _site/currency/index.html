@@ -23,6 +23,24 @@
       line-height: 1.6;
     }
     .wrap { max-width: 46rem; margin: 0 auto; }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand-logo {
+      display: block;
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .footer-brand .brand-logo {
+      width: 44px;
+      height: 44px;
+    }
     h1, h2, h3 { line-height: 1.2; letter-spacing: 0.01em; }
     h1 { margin-bottom: 0.5rem; }
     a { color: var(--accent); text-underline-offset: 0.15em; }
@@ -69,12 +87,22 @@
       margin-top: 1.25rem;
       background: var(--panel);
     }
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1><a href="/">Openflows</a></h1>
+      <h1>
+        <a href="/" class="brand">
+          <img src="/assets/img/openflowslogo.jpg" alt="Openflows logo" class="brand-logo">
+          <span>Openflows</span>
+        </a>
+      </h1>
       <nav>
         <a href="/system/">System</a>
         <a href="/methods/">Methods</a>
@@ -83,7 +111,20 @@
       <hr>
     </header>
     <main>
-      <p>Currency includes two entry types: Currents and Circuits.</p>
+      <p>Currency is the living layer of Openflows: what is currently moving through the system as conditions change.</p>
+
+<p>Currency contains two forms with different levels of stability.</p>
+
+<h2>Types of currency</h2>
+
+<h3>Currents</h3>
+<p>Provisional movement: tensions, questions, early patterning, and partial insights. Currents preserve sensitivity to change and resist premature certainty.</p>
+
+<h3>Circuits</h3>
+<p>Completed loops: moments where convergence and interpretation reconnect to produce a durable shift, where something becomes clarified, integrated, or reusable across contexts.</p>
+
+<p>Some entries include a mediation note documenting when AI assisted the artifact and what role humans played in shaping the outcome.</p>
+
 <p class="meta">Index view: all entries across types, newest first.</p>
 
 <h3>All Currency</h3>
@@ -120,13 +161,19 @@
 
 
 
-<h3>Types</h3>
+<h3>Browse by type</h3>
 <ul>
   <li><a href="/currency/currents/">Currents</a></li>
   <li><a href="/currency/circuits/">Circuits</a></li>
 </ul>
 
     </main>
+    <footer>
+      <a href="/" class="brand footer-brand">
+        <img src="/assets/img/openflowslogo.jpg" alt="Openflows logo" class="brand-logo">
+        <span>Openflows</span>
+      </a>
+    </footer>
   </div>
 </body>
 </html>

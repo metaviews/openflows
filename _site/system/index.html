@@ -23,6 +23,24 @@
       line-height: 1.6;
     }
     .wrap { max-width: 46rem; margin: 0 auto; }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand-logo {
+      display: block;
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
+      border-radius: 4px;
+    }
+    .footer-brand .brand-logo {
+      width: 44px;
+      height: 44px;
+    }
     h1, h2, h3 { line-height: 1.2; letter-spacing: 0.01em; }
     h1 { margin-bottom: 0.5rem; }
     a { color: var(--accent); text-underline-offset: 0.15em; }
@@ -69,12 +87,22 @@
       margin-top: 1.25rem;
       background: var(--panel);
     }
+    footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1><a href="/">Openflows</a></h1>
+      <h1>
+        <a href="/" class="brand">
+          <img src="/assets/img/openflowslogo.jpg" alt="Openflows logo" class="brand-logo">
+          <span>Openflows</span>
+        </a>
+      </h1>
       <nav>
         <a href="/system/">System</a>
         <a href="/methods/">Methods</a>
@@ -83,8 +111,33 @@
       <hr>
     </header>
     <main>
-      <p>System outlines the base structure and relationships that Openflows operates through.</p>
+      <p>Openflows treats intelligence as circulation rather than possession.</p>
+
+<p>Where many systems store knowledge as static content, Openflows is organized around movement: signals arrive from multiple sources, patterns stabilize briefly, people converge to reframe what matters, and outputs return as usable fragments.</p>
+
+<h2>Primary functions</h2>
+
+<h3>Signal intake</h3>
+<p>Inputs are captured from observation, dialogue, research, and lived experience. Incomplete contributions are valid. The system accepts uncertainty and tracks weak signals before they disappear.</p>
+
+<h3>Pattern mediation (AI as infrastructure)</h3>
+<p>AI assists with clustering, summarizing, mapping, and recall. Mediation is explicit: when AI shapes an artifact, the process records how it was used, what humans changed, and what the tool could not assess.</p>
+
+<h3>Embodied convergence</h3>
+<p>Physical gatherings handle tasks digital systems do poorly: emotional calibration, disagreement without spectacle, co-regulation, and collective reframing. The body is treated as a cognitive instrument.</p>
+
+<h3>Redistribution</h3>
+<p>Outputs are designed to circulate rather than conclude: short notes, questions, tension maps, and actionable fragments that move into other contexts without requiring the full session.</p>
+
+<p>Openflows does not centralize authority. It maintains conditions for collective cognition to persist across time, place, and mediation layers.</p>
+
     </main>
+    <footer>
+      <a href="/" class="brand footer-brand">
+        <img src="/assets/img/openflowslogo.jpg" alt="Openflows logo" class="brand-logo">
+        <span>Openflows</span>
+      </a>
+    </footer>
   </div>
 </body>
 </html>

@@ -12,6 +12,7 @@ module.exports = function(eleventyConfig) {
   }
 
   eleventyConfig.addFilter("readableDate", readableDate);
+  eleventyConfig.addPassthroughCopy("src/assets");
 
   eleventyConfig.addCollection("currency", function(collectionApi) {
     const items = collectionApi.getFilteredByTag("currency");
