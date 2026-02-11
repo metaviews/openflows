@@ -5,6 +5,26 @@ layout: layouts/base.njk
 <p class="muted">Type: {{ currencyType }}</p>
 {{ content | safe }}
 
+{% if links and links.length %}
+<section class="connection-note">
+  <h3>Connections</h3>
+  <ul class="connection-list">
+    {% for link in links %}
+    {% set target = collections.currency | currencyById(link.id) %}
+    {% if target %}
+    <li>
+      <a href="{{ target.url }}">{{ target.data.title }}</a>
+      {% if link.relation %}<span class="muted"> - {{ link.relation }}</span>{% endif %}
+      <span class="muted">({{ target.data.currencyType }})</span>
+    </li>
+    {% else %}
+    <li><span class="muted">Missing connection: {{ link.id }}</span></li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
 {% if mediation %}
 <section class="mediation-note">
   <h3>Mediation note</h3>

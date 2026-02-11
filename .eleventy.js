@@ -12,6 +12,12 @@ module.exports = function(eleventyConfig) {
   }
 
   eleventyConfig.addFilter("readableDate", readableDate);
+  eleventyConfig.addFilter("currencyById", function(items, id) {
+    if (!Array.isArray(items) || !id) {
+      return null;
+    }
+    return items.find((item) => item.data && item.data.currencyId === id) || null;
+  });
   eleventyConfig.addPassthroughCopy("src/assets");
 
   eleventyConfig.addCollection("currency", function(collectionApi) {
