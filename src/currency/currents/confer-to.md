@@ -3,19 +3,35 @@ layout: layouts/currency-item.njk
 title: "Confer.to"
 date: 2026-02-11
 currencyType: "current"
+currencyId: confer-to
 abstract: "An experiment in anonymous AI conversation and the spatial implications of identity-free interaction."
 tags:
   - currency
+permalink: /currency/currents/confer-to/
 ---
 
-[Confer.to](https://confer.to/) is an experiment in anonymous AI conversation. It presents a simple interface for interacting with language models without requiring account creation or persistent identity. The emphasis is on immediacy: arrive, speak, leave.
+### Signal
 
-Without profiles or stored history, each exchange stands on its own. Conversation becomes episodic rather than cumulative. The system feels closer to a public square than a private assistant.
+[Confer.to](https://confer.to/) is an anonymous AI conversation interface built around immediacy: arrive, interact, and leave without account persistence.
 
-Anonymity here operates as a structural condition. It reshapes the relationship between speaker and system. It encourages exploratory thought. It lowers the threshold for provisional language. It makes interaction feel lighter.
+### Context
 
-For Openflows, confer.to surfaces a quiet principle: intelligence can circulate without attachment. Not every interaction needs to accumulate memory. Not every exchange needs to bind identity to cognition.
+Without profiles or stored histories, each exchange is episodic. The interaction model behaves more like a public interaction surface than a private assistant.
 
-Project link: [confer.to](https://confer.to/)
+### Relevance
 
-This one remains open. Observed. In motion.
+For Openflows, this surfaces a useful condition: intelligence can circulate without identity attachment. Not every exchange requires cumulative memory.
+
+### Current State
+
+Active experiment with clear structural distinctiveness.
+
+### Open Questions
+
+- What forms of trust are possible without persistent identity?
+- Where are the limits of anonymous interaction for sustained work?
+- How should abuse prevention be handled without over-centralizing control?
+
+### Connections
+
+No explicit currency link added yet.

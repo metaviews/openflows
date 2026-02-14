@@ -12,14 +12,28 @@ links:
     relation: "consolidates into"
 ---
 
-[LM Studio](https://lmstudio.ai/) is a desktop application that makes it straightforward to download and run language models locally. It provides a graphical interface for managing models, adjusting parameters, and interacting with them directly on personal hardware.
+### Signal
 
-Local inference becomes tangible. Instead of configuring environments manually, users can experiment with models through a cohesive interface. It lowers the activation energy required to host intelligence on one's own machine.
+[LM Studio](https://lmstudio.ai/) makes local language model inference directly accessible through a desktop interface for model management and interaction.
 
-The experience shifts AI from remote service to local capability. Models become files you manage, not endpoints you call. Intelligence becomes something that sits on your desk, bound to your processor and memory.
+### Context
 
-For Openflows, LM Studio highlights the power of normalization. When local inference becomes ordinary, agency becomes plausible. Infrastructure quietly relocates.
+By reducing environment setup overhead, it turns local model execution into a routine workflow. Models become local assets governed by available hardware constraints.
 
-Project link: [lmstudio.ai](https://lmstudio.ai/)
+### Relevance
 
-Practical. Grounded. Moving.
+For Openflows, this supports infrastructural agency. When local inference becomes ordinary, interpretive and operational control becomes materially feasible.
+
+### Current State
+
+Mature and widely legible local inference entry point.
+
+### Open Questions
+
+- Which local workflows remain dependent on cloud integration?
+- How can model selection literacy keep pace with expanding options?
+- What practices best preserve inspectability as convenience features grow?
+
+### Connections
+
+- Linked to `local-inference-baseline` as a precursor signal.

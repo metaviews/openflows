@@ -3,21 +3,35 @@ layout: layouts/currency-item.njk
 title: "OpenClaw"
 date: 2026-02-11
 currencyType: "current"
+currencyId: openclaw
 abstract: "An open source agent framework emphasizing inspectability, configuration, and participatory AI practice."
 tags:
   - currency
+permalink: /currency/currents/openclaw/
 ---
 
-[OpenClaw](https://openclaw.im/) is an open source agent framework oriented toward local execution and user configuration. It invites the user into the mechanics of automation: installing dependencies, configuring environments, understanding how tasks are composed.
+### Signal
 
-Running it is participatory. The system is visible. The components are legible. You can see how the agent is assembled and where decisions occur. That visibility changes the experience of using AI. It becomes architectural rather than purely conversational.
+[OpenClaw](https://openclaw.im/) is an open source agent framework oriented toward local execution and explicit user configuration.
 
-OpenClaw emphasizes process. Agents are compositions of instructions, tools, and execution loops. You can trace them. You can adjust them. You can fork them.
+### Context
 
-For Openflows, this aligns with the idea that literacy is infrastructural. Tools that expose structure cultivate awareness. Even friction becomes instructive. It trains attention toward underlying layers.
+Its workflow foregrounds assembly: dependencies, instructions, tool wiring, and execution loops remain visible and adjustable.
 
-Project links: [openclaw.im](https://openclaw.im/) and [GitHub repository](https://github.com/openclaw/openclaw).
+### Relevance
 
-OpenClaw feels like a workshop space. Not yet integrated, but clearly resonant.
+For Openflows, this reinforces the literacy-through-practice requirement. Inspectable systems develop operational awareness in ways opaque assistants cannot.
 
-Still circulating.
+### Current State
+
+Resonant framework pattern; not yet integrated into local stack.
+
+### Open Questions
+
+- Which OpenClaw patterns transfer cleanly into Openflows operations?
+- How much setup friction is productive versus exclusionary?
+- What guardrails are needed to keep inspectability without cognitive overload?
+
+### Connections
+
+No explicit currency link added yet.
