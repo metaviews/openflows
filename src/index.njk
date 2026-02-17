@@ -18,3 +18,45 @@ permalink: /
     <li><strong>Currency</strong>: what is currently moving through the system.</li>
   </ul>
 </section>
+
+<section>
+  <h2>Latest Currency</h2>
+  <p class="meta">Newest three entries from each type.</p>
+  <div class="feature-grid">
+    <article class="feature-panel">
+      <h3>Currents</h3>
+      <ul class="feature-list">
+        {% for item in collections.currents %}
+          {% if loop.index0 < 3 %}
+          <li>
+            <a href="{{ item.url }}">{{ item.data.title }}</a>
+            <div class="item-meta">
+              <span class="chip">{{ item.data.currencyType }}</span>
+              <span class="muted">{{ item.date | readableDate }}</span>
+            </div>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <p><a href="/currency/currents/">View all currents</a></p>
+    </article>
+
+    <article class="feature-panel">
+      <h3>Circuits</h3>
+      <ul class="feature-list">
+        {% for item in collections.circuits %}
+          {% if loop.index0 < 3 %}
+          <li>
+            <a href="{{ item.url }}">{{ item.data.title }}</a>
+            <div class="item-meta">
+              <span class="chip">{{ item.data.currencyType }}</span>
+              <span class="muted">{{ item.date | readableDate }}</span>
+            </div>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <p><a href="/currency/circuits/">View all circuits</a></p>
+    </article>
+  </div>
+</section>

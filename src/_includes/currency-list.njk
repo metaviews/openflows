@@ -4,6 +4,9 @@
   {% for item in items %}
   <li>
     <a href="{{ item.url }}">{{ item.data.title }}</a>
+    {% if item.data.abstract %}
+    <p class="item-abstract">{{ item.data.abstract }}</p>
+    {% endif %}
     <div class="item-meta">
       <span class="chip">{{ item.data.currencyType }}</span>
       <span class="muted">{{ item.date | readableDate }}</span>
