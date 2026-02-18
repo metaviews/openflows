@@ -39,6 +39,13 @@ module.exports = function(eleventyConfig) {
     return newestFirst(items);
   });
 
+  eleventyConfig.addCollection("operators", function(collectionApi) {
+    const items = collectionApi.getFilteredByTag("currency").filter((item) => {
+      return item.data.currencyType === "operator";
+    });
+    return newestFirst(items);
+  });
+
   return {
     dir: {
       input: "src",

@@ -24,11 +24,21 @@ Core site architecture (minimal; avoid bloat)
 
 Currency section model (living layer)
 - “Currency” is the living layer: what is moving through the system as it changes.
-- Currency contains two internal entry types:
+- Currency contains three internal entry types:
   - Currents = movement (provisional, exploratory, tensions/questions/early patterning)
   - Circuits = completion (closed loops, integration, durable shifts, what-changed and why it holds)
-- Both Currents and Circuits can coexist and should feel meaningfully different in intent and structure.
-- Avoid over-relying on the old “signals” convention; prefer Currency → Currents/Circuits.
+  - Operators = exceptional humans whose practice materially shapes open intelligence trajectories
+- Currents, Circuits, and Operators should feel meaningfully different in intent and structure.
+- Avoid over-relying on the old “signals” convention; prefer Currency → Currents/Circuits/Operators.
+
+Matrix-building linkage rule (required)
+- Every new Currency entry must trigger a linkage pass across the other types:
+  - New Current: evaluate links to relevant Circuits and Operators.
+  - New Circuit: evaluate links to relevant Currents and Operators.
+  - New Operator: evaluate links to relevant Currents and Circuits.
+- Add explicit `links` in front matter whenever a meaningful relation exists.
+- If no strong relation exists yet, include a short in-body note: “No explicit currency link added yet.”
+- Operators are intentionally selective: add only exceptional people with durable field-shaping impact, not routine contributors.
 
 AI framing + literacy requirement
 - Treat AI as infrastructure, not authority and not “the brain.”
@@ -46,9 +56,10 @@ Editorial stance and style constraints
 
 Implementation preferences (Eleventy)
 - Use Markdown (.md) for Currents/Circuits entries with YAML front matter.
+- Use Markdown (.md) for Currents/Circuits/Operators entries with YAML front matter.
 - Use Nunjucks (.njk) for layouts and index/list pages.
 - Differentiate Currents vs Circuits via a single front matter field:
-  - currencyType: "current" | "circuit"
-- Use tags/collections to list items on /currency and optionally on /currency/currents and /currency/circuits.
-- Keep schema consistent across both types.
+  - currencyType: "current" | "circuit" | "operator"
+- Use tags/collections to list items on /currency and on /currency/currents, /currency/circuits, and /currency/operators.
+- Keep schema consistent across all three types.
 

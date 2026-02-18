@@ -21,7 +21,7 @@ permalink: /
 
 <section>
   <h2>Latest Currency</h2>
-  <p class="meta">Newest three entries from each type. Subscribe via <a href="/currency/feed.xml">RSS</a>.</p>
+<p class="meta">Newest three entries from each type. Subscribe via <a href="/currency/feed.xml">RSS</a>.</p>
   <div class="feature-grid">
     <article class="feature-panel">
       <h3>Currents</h3>
@@ -57,6 +57,24 @@ permalink: /
         {% endfor %}
       </ul>
       <p><a href="/currency/circuits/">View all circuits</a></p>
+    </article>
+
+    <article class="feature-panel">
+      <h3>Operators</h3>
+      <ul class="feature-list">
+        {% for item in collections.operators %}
+          {% if loop.index0 < 3 %}
+          <li>
+            <a href="{{ item.url }}">{{ item.data.title }}</a>
+            <div class="item-meta">
+              <span class="chip">{{ item.data.currencyType }}</span>
+              <span class="muted">{{ item.date | readableDate }}</span>
+            </div>
+          </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+      <p><a href="/currency/operators/">View all operators</a></p>
     </article>
   </div>
 </section>
