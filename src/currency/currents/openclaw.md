@@ -8,6 +8,9 @@ abstract: "An open source agent framework emphasizing inspectability, configurat
 tags:
   - currency
 permalink: /currency/currents/openclaw/
+links:
+  - id: peter-steinberger
+    relation: "connects to the operator shaping this inspectable agent-tooling pattern"
 ---
 
 ### Signal
@@ -34,4 +37,4 @@ Resonant framework pattern; not yet integrated into local stack.
 
 ### Connections
 
-No explicit currency link added yet.
+- Linked to `peter-steinberger` as the operator most directly associated with this current.
