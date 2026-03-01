@@ -11,6 +11,8 @@ permalink: /currency/circuits/inspectable-agent-operations/
 links:
   - id: local-inference-baseline
     relation: "builds operational layers on top of"
+  - id: operational-literacy-interface
+    relation: "overlaps with the human learning and control-surface layer represented by"
   - id: feedback-circuit
     relation: "depends on iterative monitoring and revision patterns represented by"
   - id: crewai
@@ -21,10 +23,18 @@ links:
     relation: "contributes sandboxed runtime and security-oriented execution patterns to"
   - id: dify
     relation: "contributes application-layer workflow assembly to"
+  - id: librechat
+    relation: "contributes unified workspace and agent-platform patterns to"
+  - id: open-webui
+    relation: "contributes self-hosted interface and extension-surface patterns to"
   - id: anything-llm
     relation: "contributes retrieval and workspace interfaces to"
   - id: openclaw
     relation: "contributes inspectable agent framework patterns to"
+  - id: openclaw-studio
+    relation: "contributes operational dashboard patterns for agent control surfaces to"
+  - id: langflow
+    relation: "contributes visual orchestration and MCP-server assembly patterns to"
   - id: skills-sh
     relation: "contributes reusable capability packaging patterns to"
   - id: ollama
@@ -46,8 +56,8 @@ That is the shift this circuit captures.
 
 Several currents now point in the same direction.
 Runtimes such as Ollama normalize local serving.
-Frameworks such as OpenClaw, CrewAI, Overture, and OpenFang expose orchestration and execution structure.
-Platforms such as Dify and AnythingLLM package retrieval, workflow assembly, and user-facing access.
+Frameworks such as OpenClaw, CrewAI, Overture, OpenFang, and Langflow expose orchestration and execution structure.
+Platforms such as Dify, LibreChat, Open WebUI, AnythingLLM, and OpenClaw Studio package retrieval, workflow assembly, dashboard control, and user-facing access.
 Projects such as BettaFish and skills.sh make memory and capability modular rather than implicit.
 CodeWiki signals a related change in project memory, where repository understanding is continuously synthesized instead of remaining only in scattered human notes.
 
