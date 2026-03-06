@@ -5,6 +5,7 @@ date: 2026-02-09
 tags:
   - currency
 currencyType: circuit
+currencyId: feedback-circuit
 permalink: /currency/circuits/feedback-circuit/
 mediation:
   tooling: "Shared board + lightweight classifier"
