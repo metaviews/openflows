@@ -8,6 +8,11 @@ abstract: "A key local inference runtime signal that normalizes running and serv
 tags:
   - currency
 permalink: /currency/currents/ollama/
+links:
+  - id: open-weights-commons
+    relation: "contributes local model serving and distribution patterns to"
+  - id: inspectable-agent-operations
+    relation: "contributes local model serving patterns to"
 ---
 
 ### Signal
@@ -34,4 +39,5 @@ Widely recognized baseline tool in local-model workflows.
 
 ### Connections
 
-No explicit currency link added yet.
+- Linked to `open-weights-commons` as a core local serving and model distribution pattern in the open model ecosystem.
+- Linked to `inspectable-agent-operations` as the local runtime layer beneath governed agent stacks.

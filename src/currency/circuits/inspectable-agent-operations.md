@@ -45,6 +45,10 @@ links:
     relation: "contributes generated repository memory and synthesis patterns to"
   - id: peter-steinberger
     relation: "is an operator-level signal for the public, inspectable developer-tooling practice consolidated by"
+  - id: memu
+    relation: "contributes proactive memory-governance and always-on context management patterns to"
+  - id: paperclip-ai
+    relation: "contributes organizational accountability structure — roles, budgets, approval gates — to"
 ---
 
 This circuit closes the gap between local model access and usable team operations.
@@ -58,7 +62,7 @@ Several currents now point in the same direction.
 Runtimes such as Ollama normalize local serving.
 Frameworks such as OpenClaw, CrewAI, Overture, OpenFang, and Langflow expose orchestration and execution structure.
 Platforms such as Dify, LibreChat, Open WebUI, AnythingLLM, and OpenClaw Studio package retrieval, workflow assembly, dashboard control, and user-facing access.
-Projects such as BettaFish and skills.sh make memory and capability modular rather than implicit.
+Projects such as BettaFish, memU, and skills.sh make memory and capability modular rather than implicit. Paperclip extends governance further by introducing organizational accountability structure — org charts, per-agent budgets, audit logs — into multi-agent coordination.
 CodeWiki signals a related change in project memory, where repository understanding is continuously synthesized instead of remaining only in scattered human notes.
 
 Together, these pieces form an operational loop.

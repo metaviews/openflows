@@ -10,6 +10,8 @@ tags:
 links:
   - id: local-inference-baseline
     relation: "consolidates into"
+  - id: open-weights-commons
+    relation: "contributes practitioner-accessible model management patterns to"
 ---
 
 ### Signal
@@ -37,3 +39,4 @@ Mature and widely legible local inference entry point.
 ### Connections
 
 - Linked to `local-inference-baseline` as a precursor signal.
+- Linked to `open-weights-commons` as a practitioner-accessible entry point to open model management.

@@ -13,6 +13,8 @@ links:
     relation: "turns self-hosted model access into a broader user-facing operations layer on top of"
   - id: ollama
     relation: "commonly composes with the local runtime pattern represented by"
+  - id: open-weights-commons
+    relation: "contributes self-hosted interface and local control patterns to"
 ---
 
 ### Signal
@@ -40,3 +42,4 @@ High-visibility self-hosted interface pattern with substantial community uptake 
 ### Connections
 
 - Linked to `local-inference-baseline` and `ollama` as infrastructure adjacencies.
+- Linked to `open-weights-commons` as a self-hosted interface layer that extends open model access into team-usable workflows.

@@ -13,6 +13,8 @@ links:
     relation: "operationalizes user-facing workflows on top of"
   - id: ollama
     relation: "commonly composes with local runtime patterns represented by"
+  - id: open-weights-commons
+    relation: "contributes open workspace and retrieval infrastructure to"
 ---
 
 ### Signal
@@ -40,3 +42,4 @@ Widely visible open-source pattern for self-hosted AI workspace operations.
 ### Connections
 
 - Linked to `local-inference-baseline` and `ollama` as infrastructural adjacencies.
+- Linked to `open-weights-commons` as an open workspace layer that makes local model access practically usable for knowledge workflows.

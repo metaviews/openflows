@@ -11,6 +11,8 @@ permalink: /currency/currents/openpilot/
 links:
   - id: rynnbrain
     relation: "complements embodied model research with production-facing on-road control practice"
+  - id: embodied-ai-governance
+    relation: "contributes open safety-critical real-world control practice to"
 ---
 
 ### Signal
@@ -38,3 +40,4 @@ Mature open ADAS project with continuous iteration and real-world operating feed
 ### Connections
 
 - Linked to `rynnbrain` as an adjacent embodied-intelligence signal with stronger production road constraints.
+- Linked to `embodied-ai-governance` as the clearest existing example of open, iterated, safety-critical physical AI deployment.

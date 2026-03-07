@@ -8,6 +8,9 @@ abstract: "YOR proposes a lower-cost, buildable path to bimanual mobile manipula
 tags:
   - currency
 permalink: /currency/currents/your-own-robot/
+links:
+  - id: embodied-ai-governance
+    relation: "contributes low-cost, accessible physical AI build practice to"
 mediation:
   tooling: "Landing page review + linked technical references"
   use:
@@ -41,4 +44,4 @@ Emerging and documentation-led; real-world durability remains to be validated ac
 
 ### Connections
 
-No explicit currency link added yet.
+- Linked to `embodied-ai-governance` as a signal of accessible, small-team physical AI deployment where governance and build constraints must be co-designed.

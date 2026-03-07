@@ -11,6 +11,8 @@ permalink: /currency/currents/arcee-ai/
 links:
   - id: local-inference-baseline
     relation: "extends operational interest in efficient model deployment from"
+  - id: open-weights-commons
+    relation: "contributes deployable small-model and efficiency-optimized architecture patterns to"
 ---
 
 ### Signal
@@ -38,3 +40,4 @@ Active deployment-oriented current in the efficient-model layer.
 ### Connections
 
 - Linked to `local-inference-baseline` as a continuation from local inference practice into deployment-oriented model strategy.
+- Linked to `open-weights-commons` as evidence that efficient, deployable open models are viable alternatives to frontier dependency.

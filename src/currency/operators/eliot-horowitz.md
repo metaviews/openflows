@@ -13,6 +13,8 @@ links:
     relation: "operator-level signal for integrated robotics software infrastructure"
   - id: openpilot
     relation: "complements road autonomy practice with platform-oriented robotics operations"
+  - id: embodied-ai-governance
+    relation: "is an operator-level reference for integrated robotics software infrastructure and fleet governance anchored by"
 ---
 
 ### Signal
@@ -40,3 +42,4 @@ Active infrastructure signal at the software-robotics boundary.
 ### Connections
 
 - Linked to `viam` and `openpilot` as adjacent infrastructure and autonomy execution pathways.
+- Linked to `embodied-ai-governance` as the operator reference for software-native robotics infrastructure and fleet-level governance.

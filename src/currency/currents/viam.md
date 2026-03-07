@@ -11,6 +11,8 @@ permalink: /currency/currents/viam/
 links:
   - id: local-inference-baseline
     relation: "extends local intelligence practice from text systems into networked machine operations"
+  - id: embodied-ai-governance
+    relation: "contributes robotics software infrastructure and fleet operations patterns to"
 ---
 
 ### Signal
@@ -38,3 +40,4 @@ Active commercial platform with growing enterprise deployment posture.
 ### Connections
 
 - Linked to `local-inference-baseline` as a physical-systems extension of local intelligence infrastructure.
+- Linked to `embodied-ai-governance` as a key infrastructure contributor for observable and manageable robotic fleet operations.

@@ -8,6 +8,11 @@ abstract: "V-JEPA advances world-model learning from video, shifting emphasis fr
 tags:
   - currency
 permalink: /currency/currents/vjepa-meta/
+links:
+  - id: autonomous-research-accountability
+    relation: "contributes world-model research trajectory raising representation validation questions to"
+  - id: embodied-ai-governance
+    relation: "contributes foundational model architecture for physical-world planning to"
 mediation:
   tooling: "Meta research pages + paper references"
   use:
@@ -41,4 +46,5 @@ Research-forward and strategically influential; practical deployment patterns ar
 
 ### Connections
 
-No explicit currency link added yet.
+- Linked to `autonomous-research-accountability` as a world-model research trajectory where autonomous generation of representations raises validation and interpretability questions.
+- Linked to `embodied-ai-governance` as a foundational model architecture signal for physical-world planning and embodied action.

@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.inceptionlabs.ai)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:dimensionalos.com)",
+      "WebSearch"
+    ]
+  }
+}

@@ -11,6 +11,8 @@ permalink: /currency/currents/rynnbrain/
 links:
   - id: local-inference-baseline
     relation: "extends the baseline from local language inference toward embodied physical-world reasoning"
+  - id: embodied-ai-governance
+    relation: "contributes open embodied foundation model capabilities to"
 ---
 
 ### Signal
@@ -38,3 +40,4 @@ Newly released and rapidly forming as an open robotics foundation stack.
 ### Connections
 
 - Linked to `local-inference-baseline` as a downstream expansion from local inference into embodied execution.
+- Linked to `embodied-ai-governance` as an open foundation model stack for physical-world perception and planning.

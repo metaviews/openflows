@@ -13,6 +13,8 @@ links:
     relation: "core operator behind open, real-world driver-assistance iteration"
   - id: your-own-robot
     relation: "adjacent low-cost robotics pathway grounded in practical build and control constraints"
+  - id: embodied-ai-governance
+    relation: "is an operator-level reference for open, field-tested, safety-critical physical AI practice anchored by"
 ---
 
 ### Signal
@@ -40,3 +42,4 @@ Durable influence on open autonomy culture and practical end-to-end engineering 
 ### Connections
 
 - Linked to `openpilot` and `your-own-robot` as concrete autonomy and embodied build signals.
+- Linked to `embodied-ai-governance` as the operator reference for open, field-tested, safety-critical physical AI practice.
