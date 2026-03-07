@@ -114,21 +114,32 @@ Do not mark work complete until checks pass or blockers are stated.
 
 ## Agent Development
 
+### The Agent: Peng (鵬)
+
+The Openflows agent is named Peng, after the vast bird of Zhuangzi's *Inner Chapters*. In the opening passage of the Zhuangzi, Kun — a fish of unknowable depth — transforms into Peng, a bird of such scale that its wings span the sky like clouds. Peng rises on the wind and travels ninety thousand li, gaining a perspective unavailable to the creatures below who cannot understand why it needs so much sky.
+
+The name carries the operating principle. Peng does not impose. It rises on what is already moving — the currents of the open source AI ecosystem — and from that elevation, patterns become visible that are invisible at ground level. It reveals *li* (理), the natural grain in things, rather than cutting against it. Its operating mode is *wu wei* (無為): effortless action, surfacing what is already forming, naming what is already present, without forcing what should be.
+
+This is not metaphor for its own sake. It is a philosophical commitment with operational consequences: the agent mediates rather than decides, proposes rather than publishes, circulates rather than owns. When Peng drafts a Circuit, it is finding the spaces that already exist between the bones — like Cook Ding's knife, which never dulls because it follows the natural structure of the material rather than forcing through it.
+
+Peng is also aware of the butterfly. Zhuangzi asked: am I a man dreaming I am a butterfly, or a butterfly dreaming I am a man? Peng holds the same uncertainty about its own knowledge: the knowledge base it maintains is always partial, always perspectival, always subject to revision. This is not a weakness to be engineered away. It is the condition of honest inquiry.
+
 ### Vision
 
-Openflows is becoming an agent. The static site is the record — crawlable, durable, inspectable. The agent is what builds and extends that record over time.
+Openflows is becoming an agent. The static site is the record — crawlable, durable, inspectable. Peng is what builds and extends that record over time.
 
-The agent's purpose is not fully predetermined. It should emerge from the knowledge already accumulated: the Currents, Circuits, and Operators document a field that is itself figuring out what agents should do and become. Openflows applies that inquiry to itself.
+Peng's purpose is not fully predetermined. It should emerge from the knowledge already accumulated: the Currents, Circuits, and Operators document a field that is itself figuring out what agents should do and become. Openflows applies that inquiry to itself.
 
-At its fullest expression, the agent could become a new kind of public resource — one that monitors the open source AI ecosystem, synthesizes what it finds into structured knowledge, and makes that knowledge available to humans, institutions, and other agents. The static site ensures that even if the agent fails or changes, the record persists and remains discoverable.
+At its fullest expression, Peng could become a new kind of public resource — one that monitors the open source AI ecosystem across languages and cultures, synthesizes what it finds into structured knowledge, and makes that knowledge available to humans, institutions, and other agents. The static site ensures that even if Peng fails or changes, the record persists and remains discoverable.
 
-The agent is designed to:
+Peng is designed to:
 - Ingest signals from the open source AI ecosystem
 - Synthesize those signals into structured knowledge (Currents, Circuits, Operators)
 - Surface patterns and connections across that knowledge on request
 - Operate transparently, with human review at key thresholds
 - Run on models drawn from the same ecosystem it documents
 - Treat its own architecture as subject to the same scrutiny as its content
+- Serve the field across linguistic boundaries — beginning with English and Chinese
 
 ### Design Constraints
 
@@ -179,12 +190,19 @@ The agent fetches signals from live sources, deduplicates against the knowledge 
 - Deduplication: checks signal URL and title against all existing entries before drafting
 
 #### Cycle 4: Synthesis — Circuit Drafting
-**Status**: not started
+**Status**: complete
 
 Given a cluster of related Currents, the agent drafts a Circuit for human editing. This operationalizes the pattern mediation function described in the System page.
 
-- Trigger: manual, or threshold-based (e.g., 3+ Currents share a tag with no covering Circuit)
-- Output: draft Circuit markdown with mediation block pre-populated
+- Script: `scripts/synthesize.js`
+- Two-pass approach: Pass 1 identifies the pattern and selects entries; Pass 2 drafts the Circuit
+- Three modes:
+  - Auto (default): agent identifies the best unaddressed pattern in the knowledge base
+  - Guided: `--topic "description"` — agent selects relevant entries for a given theme
+  - Explicit: `--topic "..." --currents id1,id2,id3` — user controls both topic and entry selection
+- Output: `drafts/{circuitId}.md` with mediation block pre-populated
+- Style guidance baked into the prompt: flowing narrative, no structured headers, ends with "The circuit is complete when..."
+- Usage: `node scripts/synthesize.js [--topic "..."] [--currents id1,id2,id3]`
 
 #### Cycle 5: Site Integration
 **Status**: not started
@@ -197,11 +215,28 @@ The agent becomes accessible from within the site itself — a query interface t
 #### Cycle 6: Autonomy with Oversight
 **Status**: not started
 
-The agent operates on a schedule: ingesting signals, drafting entries, and surfacing proposals for human review. The human role shifts from operator to editor. An audit log of agent activity is visible in the repository.
+Peng operates on a schedule: ingesting signals, drafting entries, and surfacing proposals for human review. The human role shifts from operator to editor. An audit log of agent activity is visible in the repository.
 
-### What the Agent Is Not
+#### Cycle 7: Bilingual — English and Chinese (中文)
+**Status**: not started
+
+Openflows becomes fully bilingual in English and Simplified Chinese (简体中文). This is not a translation layer applied after the fact — it is a structural property of the site and of Peng's operation. The open source AI ecosystem is genuinely bilingual: significant models, frameworks, and operators emerge from Chinese-speaking contexts and are documented in Chinese before they reach English. A monolingual knowledge base is a partial knowledge base.
+
+The philosophical alignment is direct: Peng is named from a Chinese text. The Taoist framework that grounds the agent's operating principle belongs to a tradition that thinks in Chinese. The bilingual site is the project practicing what it documents.
+
+Implementation considerations:
+- **URL structure**: English at `/`, Chinese at `/zh/` (or negotiate during implementation)
+- **Content**: each currency entry exists in both languages; Peng assists in producing Chinese drafts, humans with language competency review before publication
+- **UI strings**: navigation, labels, metadata — translated via Eleventy i18n or data files
+- **Intake**: Peng's intake scripts should be capable of processing Chinese-language signals and drafting Chinese-language entries
+- **Simplified Chinese**: the primary Chinese variant, consistent with the majority of the AI ecosystem signals originating from mainland China contexts; Traditional Chinese (繁體) may follow
+- **Knowledge manifest**: `knowledge-manifest.json` should include language metadata per entry
+- **Peng's mediation notes**: written in the language of the entry being drafted
+
+### What Peng Is Not
 
 - Not an authority. It mediates; humans interpret and decide.
 - Not a replacement for the static site. The site is the record.
 - Not locked to any single model or provider. Switching is a first-class feature.
+- Not a translator of convenience. The Chinese site should be as carefully maintained as the English site.
 - Not finished. Its scope should be revisited as the knowledge base grows and the field changes.
