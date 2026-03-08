@@ -8,6 +8,13 @@ abstract: "A directory signal for discoverable geospatial tooling, datasets, and
 tags:
   - currency
 permalink: /currency/currents/gis-tools/
+links:
+  - id: inspectable-agent-operations
+    relation: "supports local-first spatial workflows for"
+  - id: open-weights-commons
+    relation: "contributes open tooling infrastructure to"
+  - id: operational-literacy-interface
+    relation: "enables practical spatial literacy through"
 ---
 
 ### Signal
@@ -34,4 +41,6 @@ Useful indexing signal for open and practical geospatial operations.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `inspectable-agent-operations` as supports local-first spatial workflows for governed agent operations.
+Linked to `open-weights-commons` as contributes open tooling infrastructure to the shared ecosystem.
+Linked to `operational-literacy-interface` as enables practical spatial literacy through reduced setup friction.

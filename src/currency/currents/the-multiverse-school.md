@@ -8,6 +8,13 @@ abstract: "The Multiverse School experiments with AI-native education, treating 
 tags:
   - currency
 permalink: /currency/currents/the-multiverse-school/
+links:
+  - id: operational-literacy-interface
+    relation: "contributes pedagogical patterns to"
+  - id: inspectable-agent-operations
+    relation: "supports inspection capabilities within"
+  - id: feedback-circuit
+    relation: "feeds iteration signals for"
 ---
 
 ### Signal
@@ -34,4 +41,6 @@ Active social and pedagogical signal.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `operational-literacy-interface` as it demonstrates how AI-native education can produce operational literacy rather than dependency.
+Linked to `inspectable-agent-operations` as it supports the agency requirement to inspect systems and coordinate human-machine work.
+Linked to `feedback-circuit` as it feeds iteration signals for curriculum design where lessons compound over time.

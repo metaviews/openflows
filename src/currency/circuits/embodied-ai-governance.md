@@ -25,6 +25,14 @@ links:
     relation: "draws on operator-level practice in legible real-world autonomy from"
   - id: eliot-horowitz
     relation: "draws on operator-level practice in integrated robotics software infrastructure from"
+mediation:
+  tooling: "LLM agents wired to ROS2 actuators, embodied foundation models for perception/planning, fleet software for distributed hardware orchestration"
+  use:
+    - "Mapping model commands to constrained skill invocations"
+    - "Logging unexpected behavior and near-misses"
+    - "Classifying actions by safety-criticality and consequence profile"
+  humanRole: "Define skill boundaries and capability declarations; authorize high-consequence actions requiring pause; assume legal and operational accountability"
+  limits: "Model hallucinations triggering irreversible physical actions; perception failures in uncontrolled environments bypassing safety constraints; override latency exceeding reaction time"
 ---
 
 This circuit opens where software agent governance assumptions meet physical consequence.

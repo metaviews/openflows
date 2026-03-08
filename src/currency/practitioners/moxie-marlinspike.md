@@ -37,4 +37,4 @@ Durable influence on privacy-preserving communication and security-aware softwar
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `confer-to` as the foundational security-design reference: Marlinspike's work on trust boundaries and end-to-end encrypted defaults grounds Confer's approach to anonymous AI interaction in a proven protocol-first model.

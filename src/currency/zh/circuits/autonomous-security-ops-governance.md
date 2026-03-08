@@ -1,11 +1,11 @@
 ---
 layout: layouts/currency-item.njk
-title: 自主安全运维治理回路
+title: "自主安全运维治理回路"
 lang: zh
 date: 2026-03-06
 currencyType: "circuit"
 currencyId: autonomous-security-ops-governance
-abstract: 一种针对智能体安全管线的闭环治理模式，涵盖侦察、利用、分诊、修复以及人工问责边界。
+abstract: "一种针对智能体安全管线的闭环治理模式，涵盖侦察、利用、分诊、修复以及人工问责边界。"
 tags:
   - currency
 permalink: /zh/currency/circuits/autonomous-security-ops-governance/
@@ -33,7 +33,10 @@ mediation:
 
 **译注**
 
-*   **触发之流 (The triggering current)**：此处“流”取自译名表，既指技术信号流，亦指驱动系统的力量。
-*   **失效距离 (Failure distance)**：原文指故障传播的距离或容错空间，意译为“距离”以保留其度量上的物理隐喻。
-*   **问责几何 (Accountability geometry)**：此处为技术隐喻，指责任分布的空间结构，而非数学几何。
-*   **模型 (Model)**：在上下文指 AI 模型，遵循译名表“模型”之译法。
+**触发之流 (The triggering current)**：此处“流”取自译名表，既指技术信号流，亦指驱动系统的力量。
+
+**失效距离 (Failure distance)**：原文指故障传播的距离或容错空间，意译为“距离”以保留其度量上的物理隐喻。
+
+**问责几何 (Accountability geometry)**：此处为技术隐喻，指责任分布的空间结构，而非数学几何。
+
+**模型 (Model)**：在上下文指 AI 模型，遵循译名表“模型”之译法。

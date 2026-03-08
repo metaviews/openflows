@@ -8,6 +8,11 @@ abstract: "6pack.care frames daily health optimization as a lightweight AI-guide
 tags:
   - currency
 permalink: /currency/currents/6pack-care/
+links:
+  - id: feedback-circuit
+    relation: "contributes a personal-scale implementation of"
+  - id: operational-literacy-interface
+    relation: "exemplifies lightweight mediation for"
 ---
 
 ### Signal
@@ -34,4 +39,4 @@ Live product signal with clear focus on daily self-regulation through lightweigh
 
 ### Connections
 
-- Linked to `openpilot` as another loop-oriented system where ongoing feedback, constraints, and iteration shape outcomes.
+Linked to `feedback-circuit` as a personal-scale implementation of the observe-categorize-respond loop applied to daily health behavior. Linked to `operational-literacy-interface` as an example of lightweight AI mediation that converts repeated interaction into behavioral self-knowledge without requiring technical fluency.

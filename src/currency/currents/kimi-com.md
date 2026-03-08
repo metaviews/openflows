@@ -15,6 +15,11 @@ mediation:
     - "cross-check capability claims"
   humanRole: "Translate claims into infrastructure implications rather than benchmark ranking"
   limits: "Public pages are marketing-forward and may overstate comparative performance"
+links:
+  - id: inspectable-agent-operations
+    relation: "contributes visibility concerns for parallel agent mediation to"
+  - id: operational-literacy-interface
+    relation: "contributes interface-level normalization patterns to"
 ---
 
 ### Signal
@@ -41,4 +46,5 @@ Rapidly evolving public product plus research narrative.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `inspectable-agent-operations` as contributing visibility concerns for parallel agent mediation to public agent swarms.
+Linked to `operational-literacy-interface` as contributing interface-level normalization patterns to multimodal coding workflows.

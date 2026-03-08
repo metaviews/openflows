@@ -4,10 +4,15 @@ title: "bargnmar"
 date: 2026-02-24
 currencyType: "current"
 currencyId: bargnmar
-abstract: "An open GitHub project signal within the open tooling ecosystem."
+abstract: "An open GitHub repository by Dmytri Kleiner signaling public, forkable, source-visible practice at the intersection of AI-adjacent tooling and infrastructure literacy."
 tags:
   - currency
 permalink: /currency/currents/bargnmar/
+links:
+  - id: operational-literacy-interface
+    relation: "reinforces infrastructure literacy within"
+  - id: inspectable-agent-operations
+    relation: "provides inspectable tooling patterns for"
 ---
 
 ### Signal
@@ -34,4 +39,5 @@ Active reference signal for tracking open implementation movement.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `operational-literacy-interface` as it reinforces infrastructure literacy within through direct exposure to source-level workflows.
+Linked to `inspectable-agent-operations` as it provides inspectable tooling patterns for keeping implementation details visible and revisable.

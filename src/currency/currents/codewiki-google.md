@@ -15,6 +15,13 @@ mediation:
     - "locate inspectability boundaries"
   humanRole: "Assess where generated understanding helps versus where it can induce false confidence"
   limits: "Early access descriptions do not fully expose failure modes at scale"
+links:
+  - id: autonomous-research-accountability
+    relation: "establishes governance boundaries for autonomous project memory synthesis"
+  - id: operational-literacy-interface
+    relation: "demonstrates how AI artifacts mediate collective cognition and workflow literacy"
+  - id: inspectable-agent-operations
+    relation: "serves as a concrete example of memory layers requiring visible and revisable mediation"
 ---
 
 ### Signal
@@ -41,4 +48,6 @@ Preview-stage and capability-forward; operational trust patterns are still formi
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `autonomous-research-accountability` as establishes governance boundaries for autonomous project memory synthesis.
+Linked to `operational-literacy-interface` as demonstrates how AI artifacts mediate collective cognition and workflow literacy.
+Linked to `inspectable-agent-operations` as serves as a concrete example of memory layers requiring visible and revisable mediation.

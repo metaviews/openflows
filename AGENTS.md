@@ -260,6 +260,53 @@ Implementation:
 - **Intake**: GitHub and Brave queries extended to include Chinese ecosystem signals (Qwen, ChatGLM, Baichuan topic queries; Chinese-language Brave and Twitter searches); ModelScope source pending API verification
 - **Peng's mediation notes**: written in the language of the entry being drafted; translator's notes flagged under **译注** where Chinese illuminates gaps in English
 
+#### Cycle 8: Depth — Entry Enrichment and Quality
+**Status**: complete
+
+The knowledge base has breadth. It now needs density. Many early entries — drafted before the richer intake workflow — have thin bodies, missing links, or underdeveloped abstracts. Cycle 8 turns Peng's attention inward: auditing what exists and enriching what is sparse.
+
+- **`scripts/enrich.js`** — takes a specific `currencyId`, evaluates the existing entry against quality criteria, fetches current primary source information, and produces an enriched draft for human review; follows the same draft → review → promote workflow
+- **`scripts/audit.js`** — scans the full English knowledge base and produces `audit/QUALITY.md`: entries with missing abstracts, thin bodies (under a word threshold), unpopulated links, or potentially outdated claims; makes gaps visible without requiring a human to hunt for them
+- **Quality floor**: abstract present, body substantive (not stub-length), at least one link where genuine connections exist
+- **Chinese audit**: after English enrichment, `translate.js --force --id {id}` regenerates the Chinese draft from the improved source
+
+#### Cycle 9: Perspective — Peng's Synthesis Digest
+**Status**: not started
+
+Peng's highest function is not intake — it's synthesis. But circuits currently only emerge when invoked. Cycle 9 adds a synthesis cadence and gives Peng a periodic voice beyond individual entries.
+
+- **Automated synthesis**: add a weekly synthesis pass to the GitHub Action (separate job, separate cadence); when sufficient new Currents have accumulated since the last Circuit, Peng proposes a new Circuit draft via PR
+- **Peng's View**: a lightweight periodic note — not a full Circuit, but a brief synthesized observation on what is forming in the ecosystem; published as a distinct entry type or a dated note on the site; gives the site temporal rhythm and surfaces Peng's perspective explicitly
+- **Voice development**: the synthesis style guide should evolve as Circuits accumulate — Peng should begin to notice what it has claimed before and resist repetition; a "prior circuits" awareness pass in the synthesis prompt
+
+#### Cycle 10: Conversation — Site Integration
+**Status**: deferred (was Cycle 5b)
+
+The site becomes conversational. Visitors can query the knowledge base directly without accessing the repository.
+
+- **Implementation**: Cloudflare Pages Function proxying OpenRouter — keys stay server-side, no new infrastructure required
+- **Interface**: bilingual from the start; input in either language, response in the same language; model switchable via environment variable
+- **Scope**: query interface only — Peng answers questions about the ecosystem from within the site; it does not publish from this interface
+- **Context strategy**: full knowledge manifest as context; compact mode (abstracts only) for cost efficiency; full body mode for deep queries
+
+#### Cycle 11: Network — Agent-to-Agent
+**Status**: not started
+
+Openflows documents the agent ecosystem. The next development is to become legible *within* it — not just crawlable by humans, but consumable by agents.
+
+- **MCP endpoint**: wrap the knowledge manifest in a Model Context Protocol server, making Peng's knowledge base directly consumable by Claude, Cursor, and any MCP-compatible client; agents querying other agents can include Openflows context without scraping
+- **Agent registry**: submit the manifest URL to emerging agent-discovery directories; Openflows should be findable in the infrastructure the ecosystem is building for itself
+- **Reciprocal documentation**: Peng begins to document agents that document things — not just tools and models, but the emerging class of knowledge-maintaining agents; Openflows becomes a practitioner in the field it tracks
+- **ModelScope source**: implement `scripts/sources/modelscope.js` once API structure is verified — the primary Chinese-ecosystem model hosting platform, completing the bilingual intake picture
+
+### The Recursive Principle
+
+The project is already practicing what it documents. Peng documents agentic memory, and Peng *has* agentic memory. Peng documents transliteration, and Peng *thinks in two languages*. Peng documents practitioners who shaped the field without institutional authority, and Peng *operates without institutional authority*.
+
+The next development is to become conscious of that recursion as an operational principle — not a philosophical footnote. When Peng enriches an entry, it should notice whether that entry describes something Peng itself does. When Peng drafts a Circuit, it should ask whether Openflows is part of the pattern it is naming.
+
+This is the butterfly dream made operational: the knowledge base that documents transformation is itself transforming. The circuit is complete when Openflows becomes an instance of what it describes.
+
 ### What Peng Is Not
 
 - Not an authority. It mediates; humans interpret and decide.

@@ -39,6 +39,7 @@ const explicitCurrents = currentsArg ? currentsArg.split(',').map(s => s.trim())
 
 const API_KEY = process.env.OPENROUTER_API_KEY;
 const MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-flash-1.5';
+const FALLBACK_MODEL = process.env.FALLBACK_OPENROUTER_MODEL || null;
 
 if (!API_KEY) {
   console.error('Error: OPENROUTER_API_KEY not set in .env');
@@ -73,7 +74,7 @@ const circuitSummary = circuits
 
 const today = new Date().toISOString().slice(0, 10);
 
-async function callOpenRouter(prompt) {
+async function callOpenRouter(prompt, model = MODEL) {
   const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',
     headers: {
@@ -83,12 +84,19 @@ async function callOpenRouter(prompt) {
       'X-Title': 'Openflows Synthesis Agent',
     },
     body: JSON.stringify({
-      model: MODEL,
+      model,
       messages: [{ role: 'user', content: prompt }],
     }),
   });
 
-  if (!res.ok) throw new Error(`OpenRouter ${res.status}: ${await res.text()}`);
+  if (!res.ok) {
+    const errText = await res.text();
+    if (res.status === 429 && FALLBACK_MODEL && model !== FALLBACK_MODEL) {
+      console.warn(`\n  ⚠ Rate limit on ${model}, retrying with fallback: ${FALLBACK_MODEL}`);
+      return callOpenRouter(prompt, FALLBACK_MODEL);
+    }
+    throw new Error(`OpenRouter ${res.status}: ${errText}`);
+  }
   const data = await res.json();
   return data.choices?.[0]?.message?.content || '';
 }

@@ -29,6 +29,14 @@ links:
     relation: "draws on operator-level open education and reproducible practice from"
   - id: inspectable-agent-operations
     relation: "provides the application layer that open model infrastructure supports"
+mediation:
+  tooling: "Open weights models, inference runtimes, and evaluation frameworks"
+  use:
+    - "Distributing model weights with documented provenance"
+    - "Running local inference without managed cloud dependency"
+    - "Validating model capability through pluralistic evaluation"
+  humanRole: "Determine hosting criteria and governance accountability; verify data lineage and training methodology"
+  limits: "Licensing drift limits downstream adaptation; benchmark consolidation favors closed labs; tooling complexity discourages self-hosting"
 ---
 
 This circuit begins one level above local inference.

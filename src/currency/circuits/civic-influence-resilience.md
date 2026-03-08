@@ -21,6 +21,13 @@ links:
     relation: "is informed by participatory governance practice represented by"
   - id: meredith-whittaker
     relation: "is informed by communication-integrity and privacy-governance practice represented by"
+mediation:
+  tooling: "Automated detection classifiers for synthetic media and network analysis tools for influence mapping"
+  use:
+    - "Mapping synthetic persona networks for signal documentation"
+    - "Stress-testing threat models against evolving influence vectors"
+  humanRole: "Interpreting contextual nuance in threat signals and negotiating trust-based response protocols across civic sectors"
+  limits: "Adversarial evasion where actors adapt to detection signatures, or automated amplification of contested narratives"
 ---
 
 This circuit forms where influence operations are no longer treated as episodic content-moderation events and instead handled as ongoing civic-infrastructure conditions.

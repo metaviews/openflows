@@ -15,6 +15,14 @@ links:
     relation: "contributes robotics orchestration and fleet operations capabilities to"
   - id: openpilot
     relation: "contributes safety-critical open control practice patterns to"
+mediation:
+  tooling: "Open source computer vision, predictive modeling, and decision support systems integrated with robotics control stacks"
+  use:
+    - "Interpreting field sensor data into agronomic recommendations"
+    - "Forecasting crop outcomes based on environmental signals"
+    - "Guiding robotic intervention sequences"
+  humanRole: "Arbitrating trade-offs between production metrics and ecological health, validating model outputs against local ecological memory"
+  limits: "Inability to generalize across unmodeled environmental variables and risk of reinforcing historical biases in agronomic data"
 ---
 
 This circuit starts from an operational premise:

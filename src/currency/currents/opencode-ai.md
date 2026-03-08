@@ -15,6 +15,13 @@ mediation:
     - "map governance and control claims"
   humanRole: "Translate tool availability into practical agency criteria"
   limits: "Stated privacy and control guarantees still depend on selected model/provider pathways"
+links:
+  - id: inspectable-agent-operations
+    relation: "contributes inspectable mediation patterns to"
+  - id: local-inference-baseline
+    relation: "operationalizes local inference as runtime infrastructure"
+  - id: operational-literacy-interface
+    relation: "enables operational literacy via explicit configuration points"
 ---
 
 ### Signal
@@ -41,4 +48,6 @@ Fast-moving open project with growing adoption signals.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `inspectable-agent-operations` as contributing inspectable mediation patterns to the agent operations loop.
+Linked to `local-inference-baseline` as operationalizing local inference as runtime infrastructure.
+Linked to `operational-literacy-interface` as enabling operational literacy via explicit configuration points.

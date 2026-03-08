@@ -10,6 +10,13 @@ tags:
 links:
   - id: lm-studio
     relation: "stabilizes signals first explored in"
+mediation:
+  tooling: "Local inference engines (LM Studio, llama.cpp) running quantized models on consumer hardware"
+  use:
+    - "Drafting and iteration"
+    - "Synthesis and exploration"
+  humanRole: "Inspect capacity constraints, verify factual accuracy, curate model selection"
+  limits: "RAM exhaustion, latency spikes, quantization artifacts"
 ---
 
 This loop began with a practical audit: what intelligence can run here, on the machines already present?

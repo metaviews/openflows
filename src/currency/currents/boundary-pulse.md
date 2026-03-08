@@ -8,6 +8,13 @@ tags:
 currencyType: current
 abstract: "A monitoring frame for constraint shifts — technical, procedural, and social — that mark where circulation can accelerate or stall."
 permalink: /currency/currents/boundary-pulse/
+links:
+  - id: feedback-circuit
+    relation: "contributes constraint shift data to bottleneck categorization"
+  - id: operational-literacy-interface
+    relation: "tracks procedural shifts impacting workflow literacy"
+  - id: inspectable-agent-operations
+    relation: "monitors technical constraint changes affecting agent orchestration"
 ---
 ### Signal
 
@@ -33,4 +40,6 @@ Active monitoring frame used for situational awareness.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `feedback-circuit` as contributes constraint shift data to bottleneck categorization.
+Linked to `operational-literacy-interface` as tracks procedural shifts impacting workflow literacy.
+Linked to `inspectable-agent-operations` as monitors technical constraint changes affecting agent orchestration.

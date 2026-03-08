@@ -37,4 +37,4 @@ Ongoing global signal in digital democracy, plural governance, and open civic in
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `6pack-care` as a counterpart at civic scale: where 6pack.care applies participatory feedback loops to personal health, Tang's practice applies the same principle — legible participation, iterative revision — to public governance infrastructure.

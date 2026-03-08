@@ -42,13 +42,16 @@ jobs:
           BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
         run: node scripts/intake.js --sources github,huggingface,brave --limit 5
 
+      - name: Run quality audit
+        run: node scripts/audit.js
+
       - name: Update proposal queue
         run: node scripts/queue.js
 
       - name: Check for new drafts
         id: check
         run: |
-          git add drafts/
+          git add drafts/ audit/
           if git diff --staged --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No new drafts this run."

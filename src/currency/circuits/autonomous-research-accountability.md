@@ -23,6 +23,13 @@ links:
     relation: "depends on the governed infrastructure layer represented by"
   - id: andrej-karpathy
     relation: "draws on operator-level constraint design and open research practice from"
+mediation:
+  tooling: "Autonomous agent frameworks, persistent memory layers, and autoregressive model training loops"
+  use:
+    - "Execute autonomous ML experiments within fixed budget constraints"
+    - "Synthesize and reason across long documents without intermediate review"
+  humanRole: "Define bounded problem spaces and fixed metrics before runs begin; validate assumptions and methods rather than accepting conclusions"
+  limits: "Plausible-sounding output that is difficult to validate independently; oversight becomes ceremonial when review capacity is outpaced"
 ---
 
 This circuit closes a gap that opens as research production accelerates past human review.

@@ -8,6 +8,11 @@ abstract: "Open Assistant remains a reference point for open, community-driven a
 tags:
   - currency
 permalink: /currency/currents/open-assistant/
+links:
+  - id: open-weights-commons
+    relation: "contributes open stack assembly practices to"
+  - id: inspectable-agent-operations
+    relation: "establishes transparency precedents for"
 ---
 
 ### Signal
@@ -34,4 +39,5 @@ Lower operational activity, high reference value.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `open-weights-commons` as contributes open stack assembly practices to.
+Linked to `inspectable-agent-operations` as establishes transparency precedents for.

@@ -19,6 +19,13 @@ links:
     relation: "requires operator-facing control and comprehension surfaces represented by"
   - id: peter-steinberger
     relation: "aligns with operator-level discipline around transparent developer tooling and reviewable automation represented by"
+mediation:
+  tooling: "Agentic LLMs orchestrating reconnaissance, vulnerability correlation, and remediation scripting"
+  use:
+    - "Chaining security workflows from scan to remediation output"
+    - "Generating exploit logic and code changes for policy review"
+  humanRole: "Define risk-class approval gates and validate remediation context against institutional policy"
+  limits: "False positives propagating through exploitation chains faster than human review cycles"
 ---
 
 This circuit closes when autonomous security workflows are treated as governed infrastructure rather than as tool demos.

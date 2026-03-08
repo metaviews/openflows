@@ -15,6 +15,13 @@ mediation:
     - "map research-to-product movement"
   humanRole: "Translate launch claims into infrastructure-level signals"
   limits: "Public launch materials emphasize strengths and provide limited independent benchmarking context"
+links:
+  - id: inspectable-agent-operations
+    relation: "highlights governance gaps in"
+  - id: autonomous-research-accountability
+    relation: "accelerates review capacity challenges for"
+  - id: operational-literacy-interface
+    relation: "shapes dependency risks in"
 ---
 
 ### Signal
@@ -41,4 +48,6 @@ High-velocity release cycle with expanding multimodal scope.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `inspectable-agent-operations` as highlights governance gaps in agentic systems where mediation must remain visible.
+Linked to `autonomous-research-accountability` as accelerates review capacity challenges for human interpretive authority.
+Linked to `operational-literacy-interface` as shapes dependency risks in integrated operational stacks entering mainstream products.

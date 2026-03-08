@@ -8,6 +8,13 @@ abstract: "An experiment in anonymous AI conversation and the spatial implicatio
 tags:
   - currency
 permalink: /currency/currents/confer-to/
+links:
+  - id: pseudonymity-collapse-response
+    relation: "provides a test case for trust models without persistent identity"
+  - id: local-inference-baseline
+    relation: "illustrates intelligence circulation without identity attachment"
+  - id: operational-literacy-interface
+    relation: "exemplifies interface design prioritizing immediacy over cumulative memory"
 ---
 
 ### Signal
@@ -34,4 +41,6 @@ Active experiment with clear structural distinctiveness.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `pseudonymity-collapse-response` as provides a test case for trust models without persistent identity.
+Linked to `local-inference-baseline` as illustrates intelligence circulation without identity attachment.
+Linked to `operational-literacy-interface` as exemplifies interface design prioritizing immediacy over cumulative memory.

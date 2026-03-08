@@ -8,6 +8,13 @@ abstract: "An open repository signal oriented toward edge-facing AI and robotics
 tags:
   - currency
 permalink: /currency/currents/edgeclaw/
+links:
+  - id: local-inference-baseline
+    relation: "contributes edge-specific inference patterns to"
+  - id: inspectable-agent-operations
+    relation: "provides visibility constraints for"
+  - id: embodied-ai-governance
+    relation: "supplies robotics experimentation signals for"
 ---
 
 ### Signal
@@ -34,4 +41,6 @@ Early movement signal with practical relevance to local inference and embodied s
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `local-inference-baseline` as EdgeClaw contributes edge-specific inference patterns to the baseline infrastructure.
+Linked to `inspectable-agent-operations` as the project provides visibility constraints for configuration and execution decisions at the edge.
+Linked to `embodied-ai-governance` as it supplies robotics experimentation signals for systems acting in the physical world.

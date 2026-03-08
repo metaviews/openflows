@@ -8,6 +8,13 @@ abstract: "Cleo is an open GitHub project current: inspectable experimentation a
 tags:
   - currency
 permalink: /currency/currents/cleo-kryptobaseddev/
+links:
+  - id: inspectable-agent-operations
+    relation: "providing transparent implementation patterns for"
+  - id: operational-literacy-interface
+    relation: "enabling direct practice-level learning through"
+  - id: open-weights-commons
+    relation: "supplementing shared infrastructure with"
 ---
 
 ### Signal
@@ -34,4 +41,6 @@ Early open-project current; useful as a traceable practice artifact.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `inspectable-agent-operations` as providing transparent implementation patterns for agent orchestration and workspace layers.
+Linked to `operational-literacy-interface` as enabling direct practice-level learning through open implementation surfaces.
+Linked to `open-weights-commons` as supplementing shared infrastructure with open-source AI tooling.

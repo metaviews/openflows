@@ -49,6 +49,14 @@ links:
     relation: "contributes proactive memory-governance and always-on context management patterns to"
   - id: paperclip-ai
     relation: "contributes organizational accountability structure — roles, budgets, approval gates — to"
+mediation:
+  tooling: "Local inference runtimes, orchestration frameworks, and memory/retrieval systems"
+  use:
+    - "Routing tasks through visible orchestration paths"
+    - "Bounding memory and retrieval scopes"
+    - "Logging failures for workflow revision"
+  humanRole: "Define execution boundaries and enforce organizational accountability structures"
+  limits: "Local model context limits cause memory truncation; opaque orchestration logic obscures audit trails"
 ---
 
 This circuit closes the gap between local model access and usable team operations.

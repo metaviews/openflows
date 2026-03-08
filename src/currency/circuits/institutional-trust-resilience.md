@@ -15,6 +15,13 @@ links:
     relation: "depends on trusted communication infrastructure represented by"
   - id: outcry-ai
     relation: "raises design requirements for civic-intelligence tooling represented by"
+mediation:
+  tooling: "NLP and network analysis for mapping claim propagation and engagement concentration"
+  use:
+    - "Identifying concentrated amplification structures and seeding accounts"
+    - "Measuring shifts in exposure metrics post-intervention"
+  humanRole: "Adjudicating the distinction between legitimate institutional criticism and conspiratorial framing, and executing accountability procedures"
+  limits: "Automated detection risks misclassifying legitimate dissent as conspiracy due to context blindness, or reinforcing existing platform engagement biases"
 ---
 
 This circuit starts from a specific finding.

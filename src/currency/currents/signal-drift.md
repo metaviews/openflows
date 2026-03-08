@@ -15,6 +15,11 @@ mediation:
     - "compare weekly movement"
   humanRole: "Interpret weak signals against local context"
   limits: "Automated summaries can flatten edge cases and tone"
+links:
+  - id: feedback-circuit
+    relation: "feeds drift indicators to"
+  - id: operational-literacy-interface
+    relation: "preserves workflow sensitivity for"
 ---
 ### Signal
 
@@ -40,4 +45,5 @@ Active interpretive method with recurring use.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `feedback-circuit` as it feeds drift indicators to the loop mapping repeated observations into categorized bottlenecks.
+Linked to `operational-literacy-interface` as it preserves workflow sensitivity for interface layers shaping AI use.

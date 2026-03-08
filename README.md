@@ -46,6 +46,9 @@ RSS and JSON feeds are also available at `/currency/feed.xml` and `/currency/fee
 | `node scripts/translate.js` | Produce Chinese drafts of entries for review |
 | `node scripts/query.js "..."` | Query the knowledge base via OpenRouter |
 | `node scripts/queue.js` | Generate `drafts/QUEUE.md` — summary of pending drafts |
+| `node scripts/audit.js` | Scan knowledge base quality; report to `audit/QUALITY.md` |
+| `node scripts/enrich.js --fix mediation` | Add mediation blocks to circuits; drafts to `drafts/enriched/` |
+| `node scripts/enrich.js --fix links` | Suggest circuit links for unlinked currents |
 
 All scripts require `OPENROUTER_API_KEY` in `.env`. See `.env.example`.
 

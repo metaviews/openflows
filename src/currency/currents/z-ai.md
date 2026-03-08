@@ -8,6 +8,13 @@ abstract: "Z.ai positions chat and agent workflows around its GLM model family, 
 tags:
   - currency
 permalink: /currency/currents/z-ai/
+links:
+  - id: inspectable-agent-operations
+    relation: "contributes agent workflow transparency patterns to"
+  - id: open-weights-commons
+    relation: "signals open model circulation pathways for"
+  - id: operational-literacy-interface
+    relation: "demonstrates interface normalization for"
 ---
 
 ### Signal
@@ -34,4 +41,6 @@ Active and still stabilizing.
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `inspectable-agent-operations` as contributes agent workflow transparency patterns to.
+Linked to `open-weights-commons` as signals open model circulation pathways for.
+Linked to `operational-literacy-interface` as demonstrates interface normalization for.

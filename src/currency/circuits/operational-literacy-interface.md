@@ -35,6 +35,13 @@ links:
     relation: "shows how generated project memory surfaces contribute to"
   - id: the-multiverse-school
     relation: "supplies the pedagogical premise reinforced by"
+mediation:
+  tooling: "Local inference servers and orchestration interfaces (e.g., Langflow, LM Studio, Open WebUI)"
+  use:
+    - "Mapping workflow steps to visible control surfaces"
+    - "Converting tacit routines into explicit reusable units"
+  humanRole: "Actively intervene in visible workflow steps to verify logic rather than accepting outputs passively"
+  limits: "Interface abstraction risks hiding latency or cost constraints, leading to fluency without operational awareness"
 ---
 
 This circuit closes a growing gap between AI access and AI understanding.

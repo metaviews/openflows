@@ -21,6 +21,13 @@ links:
     relation: "draws governance orientation from operator practice associated with"
   - id: moxie-marlinspike
     relation: "draws security-design orientation from operator practice associated with"
+mediation:
+  tooling: "LLM-based stylistic analysis and adversarial red-teaming agents"
+  use:
+    - "Detect cross-platform identity linkages via stylistic signature analysis"
+    - "Simulate adversarial deanonymization attempts during red-team tests"
+  humanRole: "Define acceptable risk thresholds and enforce protocol adherence across teams despite operational friction"
+  limits: "Adversarial models may inadvertently leak metadata during testing; stylistic analysis cannot account for all non-textual identity vectors"
 ---
 
 This circuit closes a new risk loop.

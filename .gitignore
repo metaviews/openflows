@@ -6,3 +6,6 @@ _site/
 drafts/*.md
 !drafts/QUEUE.md
 drafts/zh/*.md
+drafts/enriched/*.md
+# audit/QUALITY.md is committed — persistent quality state
+

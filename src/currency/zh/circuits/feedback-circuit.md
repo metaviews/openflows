@@ -19,11 +19,9 @@ mediation:
   limits: "翻译为起点；语言能力和文化判断须由人工完成"
 ---
 
-反馈回路映射出一条从观察经回应至修订的闭环，使同类洞见随时间复利。
+反馈回路映射出一条从观察经回应至修订的闭环，使同类洞见随时间复利。回路在此刻闭合：当经验在流转中完成自我增益，不再依赖断点的修正。
 
-回路在此刻闭合：当经验在流转中完成自我增益，不再依赖断点的修正。
-
-**译注**
-洞见 (insights/lessons)：此处取“透过实践所获之真意”，而非单纯的经验教训 (lessons learned)。复利 (compounding)：呼应 Currency (流通) 的金融隐喻，暗示知识的增殖是非线性的。回应 (response)：比“响应”更具修行者（Practitioner）的主动性与交互感。
-
----
+**译注** (Translator's Note)
+洞见 (insights/lessons)：此处取“透过实践所获之真意”，而非单纯的经验教训 (lessons learned)。
+复利 (compounding)：呼应 Currency (流通) 的金融隐喻，暗示知识的增殖是非线性的。
+回应 (response)：比“响应”更具修行者（Practitioner）的主动性与交互感。

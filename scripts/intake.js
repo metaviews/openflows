@@ -39,6 +39,7 @@ const limit = parseInt(getArg('limit') || '5', 10);
 const API_KEY = process.env.OPENROUTER_API_KEY;
 const DRAFT_MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-flash-1.5';
 const SCREEN_MODEL = config.screening.model || DRAFT_MODEL;
+const FALLBACK_MODEL = process.env.FALLBACK_OPENROUTER_MODEL || null;
 const SCREEN_THRESHOLD = config.screening.threshold ?? 3;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const BRAVE_API_KEY = process.env.BRAVE_API_KEY;
@@ -138,7 +139,18 @@ Summary: ${signal.summary}`;
     }),
   });
 
-  if (!res.ok) throw new Error(`Screening API error: ${res.status}`);
+  if (!res.ok) {
+    const errText = await res.text();
+    if (res.status === 429 && FALLBACK_MODEL && SCREEN_MODEL !== FALLBACK_MODEL) {
+      console.warn(`\n  ⚠ Rate limit on ${SCREEN_MODEL}, retrying screen with fallback: ${FALLBACK_MODEL}`);
+      return callOpenRouter(prompt, FALLBACK_MODEL).then(text => {
+        // Re-parse from fallback result
+        const jsonMatch = text.match(/\{[^}]+\}/s);
+        return JSON.parse(jsonMatch?.[0] || '{}');
+      });
+    }
+    throw new Error(`Screening API error: ${res.status} ${errText}`);
+  }
   const data = await res.json();
   const content = data.choices?.[0]?.message?.content || '';
 
@@ -225,7 +237,14 @@ async function callOpenRouter(prompt, model) {
     }),
   });
 
-  if (!res.ok) throw new Error(`OpenRouter ${res.status}: ${await res.text()}`);
+  if (!res.ok) {
+    const errText = await res.text();
+    if (res.status === 429 && FALLBACK_MODEL && model !== FALLBACK_MODEL) {
+      console.warn(`\n  ⚠ Rate limit on ${model}, retrying with fallback: ${FALLBACK_MODEL}`);
+      return callOpenRouter(prompt, FALLBACK_MODEL);
+    }
+    throw new Error(`OpenRouter ${res.status}: ${errText}`);
+  }
   const data = await res.json();
   return data.choices?.[0]?.message?.content || '';
 }

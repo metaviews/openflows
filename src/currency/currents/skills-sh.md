@@ -8,6 +8,11 @@ abstract: "A skills-layer signal for making AI-agent behavior more modular, expl
 tags:
   - currency
 permalink: /currency/currents/skills-sh/
+links:
+  - id: inspectable-agent-operations
+    relation: "structures agent capabilities within"
+  - id: operational-literacy-interface
+    relation: "converts tacit routines into explicit artifacts for"
 ---
 
 ### Signal
@@ -34,4 +39,5 @@ Strong conceptual fit with workflow standardization and collaborative AI operati
 
 ### Connections
 
-No explicit currency link added yet.
+Linked to `inspectable-agent-operations` as it structures agent capabilities within the governed agent operations loop.
+Linked to `operational-literacy-interface` as it converts tacit routines into explicit artifacts for workflow standardization.
