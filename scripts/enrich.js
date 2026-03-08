@@ -17,41 +17,17 @@
 
 const { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } = require('fs');
 const { join } = require('path');
+const { loadEnv, createClient, getArg } = require('./lib/openrouter');
 
-// --- .env loader ---
-try {
-  const envFile = readFileSync(join(__dirname, '..', '.env'), 'utf8');
-  for (const line of envFile.split('\n')) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) continue;
-    const eq = trimmed.indexOf('=');
-    if (eq === -1) continue;
-    const key = trimmed.slice(0, eq).trim();
-    const val = trimmed.slice(eq + 1).trim().replace(/^["']|["']$/g, '');
-    if (key && !(key in process.env)) process.env[key] = val;
-  }
-} catch {}
+loadEnv();
+
+const or = createClient({ title: 'Openflows Enrichment Agent - Peng', temperature: 0.4 });
 
 // --- CLI args ---
 const args = process.argv.slice(2);
-function getArg(flag) {
-  const long = args.find(a => a.startsWith(`--${flag}=`));
-  if (long) return long.slice(flag.length + 3);
-  const idx = args.indexOf(`--${flag}`);
-  return idx !== -1 ? args[idx + 1] : null;
-}
 
-const idArg = getArg('id');
-const fixArg = getArg('fix');
-
-const API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-flash-1.5';
-const FALLBACK_MODEL = process.env.FALLBACK_OPENROUTER_MODEL || null;
-
-if (!API_KEY) {
-  console.error('Error: OPENROUTER_API_KEY not set in .env');
-  process.exit(1);
-}
+const idArg = getArg(args, 'id');
+const fixArg = getArg(args, 'fix');
 
 // --- Paths ---
 const root = join(__dirname, '..');
@@ -118,38 +94,6 @@ function getEntries(folder) {
     });
 }
 
-// --- OpenRouter call ---
-async function callModel(systemPrompt, userPrompt, model = MODEL) {
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://openflows.org',
-      'X-Title': 'Openflows Enrichment Agent - Peng',
-    },
-    body: JSON.stringify({
-      model,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: userPrompt },
-      ],
-      temperature: 0.4,
-    }),
-  });
-
-  if (!response.ok) {
-    const err = await response.text();
-    if (response.status === 429 && FALLBACK_MODEL && model !== FALLBACK_MODEL) {
-      console.warn(`\n  ⚠ Rate limit on ${model}, retrying with fallback: ${FALLBACK_MODEL}`);
-      return callModel(systemPrompt, userPrompt, FALLBACK_MODEL);
-    }
-    throw new Error(`API error ${response.status}: ${err}`);
-  }
-
-  const data = await response.json();
-  return data.choices[0].message.content.trim();
-}
 
 // --- Enrichment: mediation block for circuits ---
 async function enrichMediation(entry) {
@@ -184,7 +128,7 @@ ${body}
 
 Generate an appropriate mediation block for this circuit.`;
 
-  const mediationYaml = await callModel(systemPrompt, userPrompt);
+  const mediationYaml = await or.chat(systemPrompt, userPrompt);
 
   // Insert mediation into frontmatter — before the closing ---
   // Find insertion point: before first blank line or before the --- end
@@ -258,7 +202,7 @@ ${circuitContext}
 
 Produce the LINKS_YAML and CONNECTIONS_PROSE for this entry.`;
 
-  const raw = await callModel(systemPrompt, userPrompt);
+  const raw = await or.chat(systemPrompt, userPrompt);
 
   // Parse the two sections
   const linksMatch = raw.match(/LINKS_YAML\n([\s\S]+?)\nEND_LINKS_YAML/);

@@ -9,42 +9,18 @@
 
 const { readFileSync, writeFileSync, mkdirSync, existsSync } = require('fs');
 const { join } = require('path');
+const { loadEnv, createClient, getArg } = require('./lib/openrouter');
 
-// Minimal .env loader
-try {
-  const envFile = readFileSync(join(__dirname, '..', '.env'), 'utf8');
-  for (const line of envFile.split('\n')) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) continue;
-    const eq = trimmed.indexOf('=');
-    if (eq === -1) continue;
-    const key = trimmed.slice(0, eq).trim();
-    const val = trimmed.slice(eq + 1).trim().replace(/^["']|["']$/g, '');
-    if (key && !(key in process.env)) process.env[key] = val;
-  }
-} catch {}
+loadEnv();
+
+const or = createClient({ title: 'Openflows Synthesis Agent' });
 
 // Parse args
 const args = process.argv.slice(2);
-function getArg(flag) {
-  const long = args.find(a => a.startsWith(`--${flag}=`));
-  if (long) return long.slice(flag.length + 3);
-  const idx = args.indexOf(`--${flag}`);
-  return idx !== -1 ? args[idx + 1] : null;
-}
 
-const topicArg = getArg('topic');
-const currentsArg = getArg('currents');
+const topicArg = getArg(args, 'topic');
+const currentsArg = getArg(args, 'currents');
 const explicitCurrents = currentsArg ? currentsArg.split(',').map(s => s.trim()) : null;
-
-const API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-flash-1.5';
-const FALLBACK_MODEL = process.env.FALLBACK_OPENROUTER_MODEL || null;
-
-if (!API_KEY) {
-  console.error('Error: OPENROUTER_API_KEY not set in .env');
-  process.exit(1);
-}
 
 // Load manifest
 const manifestPath = join(__dirname, '..', '_site', 'knowledge-manifest.json');
@@ -74,32 +50,6 @@ const circuitSummary = circuits
 
 const today = new Date().toISOString().slice(0, 10);
 
-async function callOpenRouter(prompt, model = MODEL) {
-  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://openflows.org',
-      'X-Title': 'Openflows Synthesis Agent',
-    },
-    body: JSON.stringify({
-      model,
-      messages: [{ role: 'user', content: prompt }],
-    }),
-  });
-
-  if (!res.ok) {
-    const errText = await res.text();
-    if (res.status === 429 && FALLBACK_MODEL && model !== FALLBACK_MODEL) {
-      console.warn(`\n  ⚠ Rate limit on ${model}, retrying with fallback: ${FALLBACK_MODEL}`);
-      return callOpenRouter(prompt, FALLBACK_MODEL);
-    }
-    throw new Error(`OpenRouter ${res.status}: ${errText}`);
-  }
-  const data = await res.json();
-  return data.choices?.[0]?.message?.content || '';
-}
 
 // Pass 1 (auto): identify the best unaddressed pattern in the knowledge base
 async function identifyPattern() {
@@ -129,7 +79,7 @@ Rules:
 - Prefer patterns where the connection is operationally specific, not just thematic`;
 
   console.log('Identifying unaddressed pattern...');
-  const raw = await callOpenRouter(prompt);
+  const raw = await or.ask(prompt);
 
   try {
     const jsonMatch = raw.match(/\{[\s\S]+\}/);
@@ -164,7 +114,7 @@ Rules:
 - Prefer operationally specific connections over loose thematic ones`;
 
   console.log(`Finding relevant entries for topic: "${topic}"...`);
-  const raw = await callOpenRouter(prompt);
+  const raw = await or.ask(prompt);
 
   try {
     const jsonMatch = raw.match(/\{[\s\S]+\}/);
@@ -220,7 +170,7 @@ links:
   - id: (currencyId of each participating entry)
     relation: "(how this entry contributes to the circuit)"
 mediation:
-  tooling: "OpenRouter / ${MODEL}"
+  tooling: "OpenRouter / ${or.primaryModel}"
   use:
     - "identified pattern across existing Currents"
     - "drafted Circuit synthesis from knowledge base"
@@ -238,7 +188,7 @@ ${entriesContext}`;
 
   console.log(`\nDrafting Circuit: "${topic}"...`);
   console.log(`Connecting: ${selectedIds.join(', ')}\n`);
-  return await callOpenRouter(prompt);
+  return await or.ask(prompt);
 }
 
 function extractCurrencyId(markdown) {
@@ -259,7 +209,7 @@ function writeDraft(markdown) {
 
 async function main() {
   console.log(`\nOpenflows Synthesis — Circuit Drafting`);
-  console.log(`Model: ${MODEL}`);
+  console.log(`Model: ${or.primaryModel}`);
   console.log(`Knowledge base: ${manifest.count} entries | ${circuits.length} circuits | ${currents.length} currents | ${operators.length} practitioners\n`);
 
   let topic, selectedIds, rationale;

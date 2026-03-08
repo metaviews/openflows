@@ -16,47 +16,20 @@
 
 const { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } = require('fs');
 const { join } = require('path');
+const { loadEnv, createClient, getArg, hasFlag } = require('./lib/openrouter');
 
-// Minimal .env loader
-try {
-  const envFile = readFileSync(join(__dirname, '..', '.env'), 'utf8');
-  for (const line of envFile.split('\n')) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) continue;
-    const eq = trimmed.indexOf('=');
-    if (eq === -1) continue;
-    const key = trimmed.slice(0, eq).trim();
-    const val = trimmed.slice(eq + 1).trim().replace(/^[\"']|[\"']$/g, '');
-    if (key && !(key in process.env)) process.env[key] = val;
-  }
-} catch {}
+loadEnv();
+
+const or = createClient({ title: 'Openflows Translation Agent - Peng' });
 
 // Parse args
 const args = process.argv.slice(2);
-function getArg(flag) {
-  const long = args.find(a => a.startsWith(`--${flag}=`));
-  if (long) return long.slice(flag.length + 3);
-  const idx = args.indexOf(`--${flag}`);
-  return idx !== -1 ? args[idx + 1] : null;
-}
-function hasFlag(flag) {
-  return args.includes(`--${flag}`);
-}
 
-const idArg = getArg('id');
-const typeArg = getArg('type');
-const limitArg = getArg('limit');
-const forceFlag = hasFlag('force');
+const idArg = getArg(args, 'id');
+const typeArg = getArg(args, 'type');
+const limitArg = getArg(args, 'limit');
+const forceFlag = hasFlag(args, 'force');
 const limit = limitArg ? parseInt(limitArg, 10) : Infinity;
-
-const API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-flash-1.5';
-const FALLBACK_MODEL = process.env.FALLBACK_OPENROUTER_MODEL || null;
-
-if (!API_KEY) {
-  console.error('Error: OPENROUTER_API_KEY not set in .env');
-  process.exit(1);
-}
 
 // Load manifest
 const manifestPath = join(__dirname, '..', '_site', 'knowledge-manifest.json');
@@ -111,33 +84,6 @@ TRANSLITERATION GLOSSARY (hold both languages; do not collapse one into the othe
 - Open weights — 开放权重 (kāi fàng quán zhòng): open model weights
 `.trim();
 
-async function callOpenRouter(prompt, model = MODEL) {
-  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://openflows.org',
-      'X-Title': 'Openflows Translation Agent - Peng',
-    },
-    body: JSON.stringify({
-      model,
-      messages: [{ role: 'user', content: prompt }],
-    }),
-  });
-
-  if (!res.ok) {
-    const errText = await res.text();
-    // On rate limit, retry once with fallback model if configured
-    if (res.status === 429 && FALLBACK_MODEL && model !== FALLBACK_MODEL) {
-      console.warn(`\n  ⚠ Rate limit on ${model}, retrying with fallback: ${FALLBACK_MODEL}`);
-      return callOpenRouter(prompt, FALLBACK_MODEL);
-    }
-    throw new Error(`OpenRouter ${res.status}: ${errText}`);
-  }
-  const data = await res.json();
-  return data.choices?.[0]?.message?.content || '';
-}
 
 function typeToPath(currencyType) {
   if (currencyType === 'current') return 'currents';
@@ -186,7 +132,7 @@ tags:
 permalink: /zh/currency/${typePath}/${entry.currencyId}/
 ${linksYaml}
 mediation:
-  tooling: "OpenRouter / ${MODEL}"
+  tooling: "OpenRouter / ${or.primaryModel}"
   use:
     - "翻译原始英文条目"
     - "依照音译词汇表保留双语术语"
@@ -209,7 +155,7 @@ Abstract: ${entry.abstract || '(none)'}
 Body:
 ${body}`;
 
-  return await callOpenRouter(prompt);
+  return await or.ask(prompt);
 }
 
 function writeDraft(currencyId, markdown) {
@@ -221,7 +167,7 @@ function writeDraft(currencyId, markdown) {
 
 async function main() {
   console.log(`\nOpenflows Translation — Peng as Translator`);
-  console.log(`Model: ${MODEL}`);
+  console.log(`Model: ${or.primaryModel}`);
   console.log(`Knowledge base: ${manifest.count} entries\n`);
 
   // Select entries to translate — always start from English-only entries

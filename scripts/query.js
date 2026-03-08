@@ -4,20 +4,9 @@
 
 const { readFileSync } = require('fs');
 const { join } = require('path');
+const { loadEnv, createClient } = require('./lib/openrouter');
 
-// Minimal .env loader — no dependency needed
-try {
-  const envFile = readFileSync(join(__dirname, '..', '.env'), 'utf8');
-  for (const line of envFile.split('\n')) {
-    const trimmed = line.trim();
-    if (!trimmed || trimmed.startsWith('#')) continue;
-    const eq = trimmed.indexOf('=');
-    if (eq === -1) continue;
-    const key = trimmed.slice(0, eq).trim();
-    const val = trimmed.slice(eq + 1).trim().replace(/^["']|["']$/g, '');
-    if (key && !(key in process.env)) process.env[key] = val;
-  }
-} catch {}
+loadEnv();
 
 const query = process.argv[2];
 if (!query) {
@@ -25,13 +14,7 @@ if (!query) {
   process.exit(1);
 }
 
-const API_KEY = process.env.OPENROUTER_API_KEY;
-const MODEL = process.env.OPENROUTER_MODEL || 'google/gemini-flash-1.5';
-
-if (!API_KEY) {
-  console.error('Error: OPENROUTER_API_KEY not set. Add it to .env');
-  process.exit(1);
-}
+const or = createClient({ title: 'Openflows Agent' });
 
 // Load manifest — requires `npm run build` to have been run
 const manifestPath = join(__dirname, '..', '_site', 'knowledge-manifest.json');
@@ -66,41 +49,17 @@ KNOWLEDGE BASE (${manifest.count} entries, generated ${manifest.generated.slice(
 ${context}`;
 
 async function main() {
-  console.log(`\nQuerying: ${MODEL}\n`);
+  console.log(`\nQuerying: ${or.primaryModel}\n`);
 
-  const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://openflows.org',
-      'X-Title': 'Openflows Agent'
-    },
-    body: JSON.stringify({
-      model: MODEL,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: query }
-      ]
-    })
-  });
-
-  if (!response.ok) {
-    const err = await response.text();
-    console.error('OpenRouter error:', response.status, err);
-    process.exit(1);
-  }
-
-  const data = await response.json();
-  const answer = data.choices?.[0]?.message?.content;
+  const answer = await or.chat(systemPrompt, query);
 
   if (!answer) {
-    console.error('Unexpected response shape:', JSON.stringify(data, null, 2));
+    console.error('Unexpected empty response from OpenRouter');
     process.exit(1);
   }
 
   console.log(answer);
-  console.log(`\n[model: ${data.model || MODEL} | tokens: ${data.usage?.total_tokens ?? '?'}]`);
+  console.log(`\n[model: ${or.primaryModel}]`);
 }
 
 main().catch(err => {
