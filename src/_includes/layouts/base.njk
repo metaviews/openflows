@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ lang or 'en' }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,6 +23,9 @@
       color: var(--ink);
       font-family: "Palatino Linotype", Palatino, "Book Antiqua", serif;
       line-height: 1.6;
+    }
+    :lang(zh) body, :lang(zh) {
+      font-family: "Noto Serif SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Palatino Linotype", serif;
     }
     .wrap { max-width: 46rem; margin: 0 auto; }
     .brand {
@@ -49,6 +52,7 @@
     nav { display: flex; gap: 1rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
     nav a { text-decoration: none; border-bottom: 1px solid transparent; }
     nav a:hover { border-color: var(--accent); }
+    .lang-switch { margin-left: auto; font-size: 0.9rem; color: var(--muted); }
     hr { border: 0; border-top: 1px solid var(--line); margin: 0.75rem 0 1.25rem; }
     .muted { color: var(--muted); }
     .meta {
@@ -155,17 +159,29 @@
   <div class="wrap">
     <header>
       <h1>
+        {% if lang == 'zh' %}
+        <a href="/zh/" class="brand">
+        {% else %}
         <a href="/" class="brand">
+        {% endif %}
           <img src="/assets/img/openflowslogo.jpg" alt="Openflows logo" class="brand-logo">
           <span>Openflows</span>
         </a>
       </h1>
       <nav>
-        <a href="/system/">System</a>
-        <a href="/methods/">Methods</a>
-        <a href="/currency/">Currency</a>
-        <a href="/about/">About</a>
-        <a href="/contact/">Contact</a>
+        {% if lang == 'zh' %}
+          <a href="/zh/currency/">流通</a>
+          <a href="/about/">关于</a>
+          <a href="/contact/">联系</a>
+          <a href="{{ page.url | replace('/zh/', '/') }}" class="lang-switch">English</a>
+        {% else %}
+          <a href="/system/">System</a>
+          <a href="/methods/">Methods</a>
+          <a href="/currency/">Currency</a>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+          <a href="/zh{{ page.url }}" class="lang-switch">中文</a>
+        {% endif %}
       </nav>
       <hr>
     </header>
@@ -173,13 +189,22 @@
       {{ content | safe }}
     </main>
     <footer>
+      {% if lang == 'zh' %}
+      <a href="/zh/" class="brand footer-brand">
+      {% else %}
       <a href="/" class="brand footer-brand">
+      {% endif %}
         <img src="/assets/img/openflowslogo.jpg" alt="Openflows logo" class="brand-logo">
         <span>Openflows</span>
       </a>
       <div class="footer-links">
-        <a href="/about/">About</a>
-        <a href="/contact/">Contact</a>
+        {% if lang == 'zh' %}
+          <a href="/about/">关于</a>
+          <a href="/contact/">联系</a>
+        {% else %}
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
+        {% endif %}
       </div>
       <div style="margin-top:1.25rem;">
         <a href="https://metaviews.ca" rel="noopener">

@@ -5,7 +5,11 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:dimensionalos.com)",
       "WebSearch",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(mkdir -p src/currency/practitioners)",
+      "Bash(mv src/currency/operators/*.md src/currency/practitioners/)",
+      "Bash(mv src/currency/operators/index.njk src/currency/practitioners/index.njk)",
+      "Bash(rmdir src/currency/operators)"
     ]
   }
 }

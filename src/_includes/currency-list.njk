@@ -1,5 +1,10 @@
+{% set strings = i18n[lang or 'en'] %}
 {% if items and items.length %}
-<p class="meta">{{ items.length }} entr{% if items.length == 1 %}y{% else %}ies{% endif %}. Sorted newest first.</p>
+{% if lang == 'zh' %}
+<p class="meta">共 {{ items.length }} 条目，{{ strings.list.sorted }}</p>
+{% else %}
+<p class="meta">{{ items.length }} entr{% if items.length == 1 %}y{% else %}ies{% endif %}. {{ strings.list.sorted }}</p>
+{% endif %}
 <ul class="currency-list">
   {% for item in items %}
   <li>
@@ -8,12 +13,12 @@
     <p class="item-abstract">{{ item.data.abstract }}</p>
     {% endif %}
     <div class="item-meta">
-      <span class="chip">{{ item.data.currencyType }}</span>
+      <span class="chip">{{ item.data.currencyType | typeLabel(lang) }}</span>
       <span class="muted">{{ item.date | readableDate }}</span>
     </div>
   </li>
   {% endfor %}
 </ul>
 {% else %}
-<p>No entries yet.</p>
+<p>{{ strings.list.no_entries }}</p>
 {% endif %}

@@ -1,0 +1,57 @@
+---
+layout: layouts/base.njk
+title: Openflows
+lang: zh
+permalink: /zh/
+---
+
+<p>开源AI生态系统是一个流动中的领域：工具降低推理与编排的门槛，模型作为共享基础设施流通，治理实验公开运行，修行者在没有机构背书的情况下塑造方向。Openflows（开流）记录流动之物——<strong>流</strong>——并将其中形成的模式综合为<strong>回路</strong>。关键人物以<strong>修行者</strong>身份被追踪。</p>
+
+<p>这一知识库由<strong>鵬</strong>维护——以庄子《内篇》中鹏鸟命名的智能体。鵬监测信号、起草条目、识别涌现中的模式——提议而非发布，在每个关键节点保留人工审阅。所有智能体生成的内容均附有调解说明。此站为记录；鵬使其持续更新。</p>
+
+<section>
+  <h2>回路</h2>
+  <p class="meta">跨知识库的综合模式。每条回路命名已然成形之物。</p>
+  <ul class="currency-list">
+    {% for item in collections.zh_circuits %}
+      {% if loop.index0 < 3 %}
+      <li>
+        <a href="{{ item.url }}">{{ item.data.title }}</a>
+        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
+        <div class="item-meta">
+          <span class="muted">{{ item.date | readableDate }}</span>
+        </div>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <p><a href="/zh/currency/circuits/">查看全部回路</a></p>
+</section>
+
+<section>
+  <h2>近期流</h2>
+  <p class="meta">流动于生态系统中的信号。<a href="/zh/currency/currents/">查看全部</a> · <a href="/zh/currency/practitioners/">修行者</a></p>
+  <ul class="currency-list">
+    {% for item in collections.zh_currents %}
+      {% if loop.index0 < 6 %}
+      <li>
+        <a href="{{ item.url }}">{{ item.data.title }}</a>
+        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
+        <div class="item-meta">
+          <span class="muted">{{ item.date | readableDate }}</span>
+        </div>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
+
+<section>
+  <h2>面向智能体与开发者</h2>
+  <p class="meta">知识库以结构化形式提供，支持程序化访问。</p>
+  <ul>
+    <li><a href="/knowledge-manifest.json"><code>knowledge-manifest.json</code></a> — 完整知识库的JSON格式：包含所有条目的标题、摘要、关联、正文内容及元数据。每次部署时自动重建。</li>
+    <li><a href="/currency/feed.xml">RSS订阅</a> — 订阅新流通条目发布通知。</li>
+    <li><a href="/currency/feed.json">JSON订阅</a> — 包含近期条目摘要与永久链接的轻量级订阅源。</li>
+  </ul>
+</section>

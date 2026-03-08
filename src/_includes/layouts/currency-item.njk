@@ -1,13 +1,14 @@
 ---
 layout: layouts/base.njk
 ---
+{% set strings = i18n[lang or 'en'] %}
 <h2>{{ title }}</h2>
-<p class="muted">Type: {{ currencyType }}</p>
+<p class="muted">{{ strings.entry.type_label }}: {{ currencyType | typeLabel(lang) }}</p>
 {{ content | safe }}
 
 {% if links and links.length %}
 <section class="connection-note">
-  <h3>Connections</h3>
+  <h3>{{ strings.entry.connections }}</h3>
   <ul class="connection-list">
     {% for link in links %}
     {% set target = collections.currency | currencyById(link.id) %}
@@ -15,10 +16,10 @@ layout: layouts/base.njk
     <li>
       <a href="{{ target.url }}">{{ target.data.title }}</a>
       {% if link.relation %}<span class="muted"> - {{ link.relation }}</span>{% endif %}
-      <span class="muted">({{ target.data.currencyType }})</span>
+      <span class="muted">({{ target.data.currencyType | typeLabel(lang) }})</span>
     </li>
     {% else %}
-    <li><span class="muted">Missing connection: {{ link.id }}</span></li>
+    <li><span class="muted">{{ strings.entry.missing_connection }}: {{ link.id }}</span></li>
     {% endif %}
     {% endfor %}
   </ul>
@@ -27,12 +28,12 @@ layout: layouts/base.njk
 
 {% if mediation %}
 <section class="mediation-note">
-  <h3>Mediation note</h3>
-  <p><strong>Tooling:</strong> {{ mediation.tooling }}</p>
+  <h3>{{ strings.entry.mediation_note }}</h3>
+  <p><strong>{{ strings.entry.tooling }}:</strong> {{ mediation.tooling }}</p>
   {% if mediation.use and mediation.use.length %}
-  <p><strong>Use:</strong> {{ mediation.use | join(", ") }}</p>
+  <p><strong>{{ strings.entry.use }}:</strong> {{ mediation.use | join(", ") }}</p>
   {% endif %}
-  <p><strong>Human role:</strong> {{ mediation.humanRole }}</p>
-  <p><strong>Limits:</strong> {{ mediation.limits }}</p>
+  <p><strong>{{ strings.entry.human_role }}:</strong> {{ mediation.humanRole }}</p>
+  <p><strong>{{ strings.entry.limits }}:</strong> {{ mediation.limits }}</p>
 </section>
 {% endif %}

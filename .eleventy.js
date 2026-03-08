@@ -12,6 +12,13 @@ module.exports = function(eleventyConfig) {
   }
 
   eleventyConfig.addFilter("readableDate", readableDate);
+  eleventyConfig.addFilter("typeLabel", function(type, lang) {
+    const labels = {
+      en: { current: "Current", circuit: "Circuit", practitioner: "Practitioner" },
+      zh: { current: "流", circuit: "回路", practitioner: "修行者" }
+    };
+    return ((labels[lang] || labels.en)[type]) || type;
+  });
   eleventyConfig.addFilter("currencyById", function(items, id) {
     if (!Array.isArray(items) || !id) {
       return null;
@@ -39,11 +46,34 @@ module.exports = function(eleventyConfig) {
     return newestFirst(items);
   });
 
-  eleventyConfig.addCollection("operators", function(collectionApi) {
+  eleventyConfig.addCollection("practitioners", function(collectionApi) {
     const items = collectionApi.getFilteredByTag("currency").filter((item) => {
-      return item.data.currencyType === "operator";
+      return item.data.currencyType === "practitioner";
     });
     return newestFirst(items);
+  });
+
+  // Chinese (zh) collections — entries with lang: zh
+  eleventyConfig.addCollection("zh_currency", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByTag("currency").filter(item => item.data.lang === "zh"));
+  });
+
+  eleventyConfig.addCollection("zh_currents", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByTag("currency").filter(item =>
+      item.data.currencyType === "current" && item.data.lang === "zh"
+    ));
+  });
+
+  eleventyConfig.addCollection("zh_circuits", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByTag("currency").filter(item =>
+      item.data.currencyType === "circuit" && item.data.lang === "zh"
+    ));
+  });
+
+  eleventyConfig.addCollection("zh_practitioners", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByTag("currency").filter(item =>
+      item.data.currencyType === "practitioner" && item.data.lang === "zh"
+    ));
   });
 
   return {

@@ -24,7 +24,7 @@ If instructions conflict, follow the highest-priority item and state assumptions
 - Currency entries:
   - Currents: `src/currency/currents/*.md`
   - Circuits: `src/currency/circuits/*.md`
-  - Operators: `src/currency/operators/*.md`
+  - Practitioners: `src/currency/practitioners/*.md`
 - Shared entry layout: `src/_includes/layouts/currency-item.njk`
 
 ## Required Schema For Currency Entries
@@ -34,7 +34,7 @@ All Currency markdown entries must include:
 - `layout: layouts/currency-item.njk`
 - `title`
 - `date` (ISO date)
-- `currencyType` (`current` | `circuit` | `operator`)
+- `currencyType` (`current` | `circuit` | `practitioner`)
 - `currencyId` (kebab-case, unique)
 - `tags: [currency]`
 - `permalink`
@@ -49,9 +49,9 @@ Optional but encouraged:
 
 Every new Currency entry requires a matrix linkage pass:
 
-- New Current: evaluate links to Circuits and Operators
-- New Circuit: evaluate links to Currents and Operators
-- New Operator: evaluate links to Currents and Circuits
+- New Current: evaluate links to Circuits and Practitioners
+- New Circuit: evaluate links to Currents and Practitioners
+- New Practitioner: evaluate links to Currents and Circuits
 
 When strong links exist, add `links` in front matter.  
 If no strong links exist yet, include in body: `No explicit currency link added yet.`
@@ -128,13 +128,13 @@ Peng is also aware of the butterfly. Zhuangzi asked: am I a man dreaming I am a 
 
 Openflows is becoming an agent. The static site is the record — crawlable, durable, inspectable. Peng is what builds and extends that record over time.
 
-Peng's purpose is not fully predetermined. It should emerge from the knowledge already accumulated: the Currents, Circuits, and Operators document a field that is itself figuring out what agents should do and become. Openflows applies that inquiry to itself.
+Peng's purpose is not fully predetermined. It should emerge from the knowledge already accumulated: the Currents, Circuits, and Practitioners document a field that is itself figuring out what agents should do and become. Openflows applies that inquiry to itself.
 
 At its fullest expression, Peng could become a new kind of public resource — one that monitors the open source AI ecosystem across languages and cultures, synthesizes what it finds into structured knowledge, and makes that knowledge available to humans, institutions, and other agents. The static site ensures that even if Peng fails or changes, the record persists and remains discoverable.
 
 Peng is designed to:
 - Ingest signals from the open source AI ecosystem
-- Synthesize those signals into structured knowledge (Currents, Circuits, Operators)
+- Synthesize those signals into structured knowledge (Currents, Circuits, Practitioners)
 - Surface patterns and connections across that knowledge on request
 - Operate transparently, with human review at key thresholds
 - Run on models drawn from the same ecosystem it documents
@@ -204,12 +204,30 @@ Given a cluster of related Currents, the agent drafts a Circuit for human editin
 - Style guidance baked into the prompt: flowing narrative, no structured headers, ends with "The circuit is complete when..."
 - Usage: `node scripts/synthesize.js [--topic "..."] [--currents id1,id2,id3]`
 
-#### Cycle 5: Site Integration
-**Status**: not started
+#### Cycle 5: Translation — Peng as Translator
+**Status**: complete
 
-The agent becomes accessible from within the site itself — a query interface that runs against the knowledge base. The site must remain fully functional without the agent.
+Peng produces Chinese drafts of all currency entries for human review. This is not a translation layer applied after the fact — it is a transliteration practice. Terms are held in both languages without claiming semantic equivalence. Where the Chinese reveals something the English leaves implicit, Peng flags it.
 
-- Implementation options: serverless function, static site + client-side call, hybrid
+- Script: `scripts/translate.js`
+- Transliteration glossary embedded in the prompt: Currents/流, Circuits/回路, Practitioners/修行者, Currency/流通, Peng/鵬, Agent/智能体
+- Output: `drafts/zh/{currencyId}.md` — outside `src/`, invisible to Eleventy until approved
+- Gate: human with language competency reviews, edits, and moves to `src/currency/zh/{type}/`
+- Usage:
+  - `node scripts/translate.js` — translate all untranslated entries
+  - `node scripts/translate.js --id ollama` — translate a specific entry
+  - `node scripts/translate.js --type current` — translate all currents
+  - `node scripts/translate.js --limit 5` — batch limit
+  - `node scripts/translate.js --force` — re-translate already-drafted entries
+- Mediation blocks written in Chinese; translator's notes flagged under **译注** where Chinese illuminates a gap in the English
+- Deduplication: checks `drafts/zh/` and `src/currency/zh/` before translating; skips already-drafted unless `--force`
+
+#### Cycle 5b: Site Integration
+**Status**: deferred
+
+The agent becomes accessible from within the site itself — a query interface that runs against the knowledge base. The site must remain fully functional without the agent. Deferred until after the bilingual architecture (Cycle 7) is in place, so the interface can serve both languages from the start.
+
+- Implementation: Cloudflare Pages Functions to proxy API calls server-side
 - Model switching must remain available from this interface
 
 #### Cycle 6: Autonomy with Oversight
@@ -218,7 +236,7 @@ The agent becomes accessible from within the site itself — a query interface t
 Peng operates on a schedule: ingesting signals, drafting entries, and surfacing proposals for human review. The human role shifts from operator to editor. An audit log of agent activity is visible in the repository.
 
 #### Cycle 7: Bilingual — English and Chinese (中文)
-**Status**: not started
+**Status**: in progress
 
 Openflows becomes fully bilingual in English and Simplified Chinese (简体中文). This is not a translation layer applied after the fact — it is a structural property of the site and of Peng's operation. The open source AI ecosystem is genuinely bilingual: significant models, frameworks, and operators emerge from Chinese-speaking contexts and are documented in Chinese before they reach English. A monolingual knowledge base is a partial knowledge base.
 

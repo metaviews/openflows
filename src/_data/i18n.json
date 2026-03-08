@@ -1,0 +1,68 @@
+{
+  "en": {
+    "lang": "en",
+    "lang_switch_label": "中文",
+    "nav": {
+      "system": "System",
+      "methods": "Methods",
+      "currency": "Currency",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "footer": {
+      "about": "About",
+      "contact": "Contact"
+    },
+    "entry": {
+      "type_label": "Type",
+      "connections": "Connections",
+      "mediation_note": "Mediation note",
+      "tooling": "Tooling",
+      "use": "Use",
+      "human_role": "Human role",
+      "limits": "Limits",
+      "missing_connection": "Missing connection"
+    },
+    "list": {
+      "sorted": "Sorted newest first.",
+      "no_entries": "No entries yet."
+    },
+    "type_labels": {
+      "current": "Current",
+      "circuit": "Circuit",
+      "practitioner": "Practitioner"
+    }
+  },
+  "zh": {
+    "lang": "zh",
+    "lang_switch_label": "English",
+    "nav": {
+      "currency": "流通",
+      "about": "关于",
+      "contact": "联系"
+    },
+    "footer": {
+      "about": "关于",
+      "contact": "联系"
+    },
+    "entry": {
+      "type_label": "类型",
+      "connections": "关联",
+      "mediation_note": "调解说明",
+      "tooling": "工具",
+      "use": "使用",
+      "human_role": "人工角色",
+      "limits": "说明",
+      "missing_connection": "关联缺失"
+    },
+    "list": {
+      "sorted": "按最新排序。",
+      "no_entries": "暂无条目。"
+    },
+    "type_labels": {
+      "current": "流",
+      "circuit": "回路",
+      "practitioner": "修行者"
+    }
+  }
+}

@@ -6,6 +6,7 @@ currencyId: signal-drift
 tags:
   - currency
 currencyType: current
+abstract: "An interpretive method for tracking subtle directional shifts in attention and movement before they harden into assumptions."
 permalink: /currency/currents/signal-drift/
 mediation:
   tooling: "Session logs + synthesis prompts"

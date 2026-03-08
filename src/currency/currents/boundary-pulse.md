@@ -6,6 +6,7 @@ currencyId: boundary-pulse
 tags:
   - currency
 currencyType: current
+abstract: "A monitoring frame for constraint shifts — technical, procedural, and social — that mark where circulation can accelerate or stall."
 permalink: /currency/currents/boundary-pulse/
 ---
 ### Signal

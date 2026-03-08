@@ -6,6 +6,7 @@ tags:
   - currency
 currencyType: circuit
 currencyId: feedback-circuit
+abstract: "A loop mapping repeated observations into categorized bottlenecks, connecting response to revision so that lessons compound over time."
 permalink: /currency/circuits/feedback-circuit/
 mediation:
   tooling: "Shared board + lightweight classifier"

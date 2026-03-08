@@ -57,7 +57,7 @@ try {
 
 const circuits = manifest.entries.filter(e => e.currencyType === 'circuit');
 const currents = manifest.entries.filter(e => e.currencyType === 'current');
-const operators = manifest.entries.filter(e => e.currencyType === 'operator');
+const operators = manifest.entries.filter(e => e.currencyType === 'practitioner');
 
 // Compact context for the identification pass
 const compactContext = manifest.entries
@@ -96,7 +96,7 @@ async function identifyPattern() {
   const prompt = `You are analyzing the Openflows knowledge base. Openflows documents the open source AI ecosystem using three types of entries:
 - Currents: individual tools, projects, models, and signals
 - Circuits: synthesized patterns connecting multiple Currents into a recognized loop or infrastructure layer
-- Operators: key figures in the field
+- Practitioners: key figures in the field
 
 Your task: identify the most significant unaddressed pattern — a recurring theme, emerging tension, or stabilizing infrastructure that appears across 3 or more Currents but is NOT yet synthesized into an existing Circuit.
 
@@ -114,7 +114,7 @@ Return ONLY valid JSON:
 }
 
 Rules:
-- Select 3–8 Currents (and optionally 1–2 Operators) that are genuinely connected by the pattern
+- Select 3–8 Currents (and optionally 1–2 Practitioners) that are genuinely connected by the pattern
 - The pattern must be meaningfully distinct from all existing Circuits
 - Prefer patterns where the connection is operationally specific, not just thematic`;
 
@@ -150,7 +150,7 @@ Return ONLY valid JSON:
 }
 
 Rules:
-- Select 3–8 entries (Currents and/or Operators) genuinely connected by the topic
+- Select 3–8 entries (Currents and/or Practitioners) genuinely connected by the topic
 - Prefer operationally specific connections over loose thematic ones`;
 
   console.log(`Finding relevant entries for topic: "${topic}"...`);
@@ -250,7 +250,7 @@ function writeDraft(markdown) {
 async function main() {
   console.log(`\nOpenflows Synthesis — Circuit Drafting`);
   console.log(`Model: ${MODEL}`);
-  console.log(`Knowledge base: ${manifest.count} entries | ${circuits.length} circuits | ${currents.length} currents | ${operators.length} operators\n`);
+  console.log(`Knowledge base: ${manifest.count} entries | ${circuits.length} circuits | ${currents.length} currents | ${operators.length} practitioners\n`);
 
   let topic, selectedIds, rationale;
 

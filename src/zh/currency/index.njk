@@ -1,0 +1,35 @@
+---
+layout: layouts/base.njk
+title: 流通
+lang: zh
+permalink: /zh/currency/
+---
+<p>流通是Openflows的活态层：随条件变化而在系统中当下流动之物。</p>
+
+<p>流通包含三种形式，各具不同的稳定程度与关注焦点。</p>
+
+<h2>流通类型</h2>
+
+<h3>流</h3>
+<p>暂时性的运动：张力、问题、早期模式与局部洞察。流保持对变化的敏感，抵抗过早的确定性。</p>
+
+<h3>回路</h3>
+<p>完成的循环：会聚与解释重新连接并产生持久转变的时刻——某物得以澄清、整合，或在不同语境中可被复用。</p>
+
+<h3>修行者</h3>
+<p>通过持续实践塑造这一领域的人——不凭借权威或职位，而是凭借其对工作深度与品质的投入。</p>
+
+<p>部分条目附有调解说明，记录AI参与内容生成的情况以及人工在塑造成果中所扮演的角色。</p>
+
+<p class="meta">索引视图：所有类型条目，按最新排序。</p>
+
+<h3>全部流通</h3>
+{% set items = collections.zh_currency %}
+{% include "currency-list.njk" %}
+
+<h3>按类型浏览</h3>
+<ul>
+  <li><a href="/zh/currency/currents/">流</a></li>
+  <li><a href="/zh/currency/circuits/">回路</a></li>
+  <li><a href="/zh/currency/practitioners/">修行者</a></li>
+</ul>
