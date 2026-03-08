@@ -55,12 +55,14 @@ try {
   process.exit(1);
 }
 
-const circuits = manifest.entries.filter(e => e.currencyType === 'circuit');
-const currents = manifest.entries.filter(e => e.currencyType === 'current');
-const operators = manifest.entries.filter(e => e.currencyType === 'practitioner');
+// Synthesis operates on English entries only — Chinese entries are translations of these
+const enEntries = manifest.entries.filter(e => e.lang === 'en' || !e.lang);
+const circuits = enEntries.filter(e => e.currencyType === 'circuit');
+const currents = enEntries.filter(e => e.currencyType === 'current');
+const operators = enEntries.filter(e => e.currencyType === 'practitioner');
 
 // Compact context for the identification pass
-const compactContext = manifest.entries
+const compactContext = enEntries
   .map(e => `[${e.currencyType.toUpperCase()}] ${e.title} (${e.currencyId})${e.abstract ? ': ' + e.abstract : ''}`)
   .join('\n');
 

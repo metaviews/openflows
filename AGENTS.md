@@ -231,25 +231,34 @@ The agent becomes accessible from within the site itself — a query interface t
 - Model switching must remain available from this interface
 
 #### Cycle 6: Autonomy with Oversight
-**Status**: not started
+**Status**: complete
 
-Peng operates on a schedule: ingesting signals, drafting entries, and surfacing proposals for human review. The human role shifts from operator to editor. An audit log of agent activity is visible in the repository.
+Peng operates on a schedule: ingesting signals, drafting entries, and opening pull requests for human review. The human role shifts from operator to editor — Peng proposes, humans decide.
+
+- **GitHub Action**: `.github/workflows/peng-intake.yml` — runs every Monday at 06:00 UTC; also available via `workflow_dispatch` for ad-hoc runs
+- **Proposal queue**: `scripts/queue.js` — scans `drafts/` and `drafts/zh/`, writes `drafts/QUEUE.md` summarizing all pending entries by type and language; called automatically after each intake run
+- **Pull request model**: after each run Peng opens a PR (`peng/intake-{date}`) with all new drafts and an updated QUEUE.md; humans review, edit, and promote approved files before merging
+- **Audit trail**: GitHub Actions run history and PR history are the durable audit log — each run is timestamped, its outputs visible, and the commit record traces every entry from draft to publication
+- **Required GitHub secrets**: `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` (optional), `BRAVE_API_KEY`; `GITHUB_TOKEN` is provided automatically by Actions
+- **Promotion workflow**: move `drafts/{id}.md` to `src/currency/{type}/{id}.md`; run `node scripts/translate.js --id {id}`; review `drafts/zh/{id}.md`; move to `src/currency/zh/{type}/{id}.md`
 
 #### Cycle 7: Bilingual — English and Chinese (中文)
-**Status**: in progress
+**Status**: complete
 
-Openflows becomes fully bilingual in English and Simplified Chinese (简体中文). This is not a translation layer applied after the fact — it is a structural property of the site and of Peng's operation. The open source AI ecosystem is genuinely bilingual: significant models, frameworks, and operators emerge from Chinese-speaking contexts and are documented in Chinese before they reach English. A monolingual knowledge base is a partial knowledge base.
+Openflows is fully bilingual in English and Simplified Chinese (简体中文). This is not a translation layer applied after the fact — it is a structural property of the site and of Peng's operation. The open source AI ecosystem is genuinely bilingual: significant models, frameworks, and practitioners emerge from Chinese-speaking contexts and are documented in Chinese before they reach English. A monolingual knowledge base is a partial knowledge base.
 
 The philosophical alignment is direct: Peng is named from a Chinese text. The Taoist framework that grounds the agent's operating principle belongs to a tradition that thinks in Chinese. The bilingual site is the project practicing what it documents.
 
-Implementation considerations:
-- **URL structure**: English at `/`, Chinese at `/zh/` (or negotiate during implementation)
-- **Content**: each currency entry exists in both languages; Peng assists in producing Chinese drafts, humans with language competency review before publication
-- **UI strings**: navigation, labels, metadata — translated via Eleventy i18n or data files
-- **Intake**: Peng's intake scripts should be capable of processing Chinese-language signals and drafting Chinese-language entries
-- **Simplified Chinese**: the primary Chinese variant, consistent with the majority of the AI ecosystem signals originating from mainland China contexts; Traditional Chinese (繁體) may follow
-- **Knowledge manifest**: `knowledge-manifest.json` should include language metadata per entry
-- **Peng's mediation notes**: written in the language of the entry being drafted
+Implementation:
+- **URL structure**: English at `/`, Chinese at `/zh/`
+- **Content**: all 79 entries exist in both languages; Peng produces Chinese drafts via `scripts/translate.js`, humans with language competency review before promotion to `src/currency/zh/{type}/`
+- **UI strings**: `src/_data/i18n.json` — all nav, labels, type names, and list text in both languages; consumed via `{{ i18n[lang or 'en'] }}` pattern in templates
+- **Layouts**: `base.njk` is language-aware — `<html lang>`, Chinese font stack, language switcher in nav, branded home links to correct root
+- **Chinese index pages**: `/zh/`, `/zh/currency/`, `/zh/currency/currents/`, `/zh/currency/circuits/`, `/zh/currency/practitioners/`
+- **Collections**: `zh_currency`, `zh_currents`, `zh_circuits`, `zh_practitioners` in `.eleventy.js`; `typeLabel(lang)` filter for type chip rendering
+- **Knowledge manifest**: `knowledge-manifest.json` includes `lang` field per entry and `byLang` summary count; synthesis operates on English entries only
+- **Intake**: GitHub and Brave queries extended to include Chinese ecosystem signals (Qwen, ChatGLM, Baichuan topic queries; Chinese-language Brave and Twitter searches); ModelScope source pending API verification
+- **Peng's mediation notes**: written in the language of the entry being drafted; translator's notes flagged under **译注** where Chinese illuminates gaps in English
 
 ### What Peng Is Not
 

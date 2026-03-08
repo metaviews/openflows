@@ -2,5 +2,7 @@ node_modules/
 _site/
 .env
 # Draft markdown files are reviewed locally before being promoted to src/
-# seen.json and .gitkeep are committed — they are the agent's persistent state
+# seen.json, .gitkeep, and QUEUE.md are committed — persistent agent state
 drafts/*.md
+!drafts/QUEUE.md
+drafts/zh/*.md

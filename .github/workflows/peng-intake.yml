@@ -1,0 +1,92 @@
+name: Peng Intake
+
+# Peng (鵬) runs intake on a schedule, screens signals against the knowledge base,
+# drafts new currency entries, and opens a pull request for human review.
+# Nothing enters src/ automatically — humans approve at every threshold.
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # Every day at 06:00 UTC
+  workflow_dispatch:        # Manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Build the knowledge manifest first — intake deduplicates against it
+      - name: Build knowledge manifest
+        run: npm run build
+
+      - name: Run Peng intake
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ secrets.OPENROUTER_MODEL }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+        run: node scripts/intake.js --sources github,huggingface,brave --limit 5
+
+      - name: Update proposal queue
+        run: node scripts/queue.js
+
+      - name: Check for new drafts
+        id: check
+        run: |
+          git add drafts/
+          if git diff --staged --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No new drafts this run."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            COUNT=$(git diff --staged --name-only | grep -c '\.md$' || true)
+            echo "count=${COUNT}" >> $GITHUB_OUTPUT
+            echo "New drafts: ${COUNT}"
+          fi
+
+      - name: Get run date
+        id: meta
+        if: steps.check.outputs.changed == 'true'
+        run: echo "date=$(date -u +%Y-%m-%d)" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request
+        if: steps.check.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          author: Peng (Openflows Agent) <peng@openflows.org>
+          commit-message: "peng: intake ${{ steps.meta.outputs.date }}"
+          branch: peng/intake-${{ steps.meta.outputs.date }}
+          delete-branch: true
+          title: "Peng intake — ${{ steps.meta.outputs.date }}"
+          labels: peng-proposal
+          body: |
+            Automated intake run by Peng (鵬). ${{ steps.check.outputs.count }} new draft(s).
+
+            ## To promote an entry
+
+            1. Review the draft in `drafts/`
+            2. Edit as needed — Peng proposes, you decide
+            3. Move approved file to `src/currency/currents/` (or circuits/, practitioners/)
+            4. Run `node scripts/translate.js --id {id}` for the Chinese draft
+            5. Review `drafts/zh/{id}.md`, move to `src/currency/zh/{type}/`
+
+            See `drafts/QUEUE.md` for the full pending list.
+
+            ---
+            *Mediation: intake screened via OpenRouter. All entries require human review before reaching `src/`.*

@@ -13,6 +13,7 @@ module.exports = class KnowledgeManifest {
       title: item.data.title || "",
       currencyId: item.data.currencyId || null,
       currencyType: item.data.currencyType || "",
+      lang: item.data.lang || "en",
       date: item.date instanceof Date
         ? item.date.toISOString()
         : new Date(item.date).toISOString(),
@@ -23,10 +24,14 @@ module.exports = class KnowledgeManifest {
       body: item.content || ""
     }));
 
+    const enEntries = items.filter(e => e.lang === "en");
+    const zhEntries = items.filter(e => e.lang === "zh");
+
     return JSON.stringify(
       {
         generated: new Date().toISOString(),
         count: items.length,
+        byLang: { en: enEntries.length, zh: zhEntries.length },
         entries: items
       },
       null,
