@@ -235,12 +235,13 @@ The agent becomes accessible from within the site itself — a query interface t
 
 Peng operates on a schedule: ingesting signals, drafting entries, and opening pull requests for human review. The human role shifts from operator to editor — Peng proposes, humans decide.
 
-- **GitHub Action**: `.github/workflows/peng-intake.yml` — runs every Monday at 06:00 UTC; also available via `workflow_dispatch` for ad-hoc runs
+- **GitHub Action**: `.github/workflows/peng-intake.yml` — runs daily at 06:00 UTC; also available via `workflow_dispatch` for ad-hoc runs
 - **Proposal queue**: `scripts/queue.js` — scans `drafts/` and `drafts/zh/`, writes `drafts/QUEUE.md` summarizing all pending entries by type and language; called automatically after each intake run
 - **Pull request model**: after each run Peng opens a PR (`peng/intake-{date}`) with all new drafts and an updated QUEUE.md; humans review, edit, and promote approved files before merging
 - **Audit trail**: GitHub Actions run history and PR history are the durable audit log — each run is timestamped, its outputs visible, and the commit record traces every entry from draft to publication
-- **Required GitHub secrets**: `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` (optional), `BRAVE_API_KEY`; `GITHUB_TOKEN` is provided automatically by Actions
+- **Required GitHub secrets**: `OPENROUTER_API_KEY`, `OPENROUTER_MODEL` (optional), `FALLBACK_OPENROUTER_MODEL` (optional), `BRAVE_API_KEY`; `GITHUB_TOKEN` is provided automatically by Actions
 - **Promotion workflow**: move `drafts/{id}.md` to `src/currency/{type}/{id}.md`; run `node scripts/translate.js --id {id}`; review `drafts/zh/{id}.md`; move to `src/currency/zh/{type}/{id}.md`
+- **Status check**: `node scripts/status.js` — local dashboard showing pending vs stale drafts by category, KB counts, and audit state; no build or API required
 
 #### Cycle 7: Bilingual — English and Chinese (中文)
 **Status**: complete
@@ -261,23 +262,28 @@ Implementation:
 - **Peng's mediation notes**: written in the language of the entry being drafted; translator's notes flagged under **译注** where Chinese illuminates gaps in English
 
 #### Cycle 8: Depth — Entry Enrichment and Quality
-**Status**: complete
+**Status**: complete — 79/79 English entries passing (100%)
 
 The knowledge base has breadth. It now needs density. Many early entries — drafted before the richer intake workflow — have thin bodies, missing links, or underdeveloped abstracts. Cycle 8 turns Peng's attention inward: auditing what exists and enriching what is sparse.
 
-- **`scripts/enrich.js`** — takes a specific `currencyId`, evaluates the existing entry against quality criteria, fetches current primary source information, and produces an enriched draft for human review; follows the same draft → review → promote workflow
 - **`scripts/audit.js`** — scans the full English knowledge base and produces `audit/QUALITY.md`: entries with missing abstracts, thin bodies (under a word threshold), unpopulated links, or potentially outdated claims; makes gaps visible without requiring a human to hunt for them
-- **Quality floor**: abstract present, body substantive (not stub-length), at least one link where genuine connections exist
-- **Chinese audit**: after English enrichment, `translate.js --force --id {id}` regenerates the Chinese draft from the improved source
+- **`scripts/enrich.js`** — proposes fixes for flagged entries; writes enriched drafts to `drafts/enriched/` for human review before promotion to `src/`
+  - `--fix mediation` — generates mediation blocks for circuits missing them
+  - `--fix links` — suggests circuit connections for unlinked currents (dual-output format: LINKS_YAML + CONNECTIONS_PROSE)
+  - `--fix all` — runs both passes
+  - `--id {id}` — targets a specific entry, auto-detects gaps
+- **Quality floor**: abstract ≥ 80 chars, body word count above threshold, at least one cross-reference link, mediation block on circuits
+- **`scripts/lib/openrouter.js`** — generic OpenRouter helper extracted and shared across all scripts; handles `.env` loading, model selection, 429 fallback retry; copy to other projects as needed
 
 #### Cycle 9: Perspective — Peng's Synthesis Digest
-**Status**: not started
+**Status**: complete
 
-Peng's highest function is not intake — it's synthesis. But circuits currently only emerge when invoked. Cycle 9 adds a synthesis cadence and gives Peng a periodic voice beyond individual entries.
+Peng's highest function is not intake — it's synthesis. Cycle 9 adds a synthesis cadence and gives Peng a periodic editorial voice. The open source AI ecosystem moves quickly; three runs per week keeps pace without overwhelming the human reviewer.
 
-- **Automated synthesis**: add a weekly synthesis pass to the GitHub Action (separate job, separate cadence); when sufficient new Currents have accumulated since the last Circuit, Peng proposes a new Circuit draft via PR
-- **Peng's View**: a lightweight periodic note — not a full Circuit, but a brief synthesized observation on what is forming in the ecosystem; published as a distinct entry type or a dated note on the site; gives the site temporal rhythm and surfaces Peng's perspective explicitly
-- **Voice development**: the synthesis style guide should evolve as Circuits accumulate — Peng should begin to notice what it has claimed before and resist repetition; a "prior circuits" awareness pass in the synthesis prompt
+- **`scripts/digest.js`** — Peng writes a 350–500 word editorial briefing: what has entered the KB recently, which circuits are gaining weight, what is pending for human attention, and a short editorial note in Peng's own voice. Output: `drafts/digest-{date}.md`. Use `--stdout` to print to terminal.
+- **`scripts/status.js`** — local admin dashboard: pending/stale draft counts by category, KB entry counts, audit state; no API calls, no build required. Run anytime to see what needs attention.
+- **`.github/workflows/peng-perspective.yml`** — Monday, Wednesday, Friday at 08:00 UTC: build → synthesize → digest → PR. The PR body is the digest itself — the GitHub notification is the admin's briefing. No hunting required.
+- **Promotion workflow for circuit drafts**: move `drafts/{id}.md` to `src/currency/circuits/`; run `node scripts/translate.js --id {id}`; review `drafts/zh/{id}.md`; move to `src/currency/zh/circuits/`
 
 #### Cycle 10: Conversation — Site Integration
 **Status**: deferred (was Cycle 5b)

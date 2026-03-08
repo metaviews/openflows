@@ -49,10 +49,14 @@ RSS and JSON feeds are also available at `/currency/feed.xml` and `/currency/fee
 | `node scripts/audit.js` | Scan knowledge base quality; report to `audit/QUALITY.md` |
 | `node scripts/enrich.js --fix mediation` | Add mediation blocks to circuits; drafts to `drafts/enriched/` |
 | `node scripts/enrich.js --fix links` | Suggest circuit links for unlinked currents |
+| `node scripts/status.js` | Local dashboard: pending drafts, stale drafts, KB counts, audit state |
+| `node scripts/digest.js` | Peng writes a short editorial briefing on current flow and pending review items |
 
-All scripts require `OPENROUTER_API_KEY` in `.env`. See `.env.example`.
+All scripts require `OPENROUTER_API_KEY` in `.env`. See `.env.example`. `FALLBACK_OPENROUTER_MODEL` is optional — used when the primary model hits a rate limit.
 
-Intake runs automatically via GitHub Actions (`.github/workflows/peng-intake.yml`) each day at 06:00 UTC, opening a pull request with new drafts for human review.
+Two automated workflows run via GitHub Actions:
+- **`peng-intake.yml`** — daily at 06:00 UTC: intake → audit → queue → PR with new drafts
+- **`peng-perspective.yml`** — Monday, Wednesday, Friday at 08:00 UTC: synthesize → digest → PR with Peng's editorial briefing as the PR body
 
 ## Stack
 

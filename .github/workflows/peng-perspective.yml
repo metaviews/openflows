@@ -1,0 +1,111 @@
+name: Peng Perspective
+
+# Peng (鵬) synthesizes emerging patterns and writes a digest three times per week.
+# A new circuit draft and an editorial briefing are opened as a pull request.
+# Nothing enters src/ automatically — humans approve at every threshold.
+
+on:
+  schedule:
+    - cron: '0 8 * * 1,3,5'   # Monday, Wednesday, Friday at 08:00 UTC
+  workflow_dispatch:             # Manual trigger from GitHub Actions UI
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  perspective:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Build the knowledge manifest — synthesize and digest both require it
+      - name: Build knowledge manifest
+        run: npm run build
+
+      # Draft a new circuit connecting unaddressed patterns in the knowledge base
+      - name: Run Peng synthesis
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ secrets.OPENROUTER_MODEL }}
+          FALLBACK_OPENROUTER_MODEL: ${{ secrets.FALLBACK_OPENROUTER_MODEL }}
+        run: node scripts/synthesize.js
+
+      # Write Peng's View — the editorial briefing for the human reviewer
+      - name: Run Peng digest
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ secrets.OPENROUTER_MODEL }}
+          FALLBACK_OPENROUTER_MODEL: ${{ secrets.FALLBACK_OPENROUTER_MODEL }}
+        run: node scripts/digest.js
+
+      - name: Check for new output
+        id: check
+        run: |
+          git add drafts/
+          if git diff --staged --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No new output this run."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Get run date
+        id: meta
+        if: steps.check.outputs.changed == 'true'
+        run: echo "date=$(date -u +%Y-%m-%d)" >> $GITHUB_OUTPUT
+
+      # Read the digest to use as the PR body
+      - name: Read digest
+        id: digest
+        if: steps.check.outputs.changed == 'true'
+        run: |
+          DIGEST_FILE=$(ls drafts/digest-*.md 2>/dev/null | sort | tail -1)
+          if [ -n "$DIGEST_FILE" ]; then
+            # GitHub Actions has a limit on output size — truncate if needed
+            CONTENT=$(head -80 "$DIGEST_FILE")
+            echo "content<<EOF_DIGEST" >> $GITHUB_OUTPUT
+            echo "$CONTENT" >> $GITHUB_OUTPUT
+            echo "EOF_DIGEST" >> $GITHUB_OUTPUT
+          else
+            echo "content=No digest generated." >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Pull Request
+        if: steps.check.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          author: Peng (Openflows Agent) <peng@openflows.org>
+          commit-message: "peng: perspective ${{ steps.meta.outputs.date }}"
+          branch: peng/perspective-${{ steps.meta.outputs.date }}
+          delete-branch: true
+          title: "Peng's View — ${{ steps.meta.outputs.date }}"
+          labels: peng-proposal
+          body: |
+            ${{ steps.digest.outputs.content }}
+
+            ---
+
+            ## To promote the circuit draft
+
+            1. Review `drafts/*.md` — the new circuit proposal
+            2. Edit as needed, then move to `src/currency/circuits/`
+            3. Run `node scripts/translate.js --id {id}` for the Chinese draft
+            4. Review `drafts/zh/{id}.md`, move to `src/currency/zh/circuits/`
+
+            Run `node scripts/status.js` locally to see all pending items.
+
+            ---
+            *Mediation: synthesis and digest via OpenRouter. All proposals require human review before reaching `src/`.*
