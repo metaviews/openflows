@@ -1,0 +1,110 @@
+{
+  "lastUpdated": "2026-03-09T06:53:22.498Z",
+  "seen": {
+    "https://github.com/onestardao/WFGY": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "WFGY",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://www.minimax.io/news/minimax-m21": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "MiniMax M2.1: Significantly Enhanced Multi-Language Programming, Built for Real-World Complex Tasks - MiniMax News | MiniMax",
+      "source": "brave",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://github.com/sgl-project/sglang": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "sglang",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://github.com/gpustack/gpustack": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "gpustack",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://github.com/datawhalechina/self-llm": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "self-llm",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://github.com/SamurAIGPT/awesome-openclaw": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "awesome-openclaw",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://github.com/lyogavin/airllm": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "airllm",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://github.com/xorbitsai/inference": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "inference",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://github.com/AgentEra/Agently": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "Agently",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://www.bilibili.com/video/BV1xYfABeEYD/": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "盘点一周AI大事(2月22日)｜不赚钱拔网线，龙虾7小时赚1万_哔哩哔哩_bilibili",
+      "source": "brave",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://github.com/zjunlp/EasyEdit": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "EasyEdit",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://huggingface.co/microsoft/VibeVoice-ASR-HF": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "microsoft/VibeVoice-ASR-HF",
+      "source": "huggingface",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://www.bilibili.com/video/BV18TAkzbETb/": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "【闪客】这一次，彻底搞懂蒸馏/开源/套壳，这些乱七八糟的概念！_哔哩哔哩_bilibili",
+      "source": "brave",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://llm-stats.com/ai-news": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "LLM News Today (March 2026) – Open Source LLM Updates & AI Model Releases",
+      "source": "brave",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    },
+    "https://github.com/ChatLunaLab/chatluna": {
+      "date": "2026-03-09",
+      "decision": "error",
+      "title": "chatluna",
+      "source": "github",
+      "reason": "OpenRouter 401: {\"error\":{\"message\":\"User not found.\",\"code\":401}}"
+    }
+  }
+}
