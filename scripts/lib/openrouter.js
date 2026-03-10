@@ -57,7 +57,8 @@ function createClient(options = {}) {
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) throw new Error('OPENROUTER_API_KEY not set. Add it to .env');
 
-  const primaryModel = defaultModel || process.env.OPENROUTER_MODEL || 'google/gemini-flash-1.5';
+  const primaryModel = defaultModel || process.env.OPENROUTER_MODEL;
+  if (!primaryModel) throw new Error('OPENROUTER_MODEL not set. Add it to .env or set the GitHub variable.');
   const fallbackModel = process.env.FALLBACK_OPENROUTER_MODEL || null;
 
   async function complete(messages, { model = primaryModel, temp = temperature } = {}) {
