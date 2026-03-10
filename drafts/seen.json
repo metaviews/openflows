@@ -1,0 +1,110 @@
+{
+  "lastUpdated": "2026-03-10T06:44:08.764Z",
+  "seen": {
+    "https://github.com/nexi-lab/nexus": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "nexus",
+      "source": "github",
+      "reason": "fetch failed"
+    },
+    "https://github.com/lyogavin/airllm": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "airllm",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/datawhalechina/self-llm": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "self-llm",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://www.minimax.io/news/minimax-m21": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "MiniMax M2.1: Significantly Enhanced Multi-Language Programming, Built for Real-World Complex Tasks - MiniMax News | MiniMax",
+      "source": "brave",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://llm-stats.com/ai-news": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "LLM News Today (March 2026) – Open Source LLM Updates & AI Model Releases",
+      "source": "brave",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/xorbitsai/inference": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "inference",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/ChatLunaLab/chatluna": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "chatluna",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://www.minimaxi.com/news/minimax-m2": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "MiniMax M2 & Agent，大巧若拙 - MiniMax News | MiniMax",
+      "source": "brave",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/swiss-ai/apertus-tech-report": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "apertus-tech-report",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/zjunlp/EasyEdit": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "EasyEdit",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/sdcb/chats": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "chats",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://www.bilibili.com/video/BV18TAkzbETb/": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "【闪客】这一次，彻底搞懂蒸馏/开源/套壳，这些乱七八糟的概念！_哔哩哔哩_bilibili",
+      "source": "brave",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/yangjianxin1/Firefly": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "Firefly",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://www.aliyun.com/product/tongyi": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "千问大模型_AI大模型_一站式大模型推理和部署服务-阿里云",
+      "source": "brave",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://explodingtopics.com/blog/list-of-llms": {
+      "date": "2026-03-10",
+      "decision": "error",
+      "title": "Top 50+ Large Language Models (LLMs) in 2026",
+      "source": "brave",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    }
+  }
+}
