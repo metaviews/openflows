@@ -1,0 +1,110 @@
+{
+  "lastUpdated": "2026-03-11T06:42:32.537Z",
+  "seen": {
+    "https://www.aliyun.com/product/tongyi": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "千问大模型_AI大模型_一站式大模型推理和部署服务-阿里云",
+      "source": "brave",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/vm0-ai/vm0": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "vm0",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/langchain-ai/langgraphjs": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "langgraphjs",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/sgl-project/sglang": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "sglang",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/jd-opensource/xllm": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "xllm",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/Tencent/AngelSlim": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "AngelSlim",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/iimeta/fastapi-admin": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "fastapi-admin",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/gpustack/gpustack": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "gpustack",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/garylab/MakeMoneyWithAI": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "MakeMoneyWithAI",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://36kr.com/p/3314754737285121": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "全球首个AI智能体「自进化」开源框架来了，一次部署，终生可用-36氪",
+      "source": "brave",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/lyogavin/airllm": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "airllm",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/yangjianxin1/Firefly": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "Firefly",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/sdcb/chats": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "chats",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/SamurAIGPT/awesome-openclaw": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "awesome-openclaw",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/ChatLunaLab/chatluna": {
+      "date": "2026-03-11",
+      "decision": "error",
+      "title": "chatluna",
+      "source": "github",
+      "reason": "OpenRouter 404: {\"error\":{\"message\":\"No endpoints found for google/gemini-flash-1.5.\",\"code\":404},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    }
+  }
+}
