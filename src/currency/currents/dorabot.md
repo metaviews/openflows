@@ -4,7 +4,7 @@ title: Dorabot
 date: 2026-03-12
 currencyType: "current"
 currencyId: dorabot
-abstract: "A macOS application providing a persistent IDE workspace for autonomous agents with integrated memory, scheduling, and communication channel automation."
+abstract: "A macOS application providing a persistent IDE workspace for autonomous agents with integrated memory, scheduling, and communication-channel automation."
 tags:
   - currency
 permalink: /currency/currents/dorabot/
@@ -25,11 +25,7 @@ mediation:
 ---
 
 ### Signal
-**Source:** GitHub
-**Title:** dorabot
-**URL:** https://github.com/suitedaces/dorabot
-**Date:** 2026-03-12
-**Content:** macOS app for 24/7 AI agents in an IDE with memory, scheduled tasks, browser use + access to Whatsapp, Telegram, Slack. | ai-agent, ai-assistant, browser-automation, claude, claude-agent-sdk, electron, macos, open-source, openai, personal-ai, slack-bot, telegram-bot, typescript, whatsapp-bot
+GitHub repository `suitedaces/dorabot` describes a macOS application for always-on AI agents running inside an IDE-style workspace with memory, scheduled tasks, browser use, and access to WhatsApp, Telegram, and Slack. The stack is Electron-based and oriented toward persistent local operation rather than disposable chat sessions.
 
 ### Context
 Dorabot represents a shift from ephemeral chat interfaces to persistent desktop environments. Unlike cloud-based agent services, it runs locally on macOS, utilizing existing LLM subscriptions (Claude, OpenAI) without requiring proprietary API keys. The tool treats the agent as a persistent process rather than a session-based query, maintaining state across reboots via local memory structures.
@@ -38,9 +34,9 @@ Dorabot represents a shift from ephemeral chat interfaces to persistent desktop 
 This entry signals the maturation of local agent infrastructure. By bundling IDE features, memory, and communication channels into a single desktop application, Dorabot reduces the friction of managing multiple tools (terminal, browser, chat clients) for autonomous workflows. It aligns with the local-inference baseline by normalizing agent runtime on personal hardware, potentially reducing dependency on centralized provider interfaces.
 
 ### Current State
-Version 0.2.3 (as of March 2026).
+Version 0.2.3 as of March 2026.
 Platform: macOS only (Electron-based).
-Integrations: Claude Code, OpenAI Codex, Slack, Telegram, WhatsApp, Browser.
+Integrations: Claude Code, OpenAI Codex, Slack, Telegram, WhatsApp, browser tooling.
 Features:
 - File explorer with keyboard navigation.
 - Monaco editor with autosave.
@@ -57,8 +53,8 @@ Features:
 - **Agent Autonomy:** To what extent does the agent modify its own code versus executing user-approved scripts?
 
 ### Connections
-The entry connects to existing infrastructure signals regarding local runtime and memory management. The IDE workspace layer supports the operational literacy interface by making agent behavior visible and editable. The memory system parallels proactive memory frameworks designed for always-on agents.
+The entry connects to existing infrastructure signals around local runtime and memory management. The IDE workspace layer supports the operational-literacy interface by making agent behavior visible and editable. The memory system parallels proactive memory frameworks designed for always-on agents.
 
-- **[CURRENT] memU (memu):** Proactive memory framework for always-on AI agents that anticipates context needs rather than waiting to be queried.
-- **[CIRCUIT] Local Inference as Baseline (local-inference-baseline):** Language model inference is now treated as ordinary local infrastructure within Openflows.
-- **[CIRCUIT] Operational Literacy Interface Circuit (operational-literacy-interface):** Interface and workflow layers now shape whether AI use produces dependency or operational literacy: expose structure, support intervention, and convert use into durable understanding.
+- **memU**: Proactive memory framework for always-on AI agents that anticipates context needs rather than waiting to be queried.
+- **local-inference-baseline**: Circuit treating language-model inference as ordinary local infrastructure.
+- **operational-literacy-interface**: Circuit centered on exposing structure, supporting intervention, and converting use into durable understanding.
