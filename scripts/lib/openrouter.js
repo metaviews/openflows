@@ -10,9 +10,9 @@
 //   const text = await client.complete([{ role: 'user', content: 'Hello' }]);
 //
 // Environment variables read:
-//   OPENROUTER_API_KEY       — required
-//   OPENROUTER_MODEL         — default model (fallback: google/gemini-flash-1.5)
-//   FALLBACK_OPENROUTER_MODEL — retry model on 429 (optional)
+//   OPENROUTER_API_KEY        — required
+//   OPENROUTER_MODEL          — default model
+//   FALLBACK_OPENROUTER_MODEL — retry model on 404/429, also used if primary is absent
 
 const { readFileSync } = require('fs');
 const { join } = require('path');
@@ -45,6 +45,13 @@ function hasFlag(args, flag) {
   return args.includes(`--${flag}`);
 }
 
+function normalizeModel(value) {
+  if (!value) return '';
+  const trimmed = String(value).trim();
+  const match = trimmed.match(/^(OPENROUTER_MODEL|FALLBACK_OPENROUTER_MODEL)\s*=\s*(.+)$/);
+  return (match ? match[2] : trimmed).trim();
+}
+
 // Create an OpenRouter client bound to specific credentials and options
 function createClient(options = {}) {
   const {
@@ -57,9 +64,12 @@ function createClient(options = {}) {
   const apiKey = process.env.OPENROUTER_API_KEY;
   if (!apiKey) throw new Error('OPENROUTER_API_KEY not set. Add it to .env');
 
-  const primaryModel = defaultModel || process.env.OPENROUTER_MODEL;
+  const fallbackModel = normalizeModel(process.env.FALLBACK_OPENROUTER_MODEL) || null;
+  const primaryModel =
+    normalizeModel(defaultModel) ||
+    normalizeModel(process.env.OPENROUTER_MODEL) ||
+    fallbackModel;
   if (!primaryModel) throw new Error('OPENROUTER_MODEL not set. Add it to .env or set the GitHub variable.');
-  const fallbackModel = process.env.FALLBACK_OPENROUTER_MODEL || null;
 
   async function complete(messages, { model = primaryModel, temp = temperature } = {}) {
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -75,8 +85,9 @@ function createClient(options = {}) {
 
     if (!res.ok) {
       const errText = await res.text();
-      if (res.status === 429 && fallbackModel && model !== fallbackModel) {
-        process.stderr.write(`\n  ⚠ Rate limit on ${model}, retrying with fallback: ${fallbackModel}\n`);
+      if ((res.status === 404 || res.status === 429) && fallbackModel && model !== fallbackModel) {
+        const reason = res.status === 404 ? 'model unavailable' : 'rate limit';
+        process.stderr.write(`\n  Warning: ${reason} on ${model}, retrying with fallback: ${fallbackModel}\n`);
         return complete(messages, { model: fallbackModel, temp });
       }
       throw new Error(`OpenRouter ${res.status}: ${errText}`);

@@ -38,6 +38,7 @@ jobs:
         env:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
           OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL }}
+          FALLBACK_OPENROUTER_MODEL: ${{ vars.FALLBACK_OPENROUTER_MODEL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
         run: node scripts/intake.js --sources github,huggingface,brave --limit 5
@@ -52,12 +53,13 @@ jobs:
         id: check
         run: |
           git add drafts/ audit/
-          if git diff --staged --quiet; then
+          DRAFTS=$(git diff --staged --name-only | grep '^drafts/[^/][^/]*\.md$' | grep -v '^drafts/QUEUE\.md$' | grep -v '^drafts/digest-.*\.md$' || true)
+          if [ -z "$DRAFTS" ]; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No new drafts this run."
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            COUNT=$(git diff --staged --name-only | grep -c '\.md$' || true)
+            COUNT=$(printf '%s\n' "$DRAFTS" | sed '/^$/d' | wc -l)
             echo "count=${COUNT}" >> $GITHUB_OUTPUT
             echo "New drafts: ${COUNT}"
           fi
@@ -68,6 +70,7 @@ jobs:
         run: echo "date=$(date -u +%Y-%m-%d)" >> $GITHUB_OUTPUT
 
       - name: Create Pull Request
+        id: cpr
         if: steps.check.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
@@ -77,7 +80,6 @@ jobs:
           branch: peng/intake-${{ steps.meta.outputs.date }}
           delete-branch: true
           title: "Peng intake — ${{ steps.meta.outputs.date }}"
-          labels: peng-proposal
           body: |
             Automated intake run by Peng (鵬). ${{ steps.check.outputs.count }} new draft(s).
 
@@ -93,3 +95,10 @@ jobs:
 
             ---
             *Mediation: intake screened via OpenRouter. All entries require human review before reaching `src/`.*
+
+      - name: Apply PR label
+        if: steps.check.outputs.changed == 'true' && steps.cpr.outputs.pull-request-number != ''
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr edit ${{ steps.cpr.outputs.pull-request-number }} --add-label peng-proposal

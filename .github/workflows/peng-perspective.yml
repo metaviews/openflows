@@ -83,6 +83,7 @@ jobs:
           fi
 
       - name: Create Pull Request
+        id: cpr
         if: steps.check.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v6
         with:
@@ -92,7 +93,6 @@ jobs:
           branch: peng/perspective-${{ steps.meta.outputs.date }}
           delete-branch: true
           title: "Peng's View — ${{ steps.meta.outputs.date }}"
-          labels: peng-proposal
           body: |
             ${{ steps.digest.outputs.content }}
 
@@ -109,3 +109,10 @@ jobs:
 
             ---
             *Mediation: synthesis and digest via OpenRouter. All proposals require human review before reaching `src/`.*
+
+      - name: Apply PR label
+        if: steps.check.outputs.changed == 'true' && steps.cpr.outputs.pull-request-number != ''
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr edit ${{ steps.cpr.outputs.pull-request-number }} --add-label peng-proposal
