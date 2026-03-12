@@ -52,7 +52,8 @@ jobs:
       - name: Check for new drafts
         id: check
         run: |
-          git add drafts/ audit/
+          git add audit/
+          git add -f drafts/
           DRAFTS=$(git diff --staged --name-only | grep '^drafts/[^/][^/]*\.md$' | grep -v '^drafts/QUEUE\.md$' | grep -v '^drafts/digest-.*\.md$' || true)
           if [ -z "$DRAFTS" ]; then
             echo "changed=false" >> $GITHUB_OUTPUT
