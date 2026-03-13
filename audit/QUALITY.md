@@ -1,15 +1,24 @@
 # Peng Quality Audit
 
-Generated: 2026-03-12
-Entries scanned: **79** (English only)
-Passing: **79** (100%)
-Flagged: **0** entries · **0** errors · **0** warnings
+Generated: 2026-03-13
+Entries scanned: **87** (English only)
+Passing: **82** (94%)
+Flagged: **5** entries · **10** errors · **5** warnings
 
 ---
 
 ## Flagged Entries
 
-_All entries pass the quality floor. The current flows clearly._
+### Currents (流)
+
+| Entry | Issues |
+|---|---|
+| [`cherry-studio`](src/currency/currents/cherry-studio.md) | 🔴 Missing abstract<br>🟡 No cross-reference links<br>🔴 Missing currencyId |
+| [`dorabot`](src/currency/currents/dorabot.md) | 🔴 Missing abstract<br>🟡 No cross-reference links<br>🔴 Missing currencyId |
+| [`openclaw-chinese-translation`](src/currency/currents/openclaw-chinese-translation.md) | 🔴 Missing abstract<br>🟡 No cross-reference links<br>🔴 Missing currencyId |
+| [`unsloth-fine-tuning`](src/currency/currents/unsloth-fine-tuning.md) | 🔴 Missing abstract<br>🟡 No cross-reference links<br>🔴 Missing currencyId |
+| [`vllm`](src/currency/currents/vllm.md) | 🔴 Missing abstract<br>🟡 No cross-reference links<br>🔴 Missing currencyId |
+
 ---
 
 ## Quality Criteria

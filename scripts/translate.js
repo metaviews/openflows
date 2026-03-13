@@ -43,17 +43,25 @@ try {
 
 // Find already-translated entries
 const zhDraftsDir = join(__dirname, '..', 'drafts', 'zh');
-const zhSrcDirs = [
-  join(__dirname, '..', 'src', 'currency', 'zh'),
-];
+const zhSrcBase = join(__dirname, '..', 'src', 'currency', 'zh');
 
 function getTranslatedIds() {
   const ids = new Set();
-  const dirs = [zhDraftsDir, ...zhSrcDirs];
-  for (const dir of dirs) {
-    if (!existsSync(dir)) continue;
-    for (const f of readdirSync(dir)) {
+  // Check drafts/zh/ (flat)
+  if (existsSync(zhDraftsDir)) {
+    for (const f of readdirSync(zhDraftsDir)) {
       if (f.endsWith('.md')) ids.add(f.replace(/\.md$/, ''));
+    }
+  }
+  // Check src/currency/zh/{currents,circuits,practitioners}/ (one level deep)
+  if (existsSync(zhSrcBase)) {
+    for (const sub of readdirSync(zhSrcBase)) {
+      const subDir = join(zhSrcBase, sub);
+      try {
+        for (const f of readdirSync(subDir)) {
+          if (f.endsWith('.md')) ids.add(f.replace(/\.md$/, ''));
+        }
+      } catch { /* not a directory */ }
     }
   }
   return ids;
@@ -161,7 +169,7 @@ ${body}`;
 function writeDraft(currencyId, markdown) {
   if (!existsSync(zhDraftsDir)) mkdirSync(zhDraftsDir, { recursive: true });
   const outPath = join(zhDraftsDir, `${currencyId}.md`);
-  writeFileSync(outPath, markdown);
+  writeFileSync(outPath, markdown.replace(/\r\n/g, '\n'));
   return outPath;
 }
 

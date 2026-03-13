@@ -21,6 +21,7 @@ const { join } = require('path');
 // --- CLI args ---
 const args = process.argv.slice(2);
 const filterType = args.includes('--type') ? args[args.indexOf('--type') + 1] : null;
+const filterId = args.includes('--id') ? args[args.indexOf('--id') + 1] : null;
 const jsonOnly = args.includes('--json');
 
 // --- Paths ---
@@ -33,6 +34,7 @@ const TYPES = ['currents', 'circuits', 'practitioners'];
 
 // --- Frontmatter parser ---
 function parseFrontmatter(content) {
+  content = content.replace(/\r\n/g, '\n');
   const match = content.match(/^---\n([\s\S]+?)\n---\n?([\s\S]*)$/);
   if (!match) return { fm: {}, body: content };
 
@@ -180,7 +182,7 @@ for (const folder of TYPES) {
 
   if (filterType && typeSingular !== filterType) continue;
 
-  const files = readdirSync(dir).filter(f => f.endsWith('.md'));
+  const files = readdirSync(dir).filter(f => f.endsWith('.md') && (!filterId || f === `${filterId}.md`));
 
   for (const file of files) {
     const filePath = join(dir, file);

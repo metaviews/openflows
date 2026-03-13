@@ -18,7 +18,7 @@ const zhDraftsDir = join(root, 'drafts', 'zh');
 
 function parseFrontmatter(filepath) {
   try {
-    const content = readFileSync(filepath, 'utf8');
+    const content = readFileSync(filepath, 'utf8').replace(/\r\n/g, '\n');
     const match = content.match(/^---\n([\s\S]+?)\n---/);
     if (!match) return {};
     const fm = {};

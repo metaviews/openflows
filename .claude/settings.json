@@ -3,7 +3,17 @@
     "allow": [
       "Bash(gh run:*)",
       "Bash(gh pr:*)",
-      "Bash(gh variable:*)"
+      "Bash(gh variable:*)",
+      "Bash(node scripts/status.js)",
+      "Bash(ls drafts/*.md)",
+      "Bash(node -e \":*)",
+      "Bash(git fetch:*)",
+      "Bash(gh api:*)",
+      "Bash(node scripts/audit.js --id google-adk-js)",
+      "Bash(node scripts/audit.js --id airllm)",
+      "Bash(node scripts/audit.js --id ragflow)",
+      "Bash(grep -E \"^\\(google-adk-js|airllm|ragflow\\)\\\\.md$\")",
+      "Bash(node -e \"require\\(''''./scripts/promote.js''''\\)\")"
     ]
   }
 }
