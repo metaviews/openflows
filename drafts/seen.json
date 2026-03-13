@@ -1,0 +1,56 @@
+{
+  "lastUpdated": "2026-03-13T07:08:37.436Z",
+  "seen": {
+    "https://www.minimax.io/news/minimax-m21": {
+      "date": "2026-03-13",
+      "decision": "skipped",
+      "title": "MiniMax M2.1: Significantly Enhanced Multi-Language Programming, Built for Real-World Complex Tasks - MiniMax News | MiniMax",
+      "source": "brave",
+      "score": 2,
+      "reason": "Commercial press release lacking operational specifics; leans toward hype without verifiable open-source artifacts or inspectable links."
+    },
+    "https://huggingface.co/FireRedTeam/FireRedVAD": {
+      "date": "2026-03-13",
+      "decision": "skipped",
+      "title": "FireRedTeam/FireRedVAD",
+      "source": "huggingface",
+      "score": 2,
+      "reason": "Low adoption metrics (366 downloads) suggest limited ecosystem impact; while technically open source, it is unlikely to add significant value compared to established tools."
+    },
+    "https://github.com/google/adk-js": {
+      "date": "2026-03-13",
+      "decision": "drafted",
+      "title": "adk-js",
+      "source": "github",
+      "file": "google-adk-js.md"
+    },
+    "https://github.com/vm0-ai/vm0": {
+      "date": "2026-03-13",
+      "decision": "drafted",
+      "title": "vm0",
+      "source": "github",
+      "file": "vm0.md"
+    },
+    "https://github.com/dust-tt/dust": {
+      "date": "2026-03-13",
+      "decision": "drafted",
+      "title": "dust",
+      "source": "github",
+      "file": "dust.md"
+    },
+    "https://github.com/lyogavin/airllm": {
+      "date": "2026-03-13",
+      "decision": "drafted",
+      "title": "airllm",
+      "source": "github",
+      "file": "airllm.md"
+    },
+    "https://github.com/infiniflow/ragflow": {
+      "date": "2026-03-13",
+      "decision": "drafted",
+      "title": "ragflow",
+      "source": "github",
+      "file": "ragflow.md"
+    }
+  }
+}
