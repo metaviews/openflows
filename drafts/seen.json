@@ -1,0 +1,56 @@
+{
+  "lastUpdated": "2026-03-14T06:45:06.417Z",
+  "seen": {
+    "https://www.minimax.io/news/minimax-m21": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "MiniMax M2.1: Significantly Enhanced Multi-Language Programming, Built for Real-World Complex Tasks - MiniMax News | MiniMax",
+      "source": "brave",
+      "score": 1,
+      "reason": "MiniMax is primarily a commercial API provider; M2.1 lacks verified open-weights availability, and the content relies on marketing hype rather than operational specifics required by Openflows."
+    },
+    "https://github.com/garylab/MakeMoneyWithAI": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "MakeMoneyWithAI",
+      "source": "github",
+      "score": 2,
+      "reason": "While related to open-source AI, the 'MakeMoney' framing suggests hype and commercialization rather than technical infrastructure, conflicting with Openflows' objective documentation standards."
+    },
+    "https://github.com/cablate/mcp-google-map": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "mcp-google-map",
+      "source": "github",
+      "file": "mcp-google-map.md"
+    },
+    "https://github.com/unslothai/unsloth": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "unsloth",
+      "source": "github",
+      "file": "unsloth.md"
+    },
+    "https://github.com/lyogavin/airllm": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "airllm",
+      "source": "github",
+      "file": "airllm.md"
+    },
+    "https://github.com/xorbitsai/inference": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "inference",
+      "source": "github",
+      "file": "xinference.md"
+    },
+    "https://github.com/sdcb/chats": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "chats",
+      "source": "github",
+      "file": "sdcb-chats.md"
+    }
+  }
+}
