@@ -19,7 +19,7 @@ const or = createClient({ title: 'Openflows Intake Agent' });
 const args = process.argv.slice(2);
 
 const enabledSources = (getArg(args, 'sources') || 'github,huggingface').split(',');
-const limit = parseInt(getArg(args, 'limit') || '5', 10);
+const limit = parseInt(getArg(args, 'limit') || '10', 10);
 
 const SCREEN_MODEL = config.screening.model || or.primaryModel;
 const SCREEN_THRESHOLD = config.screening.threshold ?? 3;
@@ -46,6 +46,14 @@ function loadSeen() {
   } catch {
     return { lastUpdated: null, seen: {} };
   }
+}
+
+// Extract previously deferred signals so they re-enter the queue with priority
+function loadDeferred(seenData) {
+  return Object.entries(seenData.seen)
+    .filter(([, meta]) => meta.decision === 'deferred' && meta.signal)
+    .map(([, meta]) => ({ ...meta.signal, _score: meta.score, _deferred: true }))
+    .sort((a, b) => (b._score || 0) - (a._score || 0));
 }
 
 function saveSeen(seenData) {
@@ -207,6 +215,12 @@ async function main() {
   const seenData = loadSeen();
   const seenUrls = new Set(Object.keys(seenData.seen));
 
+  // Restore deferred signals from prior runs — they already passed screening
+  const deferred = loadDeferred(seenData);
+  if (deferred.length > 0) {
+    console.log(`Deferred from prior runs: ${deferred.length} signal(s)\n`);
+  }
+
   // Collect signals
   let allSignals = [];
   for (const source of enabledSources) {
@@ -222,29 +236,32 @@ async function main() {
   }
 
   // Deduplicate: skip anything already seen or already in manifest
+  // (deferred URLs are in seenUrls, so they won't appear in novel — loaded separately above)
   const novel = allSignals
     .filter(s => !seenUrls.has(s.url) && !isInManifest(s))
     .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  console.log(`\n${allSignals.length} signals → ${novel.length} novel (not in knowledge base or seen log)`);
+  console.log(`\n${allSignals.length} signals → ${novel.length} novel + ${deferred.length} deferred`);
 
-  if (novel.length === 0) {
+  if (novel.length === 0 && deferred.length === 0) {
     console.log('Nothing new to process.');
     saveSeen(seenData);
     return;
   }
 
-  // Screen more than the limit so we have options after filtering
-  const toScreen = novel.slice(0, limit * 3);
-  console.log(`\nScreening ${toScreen.length} candidates (threshold: ${SCREEN_THRESHOLD}/5)...\n`);
+  // Screen ALL novel signals — deferred already passed, skip re-screening
+  console.log(`\nScreening ${novel.length} novel candidates (threshold: ${SCREEN_THRESHOLD}/5)...\n`);
 
-  const passed = [];
-  for (const signal of toScreen) {
+  const passed = [...deferred]; // deferred signals lead the queue
+  for (const signal of novel) {
     try {
       const result = await screenSignal(signal);
       const label = result.score >= SCREEN_THRESHOLD ? '✓' : '✗';
       console.log(`  [${result.score}/5] ${label} ${signal.title}`);
       console.log(`      ${result.reason}`);
+
+      signal._score = result.score;
+      signal._reason = result.reason;
 
       if (result.score >= SCREEN_THRESHOLD) {
         passed.push(signal);
@@ -271,14 +288,18 @@ async function main() {
     }
   }
 
-  const candidates = passed.slice(0, limit);
-  console.log(`\n${passed.length} passed screening → drafting ${candidates.length}\n`);
+  // Sort by score descending; deferred signals retain their stored score
+  passed.sort((a, b) => (b._score || 0) - (a._score || 0));
 
-  // Draft entries
+  const candidates = passed.slice(0, limit);
+  const toDefer = passed.slice(limit);
+  console.log(`\n${passed.length} passed screening → drafting top ${candidates.length}, deferring ${toDefer.length}\n`);
+
+  // Draft top N entries
   const drafted = [];
   for (let i = 0; i < candidates.length; i++) {
     const signal = candidates[i];
-    process.stdout.write(`[${i + 1}/${candidates.length}] ${signal.title} → `);
+    process.stdout.write(`[${i + 1}/${candidates.length}] ${signal.title}${signal._deferred ? ' (deferred)' : ''} → `);
 
     try {
       const mod = require(`./sources/${signal.source}`);
@@ -306,6 +327,23 @@ async function main() {
         reason: err.message,
       };
     }
+  }
+
+  // Carry forward passed-but-unselected signals for the next run
+  for (const signal of toDefer) {
+    const { _score, _reason, _deferred, ...rest } = signal;
+    seenData.seen[signal.url] = {
+      date: today,
+      decision: 'deferred',
+      title: signal.title,
+      source: signal.source,
+      score: _score,
+      reason: _reason,
+      signal: rest,
+    };
+  }
+  if (toDefer.length > 0) {
+    console.log(`${toDefer.length} signal(s) deferred to next run.`);
   }
 
   saveSeen(seenData);
