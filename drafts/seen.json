@@ -1,0 +1,40 @@
+{
+  "lastUpdated": "2026-03-12T08:36:15.030Z",
+  "seen": {
+    "https://github.com/1186258278/OpenClawChineseTranslation": {
+      "date": "2026-03-12",
+      "decision": "drafted",
+      "title": "OpenClawChineseTranslation",
+      "source": "github",
+      "file": "openclaw-chinese-translation.md"
+    },
+    "https://github.com/vllm-project/vllm": {
+      "date": "2026-03-12",
+      "decision": "drafted",
+      "title": "vllm",
+      "source": "github",
+      "file": "vllm.md"
+    },
+    "https://github.com/CherryHQ/cherry-studio": {
+      "date": "2026-03-12",
+      "decision": "drafted",
+      "title": "cherry-studio",
+      "source": "github",
+      "file": "cherry-studio.md"
+    },
+    "https://github.com/suitedaces/dorabot": {
+      "date": "2026-03-12",
+      "decision": "drafted",
+      "title": "dorabot",
+      "source": "github",
+      "file": "dorabot.md"
+    },
+    "https://github.com/unslothai/unsloth": {
+      "date": "2026-03-12",
+      "decision": "drafted",
+      "title": "unsloth",
+      "source": "github",
+      "file": "unsloth-fine-tuning.md"
+    }
+  }
+}

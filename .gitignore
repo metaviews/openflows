@@ -1,11 +1,8 @@
 node_modules/
 _site/
 .env
-# Draft markdown files are reviewed locally before being promoted to src/
-# seen.json, .gitkeep, and QUEUE.md are committed — persistent agent state
-drafts/*.md
-!drafts/QUEUE.md
-drafts/zh/*.md
+# Draft markdown files are committed — reviewed locally and promoted via scripts/promote.js
+# seen.json, QUEUE.md, and all draft .md files are tracked
 drafts/enriched/*.md
 # audit/QUALITY.md is committed — persistent quality state
 
