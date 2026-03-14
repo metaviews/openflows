@@ -37,7 +37,9 @@
       "WebFetch(domain:hermes-agent.nousresearch.com)",
       "WebFetch(domain:nousresearch.com)",
       "Bash(node scripts/translate.js --id nous-research --id hermes-agent)",
-      "Bash(node scripts/translate.js --id hermes-agent)"
+      "Bash(node scripts/translate.js --id hermes-agent)",
+      "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''drafts/seen.json'',''utf8''\\)\\); console.log\\(''seen.json valid''\\)\")",
+      "Bash(node -c scripts/digest.js)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
