@@ -56,6 +56,12 @@ module.exports = {
     minLikes: 25,
   },
 
+  opensourceprojects: {
+    // Curated RSS feed of open source GitHub projects
+    limit: 20,
+    minStars: 0, // pre-curated, no star filter needed
+  },
+
   // ModelScope (魔搭) — Alibaba's model hosting platform, the primary Chinese-ecosystem
   // equivalent of HuggingFace. Hosts Qwen, ERNIE, Baichuan, and other Chinese-origin models.
   // Source module: scripts/sources/modelscope.js (pending API verification before implementation)

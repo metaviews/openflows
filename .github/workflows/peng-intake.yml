@@ -41,7 +41,7 @@ jobs:
           FALLBACK_OPENROUTER_MODEL: ${{ vars.FALLBACK_OPENROUTER_MODEL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
-        run: node scripts/intake.js --sources github,huggingface,brave --limit 10
+        run: node scripts/intake.js --sources github,huggingface,brave,opensourceprojects --limit 10
 
       - name: Run quality audit
         run: node scripts/audit.js
