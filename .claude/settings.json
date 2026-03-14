@@ -39,7 +39,14 @@
       "Bash(node scripts/translate.js --id nous-research --id hermes-agent)",
       "Bash(node scripts/translate.js --id hermes-agent)",
       "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''drafts/seen.json'',''utf8''\\)\\); console.log\\(''seen.json valid''\\)\")",
-      "Bash(node -c scripts/digest.js)"
+      "Bash(node -c scripts/digest.js)",
+      "Bash(do node:*)",
+      "Bash(node scripts/translate.js --id transformers-library)",
+      "Bash(node -e \"const m = require\\(''./_site/knowledge-manifest.json''\\); const e = m.entries.find\\(e => e.currencyId === ''transformers-library''\\); console.log\\(e ? JSON.stringify\\(e\\) : ''not found''\\)\")",
+      "WebFetch(domain:deerflow.tech)",
+      "WebFetch(domain:leithdocs.com)",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:www.opensourceprojects.dev)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
