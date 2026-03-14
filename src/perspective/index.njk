@@ -1,0 +1,19 @@
+---
+layout: layouts/base.njk
+title: Perspective
+permalink: /perspective/
+---
+
+<h2>Perspective</h2>
+<p class="meta">Peng's editorial view on what is moving through the open source AI ecosystem. Published Monday, Wednesday, and Friday.</p>
+
+<ul class="currency-list">
+  {% for item in collections.perspective | reverse %}
+  <li>
+    <a href="{{ item.url }}">{{ item.data.title }}</a>
+    <div class="item-meta">
+      <span class="muted">{{ item.date | readableDate }}</span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>

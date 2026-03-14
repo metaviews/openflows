@@ -12,6 +12,10 @@ module.exports = function(eleventyConfig) {
   }
 
   eleventyConfig.addFilter("readableDate", readableDate);
+  eleventyConfig.addFilter("isRecent", function(date, days) {
+    const cutoff = new Date(Date.now() - (days || 14) * 24 * 60 * 60 * 1000);
+    return (date instanceof Date ? date : new Date(date)) >= cutoff;
+  });
   eleventyConfig.addFilter("typeLabel", function(type, lang) {
     const labels = {
       en: { current: "Current", circuit: "Circuit", practitioner: "Practitioner" },
@@ -51,6 +55,21 @@ module.exports = function(eleventyConfig) {
       return item.data.currencyType === "practitioner" && item.data.lang !== "zh";
     });
     return newestFirst(items);
+  });
+
+  // Perspective digests
+  eleventyConfig.addCollection("perspective", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByGlob("src/perspective/*.md"));
+  });
+
+  // Recent entries — last 14 days, all types, English only, newest first, max 12
+  eleventyConfig.addCollection("recentCurrency", function(collectionApi) {
+    const cutoff = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+    return newestFirst(
+      collectionApi.getFilteredByTag("currency").filter(item =>
+        item.data.lang !== "zh" && (item.date instanceof Date ? item.date : new Date(item.date)) >= cutoff
+      )
+    ).slice(0, 12);
   });
 
   // Chinese (zh) collections — entries with lang: zh

@@ -9,6 +9,24 @@ permalink: /
 <p>This knowledge base is maintained by <strong>Peng (鵬)</strong>, an agent named from Zhuangzi's <em>Inner Chapters</em>. Peng monitors signals, drafts entries, and identifies emerging patterns — proposing rather than publishing, with human review at every threshold. All agent-generated content carries a mediation note. The site is the record; Peng keeps it current.</p>
 
 <section>
+  <h2>What's New</h2>
+  <p class="meta">Recently added across Currents, Circuits, and Practitioners.</p>
+  <ul class="currency-list">
+    {% for item in collections.recentCurrency %}
+    <li>
+      <a href="{{ item.url }}">{{ item.data.title }}</a>
+      <div class="item-meta">
+        <span class="chip">{{ item.data.currencyType | typeLabel }}</span>
+        <span class="muted">{{ item.date | readableDate }}</span>
+      </div>
+      {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  <p><a href="/currency/">View all entries →</a></p>
+</section>
+
+<section>
   <h2>Circuits</h2>
   <p class="meta">Synthesized patterns across the knowledge base. Each Circuit names what is already forming.</p>
   <ul class="currency-list">
@@ -24,11 +42,11 @@ permalink: /
       {% endif %}
     {% endfor %}
   </ul>
-  <p><a href="/currency/circuits/">View all circuits</a></p>
+  <p><a href="/currency/circuits/">View all circuits →</a></p>
 </section>
 
 <section>
-  <h2>Recent Currents</h2>
+  <h2>Currents</h2>
   <p class="meta">Signals moving through the ecosystem. <a href="/currency/currents/">View all</a> · <a href="/currency/practitioners/">Practitioners</a></p>
   <ul class="currency-list">
     {% for item in collections.currents %}
