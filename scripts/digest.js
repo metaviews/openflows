@@ -4,8 +4,8 @@
 // a short editorial briefing: what's flowing, what's stabilizing,
 // what needs the human's attention.
 //
-// Output: drafts/digest-{YYYY-MM-DD}.md
-// Designed to be read as a PR body or standalone review doc.
+// Output: src/perspective/digest-{YYYY-MM-DD}.md → published at /perspective/{date}/
+// Not linked from site navigation — accessible by direct URL.
 //
 // Usage:
 //   node scripts/digest.js
@@ -25,6 +25,7 @@ const toStdout = hasFlag(args, 'stdout');
 const root = join(__dirname, '..');
 const srcDir = join(root, 'src', 'currency');
 const draftsDir = join(root, 'drafts');
+const perspectiveDir = join(root, 'src', 'perspective');
 const manifestPath = join(root, '_site', 'knowledge-manifest.json');
 
 const today = new Date().toISOString().slice(0, 10);
@@ -156,11 +157,14 @@ async function main() {
     return;
   }
 
-  if (!existsSync(draftsDir)) mkdirSync(draftsDir);
-  const outPath = join(draftsDir, `digest-${today}.md`);
-  writeFileSync(outPath, digest);
-  console.log(`Digest written: drafts/digest-${today}.md`);
-  console.log('\nReview it, then archive or discard after the cycle.\n');
+  // Strip the leading `# Peng's View — {date}` line — the layout renders the title from frontmatter
+  const body = digest.replace(/^#[^\n]*\n+/, '');
+  const frontmatter = `---\nlayout: layouts/perspective-item.njk\ntitle: "Peng's View — ${today}"\ndate: ${today}\npermalink: /perspective/${today}/\n---\n\n`;
+
+  if (!existsSync(perspectiveDir)) mkdirSync(perspectiveDir, { recursive: true });
+  const outPath = join(perspectiveDir, `${today}.md`);
+  writeFileSync(outPath, frontmatter + body);
+  console.log(`Digest written: src/perspective/${today}.md → /perspective/${today}/`);
 
   // Print a preview
   const lines = digest.split('\n');
