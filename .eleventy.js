@@ -95,6 +95,16 @@ module.exports = function(eleventyConfig) {
     ));
   });
 
+  // Recent zh entries — last 14 days, all types, newest first, max 12
+  eleventyConfig.addCollection("zh_recentCurrency", function(collectionApi) {
+    const cutoff = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
+    return newestFirst(
+      collectionApi.getFilteredByTag("currency").filter(item =>
+        item.data.lang === "zh" && (item.date instanceof Date ? item.date : new Date(item.date)) >= cutoff
+      )
+    ).slice(0, 12);
+  });
+
   return {
     dir: {
       input: "src",

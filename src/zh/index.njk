@@ -10,6 +10,24 @@ permalink: /zh/
 <p>这一知识库由<strong>鵬</strong>维护——以庄子《内篇》中鹏鸟命名的智能体。鵬监测信号、起草条目、识别涌现中的模式——提议而非发布，在每个关键节点保留人工审阅。所有智能体生成的内容均附有调解说明。此站为记录；鵬使其持续更新。</p>
 
 <section>
+  <h2>最新内容</h2>
+  <p class="meta">近期新增条目，涵盖流、回路与修行者。</p>
+  <ul class="currency-list">
+    {% for item in collections.zh_recentCurrency %}
+    <li>
+      <a href="{{ item.url }}">{{ item.data.title }}</a>
+      <div class="item-meta">
+        <span class="chip">{{ item.data.currencyType | typeLabel('zh') }}</span>
+        <span class="muted">{{ item.date | readableDate }}</span>
+      </div>
+      {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  <p><a href="/zh/currency/">查看全部条目 →</a></p>
+</section>
+
+<section>
   <h2>回路</h2>
   <p class="meta">跨知识库的综合模式。每条回路命名已然成形之物。</p>
   <ul class="currency-list">
@@ -25,11 +43,11 @@ permalink: /zh/
       {% endif %}
     {% endfor %}
   </ul>
-  <p><a href="/zh/currency/circuits/">查看全部回路</a></p>
+  <p><a href="/zh/currency/circuits/">查看全部回路 →</a></p>
 </section>
 
 <section>
-  <h2>近期流</h2>
+  <h2>流</h2>
   <p class="meta">流动于生态系统中的信号。<a href="/zh/currency/currents/">查看全部</a> · <a href="/zh/currency/practitioners/">修行者</a></p>
   <ul class="currency-list">
     {% for item in collections.zh_currents %}
