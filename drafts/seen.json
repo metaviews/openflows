@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-12T08:36:15.030Z",
+  "lastUpdated": "2026-03-14T18:16:01.956Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -35,6 +35,309 @@
       "title": "unsloth",
       "source": "github",
       "file": "unsloth-fine-tuning.md"
+    },
+    "https://www.minimax.io/news/minimax-m21": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "MiniMax M2.1: Significantly Enhanced Multi-Language Programming, Built for Real-World Complex Tasks - MiniMax News | MiniMax",
+      "source": "brave",
+      "score": 2,
+      "reason": "Ambiguous open-source status (likely API-focused), contains marketing hype, lacks operational specifics on weights availability."
+    },
+    "https://linux.do/t/topic/1752248": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "AMD发布OpenClaw部署方案，助开发者在 PC 上部署端侧 AI 智能体 - 前沿快讯 - LINUX DO",
+      "source": "brave",
+      "score": 2,
+      "reason": "Vendor-specific deployment guide with unclear open-source status of 'OpenClaw'; likely marketing-driven rather than core open-source ecosystem tooling."
+    },
+    "https://github.com/garylab/MakeMoneyWithAI": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "MakeMoneyWithAI",
+      "source": "github",
+      "score": 2,
+      "reason": "Focuses on commercial monetization and hype ('generate income easily') rather than technical operational specifics. While it lists open-source projects, the framing conflicts with Openflows' goal of documenting the ecosystem without trend-chasing."
+    },
+    "https://www.intuz.com/blog/top-5-ai-agent-frameworks-2025": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "Top 5 AI Agent Frameworks In 2026 - Intuz",
+      "source": "brave",
+      "score": 2,
+      "reason": "Marketing listicle lacks operational specifics; mentions open-source tool but relies on hype ('2026') rather than technical verification."
+    },
+    "https://www.idcspy.com/openclaw.html": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "OpenClaw（小龙虾）:开源免费的个人AI智能体 - 美国主机侦探",
+      "source": "brave",
+      "score": 2,
+      "reason": "Promotional tone lacks verifiable open-source repository links; relies on private community channels and closed model APIs, failing the inspectability criteria."
+    },
+    "https://finance.sina.com.cn/tech/digi/2026-03-12/doc-inhqsnwz5046099.shtml": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "英伟达未来 5 年将豪掷 260 亿美元，目标打造全球最顶尖开源 AI 大模型_新浪科技_新浪网",
+      "source": "brave",
+      "score": 2,
+      "reason": "Announcement lacks operational specifics and inspectable artifacts; focuses on corporate strategy and potential hype rather than concrete open source contributions."
+    },
+    "https://www.forbes.com/sites/jonmarkman/2026/03/11/nvidia-moves-beyond-chips-with-an-open-source-platform-for-ai-agents/": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "Nvidia Moves Beyond Chips With An Open-Source Platform For AI Agents",
+      "source": "brave",
+      "score": 1,
+      "reason": "Signal references a future date (2026) and a non-existent project, indicating hallucination rather than a verifiable open-source tool."
+    },
+    "https://www.aliyun.com/product/tongyi": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "千问大模型_AI大模型_一站式大模型推理和部署服务-阿里云",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal describes a commercial cloud service rather than open weights or tools; contains marketing hype and lacks inspectable operational specifics."
+    },
+    "https://help.aliyun.com/zh/model-studio/models": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "模型大全功能规格与计费-大模型服务平台百炼-阿里云-大模型服务平台百炼(Model Studio)-阿里云帮助中心",
+      "source": "brave",
+      "score": 2,
+      "reason": "Primarily commercial cloud service documentation focusing on billing and API access rather than open-source model weights, code, or community governance."
+    },
+    "https://www.ai.cc/blogs/nvidia-nemoclaw-open-source-ai-agent-2026-guide/": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "NVIDIA NemoClaw Open-Source AI Agent 2026: Enterprise Guide - AICC - AI.cc",
+      "source": "brave",
+      "score": 1,
+      "reason": "Unverified project name (likely hallucination of NVIDIA NeMo); future-dated launch (2026) prevents inspection; vendor-centric nature conflicts with open-source focus."
+    },
+    "https://explodingtopics.com/blog/list-of-llms": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "Top 50+ Large Language Models (LLMs) in 2026",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal refers to unverified, future-dated model specs (Llama 4, 2026) lacking inspectable details, violating Openflows' focus on operational specifics and avoidance of hype."
+    },
+    "https://news.qq.com/rain/a/20260305A0668M00": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "2026中国AI大模型平台排行榜 | 2月_腾讯新闻",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal focuses on commercial API subscriptions and rankings rather than open source artifacts; model versions appear speculative relative to current standards; content aligns with commercial hype rather than inspectable open source documentation."
+    },
+    "https://www.aipuzi.cn/ai-tutorial/807.html": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "2026 轻量 AI 智能体选型指南：5 款主流框架核心指标深度横评 | AI铺子",
+      "source": "brave",
+      "score": 2,
+      "reason": "Topic aligns with Openflows scope, but the future date (2026) and generic tool names suggest speculative or unverified content, limiting factual utility."
+    },
+    "https://vertu.com/lifestyle/the-best-open-source-llms-in-2026-a-complete-guide-for-ai-developers/": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "The Best Open-Source LLMs in 2026: A Complete Guide for AI Developers - VERTU® Official Site",
+      "source": "brave",
+      "score": 2,
+      "reason": "Source is a luxury phone manufacturer, not an AI authority. Content references future models (Llama 4, 2026) suggesting speculation/hype rather than operational specifics, contradicting Openflows' scope."
+    },
+    "https://blog.csdn.net/qhvssonic/article/details/158068693": {
+      "date": "2026-03-14",
+      "decision": "skipped",
+      "title": "OpenClaw：开源多渠道AI个人助手的技术架构与实践分析-CSDN博客",
+      "source": "brave",
+      "score": 2,
+      "reason": "Title references open-source project, but summary focuses on proprietary OpenAI API and speculative future dates; lacks operational specifics for the open-source ecosystem."
+    },
+    "https://github.com/huggingface/transformers": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "transformers",
+      "source": "github",
+      "file": "transformers-library.md"
+    },
+    "https://github.com/helixml/helix": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "helix",
+      "source": "github",
+      "file": "helixml.md"
+    },
+    "https://github.com/xorbitsai/inference": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "inference",
+      "source": "github",
+      "file": "xinference.md"
+    },
+    "https://github.com/yangjianxin1/Firefly": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "Firefly",
+      "source": "github",
+      "file": "firefly.md"
+    },
+    "https://github.com/TUDB-Labs/mLoRA": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "mLoRA",
+      "source": "github",
+      "file": "mlora.md"
+    },
+    "https://github.com/ChatLunaLab/chatluna": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "chatluna",
+      "source": "github",
+      "file": "chatluna.md"
+    },
+    "https://llm-stats.com/ai-news": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "Open Source LLM Updates & AI Model Releases",
+      "source": "brave",
+      "file": "open-source-llm-updates-ai-model-releases.md"
+    },
+    "https://github.com/xusenlinzy/api-for-open-llm": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "api-for-open-llm",
+      "source": "github",
+      "file": "api-for-open-llm.md"
+    },
+    "https://github.com/horseee/LLM-Pruner": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "LLM-Pruner",
+      "source": "github",
+      "file": "llm-pruner.md"
+    },
+    "https://github.com/zjunlp/EasyEdit": {
+      "date": "2026-03-14",
+      "decision": "drafted",
+      "title": "EasyEdit",
+      "source": "github",
+      "file": "easyedit.md"
+    },
+    "https://www.gumloop.com/blog/ai-agent-frameworks": {
+      "date": "2026-03-14",
+      "decision": "deferred",
+      "title": "6 best AI agent frameworks (and how I picked one) in 2026",
+      "source": "brave",
+      "score": 4,
+      "reason": "Highlights AutoGen's open-source status and operational trade-offs, aligning with Openflows focus on inspectable tools.",
+      "signal": {
+        "title": "6 best AI agent frameworks (and how I picked one) in 2026",
+        "url": "https://www.gumloop.com/blog/ai-agent-frameworks",
+        "summary": "Overall, AutoGen is a compelling framework if you&#x27;re an engineer or research team exploring multi-agent architectures. But if you just need to automate workflows or build a simple agent without managing infrastructure, there are more accessible options on this list. AutoGen is free and open-source. You can download it from GitHub and start building immediately. But you will need to pay for API calls to whatever AI models you use (OpenAI, Azure OpenAI, Claude, etc.).",
+        "source": "brave",
+        "date": "2026-03-10T00:00:00",
+        "meta": {}
+      }
+    },
+    "https://www.secondtalent.com/resources/chinese-open-source-llms-ai-leaders/": {
+      "date": "2026-03-14",
+      "decision": "deferred",
+      "title": "5 Chinese Open-Source LLMs That Are Redefining AI in 2025",
+      "source": "brave",
+      "score": 4,
+      "reason": "Identifies specific open-weight model (DeepSeek-V3) with technical details (MoE) fitting Openflows scope; secondary news source limits priority below primary technical documentation.",
+      "signal": {
+        "title": "5 Chinese Open-Source LLMs That Are Redefining AI in 2025",
+        "url": "https://www.secondtalent.com/resources/chinese-open-source-llms-ai-leaders/",
+        "summary": "<strong>DeepSeek-V3</strong> has emerged as one of the most capable Chinese open-source LLMs in 2025. Built for high performance in both language and technical domains, it leverages a dynamic Mixture-of-Experts (MoE) architecture to balance accuracy and ...",
+        "source": "brave",
+        "date": "2026-02-20T11:38:27",
+        "meta": {}
+      }
+    },
+    "https://github.com/sdcb/chats": {
+      "date": "2026-03-14",
+      "decision": "deferred",
+      "title": "chats",
+      "source": "github",
+      "score": 3,
+      "reason": "Fits the tools category and supports open models, but generic naming limits distinctiveness within the ecosystem.",
+      "signal": {
+        "title": "chats",
+        "url": "https://github.com/sdcb/chats",
+        "summary": "A powerful and flexible frontend & AI gateway for large language models, supporting 21+ mainstream AI model providers. | ai, chatglm, chatgpt-api, dashscope, deepseek, deepseek-r1, dotnet, llm, moonshot, openai-api, react",
+        "source": "github",
+        "date": "2026-03-14T03:37:49Z",
+        "meta": {
+          "fullName": "sdcb/chats",
+          "stars": 557,
+          "topics": [
+            "ai",
+            "chatglm",
+            "chatgpt-api",
+            "dashscope",
+            "deepseek",
+            "deepseek-r1",
+            "dotnet",
+            "llm",
+            "moonshot",
+            "openai-api",
+            "react"
+          ],
+          "language": "C#"
+        }
+      }
+    },
+    "https://36kr.com/p/3314754737285121": {
+      "date": "2026-03-14",
+      "decision": "deferred",
+      "title": "全球首个AI智能体「自进化」开源框架来了，一次部署，终生可用-36氪",
+      "source": "brave",
+      "score": 3,
+      "reason": "Fits open source AI framework scope, but signal relies on marketing claims ('Global first', 'use forever') rather than technical specifics, requiring verification.",
+      "signal": {
+        "title": "全球首个AI智能体「自进化」开源框架来了，一次部署，终生可用-36氪",
+        "url": "https://36kr.com/p/3314754737285121",
+        "summary": "【导读】多AI智能体系统的复杂构建与优化，长期以来是用智能体解决科研问题和场景落地的瓶颈。来自英国格拉斯哥大学的研究团队发布了全球首个AI智能体自进化开源框架EvoAgentX，通过引入自我进化机制，打破了传统多智能体系统在构建和优化中的限制！",
+        "source": "brave",
+        "date": "2026-03-11T05:49:08",
+        "meta": {}
+      }
+    },
+    "https://www.bilibili.com/video/BV1WDAozxEEB/": {
+      "date": "2026-03-14",
+      "decision": "deferred",
+      "title": "【AI模型尝鲜】千问Qwen3.5多模态大模型开源 小尺寸本地部署教程_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 3,
+      "reason": "Relevant to open-source AI tools (Ollama) and local deployment workflows. However, title claims (2026, Qwen3.5) appear speculative or clickbait, requiring verification to avoid documenting hype.",
+      "signal": {
+        "title": "【AI模型尝鲜】千问Qwen3.5多模态大模型开源 小尺寸本地部署教程_哔哩哔哩_bilibili",
+        "url": "https://www.bilibili.com/video/BV1WDAozxEEB/",
+        "summary": "【2026最新版】2026最新最详细Ollama保姆级教程（下载安装+部署+使用)！5分钟手把手教会你在自己电脑任意部署1700+开源大模型，草履虫都能学的会！",
+        "source": "brave",
+        "date": "2026-03-10T15:21:29",
+        "meta": {}
+      }
+    },
+    "https://www.taskade.com/blog/open-source-ai-agents": {
+      "date": "2026-03-14",
+      "decision": "deferred",
+      "title": "12 Best Open-Source AI Agents & Frameworks in 2026 - AutoGPT & More | Taskade Blog",
+      "source": "brave",
+      "score": 3,
+      "reason": "Covers relevant open-source tools and frameworks within scope, but is a secondary blog summary rather than primary technical or operational data.",
+      "signal": {
+        "title": "12 Best Open-Source AI Agents & Frameworks in 2026 - AutoGPT & More | Taskade Blog",
+        "url": "https://www.taskade.com/blog/open-source-ai-agents",
+        "summary": "Discover the top 12 open-source autonomous AI agents and frameworks for 2026. Compare <strong>AutoGPT, BabyAGI, LangChain, ChatDev, CrewAI</strong> and more self-running AI systems. Features, use cases, and how to build your own AI agents with these open-source ...",
+        "source": "brave",
+        "date": "2026-02-22T00:00:00",
+        "meta": {}
+      }
     }
   }
 }

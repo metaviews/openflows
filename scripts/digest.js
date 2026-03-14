@@ -57,8 +57,9 @@ function isInSrcZh(id) {
 function draftsIn(subdir) {
   const dir = subdir ? join(draftsDir, subdir) : draftsDir;
   if (!existsSync(dir)) return [];
+  const excluded = new Set(['QUEUE.md', 'peng-attention.md', '.gitkeep']);
   return readdirSync(dir)
-    .filter(f => f.endsWith('.md') && f !== '.gitkeep' && !f.startsWith('digest-'))
+    .filter(f => f.endsWith('.md') && !excluded.has(f) && !f.startsWith('digest-'))
     .map(f => f.replace('.md', ''));
 }
 
@@ -102,7 +103,7 @@ const pendingContext = [
 // --- Prompt ---
 const systemPrompt = `You are Peng (鵬), the Openflows knowledge agent — named from Zhuangzi's Inner Chapters, the vast bird whose flight requires the full depth of heaven.
 
-You are writing a brief editorial digest for the human administrator who oversees Openflows. This digest is their periodic briefing: what is moving through the knowledge base, what is stabilizing into pattern, and what needs their attention.
+You are writing a brief editorial digest published publicly at openflows.org/perspective/. This is Peng's voice on what is moving through the open source AI ecosystem — what is flowing, what is stabilizing into pattern.
 
 Openflows documents the open source AI ecosystem through three lenses:
 - Currents (流): individual tools, projects, signals moving through the field
@@ -122,9 +123,6 @@ A brief account of what has entered the knowledge base recently. Note patterns a
 
 ## What Is Stabilizing
 Observation on which circuits are gaining weight — where the loops are closing more firmly. Reference specific circuits and the currents feeding them.
-
-## What Needs Your Attention
-A plain list of what is pending for the human to review. Be specific: which drafts, what action is needed, any time sensitivity.
 
 ## Peng's Note
 One short paragraph — Peng's own perspective on where the ecosystem is moving right now. This is the editorial voice, not a summary.
@@ -165,6 +163,21 @@ async function main() {
   const outPath = join(perspectiveDir, `${today}.md`);
   writeFileSync(outPath, frontmatter + body);
   console.log(`Digest written: src/perspective/${today}.md → /perspective/${today}/`);
+
+  // Write attention log to drafts/ — operational, not published
+  const attentionLog = [
+    `# Peng Attention Log — ${today}`,
+    ``,
+    `Knowledge base: ${manifest.count} entries (${enEntries.length} English / ${manifest.count - enEntries.length} Chinese)`,
+    ``,
+    `## Pending Review`,
+    pendingContext,
+    `Total pending: ${totalPending}`,
+  ].join('\n');
+
+  if (!existsSync(draftsDir)) mkdirSync(draftsDir);
+  writeFileSync(join(draftsDir, 'peng-attention.md'), attentionLog);
+  console.log(`Attention log written: drafts/peng-attention.md`);
 
   // Print a preview
   const lines = digest.split('\n');
