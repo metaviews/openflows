@@ -31,7 +31,13 @@
       "Bash(echo \"=== translating $id ===\")",
       "Bash(node scripts/translate.js --id $id)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(node scripts/intake.js --sources github,huggingface,brave --limit 10)",
+      "Bash(node scripts/digest.js)",
+      "WebFetch(domain:hermes-agent.nousresearch.com)",
+      "WebFetch(domain:nousresearch.com)",
+      "Bash(node scripts/translate.js --id nous-research --id hermes-agent)",
+      "Bash(node scripts/translate.js --id hermes-agent)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
