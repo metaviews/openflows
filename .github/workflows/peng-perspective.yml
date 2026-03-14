@@ -53,7 +53,7 @@ jobs:
       - name: Check for new output
         id: check
         run: |
-          git add -f drafts/
+          git add -f drafts/ src/perspective/
           if git diff --staged --quiet; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No new output this run."
@@ -71,10 +71,10 @@ jobs:
         id: digest
         if: steps.check.outputs.changed == 'true'
         run: |
-          DIGEST_FILE=$(ls drafts/digest-*.md 2>/dev/null | sort | tail -1)
+          DIGEST_FILE=$(ls src/perspective/*.md 2>/dev/null | sort | tail -1)
           if [ -n "$DIGEST_FILE" ]; then
-            # GitHub Actions has a limit on output size — truncate if needed
-            CONTENT=$(head -80 "$DIGEST_FILE")
+            # Strip frontmatter, truncate for GitHub Actions output size limit
+            CONTENT=$(awk '/^---/{c++; if(c==2){found=1; next}} found' "$DIGEST_FILE" | head -80)
             echo "content<<EOF_DIGEST" >> $GITHUB_OUTPUT
             echo "$CONTENT" >> $GITHUB_OUTPUT
             echo "EOF_DIGEST" >> $GITHUB_OUTPUT
