@@ -28,27 +28,27 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
 
   eleventyConfig.addCollection("currency", function(collectionApi) {
-    const items = collectionApi.getFilteredByTag("currency");
+    const items = collectionApi.getFilteredByTag("currency").filter(item => item.data.lang !== "zh");
     return newestFirst(items);
   });
 
   eleventyConfig.addCollection("currents", function(collectionApi) {
     const items = collectionApi.getFilteredByTag("currency").filter((item) => {
-      return item.data.currencyType === "current";
+      return item.data.currencyType === "current" && item.data.lang !== "zh";
     });
     return newestFirst(items);
   });
 
   eleventyConfig.addCollection("circuits", function(collectionApi) {
     const items = collectionApi.getFilteredByTag("currency").filter((item) => {
-      return item.data.currencyType === "circuit";
+      return item.data.currencyType === "circuit" && item.data.lang !== "zh";
     });
     return newestFirst(items);
   });
 
   eleventyConfig.addCollection("practitioners", function(collectionApi) {
     const items = collectionApi.getFilteredByTag("currency").filter((item) => {
-      return item.data.currencyType === "practitioner";
+      return item.data.currencyType === "practitioner" && item.data.lang !== "zh";
     });
     return newestFirst(items);
   });
