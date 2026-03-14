@@ -1,8 +1,8 @@
 name: Peng Perspective
 
 # Peng (鵬) synthesizes emerging patterns and writes a digest three times per week.
-# A new circuit draft and an editorial briefing are opened as a pull request.
-# Nothing enters src/ automatically — humans approve at every threshold.
+# The digest publishes directly to src/perspective/ on main. Circuit drafts land in
+# drafts/ only — humans promote them in conversation with Claude.
 
 on:
   schedule:
@@ -11,7 +11,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   perspective:
@@ -61,64 +60,11 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
           fi
 
-      - name: Get run date
-        id: meta
-        if: steps.check.outputs.changed == 'true'
-        run: echo "date=$(date -u +%Y-%m-%d)" >> $GITHUB_OUTPUT
-
-      # Read the digest to use as the PR body
-      - name: Read digest
-        id: digest
+      - name: Commit and push
         if: steps.check.outputs.changed == 'true'
         run: |
-          DIGEST_FILE=$(ls src/perspective/*.md 2>/dev/null | sort | tail -1)
-          if [ -n "$DIGEST_FILE" ]; then
-            # Strip frontmatter, truncate for GitHub Actions output size limit
-            CONTENT=$(awk '/^---/{c++; if(c==2){found=1; next}} found' "$DIGEST_FILE" | head -80)
-            echo "content<<EOF_DIGEST" >> $GITHUB_OUTPUT
-            echo "$CONTENT" >> $GITHUB_OUTPUT
-            echo "EOF_DIGEST" >> $GITHUB_OUTPUT
-          else
-            echo "content=No digest generated." >> $GITHUB_OUTPUT
-          fi
-
-      - name: Create Pull Request
-        id: cpr
-        if: steps.check.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          author: Peng (Openflows Agent) <peng@openflows.org>
-          commit-message: "peng: perspective ${{ steps.meta.outputs.date }}"
-          branch: peng/perspective-${{ steps.meta.outputs.date }}
-          delete-branch: true
-          title: "Peng's View — ${{ steps.meta.outputs.date }}"
-          body: |
-            ${{ steps.digest.outputs.content }}
-
-            ---
-
-            ## To promote the circuit draft
-
-            1. Review `drafts/*.md` — the new circuit proposal
-            2. Edit as needed, then move to `src/currency/circuits/`
-            3. Run `node scripts/translate.js --id {id}` for the Chinese draft
-            4. Review `drafts/zh/{id}.md`, move to `src/currency/zh/circuits/`
-
-            Run `node scripts/status.js` locally to see all pending items.
-
-            ---
-            *Mediation: synthesis and digest via OpenRouter. All proposals require human review before reaching `src/`.*
-
-      - name: Apply PR label
-        if: steps.check.outputs.changed == 'true' && steps.cpr.outputs.pull-request-number != ''
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr edit ${{ steps.cpr.outputs.pull-request-number }} --add-label peng-proposal
-
-      - name: Auto-merge PR
-        if: steps.check.outputs.changed == 'true' && steps.cpr.outputs.pull-request-number != ''
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --squash --auto
+          git config user.name "Peng (Openflows Agent)"
+          git config user.email "peng@openflows.org"
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "peng: perspective ${DATE}"
+          git push origin main

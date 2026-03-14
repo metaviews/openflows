@@ -1,8 +1,8 @@
 name: Peng Intake
 
 # Peng (鵬) runs intake on a schedule, screens signals against the knowledge base,
-# drafts new currency entries, and opens a pull request for human review.
-# Nothing enters src/ automatically — humans approve at every threshold.
+# and drafts new currency entries directly to main. Drafts land in drafts/ only —
+# nothing enters src/ automatically. Humans promote entries in conversation with Claude.
 
 on:
   schedule:
@@ -11,7 +11,6 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   intake:
@@ -65,47 +64,11 @@ jobs:
             echo "New drafts: ${COUNT}"
           fi
 
-      - name: Get run date
-        id: meta
+      - name: Commit and push drafts
         if: steps.check.outputs.changed == 'true'
-        run: echo "date=$(date -u +%Y-%m-%d)" >> $GITHUB_OUTPUT
-
-      - name: Create Pull Request
-        id: cpr
-        if: steps.check.outputs.changed == 'true'
-        uses: peter-evans/create-pull-request@v6
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          author: Peng (Openflows Agent) <peng@openflows.org>
-          commit-message: "peng: intake ${{ steps.meta.outputs.date }}"
-          branch: peng/intake-${{ steps.meta.outputs.date }}
-          delete-branch: true
-          title: "Peng intake — ${{ steps.meta.outputs.date }}"
-          body: |
-            Automated intake run by Peng (鵬). ${{ steps.check.outputs.count }} new draft(s).
-
-            ## To promote an entry
-
-            1. Review the draft in `drafts/`
-            2. Edit as needed — Peng proposes, you decide
-            3. Move approved file to `src/currency/currents/` (or circuits/, practitioners/)
-            4. Run `node scripts/translate.js --id {id}` for the Chinese draft
-            5. Review `drafts/zh/{id}.md`, move to `src/currency/zh/{type}/`
-
-            See `drafts/QUEUE.md` for the full pending list.
-
-            ---
-            *Mediation: intake screened via OpenRouter. All entries require human review before reaching `src/`.*
-
-      - name: Apply PR label
-        if: steps.check.outputs.changed == 'true' && steps.cpr.outputs.pull-request-number != ''
-        continue-on-error: true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr edit ${{ steps.cpr.outputs.pull-request-number }} --add-label peng-proposal
-
-      - name: Auto-merge PR
-        if: steps.check.outputs.changed == 'true' && steps.cpr.outputs.pull-request-number != ''
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh pr merge ${{ steps.cpr.outputs.pull-request-number }} --squash --auto
+        run: |
+          git config user.name "Peng (Openflows Agent)"
+          git config user.email "peng@openflows.org"
+          DATE=$(date -u +%Y-%m-%d)
+          git commit -m "peng: intake ${DATE} — ${{ steps.check.outputs.count }} new draft(s)"
+          git push origin main
