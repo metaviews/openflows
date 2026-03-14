@@ -190,6 +190,9 @@ function writeDraft(markdown, signal, index) {
   const draftsDir = join(__dirname, '..', 'drafts');
   if (!existsSync(draftsDir)) mkdirSync(draftsDir);
 
+  // Strip reasoning model artifacts (<think>...</think> or stray </think> tags)
+  markdown = markdown.replace(/<think>[\s\S]*?<\/think>/g, '').replace(/<\/think>/g, '').trimStart();
+
   const currencyId = extractCurrencyId(markdown);
   const filename = currencyId
     ? `${currencyId}.md`
