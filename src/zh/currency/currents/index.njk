@@ -5,6 +5,21 @@ lang: zh
 permalink: /zh/currency/currents/
 ---
 <p>流记录流动于开源AI生态系统中的个体信号——工具、项目、模型与早期迹象。</p>
-<p class="meta">按类型筛选：流。按最新排序。</p>
+
+<div class="filter-bar">
+  <input type="text" id="entry-filter" placeholder="按标题或描述筛选…" autocomplete="off">
+</div>
+
 {% set items = collections.zh_currents %}
 {% include "currency-list.njk" %}
+
+<script>
+  const input = document.getElementById('entry-filter');
+  const items = document.querySelectorAll('.currency-list li');
+  input.addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    items.forEach(function(li) {
+      li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+</script>

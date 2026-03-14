@@ -3,7 +3,22 @@ layout: layouts/base.njk
 title: Currents
 permalink: /currency/currents/
 ---
-<p>Currents are directional movement signals captured as entries.</p>
-<p class="meta">Filtered by type: current. Sorted newest first.</p>
+<p>Directional movement signals captured as entries. Currents preserve sensitivity to change and resist premature certainty.</p>
+
+<div class="filter-bar">
+  <input type="text" id="entry-filter" placeholder="Filter by title or description…" autocomplete="off">
+</div>
+
 {% set items = collections.currents %}
 {% include "currency-list.njk" %}
+
+<script>
+  const input = document.getElementById('entry-filter');
+  const items = document.querySelectorAll('.currency-list li');
+  input.addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    items.forEach(function(li) {
+      li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+</script>
