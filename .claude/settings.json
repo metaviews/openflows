@@ -46,7 +46,14 @@
       "WebFetch(domain:deerflow.tech)",
       "WebFetch(domain:leithdocs.com)",
       "WebFetch(domain:arxiv.org)",
-      "WebFetch(domain:www.opensourceprojects.dev)"
+      "WebFetch(domain:www.opensourceprojects.dev)",
+      "Bash(ls src/currency/currents/*.md)",
+      "Bash(xargs -I{} basename {} .md)",
+      "Bash(ls src/currency/zh/currents/*.md)",
+      "Bash(ls src/currency/circuits/*.md)",
+      "Bash(ls src/currency/zh/circuits/*.md)",
+      "Bash(ls src/currency/practitioners/*.md)",
+      "Bash(ls src/currency/zh/practitioners/*.md)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
