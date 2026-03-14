@@ -16,7 +16,22 @@
       "Bash(node -e \"require\\(''''./scripts/promote.js''''\\)\")",
       "Bash(for pr:*)",
       "Bash(do echo:*)",
-      "Bash(grep \"\\\\.md$\")"
+      "Bash(grep \"\\\\.md$\")",
+      "Read(//^/+/+/+ b/drafts/[^z]/ && !/seen/.json/ && !/QUEUE/ && !/digest/ {\n      file=$0; sub\\(/^/+/+/+ b/drafts/,\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\",file\\)\n    }\n    file && /^/+abstract:/**)",
+      "Bash(for file:*)",
+      "Bash(do gh:*)",
+      "Read(//^/+/+/+ b/drafts/$file/.md/{found=1; next} found && /^/+/+/+ /{found=0} found && /^/+/{sub\\(/^/+/**)",
+      "Bash(/tmp/$file.md echo:*)",
+      "Read(//^/+/+/+ b/drafts/distributed-physical-agent-infrastructure/**)",
+      "Read(//tmp/**)",
+      "Bash(for f:*)",
+      "Bash(echo \"=== $f ===\")",
+      "Read(//c/Users/jesse/webdev/openflows/**)",
+      "Bash(for id:*)",
+      "Bash(echo \"=== translating $id ===\")",
+      "Bash(node scripts/translate.js --id $id)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
