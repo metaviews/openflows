@@ -13,6 +13,7 @@ links:
     relation: "tests where private-by-default claims diverge from local inference guarantees represented by"
   - id: meredith-whittaker
     relation: "raises communication privacy and governance questions aligned with the operator concerns represented by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -41,3 +42,6 @@ Active product signal in the consumer/prosumer AI layer with explicit privacy-fi
 
 - Linked to `local-inference-baseline` and `meredith-whittaker` as privacy-governance adjacencies.
 
+## Updates
+
+**2026-03-15**: Venice AI now explicitly claims its architecture keeps all data on the user's device rather than servers, providing a concrete technical assertion for the privacy verifiability open questions. The platform has expanded its scope to include a Private Inference API for agents and developers, moving beyond consumer tools. This update highlights the tension between privacy claims and access to leading proprietary models.

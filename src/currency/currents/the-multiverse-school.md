@@ -15,6 +15,7 @@ links:
     relation: "supports inspection capabilities within"
   - id: feedback-circuit
     relation: "feeds iteration signals for"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

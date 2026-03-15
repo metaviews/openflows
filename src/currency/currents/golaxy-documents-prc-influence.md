@@ -15,6 +15,7 @@ links:
     relation: "expands civic-infrastructure stressors that the resilience loop represented by attempts to absorb"
   - id: meredith-whittaker
     relation: "aligns with operator-level concerns about communication integrity, governance, and abuse resistance represented by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

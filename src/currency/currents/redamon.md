@@ -13,6 +13,7 @@ links:
     relation: "extends agent orchestration into offensive-security and remediation workflows represented by"
   - id: feedback-circuit
     relation: "depends on iterative finding-triage-fix loops represented by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

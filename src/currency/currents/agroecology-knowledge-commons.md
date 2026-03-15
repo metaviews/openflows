@@ -11,6 +11,7 @@ permalink: /currency/currents/agroecology-knowledge-commons/
 links:
   - id: open-source-agriculture-commons
     relation: "supplies open knowledge infrastructure to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

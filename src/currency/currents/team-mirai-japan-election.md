@@ -13,6 +13,7 @@ links:
     relation: "offers a live test case for public-institution adaptation represented by"
   - id: audrey-tang
     relation: "resonates with operator-level participatory governance patterns represented by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

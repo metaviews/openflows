@@ -13,6 +13,7 @@ links:
     relation: "extends governed agent infrastructure with organizational accountability structure toward"
   - id: autonomous-research-accountability
     relation: "contributes organizational design patterns for agentic accountability to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

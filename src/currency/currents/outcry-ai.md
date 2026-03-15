@@ -15,6 +15,7 @@ links:
     relation: "aligns with privacy-aware communication and trust-boundary design concerns"
   - id: confer-to
     relation: "adjacent conversational signal with different assumptions about identity, memory, and strategic dialogue"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -42,3 +43,7 @@ Active activist-AI experiment with published technical reflection and a stated t
 ### Connections
 
 - Linked to `audrey-tang`, `moxie-marlinspike`, and `confer-to` for civic practice, privacy architecture, and conversational-structure adjacency.
+
+## Updates
+
+**2026-03-15**: OutcryAI confirms it is a Signal-native tool, now supporting group chats and audio documentation for collective campaign strategy. This feature expansion shifts the tool from solo planning to team-based movement coordination.

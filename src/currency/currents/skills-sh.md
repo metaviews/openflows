@@ -13,6 +13,7 @@ links:
     relation: "structures agent capabilities within"
   - id: operational-literacy-interface
     relation: "converts tacit routines into explicit artifacts for"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -41,3 +42,7 @@ Strong conceptual fit with workflow standardization and collaborative AI operati
 
 Linked to `inspectable-agent-operations` as it structures agent capabilities within the governed agent operations loop.
 Linked to `operational-literacy-interface` as it converts tacit routines into explicit artifacts for workflow standardization.
+
+## Updates
+
+**2026-03-15**: 2024: The skills.sh platform has evolved into a measurable ecosystem with a public leaderboard and over 88,539 skills, including millions of installs from major providers like Microsoft and Vercel. This adoption validates the relevance for workflow standardization and agent capability reuse.

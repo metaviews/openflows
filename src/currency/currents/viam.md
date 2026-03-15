@@ -13,6 +13,7 @@ links:
     relation: "extends local intelligence practice from text systems into networked machine operations"
   - id: embodied-ai-governance
     relation: "contributes robotics software infrastructure and fleet operations patterns to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

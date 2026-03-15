@@ -15,6 +15,7 @@ links:
     relation: "signals the continuous background inference dynamic addressed by"
   - id: feedback-circuit
     relation: "applies background monitoring and pattern-extraction patterns from"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

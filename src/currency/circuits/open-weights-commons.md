@@ -37,6 +37,7 @@ mediation:
     - "Validating model capability through pluralistic evaluation"
   humanRole: "Determine hosting criteria and governance accountability; verify data lineage and training methodology"
   limits: "Licensing drift limits downstream adaptation; benchmark consolidation favors closed labs; tooling complexity discourages self-hosting"
+lastReviewed: 2026-03-15
 ---
 
 This circuit begins one level above local inference.

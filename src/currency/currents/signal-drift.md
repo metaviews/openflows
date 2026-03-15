@@ -20,6 +20,7 @@ links:
     relation: "feeds drift indicators to"
   - id: operational-literacy-interface
     relation: "preserves workflow sensitivity for"
+lastReviewed: 2026-03-15
 ---
 ### Signal
 

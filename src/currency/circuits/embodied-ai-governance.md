@@ -33,6 +33,7 @@ mediation:
     - "Classifying actions by safety-criticality and consequence profile"
   humanRole: "Define skill boundaries and capability declarations; authorize high-consequence actions requiring pause; assume legal and operational accountability"
   limits: "Model hallucinations triggering irreversible physical actions; perception failures in uncontrolled environments bypassing safety constraints; override latency exceeding reaction time"
+lastReviewed: 2026-03-15
 ---
 
 This circuit opens where software agent governance assumptions meet physical consequence.

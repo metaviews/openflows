@@ -22,6 +22,7 @@ links:
     relation: "operationalizes local inference as runtime infrastructure"
   - id: operational-literacy-interface
     relation: "enables operational literacy via explicit configuration points"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -51,3 +52,7 @@ Fast-moving open project with growing adoption signals.
 Linked to `inspectable-agent-operations` as contributing inspectable mediation patterns to the agent operations loop.
 Linked to `local-inference-baseline` as operationalizing local inference as runtime infrastructure.
 Linked to `operational-literacy-interface` as enabling operational literacy via explicit configuration points.
+
+## Updates
+
+**2026-03-15**: OpenCode now reports 5 million monthly developers and 120,000 GitHub stars, quantifying its previously vague adoption signals. The platform has launched a new Zen curated model hub and expanded desktop beta availability across macOS, Windows, and Linux. These developments mark a transition from early-stage growth to established operational scale.

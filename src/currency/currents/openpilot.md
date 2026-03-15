@@ -13,6 +13,7 @@ links:
     relation: "complements embodied model research with production-facing on-road control practice"
   - id: embodied-ai-governance
     relation: "contributes open safety-critical real-world control practice to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

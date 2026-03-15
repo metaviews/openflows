@@ -17,6 +17,7 @@ mediation:
     - "Synthesis and exploration"
   humanRole: "Inspect capacity constraints, verify factual accuracy, curate model selection"
   limits: "RAM exhaustion, latency spikes, quantization artifacts"
+lastReviewed: 2026-03-15
 ---
 
 This loop began with a practical audit: what intelligence can run here, on the machines already present?

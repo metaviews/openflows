@@ -15,6 +15,7 @@ links:
     relation: "extends the orchestration layer toward a more full-stack runtime than"
   - id: signal-org
     relation: "raises adjacent questions about secure communication channels and trust boundaries represented by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -43,3 +44,7 @@ Emerging but ambitious infrastructure signal, with a strong emphasis on sandboxi
 
 - Linked to `crewai` and `overture-sixhq` as orchestration adjacencies.
 - Linked to `signal-org` as a communication-trust boundary adjacency.
+
+## Updates
+
+**2026-03-15**: OpenFang has advanced to v0.1.0, delivering a 137K-line Rust codebase with Tauri 2.0 desktop support and native integration for Model Context Protocol (MCP) and Google A2A. The release details 40 channel adapters, 38 tools, and 16 security systems, including WASM dual-metering and Ed25519 manifest signing. These concrete specifications validate the project's security and interoperability claims beyond its initial emerging phase.

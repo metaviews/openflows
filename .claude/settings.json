@@ -53,7 +53,11 @@
       "Bash(ls src/currency/circuits/*.md)",
       "Bash(ls src/currency/zh/circuits/*.md)",
       "Bash(ls src/currency/practitioners/*.md)",
-      "Bash(ls src/currency/zh/practitioners/*.md)"
+      "Bash(ls src/currency/zh/practitioners/*.md)",
+      "Bash(node scripts/refresh.js --limit 103 --days 7)",
+      "Bash(node scripts/apply-update.js --id $id)",
+      "Bash(curl -s --max-time 10 https://6pack.care/)",
+      "Bash(curl -sL --max-time 15 -A \"Mozilla/5.0\" https://6pack.care/)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"

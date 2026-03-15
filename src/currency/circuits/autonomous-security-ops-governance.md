@@ -26,6 +26,7 @@ mediation:
     - "Generating exploit logic and code changes for policy review"
   humanRole: "Define risk-class approval gates and validate remediation context against institutional policy"
   limits: "False positives propagating through exploitation chains faster than human review cycles"
+lastReviewed: 2026-03-15
 ---
 
 This circuit closes when autonomous security workflows are treated as governed infrastructure rather than as tool demos.

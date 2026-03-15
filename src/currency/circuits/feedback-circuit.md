@@ -22,6 +22,7 @@ mediation:
     - "spot recurring bottlenecks"
   humanRole: "Validate categories and decide intervention sequence"
   limits: "Classifier labels can overfit to historic language"
+lastReviewed: 2026-03-15
 ---
 
 This circuit closes a loop that is always present but rarely made explicit: the path from what is observed, through what is changed, to what is learned.

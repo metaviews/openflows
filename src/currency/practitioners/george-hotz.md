@@ -15,6 +15,7 @@ links:
     relation: "adjacent low-cost robotics pathway grounded in practical build and control constraints"
   - id: embodied-ai-governance
     relation: "is an operator-level reference for open, field-tested, safety-critical physical AI practice anchored by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

@@ -13,6 +13,7 @@ links:
     relation: "is adjacent to multi-agent orchestration patterns represented by"
   - id: feedback-circuit
     relation: "depends on iterative evaluation and correction patterns represented in"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -40,3 +41,7 @@ Emerging open-source signal in agent workflow infrastructure.
 ### Connections
 
 - Linked to `crewai` and `feedback-circuit` as orchestration and evaluation adjacencies.
+
+## Updates
+
+**2026-03-15**: Overture is now defined as an MCP server that visualizes AI coding agent execution plans as interactive flowcharts prior to code generation, refining its role from general orchestration to pre-execution planning. The project currently holds 598 stars, reflecting specific adoption metrics within the Model Context Protocol ecosystem.

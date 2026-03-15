@@ -11,6 +11,7 @@ permalink: /currency/practitioners/audrey-tang/
 links:
   - id: 6pack-care
     relation: "complements personal-scale health feedback loops with civic-scale participatory governance practice"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

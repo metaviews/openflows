@@ -15,6 +15,7 @@ links:
     relation: "commonly composes with the local runtime pattern represented by"
   - id: open-weights-commons
     relation: "contributes self-hosted interface and local control patterns to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -43,3 +44,7 @@ High-visibility self-hosted interface pattern with substantial community uptake 
 
 - Linked to `local-inference-baseline` and `ollama` as infrastructure adjacencies.
 - Linked to `open-weights-commons` as a self-hosted interface layer that extends open model access into team-usable workflows.
+
+## Updates
+
+**2026-03-15**: Open WebUI now explicitly highlights enterprise governance features including SSO, RBAC, and audit logs for regulated industries, resolving previous open questions regarding audit practices. Adoption metrics have scaled to 290 million downloads and 351,000 community members, quantifying its high-visibility status. Voice and vision capabilities are now listed as core toolkit features alongside Python extensions.

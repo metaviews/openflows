@@ -13,6 +13,7 @@ links:
     relation: "operator-level anchor for independent accountability outside corporate AI governance structures represented by"
   - id: civic-influence-resilience
     relation: "grounds civic AI defense in structural critique of how systems are built and for whom, as foregrounded by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

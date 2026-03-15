@@ -42,6 +42,7 @@ mediation:
     - "Converting tacit routines into explicit reusable units"
   humanRole: "Actively intervene in visible workflow steps to verify logic rather than accepting outputs passively"
   limits: "Interface abstraction risks hiding latency or cost constraints, leading to fluency without operational awareness"
+lastReviewed: 2026-03-15
 ---
 
 This circuit closes a growing gap between AI access and AI understanding.

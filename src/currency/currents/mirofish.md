@@ -13,6 +13,7 @@ links:
     relation: "builds on the environment described in"
   - id: bettafish
     relation: "runs in parallel with"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -41,3 +42,7 @@ Emergent infrastructure pattern with active exploration.
 
 - Linked to `local-inference-baseline` as a dependency condition.
 - Linked to `bettafish` as a parallel memory-layer exploration.
+
+## Updates
+
+**2026-03-15**: The repository has achieved 24.1k stars and 2.7k forks, representing a significant adoption shift from its previously noted emergent status. The project's current public description identifies it as a "Swarm Intelligence Engine", which diverges from the existing entry's characterization as a memory-oriented operating layer.

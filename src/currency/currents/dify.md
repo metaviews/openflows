@@ -11,6 +11,7 @@ permalink: /currency/currents/dify/
 links:
   - id: local-inference-baseline
     relation: "extends practical app-layer operations on top of"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -38,3 +39,7 @@ Strong platform signal in open LLM app operations.
 ### Connections
 
 - Linked to `local-inference-baseline` as the enabling infrastructure layer.
+
+## Updates
+
+**2026-03-15**: Dify has repositioned as a production-ready platform for agentic workflow development, emphasizing autonomous capabilities and operational maturity. Adoption metrics now show 133k stars, reinforcing its status as a dominant open-source signal for AI infrastructure.

@@ -18,6 +18,7 @@ mediation:
     - "extract implementation-level constraints"
   humanRole: "Differentiate accessible build framing from proven deployment reliability"
   limits: "Primary landing page is sparse; interpretation depends on external report/docs"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

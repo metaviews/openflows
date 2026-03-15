@@ -20,6 +20,7 @@ mediation:
     - "capture implications for embodied planning"
   humanRole: "Connect research framing to practical system design constraints"
   limits: "Some Meta research pages require authenticated access and reduce direct inspectability"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -48,3 +49,7 @@ Research-forward and strategically influential; practical deployment patterns ar
 
 - Linked to `autonomous-research-accountability` as a world-model research trajectory where autonomous generation of representations raises validation and interpretability questions.
 - Linked to `embodied-ai-governance` as a foundational model architecture signal for physical-world planning and embodied action.
+
+## Updates
+
+**2026-03-15**: Meta has officially released V-JEPA 2, confirming zero-shot robot control capabilities and making the model available for download. The architecture demonstrates practical deployment using 62 hours of Droid robot data alongside natural video pre-training. This shifts the project status from research-forward to a publicly available foundation model with demonstrated physical planning.

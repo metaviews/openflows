@@ -13,6 +13,7 @@ links:
     relation: "could alter agent pipeline latency and orchestration assumptions represented by"
   - id: operational-literacy-interface
     relation: "requires clearer user-facing literacy around model architecture tradeoffs represented by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -41,3 +42,6 @@ Emerging architecture signal with strong speed positioning and early platform/do
 
 - Linked to `inspectable-agent-operations` and `operational-literacy-interface` as architecture-to-practice bridges.
 
+## Updates
+
+**2026-03-15**: Inception Labs has launched Mercury 2, claiming several times faster inference and less than half the cost of conventional LLMs. The company now reports deploying diffusion-based models at Fortune 500 companies, moving beyond early platform rollout to enterprise adoption.

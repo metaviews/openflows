@@ -13,6 +13,7 @@ links:
     relation: "directly aligned with world-model learning and predictive representation research"
   - id: rynnbrain
     relation: "connects to embodied planning pathways where representation quality drives control"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

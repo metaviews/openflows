@@ -21,6 +21,7 @@ mediation:
     - "依照音译词汇表保留双语术语"
   humanRole: "审阅、修订并在发布前确认"
   limits: "翻译为起点；语言能力和文化判断须由人工完成"
+lastReviewed: 2026-03-15
 ---
 
 **信号 (Signal)**：MiroFish 提出了一套面向记忆的操作层（memory operating layer），服务于 AI 时代的劳作，核心在于跨会话的持久化上下文（persistent context）。

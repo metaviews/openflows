@@ -13,6 +13,7 @@ links:
     relation: "extends practical workspace and agent operations on top of"
   - id: anything-llm
     relation: "sits adjacent to the document-grounded workspace pattern represented by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

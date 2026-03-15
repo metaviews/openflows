@@ -12,6 +12,7 @@ links:
     relation: "consolidates into"
   - id: open-weights-commons
     relation: "contributes practitioner-accessible model management patterns to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -40,3 +41,7 @@ Mature and widely legible local inference entry point.
 
 - Linked to `local-inference-baseline` as a precursor signal.
 - Linked to `open-weights-commons` as a practitioner-accessible entry point to open model management.
+
+## Updates
+
+**2026-03-15**: Current source content indicates LM Studio has expanded beyond its desktop interface with llmster for headless server deployment and CI integration. The platform now offers JS and Python SDKs and supports MCP client functionality, positioning it as a broader developer infrastructure tool.

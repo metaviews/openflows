@@ -24,6 +24,7 @@ mediation:
     - "assessed linkage against existing knowledge base"
   humanRole: "review, edit, and approve before publication"
   limits: "signal sourced from secondary aggregator (Exploding Topics), not Meta directly; verify weights availability and licensing against official Meta release before publishing"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

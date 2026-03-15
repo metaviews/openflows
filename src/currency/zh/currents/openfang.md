@@ -23,6 +23,7 @@ mediation:
     - "依照音译词汇表保留双语术语"
   humanRole: "审阅、修订并在发布前确认"
   limits: "翻译为起点；语言能力和文化判断须由人工完成"
+lastReviewed: 2026-03-15
 ---
 
 信号 OpenFang 呈现为一个基于 Rust 构建的开流智能体操作系统（Openflows agent operating system），它将自主智能体、通道适配器、内置工具与沙盒化执行（sandboxed execution）结合为一个单一的运行时。

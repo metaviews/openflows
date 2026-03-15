@@ -28,6 +28,7 @@ mediation:
     - "Simulate adversarial deanonymization attempts during red-team tests"
   humanRole: "Define acceptable risk thresholds and enforce protocol adherence across teams despite operational friction"
   limits: "Adversarial models may inadvertently leak metadata during testing; stylistic analysis cannot account for all non-textual identity vectors"
+lastReviewed: 2026-03-15
 ---
 
 This circuit closes a new risk loop.

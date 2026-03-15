@@ -22,6 +22,7 @@ mediation:
     - "Measuring shifts in exposure metrics post-intervention"
   humanRole: "Adjudicating the distinction between legitimate institutional criticism and conspiratorial framing, and executing accountability procedures"
   limits: "Automated detection risks misclassifying legitimate dissent as conspiracy due to context blindness, or reinforcing existing platform engagement biases"
+lastReviewed: 2026-03-15
 ---
 
 This circuit starts from a specific finding.

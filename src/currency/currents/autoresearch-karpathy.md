@@ -15,6 +15,7 @@ links:
     relation: "is directly operated by"
   - id: local-inference-baseline
     relation: "depends on single-GPU local compute conditions established by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -44,3 +45,7 @@ Functional proof-of-concept. Minimal codebase (~300 lines of core training code)
 - Linked to `autonomous-research-accountability` as its founding current and primary design reference.
 - Linked to `andrej-karpathy` as the direct operator behind this project.
 - Linked to `local-inference-baseline` as a downstream use of accessible local compute.
+
+## Updates
+
+**2026-03-15**: The project has transitioned from early community engagement to widespread adoption, now holding 34.2k stars and 4.6k forks. Active development is evidenced by 80 open pull requests and 40 issues, indicating the project has evolved beyond its initial proof-of-concept phase.

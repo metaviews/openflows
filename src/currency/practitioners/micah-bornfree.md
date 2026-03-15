@@ -11,6 +11,7 @@ permalink: /currency/practitioners/micah-bornfree/
 links:
   - id: outcry-ai
     relation: "foundational operator connection through activist strategy design and movement-oriented AI framing"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

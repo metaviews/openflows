@@ -13,6 +13,7 @@ links:
     relation: "contributes local model serving and distribution patterns to"
   - id: inspectable-agent-operations
     relation: "contributes local model serving patterns to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -41,3 +42,7 @@ Widely recognized baseline tool in local-model workflows.
 
 - Linked to `open-weights-commons` as a core local serving and model distribution pattern in the open model ecosystem.
 - Linked to `inspectable-agent-operations` as the local runtime layer beneath governed agent stacks.
+
+## Updates
+
+**2026-03-15**: Ollama has expanded beyond local execution to include cloud hardware access for running larger models, introducing managed cloud capabilities alongside local runtimes. The platform now highlights over 40,000 integrations across coding, automation, and RAG workflows. This shift impacts local-first strategies by offering hybrid deployment options within the ecosystem.

@@ -13,6 +13,7 @@ links:
     relation: "extends operational interest in efficient model deployment from"
   - id: open-weights-commons
     relation: "contributes deployable small-model and efficiency-optimized architecture patterns to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -41,3 +42,7 @@ Active deployment-oriented current in the efficient-model layer.
 
 - Linked to `local-inference-baseline` as a continuation from local inference practice into deployment-oriented model strategy.
 - Linked to `open-weights-commons` as evidence that efficient, deployable open models are viable alternatives to frontier dependency.
+
+## Updates
+
+**2026-03-15**: Arcee AI has expanded its portfolio to include frontier-scale open-weight releases like Trinity Large (400B), alongside Trinity Mini and tools like DistillKit. New content highlights technical differentiators like US-based training and continuous learning via online RL, adding specific release data to the previous general signal while documenting partnerships like the ATOM Project.

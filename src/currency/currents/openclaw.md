@@ -11,6 +11,7 @@ permalink: /currency/currents/openclaw/
 links:
   - id: peter-steinberger
     relation: "connects to the operator shaping this inspectable agent-tooling pattern"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -38,3 +39,7 @@ Resonant framework pattern; not yet integrated into local stack.
 ### Connections
 
 - Linked to `peter-steinberger` as the operator most directly associated with this current.
+
+## Updates
+
+**2026-03-15**: OpenClaw has grown to over 60k GitHub stars, indicating significant adoption beyond a niche pattern. The framework now explicitly supports integrations with major chat platforms and offers a dedicated deployment service via clawship.ai. These developments validate its maturity as a transparent, self-hosted automation tool.

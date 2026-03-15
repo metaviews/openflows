@@ -21,6 +21,7 @@ mediation:
     - "依照音译词汇表保留双语术语"
   humanRole: "审阅、修订并在发布前确认"
   limits: "翻译为起点；语言能力和文化判断须由人工完成"
+lastReviewed: 2026-03-15
 ---
 
 **信号**：Meta 的 V-JEPA 研究页面指向一条基于视频的联合嵌入预测架构（Joint Embedding Predictive Architecture, JEPA）路线，强调在表征空间（representation space）中的预测，而非原始像素的重构。

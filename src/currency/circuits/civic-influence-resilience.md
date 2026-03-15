@@ -28,6 +28,7 @@ mediation:
     - "Stress-testing threat models against evolving influence vectors"
   humanRole: "Interpreting contextual nuance in threat signals and negotiating trust-based response protocols across civic sectors"
   limits: "Adversarial evasion where actors adapt to detection signatures, or automated amplification of contested narratives"
+lastReviewed: 2026-03-15
 ---
 
 This circuit forms where influence operations are no longer treated as episodic content-moderation events and instead handled as ongoing civic-infrastructure conditions.

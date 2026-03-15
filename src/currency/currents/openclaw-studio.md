@@ -11,6 +11,7 @@ permalink: /currency/currents/openclaw-studio/
 links:
   - id: openclaw
     relation: "adds an operational dashboard layer to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -38,3 +39,7 @@ Early but clear interface-layer signal around OpenClaw operations, with a direct
 ### Connections
 
 - Linked to `openclaw` as the underlying framework layer this dashboard operationalizes.
+
+## Updates
+
+**2026-03-15**: Repository metrics now show 1.6k stars and 239 forks, indicating a significant adoption shift from the initial early signal stage to broader traction.

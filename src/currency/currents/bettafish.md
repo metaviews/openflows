@@ -11,6 +11,7 @@ permalink: /currency/currents/bettafish/
 links:
   - id: local-inference-baseline
     relation: "extends the baseline established in"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -38,3 +39,7 @@ Early but technically directional.
 ### Connections
 
 - Linked to `local-inference-baseline` as an extension path.
+
+## Updates
+
+**2026-03-15**: Repository metrics visible on the page indicate 38.7k stars and 7.2k forks, marking a significant adoption shift from the 'early' status previously recorded. This scale validates memory governance as a viable design decision for Openflows.

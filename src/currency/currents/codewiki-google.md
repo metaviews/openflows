@@ -22,6 +22,7 @@ links:
     relation: "demonstrates how AI artifacts mediate collective cognition and workflow literacy"
   - id: inspectable-agent-operations
     relation: "serves as a concrete example of memory layers requiring visible and revisable mediation"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

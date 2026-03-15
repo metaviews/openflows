@@ -13,6 +13,7 @@ links:
     relation: "contributes open stack assembly practices to"
   - id: inspectable-agent-operations
     relation: "establishes transparency precedents for"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

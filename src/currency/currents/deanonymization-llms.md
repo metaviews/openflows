@@ -13,6 +13,7 @@ links:
     relation: "consolidates into"
   - id: signal-org
     relation: "tightens threat assumptions around pseudonymous communication in"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

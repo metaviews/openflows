@@ -17,6 +17,7 @@ links:
     relation: "model accessibility and local deployment are preconditions for the interface layer represented by"
   - id: open-weights-commons
     relation: "is the primary operator anchor for the ecosystem sustaining loop represented by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

@@ -13,6 +13,7 @@ links:
     relation: "extends the baseline from local language inference toward embodied physical-world reasoning"
   - id: embodied-ai-governance
     relation: "contributes open embodied foundation model capabilities to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -41,3 +42,7 @@ Newly released and rapidly forming as an open robotics foundation stack.
 
 - Linked to `local-inference-baseline` as a downstream expansion from local inference into embodied execution.
 - Linked to `embodied-ai-governance` as an open foundation model stack for physical-world perception and planning.
+
+## Updates
+
+**2026-03-15**: The source content indicates the technical report is currently pending (ArXiv:Soon), contradicting the existing entry's specific February 15, 2026 release date. While model variants and capabilities remain consistent, the publication status and timeline require correction to reflect the current availability.

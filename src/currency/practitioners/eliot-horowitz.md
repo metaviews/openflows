@@ -15,6 +15,7 @@ links:
     relation: "complements road autonomy practice with platform-oriented robotics operations"
   - id: embodied-ai-governance
     relation: "is an operator-level reference for integrated robotics software infrastructure and fleet governance anchored by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

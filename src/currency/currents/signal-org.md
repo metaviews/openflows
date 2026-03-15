@@ -13,6 +13,7 @@ links:
     relation: "operator connection through privacy governance and public-interest communication infrastructure"
   - id: moxie-marlinspike
     relation: "operator connection through protocol design and security-first messaging architecture"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

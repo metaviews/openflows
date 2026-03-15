@@ -13,6 +13,7 @@ links:
     relation: "connects activist AI practice to privacy-preserving communication infrastructure and governance concerns"
   - id: confer-to
     relation: "adjacent to anonymity, trust boundaries, and communication safety in AI-mediated interaction"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

@@ -20,6 +20,7 @@ links:
     relation: "contributes visibility concerns for parallel agent mediation to"
   - id: operational-literacy-interface
     relation: "contributes interface-level normalization patterns to"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

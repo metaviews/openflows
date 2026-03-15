@@ -15,6 +15,7 @@ links:
     relation: "contributes open tooling infrastructure to"
   - id: operational-literacy-interface
     relation: "enables practical spatial literacy through"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
@@ -44,3 +45,7 @@ Useful indexing signal for open and practical geospatial operations.
 Linked to `inspectable-agent-operations` as supports local-first spatial workflows for governed agent operations.
 Linked to `open-weights-commons` as contributes open tooling infrastructure to the shared ecosystem.
 Linked to `operational-literacy-interface` as enables practical spatial literacy through reduced setup friction.
+
+## Updates
+
+**2026-03-15**: The source confirms GIS Tools is a functional browser-based suite with 101 client-side tools, featuring no-server processing for privacy. This capability directly validates its viability for local-first, inspectable deployments queried in the knowledge base.

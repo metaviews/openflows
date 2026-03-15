@@ -57,6 +57,7 @@ mediation:
     - "Logging failures for workflow revision"
   humanRole: "Define execution boundaries and enforce organizational accountability structures"
   limits: "Local model context limits cause memory truncation; opaque orchestration logic obscures audit trails"
+lastReviewed: 2026-03-15
 ---
 
 This circuit closes the gap between local model access and usable team operations.

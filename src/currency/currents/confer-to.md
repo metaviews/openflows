@@ -15,6 +15,7 @@ links:
     relation: "illustrates intelligence circulation without identity attachment"
   - id: operational-literacy-interface
     relation: "exemplifies interface design prioritizing immediacy over cumulative memory"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

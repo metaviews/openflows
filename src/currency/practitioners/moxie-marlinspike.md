@@ -11,6 +11,7 @@ permalink: /currency/practitioners/moxie-marlinspike/
 links:
   - id: confer-to
     relation: "grounds anonymous AI interaction in security-first communication design and trust boundaries"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal

@@ -23,6 +23,7 @@ mediation:
     - "Guiding robotic intervention sequences"
   humanRole: "Arbitrating trade-offs between production metrics and ecological health, validating model outputs against local ecological memory"
   limits: "Inability to generalize across unmodeled environmental variables and risk of reinforcing historical biases in agronomic data"
+lastReviewed: 2026-03-15
 ---
 
 This circuit starts from an operational premise:

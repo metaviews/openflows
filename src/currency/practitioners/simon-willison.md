@@ -13,6 +13,7 @@ links:
     relation: "operator-level reference for inspectable, composable coding practice represented by"
   - id: skills-sh
     relation: "documented skill modularity aligns with the method-legibility emphasis represented by"
+lastReviewed: 2026-03-15
 ---
 
 ### Signal
