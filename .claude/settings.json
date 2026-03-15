@@ -64,7 +64,9 @@
       "Bash(node scripts/apply-updates-zh.js --ids arcee-ai,autoresearch-karpathy,bettafish,dify,gis-tools,inception-labs,lm-studio,mirofish,ollama,open-webui,openclaw-studio,openclaw,opencode-ai,openfang,outcry-ai,overture-sixhq,rynnbrain,skills-sh,venice-ai,vjepa-meta)",
       "Bash(echo \"=== promoting $id ===\")",
       "Bash(node scripts/promote.js --id $id)",
-      "Bash(node scripts/promote.js --id chinese-open-source-llm-landscape-2026)"
+      "Bash(node scripts/promote.js --id chinese-open-source-llm-landscape-2026)",
+      "Bash(for url:*)",
+      "WebFetch(domain:nemoclaw.bot)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
