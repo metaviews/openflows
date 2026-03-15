@@ -1,15 +1,24 @@
+
+</think>
+
 ---
 layout: layouts/currency-item.njk
-title: "6pack.care（六维关怀）"
+title: "公民 AI — 六包关怀"
 lang: zh
 date: 2026-02-18
 currencyType: "current"
 currencyId: 6pack-care
-abstract: "6pack.care 将日常健康优化框架化为轻量级的 AI 引导检核回路，覆盖睡眠、能量、专注、压力与恢复。"
+abstract: "牛津大学 AI 伦理研究所 Audrey Tang 与 Caroline Green 发起的公民 AI 研究项目，提出六项可信 AI 治理原则：社区守护 (Kami)、问责、互惠、公平、可持续与安全。"
 tags:
   - currency
 permalink: /zh/currency/currents/6pack-care/
-
+links:
+  - id: audrey-tang
+    relation: "co-creator of this civic AI framework"
+  - id: civic-influence-resilience
+    relation: "applies to institutional trust in AI governance"
+  - id: inspectable-agent-operations
+    relation: "aligns with accountability and transparency principles"
 mediation:
   tooling: "OpenRouter / qwen/qwen3.5-flash-02-23"
   use:
@@ -19,16 +28,28 @@ mediation:
   limits: "翻译为起点；语言能力和文化判断须由人工完成"
 ---
 
-**信号**：6pack.care 提供了一种由智能体（Agent）支持的、旨在帮助用户优化日常健康行为的一分钟检核与评分回路（"6pack 评分”）。
-**语境**：公开落地页描述了一种方法，以六个日常领域为核心：睡眠质量、情绪与心理状态、能量水平、肌肉准备与恢复、认知敏锐度与专注力，以及压力与压力管理。
-**关联**：对于 Openflows（开流）而言，这是具身化、个人规模智能基础设施的有力信号：小型重复反馈回路、低交互成本，以及面向行为的引导而非一次性产出。这体现了修行者（Practitioner）在日常实践中积累的理 (lǐ)，而非单纯的数据输出。
-**现状**：实时产品信号，明确聚焦于通过轻量级 AI 调解实现日常自我调节。
-**开放问题**：随时间推移，评分逻辑和推荐方法对用户有多透明？采用什么证据标准来验证行为改变的主张和结果？个性化如何保持有用而不变得不透明或过度规定？
-**连接**：与 openpilot 关联，同为一种回路导向的系统，其中的持续反馈、约束和迭代塑造结果。
+信号源：civic.ai（由 6pack.care 重定向）。由 Audrey Tang 与 Caroline Green 发起的研究项目，隶属于牛津加速器研究员计划及 AI 伦理研究所。“六包关怀”命名了可信公民 AI 部署的六项原则。
+
+**背景**
+该项目将 AI 治理框架转向以公民关怀为核心，而非监管合规。六项原则——社区守护 (Kami)、问责、互惠、公平、可持续与安全——源自民主理论及集体守护的原住民概念。Audrey Tang 的参与将此直接联系至其作为台湾前数字部长的工作，及其对参与式技术治理的倡导。
+
+**相关性**
+这是一个修行者主导的治理框架，在机构俘获之外运作——提议而非强制，借鉴非西方治理传统，并以社区问责为核心而非监管监督。对于 Openflows（开流）而言，它构成了一个以合规为导向的 AI 治理的有意义对照：治理即关怀而非约束。
+
+**当前状态**
+活跃的研究项目，托管于牛津 AI 伦理计划。面向公众的网站位于 civic.ai，支持多语言（英文和繁体中文）。六包框架被记录为研究成果，而非部署产品。
+
+**开放问题**
+Kami（社区守护）概念如何跨越台湾和英国之外的治理语境进行转化？此框架与现有监管努力（欧盟 AI 法案、NIST AI 风险管理框架）有何关系？牛津关联主要是赋予合法性，还是塑造了研究方向？
+
+**关联**
+六包关怀与 Audrey Tang 更广泛的参与式数字治理实践相连。框架的问责与透明度原则与 Inspectable Agent Operations 回路一致。其公民导向直接参与 Civic Influence Resilience 回路对民主 AI 部署的关注。
+
+**更新**
+2026-03-15 : 条目重写。原始信号误将 6pack.care 识别为个人健康应用。当前来源确认其重定向至 civic.ai —— Audrey Tang 和 Caroline Green 于牛津 AI 伦理研究所的研究项目，提议用于可信公民 AI 治理的“六包关怀”框架。
 
 **译注**
-Currents (流)：此处 currencyType 译为“流”，而非“流通”。在 Openflows 体系中，“currency”指代整体经济层（流通），而 current 指代具体的信号流（流），如本条目所示。
-Loop/Circuit (回路)：将 "loop" 译为“回路”。依据音译词汇表，Circuit 对应“回路 (huí lù)”，意味着路径的闭合与稳定；而“回路”在此处揭示了自我调节系统的反馈性质，暗合 庄子 中“无待”与循环往复之意。
-AI-Agent (智能体)：文中 "AI-guided/supporting" 采用“智能体引导/支持”以对应 Agent，保留“智能体”作为 AI 实体的核心称谓。
-Li (理)：在“关联”一处隐含提及。优化行为不仅是技术操作，更是顺应身体与环境的“理”。翻译中强调“具身化”、“实践”以突显此意。
-6pack Score：保留 "6pack" 作为品牌标识，中文注释取“六维”以概括六个领域（睡眠、情绪、能量、肌肉、认知、压力），避免“六块腹肌”的字面歧义。
+1. **六包关怀 (6-Pack of Care)**：“六包”借用商品包装隐喻，指代一套完整的原则组合，此处指六项治理原则。
+2. **Kami (社区守护)**：源自日语及原住民概念，此处指代社区层面的精神守护与 stewardship，保留 Kami 以指涉其文化根源。
+3. **修行者 (Practitioner)**：根据音译词汇表，此处将 Practitioner 译为“修行者”而非“从业者”，强调通过实践修养的治理参与方式，呼应 Openflows 的修行语境。
+4. **回路 (Circuit)**：根据音译词汇表，将 Circuit 译为“回路”，指代已闭合并稳定的模式或连接。
