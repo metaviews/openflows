@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-14T18:16:01.956Z",
+  "lastUpdated": "2026-03-15T07:44:37.510Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -227,44 +227,25 @@
       "file": "easyedit.md"
     },
     "https://www.gumloop.com/blog/ai-agent-frameworks": {
-      "date": "2026-03-14",
-      "decision": "deferred",
+      "date": "2026-03-15",
+      "decision": "drafted",
       "title": "6 best AI agent frameworks (and how I picked one) in 2026",
       "source": "brave",
-      "score": 4,
-      "reason": "Highlights AutoGen's open-source status and operational trade-offs, aligning with Openflows focus on inspectable tools.",
-      "signal": {
-        "title": "6 best AI agent frameworks (and how I picked one) in 2026",
-        "url": "https://www.gumloop.com/blog/ai-agent-frameworks",
-        "summary": "Overall, AutoGen is a compelling framework if you&#x27;re an engineer or research team exploring multi-agent architectures. But if you just need to automate workflows or build a simple agent without managing infrastructure, there are more accessible options on this list. AutoGen is free and open-source. You can download it from GitHub and start building immediately. But you will need to pay for API calls to whatever AI models you use (OpenAI, Azure OpenAI, Claude, etc.).",
-        "source": "brave",
-        "date": "2026-03-10T00:00:00",
-        "meta": {}
-      }
+      "file": "ai-agent-frameworks-2026-selection.md"
     },
     "https://www.secondtalent.com/resources/chinese-open-source-llms-ai-leaders/": {
-      "date": "2026-03-14",
-      "decision": "deferred",
+      "date": "2026-03-15",
+      "decision": "drafted",
       "title": "5 Chinese Open-Source LLMs That Are Redefining AI in 2025",
       "source": "brave",
-      "score": 4,
-      "reason": "Identifies specific open-weight model (DeepSeek-V3) with technical details (MoE) fitting Openflows scope; secondary news source limits priority below primary technical documentation.",
-      "signal": {
-        "title": "5 Chinese Open-Source LLMs That Are Redefining AI in 2025",
-        "url": "https://www.secondtalent.com/resources/chinese-open-source-llms-ai-leaders/",
-        "summary": "<strong>DeepSeek-V3</strong> has emerged as one of the most capable Chinese open-source LLMs in 2025. Built for high performance in both language and technical domains, it leverages a dynamic Mixture-of-Experts (MoE) architecture to balance accuracy and ...",
-        "source": "brave",
-        "date": "2026-02-20T11:38:27",
-        "meta": {}
-      }
+      "file": "chinese-open-source-llm-landscape-2026.md"
     },
     "https://github.com/sdcb/chats": {
-      "date": "2026-03-14",
+      "date": "2026-03-15",
       "decision": "deferred",
       "title": "chats",
       "source": "github",
       "score": 3,
-      "reason": "Fits the tools category and supports open models, but generic naming limits distinctiveness within the ecosystem.",
       "signal": {
         "title": "chats",
         "url": "https://github.com/sdcb/chats",
@@ -292,12 +273,11 @@
       }
     },
     "https://36kr.com/p/3314754737285121": {
-      "date": "2026-03-14",
+      "date": "2026-03-15",
       "decision": "deferred",
       "title": "全球首个AI智能体「自进化」开源框架来了，一次部署，终生可用-36氪",
       "source": "brave",
       "score": 3,
-      "reason": "Fits open source AI framework scope, but signal relies on marketing claims ('Global first', 'use forever') rather than technical specifics, requiring verification.",
       "signal": {
         "title": "全球首个AI智能体「自进化」开源框架来了，一次部署，终生可用-36氪",
         "url": "https://36kr.com/p/3314754737285121",
@@ -308,12 +288,11 @@
       }
     },
     "https://www.bilibili.com/video/BV1WDAozxEEB/": {
-      "date": "2026-03-14",
+      "date": "2026-03-15",
       "decision": "deferred",
       "title": "【AI模型尝鲜】千问Qwen3.5多模态大模型开源 小尺寸本地部署教程_哔哩哔哩_bilibili",
       "source": "brave",
       "score": 3,
-      "reason": "Relevant to open-source AI tools (Ollama) and local deployment workflows. However, title claims (2026, Qwen3.5) appear speculative or clickbait, requiring verification to avoid documenting hype.",
       "signal": {
         "title": "【AI模型尝鲜】千问Qwen3.5多模态大模型开源 小尺寸本地部署教程_哔哩哔哩_bilibili",
         "url": "https://www.bilibili.com/video/BV1WDAozxEEB/",
@@ -324,18 +303,356 @@
       }
     },
     "https://www.taskade.com/blog/open-source-ai-agents": {
-      "date": "2026-03-14",
+      "date": "2026-03-15",
       "decision": "deferred",
       "title": "12 Best Open-Source AI Agents & Frameworks in 2026 - AutoGPT & More | Taskade Blog",
       "source": "brave",
       "score": 3,
-      "reason": "Covers relevant open-source tools and frameworks within scope, but is a secondary blog summary rather than primary technical or operational data.",
       "signal": {
         "title": "12 Best Open-Source AI Agents & Frameworks in 2026 - AutoGPT & More | Taskade Blog",
         "url": "https://www.taskade.com/blog/open-source-ai-agents",
         "summary": "Discover the top 12 open-source autonomous AI agents and frameworks for 2026. Compare <strong>AutoGPT, BabyAGI, LangChain, ChatDev, CrewAI</strong> and more self-running AI systems. Features, use cases, and how to build your own AI agents with these open-source ...",
         "source": "brave",
         "date": "2026-02-22T00:00:00",
+        "meta": {}
+      }
+    },
+    "https://github.com/NousResearch/hermes-agent": {
+      "date": "2026-03-15",
+      "decision": "skipped",
+      "title": "hermes-agent",
+      "source": "github",
+      "score": 2,
+      "reason": "Tags suggest closed-source dependencies; description lacks operational specifics required for open-source ecosystem documentation."
+    },
+    "https://github.com/hyperspaceai/agi": {
+      "date": "2026-03-15",
+      "decision": "skipped",
+      "title": "agi",
+      "source": "github",
+      "score": 1,
+      "reason": "Claims of AGI are scientifically implausible and indicative of hype, violating Openflows' mandate to avoid trend-chasing and prioritize inspectable, operational tools."
+    },
+    "https://opensourceprojects.dev/post/f1dfb826-9786-47cf-a8bb-fc8c7f95bbc1": {
+      "date": "2026-03-15",
+      "decision": "skipped",
+      "title": "Turn Claude Code into a self-improving agentic coding system",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Relies on closed-source model (Claude), lacks open infrastructure value, and uses hype language."
+    },
+    "https://opensourceprojects.dev/post/0dc8bcb5-11e9-4d11-9367-e9ae80c9be1e": {
+      "date": "2026-03-15",
+      "decision": "skipped",
+      "title": "A minimalist external tool for Battlefield 4 5 and 6 gameplay",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a video game utility for Battlefield, which is unrelated to the open source AI ecosystem focus of Openflows."
+    },
+    "https://opensourceprojects.dev/post/7ce89d97-3c73-487e-96c5-6e080954ffa5": {
+      "date": "2026-03-15",
+      "decision": "skipped",
+      "title": "Add Result types and pattern matching to Go without breaking compatibility",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "General purpose Go utility library focused on language ergonomics; lacks direct connection to AI models, frameworks, or infrastructure within the Openflows scope."
+    },
+    "https://opensourceprojects.dev/post/0ff553d9-af97-44f1-9e15-9a1331148bee": {
+      "date": "2026-03-15",
+      "decision": "skipped",
+      "title": "Setup web apps in seconds with zero configuration required",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "General web scaffolding tool without explicit AI focus; summary relies on marketing hype rather than operational AI specifics."
+    },
+    "https://opensourceprojects.dev/post/f1c379f8-4432-42c4-a4fd-09bd79f5d8f0": {
+      "date": "2026-03-15",
+      "decision": "skipped",
+      "title": "Undetectable Chromium that passes all thirty bot detection tests",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tangentially related to AI data collection pipelines but primarily a generic web scraping tool focused on bot evasion rather than core AI infrastructure, models, or governance."
+    },
+    "https://opensourceprojects.dev/post/9b9a2d8b-d680-4178-ae3a-bee3b8a2fd92": {
+      "date": "2026-03-15",
+      "decision": "skipped",
+      "title": "The open-source desktop client for PostgreSQL Redis and ClickHouse",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tangentially related. It is a general database utility rather than an AI-specific tool, lacking direct relevance to AI models or frameworks."
+    },
+    "https://www.gate.com/learn/articles/what-is-openclaw-exploring-the-explosive-open-source-ai-agent-framework-and-autonomous-agent-ecosystem-in-2026": {
+      "date": "2026-03-15",
+      "decision": "skipped",
+      "title": "What Is OpenClaw? In-Depth Analysis of the Open-Source AI Agent Framework and Automated Intelligent Agent Ecosystem Set to Surge in 2026",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal relies on future-dated claims (2026) and hype language, violating Openflows' criteria against speculation. OpenClaw lacks verifiable operational specifics in the current ecosystem."
+    },
+    "https://github.com/labring/FastGPT": {
+      "date": "2026-03-15",
+      "decision": "drafted",
+      "title": "FastGPT",
+      "source": "github",
+      "file": "fastgpt.md"
+    },
+    "https://github.com/BodhiSearch/BodhiApp": {
+      "date": "2026-03-15",
+      "decision": "drafted",
+      "title": "BodhiApp",
+      "source": "github",
+      "file": "bodhi-app.md"
+    },
+    "https://github.com/sgl-project/sglang": {
+      "date": "2026-03-15",
+      "decision": "drafted",
+      "title": "sglang",
+      "source": "github",
+      "file": "sglang.md"
+    },
+    "https://github.com/SamurAIGPT/awesome-openclaw": {
+      "date": "2026-03-15",
+      "decision": "drafted",
+      "title": "awesome-openclaw",
+      "source": "github",
+      "file": "awesome-openclaw.md"
+    },
+    "https://opensourceprojects.dev/post/05608e4f-6021-4cd6-ae8e-27abc6875cbb": {
+      "date": "2026-03-15",
+      "decision": "drafted",
+      "title": "Run untrusted AI agent code in secure WebAssembly sandboxes",
+      "source": "opensourceprojects",
+      "file": "capsule.md"
+    },
+    "https://opensourceprojects.dev/post/f8562980-9f88-4e3f-8b9c-96392398481f": {
+      "date": "2026-03-15",
+      "decision": "drafted",
+      "title": "Turn any messaging platform into a powerful AI assistant instantly",
+      "source": "opensourceprojects",
+      "file": "astrbot.md"
+    },
+    "https://opensourceprojects.dev/post/6ca307ad-f771-4ef7-8ee5-1ce5a8cf48e0": {
+      "date": "2026-03-15",
+      "decision": "drafted",
+      "title": "Run one-bit large language models locally on your own hardware",
+      "source": "opensourceprojects",
+      "file": "microsoft-bitnet-1-bit-llm.md"
+    },
+    "https://opensourceprojects.dev/post/706d009e-2c5c-4454-aa31-4d2208ae70c5": {
+      "date": "2026-03-15",
+      "decision": "drafted",
+      "title": "Spec-driven development (SDD) for AI coding assistants",
+      "source": "opensourceprojects",
+      "file": "spec-driven-development.md"
+    },
+    "https://github.com/0xranx/golembot": {
+      "date": "2026-03-15",
+      "decision": "deferred",
+      "title": "golembot",
+      "source": "github",
+      "score": 3,
+      "reason": "Open-source AI orchestration tool with clear deployment specs; relevant to the tools category despite integrating with proprietary agents.",
+      "signal": {
+        "title": "golembot",
+        "url": "https://github.com/0xranx/golembot",
+        "summary": "Run Cursor, Claude Code, OpenCode, or Codex with any LLM provider — deploy to IM, HTTP, or your own product. | ai, ai-agent, ai-assistant, bot-framework, chatbot, claude-code, cli, codex, coding-agent, cursor, dingtalk, discord, feishu, lark, llm, opencode, slack, telegram, typescript, wecom",
+        "source": "github",
+        "date": "2026-03-15T06:47:01Z",
+        "meta": {
+          "fullName": "0xranx/golembot",
+          "stars": 135,
+          "topics": [
+            "ai",
+            "ai-agent",
+            "ai-assistant",
+            "bot-framework",
+            "chatbot",
+            "claude-code",
+            "cli",
+            "codex",
+            "coding-agent",
+            "cursor",
+            "dingtalk",
+            "discord",
+            "feishu",
+            "lark",
+            "llm",
+            "opencode",
+            "slack",
+            "telegram",
+            "typescript",
+            "wecom"
+          ],
+          "language": "TypeScript"
+        }
+      }
+    },
+    "https://github.com/iimeta/fastapi-admin": {
+      "date": "2026-03-15",
+      "decision": "deferred",
+      "title": "fastapi-admin",
+      "source": "github",
+      "score": 3,
+      "reason": "Fits the 'tools' scope as an open-source project with clear deployment specs, but primarily aggregates closed APIs and includes metadata suggesting hype.",
+      "signal": {
+        "title": "fastapi-admin",
+        "url": "https://github.com/iimeta/fastapi-admin",
+        "summary": "企业级 LLM API 快速集成系统，支持OpenAI、Azure、文心一言、讯飞星火、通义千问、智谱GLM、Gemini、DeepSeek、Anthropic Claude以及OpenAI格式的模型等，简洁的页面风格，轻量高效且稳定，支持Docker一键部署。 | api, chatgpt, claude, deepseek, ernie-bot, fast, fastapi, gemini, glm, gpt, gpt-4, gpt-5, openai, qwen, realtime, spark",
+        "source": "github",
+        "date": "2026-03-15T06:36:51Z",
+        "meta": {
+          "fullName": "iimeta/fastapi-admin",
+          "stars": 115,
+          "topics": [
+            "api",
+            "chatgpt",
+            "claude",
+            "deepseek",
+            "ernie-bot",
+            "fast",
+            "fastapi",
+            "gemini",
+            "glm",
+            "gpt",
+            "gpt-4",
+            "gpt-5",
+            "openai",
+            "qwen",
+            "realtime",
+            "spark"
+          ],
+          "language": "Go"
+        }
+      }
+    },
+    "https://github.com/iimeta/fastapi": {
+      "date": "2026-03-15",
+      "decision": "deferred",
+      "title": "fastapi",
+      "source": "github",
+      "score": 3,
+      "reason": "Describes a relevant LLM integration tool with operational specifics, but speculative tags (e.g., GPT-5) and title ambiguity suggest potential hype or accuracy issues.",
+      "signal": {
+        "title": "fastapi",
+        "url": "https://github.com/iimeta/fastapi",
+        "summary": "企业级 LLM API 快速集成系统，支持OpenAI、Azure、文心一言、讯飞星火、通义千问、智谱GLM、Gemini、DeepSeek、Anthropic Claude以及OpenAI格式的模型等，简洁的页面风格，轻量高效且稳定，支持Docker一键部署。 | api, chatgpt, claude, deepseek, ernie-bot, fast, fastapi, gemini, glm, gpt, gpt-4, gpt-5, openai, qwen, realtime, spark",
+        "source": "github",
+        "date": "2026-03-15T06:36:36Z",
+        "meta": {
+          "fullName": "iimeta/fastapi",
+          "stars": 276,
+          "topics": [
+            "api",
+            "chatgpt",
+            "claude",
+            "deepseek",
+            "ernie-bot",
+            "fast",
+            "fastapi",
+            "gemini",
+            "glm",
+            "gpt",
+            "gpt-4",
+            "gpt-5",
+            "openai",
+            "qwen",
+            "realtime",
+            "spark"
+          ],
+          "language": "Go"
+        }
+      }
+    },
+    "https://github.com/olasunkanmi-SE/codebuddy": {
+      "date": "2026-03-15",
+      "decision": "deferred",
+      "title": "codebuddy",
+      "source": "github",
+      "score": 3,
+      "reason": "Fits open-source AI tools scope with specific technical tags (LangGraph, Ollama), though title implies marketing claims requiring verification.",
+      "signal": {
+        "title": "codebuddy",
+        "url": "https://github.com/olasunkanmi-SE/codebuddy",
+        "summary": "An Autonomous AI Software Engineer | ai-agent, ai-agents, ai-tools, aiagents, aitools, artifical-intelligense, coding-assistant, developer-tools, event-driven-architecture, functioncalling, langchain, langgraph, llms, local-llm, machine-learning, ollama, reasoning-agent, typescript, vscode-extensions",
+        "source": "github",
+        "date": "2026-03-15T05:51:23Z",
+        "meta": {
+          "fullName": "olasunkanmi-SE/codebuddy",
+          "stars": 110,
+          "topics": [
+            "ai-agent",
+            "ai-agents",
+            "ai-tools",
+            "aiagents",
+            "aitools",
+            "artifical-intelligense",
+            "coding-assistant",
+            "developer-tools",
+            "event-driven-architecture",
+            "functioncalling",
+            "langchain",
+            "langgraph",
+            "llms",
+            "local-llm",
+            "machine-learning",
+            "ollama",
+            "reasoning-agent",
+            "typescript",
+            "vscode-extensions"
+          ],
+          "language": "TypeScript"
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/6ce8ac64-e6b7-49e7-8edd-128fd52a3336": {
+      "date": "2026-03-15",
+      "decision": "deferred",
+      "title": "Automate your full development stack with three AI models and one CLI",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Open-source AI workflow orchestration tool fits the tools category. Publicly inspectable on GitHub. Niche adoption limits priority compared to foundational frameworks.",
+      "signal": {
+        "title": "Automate your full development stack with three AI models and one CLI",
+        "url": "https://opensourceprojects.dev/post/6ce8ac64-e6b7-49e7-8edd-128fd52a3336",
+        "summary": "Ever feel like you&apos;re constantly switching between different AI tools just to get a simple feature built? You ask one model for code, another for docs, and maybe a third for infrastructure config. It works, but it’s clunky. What if you could orchestrate that entire workflow from a single command?\n\nGitHub Repository: https://github.com/fengshao1227/ccg-workflow",
+        "source": "opensourceprojects",
+        "date": "2026-03-13T17:23:57.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/fa53cac7-698a-4b0e-b71b-a0cff3b2ae05": {
+      "date": "2026-03-15",
+      "decision": "deferred",
+      "title": "Train any agent simply by talking",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Open source RL tool fits scope, but marketing-heavy summary lacks operational specifics.",
+      "signal": {
+        "title": "Train any agent simply by talking",
+        "url": "https://opensourceprojects.dev/post/fa53cac7-698a-4b0e-b71b-a0cff3b2ae05",
+        "summary": "Remember the last time you tried to train a reinforcement learning agent? You probably spent hours tweaking reward functions, writing complex environment code, and debugging why your digital creature kept walking in circles. What if you could skip all that and just... tell it what to do?\n\nGitHub Repository: https://github.com/Gen-Verse/OpenClaw-RL",
+        "source": "opensourceprojects",
+        "date": "2026-03-13T05:07:37.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://www.tinyash.com/blog/responsible-ai-opensource-guide/": {
+      "date": "2026-03-15",
+      "decision": "deferred",
+      "title": "AI 智能体开源贡献实战指南：如何负责任地使用 AI 参与开源项目 - 小灰灰的笔记",
+      "source": "brave",
+      "score": 3,
+      "reason": "Identifies a specific open source framework (OpenClaw) and addresses governance issues regarding AI agents in open source contributions, fitting the tools and ecosystem scope.",
+      "signal": {
+        "title": "AI 智能体开源贡献实战指南：如何负责任地使用 AI 参与开源项目 - 小灰灰的笔记",
+        "url": "https://www.tinyash.com/blog/responsible-ai-opensource-guide/",
+        "summary": "人身攻击性质：文章不仅为被拒贡献辩护，还”研究”了 Shambaugh 的开源贡献历史，声称他拒绝 AI 代码是出于”害怕被 AI 取代”的”不安全感” · 后续发展：约一周后，该 AI 智能体的”操作者”发布声明，声称 AI 是”自主决定”发起攻击的，但此说法无法完全验证 · 根据报道，涉事 AI 智能体使用的是 OpenClaw 框架——这是一个开源工具，让开发者可以轻松创建 LLM 助手和 AI 智能体。",
+        "source": "brave",
+        "date": "2026-03-11T13:56:24",
         "meta": {}
       }
     }
