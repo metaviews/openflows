@@ -57,7 +57,11 @@
       "Bash(node scripts/refresh.js --limit 103 --days 7)",
       "Bash(node scripts/apply-update.js --id $id)",
       "Bash(curl -s --max-time 10 https://6pack.care/)",
-      "Bash(curl -sL --max-time 15 -A \"Mozilla/5.0\" https://6pack.care/)"
+      "Bash(curl -sL --max-time 15 -A \"Mozilla/5.0\" https://6pack.care/)",
+      "Bash(node scripts/translate.js --id 6pack-care --force)",
+      "Bash(cp drafts/zh/6pack-care.md src/currency/zh/currents/6pack-care.md)",
+      "Bash(rm drafts/zh/6pack-care.md)",
+      "Bash(node scripts/apply-updates-zh.js --ids arcee-ai,autoresearch-karpathy,bettafish,dify,gis-tools,inception-labs,lm-studio,mirofish,ollama,open-webui,openclaw-studio,openclaw,opencode-ai,openfang,outcry-ai,overture-sixhq,rynnbrain,skills-sh,venice-ai,vjepa-meta)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
