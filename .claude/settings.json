@@ -61,7 +61,10 @@
       "Bash(node scripts/translate.js --id 6pack-care --force)",
       "Bash(cp drafts/zh/6pack-care.md src/currency/zh/currents/6pack-care.md)",
       "Bash(rm drafts/zh/6pack-care.md)",
-      "Bash(node scripts/apply-updates-zh.js --ids arcee-ai,autoresearch-karpathy,bettafish,dify,gis-tools,inception-labs,lm-studio,mirofish,ollama,open-webui,openclaw-studio,openclaw,opencode-ai,openfang,outcry-ai,overture-sixhq,rynnbrain,skills-sh,venice-ai,vjepa-meta)"
+      "Bash(node scripts/apply-updates-zh.js --ids arcee-ai,autoresearch-karpathy,bettafish,dify,gis-tools,inception-labs,lm-studio,mirofish,ollama,open-webui,openclaw-studio,openclaw,opencode-ai,openfang,outcry-ai,overture-sixhq,rynnbrain,skills-sh,venice-ai,vjepa-meta)",
+      "Bash(echo \"=== promoting $id ===\")",
+      "Bash(node scripts/promote.js --id $id)",
+      "Bash(node scripts/promote.js --id chinese-open-source-llm-landscape-2026)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
