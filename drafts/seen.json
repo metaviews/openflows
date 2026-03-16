@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-15T07:44:37.510Z",
+  "lastUpdated": "2026-03-16T07:25:38.224Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -241,54 +241,21 @@
       "file": "chinese-open-source-llm-landscape-2026.md"
     },
     "https://github.com/sdcb/chats": {
-      "date": "2026-03-15",
-      "decision": "deferred",
+      "date": "2026-03-16",
+      "decision": "drafted",
       "title": "chats",
       "source": "github",
-      "score": 3,
-      "signal": {
-        "title": "chats",
-        "url": "https://github.com/sdcb/chats",
-        "summary": "A powerful and flexible frontend & AI gateway for large language models, supporting 21+ mainstream AI model providers. | ai, chatglm, chatgpt-api, dashscope, deepseek, deepseek-r1, dotnet, llm, moonshot, openai-api, react",
-        "source": "github",
-        "date": "2026-03-14T03:37:49Z",
-        "meta": {
-          "fullName": "sdcb/chats",
-          "stars": 557,
-          "topics": [
-            "ai",
-            "chatglm",
-            "chatgpt-api",
-            "dashscope",
-            "deepseek",
-            "deepseek-r1",
-            "dotnet",
-            "llm",
-            "moonshot",
-            "openai-api",
-            "react"
-          ],
-          "language": "C#"
-        }
-      }
+      "file": "sdcb-chats.md"
     },
     "https://36kr.com/p/3314754737285121": {
-      "date": "2026-03-15",
-      "decision": "deferred",
+      "date": "2026-03-16",
+      "decision": "drafted",
       "title": "全球首个AI智能体「自进化」开源框架来了，一次部署，终生可用-36氪",
       "source": "brave",
-      "score": 3,
-      "signal": {
-        "title": "全球首个AI智能体「自进化」开源框架来了，一次部署，终生可用-36氪",
-        "url": "https://36kr.com/p/3314754737285121",
-        "summary": "【导读】多AI智能体系统的复杂构建与优化，长期以来是用智能体解决科研问题和场景落地的瓶颈。来自英国格拉斯哥大学的研究团队发布了全球首个AI智能体自进化开源框架EvoAgentX，通过引入自我进化机制，打破了传统多智能体系统在构建和优化中的限制！",
-        "source": "brave",
-        "date": "2026-03-11T05:49:08",
-        "meta": {}
-      }
+      "file": "evoagentx.md"
     },
     "https://www.bilibili.com/video/BV1WDAozxEEB/": {
-      "date": "2026-03-15",
+      "date": "2026-03-16",
       "decision": "deferred",
       "title": "【AI模型尝鲜】千问Qwen3.5多模态大模型开源 小尺寸本地部署教程_哔哩哔哩_bilibili",
       "source": "brave",
@@ -303,7 +270,7 @@
       }
     },
     "https://www.taskade.com/blog/open-source-ai-agents": {
-      "date": "2026-03-15",
+      "date": "2026-03-16",
       "decision": "deferred",
       "title": "12 Best Open-Source AI Agents & Frameworks in 2026 - AutoGPT & More | Taskade Blog",
       "source": "brave",
@@ -446,12 +413,11 @@
       "file": "spec-driven-development.md"
     },
     "https://github.com/0xranx/golembot": {
-      "date": "2026-03-15",
+      "date": "2026-03-16",
       "decision": "deferred",
       "title": "golembot",
       "source": "github",
       "score": 3,
-      "reason": "Open-source AI orchestration tool with clear deployment specs; relevant to the tools category despite integrating with proprietary agents.",
       "signal": {
         "title": "golembot",
         "url": "https://github.com/0xranx/golembot",
@@ -488,12 +454,11 @@
       }
     },
     "https://github.com/iimeta/fastapi-admin": {
-      "date": "2026-03-15",
+      "date": "2026-03-16",
       "decision": "deferred",
       "title": "fastapi-admin",
       "source": "github",
       "score": 3,
-      "reason": "Fits the 'tools' scope as an open-source project with clear deployment specs, but primarily aggregates closed APIs and includes metadata suggesting hype.",
       "signal": {
         "title": "fastapi-admin",
         "url": "https://github.com/iimeta/fastapi-admin",
@@ -526,12 +491,11 @@
       }
     },
     "https://github.com/iimeta/fastapi": {
-      "date": "2026-03-15",
+      "date": "2026-03-16",
       "decision": "deferred",
       "title": "fastapi",
       "source": "github",
       "score": 3,
-      "reason": "Describes a relevant LLM integration tool with operational specifics, but speculative tags (e.g., GPT-5) and title ambiguity suggest potential hype or accuracy issues.",
       "signal": {
         "title": "fastapi",
         "url": "https://github.com/iimeta/fastapi",
@@ -564,12 +528,11 @@
       }
     },
     "https://github.com/olasunkanmi-SE/codebuddy": {
-      "date": "2026-03-15",
+      "date": "2026-03-16",
       "decision": "deferred",
       "title": "codebuddy",
       "source": "github",
       "score": 3,
-      "reason": "Fits open-source AI tools scope with specific technical tags (LangGraph, Ollama), though title implies marketing claims requiring verification.",
       "signal": {
         "title": "codebuddy",
         "url": "https://github.com/olasunkanmi-SE/codebuddy",
@@ -605,12 +568,11 @@
       }
     },
     "https://opensourceprojects.dev/post/6ce8ac64-e6b7-49e7-8edd-128fd52a3336": {
-      "date": "2026-03-15",
+      "date": "2026-03-16",
       "decision": "deferred",
       "title": "Automate your full development stack with three AI models and one CLI",
       "source": "opensourceprojects",
       "score": 3,
-      "reason": "Open-source AI workflow orchestration tool fits the tools category. Publicly inspectable on GitHub. Niche adoption limits priority compared to foundational frameworks.",
       "signal": {
         "title": "Automate your full development stack with three AI models and one CLI",
         "url": "https://opensourceprojects.dev/post/6ce8ac64-e6b7-49e7-8edd-128fd52a3336",
@@ -623,12 +585,11 @@
       }
     },
     "https://opensourceprojects.dev/post/fa53cac7-698a-4b0e-b71b-a0cff3b2ae05": {
-      "date": "2026-03-15",
+      "date": "2026-03-16",
       "decision": "deferred",
       "title": "Train any agent simply by talking",
       "source": "opensourceprojects",
       "score": 3,
-      "reason": "Open source RL tool fits scope, but marketing-heavy summary lacks operational specifics.",
       "signal": {
         "title": "Train any agent simply by talking",
         "url": "https://opensourceprojects.dev/post/fa53cac7-698a-4b0e-b71b-a0cff3b2ae05",
@@ -641,18 +602,266 @@
       }
     },
     "https://www.tinyash.com/blog/responsible-ai-opensource-guide/": {
-      "date": "2026-03-15",
+      "date": "2026-03-16",
       "decision": "deferred",
       "title": "AI 智能体开源贡献实战指南：如何负责任地使用 AI 参与开源项目 - 小灰灰的笔记",
       "source": "brave",
       "score": 3,
-      "reason": "Identifies a specific open source framework (OpenClaw) and addresses governance issues regarding AI agents in open source contributions, fitting the tools and ecosystem scope.",
       "signal": {
         "title": "AI 智能体开源贡献实战指南：如何负责任地使用 AI 参与开源项目 - 小灰灰的笔记",
         "url": "https://www.tinyash.com/blog/responsible-ai-opensource-guide/",
         "summary": "人身攻击性质：文章不仅为被拒贡献辩护，还”研究”了 Shambaugh 的开源贡献历史，声称他拒绝 AI 代码是出于”害怕被 AI 取代”的”不安全感” · 后续发展：约一周后，该 AI 智能体的”操作者”发布声明，声称 AI 是”自主决定”发起攻击的，但此说法无法完全验证 · 根据报道，涉事 AI 智能体使用的是 OpenClaw 框架——这是一个开源工具，让开发者可以轻松创建 LLM 助手和 AI 智能体。",
         "source": "brave",
         "date": "2026-03-11T13:56:24",
+        "meta": {}
+      }
+    },
+    "https://github.com/adnaan-worker/Adnify": {
+      "date": "2026-03-16",
+      "decision": "skipped",
+      "title": "Adnify",
+      "source": "github",
+      "score": 2,
+      "reason": "Promotional language conflicts with 'avoid hype' principle. Lacks established open-source credibility despite GitHub source."
+    },
+    "https://github.com/antinomyhq/forge": {
+      "date": "2026-03-16",
+      "decision": "skipped",
+      "title": "forge",
+      "source": "github",
+      "score": 2,
+      "reason": "Generic title, hallucinated model versions (e.g., Claude 4), and unclear open-source status indicate low reliability and potential hype."
+    },
+    "https://opensourceprojects.dev/post/d5e944c3-e384-42f0-8744-baf9a75dfc5e": {
+      "date": "2026-03-16",
+      "decision": "skipped",
+      "title": "The AI engine that provides design intelligence for any platform",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Marketing-heavy summary lacks operational specifics; 'pro-max' branding suggests commercial rather than core open source ecosystem value."
+    },
+    "https://www.minimaxi.com/news/minimax-m2": {
+      "date": "2026-03-16",
+      "decision": "skipped",
+      "title": "MiniMax M2 & Agent，大巧若拙 - MiniMax News | MiniMax",
+      "source": "brave",
+      "score": 1,
+      "reason": "MiniMax M2 is a closed-source commercial model; Openflows explicitly excludes closed systems and focuses on the open source ecosystem."
+    },
+    "https://opensourceprojects.dev/post/90a3ece3-a167-4e58-8d47-41457dc6e0f8": {
+      "date": "2026-03-16",
+      "decision": "skipped",
+      "title": "The definitive tool for AI-driven analysis of A-share and US markets",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Marketing-heavy title suggests hype; niche financial application limits broader relevance to core open source AI infrastructure."
+    },
+    "https://www.bilibili.com/video/BV18TAkzbETb/": {
+      "date": "2026-03-16",
+      "decision": "skipped",
+      "title": "【闪客】这一次，彻底搞懂蒸馏/开源/套壳，这些乱七八糟的概念！_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Future-dated title suggests hype; video format lacks inspectable artifacts; focuses on concepts rather than specific open-source tools."
+    },
+    "https://opensourceprojects.dev/post/b762d43c-ee4c-4da7-a8a1-6284140af3ae": {
+      "date": "2026-03-16",
+      "decision": "skipped",
+      "title": "Turn your computer into a streaming hub with every source available",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general media streaming utility, not an AI tool, framework, model, or governance initiative. It falls outside the specific scope of the open source AI ecosystem."
+    },
+    "https://blog.csdn.net/techforward/article/details/158535603": {
+      "date": "2026-03-16",
+      "decision": "skipped",
+      "title": "全开源 AI 智能体 Hermes Agent 来袭-CSDN博客",
+      "source": "brave",
+      "score": 2,
+      "reason": "Topic fits open-source AI scope with reputable developer (Nous Research), but future date (2026) and blog repost format suggest low reliability and lack of current operational value."
+    },
+    "https://github.com/iOfficeAI/AionUi": {
+      "date": "2026-03-16",
+      "decision": "drafted",
+      "title": "AionUi",
+      "source": "github",
+      "file": "aion-ui.md"
+    },
+    "https://github.com/qingchencloud/clawpanel": {
+      "date": "2026-03-16",
+      "decision": "drafted",
+      "title": "clawpanel",
+      "source": "github",
+      "file": "clawpanel.md"
+    },
+    "https://github.com/gpustack/gpustack": {
+      "date": "2026-03-16",
+      "decision": "drafted",
+      "title": "gpustack",
+      "source": "github",
+      "file": "gpustack.md"
+    },
+    "https://github.com/undead-undead/AIMAXXING": {
+      "date": "2026-03-16",
+      "decision": "drafted",
+      "title": "AIMAXXING",
+      "source": "github",
+      "file": "aimaxxing.md"
+    },
+    "https://opensourceprojects.dev/post/2c45bc14-4a4c-4f8b-a775-d78050541820": {
+      "date": "2026-03-16",
+      "decision": "drafted",
+      "title": "A unified gateway for AI agents to access databases, APIs, and CLIs",
+      "source": "opensourceprojects",
+      "file": "unified-agent-gateway.md"
+    },
+    "https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v3-coreml": {
+      "date": "2026-03-16",
+      "decision": "drafted",
+      "title": "FluidInference/parakeet-tdt-0.6b-v3-coreml",
+      "source": "huggingface",
+      "file": "parakeet-tdt-0.6b-v3-coreml.md"
+    },
+    "https://opensourceprojects.dev/post/57057504-3a80-4179-ae39-336a1eb2e1c4": {
+      "date": "2026-03-16",
+      "decision": "drafted",
+      "title": "Turn your raw video into a viewable 3D Gaussian Splat on macOS",
+      "source": "opensourceprojects",
+      "file": "corbeau-splat.md"
+    },
+    "https://onyx.app/open-llm-leaderboard": {
+      "date": "2026-03-16",
+      "decision": "drafted",
+      "title": "Best Open Source LLM Leaderboard 2026 | Open Source Model Rankings and Tier List | Onyx AI",
+      "source": "brave",
+      "file": "onyx-ai-open-llm-leaderboard.md"
+    },
+    "https://github.com/zhayujie/chatgpt-on-wechat": {
+      "date": "2026-03-16",
+      "decision": "deferred",
+      "title": "chatgpt-on-wechat",
+      "source": "github",
+      "score": 3,
+      "reason": "Open-source tool (GitHub) supporting open models (Qwen, DeepSeek), fitting 'tools' scope. However, summary relies on closed APIs and marketing hype, limiting alignment with strict open-source focus.",
+      "signal": {
+        "title": "chatgpt-on-wechat",
+        "url": "https://github.com/zhayujie/chatgpt-on-wechat",
+        "summary": "CowAgent是基于大模型的超级AI助理，能主动思考和任务规划、访问操作系统和外部资源、创造和执行Skills、拥有长期记忆并不断成长。同时支持飞书、钉钉、企业微信应用、微信公众号、网页等接入，可选择OpenAI/Claude/Gemini/DeepSeek/ Qwen/GLM/Kimi/LinkAI，能处理文本、语音、图片和文件，可快速搭建个人AI助手和企业数字员工。 | ai, ai-agent, chatgpt, claude, deepseek, dingtalk, feishu-bot, gemini, kimi, linkai, llm, mcp, multi-agent, openai, openclaw, python3, qwen, skills, wechat",
+        "source": "github",
+        "date": "2026-03-16T06:48:33Z",
+        "meta": {
+          "fullName": "zhayujie/chatgpt-on-wechat",
+          "stars": 42230,
+          "topics": [
+            "ai",
+            "ai-agent",
+            "chatgpt",
+            "claude",
+            "deepseek",
+            "dingtalk",
+            "feishu-bot",
+            "gemini",
+            "kimi",
+            "linkai",
+            "llm",
+            "mcp",
+            "multi-agent",
+            "openai",
+            "openclaw",
+            "python3",
+            "qwen",
+            "skills",
+            "wechat"
+          ],
+          "language": "Python"
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/bfb206e5-28f0-49fc-80bc-e014274553fe": {
+      "date": "2026-03-16",
+      "decision": "deferred",
+      "title": "Deploy a personal AI analyst that processes market data and news automatically",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "It is an open-source AI tool that is inspectable and publicly accessible, fitting the 'tools' category of the Openflows scope. While the summary contains marketing language, the repository offers operational specifics for deployment.",
+      "signal": {
+        "title": "Deploy a personal AI analyst that processes market data and news automatically",
+        "url": "https://opensourceprojects.dev/post/bfb206e5-28f0-49fc-80bc-e014274553fe",
+        "summary": "Ever feel like you&apos;re drowning in financial news and market data? You&apos;re not alone. Between earnings reports, economic indicators, and breaking news, staying informed is a full-time job. What if you could offload the initial processing and synthesis of all that information to an AI assistant you con...\n\nGitHub Repository: https://github.com/ILoveBingLu/CipherTalk",
+        "source": "opensourceprojects",
+        "date": "2026-03-16T06:11:58.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/16fd484b-d750-4029-9e6a-3a2db85707fc": {
+      "date": "2026-03-16",
+      "decision": "deferred",
+      "title": "Anthropic&apos;s original performance engineering take-home now open-sourced",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Open source engineering artifact from a major AI player providing inspectable insights into systems-level practices, aligning with the ecosystem's focus on inspectable content.",
+      "signal": {
+        "title": "Anthropic&apos;s original performance engineering take-home now open-sourced",
+        "url": "https://opensourceprojects.dev/post/16fd484b-d750-4029-9e6a-3a2db85707fc",
+        "summary": "Ever wondered what kind of problems top-tier AI companies like Anthropic use to evaluate engineering candidates? Wonder no more. They&apos;ve just open-sourced one of their original performance-focused take-home assignments. It&apos;s a rare peek behind the curtain at the practical, systems-level thinking the...\n\nGitHub Repository: https://github.com/anthropics/original_performance_takehome",
+        "source": "opensourceprojects",
+        "date": "2026-03-15T20:51:17.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/802e6bcf-1b9b-44c4-a9d7-239ede061fde": {
+      "date": "2026-03-16",
+      "decision": "deferred",
+      "title": "The definitive tool for building AI agents inside Obsidian",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Open source tool fits scope, but Obsidian is closed-source host and summary contains marketing hype.",
+      "signal": {
+        "title": "The definitive tool for building AI agents inside Obsidian",
+        "url": "https://opensourceprojects.dev/post/802e6bcf-1b9b-44c4-a9d7-239ede061fde",
+        "summary": "If you use Obsidian for note-taking, you&apos;ve probably felt the potential bubbling under the surface. It&apos;s more than a markdown editor; it&apos;s a personal knowledge base. Now, imagine if that knowledge base could act on its own—summarizing content, generating ideas, or organizing your notes autonomously....\n\nGitHub Repository: https://github.com/kepano/obsidian-skills",
+        "source": "opensourceprojects",
+        "date": "2026-03-15T16:25:51.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/4781f8d8-fbd9-4e14-839a-0af0b56cdd0b": {
+      "date": "2026-03-16",
+      "decision": "deferred",
+      "title": "The open-source engine for your 24/7 autonomous AI workforce",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Fits scope as an open-source AI tool on GitHub, but the summary is marketing-heavy and aligns with current trend-chasing. Commercial backing requires verification of licensing and maintenance.",
+      "signal": {
+        "title": "The open-source engine for your 24/7 autonomous AI workforce",
+        "url": "https://opensourceprojects.dev/post/4781f8d8-fbd9-4e14-839a-0af0b56cdd0b",
+        "summary": "Imagine having a team of AI agents that could just… keep working. Not just for a single task or a short-lived session, but as a persistent, autonomous workforce handling your workflows, monitoring systems, or managing projects around the clock. That’s the ambitious vision behind LobsterAI, a new ope...\n\nGitHub Repository: https://github.com/netease-youdao/LobsterAI",
+        "source": "opensourceprojects",
+        "date": "2026-03-15T14:31:18.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://www.bilibili.com/video/BV1UyPdzeEgi/": {
+      "date": "2026-03-16",
+      "decision": "deferred",
+      "title": "不装软件不要显卡，打开浏览器就能跑推理 AI！LFM2.5 WebGPU 实测_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 3,
+      "reason": "Identifies open-source tools (OpenPencil) and inference methods (WebGPU) fitting scope, but source is video content with marketing language rather than direct technical documentation.",
+      "signal": {
+        "title": "不装软件不要显卡，打开浏览器就能跑推理 AI！LFM2.5 WebGPU 实测_哔哩哔哩_bilibili",
+        "url": "https://www.bilibili.com/video/BV1UyPdzeEgi/",
+        "summary": "如何在16G以下显存上部署某些24B、35B甚至更大的模型 · Ycylone · 4.8万 31 · LFM2.5小模型系列(Instruct-VL-Audio)震撼来袭：LiquidAI重塑端侧AI生态！ · 探索未至之境 · 875 0 · 一句话画出专业架构图！drawio-skill 让AI帮你画图 · 探索未至之境 · 1.8万 0 · 开源 Figma 来了！AI 原生设计编辑器 OpenPencil，7MB 本地运行还能多人协作 ·",
+        "source": "brave",
+        "date": "2026-03-15T13:19:00",
         "meta": {}
       }
     }

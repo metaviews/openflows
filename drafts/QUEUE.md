@@ -1,6 +1,6 @@
 # Peng Proposal Queue
 
-Generated: 2026-03-15
+Generated: 2026-03-16
 Pending: **20** drafts — 20 English · 0 Chinese
 
 To promote an entry:
@@ -14,36 +14,36 @@ Promote to: `src/currency/currents/`
 
 | ID | Title | Drafted | Lang |
 |---|---|---|---|
-| spec-driven-development | Spec-driven Development for AI Coding Assistants | 2026-03-15 | en |
-| microsoft-bitnet-1-bit-llm | Microsoft BitNet 1-bit LLM | 2026-03-15 | en |
-| astrbot | AstrBot Messaging Gateway | 2026-03-15 | en |
-| capsule | Capsule | 2026-03-15 | en |
-| awesome-openclaw | Awesome OpenClaw | 2026-03-15 | en |
-| sglang | SGLang | 2026-03-15 | en |
-| bodhi-app | Bodhi App | 2026-03-15 | en |
-| fastgpt | FastGPT | 2026-03-15 | en |
-| chinese-open-source-llm-landscape-2026 | Chinese Open-Source LLM Landscape 2026 | 2026-03-15 | en |
-| ai-agent-frameworks-2026-selection | AI Agent Frameworks 2026 Selection | 2026-03-15 | en |
-| api-for-open-llm | API for Open LLMs | 2026-03-15 | en |
-| chatluna | ChatLuna | 2026-03-15 | en |
-| easyedit | EasyEdit | 2026-03-15 | en |
-| firefly | Firefly | 2026-03-15 | en |
-| helixml | HelixML | 2026-03-15 | en |
-| llm-pruner | LLM-Pruner | 2026-03-15 | en |
-| mlora | mLoRA | 2026-03-15 | en |
+| evoagentx | EvoAgentX | 2026-03-16 | en |
+| sdcb-chats | Sdcb Chats | 2026-03-16 | en |
+| onyx-ai-open-llm-leaderboard | Onyx AI Open LLM Leaderboard | 2026-03-16 | en |
+| corbeau-splat | CorbeauSplat: macOS Video-to-3D Gaussian Splatting Tool | 2026-03-16 | en |
+| parakeet-tdt-0.6b-v3-coreml | FluidInference Parakeet TDT CoreML | 2026-03-16 | en |
+| unified-agent-gateway | Unified Gateway for AI Agent Tooling | 2026-03-16 | en |
+| aimaxxing | AIMAXXING | 2026-03-16 | en |
+| gpustack | GPUStack | 2026-03-16 | en |
+| clawpanel | ClawPanel | 2026-03-16 | en |
+| aion-ui | AionUi | 2026-03-16 | en |
+| api-for-open-llm | API for Open LLMs | 2026-03-16 | en |
+| chatluna | ChatLuna | 2026-03-16 | en |
+| easyedit | EasyEdit | 2026-03-16 | en |
+| firefly | Firefly | 2026-03-16 | en |
+| helixml | HelixML | 2026-03-16 | en |
+| llm-pruner | LLM-Pruner | 2026-03-16 | en |
+| mlora | mLoRA | 2026-03-16 | en |
 
 **Abstracts:**
 
-- **spec-driven-development** (en): Spec-driven development frameworks constrain AI coding assistant output by enforcing structural and library alignment with project patterns before generation.
-- **microsoft-bitnet-1-bit-llm** (en): Microsoft's BitNet project implements 1-bit ternary weight quantization to enable large language model inference on consumer hardware with significantly reduced memory requirements.
-- **astrbot** (en): AstrBot is an open-source messaging gateway that integrates LLM agents into Slack, Discord, and Telegram for automated task execution and information retrieval.
-- **capsule** (en): Capsule is a WebAssembly-based runtime environment designed to isolate untrusted AI agent code execution from host system resources.
-- **awesome-openclaw** (en): A curated community repository aggregating OpenClaw tools, skills, and documentation to standardize self-hosted agent integration patterns.
-- **sglang** (en): SGLang is a high-performance serving framework optimizing inference latency and throughput for large language and multimodal models through structured decoding and memory management.
-- **bodhi-app** (en): Bodhi App enables local execution of open-source LLMs via llama.cpp with OpenAI-compatible API endpoints and a built-in discovery interface for model weights.
-- **fastgpt** (en): FastGPT is an open-source visual workflow orchestration platform for LLM applications that integrates RAG retrieval, data processing, and multi-provider model support into a deployable containerized environment.
-- **chinese-open-source-llm-landscape-2026** (en): Analysis of 2025-2026 Chinese open-source language model developments, focusing on Mixture-of-Experts architectures and technical domain performance.
-- **ai-agent-frameworks-2026-selection** (en): A 2026 comparative analysis of AI agent frameworks distinguishing between engineering-heavy multi-agent architectures and accessible workflow automation tools.
+- **evoagentx** (en): EvoAgentX is a research framework from the University of Glasgow that implements self-evolution mechanisms for optimizing multi-agent system construction and deployment.
+- **sdcb-chats** (en): Sdcb Chats is a self-hosted AI gateway and frontend supporting 21+ model providers with built-in observability, sandboxed code execution, and enterprise-grade security controls.
+- **onyx-ai-open-llm-leaderboard** (en): A curated benchmarking interface for open-weight models across coding, reasoning, and engineering tasks.
+- **corbeau-splat** (en): A macOS-native tool converting raw video input into interactive 3D Gaussian Splat representations for local spatial reconstruction.
+- **parakeet-tdt-0.6b-v3-coreml** (en): A 0.6B parameter multilingual automatic speech recognition model optimized for Core ML inference on Apple hardware with support for 25 European languages.
+- **unified-agent-gateway** (en): A unified gateway architecture enabling AI agents to interact with databases, APIs, and command-line interfaces through standardized protocol connections.
+- **aimaxxing** (en): AIMAXXING is a Windows-focused autonomous agent framework utilizing zero-dependency runtime environments and modular intelligence engines to enable local LLM orchestration without host dependencies.
+- **gpustack** (en): GPUStack is an open-source GPU cluster manager that optimizes AI model deployment by selecting inference engines such as vLLM or SGLang and auto-configuring parameters across heterogeneous hardware.
+- **clawpanel** (en): ClawPanel is a cross-platform visual management interface for the OpenClaw agent framework, featuring built-in AI-assisted diagnostics and deployment automation.
+- **aion-ui** (en): AionUi is a cross-platform open-source cowork application that aggregates multi-agent automation across local and cloud LLM interfaces, supporting various CLI and web-based coding assistants.
 - **api-for-open-llm** (en): Provides an OpenAI-compatible API wrapper for diverse open-source language models, standardizing inference access across heterogeneous model families.
 - **chatluna** (en): ChatLuna is a TypeScript-based Koishi plugin enabling multi-model LLM integration with extensible output formats and session management for chatbot deployments.
 - **easyedit** (en): EasyEdit is an open-source framework implementing unified methods for knowledge editing and unlearning in large language models without requiring full fine-tuning.
@@ -58,7 +58,7 @@ Promote to: `src/currency/`
 
 | ID | Title | Drafted | Lang |
 |---|---|---|---|
-| open-source-llm-updates-ai-model-releases | open-source-llm-updates-ai-model-releases.md | 2026-03-15 | en |
-| peng-attention | peng-attention.md | 2026-03-15 | en |
-| transformers-library | transformers-library.md | 2026-03-15 | en |
+| transformers-library | transformers-library.md | 2026-03-16 | en |
+| open-source-llm-updates-ai-model-releases | open-source-llm-updates-ai-model-releases.md | 2026-03-16 | en |
+| peng-attention | peng-attention.md | 2026-03-16 | en |
 
