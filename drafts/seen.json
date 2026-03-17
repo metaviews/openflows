@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-16T07:25:38.224Z",
+  "lastUpdated": "2026-03-17T07:18:54.671Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -255,34 +255,18 @@
       "file": "evoagentx.md"
     },
     "https://www.bilibili.com/video/BV1WDAozxEEB/": {
-      "date": "2026-03-16",
-      "decision": "deferred",
+      "date": "2026-03-17",
+      "decision": "drafted",
       "title": "【AI模型尝鲜】千问Qwen3.5多模态大模型开源 小尺寸本地部署教程_哔哩哔哩_bilibili",
       "source": "brave",
-      "score": 3,
-      "signal": {
-        "title": "【AI模型尝鲜】千问Qwen3.5多模态大模型开源 小尺寸本地部署教程_哔哩哔哩_bilibili",
-        "url": "https://www.bilibili.com/video/BV1WDAozxEEB/",
-        "summary": "【2026最新版】2026最新最详细Ollama保姆级教程（下载安装+部署+使用)！5分钟手把手教会你在自己电脑任意部署1700+开源大模型，草履虫都能学的会！",
-        "source": "brave",
-        "date": "2026-03-10T15:21:29",
-        "meta": {}
-      }
+      "file": "qwen3-5-ollama-local-deployment.md"
     },
     "https://www.taskade.com/blog/open-source-ai-agents": {
-      "date": "2026-03-16",
-      "decision": "deferred",
+      "date": "2026-03-17",
+      "decision": "drafted",
       "title": "12 Best Open-Source AI Agents & Frameworks in 2026 - AutoGPT & More | Taskade Blog",
       "source": "brave",
-      "score": 3,
-      "signal": {
-        "title": "12 Best Open-Source AI Agents & Frameworks in 2026 - AutoGPT & More | Taskade Blog",
-        "url": "https://www.taskade.com/blog/open-source-ai-agents",
-        "summary": "Discover the top 12 open-source autonomous AI agents and frameworks for 2026. Compare <strong>AutoGPT, BabyAGI, LangChain, ChatDev, CrewAI</strong> and more self-running AI systems. Features, use cases, and how to build your own AI agents with these open-source ...",
-        "source": "brave",
-        "date": "2026-02-22T00:00:00",
-        "meta": {}
-      }
+      "file": "open-source-ai-agent-frameworks-2026.md"
     },
     "https://github.com/NousResearch/hermes-agent": {
       "date": "2026-03-15",
@@ -413,196 +397,49 @@
       "file": "spec-driven-development.md"
     },
     "https://github.com/0xranx/golembot": {
-      "date": "2026-03-16",
-      "decision": "deferred",
+      "date": "2026-03-17",
+      "decision": "drafted",
       "title": "golembot",
       "source": "github",
-      "score": 3,
-      "signal": {
-        "title": "golembot",
-        "url": "https://github.com/0xranx/golembot",
-        "summary": "Run Cursor, Claude Code, OpenCode, or Codex with any LLM provider — deploy to IM, HTTP, or your own product. | ai, ai-agent, ai-assistant, bot-framework, chatbot, claude-code, cli, codex, coding-agent, cursor, dingtalk, discord, feishu, lark, llm, opencode, slack, telegram, typescript, wecom",
-        "source": "github",
-        "date": "2026-03-15T06:47:01Z",
-        "meta": {
-          "fullName": "0xranx/golembot",
-          "stars": 135,
-          "topics": [
-            "ai",
-            "ai-agent",
-            "ai-assistant",
-            "bot-framework",
-            "chatbot",
-            "claude-code",
-            "cli",
-            "codex",
-            "coding-agent",
-            "cursor",
-            "dingtalk",
-            "discord",
-            "feishu",
-            "lark",
-            "llm",
-            "opencode",
-            "slack",
-            "telegram",
-            "typescript",
-            "wecom"
-          ],
-          "language": "TypeScript"
-        }
-      }
+      "file": "golembot.md"
     },
     "https://github.com/iimeta/fastapi-admin": {
-      "date": "2026-03-16",
-      "decision": "deferred",
+      "date": "2026-03-17",
+      "decision": "drafted",
       "title": "fastapi-admin",
       "source": "github",
-      "score": 3,
-      "signal": {
-        "title": "fastapi-admin",
-        "url": "https://github.com/iimeta/fastapi-admin",
-        "summary": "企业级 LLM API 快速集成系统，支持OpenAI、Azure、文心一言、讯飞星火、通义千问、智谱GLM、Gemini、DeepSeek、Anthropic Claude以及OpenAI格式的模型等，简洁的页面风格，轻量高效且稳定，支持Docker一键部署。 | api, chatgpt, claude, deepseek, ernie-bot, fast, fastapi, gemini, glm, gpt, gpt-4, gpt-5, openai, qwen, realtime, spark",
-        "source": "github",
-        "date": "2026-03-15T06:36:51Z",
-        "meta": {
-          "fullName": "iimeta/fastapi-admin",
-          "stars": 115,
-          "topics": [
-            "api",
-            "chatgpt",
-            "claude",
-            "deepseek",
-            "ernie-bot",
-            "fast",
-            "fastapi",
-            "gemini",
-            "glm",
-            "gpt",
-            "gpt-4",
-            "gpt-5",
-            "openai",
-            "qwen",
-            "realtime",
-            "spark"
-          ],
-          "language": "Go"
-        }
-      }
+      "file": "fastapi-admin.md"
     },
     "https://github.com/iimeta/fastapi": {
-      "date": "2026-03-16",
-      "decision": "deferred",
+      "date": "2026-03-17",
+      "decision": "drafted",
       "title": "fastapi",
       "source": "github",
-      "score": 3,
-      "signal": {
-        "title": "fastapi",
-        "url": "https://github.com/iimeta/fastapi",
-        "summary": "企业级 LLM API 快速集成系统，支持OpenAI、Azure、文心一言、讯飞星火、通义千问、智谱GLM、Gemini、DeepSeek、Anthropic Claude以及OpenAI格式的模型等，简洁的页面风格，轻量高效且稳定，支持Docker一键部署。 | api, chatgpt, claude, deepseek, ernie-bot, fast, fastapi, gemini, glm, gpt, gpt-4, gpt-5, openai, qwen, realtime, spark",
-        "source": "github",
-        "date": "2026-03-15T06:36:36Z",
-        "meta": {
-          "fullName": "iimeta/fastapi",
-          "stars": 276,
-          "topics": [
-            "api",
-            "chatgpt",
-            "claude",
-            "deepseek",
-            "ernie-bot",
-            "fast",
-            "fastapi",
-            "gemini",
-            "glm",
-            "gpt",
-            "gpt-4",
-            "gpt-5",
-            "openai",
-            "qwen",
-            "realtime",
-            "spark"
-          ],
-          "language": "Go"
-        }
-      }
+      "file": "fastapi-llm-gateway.md"
     },
     "https://github.com/olasunkanmi-SE/codebuddy": {
-      "date": "2026-03-16",
-      "decision": "deferred",
+      "date": "2026-03-17",
+      "decision": "drafted",
       "title": "codebuddy",
       "source": "github",
-      "score": 3,
-      "signal": {
-        "title": "codebuddy",
-        "url": "https://github.com/olasunkanmi-SE/codebuddy",
-        "summary": "An Autonomous AI Software Engineer | ai-agent, ai-agents, ai-tools, aiagents, aitools, artifical-intelligense, coding-assistant, developer-tools, event-driven-architecture, functioncalling, langchain, langgraph, llms, local-llm, machine-learning, ollama, reasoning-agent, typescript, vscode-extensions",
-        "source": "github",
-        "date": "2026-03-15T05:51:23Z",
-        "meta": {
-          "fullName": "olasunkanmi-SE/codebuddy",
-          "stars": 110,
-          "topics": [
-            "ai-agent",
-            "ai-agents",
-            "ai-tools",
-            "aiagents",
-            "aitools",
-            "artifical-intelligense",
-            "coding-assistant",
-            "developer-tools",
-            "event-driven-architecture",
-            "functioncalling",
-            "langchain",
-            "langgraph",
-            "llms",
-            "local-llm",
-            "machine-learning",
-            "ollama",
-            "reasoning-agent",
-            "typescript",
-            "vscode-extensions"
-          ],
-          "language": "TypeScript"
-        }
-      }
+      "file": "codebuddy.md"
     },
     "https://opensourceprojects.dev/post/6ce8ac64-e6b7-49e7-8edd-128fd52a3336": {
-      "date": "2026-03-16",
-      "decision": "deferred",
+      "date": "2026-03-17",
+      "decision": "drafted",
       "title": "Automate your full development stack with three AI models and one CLI",
       "source": "opensourceprojects",
-      "score": 3,
-      "signal": {
-        "title": "Automate your full development stack with three AI models and one CLI",
-        "url": "https://opensourceprojects.dev/post/6ce8ac64-e6b7-49e7-8edd-128fd52a3336",
-        "summary": "Ever feel like you&apos;re constantly switching between different AI tools just to get a simple feature built? You ask one model for code, another for docs, and maybe a third for infrastructure config. It works, but it’s clunky. What if you could orchestrate that entire workflow from a single command?\n\nGitHub Repository: https://github.com/fengshao1227/ccg-workflow",
-        "source": "opensourceprojects",
-        "date": "2026-03-13T17:23:57.000Z",
-        "meta": {
-          "stars": null
-        }
-      }
+      "file": "ccg-workflow-multi-model-development-stack-orchestration.md"
     },
     "https://opensourceprojects.dev/post/fa53cac7-698a-4b0e-b71b-a0cff3b2ae05": {
-      "date": "2026-03-16",
-      "decision": "deferred",
+      "date": "2026-03-17",
+      "decision": "drafted",
       "title": "Train any agent simply by talking",
       "source": "opensourceprojects",
-      "score": 3,
-      "signal": {
-        "title": "Train any agent simply by talking",
-        "url": "https://opensourceprojects.dev/post/fa53cac7-698a-4b0e-b71b-a0cff3b2ae05",
-        "summary": "Remember the last time you tried to train a reinforcement learning agent? You probably spent hours tweaking reward functions, writing complex environment code, and debugging why your digital creature kept walking in circles. What if you could skip all that and just... tell it what to do?\n\nGitHub Repository: https://github.com/Gen-Verse/OpenClaw-RL",
-        "source": "opensourceprojects",
-        "date": "2026-03-13T05:07:37.000Z",
-        "meta": {
-          "stars": null
-        }
-      }
+      "file": "train-agent-natural-language.md"
     },
     "https://www.tinyash.com/blog/responsible-ai-opensource-guide/": {
-      "date": "2026-03-16",
+      "date": "2026-03-17",
       "decision": "deferred",
       "title": "AI 智能体开源贡献实战指南：如何负责任地使用 AI 参与开源项目 - 小灰灰的笔记",
       "source": "brave",
@@ -737,12 +574,11 @@
       "file": "onyx-ai-open-llm-leaderboard.md"
     },
     "https://github.com/zhayujie/chatgpt-on-wechat": {
-      "date": "2026-03-16",
+      "date": "2026-03-17",
       "decision": "deferred",
       "title": "chatgpt-on-wechat",
       "source": "github",
       "score": 3,
-      "reason": "Open-source tool (GitHub) supporting open models (Qwen, DeepSeek), fitting 'tools' scope. However, summary relies on closed APIs and marketing hype, limiting alignment with strict open-source focus.",
       "signal": {
         "title": "chatgpt-on-wechat",
         "url": "https://github.com/zhayujie/chatgpt-on-wechat",
@@ -778,12 +614,11 @@
       }
     },
     "https://opensourceprojects.dev/post/bfb206e5-28f0-49fc-80bc-e014274553fe": {
-      "date": "2026-03-16",
+      "date": "2026-03-17",
       "decision": "deferred",
       "title": "Deploy a personal AI analyst that processes market data and news automatically",
       "source": "opensourceprojects",
       "score": 3,
-      "reason": "It is an open-source AI tool that is inspectable and publicly accessible, fitting the 'tools' category of the Openflows scope. While the summary contains marketing language, the repository offers operational specifics for deployment.",
       "signal": {
         "title": "Deploy a personal AI analyst that processes market data and news automatically",
         "url": "https://opensourceprojects.dev/post/bfb206e5-28f0-49fc-80bc-e014274553fe",
@@ -796,12 +631,11 @@
       }
     },
     "https://opensourceprojects.dev/post/16fd484b-d750-4029-9e6a-3a2db85707fc": {
-      "date": "2026-03-16",
+      "date": "2026-03-17",
       "decision": "deferred",
       "title": "Anthropic&apos;s original performance engineering take-home now open-sourced",
       "source": "opensourceprojects",
       "score": 3,
-      "reason": "Open source engineering artifact from a major AI player providing inspectable insights into systems-level practices, aligning with the ecosystem's focus on inspectable content.",
       "signal": {
         "title": "Anthropic&apos;s original performance engineering take-home now open-sourced",
         "url": "https://opensourceprojects.dev/post/16fd484b-d750-4029-9e6a-3a2db85707fc",
@@ -814,12 +648,11 @@
       }
     },
     "https://opensourceprojects.dev/post/802e6bcf-1b9b-44c4-a9d7-239ede061fde": {
-      "date": "2026-03-16",
+      "date": "2026-03-17",
       "decision": "deferred",
       "title": "The definitive tool for building AI agents inside Obsidian",
       "source": "opensourceprojects",
       "score": 3,
-      "reason": "Open source tool fits scope, but Obsidian is closed-source host and summary contains marketing hype.",
       "signal": {
         "title": "The definitive tool for building AI agents inside Obsidian",
         "url": "https://opensourceprojects.dev/post/802e6bcf-1b9b-44c4-a9d7-239ede061fde",
@@ -832,12 +665,11 @@
       }
     },
     "https://opensourceprojects.dev/post/4781f8d8-fbd9-4e14-839a-0af0b56cdd0b": {
-      "date": "2026-03-16",
+      "date": "2026-03-17",
       "decision": "deferred",
       "title": "The open-source engine for your 24/7 autonomous AI workforce",
       "source": "opensourceprojects",
       "score": 3,
-      "reason": "Fits scope as an open-source AI tool on GitHub, but the summary is marketing-heavy and aligns with current trend-chasing. Commercial backing requires verification of licensing and maintenance.",
       "signal": {
         "title": "The open-source engine for your 24/7 autonomous AI workforce",
         "url": "https://opensourceprojects.dev/post/4781f8d8-fbd9-4e14-839a-0af0b56cdd0b",
@@ -850,18 +682,268 @@
       }
     },
     "https://www.bilibili.com/video/BV1UyPdzeEgi/": {
-      "date": "2026-03-16",
+      "date": "2026-03-17",
       "decision": "deferred",
       "title": "不装软件不要显卡，打开浏览器就能跑推理 AI！LFM2.5 WebGPU 实测_哔哩哔哩_bilibili",
       "source": "brave",
       "score": 3,
-      "reason": "Identifies open-source tools (OpenPencil) and inference methods (WebGPU) fitting scope, but source is video content with marketing language rather than direct technical documentation.",
       "signal": {
         "title": "不装软件不要显卡，打开浏览器就能跑推理 AI！LFM2.5 WebGPU 实测_哔哩哔哩_bilibili",
         "url": "https://www.bilibili.com/video/BV1UyPdzeEgi/",
         "summary": "如何在16G以下显存上部署某些24B、35B甚至更大的模型 · Ycylone · 4.8万 31 · LFM2.5小模型系列(Instruct-VL-Audio)震撼来袭：LiquidAI重塑端侧AI生态！ · 探索未至之境 · 875 0 · 一句话画出专业架构图！drawio-skill 让AI帮你画图 · 探索未至之境 · 1.8万 0 · 开源 Figma 来了！AI 原生设计编辑器 OpenPencil，7MB 本地运行还能多人协作 ·",
         "source": "brave",
         "date": "2026-03-15T13:19:00",
+        "meta": {}
+      }
+    },
+    "https://github.com/invergent-ai/surogate": {
+      "date": "2026-03-17",
+      "decision": "skipped",
+      "title": "surogate",
+      "source": "github",
+      "score": 2,
+      "reason": "Summary relies heavily on marketing hype ('Insanely fast') and lacks operational specifics, making it difficult to verify genuine value over existing open-source fine-tuning tools."
+    },
+    "https://opensourceprojects.dev/post/00de964d-23f4-437b-8208-426ceb9910b5": {
+      "date": "2026-03-17",
+      "decision": "skipped",
+      "title": "Your personal intelligence agent. Watches the world from multiple data sources and pings you when so...",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Title claims 'intelligence agent' but summary describes generic RSS/Twitter monitoring without explicit AI/LLM technical details. Leans towards marketing hype rather than operational AI specifics, reducing value for an AI-focused knowledge base."
+    },
+    "https://opensourceprojects.dev/post/fdf47c91-f878-4652-8341-40c4158b27bf": {
+      "date": "2026-03-17",
+      "decision": "skipped",
+      "title": "The open-source Screen Studio alternative with auto-zoom and effects",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Signal describes a general screen recording utility, not an AI-specific tool, framework, or model within the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/5bc0d733-d6a9-49e9-84a4-39202b2d0b8f": {
+      "date": "2026-03-17",
+      "decision": "skipped",
+      "title": "Open-source, low-cost 10.5 GHz PLFM phased array RADAR system",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Unrelated to the open source AI ecosystem; focuses on RF hardware engineering rather than AI tools, models, or frameworks."
+    },
+    "https://www.woshipm.com/ai/6343237.html": {
+      "date": "2026-03-17",
+      "decision": "skipped",
+      "title": "一文拆解2026国产大模型选型实战地图 – 人人都是产品经理",
+      "source": "brave",
+      "score": 2,
+      "reason": "Commercial product management article focusing on speculative future models and buzzwords; lacks open source technical specifics or inspectable resources required by Openflows."
+    },
+    "https://blog.csdn.net/u013970991/article/details/158151861": {
+      "date": "2026-03-17",
+      "decision": "skipped",
+      "title": "OpenClaw，重新定义AI Agent，一款真正可用的个人智能助手操作系统_langchain与openclaw有什么关系-CSDN博客",
+      "source": "brave",
+      "score": 2,
+      "reason": "Likely a promotional blog post for a specific product rather than a verified open-source framework. Lacks evidence of public repository or open license, integrates commercial services (Volcano Ark), and uses hype language inconsistent with Openflows' focus on inspectable open ecosystems."
+    },
+    "https://huggingface.co/ibm-granite/granite-4.0-1b-speech": {
+      "date": "2026-03-17",
+      "decision": "drafted",
+      "title": "ibm-granite/granite-4.0-1b-speech",
+      "source": "huggingface",
+      "file": "ibm-granite-4-0-1b-speech.md"
+    },
+    "https://opensourceprojects.dev/post/ec0b8a31-51df-4d36-b91d-f8c66f2fe89c": {
+      "date": "2026-03-17",
+      "decision": "drafted",
+      "title": "InsForge is a backend development platform built for AI coding agents and AI code editors",
+      "source": "opensourceprojects",
+      "file": "insforge-backend-platform.md"
+    },
+    "https://github.com/aiming-lab/MetaClaw": {
+      "date": "2026-03-17",
+      "decision": "deferred",
+      "title": "MetaClaw",
+      "source": "github",
+      "score": 3,
+      "reason": "Open source AI tool with specific technical tags, but summary marketing language conflicts with avoid hype guideline.",
+      "signal": {
+        "title": "MetaClaw",
+        "url": "https://github.com/aiming-lab/MetaClaw",
+        "summary": "🦞 Just talk to your agent — it learns and EVOLVES 🧬. | agent, ai-agent, continual-learning, fine-tuning, llm, lora, meta-learning, metaclaw, online-learning, openclaw, reinforcement-learning, skill-learning, tinker",
+        "source": "github",
+        "date": "2026-03-17T06:54:38Z",
+        "meta": {
+          "fullName": "aiming-lab/MetaClaw",
+          "stars": 1490,
+          "topics": [
+            "agent",
+            "ai-agent",
+            "continual-learning",
+            "fine-tuning",
+            "llm",
+            "lora",
+            "meta-learning",
+            "metaclaw",
+            "online-learning",
+            "openclaw",
+            "reinforcement-learning",
+            "skill-learning",
+            "tinker"
+          ],
+          "language": "Python"
+        }
+      }
+    },
+    "https://huggingface.co/z-lab/Qwen3-Coder-30B-A3B-DFlash": {
+      "date": "2026-03-17",
+      "decision": "deferred",
+      "title": "z-lab/Qwen3-Coder-30B-A3B-DFlash",
+      "source": "huggingface",
+      "score": 3,
+      "reason": "Fits scope as an open model; low engagement suggests niche utility rather than high-priority impact.",
+      "signal": {
+        "title": "z-lab/Qwen3-Coder-30B-A3B-DFlash",
+        "url": "https://huggingface.co/z-lab/Qwen3-Coder-30B-A3B-DFlash",
+        "summary": "text-generation model | likes: 27 | downloads: 694",
+        "source": "huggingface",
+        "date": "2026-03-17T06:42:57.000Z",
+        "meta": {
+          "likes": 27,
+          "downloads": 694,
+          "task": "text-generation",
+          "tags": [
+            "transformers",
+            "safetensors",
+            "qwen3",
+            "feature-extraction",
+            "dflash",
+            "speculative-decoding",
+            "diffusion",
+            "efficiency",
+            "flash-decoding",
+            "qwen",
+            "diffusion-language-model",
+            "text-generation",
+            "custom_code",
+            "arxiv:2602.06036",
+            "license:mit",
+            "text-generation-inference",
+            "endpoints_compatible",
+            "region:us"
+          ]
+        }
+      }
+    },
+    "https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16": {
+      "date": "2026-03-17",
+      "decision": "deferred",
+      "title": "z-lab/Qwen3-8B-DFlash-b16",
+      "source": "huggingface",
+      "score": 3,
+      "reason": "Open weights model on Hugging Face aligns with scope; technical specs (8B, DFlash) provide operational detail, but low engagement suggests niche status.",
+      "signal": {
+        "title": "z-lab/Qwen3-8B-DFlash-b16",
+        "url": "https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16",
+        "summary": "text-generation model | likes: 20 | downloads: 9156",
+        "source": "huggingface",
+        "date": "2026-03-17T06:39:32.000Z",
+        "meta": {
+          "likes": 20,
+          "downloads": 9156,
+          "task": "text-generation",
+          "tags": [
+            "transformers",
+            "safetensors",
+            "qwen3",
+            "feature-extraction",
+            "dflash",
+            "speculative-decoding",
+            "diffusion",
+            "efficiency",
+            "flash-decoding",
+            "qwen",
+            "diffusion-language-model",
+            "text-generation",
+            "custom_code",
+            "arxiv:2602.06036",
+            "license:mit",
+            "text-generation-inference",
+            "endpoints_compatible",
+            "region:us"
+          ]
+        }
+      }
+    },
+    "https://huggingface.co/z-lab/Qwen3-4B-DFlash-b16": {
+      "date": "2026-03-17",
+      "decision": "deferred",
+      "title": "z-lab/Qwen3-4B-DFlash-b16",
+      "source": "huggingface",
+      "score": 3,
+      "reason": "Fits Openflows scope as an open weights model variant on Hugging Face; provides operational specifics (4B, DFlash) but limited community engagement and potential nomenclature ambiguity suggest niche utility.",
+      "signal": {
+        "title": "z-lab/Qwen3-4B-DFlash-b16",
+        "url": "https://huggingface.co/z-lab/Qwen3-4B-DFlash-b16",
+        "summary": "text-generation model | likes: 22 | downloads: 29393",
+        "source": "huggingface",
+        "date": "2026-03-17T06:39:03.000Z",
+        "meta": {
+          "likes": 22,
+          "downloads": 29393,
+          "task": "text-generation",
+          "tags": [
+            "transformers",
+            "safetensors",
+            "qwen3",
+            "feature-extraction",
+            "dflash",
+            "speculative-decoding",
+            "diffusion",
+            "efficiency",
+            "flash-decoding",
+            "qwen",
+            "diffusion-language-model",
+            "text-generation",
+            "custom_code",
+            "arxiv:2602.06036",
+            "license:mit",
+            "text-generation-inference",
+            "endpoints_compatible",
+            "region:us"
+          ]
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/abc471f3-7abd-4023-af11-7dc328cca317": {
+      "date": "2026-03-17",
+      "decision": "deferred",
+      "title": "Use Garry Tan&apos;s exact Claude Code setup: 6 opinionated tools that serve as CEO, Eng Manager, Release...",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Features a key figure and inspectable repository, fitting the scope of tools and figures, though reliance on proprietary model access and hype-driven framing reduce alignment with core open-source ecosystem goals.",
+      "signal": {
+        "title": "Use Garry Tan&apos;s exact Claude Code setup: 6 opinionated tools that serve as CEO, Eng Manager, Release...",
+        "url": "https://opensourceprojects.dev/post/abc471f3-7abd-4023-af11-7dc328cca317",
+        "summary": "Ever feel like you spend more time managing your project than actually building it? Between planning, reviewing code, testing, and deploying, the &quot;meta-work&quot; can eat up your best hours. What if you could automate those roles and get back to the core of coding?\n\nGitHub Repository: https://github.com/garrytan/gstack",
+        "source": "opensourceprojects",
+        "date": "2026-03-16T08:38:02.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://www.bluehost.com/blog/best-open-source-ai-agent-frameworks/": {
+      "date": "2026-03-17",
+      "decision": "deferred",
+      "title": "7 Best Open-Source AI Agent Frameworks for Developers in 2026",
+      "source": "brave",
+      "score": 3,
+      "reason": "Identifies core open-source frameworks (LangChain, AutoGen, CrewAI) aligning with scope, but generic listicle format and future-dated title suggest trend-chasing over operational depth.",
+      "signal": {
+        "title": "7 Best Open-Source AI Agent Frameworks for Developers in 2026",
+        "url": "https://www.bluehost.com/blog/best-open-source-ai-agent-frameworks/",
+        "summary": "Best Open-Source AI Agent Frameworks ranked for 2026. Compare <strong>LangChain, AutoGen &amp; CrewAI</strong>, explore memory, planning and orchestration to build smarter agents fast.",
+        "source": "brave",
+        "date": "2026-03-16T04:13:48",
         "meta": {}
       }
     }
