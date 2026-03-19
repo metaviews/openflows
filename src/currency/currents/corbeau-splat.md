@@ -1,6 +1,6 @@
 ---
 layout: layouts/currency-item.njk
-title: CorbeauSplat: macOS Video-to-3D Gaussian Splatting Tool
+title: "CorbeauSplat: macOS Video-to-3D Gaussian Splatting Tool"
 date: 2026-03-16
 currencyType: "current"
 currencyId: corbeau-splat

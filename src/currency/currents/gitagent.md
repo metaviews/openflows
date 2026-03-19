@@ -1,6 +1,6 @@
 ---
 layout: layouts/currency-item.njk
-title: GitAgent: Version Control for AI Agents
+title: "GitAgent: Version Control for AI Agents"
 date: 2026-03-19
 currencyType: "current"
 currencyId: gitagent

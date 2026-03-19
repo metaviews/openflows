@@ -1,6 +1,3 @@
-
-</think>
-
 ---
 layout: layouts/currency-item.njk
 title: "Open Source LLM Updates & AI Model Releases"
