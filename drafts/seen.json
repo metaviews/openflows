@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-18T07:10:23.824Z",
+  "lastUpdated": "2026-03-19T07:26:37.526Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -601,19 +601,11 @@
       "file": "lobster-ai.md"
     },
     "https://www.bilibili.com/video/BV1UyPdzeEgi/": {
-      "date": "2026-03-18",
-      "decision": "deferred",
+      "date": "2026-03-19",
+      "decision": "drafted",
       "title": "不装软件不要显卡，打开浏览器就能跑推理 AI！LFM2.5 WebGPU 实测_哔哩哔哩_bilibili",
       "source": "brave",
-      "score": 3,
-      "signal": {
-        "title": "不装软件不要显卡，打开浏览器就能跑推理 AI！LFM2.5 WebGPU 实测_哔哩哔哩_bilibili",
-        "url": "https://www.bilibili.com/video/BV1UyPdzeEgi/",
-        "summary": "如何在16G以下显存上部署某些24B、35B甚至更大的模型 · Ycylone · 4.8万 31 · LFM2.5小模型系列(Instruct-VL-Audio)震撼来袭：LiquidAI重塑端侧AI生态！ · 探索未至之境 · 875 0 · 一句话画出专业架构图！drawio-skill 让AI帮你画图 · 探索未至之境 · 1.8万 0 · 开源 Figma 来了！AI 原生设计编辑器 OpenPencil，7MB 本地运行还能多人协作 ·",
-        "source": "brave",
-        "date": "2026-03-15T13:19:00",
-        "meta": {}
-      }
+      "file": "lfm25-webgpu-inference.md"
     },
     "https://github.com/invergent-ai/surogate": {
       "date": "2026-03-17",
@@ -678,41 +670,14 @@
       "file": "insforge-backend-platform.md"
     },
     "https://github.com/aiming-lab/MetaClaw": {
-      "date": "2026-03-18",
-      "decision": "deferred",
+      "date": "2026-03-19",
+      "decision": "drafted",
       "title": "MetaClaw",
       "source": "github",
-      "score": 3,
-      "signal": {
-        "title": "MetaClaw",
-        "url": "https://github.com/aiming-lab/MetaClaw",
-        "summary": "🦞 Just talk to your agent — it learns and EVOLVES 🧬. | agent, ai-agent, continual-learning, fine-tuning, llm, lora, meta-learning, metaclaw, online-learning, openclaw, reinforcement-learning, skill-learning, tinker",
-        "source": "github",
-        "date": "2026-03-17T06:54:38Z",
-        "meta": {
-          "fullName": "aiming-lab/MetaClaw",
-          "stars": 1490,
-          "topics": [
-            "agent",
-            "ai-agent",
-            "continual-learning",
-            "fine-tuning",
-            "llm",
-            "lora",
-            "meta-learning",
-            "metaclaw",
-            "online-learning",
-            "openclaw",
-            "reinforcement-learning",
-            "skill-learning",
-            "tinker"
-          ],
-          "language": "Python"
-        }
-      }
+      "file": "metaclaw.md"
     },
     "https://huggingface.co/z-lab/Qwen3-Coder-30B-A3B-DFlash": {
-      "date": "2026-03-18",
+      "date": "2026-03-19",
       "decision": "deferred",
       "title": "z-lab/Qwen3-Coder-30B-A3B-DFlash",
       "source": "huggingface",
@@ -751,7 +716,7 @@
       }
     },
     "https://huggingface.co/z-lab/Qwen3-8B-DFlash-b16": {
-      "date": "2026-03-18",
+      "date": "2026-03-19",
       "decision": "deferred",
       "title": "z-lab/Qwen3-8B-DFlash-b16",
       "source": "huggingface",
@@ -790,7 +755,7 @@
       }
     },
     "https://huggingface.co/z-lab/Qwen3-4B-DFlash-b16": {
-      "date": "2026-03-18",
+      "date": "2026-03-19",
       "decision": "deferred",
       "title": "z-lab/Qwen3-4B-DFlash-b16",
       "source": "huggingface",
@@ -829,7 +794,7 @@
       }
     },
     "https://opensourceprojects.dev/post/abc471f3-7abd-4023-af11-7dc328cca317": {
-      "date": "2026-03-18",
+      "date": "2026-03-19",
       "decision": "deferred",
       "title": "Use Garry Tan&apos;s exact Claude Code setup: 6 opinionated tools that serve as CEO, Eng Manager, Release...",
       "source": "opensourceprojects",
@@ -846,7 +811,7 @@
       }
     },
     "https://www.bluehost.com/blog/best-open-source-ai-agent-frameworks/": {
-      "date": "2026-03-18",
+      "date": "2026-03-19",
       "decision": "deferred",
       "title": "7 Best Open-Source AI Agent Frameworks for Developers in 2026",
       "source": "brave",
@@ -961,12 +926,11 @@
       "file": "aenvironment.md"
     },
     "https://opensourceprojects.dev/post/8dad3bbf-aff6-4670-9c58-2c23ba40cb61": {
-      "date": "2026-03-18",
+      "date": "2026-03-19",
       "decision": "deferred",
       "title": "The definitive tool for creating and managing cross-platform AI workflows",
       "source": "opensourceprojects",
       "score": 3,
-      "reason": "Open-source AI workflow tool aligns with scope and is inspectable via GitHub, though marketing language suggests hype and project lacks widespread recognition.",
       "signal": {
         "title": "The definitive tool for creating and managing cross-platform AI workflows",
         "url": "https://opensourceprojects.dev/post/8dad3bbf-aff6-4670-9c58-2c23ba40cb61",
@@ -979,12 +943,11 @@
       }
     },
     "https://github.com/Tongjilibo/bert4torch": {
-      "date": "2026-03-18",
+      "date": "2026-03-19",
       "decision": "deferred",
       "title": "bert4torch",
       "source": "github",
       "score": 3,
-      "reason": "Open-source PyTorch implementation fitting scope, but niche compared to foundational frameworks.",
       "signal": {
         "title": "bert4torch",
         "url": "https://github.com/Tongjilibo/bert4torch",
@@ -1012,6 +975,324 @@
             "transformers"
           ],
           "language": "Python"
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/fbf2ba2e-63b8-4076-9dd8-041b1246fcf2": {
+      "date": "2026-03-19",
+      "decision": "skipped",
+      "title": "Deploy any AI model as a production API in under sixty seconds",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Repository name suggests Telegram bot framework rather than AI infrastructure; title uses marketing hype; lacks operational specificity."
+    },
+    "https://opensourceprojects.dev/post/4fb41a70-cf69-43b8-8895-ee130babad68": {
+      "date": "2026-03-19",
+      "decision": "skipped",
+      "title": "A minimalist CLI to manage your entire email inbox from anywhere",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general-purpose email management CLI, which is unrelated to the open source AI ecosystem scope defined for Openflows."
+    },
+    "https://opensourceprojects.dev/post/0a0fb35e-44e0-4d52-9183-21e6c6bbbb2a": {
+      "date": "2026-03-19",
+      "decision": "skipped",
+      "title": "The definitive open-source engine for managing your proxy configurations",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Not relevant to AI ecosystem; focuses on general infrastructure proxy management. Repository link contradicts title (AudioNoise vs Proxy)."
+    },
+    "https://opensourceprojects.dev/post/0b3d481a-2a53-4615-bf16-a5918162c863": {
+      "date": "2026-03-19",
+      "decision": "skipped",
+      "title": "Stop paying for VPN services Use this open-source proxy tool instead",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Signal describes a general networking proxy tool, not an AI-specific framework, model, or tool within the open source AI ecosystem."
+    },
+    "https://www.bilibili.com/video/BV1KQw3zNE8g/": {
+      "date": "2026-03-19",
+      "decision": "skipped",
+      "title": "盘点一周AI大事(3月15日)｜首次上传大脑成功_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal is a secondary video news roundup from a commercial platform; content dominated by closed-source entities (OpenAI, GPT4) and hype topics rather than inspectable open-source tools or documentation; lacks operational specifics."
+    },
+    "https://opensourceprojects.dev/post/5f551ce6-5511-45f6-9d86-78eabb826a19": {
+      "date": "2026-03-19",
+      "decision": "skipped",
+      "title": "The open-source music player that never locks you into a platform",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general-purpose open-source music player, which is unrelated to the open source AI ecosystem scope of Openflows."
+    },
+    "https://blog.csdn.net/Niki2020_2017/article/details/158420747": {
+      "date": "2026-03-19",
+      "decision": "skipped",
+      "title": "永不休眠的智能体：认识 OpenClaw-CSDN博客",
+      "source": "brave",
+      "score": 2,
+      "reason": "Relies on closed API models (Claude, GPT-5) rather than open source, includes hype-driven claims (GPT-5), and lacks verified open-source repository linkage."
+    },
+    "https://github.com/HolmesGPT/holmesgpt": {
+      "date": "2026-03-19",
+      "decision": "drafted",
+      "title": "holmesgpt",
+      "source": "github",
+      "file": "holmesgpt.md"
+    },
+    "https://github.com/BoltzmannEntropy/MimikaStudio": {
+      "date": "2026-03-19",
+      "decision": "drafted",
+      "title": "MimikaStudio",
+      "source": "github",
+      "file": "mimika-studio.md"
+    },
+    "https://github.com/AgentEra/Agently": {
+      "date": "2026-03-19",
+      "decision": "drafted",
+      "title": "Agently",
+      "source": "github",
+      "file": "agently.md"
+    },
+    "https://opensourceprojects.dev/post/dccb8023-6fbf-492e-97da-7a990139d250": {
+      "date": "2026-03-19",
+      "decision": "drafted",
+      "title": "The open-source client for AI agents to fetch and parse URLs",
+      "source": "opensourceprojects",
+      "file": "xurl.md"
+    },
+    "https://blogs.nvidia.cn/blog/rtx-ai-garage-gtc-2026-nemoclaw/": {
+      "date": "2026-03-19",
+      "decision": "drafted",
+      "title": "GTC 大会聚焦 NVIDIA RTX PC 与 DGX Spark 本地运行最新开放模型和 AI 智能体 | NVIDIA 英伟达博客",
+      "source": "brave",
+      "file": "nvidia-nemo-claw-gtc-2026.md"
+    },
+    "https://opensourceprojects.dev/post/606c15ba-67c7-46e2-9376-5f5eccac54e4": {
+      "date": "2026-03-19",
+      "decision": "drafted",
+      "title": "The open-source engine for tuning and deploying production LLM agents",
+      "source": "opensourceprojects",
+      "file": "agentjet.md"
+    },
+    "https://opensourceprojects.dev/post/517e3b23-6a92-44e5-b547-defeb8e5fd0c": {
+      "date": "2026-03-19",
+      "decision": "drafted",
+      "title": "A minimalist framework to build and version control AI agents",
+      "source": "opensourceprojects",
+      "file": "gitagent.md"
+    },
+    "https://apidog.com/blog/paperclip/": {
+      "date": "2026-03-19",
+      "decision": "drafted",
+      "title": "Paperclip: How to Run a One-Person Company with This Open Source Framework",
+      "source": "brave",
+      "file": "paperclip-solo-ops-framework.md"
+    },
+    "https://github.com/clawwork-ai/ClawWork": {
+      "date": "2026-03-19",
+      "decision": "deferred",
+      "title": "ClawWork",
+      "source": "github",
+      "score": 3,
+      "reason": "Fits AI tools scope with inspectable codebase on GitHub, but marketing language and lack of major framework linkage reduce priority.",
+      "signal": {
+        "title": "ClawWork",
+        "url": "https://github.com/clawwork-ai/ClawWork",
+        "summary": "Client for OpenClaw — Connect ClawWork to your own OpenClaw and unlock 10x multi-session productivity. | ai-agent, ai-tools, desktop-app, developer-tools, electron, git, llm, macos, openclaw, openclaw-alternative, react, sqlite, tailwindcss, task-management, typescript, zustand",
+        "source": "github",
+        "date": "2026-03-19T06:49:04Z",
+        "meta": {
+          "fullName": "clawwork-ai/ClawWork",
+          "stars": 111,
+          "topics": [
+            "ai-agent",
+            "ai-tools",
+            "desktop-app",
+            "developer-tools",
+            "electron",
+            "git",
+            "llm",
+            "macos",
+            "openclaw",
+            "openclaw-alternative",
+            "react",
+            "sqlite",
+            "tailwindcss",
+            "task-management",
+            "typescript",
+            "zustand"
+          ],
+          "language": "TypeScript"
+        }
+      }
+    },
+    "https://github.com/vm0-ai/vm0": {
+      "date": "2026-03-19",
+      "decision": "deferred",
+      "title": "vm0",
+      "source": "github",
+      "score": 3,
+      "reason": "Public GitHub tool for AI workflows fits scope, but reliance on closed model APIs and marketing-heavy summary limit priority compared to core open infrastructure.",
+      "signal": {
+        "title": "vm0",
+        "url": "https://github.com/vm0-ai/vm0",
+        "summary": "the easiest way to run natural language-described workflows automatically | agentic-workflow, ai-agent, ai-runtime, ai-sandbox, claude-code, dev-tools, sandbox",
+        "source": "github",
+        "date": "2026-03-19T06:48:48Z",
+        "meta": {
+          "fullName": "vm0-ai/vm0",
+          "stars": 1052,
+          "topics": [
+            "agentic-workflow",
+            "ai-agent",
+            "ai-runtime",
+            "ai-sandbox",
+            "claude-code",
+            "dev-tools",
+            "sandbox"
+          ],
+          "language": "TypeScript"
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/6b94ec84-074e-4753-b01c-e73122b48046": {
+      "date": "2026-03-19",
+      "decision": "deferred",
+      "title": "Turn your AI into a collaborative team member with this infrastructure",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Fits Openflows scope as an open source AI orchestration tool with a public repository, though the summary relies on marketing language rather than technical specifics.",
+      "signal": {
+        "title": "Turn your AI into a collaborative team member with this infrastructure",
+        "url": "https://opensourceprojects.dev/post/6b94ec84-074e-4753-b01c-e73122b48046",
+        "summary": "Ever feel like you’re just swapping between different AI tools, copying prompts and outputs from one tab to another? What if instead of juggling solo AI assistants, you could orchestrate them to work together like a real team? That’s the idea behind Zylos Core.\n\nGitHub Repository: https://github.com/zylos-ai/zylos-core",
+        "source": "opensourceprojects",
+        "date": "2026-03-19T06:40:28.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/268b2ab7-5edb-4cf3-92ac-0889c662ef37": {
+      "date": "2026-03-19",
+      "decision": "deferred",
+      "title": "Automate your code review workflow with this Rust-based AI agent",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Fits the open-source AI tools category with a public GitHub repository, but the summary lacks technical specifics and relies on marketing language rather than operational details.",
+      "signal": {
+        "title": "Automate your code review workflow with this Rust-based AI agent",
+        "url": "https://opensourceprojects.dev/post/268b2ab7-5edb-4cf3-92ac-0889c662ef37",
+        "summary": "Code reviews are essential, but let&apos;s be honest—they can be a bottleneck. Waiting for a teammate to find time, or grinding through a massive PR yourself, slows everything down. What if you could offload the initial, repetitive parts of that review to a fast, consistent, and always-available assistan...\n\nGitHub Repository: https://github.com/airlock-hq/airlock",
+        "source": "opensourceprojects",
+        "date": "2026-03-19T06:36:18.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://huggingface.co/TheStageAI/thewhisper-large-v3-turbo": {
+      "date": "2026-03-19",
+      "decision": "deferred",
+      "title": "TheStageAI/thewhisper-large-v3-turbo",
+      "source": "huggingface",
+      "score": 3,
+      "reason": "Fits Openflows scope as an inspectable open-source model on a public hub; documents specific ASR variant but low metrics indicate niche rather than broad ecosystem impact.",
+      "signal": {
+        "title": "TheStageAI/thewhisper-large-v3-turbo",
+        "url": "https://huggingface.co/TheStageAI/thewhisper-large-v3-turbo",
+        "summary": "automatic-speech-recognition model | likes: 21 | downloads: 8486",
+        "source": "huggingface",
+        "date": "2026-03-19T06:28:50.000Z",
+        "meta": {
+          "likes": 21,
+          "downloads": 8486,
+          "task": "automatic-speech-recognition",
+          "tags": [
+            "onnx",
+            "safetensors",
+            "whisper",
+            "automatic-speech-recognition",
+            "audio",
+            "speech",
+            "multilingual",
+            "streaming",
+            "coreml",
+            "cuda",
+            "nvidia",
+            "apple-silicon",
+            "on-device",
+            "en",
+            "ar",
+            "bg",
+            "bn",
+            "cs",
+            "da",
+            "de",
+            "el",
+            "es",
+            "et",
+            "fi",
+            "fr",
+            "hi",
+            "hu",
+            "id",
+            "it",
+            "lt",
+            "lv",
+            "nl",
+            "pl",
+            "pt",
+            "ro",
+            "ru",
+            "sk",
+            "sl",
+            "sv",
+            "uk",
+            "vi",
+            "base_model:openai/whisper-large-v3-turbo",
+            "base_model:quantized:openai/whisper-large-v3-turbo",
+            "license:cc-by-4.0",
+            "region:us"
+          ]
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/985ae14e-df7e-4bf5-8036-0c3b4824257f": {
+      "date": "2026-03-19",
+      "decision": "deferred",
+      "title": "Turn your command line into an interactive AI learning environment",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Open-source AI CLI tool fits the 'tools' category of Openflows scope. Provides inspectable operational details via GitHub, documenting a practical ecosystem integration.",
+      "signal": {
+        "title": "Turn your command line into an interactive AI learning environment",
+        "url": "https://opensourceprojects.dev/post/985ae14e-df7e-4bf5-8036-0c3b4824257f",
+        "summary": "Ever find yourself in the middle of a complex command, or staring at a cryptic error message, and wish you could just ask someone for a quick explanation? What if that someone lived right inside your terminal? That’s the idea behind AITutor, a clever open-source tool that transforms your command lin...\n\nGitHub Repository: https://github.com/naorpeled/aitutor",
+        "source": "opensourceprojects",
+        "date": "2026-03-18T23:56:59.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/b4ec22f5-eac5-4f60-91cf-fa09a8115d6c": {
+      "date": "2026-03-19",
+      "decision": "deferred",
+      "title": "CLI-native way to semantically grep everything, like code, images, pdfs and more",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Fits Openflows scope as an open-source AI tool with operational specifics (CLI, multimodal search); valuable documentation but represents a utility tool rather than a core ecosystem component or foundational model.",
+      "signal": {
+        "title": "CLI-native way to semantically grep everything, like code, images, pdfs and more",
+        "url": "https://opensourceprojects.dev/post/b4ec22f5-eac5-4f60-91cf-fa09a8115d6c",
+        "summary": "Ever found yourself grepping through a codebase for a specific concept, only to realize you need to search through PDFs, images, or documents too? Or maybe you&apos;ve tried to find &quot;that one function&quot; but can only remember what it does, not its exact name. Traditional grep hits a wall when the search ne...\n\nGitHub Repository: https://github.com/mixedbread-ai/mgrep",
+        "source": "opensourceprojects",
+        "date": "2026-03-18T14:09:39.000Z",
+        "meta": {
+          "stars": null
         }
       }
     }
