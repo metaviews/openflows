@@ -30,6 +30,7 @@ mediation:
     - "drafted Circuit synthesis from knowledge base"
   humanRole: "review, edit, and approve before publication"
   limits: "synthesis is a starting point; human judgment required on pattern boundaries and claims"
+lastReviewed: 2026-03-20
 ---
 
 This circuit begins one level below the Embodied AI Governance Circuit. It focuses on the plumbing rather than the rules. Governance defines the safety boundaries. This circuit defines the infrastructure that makes those boundaries observable and enforceable at scale.
