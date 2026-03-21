@@ -21,6 +21,7 @@ mediation:
     - "reviewed nousresearch.com directly"
   humanRole: "full authorship"
   limits: "organizational focus may shift; verify current model offerings at nousresearch.com"
+lastReviewed: 2026-03-21
 ---
 
 ### Signal
