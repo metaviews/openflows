@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-21T06:42:39.695Z",
+  "lastUpdated": "2026-03-22T07:12:38.318Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1097,132 +1097,32 @@
       "file": "zeroclaw.md"
     },
     "https://github.com/fengshao1227/ccg-workflow": {
-      "date": "2026-03-21",
-      "decision": "deferred",
+      "date": "2026-03-22",
+      "decision": "drafted",
       "title": "ccg-workflow",
       "source": "github",
-      "score": 3,
-      "signal": {
-        "title": "ccg-workflow",
-        "url": "https://github.com/fengshao1227/ccg-workflow",
-        "summary": "多模型协作开发系统 - Claude 编排 + Codex 后端 + Gemini 前端，28 个命令覆盖开发全流程，一键安装零配置 | agent-teams, ai, ccg, claude-code, cli, codex, gemini, llm, no-de, nodejs, opsxspec, prompt, workflow",
-        "source": "github",
-        "date": "2026-03-20T06:43:39Z",
-        "meta": {
-          "fullName": "fengshao1227/ccg-workflow",
-          "stars": 4120,
-          "topics": [
-            "agent-teams",
-            "ai",
-            "ccg",
-            "claude-code",
-            "cli",
-            "codex",
-            "gemini",
-            "llm",
-            "no-de",
-            "nodejs",
-            "opsxspec",
-            "prompt",
-            "workflow"
-          ],
-          "language": "Go"
-        }
-      }
+      "file": "ccg-workflow.md"
     },
     "https://github.com/ZHangZHengEric/Sage": {
-      "date": "2026-03-21",
-      "decision": "deferred",
+      "date": "2026-03-22",
+      "decision": "drafted",
       "title": "Sage",
       "source": "github",
-      "score": 3,
-      "signal": {
-        "title": "Sage",
-        "url": "https://github.com/ZHangZHengEric/Sage",
-        "summary": "Multi-Agent System Framework For Complex Tasks | agents, ai, llm, manus, muilt-agents, workflow",
-        "source": "github",
-        "date": "2026-03-20T06:43:26Z",
-        "meta": {
-          "fullName": "ZHangZHengEric/Sage",
-          "stars": 951,
-          "topics": [
-            "agents",
-            "ai",
-            "llm",
-            "manus",
-            "muilt-agents",
-            "workflow"
-          ],
-          "language": "Python"
-        }
-      }
+      "file": "sage-multi-agent-framework.md"
     },
     "https://github.com/WangRongsheng/awesome-LLM-resources": {
-      "date": "2026-03-21",
-      "decision": "deferred",
+      "date": "2026-03-22",
+      "decision": "drafted",
       "title": "awesome-LLM-resources",
       "source": "github",
-      "score": 3,
-      "signal": {
-        "title": "awesome-LLM-resources",
-        "url": "https://github.com/WangRongsheng/awesome-LLM-resources",
-        "summary": "🧑‍🚀 全世界最好的LLM资料总结（多模态生成、Agent、辅助编程、AI审稿、数据处理、模型训练、模型推理、o1 模型、MCP、小语言模型、视觉语言模型） | Summary of the world's best LLM resources.  | awesome-list, book, course, large-language-models, llama, llm, mistral, openai, qwen, rag, retrieval-augmented-generation, webui",
-        "source": "github",
-        "date": "2026-03-20T06:42:49Z",
-        "meta": {
-          "fullName": "WangRongsheng/awesome-LLM-resources",
-          "stars": 7816,
-          "topics": [
-            "awesome-list",
-            "book",
-            "course",
-            "large-language-models",
-            "llama",
-            "llm",
-            "mistral",
-            "openai",
-            "qwen",
-            "rag",
-            "retrieval-augmented-generation",
-            "webui"
-          ],
-          "language": null
-        }
-      }
+      "file": "awesome-llm-resources-curation.md"
     },
     "https://huggingface.co/PerceptronAI/Isaac-0.1": {
-      "date": "2026-03-21",
-      "decision": "deferred",
+      "date": "2026-03-22",
+      "decision": "drafted",
       "title": "PerceptronAI/Isaac-0.1",
       "source": "huggingface",
-      "score": 3,
-      "signal": {
-        "title": "PerceptronAI/Isaac-0.1",
-        "url": "https://huggingface.co/PerceptronAI/Isaac-0.1",
-        "summary": "text-generation model | likes: 114 | downloads: 58109",
-        "source": "huggingface",
-        "date": "2026-03-20T06:29:27.000Z",
-        "meta": {
-          "likes": 114,
-          "downloads": 58109,
-          "task": "text-generation",
-          "tags": [
-            "transformers",
-            "safetensors",
-            "isaac",
-            "text-generation",
-            "perceptron",
-            "issac-0.1",
-            "image-text-to-text",
-            "conversational",
-            "custom_code",
-            "base_model:Qwen/Qwen3-1.7B",
-            "base_model:finetune:Qwen/Qwen3-1.7B",
-            "license:cc-by-nc-4.0",
-            "region:us"
-          ]
-        }
-      }
+      "file": "perceptron-isaac-0-1.md"
     },
     "https://www.bilibili.com/video/BV1EKcLztEEw/": {
       "date": "2026-03-21",
@@ -1277,12 +1177,11 @@
       "file": "qwen3-5-vlm-nvidia-gpu-endpoints.md"
     },
     "https://opensourceprojects.dev/post/b206659e-38d5-4ae0-83e8-54c04caa16cb": {
-      "date": "2026-03-21",
+      "date": "2026-03-22",
       "decision": "deferred",
       "title": "The definitive open-source engine for understanding any codebase instantly",
       "source": "opensourceprojects",
       "score": 3,
-      "reason": "Fits the open-source AI tools scope, though the signal lacks technical depth and appears to be a personal project.",
       "signal": {
         "title": "The definitive open-source engine for understanding any codebase instantly",
         "url": "https://opensourceprojects.dev/post/b206659e-38d5-4ae0-83e8-54c04caa16cb",
@@ -1295,18 +1194,195 @@
       }
     },
     "https://opensourceprojects.dev/post/7725dfc9-262c-4f23-a0bc-3399ff235487": {
-      "date": "2026-03-21",
+      "date": "2026-03-22",
       "decision": "deferred",
       "title": "A minimalist repository to manage your entire AI agent skill workflow",
       "source": "opensourceprojects",
       "score": 3,
-      "reason": "Open-source tool for AI agent skill management. Fits the ecosystem's tooling scope and is inspectable, addressing practical workflow organization needs.",
       "signal": {
         "title": "A minimalist repository to manage your entire AI agent skill workflow",
         "url": "https://opensourceprojects.dev/post/7725dfc9-262c-4f23-a0bc-3399ff235487",
         "summary": "Building an AI agent that can actually do things is exciting. You start with a great core model, but then you hit the practical wall: how do you manage, organize, and share the specific skills or tools you want your agent to use? Scattering prompts and function descriptions across notebooks and text...\n\nGitHub Repository: https://github.com/heilcheng/awesome-agent-skills",
         "source": "opensourceprojects",
         "date": "2026-03-20T10:15:20.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/bfce7110-2195-4467-840a-748dcecfb142": {
+      "date": "2026-03-22",
+      "decision": "skipped",
+      "title": "The definitive tool for scriptable system control on rootless jailbreaks",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a tool for iOS jailbreaking and system automation, which falls outside the Openflows scope of documenting the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/def16ecd-1fdb-4ef9-bb43-c155944ab45f": {
+      "date": "2026-03-22",
+      "decision": "skipped",
+      "title": "Launch Claude sessions and approve tools directly from your browser",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tool facilitates interaction with proprietary model (Claude); tangentially related to AI tools but limited value for open source ecosystem documentation."
+    },
+    "https://opensourceprojects.dev/post/265defb0-473a-4167-850a-8b48446fc7c2": {
+      "date": "2026-03-22",
+      "decision": "skipped",
+      "title": "A lightweight Telegram bot for remote Claude Code development anywhere",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source wrapper for a closed-source model; tangential to the open source AI ecosystem focus."
+    },
+    "https://opensourceprojects.dev/post/c3ec5ee9-8a67-4233-9067-5f6fefae2901": {
+      "date": "2026-03-22",
+      "decision": "skipped",
+      "title": "Transform any website, Electron app, or local binary into a standardized command-line interface.",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "General open source utility rather than an AI-specific tool; tangential relevance to the AI ecosystem focus."
+    },
+    "https://opensourceprojects.dev/post/b16c17d2-201d-4080-8f81-28dba8621c45": {
+      "date": "2026-03-22",
+      "decision": "skipped",
+      "title": "Project N.O.M.A.D, is a self-contained, offline survival computer packed with critical tools, knowle...",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Project focuses on offline survival computing and general information access rather than AI tools, models, or frameworks. No explicit mention of machine learning or AI integration in the summary."
+    },
+    "https://www.ibm.com/think/topics/large-language-models-list": {
+      "date": "2026-03-22",
+      "decision": "skipped",
+      "title": "A List of Large Language Models | IBM",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal contains likely hallucinated future dates (2025) and incorrect licensing claims for OpenAI, reducing reliability despite relevant mentions of IBM Granite and ISO governance."
+    },
+    "https://k.sina.com.cn/article_7857201856_1d45362c0019039kuc.html": {
+      "date": "2026-03-22",
+      "decision": "skipped",
+      "title": "2026全球开源大模型TOP10榜单+主流模型深度解析|开源模型|Hugging Face|月之暗面|闭源模型|Yi-Large_新浪新闻",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal conflates open and closed models (Kimi is primarily closed), lacks operational specifics, and appears to be a hype-driven listicle rather than technical documentation."
+    },
+    "https://www.news.cn/fortune/20260316/2024587232554f6a830b3b9fc01a7b5b/c.html": {
+      "date": "2026-03-22",
+      "decision": "skipped",
+      "title": "AI智能体加速落地 距离“放心放手”还有多远？-新华网",
+      "source": "brave",
+      "score": 2,
+      "reason": "Mentions open-source project OpenClaw but primarily covers market trends and commercial hype from a general news source, lacking operational specifics or technical depth required by Openflows."
+    },
+    "https://github.com/ARahim3/mlx-tune": {
+      "date": "2026-03-22",
+      "decision": "drafted",
+      "title": "mlx-tune",
+      "source": "github",
+      "file": "mlx-tune.md"
+    },
+    "https://github.com/gmickel/gmickel-claude-marketplace": {
+      "date": "2026-03-22",
+      "decision": "drafted",
+      "title": "gmickel-claude-marketplace",
+      "source": "github",
+      "file": "gmickel-claude-marketplace.md"
+    },
+    "https://github.com/datawhalechina/self-llm": {
+      "date": "2026-03-22",
+      "decision": "drafted",
+      "title": "self-llm",
+      "source": "github",
+      "file": "self-llm-guide.md"
+    },
+    "https://opensourceprojects.dev/post/21759282-a8a5-4eb9-adcd-bd2d633af2c2": {
+      "date": "2026-03-22",
+      "decision": "drafted",
+      "title": "Clone any voice in seconds with this open-source TTS engine",
+      "source": "opensourceprojects",
+      "file": "lux-tts.md"
+    },
+    "https://opensourceprojects.dev/post/511271fb-af0e-4255-8c13-5922c24332c2": {
+      "date": "2026-03-22",
+      "decision": "drafted",
+      "title": "Turn your terminal into a collaborative workspace for AI agents",
+      "source": "opensourceprojects",
+      "file": "terminal-collaborative-workspace-ai-agents.md"
+    },
+    "https://opensourceprojects.dev/post/86fcf8a2-c6de-4bad-907c-9bff1acef0a4": {
+      "date": "2026-03-22",
+      "decision": "drafted",
+      "title": "PDF Parser for AI-ready data. Automate PDF accessibility. Open-source",
+      "source": "opensourceprojects",
+      "file": "pdf-parser-ai-ready-data.md"
+    },
+    "https://opensourceprojects.dev/post/f703fd79-1663-44d0-84b1-f25936d5adc6": {
+      "date": "2026-03-22",
+      "decision": "deferred",
+      "title": "The open-source framework for building agents that never lose the big picture",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Fits Openflows scope as an open-source AI agent framework with an inspectable GitHub repository, but the marketing-heavy title and truncated summary limit the assessment of operational specifics and neutrality.",
+      "signal": {
+        "title": "The open-source framework for building agents that never lose the big picture",
+        "url": "https://opensourceprojects.dev/post/f703fd79-1663-44d0-84b1-f25936d5adc6",
+        "summary": "Ever built an AI agent that starts off strong, handling tasks with precision, only to watch it get lost in the weeds after a few steps? It’s a common frustration. Agents often fail to maintain context, get stuck in loops, or lose sight of their original goal. What if there was a framework designed s...\n\nGitHub Repository: https://github.com/gsd-build/gsd-2",
+        "source": "opensourceprojects",
+        "date": "2026-03-22T04:10:57.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/a3d9638b-761b-4aa3-843d-0675cfd248eb": {
+      "date": "2026-03-22",
+      "decision": "deferred",
+      "title": "Turn any anime or manga into a personalized language learning immersion tool",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Open-source AI tool fits the 'tools' category, but niche consumer application and marketing-heavy summary limit operational depth.",
+      "signal": {
+        "title": "Turn any anime or manga into a personalized language learning immersion tool",
+        "url": "https://opensourceprojects.dev/post/a3d9638b-761b-4aa3-843d-0675cfd248eb",
+        "summary": "Learning a new language is a grind. Flashcards, grammar drills, repetitive audio lessons—it can feel like homework. What if, instead, you could learn Japanese by immersing yourself in the latest episode of *Jujutsu Kaisen* or a classic like *Cowboy Bebop*? What if the show itself became your interac...\n\nGitHub Repository: https://github.com/KolbyML/Manatan",
+        "source": "opensourceprojects",
+        "date": "2026-03-22T04:06:37.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/d09c66a2-519b-4159-b37e-58c900839382": {
+      "date": "2026-03-22",
+      "decision": "deferred",
+      "title": "Learn Vibe Coding from zero to one with AI and full-stack tutorials",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Open source educational resource from DataWhale; fits scope but focuses on emerging workflow terminology rather than core infrastructure.",
+      "signal": {
+        "title": "Learn Vibe Coding from zero to one with AI and full-stack tutorials",
+        "url": "https://opensourceprojects.dev/post/d09c66a2-519b-4159-b37e-58c900839382",
+        "summary": "Ever feel like you&apos;re just piecing together code from Stack Overflow and tutorials, but you&apos;re not really sure how it all fits into a bigger picture? You&apos;re not alone. A lot of learning resources jump straight into syntax without showing you the cohesive flow of building something real. That&apos;s where...\n\nGitHub Repository: https://github.com/datawhalechina/easy-vibe",
+        "source": "opensourceprojects",
+        "date": "2026-03-22T04:05:10.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/a2f8fa07-c609-4c23-9dbe-908e10fb954b": {
+      "date": "2026-03-22",
+      "decision": "deferred",
+      "title": "Train the smallest LM you can that fits in 16MB.",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Fits scope as open source code with specific constraints, but OpenAI's primary closed-source focus reduces its centrality to the open ecosystem.",
+      "signal": {
+        "title": "Train the smallest LM you can that fits in 16MB.",
+        "url": "https://opensourceprojects.dev/post/a2f8fa07-c609-4c23-9dbe-908e10fb954b",
+        "summary": "Sometimes the most interesting challenges come with the tightest constraints. While the AI world chases ever-larger models with trillions of parameters, a project from OpenAI asks a different, almost minimalist question: how small can you go?\n\nGitHub Repository: https://github.com/openai/parameter-golf",
+        "source": "opensourceprojects",
+        "date": "2026-03-21T17:48:09.000Z",
         "meta": {
           "stars": null
         }
