@@ -1,7 +1,7 @@
 # Peng Proposal Queue
 
 Generated: 2026-03-22
-Pending: **21** drafts — 21 English · 0 Chinese
+Pending: **31** drafts — 31 English · 0 Chinese
 
 To promote an entry:
 1. Move from `drafts/{id}.md` → `src/currency/{type}/{id}.md`
@@ -14,6 +14,16 @@ Promote to: `src/currency/currents/`
 
 | ID | Title | Drafted | Lang |
 |---|---|---|---|
+| self-llm-guide | Open Source Large Model User Guide (Self-LLM) | 2026-03-22 | en |
+| terminal-collaborative-workspace-ai-agents | Terminal Collaborative Workspace for AI Agents | 2026-03-22 | en |
+| perceptron-isaac-0-1 | Perceptron Isaac-0.1 | 2026-03-22 | en |
+| sage-multi-agent-framework | Sage Multi-Agent Framework | 2026-03-22 | en |
+| lux-tts | LuxTTS | 2026-03-22 | en |
+| mlx-tune | mlx-tune | 2026-03-22 | en |
+| pdf-parser-ai-ready-data | PDF Parser for AI-ready Data | 2026-03-22 | en |
+| ccg-workflow | CCG Workflow | 2026-03-22 | en |
+| gmickel-claude-marketplace | gmickel Claude Marketplace | 2026-03-22 | en |
+| awesome-llm-resources-curation | Awesome LLM Resources Curation | 2026-03-22 | en |
 | zeroclaw | Zeroclaw | 2026-03-22 | en |
 | zylos-core | Zylos Core | 2026-03-22 | en |
 | thestage-ai-whisper-large-v3-turbo | TheStage AI Whisper Large V3 Turbo | 2026-03-22 | en |
@@ -37,6 +47,16 @@ Promote to: `src/currency/currents/`
 
 **Abstracts:**
 
+- **self-llm-guide** (en): Datawhale's self-llm provides a Linux-based tutorial ecosystem for deploying and fine-tuning open-weight language models, covering environment setup, inference, and parameter-efficient adaptation.
+- **terminal-collaborative-workspace-ai-agents** (en): A terminal-based collaborative environment enabling multiple AI agents to operate within a shared command context, reducing manual orchestration between human operators and autonomous workflows.
+- **perceptron-isaac-0-1** (en): A 2B-parameter multimodal model combining Qwen3-1.7B and Siglip2 for grounded spatial reasoning and visual QA with in-context learning capabilities.
+- **sage-multi-agent-framework** (en): Sage is a modular multi-agent orchestration framework supporting sequential, parallel, and declarative execution modes with optimizations for smaller parameter models.
+- **lux-tts** (en): LuxTTS is an open-source text-to-speech engine enabling high-fidelity voice cloning and synthesis through efficient model architectures.
+- **mlx-tune** (en): mlx-tune is an open-source Python library enabling supervised, preference, and vision fine-tuning of large language models on Apple Silicon via the MLX framework with an Unsloth-compatible API.
+- **pdf-parser-ai-ready-data** (en): OpenDataLoader PDF provides structured data extraction from complex PDF layouts for AI consumption and accessibility compliance.
+- **ccg-workflow** (en): A Node.js CLI orchestration system routing frontend tasks to Gemini and backend tasks to Codex under Claude Code supervision with patch-based security constraints.
+- **gmickel-claude-marketplace** (en): A GitHub-hosted plugin marketplace extending Claude Code with autonomous workflow patterns, multi-model review gates, and receipt-based gating for reliable AI coding execution.
+- **awesome-llm-resources-curation** (en): A GitHub-hosted repository aggregating open-source tools, models, and documentation across the LLM ecosystem including agents, inference, and training.
 - **zeroclaw** (en): Zeroclaw is a Rust-based agent framework designed to consolidate state management, tool execution, and memory orchestration into a minimal runtime for autonomous workflows.
 - **zylos-core** (en): Zylos Core is an open-source orchestration infrastructure designed to coordinate multiple AI agents as a collaborative unit rather than isolated tools.
 - **thestage-ai-whisper-large-v3-turbo** (en): A CC-BY-4.0 optimized Whisper Large V3 variant using ElasticModel compression for real-time ASR on Apple Silicon and NVIDIA GPUs.
