@@ -1,6 +1,6 @@
 ---
 layout: layouts/currency-item.njk
-title: Airlock: Rust-based AI Agent for Code Review Automation
+title: "Airlock: Rust-based AI Agent for Code Review Automation"
 date: 2026-03-21
 currencyType: "current"
 currencyId: airlock-code-review-agent
