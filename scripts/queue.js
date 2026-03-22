@@ -41,7 +41,7 @@ function getMdFiles(dir, exclude = []) {
     .sort((a, b) => b.mtime - a.mtime);
 }
 
-const SKIP = ['QUEUE.md', 'seen.json', '.gitkeep'];
+const SKIP = ['QUEUE.md', 'peng-attention.md', 'seen.json', '.gitkeep'];
 
 const enFiles = getMdFiles(draftsDir, SKIP);
 const zhFiles = getMdFiles(zhDraftsDir, SKIP);

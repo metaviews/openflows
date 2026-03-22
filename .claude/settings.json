@@ -85,7 +85,9 @@
       "Bash(node -e \"const d = require\\(''''./_site/knowledge-manifest.json''''\\); console.log\\(''''Manifest:'''', d.count, ''''entries, built'''', d.generated\\)\")",
       "Bash(sed -i 's/^title: GitAgent: Version Control for AI Agents/title: \"\"\"\"GitAgent: Version Control for AI Agents\"\"\"\"/' src/currency/currents/gitagent.md)",
       "Bash(node scripts/translate.js)",
-      "Bash(node -e \"const d = require\\(''''./_site/knowledge-manifest.json''''\\); console.log\\(''''Manifest:'''', d.count, ''''entries | byLang:'''', JSON.stringify\\(d.byLang\\)\\)\")"
+      "Bash(node -e \"const d = require\\(''''./_site/knowledge-manifest.json''''\\); console.log\\(''''Manifest:'''', d.count, ''''entries | byLang:'''', JSON.stringify\\(d.byLang\\)\\)\")",
+      "Bash(python3 -:*)",
+      "Bash(node -e \"const s = require\\(''./drafts/seen.json''\\); const keys = Object.keys\\(s\\); console.log\\(''Total seen:'', keys.length\\); const missing = [''open-source-ai-agent-frameworks-2026'',''ccg-workflow-multi-model-development-stack-orchestration'',''codebuddy'']; missing.forEach\\(id => console.log\\(id, ''→'', s[id] ? JSON.stringify\\(s[id]\\) : ''NOT IN SEEN''\\)\\)\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
