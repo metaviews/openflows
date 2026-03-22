@@ -23,6 +23,7 @@ mediation:
     - "reviewed hermes-agent.nousresearch.com directly"
   humanRole: "full authorship"
   limits: "platform is under active development; verify current capabilities at hermes-agent.nousresearch.com"
+lastReviewed: 2026-03-21
 ---
 
 ### Signal

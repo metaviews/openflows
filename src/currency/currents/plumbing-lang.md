@@ -21,6 +21,7 @@ mediation:
     - "reviewed leithdocs.com/ldc/documents/outgoing/plumbing/release.md directly"
   humanRole: "full authorship"
   limits: "first public release, March 2026; research and educational use; commercial licensing available on request"
+lastReviewed: 2026-03-21
 ---
 
 ### Signal

@@ -21,6 +21,7 @@ mediation:
     - "reviewed deerflow.tech directly"
   humanRole: "full authorship"
   limits: "ByteDance organizational context; verify open source commitment and repository activity"
+lastReviewed: 2026-03-21
 ---
 
 ### Signal
