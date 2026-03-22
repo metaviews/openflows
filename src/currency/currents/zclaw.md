@@ -21,6 +21,7 @@ mediation:
     - "reviewed github.com/tnm/zclaw directly"
   humanRole: "full authorship"
   limits: "embedded hardware capabilities evolve quickly; verify supported ESP32 variants at the repository"
+lastReviewed: 2026-03-22
 ---
 
 ### Signal

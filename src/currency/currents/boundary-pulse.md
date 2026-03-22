@@ -15,7 +15,7 @@ links:
     relation: "tracks procedural shifts impacting workflow literacy"
   - id: inspectable-agent-operations
     relation: "monitors technical constraint changes affecting agent orchestration"
-lastReviewed: 2026-03-15
+lastReviewed: 2026-03-22
 ---
 ### Signal
 

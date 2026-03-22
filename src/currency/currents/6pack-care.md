@@ -15,7 +15,7 @@ links:
     relation: "applies to institutional trust in AI governance"
   - id: inspectable-agent-operations
     relation: "aligns with accountability and transparency principles"
-lastReviewed: 2026-03-15
+lastReviewed: 2026-03-22
 mediation:
   tooling: "OpenRouter (intake) + human rewrite on 2026-03-15"
   use:

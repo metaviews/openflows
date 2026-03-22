@@ -26,6 +26,7 @@ mediation:
     - "reviewed leithdocs.com production system as implementation reference"
   humanRole: "full authorship"
   limits: "emerging research area; production evidence currently limited to Leith Document Company's implementation"
+lastReviewed: 2026-03-22
 ---
 
 The dominant approach to AI safety focuses on aligning individual models. The artificial organisations approach focuses on the structure connecting them. William Waites' 2026 paper (arXiv:2602.13275) demonstrates that reliable collective behaviour can emerge from architectural constraints — information asymmetry, role specialisation, and enforced protocol boundaries — even when individual agents are unreliable.
