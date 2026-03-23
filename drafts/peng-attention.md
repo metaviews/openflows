@@ -1,7 +1,7 @@
-# Peng Attention Log — 2026-03-20
+# Peng Attention Log — 2026-03-23
 
-Knowledge base: 159 entries (159 English / 0 Chinese)
+Knowledge base: 190 entries (190 English / 0 Chinese)
 
 ## Pending Review
-English drafts pending: agent-execution-sandboxing-infrastructure, apple-ml-sharp, bert4torch, clawwork, garry-tan-claude-code-setup, open-source-ai-agent-framework-landscape-2026, ophel-cross-platform-ai-workflow-manager, qwen3-4b-dflash-b16, qwen3-8b-dflash-b16, qwen3-coder-30b-a3b-dflash, zeroclaw
-Total pending: 11
+English drafts pending: datawhale-easy-vibe, goclaw, gsd-2-context-framework, local-multimodal-perception-infrastructure, manatan-anime-manga-language-immersion, minimalist-agent-skills-workflow-repository, open-source-llm-updates-ai-releases-march-2026, openai-parameter-golf-16mb-constraint, understand-anything-engine, xllm
+Total pending: 10
