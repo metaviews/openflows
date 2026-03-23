@@ -21,6 +21,7 @@ mediation:
     - "researched from primary source"
   humanRole: "full authorship"
   limits: "verify current marketplace integration and self-improvement mechanics before publishing"
+lastReviewed: 2026-03-23
 ---
 
 ### Signal

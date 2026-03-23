@@ -11,7 +11,7 @@ permalink: /currency/currents/dify/
 links:
   - id: local-inference-baseline
     relation: "extends practical app-layer operations on top of"
-lastReviewed: 2026-03-15
+lastReviewed: 2026-03-23
 ---
 
 ### Signal

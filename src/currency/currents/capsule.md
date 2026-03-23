@@ -23,6 +23,7 @@ mediation:
     - "assessed linkage against existing knowledge base"
   humanRole: "review, edit, and approve before publication"
   limits: "signal content may be incomplete; verify primary sources before publishing"
+lastReviewed: 2026-03-23
 ---
 
 ### Signal
