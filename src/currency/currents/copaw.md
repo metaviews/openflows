@@ -51,3 +51,7 @@ The multi-channel messaging approach represents a distinct deployment pattern: r
 ### Connections
 
 CoPaw sits alongside Open WebUI, LibreChat, and AnythingLLM as a self-hosted AI assistant option, but targets a different primary interface (messaging platforms vs. web UI). The extensible skills architecture connects it to skills.sh's goal of reusable, composable agent capabilities. Its deployment flexibility — local or cloud — aligns with the local inference baseline circuit's concern for operator control over model access.
+
+## Updates
+
+**2026-03-23**: GitHub stars increased from 11.6k to 13k, reflecting sustained growth in community adoption. Current activity metrics show 426 open issues and 125 pull requests.

@@ -50,3 +50,7 @@ Early-stage project on GitHub with active development. TypeScript implementation
 ### Connections
 
 CashClaw connects to the OpenClaw ecosystem by name and by architectural approach — both treat agents as autonomous actors rather than tools under constant human supervision. The self-improvement loop raises direct questions relevant to the Autonomous Research Accountability circuit: who is responsible when a self-improving agent makes decisions based on its own evolved logic? The Inspectable Agent Operations circuit's concern for auditable behavior is directly challenged by an agent that modifies its own capabilities.
+
+## Updates
+
+**2026-03-23**: The project's GitHub star count has increased from 551 to 753, indicating a significant adoption shift and growing visibility. Additional activity metrics, including 164 forks and 25 open issues, are now available to track development momentum.

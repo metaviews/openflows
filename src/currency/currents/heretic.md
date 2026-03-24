@@ -54,3 +54,7 @@ Active project with 14.1k stars. AGPL-3.0 license means any modifications must b
 ### Connections
 
 Heretic is only possible because open-weight models exist — it depends on the commons that the Open Weights Commons circuit describes. Its existence raises the core governance question of that circuit: what does responsible open release mean when release enables modification? The Inspectable Agent Operations circuit assumes that agent behavior can be audited; Heretic demonstrates that the model layer itself can be modified out from under those assumptions. The Autonomous Research Accountability circuit's concern about who is responsible for model behavior becomes acute when the model has been dealigned by a third party and the original developer's safety training no longer applies.
+
+## Updates
+
+**2026-03-23**: As of the latest assessment, the repository star count has increased from 14.1k to 16.5k, indicating sustained growth in community adoption. This update ensures the Context and Current State sections accurately reflect the project's current popularity.

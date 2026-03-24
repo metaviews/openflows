@@ -52,3 +52,7 @@ The collection represents an emerging pattern: domain expertise encoded as machi
 ### Connections
 
 This collection sits alongside skills.sh as an instance of the extensible skills pattern for AI agents, but applied to a security domain rather than general-purpose workflows. The dual-use nature of security skills connects it directly to Heretic — both operate in the space between defense and offense that defines security research. The inspectable agent operations circuit's concern for auditable AI behavior applies with particular urgency when the agent is performing security analysis: knowing what the agent did and why matters more in security contexts than in most others.
+
+## Updates
+
+**2026-03-22**: The repository now lists 734+ structured cybersecurity skills (increased from 611+) and supports 20+ AI platforms including OpenAI Codex CLI, expanding beyond the previously listed four environments. It now also aligns with the agentskills.io open standard and includes MITRE ATT&CK mapping for its skill set.
