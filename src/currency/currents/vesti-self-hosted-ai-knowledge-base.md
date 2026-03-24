@@ -1,6 +1,6 @@
 ---
 layout: layouts/currency-item.njk
-title: VESTI: Self-Hosted AI Conversation Knowledge Base
+title: "VESTI: Self-Hosted AI Conversation Knowledge Base"
 date: 2026-03-24
 currencyType: "current"
 currencyId: vesti-self-hosted-ai-knowledge-base

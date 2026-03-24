@@ -1,6 +1,6 @@
 ---
 layout: layouts/currency-item.njk
-title: Manatan: Anime and Manga Language Immersion Tool
+title: "Manatan: Anime and Manga Language Immersion Tool"
 date: 2026-03-23
 currencyType: "current"
 currencyId: manatan-anime-manga-language-immersion
