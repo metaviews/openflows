@@ -262,7 +262,7 @@ Implementation:
 - **Peng's mediation notes**: written in the language of the entry being drafted; translator's notes flagged under **译注** where Chinese illuminates gaps in English
 
 #### Cycle 8: Depth — Entry Enrichment and Quality
-**Status**: complete — 79/79 English entries passing (100%)
+**Status**: complete — 190/190 English entries passing (100%) as of 2026-03-22
 
 The knowledge base has breadth. It now needs density. Many early entries — drafted before the richer intake workflow — have thin bodies, missing links, or underdeveloped abstracts. Cycle 8 turns Peng's attention inward: auditing what exists and enriching what is sparse.
 
@@ -285,25 +285,47 @@ Peng's highest function is not intake — it's synthesis. Cycle 9 adds a synthes
 - **`.github/workflows/peng-perspective.yml`** — Monday, Wednesday, Friday at 08:00 UTC: build → synthesize → digest → PR. The PR body is the digest itself — the GitHub notification is the admin's briefing. No hunting required.
 - **Promotion workflow for circuit drafts**: move `drafts/{id}.md` to `src/currency/circuits/`; run `node scripts/translate.js --id {id}`; review `drafts/zh/{id}.md`; move to `src/currency/zh/circuits/`
 
-#### Cycle 10: Conversation — Site Integration
-**Status**: deferred (was Cycle 5b)
+#### Cycle 10: Foundation — Server Setup
+**Status**: in progress
 
-The site becomes conversational. Visitors can query the knowledge base directly without accessing the repository.
+Move from local CLI tooling to a web-native control plane. A self-hosted server handles dynamic logic and agent state; Cloudflare Pages continues to serve the static site.
 
-- **Implementation**: Cloudflare Pages Function proxying OpenRouter — keys stay server-side, no new infrastructure required
-- **Interface**: bilingual from the start; input in either language, response in the same language; model switchable via environment variable
-- **Scope**: query interface only — Peng answers questions about the ecosystem from within the site; it does not publish from this interface
-- **Context strategy**: full knowledge manifest as context; compact mode (abstracts only) for cost efficiency; full body mode for deep queries
+- **Auth**: Cloudflare Access — admin gate, zero-maintenance, email/GitHub OAuth; no self-managed auth layer
+- **Server**: Node.js + Hono or Fastify on self-hosted hardware; not PaaS, not VPS rental
+- **Database**: SQLite on the server — single file, zero ops, sufficient at this scale
+- **Dashboard panels**: status (pending drafts, KB counts, audit state) and queue (QUEUE.md rendered in-browser); no AI yet
+- **Content source of truth**: git/GitHub stays canonical; dashboard reads but does not write entries; human promotion workflow preserved
+- **Why not Pages Functions**: GitHub API as a write layer is too indirect (3 hops: Function → GitHub API → commit → deploy); serverless timeout/connection constraints limit agent capability as Peng grows
 
-#### Cycle 11: Network — Agent-to-Agent
+#### Cycle 11: Agent Interface — Dashboard Conversation
 **Status**: not started
 
-Openflows documents the agent ecosystem. The next development is to become legible *within* it — not just crawlable by humans, but consumable by agents.
+Peng becomes conversational inside the dashboard. Admins can query the knowledge base, inspect queue state, and direct Peng's attention from within the browser.
 
-- **MCP endpoint**: wrap the knowledge manifest in a Model Context Protocol server, making Peng's knowledge base directly consumable by Claude, Cursor, and any MCP-compatible client; agents querying other agents can include Openflows context without scraping
-- **Agent registry**: submit the manifest URL to emerging agent-discovery directories; Openflows should be findable in the infrastructure the ecosystem is building for itself
-- **Reciprocal documentation**: Peng begins to document agents that document things — not just tools and models, but the emerging class of knowledge-maintaining agents; Openflows becomes a practitioner in the field it tracks
-- **ModelScope source**: implement `scripts/sources/modelscope.js` once API structure is verified — the primary Chinese-ecosystem model hosting platform, completing the bilingual intake picture
+- **Streaming conversation**: server streams OpenRouter responses to the dashboard; no page reload
+- **Peng queries manifest**: conversation context includes the full knowledge manifest; Peng can look up entries, surface connections, and answer questions about the ecosystem
+- **Tool calls**: entry lookup, queue inspection, and status queries exposed as tools Peng can call during conversation
+- **Scope**: admin-only; behind Cloudflare Access; Peng does not publish from this interface
+
+#### Cycle 12: MCP Layer
+**Status**: not started
+
+Expose Peng's tools as a Model Context Protocol endpoint. The dashboard becomes the first MCP client; external agents and editors can also connect.
+
+- **MCP server**: wraps the knowledge manifest and Peng's query tools; runs on the self-hosted server
+- **Dashboard as first client**: the Cycle 11 conversation interface connects via MCP rather than direct API calls
+- **External access**: Claude, Cursor, and any MCP-compatible client can query Openflows directly; no scraping required
+- **Agent registry**: submit the manifest and MCP endpoint to emerging agent-discovery directories
+
+#### Cycle 13: Public — Open Conversation Interface
+**Status**: not started
+
+The conversation interface goes public. Visitors can query the knowledge base directly from the site.
+
+- **Rate limiting**: per-IP limits on the public query endpoint; abuse surface is narrow (read-only tools only)
+- **Bilingual from the start**: input in either language, response in the same language
+- **Scoped tools**: public interface exposes read-only manifest queries only; no queue or admin tools
+- **Context strategy**: compact mode (abstracts only) for cost efficiency; full body mode for deep queries on demand
 
 ### The Recursive Principle
 

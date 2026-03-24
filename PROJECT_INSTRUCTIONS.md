@@ -27,9 +27,9 @@ Currency section model (living layer)
 - Currency contains three internal entry types:
   - Currents = movement (provisional, exploratory, tensions/questions/early patterning)
   - Circuits = completion (closed loops, integration, durable shifts, what-changed and why it holds)
-  - Operators = exceptional humans whose practice materially shapes open intelligence trajectories
-- Currents, Circuits, and Operators should feel meaningfully different in intent and structure.
-- Avoid over-relying on the old “signals” convention; prefer Currency → Currents/Circuits/Operators.
+  - Practitioners = exceptional humans whose practice materially shapes open intelligence trajectories (implemented as `currencyType: “practitioner”`; early docs may say “Operators” — Practitioners is canonical)
+- Currents, Circuits, and Practitioners should feel meaningfully different in intent and structure.
+- Avoid over-relying on the old “signals” convention; prefer Currency → Currents/Circuits/Practitioners.
 
 Matrix-building linkage rule (required)
 - Every new Currency entry must trigger a linkage pass across the other types:
