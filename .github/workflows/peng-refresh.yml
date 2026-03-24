@@ -60,4 +60,5 @@ jobs:
           git config user.email "peng@openflows.org"
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "peng: refresh ${DATE} — ${{ steps.check.outputs.updates }} update draft(s)"
+          git pull --rebase origin main
           git push origin main

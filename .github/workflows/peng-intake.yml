@@ -79,4 +79,5 @@ jobs:
           git config user.email "peng@openflows.org"
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "peng: intake ${DATE} — ${{ steps.check.outputs.count }} new draft(s)"
+          git pull --rebase origin main
           git push origin main

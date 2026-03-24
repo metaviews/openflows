@@ -67,4 +67,5 @@ jobs:
           git config user.email "peng@openflows.org"
           DATE=$(date -u +%Y-%m-%d)
           git commit -m "peng: perspective ${DATE}"
+          git pull --rebase origin main
           git push origin main
