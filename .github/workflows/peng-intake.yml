@@ -42,6 +42,14 @@ jobs:
           BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
         run: node scripts/intake.js --sources github,huggingface,brave,opensourceprojects --limit 10
 
+      - name: Scan for practitioner candidates
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          OPENROUTER_MODEL: ${{ vars.OPENROUTER_MODEL }}
+          FALLBACK_OPENROUTER_MODEL: ${{ vars.FALLBACK_OPENROUTER_MODEL }}
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+        run: node scripts/practitioners.js --limit 3
+
       - name: Run quality audit
         run: node scripts/audit.js
 
@@ -53,7 +61,7 @@ jobs:
         run: |
           git add audit/
           git add -f drafts/
-          DRAFTS=$(git diff --staged --name-only | grep '^drafts/[^/][^/]*\.md$' | grep -v '^drafts/QUEUE\.md$' | grep -v '^drafts/digest-.*\.md$' || true)
+          DRAFTS=$(git diff --staged --name-only | grep -E '^drafts/[^/][^/]*\.md$|^drafts/practitioners/[^/]+\.md$' | grep -v '^drafts/QUEUE\.md$' | grep -v '^drafts/digest-.*\.md$' || true)
           if [ -z "$DRAFTS" ]; then
             echo "changed=false" >> $GITHUB_OUTPUT
             echo "No new drafts this run."

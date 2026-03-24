@@ -132,6 +132,7 @@ function main() {
   const enDrafts = draftsIn(null).filter(id => !isDigest(id));
   const zhDrafts = draftsIn('zh');
   const enrichedDrafts = draftsIn('enriched');
+  const practitionerCandidates = draftsIn('practitioners');
   const digestDrafts = draftsIn(null).filter(id => isDigest(id));
 
   const enPending = enDrafts.filter(id => !isInSrc(id));
@@ -164,6 +165,9 @@ function main() {
   console.log(row('English drafts:', enPending.length, enStale.length));
   console.log(row('Chinese drafts:', zhPending.length, zhStale.length));
   console.log(row('Enriched drafts:', enrichedPending.length, enrichedStale.length));
+  if (practitionerCandidates.length > 0) {
+    console.log(`  ${'Practitioner candidates:'.padEnd(20)} ${practitionerCandidates.length} awaiting selection`);
+  }
   if (digestDrafts.length > 0) {
     console.log(`  ${'Digests:'.padEnd(20)} ${digestDrafts.length} unread`);
   }
@@ -186,6 +190,10 @@ function main() {
   if (enrichedPending.length > 0) {
     console.log('\nENRICHED DRAFTS — pending promotion');
     for (const id of enrichedPending) console.log(`    drafts/enriched/${id}.md`);
+  }
+  if (practitionerCandidates.length > 0) {
+    console.log('\nPRACTITIONER CANDIDATES — awaiting human selection');
+    for (const id of practitionerCandidates) console.log(`    drafts/practitioners/${id}.md`);
   }
   if (enStale.length + zhStale.length + enrichedStale.length > 0) {
     const totalStale = enStale.length + zhStale.length + enrichedStale.length;

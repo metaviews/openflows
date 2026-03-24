@@ -15,6 +15,7 @@ const { join } = require('path');
 const root = join(__dirname, '..');
 const draftsDir = join(root, 'drafts');
 const zhDraftsDir = join(root, 'drafts', 'zh');
+const practitionerDraftsDir = join(root, 'drafts', 'practitioners');
 
 function parseFrontmatter(filepath) {
   try {
@@ -45,6 +46,7 @@ const SKIP = ['QUEUE.md', 'peng-attention.md', 'seen.json', '.gitkeep'];
 
 const enFiles = getMdFiles(draftsDir, SKIP);
 const zhFiles = getMdFiles(zhDraftsDir, SKIP);
+const practitionerFiles = getMdFiles(practitionerDraftsDir, SKIP);
 const total = enFiles.length + zhFiles.length;
 
 // Group by currencyType
@@ -127,6 +129,32 @@ if (total === 0) {
       }
       out += '\n';
     }
+  }
+}
+
+// Practitioner candidates — separate section, different framing
+if (practitionerFiles.length > 0) {
+  out += `## Practitioner Candidates (修行者候选)\n\n`;
+  out += `These are **candidates for human selection** — not ready-to-promote drafts.\n`;
+  out += `Review each carefully. Promote only those with clear, durable field-shaping impact.\n\n`;
+  out += `Promote to: \`src/currency/practitioners/\`\n\n`;
+  out += `| ID | Title | Drafted |\n`;
+  out += `|---|---|---|\n`;
+  for (const { file, path, mtime } of practitionerFiles) {
+    const fm = parseFrontmatter(path);
+    const id = fm.currencyId || file.replace('.md', '');
+    const title = fm.title || file;
+    const drafted = mtime.toISOString().slice(0, 10);
+    out += `| ${id} | ${title} | ${drafted} |\n`;
+  }
+  out += '\n';
+  if (practitionerFiles.some(({ path }) => parseFrontmatter(path).abstract)) {
+    out += '**Abstracts:**\n\n';
+    for (const { file, path } of practitionerFiles) {
+      const fm = parseFrontmatter(path);
+      if (fm.abstract) out += `- **${fm.currencyId || file}**: ${fm.abstract}\n`;
+    }
+    out += '\n';
   }
 }
 
