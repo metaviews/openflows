@@ -25,8 +25,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects (2026-03-18). GitHub Repository: https://github.com/Xuanwo/xurl. The signal identifies a gap in agent tooling where fetching and parsing URLs involves wrestling with inconsistent HTML, redirects, and character encodings. xurl is presented as an open-source client to standardize this workflow.
-
+[xurl](https://github.com/Xuanwo/xurl.) · opensourceprojects (2026-03-18). GitHub Repository: https://github.com/Xuanwo/xurl. The signal identifies a gap in agent tooling where fetching and parsing URLs involves wrestling with inconsistent HTML, redirects, and character encodings. xurl is presented as an open-source client to standardize this workflow · 2026-03-18
 ### Context
 AI agents require reliable access to web content to perform research, verification, and data extraction tasks. Current implementations often rely on ad-hoc scripts or heavy browser automation, introducing latency and fragility into agentic workflows. Standardized client libraries reduce the cognitive load on agent designers by abstracting low-level HTTP and parsing complexities.
 

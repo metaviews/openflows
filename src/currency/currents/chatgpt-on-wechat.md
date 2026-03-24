@@ -29,8 +29,7 @@ mediation:
 ---
 
 ### Signal
-Source: GitHub repository `zhayujie/chatgpt-on-wechat`. Signal content identifies the project as "CowAgent," a super AI assistant based on large language models capable of active thinking, task planning, OS access, and long-term memory. Supports multiple model providers (OpenAI, Claude, Qwen, etc.) and channels (WeChat, Feishu, DingTalk, Web). Tags include `ai-agent`, `mcp`, `skills`, `wechat`.
-
+[chatgpt-on-wechat](https://github.com/zhayujie/chatgpt-on-wechat) · GitHub repository zhayujie/chatgpt-on-wechat. Signal content identifies the project as "CowAgent," a super AI assistant based on large language models capable of active thinking, task planning, OS access, and long-term memory. Supports multiple model providers (OpenAI, Claude, Qwen, etc.) and channels (WeChat, Feishu, DingTalk, Web). Tags include ai-agent, mcp, skills, wechat
 ### Context
 The project operates within the ecosystem of open-source agent frameworks that prioritize local deployment and multi-channel integration. It functions as both a ready-to-use personal assistant and an extensible framework for developers to add model interfaces, channels, and tools. The signal indicates a pivot or branding update toward "CowAgent" while maintaining the `chatgpt-on-wechat` repository identity.
 

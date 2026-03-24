@@ -31,8 +31,9 @@ lastReviewed: 2026-03-19
 ---
 
 ### Signal
-GitHub repository `1186258278/OpenClawChineseTranslation` provides a Chinese localization of the OpenClaw agent framework. Features include automated synchronization with upstream, a Chinese CLI and dashboard, support for Claude- and ChatGPT-based workflows, and deployment paths spanning WhatsApp, Telegram, and Discord. The repository also includes installation guides, troubleshooting, and Docker support.
+[OpenClaw Chinese Translation](https://github.com/1186258278/OpenClawChineseTranslation)
 
+GitHub repository `1186258278/OpenClawChineseTranslation` provides a Chinese localization of the OpenClaw agent framework. Features include automated synchronization with upstream, a Chinese CLI and dashboard, support for Claude- and ChatGPT-based workflows, and deployment paths spanning WhatsApp, Telegram, and Discord. The repository also includes installation guides, troubleshooting, and Docker support.
 ### Context
 OpenClaw serves as an open-source agent framework emphasizing inspectability, configuration, and participatory AI practice. Localization efforts reduce the operational friction for non-English speaking operators, expanding the user base for local inference and agent orchestration tools. This entry captures the specific implementation of that localization effort rather than the upstream framework itself.
 

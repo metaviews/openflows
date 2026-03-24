@@ -163,6 +163,10 @@ Body sections in this order:
 ### Open Questions
 ### Connections
 
+Signal section format:
+- First line: [Title](URL) · Source · Date
+- Then a concise paragraph summarising the signal content (no key-value labels)
+
 Rules:
 - Only include links where the connection to an existing entry is genuine and specific
 - If no strong links exist, omit the links field entirely

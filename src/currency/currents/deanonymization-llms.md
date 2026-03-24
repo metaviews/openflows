@@ -17,9 +17,9 @@ lastReviewed: 2026-03-23
 ---
 
 ### Signal
+[Large-scale online deanonymization with LLMs](https://arxiv.org/abs/2602.16800)
 
-The paper [Large-scale online deanonymization with LLMs](https://arxiv.org/abs/2602.16800) reports that LLM-based pipelines can match pseudonymous online identities across datasets using raw text alone, with strong precision-recall performance against classical baselines.
-
+The paper [Large-scale online deanonymization with LLMs] reports that LLM-based pipelines can match pseudonymous online identities across datasets using raw text alone, with strong precision-recall performance against classical baselines.
 ### Context
 
 The core shift is methodological. Earlier deanonymization approaches often depended on structured data and hand-engineered features; this work uses model-assisted feature extraction, candidate retrieval, and verification directly on unstructured content.

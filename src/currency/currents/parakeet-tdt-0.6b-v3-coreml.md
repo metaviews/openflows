@@ -28,12 +28,7 @@ mediation:
 ---
 
 ### Signal
-Source: Hugging Face (FluidInference/parakeet-tdt-0.6b-v3-coreml)
-Date: 2026-03-15
-URL: https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v3-coreml
-Metrics: 30 likes, 144,319 downloads
-License: CC-BY-4.0
-
+[FluidInference Parakeet TDT CoreML](https://huggingface.co/FluidInference/parakeet-tdt-0.6b-v3-coreml) · Hugging Face (FluidInference/parakeet-tdt-0.6b-v3-coreml) · 2026-03-15
 ### Context
 This entry represents a Core ML conversion of the NVIDIA Parakeet TDT 0.6B model. The conversion enables execution of the automatic speech recognition (ASR) pipeline on Apple Silicon devices without requiring cloud connectivity. The model is part of the FluidAudio ecosystem, which provides batch ASR services and utilizes this specific variant for its backend processing. The base architecture relies on NVIDIA NeMo libraries, specifically the Transducer and FastConformer components.
 

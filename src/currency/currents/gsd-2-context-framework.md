@@ -29,8 +29,9 @@ mediation:
 ---
 
 ### Signal
-Signal source: opensourceprojects. URL: https://opensourceprojects.dev/post/f703fd79-1663-44d0-84b1-f25936d5adc6. GitHub repository: https://github.com/gsd-build/gsd-2. The signal identifies a common failure mode in autonomous agents where context is lost or goals drift after initial execution steps. The GSD-2 framework is presented as a solution to maintain the "big picture" during long-horizon tasks.
+[GSD-2 Context Framework](https://opensourceprojects.dev/post/f703fd79-1663-44d0-84b1-f25936d5adc6.)
 
+Signal source: opensourceprojects.
 ### Context
 Autonomous agent systems frequently suffer from context degradation over extended execution chains. Without explicit state management or memory retention mechanisms, agents may enter loops, repeat errors, or deviate from original objectives. This drift is particularly prevalent in multi-step reasoning or tool-use scenarios where intermediate states are not preserved or validated against the primary goal.
 

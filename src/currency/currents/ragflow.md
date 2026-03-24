@@ -30,12 +30,9 @@ lastReviewed: 2026-03-20
 ---
 
 ### Signal
-Source: GitHub repository by InfiniFlow.
-Title: ragflow
-URL: https://github.com/infiniflow/ragflow
-Date: 2026-03-13
-Content: RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to create a superior context layer for LLMs. Tags include agent, agentic, agentic-workflow, ai-search, context-engineering, document-parser, graphrag, llm, mcp, rag, retrieval-augmented-generation.
+[ragflow](https://github.com/infiniflow/ragflow) · GitHub repository by InfiniFlow. · 2026-03-13
 
+RAGFlow is a leading open-source Retrieval-Augmented Generation (RAG) engine that fuses cutting-edge RAG with Agent capabilities to create a superior context layer for LLMs. Tags include agent, agentic, agentic-workflow, ai-search, context-engineering, document-parser, graphrag, llm, mcp, rag, retrieval-augmented-generation.
 ### Context
 RAGFlow operates at the intersection of retrieval systems and agentic orchestration. Unlike traditional RAG pipelines that focus primarily on document chunking and vector search, RAGFlow emphasizes deep document understanding and graph-based retrieval mechanisms. It positions itself as a context engineering layer that enables LLMs to access structured knowledge before generating responses. The project supports multiple model providers including Ollama, OpenAI, and DeepSeek, indicating a provider-agnostic infrastructure approach.
 

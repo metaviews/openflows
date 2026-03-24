@@ -28,8 +28,7 @@ mediation:
 ---
 
 ### Signal
-Source: HuggingFace (PerceptronAI/Isaac-0.1). Release Date: 2026-03-20. Model Type: Image-text-to-text. Parameters: 2B. Base Models: Qwen/Qwen3-1.7B, google/siglip2-so400m-patch14-384. Library: Transformers. License: CC-BY-NC-4.0. URL: https://huggingface.co/PerceptronAI/Isaac-0.1.
-
+[Perceptron Isaac-0.1](https://huggingface.co/PerceptronAI/Isaac-0.1.) · HuggingFace (PerceptronAI/Isaac-0.1). Release Date: 2026-03-20. Model Type: Image-text-to-text. Parameters: 2B. Base Models: Qwen/Qwen3-1.7B, google/siglip2-so400m-patch14-384. Library: Transformers. License: CC-BY-NC-4.0. URL: https://huggingface.co/PerceptronAI/Isaac-0.1 · 2026-03-20
 ### Context
 Perceptron AI, founded by the team behind Meta's Chameleon multimodal models, released Isaac-0.1 as a perceptive-language model. The architecture integrates a Qwen3-1.7B text backbone with a Siglip2 visual encoder. The model targets physical AI applications, supporting visual QA, grounded spatial intelligence, and in-context learning for perception tasks such as defect detection and safety conditions.
 

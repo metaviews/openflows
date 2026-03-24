@@ -26,9 +26,7 @@ mediation:
 ---
 
 ### Signal
-
-Source: nemoclaw.bot. URL: https://nemoclaw.bot/. NVIDIA enterprise AI agent platform. Integration: NVIDIA NeMo framework. Expected launch: GTC 2026.
-
+[NemoClaw](https://nemoclaw.bot/.) · nemoclaw.bot. URL: https://nemoclaw.bot/. NVIDIA enterprise AI agent platform. Integration: NVIDIA NeMo framework. Expected launch: GTC 2026
 ### Context
 
 NemoClaw represents NVIDIA's entry into the enterprise open-source agent framework space, built on top of the NeMo foundation model training and inference framework. The hardware-agnostic positioning is notable for a company whose competitive advantage is hardware — it signals that NVIDIA sees value in broad ecosystem adoption of agent tooling even beyond NVIDIA GPU deployments. The security-focused design reflects enterprise requirements for regulated industries. The "claw" naming connects it to the broader open-source agent ecosystem that has coalesced around that framing.

@@ -28,14 +28,7 @@ mediation:
 ---
 
 ### Signal
-
-Source: github
-Title: MetaClaw
-URL: https://github.com/aiming-lab/MetaClaw
-Date: 2026-03-17
-
-MetaClaw is an open-source agent framework developed by Aiming Lab. The project focuses on enabling agents to learn and evolve through conversation using meta-learning and LoRA-based fine-tuning. The repository claims operation without GPU cluster requirements and supports fully asynchronous execution. It includes a technical report on arXiv (2603.17187) and is licensed under MIT.
-
+[MetaClaw](https://github.com/aiming-lab/MetaClaw) · GitHub · 2026-03-17
 ### Context
 
 MetaClaw emerges within the trajectory of parameter-efficient fine-tuning (PEFT) and agent skill evolution. While many agent frameworks focus on orchestration or static skill libraries, MetaClaw positions itself around dynamic adaptation. It aligns with the broader open-source infrastructure trend of reducing computational barriers for continuous learning, similar to the efficiency goals seen in local inference and quantization projects.

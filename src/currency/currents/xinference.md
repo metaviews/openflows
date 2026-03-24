@@ -30,12 +30,9 @@ lastReviewed: 2026-03-22
 ---
 
 ### Signal
-**Source:** github  
-**Title:** inference  
-**URL:** https://github.com/xorbitsai/inference  
-**Date:** 2026-03-14  
-**Content:** Swap GPT for any LLM by changing a single line of code. Xinference lets you run open-source, speech, and multimodal models on cloud, on-prem, or your laptop — all through one unified, production-ready inference API.
+[inference](https://github.com/xorbitsai/inference) · GitHub · 2026-03-14
 
+Swap GPT for any LLM by changing a single line of code. Xinference lets you run open-source, speech, and multimodal models on cloud, on-prem, or your laptop — all through one unified, production-ready inference API.
 ### Context
 Model serving infrastructure is fragmenting across specialized runtimes (vLLM, TGI, Ollama) and cloud providers. Xinference consolidates these into a single Python library and API, supporting diverse backends (llama.cpp, vLLM, PyTorch) and modalities (text, speech, vision) within one deployment surface. It addresses the friction of switching inference engines while maintaining compatibility with open weights ecosystems.
 

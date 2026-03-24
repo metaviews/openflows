@@ -26,8 +26,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev. GitHub Repository: https://github.com/KolbyML/Manatan. Date: 2026-03-22. The signal describes a utility designed to process anime and manga media files to generate structured language learning assets, moving beyond static flashcards to contextual immersion.
-
+[Manatan: Anime and Manga Language Immersion Tool](https://github.com/KolbyML/Manatan.) · opensourceprojects.dev · 2026-03-22
 ### Context
 Traditional language acquisition relies on curated datasets that often lack engagement or real-world context. This project attempts to bridge the gap between consumption media and structured learning by treating existing cultural artifacts as the primary data source for vocabulary and grammar acquisition. The approach requires multimodal processing: optical character recognition for manga text and automatic speech recognition for anime audio, followed by semantic extraction.
 

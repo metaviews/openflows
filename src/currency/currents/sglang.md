@@ -27,12 +27,10 @@ mediation:
 ---
 
 ### Signal
-Source: github
-URL: https://github.com/sgl-project/sglang
-Date: 2026-03-15
-Content: SGLang is a high-performance serving framework for large language models and multimodal models.
-Tags: attention, blackwell, cuda, deepseek, diffusion, glm, gpt-oss, inference, llama, llm, minimax, moe, qwen, qwen-image, reinforcement-learning, transformer, vlm, wan
+[SGLang](https://github.com/sgl-project/sglang) · GitHub · 2026-03-15
 
+SGLang is a high-performance serving framework for large language models and multimodal models.
+Tags: attention, blackwell, cuda, deepseek, diffusion, glm, gpt-oss, inference, llama, llm, minimax, moe, qwen, qwen-image, reinforcement-learning, transformer, vlm, wan
 ### Context
 SGLang is developed by LMSYS (Large Model Systems Organization) as a specialized serving engine designed to address the latency and throughput bottlenecks of deploying large language models (LLMs) and vision-language models (VLMs). It utilizes structured decoding and a memory-efficient backend to manage complex attention patterns and multi-turn interactions. The framework supports a wide range of model families including Llama, DeepSeek, Qwen, and Mistral, as well as diffusion models for image and video generation.
 

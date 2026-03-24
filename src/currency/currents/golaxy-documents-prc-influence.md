@@ -19,9 +19,9 @@ lastReviewed: 2026-03-23
 ---
 
 ### Signal
+[GoLaxy Documents and AI Influence Operations](https://medium.com/doublethinklab/the-rise-of-ai-in-prc-influence-operations-nine-takeaways-from-the-golaxy-documents-2d6617a753e5)
 
-The March 2026 report ["The Rise of AI in PRC Influence Operations: Nine Takeaways from the GoLaxy Documents"](https://medium.com/doublethinklab/the-rise-of-ai-in-prc-influence-operations-nine-takeaways-from-the-golaxy-documents-2d6617a753e5) describes leaked materials that outline AI-assisted targeting, content generation, and distribution workflows for influence operations.
-
+The March 2026 report ["The Rise of AI in PRC Influence Operations: Nine Takeaways from the GoLaxy Documents"] describes leaked materials that outline AI-assisted targeting, content generation, and distribution workflows for influence operations.
 ### Context
 
 The shift is from low-sophistication propaganda at scale toward workflow-integrated systems that combine audience analysis, persona management, generated messaging, and distribution tooling in a single stack.

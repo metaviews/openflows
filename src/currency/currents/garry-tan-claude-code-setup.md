@@ -23,8 +23,9 @@ mediation:
 ---
 
 ### Signal
-External signal from `opensourceprojects.dev` dated 2026-03-16 describing Garry Tan's operational setup for automating software development meta-work. The signal references the GitHub repository `garrytan/gstack` and outlines a configuration using Claude Code to assume roles such as CEO, Engineering Manager, and Release Manager.
+[Garry Tan Claude Code Setup](https://github.com/garrytan/gstack) · 2026-03-16
 
+External signal from `opensourceprojects.dev` dated 2026-03-16 describing Garry Tan's operational setup for automating software development meta-work. The signal references the GitHub repository `garrytan/gstack` and outlines a configuration using Claude Code to assume roles such as CEO, Engineering Manager, and Release Manager.
 ### Context
 The signal addresses the operational overhead of "meta-work" in software development, including planning, code review, testing, and deployment. It proposes a reduction of human time spent on coordination by delegating these functions to an AI-driven workflow orchestrated via Claude Code. The setup is framed as a replicable pattern for solo founders or small teams to maintain throughput without proportional increases in management overhead.
 

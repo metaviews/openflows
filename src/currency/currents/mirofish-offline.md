@@ -25,11 +25,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev (2026-03-20)
-URL: https://opensourceprojects.dev/post/41441f93-e6e5-431e-8328-ead0ff052336
-GitHub: https://github.com/nikmcfly/MiroFish-Offline
-Content Summary: A signal describing MiroFish-Offline as a local-first playground for building and predicting with autonomous AI agents entirely on the user's machine, emphasizing offline execution to mitigate API costs and privacy concerns.
-
+[MiroFish-Offline](https://opensourceprojects.dev/post/41441f93-e6e5-431e-8328-ead0ff052336) · opensourceprojects.dev
 ### Context
 The signal aligns with the broader shift toward treating local inference as standard infrastructure. While cloud-based agent orchestration remains dominant, friction points regarding cost, latency, and data sovereignty are driving demand for self-hosted alternatives. This entry captures a specific iteration of the MiroFish project adapted for offline autonomy.
 

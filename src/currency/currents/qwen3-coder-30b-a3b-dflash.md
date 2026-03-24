@@ -27,8 +27,9 @@ mediation:
 ---
 
 ### Signal
-HuggingFace entry for `z-lab/Qwen3-Coder-30B-A3B-DFlash` (2026-03-17). Model card indicates MIT license, `transformers` library, and `text-generation` pipeline tag. Tags include `dflash`, `speculative-decoding`, `diffusion`, `efficiency`, `flash-decoding`, `qwen`, and `diffusion-language-model`.
+[Qwen3-Coder-30B-A3B-DFlash](https://github.com/z-lab/Qwen3-Coder-30B-A3B-DFlash) · 2026-03-17
 
+HuggingFace entry for `z-lab/Qwen3-Coder-30B-A3B-DFlash` . Model card indicates MIT license, `transformers` library, and `text-generation` pipeline tag. Tags include `dflash`, `speculative-decoding`, `diffusion`, `efficiency`, `flash-decoding`, `qwen`, and `diffusion-language-model`.
 ### Context
 DFlash is a speculative decoding method utilizing a lightweight block diffusion model for drafting. It enables efficient, high-quality parallel drafting to push inference speed limits. The model functions as a drafter component and requires a target model (`Qwen/Qwen3-Coder-30B-A3B-Instruct`) for operation.
 

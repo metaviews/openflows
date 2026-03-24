@@ -27,10 +27,9 @@ mediation:
 ---
 
 ### Signal
-Source: GitHub repository (https://github.com/undead-undead/AIMAXXING).
-Date: 2026-03-16.
-Description: A project claiming to provide a secure, autonomous AI agent ecosystem for Windows. Key technical claims include kernel-level sandboxing via Windows Job Objects, a zero-dependency portable toolchain, and a modular intelligence architecture featuring a RAG-based memory engine and cognitive brain.
+[AIMAXXING](https://github.com/undead-undead/AIMAXXING) · GitHub · 2026-03-16.
 
+Description: A project claiming to provide a secure, autonomous AI agent ecosystem for Windows. Key technical claims include kernel-level sandboxing via Windows Job Objects, a zero-dependency portable toolchain, and a modular intelligence architecture featuring a RAG-based memory engine and cognitive brain.
 ### Context
 The Windows desktop environment often presents friction for local AI agent deployment due to runtime dependencies (Python, Node.js) and security isolation requirements. Existing frameworks like OpenClaw rely on host configurations that may introduce complexity or security surface area. AIMAXXING positions itself as a solution to these specific constraints by bundling toolchains and enforcing isolation at the execution layer.
 

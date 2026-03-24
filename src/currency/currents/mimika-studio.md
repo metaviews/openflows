@@ -31,12 +31,9 @@ mediation:
 ---
 
 ### Signal
-Source: github
-Title: MimikaStudio
-URL: https://github.com/BoltzmannEntropy/MimikaStudio
-Date: 2026-03-19
-Content: MimikaStudio - A local-first application for macOS (Apple Silicon) + Agentic MCP Support. Version v2026.03.6. Features include native MLX acceleration, voice cloning (Qwen3-TTS, Chatterbox, RVC, XTTSv2), text-to-speech (Kokoro, Supertonic), document reading (PDF, DOCX, EPUB, Markdown), audiobook conversion, and an agentic voice cloning server with job queue orchestration. Exposes UI and API paths. Windows support noted as pending.
+[MimikaStudio](https://github.com/BoltzmannEntropy/MimikaStudio) · GitHub · 2026-03-19
 
+MimikaStudio - A local-first application for macOS (Apple Silicon) + Agentic MCP Support. Version v2026.03.6. Features include native MLX acceleration, voice cloning (Qwen3-TTS, Chatterbox, RVC, XTTSv2), text-to-speech (Kokoro, Supertonic), document reading (PDF, DOCX, EPUB, Markdown), audiobook conversion, and an agentic voice cloning server with job queue orchestration. Exposes UI and API paths. Windows support noted as pending.
 ### Context
 MimikaStudio operates within the local-first audio infrastructure layer, leveraging Apple Silicon's Neural Engine via MLX for efficient on-device inference. It functions as both a consumer tool for voice synthesis and a production-oriented server for agentic voice workflows. The application sits at the intersection of personal audio processing and multi-agent orchestration, providing a specialized interface for voice modality within the broader AI agent ecosystem.
 

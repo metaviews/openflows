@@ -32,8 +32,9 @@ mediation:
 ---
 
 ### Signal
-ValeDesk (https://github.com/vakovalskii/ValeDesk) is a cross-platform desktop application (Windows, macOS, Linux) built with Tauri, Rust, and TypeScript. Version 0.0.8 supports local LLM inference via Ollama, vLLM, and LM Studio, alongside OpenAI SDK compatibility. Core features include task planning with visual todo panels, scheduled task execution, code sandboxes (Node.js vm, Python subprocess), document extraction (PDF, DOCX), and session persistence via SQLite. Security features include directory sandboxing for file operations and permission systems for tool execution.
+[ValeDesk](https://github.com/vakovalskii/ValeDesk)
 
+ValeDesk  is a cross-platform desktop application (Windows, macOS, Linux) built with Tauri, Rust, and TypeScript. Version 0.0.8 supports local LLM inference via Ollama, vLLM, and LM Studio, alongside OpenAI SDK compatibility. Core features include task planning with visual todo panels, scheduled task execution, code sandboxes (Node.js vm, Python subprocess), document extraction (PDF, DOCX), and session persistence via SQLite. Security features include directory sandboxing for file operations and permission systems for tool execution.
 ### Context
 The entry sits within the local inference baseline circuit, where desktop applications abstract away hardware and runtime complexity for end-user workflows. Unlike cloud-first agent frameworks, ValeDesk prioritizes data locality and offline capability, positioning itself as a personal assistant layer rather than a server-side orchestration engine. It bridges the gap between raw model inference runtimes and user-facing task management interfaces.
 

@@ -31,7 +31,9 @@ mediation:
 ---
 
 ### Signal
-Source: GitHub (`ARahim3/mlx-tune`), Date: 2026-03-22. A Python library for fine-tuning large language models on Apple Silicon using the MLX framework. Supports Supervised Fine-Tuning (SFT), Direct Preference Optimization (DPO), Group Relative Policy Optimization (GRPO), and Vision fine-tuning. Originally `unsloth-mlx`, renamed to distinguish from official Unsloth projects.
+[mlx-tune](https://github.com/ARahim3/mlx-tune) · GitHub · 2026-03-22
+
+A Python library for fine-tuning large language models on Apple Silicon using the MLX framework. Supports Supervised Fine-Tuning (SFT), Direct Preference Optimization (DPO), Group Relative Policy Optimization (GRPO), and Vision fine-tuning.
 
 ### Context
 Apple Silicon hardware offers high memory bandwidth and unified memory architecture, suitable for consumer-grade LLM training. The MLX framework provides native Metal backend support, bypassing translation layers used in CUDA-based workflows. This signal indicates a shift toward local, hardware-optimized fine-tuning pipelines that reduce dependency on cloud GPU providers for model adaptation.

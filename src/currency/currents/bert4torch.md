@@ -24,8 +24,9 @@ mediation:
 ---
 
 ### Signal
-GitHub repository `Tongjilibo/bert4torch` presents an implementation of transformers in PyTorch. The project supports multiple model families including BERT, Belle, ChatGLM, and Llama. Key capabilities include named entity recognition, relation extraction, text classification, and sequence-to-sequence tasks. The library includes pre-trained weight loading, command-line model service deployment, and documentation.
+[bert4torch](https://github.com/Tongjilibo/bert4torch)
 
+GitHub repository `Tongjilibo/bert4torch` presents an implementation of transformers in PyTorch. The project supports multiple model families including BERT, Belle, ChatGLM, and Llama. Key capabilities include named entity recognition, relation extraction, text classification, and sequence-to-sequence tasks. The library includes pre-trained weight loading, command-line model service deployment, and documentation.
 ### Context
 `bert4torch` operates within the PyTorch ecosystem, distinguishing itself through an API design that mirrors Keras patterns, as indicated by the associated `torch4keras` project. This approach aims to reduce the learning curve for users transitioning from Keras or seeking a more concise syntax for transformer operations. It serves as a foundational library for NLP tasks rather than a high-level agent framework.
 

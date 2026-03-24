@@ -21,8 +21,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev (2026-03-15). Anthropic has open-sourced one of its original performance engineering take-home assignments. The artifact details a practical, systems-level problem set used to evaluate engineering candidates for top-tier AI roles. Repository available at https://github.com/anthropics/original_performance_takehome.
-
+[Anthropic Performance Engineering Take-Home](https://github.com/anthropics/original_performance_takehome.) · opensourceprojects.dev · 2026-03-15
 ### Context
 Hiring assessments in AI companies often remain proprietary, obscuring the technical standards and problem-solving frameworks used internally. This release represents a shift toward transparency in engineering culture, providing external operators with a concrete reference for the types of systems thinking prioritized in frontier model development workflows.
 

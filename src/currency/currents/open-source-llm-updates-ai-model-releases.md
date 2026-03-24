@@ -24,8 +24,7 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Source: llm-stats.com/ai-news (2026-03-13). Aggregates news on open-source LLM updates and new open-weight releases with Apache, MIT, and permissive licenses. Monitors announcements from Meta (Llama), Mistral, Qwen, and DeepSeek.
-
+[Open Source LLM Updates & AI Model Releases](https://llm-stats.com) · llm-stats.com/ai-news (2026-03-13). Aggregates news on open-source LLM updates and new open-weight releases with Apache, MIT, and permissive licenses. Monitors announcements from Meta (Llama), Mistral, Qwen, and DeepSeek · 2026-03-13
 ### Context
 Open weights constitute critical infrastructure for local and distributed inference. Tracking release velocity and licensing terms is necessary for maintaining system compatibility and legal compliance within open model ecosystems. This signal functions as a feed for the broader commons rather than a standalone tool.
 

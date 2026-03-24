@@ -29,8 +29,9 @@ mediation:
 ---
 
 ### Signal
-A March 2026 signal from opensourceprojects.dev describes a Rust-based AI agent designed to automate code review workflows. The post highlights the potential to offload repetitive review tasks to an autonomous assistant, aiming to reduce bottlenecks in pull request processing. The associated GitHub repository is located at `airlock-hq/airlock`.
+[Airlock: Rust-based AI Agent for Code Review Automation](https://github.com/airlock-hq/airlock)
 
+A March 2026 signal from opensourceprojects.dev describes a Rust-based AI agent designed to automate code review workflows. The post highlights the potential to offload repetitive review tasks to an autonomous assistant, aiming to reduce bottlenecks in pull request processing. The associated GitHub repository is located at `airlock-hq/airlock`.
 ### Context
 Code review remains a critical but often inefficient step in software development lifecycles. Manual reviews introduce latency and variability, while automated static analysis lacks semantic understanding. Autonomous agents offer a middle ground, capable of interpreting code context and suggesting improvements without human intervention. Rust is selected for the implementation to ensure memory safety, performance, and deterministic behavior in production environments.
 

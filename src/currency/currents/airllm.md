@@ -27,8 +27,9 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-GitHub repository `lyogavin/airllm` presents a memory optimization tool for Large Language Model inference. The project claims the ability to run 70B parameter models on a single 4GB GPU card without quantization, distillation, or pruning. It further claims support for running 405B Llama3.1 models on 8GB VRAM. The repository is tagged with `chinese-llm`, `chinese-nlp`, `open-models`, and `open-source`.
+[AirLLM](https://github.com/lyogavin/airllm)
 
+GitHub repository `lyogavin/airllm` presents a memory optimization tool for Large Language Model inference. The project claims the ability to run 70B parameter models on a single 4GB GPU card without quantization, distillation, or pruning. It further claims support for running 405B Llama3.1 models on 8GB VRAM. The repository is tagged with `chinese-llm`, `chinese-nlp`, `open-models`, and `open-source`.
 ### Context
 Local deployment of frontier LLMs is frequently constrained by VRAM availability. Standard inference pipelines often require quantization (e.g., 4-bit, 8-bit) to fit large models onto consumer hardware. AirLLM proposes a memory management strategy that reduces the memory footprint of the model weights and activations during inference, potentially bypassing the need for weight compression techniques.
 

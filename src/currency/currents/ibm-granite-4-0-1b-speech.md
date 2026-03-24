@@ -28,8 +28,9 @@ mediation:
 ---
 
 ### Signal
-Hugging Face entry for `ibm-granite/granite-4.0-1b-speech` published 2026-03-17. Model type: Automatic Speech Recognition (ASR) and bidirectional Automatic Speech Translation (AST). License: Apache-2.0. Metrics: 17,349 downloads, 130 likes. Base model: `ibm-granite/granite-4.0-1b-base`. Library: `transformers`.
+[IBM Granite 4.0 1B Speech](https://github.com/ibm-granite/granite-4.0-1b-speech) · 2026-03-17
 
+Hugging Face entry for `ibm-granite/granite-4.0-1b-speech` published 2026-03-17. Model type: Automatic Speech Recognition (ASR) and bidirectional Automatic Speech Translation (AST). License: Apache-2.0. Metrics: 17,349 downloads, 130 likes. Base model: `ibm-granite/granite-4.0-1b-base`. Library: `transformers`.
 ### Context
 Granite 4.0-1b-speech is a compact speech-language model designed for efficiency on resource-constrained devices. It represents a modality alignment of the 1B base model to speech using public corpora and synthetic datasets tailored for Japanese ASR and keyword-biased recognition. The architecture supports multilingual inputs across English, French, German, Spanish, Portuguese, and Japanese. Compared to the Granite 3.3 2B and 8B speech variants, this iteration reduces parameter count by half while improving English ASR transcription accuracy and inference speed via speculative decoding.
 

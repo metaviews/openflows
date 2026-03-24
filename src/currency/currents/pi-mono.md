@@ -26,9 +26,7 @@ mediation:
 ---
 
 ### Signal
-
-Source: GitHub (badlogic/pi-mono). URL: https://github.com/badlogic/pi-mono. Stars: 23.9k. License: MIT. Language: TypeScript.
-
+[pi-mono](https://github.com/badlogic/pi-mono.) · GitHub
 ### Context
 
 pi-mono is a monorepo assembling several AI agent building blocks into a coherent toolkit: a multi-provider LLM abstraction layer (supporting OpenAI, Anthropic, and others), a coding agent CLI for software development tasks, a Slack bot for workplace integration, and both terminal and web UI libraries for agent interfaces. The MIT license and monorepo structure reflect a community-forward approach, allowing components to be used independently or as an integrated stack.

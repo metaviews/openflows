@@ -28,8 +28,9 @@ mediation:
 ---
 
 ### Signal
-Repository `iimeta/fastapi` describes an enterprise-grade LLM API quick integration system supporting OpenAI, Azure, DeepSeek, Ernie Bot, Spark, Qwen, GLM, Gemini, and Claude. It features a unified API standard to reduce development workload for N models, simplified deployment via Docker, and a lightweight interface.
+[FastAPI LLM Gateway](https://github.com/iimeta/fastapi)
 
+Repository `iimeta/fastapi` describes an enterprise-grade LLM API quick integration system supporting OpenAI, Azure, DeepSeek, Ernie Bot, Spark, Qwen, GLM, Gemini, and Claude. It features a unified API standard to reduce development workload for N models, simplified deployment via Docker, and a lightweight interface.
 ### Context
 The signal identifies a tool designed to abstract the complexity of managing multiple model providers. It positions itself within the infrastructure layer for LLM applications, providing a standard interface for clients while handling provider-specific logic.
 

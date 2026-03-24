@@ -29,8 +29,7 @@ mediation:
 ---
 
 ### Signal
-Source: github/gpustack/gpustack. Description: Performance-optimized AI inference on your GPUs. Unlock superior throughput by selecting and tuning engines like vLLM or SGLang. Tags include ascend, cuda, deepseek, distributed-inference, genai, high-performance-inference, inference, llama, llm, llm-inference, llm-serving, maas, mindie, openai, qwen, rocm, sglang, vllm.
-
+[GPUStack](https://github.com/gpustack/gpustack) · GitHub
 ### Context
 In the landscape of LLM serving, management of GPU resources often requires manual orchestration of K8s, container registries, and engine-specific configurations. GPUStack positions itself as a unified layer that abstracts this complexity. It functions as a cluster manager specifically designed for AI workloads, distinguishing itself from general-purpose orchestration tools by focusing on model architecture analysis, engine selection, and automatic parameter tuning.
 

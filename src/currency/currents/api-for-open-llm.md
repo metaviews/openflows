@@ -26,8 +26,7 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Source: GitHub repository `xusenlinzy/api-for-open-llm`. Date: 2026-03-13. Content: Python library implementing a unified backend interface for open large language models that mimics the OpenAI response format. Supports LLaMA, LLaMA-2, BLOOM, Falcon, Baichuan, Qwen, Xverse, SqlCoder, CodeLLaMA, ChatGLM, and variants. Includes support for Rerank models and multimodal capabilities (GLM-4V, MiniCPM). Provides Streamlit demos and environment-variable configuration for model switching.
-
+[API for Open LLMs](https://github.com/xusenlinzy/api-for-open-llm) · GitHub repository xusenlinzy/api-for-open-llm. Date: 2026-03-13. Content: Python library implementing a unified backend interface for open large language models that mimics the OpenAI response format. Supports LLaMA, LLaMA-2, BLOOM, Falcon, Baichuan, Qwen, Xverse, SqlCoder, CodeLLaMA, ChatGLM, and variants. Includes support for Rerank models and multimodal capabilities (GLM-4V, MiniCPM). Provides Streamlit demos and environment-variable configuration for model switching · 2026-03-13
 ### Context
 The proliferation of open-weight models has resulted in fragmented inference interfaces, requiring distinct client implementations for each model family. This fragmentation increases operational overhead for developers building agent workflows or applications that require model portability. Standardizing the interface layer allows existing OpenAI-compatible clients to interact with locally hosted open models without code modification.
 

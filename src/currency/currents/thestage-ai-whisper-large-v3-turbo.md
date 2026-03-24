@@ -30,8 +30,9 @@ mediation:
 ---
 
 ### Signal
-HuggingFace entry `TheStageAI/thewhisper-large-v3-turbo` (2026-03-19). Base model: `openai/whisper-large-v3-turbo`. License: CC-BY-4.0. Pipeline tag: `automatic-speech-recognition`. Metadata indicates 21 likes and 8,486 downloads. Supported languages include 25+ major global languages (en, ar, de, es, fr, zh, etc.).
+[TheStage AI Whisper Large V3 Turbo](https://github.com/TheStageAI/thewhisper-large-v3-turbo) · 2026-03-19
 
+HuggingFace entry `TheStageAI/thewhisper-large-v3-turbo` . Base model: `openai/whisper-large-v3-turbo`. License: CC-BY-4.0. Pipeline tag: `automatic-speech-recognition`. Metadata indicates 21 likes and 8,486 downloads. Supported languages include 25+ major global languages (en, ar, de, es, fr, zh, etc.).
 ### Context
 TheStage AI utilizes an internal tooling suite called ANNA (Automated Neural Networks Accelerator) to produce "ElasticModels." This workflow allows adjustable compression across neural network layers, trading accuracy for latency and power consumption. The model family includes variants XL (mathematically equivalent), L (near lossless), M (faster, <1.5% degradation), and S (fastest, <2% degradation). Target inference environments include NVIDIA GPUs via CUDA and Apple Silicon via CoreML. Deployment options include a Python SDK and Docker containers with REST API endpoints.
 

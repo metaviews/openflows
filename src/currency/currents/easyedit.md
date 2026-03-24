@@ -26,12 +26,7 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Source: GitHub repository `zjunlp/EasyEdit`.
-URL: https://github.com/zjunlp/EasyEdit
-Date: 2026-03-12
-Classification: ACL 2024 Knowledge Editing Framework.
-Primary Signal: Open-source tool for updating LLM knowledge and unlearning specific facts without full model retraining.
-
+[EasyEdit](https://github.com/zjunlp/EasyEdit) · GitHub repository `zjunlp/EasyEdit`. · 2026-03-12
 ### Context
 Large language models typically require full fine-tuning to update factual knowledge or remove specific information, which is computationally expensive and risks catastrophic forgetting. EasyEdit addresses this by providing a unified interface for knowledge editing techniques, including location-based, memory-based, and parameter-based methods. It supports multiple model families (Llama, ChatGLM, Baichuan) and offers benchmarks for evaluation.
 

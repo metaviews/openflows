@@ -27,8 +27,7 @@ mediation:
 ---
 
 ### Signal
-Source: GitHub (mindfold-ai/Trellis). URL: https://github.com/mindfold-ai/Trellis. Date: 2026-03-24. Description: Multi-platform AI coding framework supporting Claude Code, Cursor, OpenCode, iFlow, Codex, Kilo, Kiro, Gemini CLI, Antigravity, Qoder, and CodeBuddy. License: AGPL-3.0. Package: `@mindfoldhq/trellis` on npm.
-
+[Trellis](https://github.com/mindfold-ai/Trellis.) · GitHub · 2026-03-24
 ### Context
 Trellis operates within the infrastructure layer of AI-assisted software development, positioning itself as a unifying CLI interface for heterogeneous coding assistants. Unlike single-model agents, it abstracts the differences between various LLM-based coding tools to allow operators to switch runtimes or utilize multiple models within a single workflow environment. This approach addresses fragmentation in the developer toolchain where different models excel at different tasks (e.g., refactoring vs. scaffolding).
 

@@ -25,8 +25,7 @@ mediation:
 ---
 
 ### Signal
-Source: `opensourceprojects.dev` (2026-03-24). Repository: `wevm/incur`. The signal describes a tool designed to build and manage AI agents directly from the terminal interface. It addresses the workflow friction of switching between browsers, notebooks, and CLI environments when orchestrating agent logic.
-
+[Incur Terminal Agent Interface](https://github.com/wevm/incur) · opensourceprojects.dev (2026-03-24). Repository: wevm/incur. The signal describes a tool designed to build and manage AI agents directly from the terminal interface. It addresses the workflow friction of switching between browsers, notebooks, and CLI environments when orchestrating agent logic · 2026-03-24
 ### Context
 Terminal-native development remains a priority for developer tooling, particularly in AI agent orchestration. While web-based dashboards (`openclaw-studio`) offer visual management, CLI-first approaches (`aitutor`, `terminal-collaborative-workspace-ai-agents`) prioritize speed, scripting capability, and integration with existing shell workflows. This signal aligns with the broader trend of local-first, infrastructure-oriented agent interfaces.
 

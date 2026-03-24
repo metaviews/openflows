@@ -27,11 +27,9 @@ mediation:
 ---
 
 ### Signal
-Source: GitHub (ZHangZHengEric/Sage)
-URL: https://github.com/ZHangZHengEric/Sage
-Date: 2026-03-20
-Content: Multi-Agent System Framework For Complex Tasks | agents, ai, llm, manus, muilt-agents, workflow
+[Sage Multi-Agent Framework](https://github.com/ZHangZHengEric/Sage) · GitHub (ZHangZHengEric/Sage) · 2026-03-20
 
+Multi-Agent System Framework For Complex Tasks | agents, ai, llm, manus, muilt-agents, workflow
 ### Context
 The complexity of autonomous agent workflows requires robust orchestration layers beyond simple chaining. Sage addresses the need for structured execution modes (sequential, parallel, declarative) to manage task dependencies and resource allocation effectively. The framework emphasizes stability on smaller parameter models, suggesting an optimization strategy for cost-effective local or edge inference.
 

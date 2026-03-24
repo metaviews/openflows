@@ -17,9 +17,9 @@ lastReviewed: 2026-03-15
 ---
 
 ### Signal
+[Team Mirai and Japan’s Election Signal](https://thediplomat.com/2026/03/the-untold-story-of-japans-election-the-quiet-breakthrough-of-team-mirai/)
 
-The Diplomat feature ["The Untold Story of Japan’s Election: The Quiet Breakthrough of Team Mirai"](https://thediplomat.com/2026/03/the-untold-story-of-japans-election-the-quiet-breakthrough-of-team-mirai/) flags Team Mirai as a noteworthy civic-technology development within Japan’s election context.
-
+The Diplomat feature ["The Untold Story of Japan’s Election: The Quiet Breakthrough of Team Mirai"] flags Team Mirai as a noteworthy civic-technology development within Japan’s election context.
 ### Context
 
 Even without spectacle, small organizational breakthroughs can alter democratic infrastructure by changing how technical communities, campaign operations, and civic participation are coordinated.

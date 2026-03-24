@@ -28,8 +28,7 @@ mediation:
 ---
 
 ### Signal
-Source: GitHub (github.com/HolmesGPT/holmesgpt). Status: CNCF Sandbox Project. Origin: Originally created by Robusta.Dev with major contributions from Microsoft. Function: Open-source AI agent for investigating production incidents and finding root causes. Integrations: Kubernetes, VMs, cloud providers, databases, SaaS, Prometheus, Grafana, Datadog, AlertManager, PagerDuty, OpsGenie, Jira. Capabilities: Petabyte-scale data filtering, memory-safe execution, bidirectional alert integrations, any LLM provider support, Kubernetes operator mode.
-
+[HolmesGPT](https://github.com/HolmesGPT/holmesgpt) · GitHub
 ### Context
 Site Reliability Engineering (SRE) workflows are shifting from manual dashboard monitoring to agentic investigation. HolmesGPT positions itself within the Cloud Native Computing Foundation (CNCF) ecosystem, signaling enterprise-grade acceptance of AI agents in production infrastructure management. It addresses the complexity of distributed systems where traditional alerting fails to provide root cause context.
 

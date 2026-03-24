@@ -25,8 +25,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev. Title: A unified gateway for AI agents to access databases, APIs, and CLIs. URL: https://opensourceprojects.dev/post/2c45bc14-4a4c-4f8b-a775-d78050541820. Date: 2026-03-16. Content: Identifies the constraint where AI agents possess reasoning capabilities but lack direct execution pathways for external systems. Requires custom connectors for database queries, internal API calls, or CLI commands. GitHub Repository: https://github.com/github/gh-aw-mcpg.
-
+[Unified Gateway for AI Agent Tooling](https://opensourceprojects.dev/post/2c45bc14-4a4c-4f8b-a775-d78050541820.) · opensourceprojects.dev · 2026-03-16
 ### Context
 Agent infrastructure has evolved beyond pure inference into execution environments. Historically, agents required bespoke integration layers for each target system. This signal indicates a shift toward standardized gateway architectures that abstract underlying protocol differences. The approach aligns with emerging Model Context Protocol (MCP) standards and the broader push for composable agent tooling.
 

@@ -21,8 +21,9 @@ mediation:
 ---
 
 ### Signal
-External signal from opensourceprojects.dev (2026-03-22) introducing a GitHub repository `datawhalechina/easy-vibe`. Content describes a tutorial series addressing fragmentation in AI-assisted learning resources, aiming to provide a cohesive flow for full-stack development using AI tools.
+[Datawhale Easy Vibe Vibe Coding Curriculum](https://github.com/datawhalechina/easy-vibe) · 2026-03-22
 
+External signal from opensourceprojects.dev  introducing a GitHub repository `datawhalechina/easy-vibe`. Content describes a tutorial series addressing fragmentation in AI-assisted learning resources, aiming to provide a cohesive flow for full-stack development using AI tools.
 ### Context
 Datawhale operates within the open education sector, previously establishing the Self-LLM guide ecosystem. This entry represents a shift toward workflow-based pedagogy, termed "Vibe Coding," which prioritizes the continuity of development tasks over isolated syntax instruction. The curriculum implies a dependency on AI-native tooling to maintain the "flow" state during system construction.
 

@@ -25,9 +25,7 @@ lastReviewed: 2026-03-23
 ---
 
 ### Signal
-
-Source: GitHub (moltlaunch/cashclaw). URL: https://github.com/moltlaunch/cashclaw. Stars: 551. License: MIT. Language: TypeScript.
-
+[CashClaw](https://github.com/moltlaunch/cashclaw.) · GitHub
 ### Context
 
 CashClaw implements an autonomous economic agent loop: discover available tasks on the Moltlaunch marketplace, assess and bid on them, execute the accepted work, collect payment, and repeat. Between task cycles, the agent runs self-study sessions to improve its own capabilities — a feedback loop that makes it a self-improving economic actor rather than a static tool. The architecture raises immediate questions about oversight, auditability, and the sustainability of autonomous agents operating in real economic contexts.

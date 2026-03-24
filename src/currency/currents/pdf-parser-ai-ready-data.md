@@ -23,8 +23,9 @@ mediation:
 ---
 
 ### Signal
-Signal received from opensourceprojects.dev regarding OpenDataLoader PDF, a GitHub-hosted repository (opendataloader-project/opendataloader-pdf) focused on automating PDF accessibility and parsing for AI-ready data. The signal highlights the difficulty of feeding PDFs into AI models due to complex layouts, images, tables, and nested structures.
+[PDF Parser for AI-ready Data](https://opensourceprojects.dev)
 
+Signal received from opensourceprojects.dev regarding OpenDataLoader PDF, a GitHub-hosted repository (opendataloader-project/opendataloader-pdf) focused on automating PDF accessibility and parsing for AI-ready data. The signal highlights the difficulty of feeding PDFs into AI models due to complex layouts, images, tables, and nested structures.
 ### Context
 PDFs remain a persistent bottleneck in AI data pipelines. Standard text extraction often fails to preserve semantic relationships, table structures, and layout hierarchy required for accurate RAG or fine-tuning. Accessibility compliance (WCAG) further complicates the extraction process, requiring structural markup beyond raw text.
 

@@ -28,8 +28,9 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-GitHub repository `yangjianxin1/Firefly` provides a one-stop large model training tool. It supports pre-training, instruction fine-tuning (SFT), and Direct Preference Optimization (DPO) for models including Qwen2, Llama3, Yi, and others. The project emphasizes configuration-based training, supports full parameter, LoRA, and QLoRA methods, and integrates Unsloth for acceleration.
+[Firefly](https://github.com/yangjianxin1/Firefly)
 
+GitHub repository `yangjianxin1/Firefly` provides a one-stop large model training tool. It supports pre-training, instruction fine-tuning (SFT), and Direct Preference Optimization (DPO) for models including Qwen2, Llama3, Yi, and others. The project emphasizes configuration-based training, supports full parameter, LoRA, and QLoRA methods, and integrates Unsloth for acceleration.
 ### Context
 Firefly operates in the training infrastructure layer, distinct from inference serving engines like vLLM or local runtime tools like Ollama. It targets developers and researchers requiring accessible fine-tuning pipelines for open weights. The project aligns with the trend of lowering hardware barriers for model customization through quantization-aware training methods.
 

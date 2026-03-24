@@ -25,8 +25,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev (2026-03-20). Repository: github.com/Lum1104/Understand-Anything. The signal describes a tool designed to reduce the cognitive load of onboarding to new or legacy codebases by providing conversational breakdowns of repository structure and logic.
-
+[Understand-Anything Engine](https://github.com/Lum1104/Understand-Anything.) · opensourceprojects.dev · 2026-03-20
 ### Context
 Developer onboarding into large-scale repositories remains a significant friction point in software operations. Existing solutions typically rely on static documentation or manual navigation. This entry represents a shift toward dynamic, inference-based code understanding that treats the repository as a queryable context rather than a static file tree.
 

@@ -26,12 +26,9 @@ lastReviewed: 2026-03-15
 ---
 
 ### Signal
-- **Source:** Premai Blog (via Brave Search)
-- **Title:** 15 Best AI Agent Frameworks for Enterprise: Open-Source to Managed (2026)
-- **URL:** https://blog.premai.io/15-best-ai-agent-frameworks-for-enterprise-open-source-to-managed-2026/
-- **Date:** 2026-02-28
-- **Content:** Microsoft announced in October 2025 that AutoGen and Semantic Kernel will merge into a unified "Microsoft Agent Framework" with GA expected Q1 2026. Both frameworks remain usable independently during the transition.
+[15 Best AI Agent Frameworks for Enterprise: Open-Source to Managed (2026)](https://blog.premai.io/15-best-ai-agent-frameworks-for-enterprise-open-source-to-managed-2026/) · Premai Blog (via Brave Search) · 2026-02-28
 
+Microsoft announced in October 2025 that AutoGen and Semantic Kernel will merge into a unified "Microsoft Agent Framework" with GA expected Q1 2026. Both frameworks remain usable independently during the transition.
 ### Context
 AutoGen (Microsoft Research) focuses on conversational agent patterns and multi-agent collaboration via Python SDKs. Semantic Kernel is a lightweight, modular SDK for integrating AI models into applications via plugins and functions. The consolidation signals a strategic move toward standardizing enterprise agent development within the Microsoft ecosystem, reducing fragmentation in the Python-based agent library landscape.
 

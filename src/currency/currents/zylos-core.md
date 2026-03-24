@@ -25,12 +25,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev
-Title: Turn your AI into a collaborative team member with this infrastructure
-URL: https://opensourceprojects.dev/post/6b94ec84-074e-4753-b01c-e73122b48046
-Date: 2026-03-19
-Repository: https://github.com/zylos-ai/zylos-core
-
+[Turn your AI into a collaborative team member with this infrastructure](https://opensourceprojects.dev/post/6b94ec84-074e-4753-b01c-e73122b48046) · opensourceprojects.dev · 2026-03-19
 ### Context
 Current AI workflows often involve operators switching between multiple solo assistants, copying prompts and outputs across tabs. Zylos Core addresses this fragmentation by providing infrastructure to orchestrate multiple AI agents to function as a cohesive team. The signal positions the project as a solution for collaborative agent behavior rather than isolated tool usage.
 

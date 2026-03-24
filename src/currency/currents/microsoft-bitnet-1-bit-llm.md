@@ -30,8 +30,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev (2026-03-13). Content summary: Promotes running large language models locally on consumer hardware by drastically reducing GPU memory requirements through 1-bit LLM technology. Highlights Microsoft's BitNet project as a major step in this direction.
-
+[Microsoft BitNet 1-bit LLM](https://opensourceprojects.dev) · opensourceprojects.dev · 2026-03-13
 ### Context
 Standard large language models typically require FP16 or INT8 precision, consuming significant VRAM (e.g., 70B models need ~140GB+). BitNet utilizes ternary weight quantization (1-bit), reducing model size by approximately 8x compared to INT8 and 16x compared to FP16. This architecture shift allows models that previously required datacenter GPUs to run on consumer-grade hardware, aligning with the broader trend of edge and local inference.
 

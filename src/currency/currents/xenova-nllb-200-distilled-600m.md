@@ -25,15 +25,13 @@ mediation:
 ---
 
 ### Signal
-Source: HuggingFace
-URL: https://huggingface.co/Xenova/nllb-200-distilled-600M
-Date: 2026-03-23
-Content: text2text-generation model | likes: 50 | downloads: 3702
+[Xenova/nllb-200-distilled-600M](https://huggingface.co/Xenova/nllb-200-distilled-600M) · HuggingFace · 2026-03-23
+
+text2text-generation model | likes: 50 | downloads: 3702
 Base Model: facebook/nllb-200-distilled-600M
 Library: transformers.js
 Pipeline Tag: translation
 Languages: 200+ (ace, af, ar, bn, de, en, es, fr, hi, ja, ko, ru, zh, etc.)
-
 ### Context
 This entry represents a distilled variant of Facebook's NLLB-200 series, specifically optimized for the `transformers.js` library. The model reduces parameter count to 600 million while maintaining coverage across 200 languages, prioritizing inference speed and memory footprint over raw accuracy. It utilizes ONNX runtime optimizations compatible with browser-based and WebAssembly environments, distinguishing it from standard PyTorch-only releases.
 

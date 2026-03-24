@@ -25,11 +25,9 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev
-URL: https://opensourceprojects.dev/post/cfa859d4-708e-4ad3-87b5-1da0dafafc9f
-Date: 2026-03-20
-Content: The signal introduces ClawTeam as a solution for orchestrating multiple specialized AI agents autonomously. It addresses the engineering complexity of communication, task delegation, and workflow management across agent teams. The project is hosted on GitHub under HKUDS/ClawTeam.
+[ClawTeam](https://opensourceprojects.dev/post/cfa859d4-708e-4ad3-87b5-1da0dafafc9f) · opensourceprojects.dev · 2026-03-20
 
+The signal introduces ClawTeam as a solution for orchestrating multiple specialized AI agents autonomously. It addresses the engineering complexity of communication, task delegation, and workflow management across agent teams. The project is hosted on GitHub under HKUDS/ClawTeam.
 ### Context
 Multi-agent systems require robust orchestration to manage inter-agent communication and prevent workflow fragmentation. While single-agent deployment is standardized, team-level coordination often demands custom engineering. ClawTeam positions itself as a unified engine to simplify this layer, allowing operators to spin up agent teams with minimal command-line overhead.
 

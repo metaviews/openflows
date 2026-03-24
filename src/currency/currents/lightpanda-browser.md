@@ -24,9 +24,7 @@ mediation:
 ---
 
 ### Signal
-
-Source: GitHub (lightpanda-io/browser). URL: https://github.com/lightpanda-io/browser. Stars: 17.5k. License: AGPL-3.0. Language: Zig.
-
+[Lightpanda Browser](https://github.com/lightpanda-io/browser.) · GitHub
 ### Context
 
 Lightpanda fills a specific gap in the AI agent infrastructure stack: a headless browser that is fast and memory-efficient enough to run as a component within agent pipelines without dominating resource budgets. Built in Zig for systems-level performance, it executes JavaScript and renders pages at a fraction of Chrome's cost — 9x less memory and 11x faster — while remaining compatible with standard browser automation interfaces. The AGPL-3.0 license signals a strong open-source commitment with copyleft implications for commercial embedding.

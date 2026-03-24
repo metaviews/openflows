@@ -23,8 +23,9 @@ mediation:
 ---
 
 ### Signal
-Signal source: opensourceprojects.dev (2026-03-18). Identifies ModelScope's AgentJet as an open-source engine for tuning and deploying production LLM agents. GitHub repository: https://github.com/modelscope/AgentJet. Signal content highlights the transition from notebook prototyping to production reliability, specifically addressing behavior tuning and deployment infrastructure.
+[AgentJet](https://github.com/modelscope/AgentJet.) · 2026-03-18
 
+Signal source: opensourceprojects.dev . Identifies ModelScope's AgentJet as an open-source engine for tuning and deploying production LLM agents. GitHub repository:  Signal content highlights the transition from notebook prototyping to production reliability, specifically addressing behavior tuning and deployment infrastructure.
 ### Context
 AgentJet emerges within the Chinese open-source model infrastructure circuit, where organizations establish distinct tiers of open-weight model infrastructure running parallel to Western development. It addresses the operational gap between research prototypes and production deployment, aligning with the broader push for sovereign deployment pathways and competitive benchmarks.
 

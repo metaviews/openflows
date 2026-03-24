@@ -27,13 +27,7 @@ lastReviewed: 2026-03-23
 ---
 
 ### Signal
-Source: opensourceprojects.dev
-Date: 2026-03-13
-URL: https://opensourceprojects.dev/post/05608e4f-6021-4cd6-ae8e-27abc6875cbb
-GitHub: https://github.com/mavdol/capsule
-
-The signal identifies Capsule as a solution for executing untrusted AI agent code within secure WebAssembly sandboxes, preventing access to host files, network, or system resources.
-
+[Capsule](https://opensourceprojects.dev/post/05608e4f-6021-4cd6-ae8e-27abc6875cbb) · opensourceprojects.dev · 2026-03-13
 ### Context
 Autonomous agent proliferation increases the attack surface for host systems when agents are granted code execution privileges. Traditional virtualization or containerization often carries overhead or permission leakage risks. WebAssembly (WASM) offers a lightweight, standardized sandboxing boundary suitable for high-frequency agent interactions where isolation is critical for security and reliability.
 

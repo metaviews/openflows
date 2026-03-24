@@ -23,12 +23,9 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects
-Title: A minimalist framework to build and version control AI agents
-URL: https://opensourceprojects.dev/post/517e3b23-6a92-44e5-b547-defeb8e5fd0c
-Date: 2026-03-18
-Content: Describes a new tool for managing AI agent evolution, specifically addressing the tracking of prompts, logic changes, and model updates. The signal highlights the need for collaboration and rollback capabilities in agent development workflows, pointing to the GitHub repository `open-gitagent/gitagent`.
+[A minimalist framework to build and version control AI agents](https://opensourceprojects.dev/post/517e3b23-6a92-44e5-b547-defeb8e5fd0c) · opensourceprojects · 2026-03-18
 
+Describes a new tool for managing AI agent evolution, specifically addressing the tracking of prompts, logic changes, and model updates. The signal highlights the need for collaboration and rollback capabilities in agent development workflows, pointing to the GitHub repository `open-gitagent/gitagent`.
 ### Context
 Managing the lifecycle of autonomous agents introduces complexity similar to software engineering, yet often lacks structured tooling. Standard practices involving scripts and spreadsheets fail to capture the state of agent logic, prompt iterations, and model dependencies. GitAgent addresses this gap by applying version control principles to agent artifacts, treating agent evolution as a code-first operation rather than a procedural one.
 

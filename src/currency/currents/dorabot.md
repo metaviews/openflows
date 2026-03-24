@@ -26,8 +26,9 @@ lastReviewed: 2026-03-19
 ---
 
 ### Signal
-GitHub repository `suitedaces/dorabot` describes a macOS application for always-on AI agents running inside an IDE-style workspace with memory, scheduled tasks, browser use, and access to WhatsApp, Telegram, and Slack. The stack is Electron-based and oriented toward persistent local operation rather than disposable chat sessions.
+[Dorabot](https://github.com/suitedaces/dorabot)
 
+GitHub repository `suitedaces/dorabot` describes a macOS application for always-on AI agents running inside an IDE-style workspace with memory, scheduled tasks, browser use, and access to WhatsApp, Telegram, and Slack. The stack is Electron-based and oriented toward persistent local operation rather than disposable chat sessions.
 ### Context
 Dorabot represents a shift from ephemeral chat interfaces to persistent desktop environments. Unlike cloud-based agent services, it runs locally on macOS, utilizing existing LLM subscriptions (Claude, OpenAI) without requiring proprietary API keys. The tool treats the agent as a persistent process rather than a session-based query, maintaining state across reboots via local memory structures.
 

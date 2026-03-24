@@ -28,8 +28,7 @@ lastReviewed: 2026-03-20
 ---
 
 ### Signal
-Source: GitHub (google/adk-js). Date: 2026-03-13. URL: https://github.com/google/adk-js. Description: An open-source, code-first TypeScript toolkit for building, evaluating, and deploying sophisticated AI agents with flexibility and control. Key features include rich tool ecosystems, code-first development for logic and orchestration, and modular multi-agent system support. License: Apache 2.0.
-
+[Google Agent Development Kit (adk-js)](https://github.com/google/adk-js.) · GitHub · 2026-03-13
 ### Context
 The Agent Development Kit (ADK) represents Google's entry into the open-source agent framework space, positioning itself alongside Python-based implementations and other language-specific SDKs. It targets developers requiring fine-grained control over agent behavior, tool usage, and orchestration logic, specifically optimized for integration with Google Cloud services. This signals a shift toward treating agent logic as versionable code rather than opaque configuration or visual flows.
 

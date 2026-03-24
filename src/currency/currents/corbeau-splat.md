@@ -27,12 +27,9 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects
-Title: Turn your raw video into a viewable 3D Gaussian Splat on macOS
-URL: https://opensourceprojects.dev/post/57057504-3a80-4179-ae39-336a1eb2e1c4
-Date: 2026-03-15
-Content: Tool for converting raw video to 3D Gaussian Splat on macOS. GitHub: https://github.com/freddewitt/CorbeauSplat
+[Turn your raw video into a viewable 3D Gaussian Splat on macOS](https://opensourceprojects.dev/post/57057504-3a80-4179-ae39-336a1eb2e1c4) · opensourceprojects · 2026-03-15
 
+Tool for converting raw video to 3D Gaussian Splat on macOS. GitHub: https://github.com/freddewitt/CorbeauSplat
 ### Context
 3D Gaussian Splatting (3DGS) has emerged as a high-fidelity alternative to NeRFs for scene reconstruction, offering real-time rendering capabilities. While early implementations required significant compute resources or specific hardware, recent efforts focus on consumer-grade accessibility. This signal identifies a macOS-specific implementation that prioritizes local inference and video-to-3D workflows, reducing dependency on cloud processing pipelines.
 

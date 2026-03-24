@@ -26,8 +26,9 @@ lastReviewed: 2026-03-19
 ---
 
 ### Signal
-GitHub repository `unslothai/unsloth` positions Unsloth as a fine-tuning and reinforcement learning toolkit for LLMs, with an emphasis on lower VRAM use and faster training than standard baselines. The project supports model families including DeepSeek, Qwen, Llama, and Gemma, and exposes quantization and reinforcement-learning workflows alongside supervised fine-tuning.
+[Unsloth Fine-Tuning Framework](https://github.com/unslothai/unsloth)
 
+GitHub repository `unslothai/unsloth` positions Unsloth as a fine-tuning and reinforcement learning toolkit for LLMs, with an emphasis on lower VRAM use and faster training than standard baselines. The project supports model families including DeepSeek, Qwen, Llama, and Gemma, and exposes quantization and reinforcement-learning workflows alongside supervised fine-tuning.
 ### Context
 Efficient fine-tuning remains a significant bottleneck for local model adaptation and open-weight circulation. Standard training pipelines often require substantial VRAM and compute resources, limiting accessibility for individual researchers and smaller organizations. Unsloth addresses this by implementing kernel-level optimizations and memory-efficient algorithms specifically for transformer architectures.
 

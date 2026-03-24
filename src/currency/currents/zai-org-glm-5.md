@@ -28,16 +28,13 @@ mediation:
 ---
 
 ### Signal
-Source: huggingface
-Title: zai-org/GLM-5
-URL: https://huggingface.co/zai-org/GLM-5
-Date: 2026-03-24
-Content: text-generation model | likes: 1860 | downloads: 136040
+[zai-org/GLM-5](https://huggingface.co/zai-org/GLM-5) · HuggingFace · 2026-03-24
+
+text-generation model | likes: 1860 | downloads: 136040
 License: MIT
 Library: transformers
 Pipeline Tag: text-generation
 Languages: en, zh
-
 ### Context
 GLM-5 represents the latest iteration in the GLM model family developed by Zai Org (formerly THUDM). It scales from the previous GLM-4.5 configuration (355B parameters, 32B active) to 744B parameters (40B active). Pre-training data volume increased to 28.5T tokens from 23T. The architecture integrates DeepSeek Sparse Attention (DSA) to reduce deployment costs while maintaining long-context capacity. The release includes the `slime` asynchronous reinforcement learning infrastructure to improve training throughput.
 

@@ -31,11 +31,9 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Source: GitHub (helixml/helix).
-Date: 2026-03-14.
-Description: Private Agent Fleet with Spec Coding. Each agent gets their own desktop. Run Claude, Codex, Gemini and open models on a full private GenAI Stack.
-Tags: agents, api, genai, glm, golang, helm, k8s, kimi, llm, llm-agent, llm-serving, openai, openapi, qwen, rag, self-hosted, swagger, swarm.
+[HelixML](https://github.com/helixml/helix) · GitHub · 2026-03-14.
 
+Description: Private Agent Fleet with Spec Coding. Each agent gets their own desktop. Run Claude, Codex, Gemini and open models on a full private GenAI Stack.
 ### Context
 HelixML positions itself as an enterprise-grade platform for building and deploying AI agents within a private GenAI stack. It emphasizes data security and control through private deployment options (VPC or data center), contrasting with SaaS-only offerings. Key technical differentiators include an intelligent GPU scheduler that packs models efficiently into memory and dynamically loads/unloads based on demand. The platform supports RAG, API calling, vision, and multi-provider LLM integration via a `helix.yaml` configuration file.
 

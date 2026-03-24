@@ -25,12 +25,9 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects
-Date: 2026-03-18
-URL: https://opensourceprojects.dev/post/8dad3bbf-aff6-4670-9c58-2c23ba40cb61
-GitHub: https://github.com/urzeye/ophel
-Content: A signal describing Ophel as a solution for stitching together AI workflows, specifically addressing the friction of chaining vision models with text processors and custom scripts. The signal highlights pain points related to environment switching, API key management, and fragile glue code in cross-platform setups.
+[Ophel Cross-Platform AI Workflow Manager](https://opensourceprojects.dev/post/8dad3bbf-aff6-4670-9c58-2c23ba40cb61) · opensourceprojects · 2026-03-18
 
+A signal describing Ophel as a solution for stitching together AI workflows, specifically addressing the friction of chaining vision models with text processors and custom scripts. The signal highlights pain points related to environment switching, API key management, and fragile glue code in cross-platform setups.
 ### Context
 Workflow orchestration tools currently range from visual builders to code-first frameworks. Ophel positions itself at the intersection of these categories, targeting developers who require programmatic control over cross-platform execution without managing the underlying infrastructure complexity. The signal suggests a focus on reducing the operational overhead of maintaining heterogeneous integrations.
 

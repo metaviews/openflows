@@ -27,9 +27,7 @@ lastReviewed: 2026-03-22
 ---
 
 ### Signal
-
-Source: GitHub (mukul975/Anthropic-Cybersecurity-Skills). URL: https://github.com/mukul975/Anthropic-Cybersecurity-Skills. Stars: 492. License: Apache 2.0. Language: Python.
-
+[Anthropic Cybersecurity Skills](https://github.com/mukul975/Anthropic-Cybersecurity-Skills.) · GitHub
 ### Context
 
 This repository provides a structured collection of cybersecurity skills — 611+ as of the signal date — formatted for use with AI coding assistants across multiple platforms: Claude Code, GitHub Copilot, Cursor, and Gemini CLI. Skills cover security analysis, threat modeling, vulnerability assessment, and related domains. The platform-agnostic approach (supporting four distinct AI assistant environments) reflects both the fragmentation of the current AI assistant market and an attempt to create reusable security expertise that travels across tools. Apache 2.0 license ensures permissive use and modification.

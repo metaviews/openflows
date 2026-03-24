@@ -27,8 +27,9 @@ mediation:
 ---
 
 ### Signal
-GitHub repository `WangRongsheng/awesome-LLM-resources` serves as a curated index of LLM-related resources. The collection spans multimodal generation, agent frameworks, coding assistance, model training, and inference tools. It includes links to datasets, papers, courses, and specific implementations like MCP and small language models.
+[Awesome LLM Resources Curation](https://github.com/WangRongsheng/awesome-LLM-resources)
 
+GitHub repository `WangRongsheng/awesome-LLM-resources` serves as a curated index of LLM-related resources. The collection spans multimodal generation, agent frameworks, coding assistance, model training, and inference tools. It includes links to datasets, papers, courses, and specific implementations like MCP and small language models.
 ### Context
 The LLM ecosystem has fragmented into numerous specialized repositories, models, and protocols. Operators require centralized points of reference to navigate tooling compatibility, model capabilities, and deployment constraints. This curation addresses the discovery friction inherent in distributed open-source development.
 

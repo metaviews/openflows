@@ -27,12 +27,9 @@ mediation:
 ---
 
 ### Signal
-Source: brave
-Title: Best Open Source LLM Leaderboard 2026 | Open Source Model Rankings and Tier List | Onyx AI
-URL: https://onyx.app/open-llm-leaderboard
-Date: 2026-03-12
-Content: Compare the best open source models and LLMs on coding, reasoning, math, and software engineering benchmarks. Tier list, benchmark scores, and head-to-head comparisons.
+[Best Open Source LLM Leaderboard 2026 | Open Source Model Rankings and Tier List | Onyx AI](https://onyx.app/open-llm-leaderboard) · Brave · 2026-03-12
 
+Compare the best open source models and LLMs on coding, reasoning, math, and software engineering benchmarks. Tier list, benchmark scores, and head-to-head comparisons.
 ### Context
 Evaluation infrastructure is shifting from static paper-based benchmarks to dynamic, task-specific leaderboards. As open-weight model proliferation increases, operators require standardized metrics to select models for specific workflows without relying on vendor marketing claims. This signal represents a consolidation of performance data into a single accessible interface.
 

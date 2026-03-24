@@ -28,8 +28,9 @@ mediation:
 ---
 
 ### Signal
-GitHub repository `jd-opensource/xllm` published on 2026-03-23. A high-performance inference engine for LLMs, optimized for diverse AI accelerators. Supports DeepSeek, GLM, Qwen, and other model families. Apache 2.0 license. Technical report available via arXiv.
+[xllm](https://github.com/jd-opensource/xllm) · 2026-03-23
 
+GitHub repository `jd-opensource/xllm` published on 2026-03-23. A high-performance inference engine for LLMs, optimized for diverse AI accelerators. Supports DeepSeek, GLM, Qwen, and other model families. Apache 2.0 license. Technical report available via arXiv.
 ### Context
 xllm represents JD.com's open-source contribution to the LLM serving infrastructure stack. It targets multi-accelerator environments, specifically highlighting support for NVIDIA GPUs and domestic hardware like Ascend. The project provides day-0 support for recent model releases including GLM-5 and GLM-4.7, indicating active maintenance aligned with upstream model releases.
 

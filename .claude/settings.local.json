@@ -9,7 +9,12 @@
       "Bash(mkdir -p src/currency/practitioners)",
       "Bash(mv src/currency/operators/*.md src/currency/practitioners/)",
       "Bash(mv src/currency/operators/index.njk src/currency/practitioners/index.njk)",
-      "Bash(rmdir src/currency/operators)"
+      "Bash(rmdir src/currency/operators)",
+      "Bash(grep -l \"Recent Updates\\\\|## Updates\\\\|updateFor\" src/currency/currents/*.md)",
+      "Bash(node scripts/translate.js --limit 50)",
+      "Bash(node scripts/fix-signal-format.js)",
+      "Bash(node -e \":*)",
+      "Bash(node -e \"const r=require\\(''fs''\\).readFileSync\\(''$f'',''utf8''\\).replace\\(/\\\\r\\\\n/g,''\\\\n''\\); const m=r.match\\(/### Signal\\\\n\\([\\\\s\\\\S]*?\\)\\\\n### /\\); console.log\\(m?m[1].slice\\(0,200\\):''no match''\\)\")"
     ]
   }
 }

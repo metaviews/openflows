@@ -30,11 +30,9 @@ lastReviewed: 2026-03-23
 ---
 
 ### Signal
-Source: GitHub (labring/FastGPT)
-URL: https://github.com/labring/FastGPT
-Date: 2026-03-15
-Content: FastGPT is a knowledge-based platform built on LLMs, offering a comprehensive suite of out-of-the-box capabilities such as data processing, RAG retrieval, and visual AI workflow orchestration, enabling the development and deployment of complex question-answering systems without extensive setup or configuration.
+[FastGPT](https://github.com/labring/FastGPT) · GitHub (labring/FastGPT) · 2026-03-15
 
+FastGPT is a knowledge-based platform built on LLMs, offering a comprehensive suite of out-of-the-box capabilities such as data processing, RAG retrieval, and visual AI workflow orchestration, enabling the development and deployment of complex question-answering systems without extensive setup or configuration.
 ### Context
 FastGPT operates within the LLM application layer, focusing on reducing the friction between model access and production-ready workflows. Developed by Labring, the project leverages a NextJS-based architecture to provide a visual interface for constructing agent logic and data pipelines. It addresses the infrastructure gap for teams requiring self-hosted, customizable AI workflows that do not rely solely on proprietary cloud APIs.
 

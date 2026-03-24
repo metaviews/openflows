@@ -27,8 +27,9 @@ mediation:
 ---
 
 ### Signal
-The `ccg-workflow` repository (fengshao1227/ccg-workflow) defines a multi-model collaboration development system implemented as a Node.js CLI. The architecture routes frontend development tasks to the Gemini CLI and backend tasks to the Codex CLI, with Claude Code acting as the orchestrator and code reviewer. The system includes 28 slash commands covering planning, execution, git workflows, and code review. It enforces security by design by restricting external models to patch generation only, requiring Claude to review and apply changes. The workflow integrates OPSX to convert vague requirements into verifiable constraints.
+[CCG Workflow](https://Node.js)
 
+The `ccg-workflow` repository (fengshao1227/ccg-workflow) defines a multi-model collaboration development system implemented as a Node.js CLI. The architecture routes frontend development tasks to the Gemini CLI and backend tasks to the Codex CLI, with Claude Code acting as the orchestrator and code reviewer. The system includes 28 slash commands covering planning, execution, git workflows, and code review. It enforces security by design by restricting external models to patch generation only, requiring Claude to review and apply changes. The workflow integrates OPSX to convert vague requirements into verifiable constraints.
 ### Context
 Current agent development trends show a divergence from single-model monoliths toward specialized model routing. This signal reflects an infrastructure pattern where different model capabilities (Gemini for frontend, Codex for backend, Claude for orchestration) are leveraged via a unified CLI interface. The approach addresses the latency and cost inefficiencies of routing all tasks through a single provider while maintaining a consistent developer experience.
 

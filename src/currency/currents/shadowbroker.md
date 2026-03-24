@@ -24,9 +24,7 @@ mediation:
 ---
 
 ### Signal
-
-Source: GitHub (BigBodyCobain/Shadowbroker). URL: https://github.com/BigBodyCobain/Shadowbroker. Stars: 2.9k. License: not specified. Stack: Next.js frontend, Python FastAPI backend.
-
+[Shadowbroker](https://github.com/BigBodyCobain/Shadowbroker.) · GitHub
 ### Context
 
 Shadowbroker aggregates public open-source intelligence streams — ADS-B aircraft transponders, AIS maritime vessel data, satellite tracking, seismic monitoring, and geopolitical event feeds — into a single interactive map interface. The name invokes the 2016-2017 leak of NSA cyberweapons, though the project itself is an intelligence aggregation tool rather than an offensive one. It represents the democratization of situational awareness infrastructure: capabilities previously available only to governments and intelligence agencies, assembled from public data sources and deployable by individuals.

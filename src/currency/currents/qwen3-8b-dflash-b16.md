@@ -25,8 +25,9 @@ mediation:
 ---
 
 ### Signal
-HuggingFace repository `z-lab/Qwen3-8B-DFlash-b16` published 2026-03-17. MIT licensed. 9,156 downloads, 20 likes. Pipeline tag: text-generation. Tags include `dflash`, `speculative-decoding`, `diffusion`, `efficiency`, `flash-decoding`, `qwen`, `diffusion-language-model`. Paper available at arXiv:2602.06036.
+[Qwen3-8B-DFlash-b16](https://github.com/z-lab/Qwen3-8B-DFlash-b16) · 2026-03-17
 
+HuggingFace repository `z-lab/Qwen3-8B-DFlash-b16` published 2026-03-17. MIT licensed. 9,156 downloads, 20 likes. Pipeline tag: text-generation. Tags include `dflash`, `speculative-decoding`, `diffusion`, `efficiency`, `flash-decoding`, `qwen`, `diffusion-language-model`. Paper available at arXiv:2602.06036.
 ### Context
 DFlash utilizes a lightweight block diffusion model for drafting within a speculative decoding framework. This entry represents the drafter component, distinct from the target model `Qwen/Qwen3-8B`. It requires `trust_remote_code=True` in the `transformers` library to load the custom block diffusion architecture. The system architecture pairs the diffusion drafter with the autoregressive target to enable parallel drafting and reduce inference latency.
 

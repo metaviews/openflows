@@ -27,12 +27,9 @@ mediation:
 ---
 
 ### Signal
-Source: github
-Title: goclaw
-URL: https://github.com/nextlevelbuilder/goclaw
-Date: 2026-03-23
-Content: GoClaw is a multi-tenant AI agent gateway built in Go with support for 20+ LLM providers and 7 communication channels. It utilizes a single binary deployment model with multi-tenant PostgreSQL storage and OpenTelemetry observability.
+[goclaw](https://github.com/nextlevelbuilder/goclaw) · GitHub · 2026-03-23
 
+GoClaw is a multi-tenant AI agent gateway built in Go with support for 20+ LLM providers and 7 communication channels. It utilizes a single binary deployment model with multi-tenant PostgreSQL storage and OpenTelemetry observability.
 ### Context
 GoClaw represents a structural shift in the OpenClaw ecosystem, moving the core orchestration logic from Python to Go. This transition targets production-grade performance and native concurrency, addressing limitations in single-threaded Python event loops when managing high-volume agent teams. The project explicitly positions itself as a hardened variant of the OpenClaw framework, emphasizing multi-tenant isolation and security layers.
 

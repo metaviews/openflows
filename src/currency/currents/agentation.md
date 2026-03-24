@@ -27,8 +27,9 @@ mediation:
 ---
 
 ### Signal
-A March 2026 signal from opensourceprojects.dev highlights the opacity of AI agent perception, specifically the internal representation of screen content during web interaction. The signal points to the GitHub repository benjitaylor/agentation, which addresses the "black box" nature of agent observation by making the agent's visual input accessible for debugging.
+[Agentation](https://opensourceprojects.dev)
 
+A March 2026 signal from opensourceprojects.dev highlights the opacity of AI agent perception, specifically the internal representation of screen content during web interaction. The signal points to the GitHub repository benjitaylor/agentation, which addresses the "black box" nature of agent observation by making the agent's visual input accessible for debugging.
 ### Context
 Autonomous agents interacting with web interfaces typically operate as opaque systems where only final outputs are visible to developers. This lack of visibility into the agent's perceptual state hinders debugging, security auditing, and performance optimization. As agent workflows become more complex and integrated into production systems, the ability to inspect intermediate reasoning and perception states becomes critical infrastructure.
 

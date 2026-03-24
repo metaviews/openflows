@@ -26,8 +26,9 @@ mediation:
 ---
 
 ### Signal
+[Civic AI — 6-Pack of Care](https://civic.ai) · civic.ai · 2026-02-18
 
-Source: civic.ai (redirects from 6pack.care). Research project by Audrey Tang and Caroline Green, affiliated with Oxford's Accelerator Fellowship Programme, Institute for Ethics in AI. The "6-Pack of Care" names six principles for trustworthy civic AI deployment.
+Research project by Audrey Tang and Caroline Green, affiliated with Oxford's Accelerator Fellowship Programme, Institute for Ethics in AI. The "6-Pack of Care" names six principles for trustworthy civic AI deployment.
 
 ### Context
 

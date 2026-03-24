@@ -29,8 +29,9 @@ lastReviewed: 2026-03-19
 ---
 
 ### Signal
-The vLLM project is a high-throughput and memory-efficient inference and serving engine for large language models, hosted on GitHub (`vllm-project/vllm`). Originally developed at the UC Berkeley Sky Computing Lab, it has evolved into a community-driven project supporting academic and industry contributions. Key technical features include PagedAttention for efficient memory management, continuous batching of requests, and support for quantization formats including GPTQ, AWQ, and FP8. It maintains compatibility with model families such as Llama, Qwen, DeepSeek, and Kimi across CUDA, AMD HIP, and TPU architectures.
+[vLLM](https://github.com/vllm-project/vllm)
 
+The vLLM project is a high-throughput and memory-efficient inference and serving engine for large language models, hosted on GitHub (`vllm-project/vllm`). Originally developed at the UC Berkeley Sky Computing Lab, it has evolved into a community-driven project supporting academic and industry contributions. Key technical features include PagedAttention for efficient memory management, continuous batching of requests, and support for quantization formats including GPTQ, AWQ, and FP8. It maintains compatibility with model families such as Llama, Qwen, DeepSeek, and Kimi across CUDA, AMD HIP, and TPU architectures.
 ### Context
 vLLM occupies the infrastructure layer between model weights and application interfaces. Unlike training frameworks or local desktop inference tools, vLLM is optimized specifically for serving workloads where throughput and latency are critical constraints. It addresses the bottleneck of GPU memory fragmentation during sequence generation, enabling higher concurrency compared to standard Hugging Face transformers implementations. This positions it as a foundational component for scalable AI deployments, whether on-premises or cloud-hosted.
 

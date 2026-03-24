@@ -26,8 +26,7 @@ mediation:
 ---
 
 ### Signal
-Source: GitHub repository `datawhalechina/self-llm`. Title: "开源大模型食用指南" (Open Source Large Model User Guide). Date: 2026-03-22. URL: https://github.com/datawhalechina/self-llm. Content describes a Linux-centric tutorial suite for deploying and fine-tuning open-weight LLMs and MLLMs, targeting Chinese-speaking practitioners.
-
+[Open Source Large Model User Guide (Self-LLM)](https://github.com/datawhalechina/self-llm.) · GitHub repository datawhalechina/self-llm. Title: "开源大模型食用指南" (Open Source Large Model User Guide). Date: 2026-03-22. URL: https://github.com/datawhalechina/self-llm. Content describes a Linux-centric tutorial suite for deploying and fine-tuning open-weight LLMs and MLLMs, targeting Chinese-speaking practitioners · 2026-03-22
 ### Context
 The project functions as an educational infrastructure layer rather than a runtime or framework. It addresses the high friction barrier in LLM adoption by standardizing environment configuration, deployment procedures, and fine-tuning workflows for models like Qwen, LLaMA, ChatGLM, and InternLM. The content is structured to progress from basic environment setup to advanced parameter-efficient adaptation (LoRA, full fine-tuning), explicitly designed for students and researchers in the Chinese open-source ecosystem.
 

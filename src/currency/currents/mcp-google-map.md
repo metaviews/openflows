@@ -29,8 +29,9 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-GitHub repository `cablate/mcp-google-map` provides a Model Context Protocol (MCP) server for Google Maps API integration. It supports both standalone Agent Skill execution via CLI and standard MCP server deployment. The implementation exposes tools for geocoding, place search, and nearby location queries, verified against Claude Desktop and Dive Desktop environments.
+[MCP Google Map Server](https://github.com/cablate/mcp-google-map)
 
+GitHub repository `cablate/mcp-google-map` provides a Model Context Protocol (MCP) server for Google Maps API integration. It supports both standalone Agent Skill execution via CLI and standard MCP server deployment. The implementation exposes tools for geocoding, place search, and nearby location queries, verified against Claude Desktop and Dive Desktop environments.
 ### Context
 Google officially announced MCP support for Google Maps (Maps Grounding Lite) in December 2025. This project functions as a community-maintained alternative, offering distinct deployment options and feature sets compared to the official managed service. It addresses the need for flexible geospatial grounding in agent workflows where official infrastructure may not be available or configurable.
 

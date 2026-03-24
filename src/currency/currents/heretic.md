@@ -27,9 +27,7 @@ lastReviewed: 2026-03-23
 ---
 
 ### Signal
-
-Source: GitHub (p-e-w/heretic). URL: https://github.com/p-e-w/heretic. Stars: 14.1k. License: AGPL-3.0. Language: Python.
-
+[Heretic](https://github.com/p-e-w/heretic.) · GitHub
 ### Context
 
 Heretic automates the process of removing safety alignment from open-weight transformer models — the guardrails, refusal behaviors, and content restrictions installed during RLHF and instruction tuning. It uses directional ablation (identifying and suppressing the model directions associated with refusal behavior) combined with parameter optimization to produce a version of the model with alignment constraints substantially reduced. At 14.1k stars, it has achieved significant community adoption, indicating that dealignment is not a niche concern but a mainstream capability in the open-weights ecosystem.

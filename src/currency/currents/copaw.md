@@ -27,9 +27,7 @@ lastReviewed: 2026-03-23
 ---
 
 ### Signal
-
-Source: GitHub (agentscope-ai/CoPaw). URL: https://github.com/agentscope-ai/CoPaw. Stars: 11.6k. License: Apache 2.0. Languages: Python, JavaScript.
-
+[CoPaw](https://github.com/agentscope-ai/CoPaw.) · GitHub
 ### Context
 
 CoPaw positions itself as a personal AI assistant infrastructure layer — deployable locally or on cloud, connectable to existing messaging workflows without requiring users to adopt a new interface. Native integrations with Discord, DingTalk, and Feishu distinguish it from browser-based tools like Open WebUI or LibreChat, targeting teams and individuals who work primarily through messaging platforms rather than dedicated chat applications. The extensible skills framework allows agents to be configured with domain-specific capabilities.

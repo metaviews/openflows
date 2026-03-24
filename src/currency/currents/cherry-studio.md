@@ -34,8 +34,9 @@ lastReviewed: 2026-03-19
 ---
 
 ### Signal
-GitHub repository `CherryHQ/cherry-studio` describes Cherry Studio as a desktop AI workspace featuring chat, autonomous agents, and a large catalog of integrated assistants. The project provides unified access to multiple model providers and lists integration tags including `openclaw`, `opencode`, `skills`, and `vibe-coding`.
+[Cherry Studio](https://github.com/CherryHQ/cherry-studio)
 
+GitHub repository `CherryHQ/cherry-studio` describes Cherry Studio as a desktop AI workspace featuring chat, autonomous agents, and a large catalog of integrated assistants. The project provides unified access to multiple model providers and lists integration tags including `openclaw`, `opencode`, `skills`, and `vibe-coding`.
 ### Context
 Cherry Studio operates within the desktop client layer of the AI stack, positioning itself as a centralized hub for model interaction. It aggregates multiple model providers and assistant configurations into a single application, reducing the need for users to manage disparate interfaces or API keys. The inclusion of tags like `claude-code` and `code-agent` indicates a focus on developer workflows alongside general productivity.
 

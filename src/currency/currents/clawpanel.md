@@ -26,8 +26,9 @@ mediation:
 ---
 
 ### Signal
-GitHub repository `qingchencloud/clawpanel` (2026-03-16). Described as an OpenClaw visual management panel with built-in AI assistant capabilities (tool calling, image recognition, multimodal). Supports one-click installation, configuration, diagnostics, and repair. Built with Rust and Tauri v2. Offers cross-platform desktop application and pure web deployment modes for ARM64/embedded devices without GUI dependencies.
+[ClawPanel](https://github.com/qingchencloud/clawpanel) · 2026-03-16
 
+GitHub repository `qingchencloud/clawpanel` . Described as an OpenClaw visual management panel with built-in AI assistant capabilities (tool calling, image recognition, multimodal). Supports one-click installation, configuration, diagnostics, and repair. Built with Rust and Tauri v2. Offers cross-platform desktop application and pure web deployment modes for ARM64/embedded devices without GUI dependencies.
 ### Context
 ClawPanel functions as the operational interface layer for the OpenClaw agent framework. While OpenClaw provides the core orchestration and agent logic, ClawPanel abstracts the complexity of setup and management into a graphical environment. It targets both desktop operators and embedded environments, bridging the gap between raw framework code and end-user utility. The inclusion of an AI assistant within the panel suggests a shift toward automated troubleshooting and configuration management within the agent workflow.
 

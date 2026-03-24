@@ -27,8 +27,7 @@ mediation:
 ---
 
 ### Signal
-Source: GitHub repository `iOfficeAI/AionUi`. License: Apache-2.0. Platforms: macOS, Windows, Linux. Core function: Open-source cowork application with built-in AI agents supporting 24/7 automation. Supported interfaces include Gemini CLI, Claude Code, Codex, OpenCode, Qwen Code, Goose CLI, and Auggie.
-
+[AionUi](https://github.com/iOfficeAI/AionUi) · GitHub repository iOfficeAI/AionUi. License: Apache-2.0. Platforms: macOS, Windows, Linux. Core function: Open-source cowork application with built-in AI agents supporting 24/7 automation. Supported interfaces include Gemini CLI, Claude Code, Codex, OpenCode, Qwen Code, Goose CLI, and Auggie
 ### Context
 AionUi operates within the desktop agent orchestration layer, bridging the gap between command-line agent tools and persistent graphical workspaces. It positions itself as a local-first cowork environment where multiple agent types can run concurrently. This aligns with the broader shift toward composable agent interfaces that abstract provider differences into a unified UI, similar to trends observed in Cherry Studio and AnythingLLM.
 

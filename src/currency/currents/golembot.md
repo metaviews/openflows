@@ -27,12 +27,9 @@ mediation:
 ---
 
 ### Signal
-Source: github
-Title: golembot
-URL: https://github.com/0xranx/golembot
-Date: 2026-03-15
-Content: Run Cursor, Claude Code, OpenCode, or Codex with any LLM provider — deploy to IM, HTTP, or your own product. | ai, ai-agent, ai-assistant, bot-framework, chatbot, claude-code, cli, codex, coding-agent, cursor, dingtalk, discord, feishu, lark, llm, opencode, slack, telegram, typescript, wecom
+[golembot](https://github.com/0xranx/golembot) · GitHub · 2026-03-15
 
+Run Cursor, Claude Code, OpenCode, or Codex with any LLM provider — deploy to IM, HTTP, or your own product. | ai, ai-agent, ai-assistant, bot-framework, chatbot, claude-code, cli, codex, coding-agent, cursor, dingtalk, discord, feishu, lark, llm, opencode, slack, telegram, typescript, wecom
 ### Context
 GolemBot operates as a TypeScript-based agent framework designed to abstract LLM provider selection and channel integration. It allows developers to deploy agent logic across messaging interfaces (Discord, Slack, Telegram, DingTalk, Feishu, WeCom) and HTTP endpoints. The framework positions itself as a runtime layer that can execute workflows from coding assistants like Cursor, Claude Code, and OpenCode, or standard LLM APIs.
 

@@ -25,8 +25,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev (2026-03-15). Description identifies LobsterAI as an open-source engine designed for a 24/7 autonomous AI workforce. Core value proposition is persistent, long-running agent sessions that handle workflows, system monitoring, and project management without requiring continuous human session initiation. Repository hosted at github.com/netease-youdao/LobsterAI.
-
+[LobsterAI](https://github.com/netease-youdao/LobsterAI.) · opensourceprojects.dev · 2026-03-15
 ### Context
 LobsterAI originates from NetEase Youdao, a major Chinese technology company known for search, translation, and education tools. This entry aligns with the broader trend of Chinese organizations establishing distinct tiers of open-weight model infrastructure that run parallel to Western development. While many frameworks focus on single-turn interactions or short-lived sessions, LobsterAI targets persistence as a core architectural constraint.
 

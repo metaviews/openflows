@@ -25,11 +25,9 @@ mediation:
 ---
 
 ### Signal
-**Source:** GitHub (AgentEra/Agently)
-**URL:** https://github.com/AgentEra/Agently
-**Date:** 2026-03-19
-**Description:** A Python-based GenAI application framework offering structure data interaction, chained-calls syntax, and event-driven flow (TriggerFlow) for complex working logic. Supports model switching without code rewrite and includes an official skills library.
+[Agently](https://github.com/AgentEra/Agently) · GitHub (AgentEra/Agently) · 2026-03-19
 
+A Python-based GenAI application framework offering structure data interaction, chained-calls syntax, and event-driven flow (TriggerFlow) for complex working logic. Supports model switching without code rewrite and includes an official skills library.
 ### Context
 Agently operates within the Python ecosystem of LLM orchestration tools. It positions itself as a lightweight alternative to heavier frameworks by focusing on syntax structure and event-driven logic rather than complex graph definitions. The framework supports multiple model providers including ChatGLM, Claude, Ernie, Gemini, GPT, and Minimax, indicating a focus on provider agnosticism in application logic.
 

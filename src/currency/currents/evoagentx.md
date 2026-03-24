@@ -23,11 +23,9 @@ mediation:
 ---
 
 ### Signal
-Source: 36kr (via Brave)
-Date: 2026-03-11
-URL: https://36kr.com/p/3314754737285121
-Content: A University of Glasgow research team released EvoAgentX, described as the first open-source framework introducing self-evolution mechanisms for AI agents to address bottlenecks in multi-agent system construction and optimization.
+[EvoAgentX](https://36kr.com/p/3314754737285121) · 36kr (via Brave) · 2026-03-11
 
+A University of Glasgow research team released EvoAgentX, described as the first open-source framework introducing self-evolution mechanisms for AI agents to address bottlenecks in multi-agent system construction and optimization.
 ### Context
 Multi-agent systems (MAS) typically require significant manual tuning and structural design to maintain stability and performance as they scale. Current open-source frameworks (e.g., OpenClaw, CrewAI, DeerFlow) focus on orchestration, memory, and tool integration, but often lack built-in mechanisms for the agents themselves to evolve their own capabilities or architectures post-deployment. EvoAgentX positions itself as addressing this gap through autonomous evolutionary loops.
 

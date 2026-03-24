@@ -31,8 +31,9 @@ lastReviewed: 2026-03-22
 ---
 
 ### Signal
-GitHub repository `BodhiSearch/BodhiApp` presents a desktop application designed to run open-source LLMs locally. The project integrates the Huggingface ecosystem for weight access and utilizes `llama.cpp` for inference. It exposes OpenAI-compatible chat completions and models API endpoints with SwaggerUI documentation for developer testing. A built-in Chat UI is provided for non-technical users, featuring model discovery and download capabilities.
+[Bodhi App](https://github.com/BodhiSearch/BodhiApp)
 
+GitHub repository `BodhiSearch/BodhiApp` presents a desktop application designed to run open-source LLMs locally. The project integrates the Huggingface ecosystem for weight access and utilizes `llama.cpp` for inference. It exposes OpenAI-compatible chat completions and models API endpoints with SwaggerUI documentation for developer testing. A built-in Chat UI is provided for non-technical users, featuring model discovery and download capabilities.
 ### Context
 Local inference infrastructure is stabilizing around standardized runtimes and accessible interfaces. While many tools target technical operators with CLI or API-only access, Bodhi App attempts to bridge the gap by providing a GUI alongside developer-grade API compatibility. This aligns with the shift toward treating local model inference as standard desktop infrastructure rather than experimental tooling.
 

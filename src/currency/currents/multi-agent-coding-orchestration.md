@@ -26,11 +26,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev (2026-03-18)
-Title: Coordinate multiple AI coding agents to tackle complex software projects
-URL: https://opensourceprojects.dev/post/7e94f3e1-8d17-4c07-804e-ae47c97082fc
-GitHub Repository: https://github.com/desplega-ai/agent-swarm
-
+[Coordinate multiple AI coding agents to tackle complex software projects](https://opensourceprojects.dev/post/7e94f3e1-8d17-4c07-804e-ae47c97082fc) · opensourceprojects.dev
 ### Context
 Software development complexity often exceeds the context window and functional scope of a single AI coding assistant. Single-agent workflows struggle to maintain coherence across database schema design, backend logic, DevOps configuration, and frontend components simultaneously. This signal identifies a shift toward distributed agent architectures where specialized agents handle distinct layers of the stack, communicating through a central orchestration layer.
 

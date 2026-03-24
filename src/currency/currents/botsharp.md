@@ -42,12 +42,9 @@ mediation:
 ---
 
 ### Signal
-**Source:** GitHub
-**Title:** BotSharp
-**URL:** https://github.com/SciSharp/BotSharp
-**Date:** 2026-03-24
-**Content:** AI Multi-Agent Framework in .NET | ai-agent, chatbot, multi-agent. BotSharp is an open source machine learning framework for AI Bot platform builder. This project involves natural language understanding, computer vision and audio processing technologies, and aims to promote the development and application of intelligent robot assistants in information systems. Out-of-the-box machine learning algorithms allow ordinary programmers to develop artificial intelligence applications faster and easier. It's written in C# running on .Net Core that is full cross-platform framework, the plug-in and pipeline flow execution design is adopted to completely.
+[BotSharp](https://github.com/SciSharp/BotSharp) · GitHub · 2026-03-24
 
+AI Multi-Agent Framework in .NET | ai-agent, chatbot, multi-agent. BotSharp is an open source machine learning framework for AI Bot platform builder. This project involves natural language understanding, computer vision and audio processing technologies, and aims to promote the development and application of intelligent robot assistants in information systems. Out-of-the-box machine learning algorithms allow ordinary programmers to develop artificial intelligence applications faster and easier. It's written in C# running on .Net Core that is full cross-platform framework, the plug-in and pipeline flow execution design is adopted to completely.
 ### Context
 BotSharp operates within the .NET ecosystem, targeting developers who require cross-platform AI agent capabilities without leaving the C#/.NET Core environment. The framework emphasizes "Conversation as a Platform (CaaP)," suggesting a structural approach where conversational interfaces serve as the primary orchestration layer for business logic and agent workflows. Key architectural features include plugin modularity and pipeline flow execution, allowing for granular control over the AI processing pipeline.
 

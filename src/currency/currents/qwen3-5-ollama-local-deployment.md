@@ -25,7 +25,9 @@ mediation:
 ---
 
 ### Signal
-Source: Bilibili video signal (March 10, 2026). Content describes a step-by-step instructional guide for installing Ollama and deploying 1700+ open-source models, specifically highlighting Qwen3.5 multimodal capabilities. The signal emphasizes low-barrier entry for consumer hardware deployment.
+[Qwen3.5 Multimodal Local Deployment via Ollama](https://www.bilibili.com) · Bilibili · 2026-03-10
+
+Step-by-step instructional guide for installing Ollama and deploying 1700+ open-source models, specifically highlighting Qwen3.5 multimodal capabilities. Emphasises low-barrier entry for consumer hardware deployment.
 
 ### Context
 This entry documents a specific deployment pathway within the broader ecosystem of local LLM inference. It intersects with the availability of Chinese open-weight models (Qwen series) and the normalization of local inference runtimes. The signal reflects a trend where multimodal capabilities are becoming accessible on personal hardware through standardized packaging (Ollama).

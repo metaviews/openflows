@@ -25,8 +25,9 @@ mediation:
 ---
 
 ### Signal
-GitHub repository `gmickel/gmickel-claude-marketplace` published 2026-03-22. Provides a collection of plugins for Claude Code focused on reliable AI coding workflows. Key components include Flow-Next for plan-first execution, Ralph autonomous mode for overnight coding with fresh context, and receipt-based gating to prevent drift. Compatible with Factory Droid runtime.
+[gmickel Claude Marketplace](https://github.com/gmickel/gmickel-claude-marketplace) · 2026-03-22
 
+GitHub repository `gmickel/gmickel-claude-marketplace` published 2026-03-22. Provides a collection of plugins for Claude Code focused on reliable AI coding workflows. Key components include Flow-Next for plan-first execution, Ralph autonomous mode for overnight coding with fresh context, and receipt-based gating to prevent drift. Compatible with Factory Droid runtime.
 ### Context
 Claude Code is an autonomous coding interface that operates via command-line and IDE integration. This marketplace extends the base capabilities by introducing structured workflow plugins rather than ad-hoc prompting. The infrastructure shifts from single-turn interaction to multi-step orchestration with built-in review gates and state management.
 

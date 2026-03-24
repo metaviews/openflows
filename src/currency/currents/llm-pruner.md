@@ -29,11 +29,11 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Source: GitHub repository `horseee/LLM-Pruner`.
+[LLM-Pruner](https://github.com/horseee/LLM-Pruner) · GitHub repository horseee/LLM-Pruner
+
 Reference: NeurIPS 2023 paper "LLM-Pruner: On the Structural Pruning of Large Language Models".
 License: Apache 2.0.
 Primary Dependencies: PyTorch >= v1.7.1.
-
 ### Context
 Structural pruning removes neurons, attention heads, or entire layers from the model architecture rather than relying solely on quantization or distillation. This approach reduces parameter count and memory footprint at the structural level, potentially enabling deployment on hardware with strict memory constraints without the accuracy degradation often associated with aggressive quantization.
 

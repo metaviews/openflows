@@ -23,8 +23,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects.dev (2026-03-19). The signal introduces Zeroclaw as a minimalist Rust framework for managing autonomous AI workflows. It addresses the complexity of juggling state, tool execution, and memory by providing a unified runtime that reduces the need to glue disparate libraries together.
-
+[Zeroclaw](https://opensourceprojects.dev) · opensourceprojects.dev · 2026-03-19
 ### Context
 The agent infrastructure landscape is shifting toward language-agnostic performance and memory safety. Rust offers deterministic memory management and lower runtime overhead compared to Python-based frameworks, making it suitable for high-frequency autonomous operations and local inference environments. This signal indicates a move toward compiling agent logic closer to the metal.
 

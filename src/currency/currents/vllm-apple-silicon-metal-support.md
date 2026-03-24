@@ -23,8 +23,9 @@ mediation:
 ---
 
 ### Signal
-GitHub repository `vllm-project/vllm-metal` provides native Metal backend support for the vLLM inference engine on Apple Silicon hardware. Signal indicates removal of translation layers previously required for GPU acceleration on M-series chips, claiming direct performance utilization.
+[vLLM Apple Silicon Native Metal Support](https://github.com/vllm-project/vllm-metal)
 
+GitHub repository `vllm-project/vllm-metal` provides native Metal backend support for the vLLM inference engine on Apple Silicon hardware. Signal indicates removal of translation layers previously required for GPU acceleration on M-series chips, claiming direct performance utilization.
 ### Context
 vLLM is established as a high-throughput serving engine for LLMs, typically optimized for datacenter GPUs. Apple Silicon (M-series) utilizes Metal as the native graphics API, historically requiring translation layers or specific quantization formats for inference frameworks. This signal addresses the gap between high-performance serving requirements and local consumer hardware constraints.
 

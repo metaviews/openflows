@@ -26,8 +26,7 @@ lastReviewed: 2026-03-15
 ---
 
 ### Signal
-Repository: `mindspore-lab/mindnlp` on GitHub. Source describes a framework for running PyTorch-based Hugging Face models on the MindSpore deep learning framework. Claims zero code change adoption for model loading and execution. Supports Transformers, NLP, and Diffusion model families. Hardware targets include Ascend NPUs, GPUs, and CPUs.
-
+[MindNLP](https://github.com/mindspore-lab/mindnlp)
 ### Context
 MindNLP acts as an interoperability adapter between the dominant open-source model ecosystem (PyTorch/Hugging Face) and Huawei's MindSpore runtime. This emerges within the broader infrastructure divergence regarding AI training and inference stacks, specifically where hardware sovereignty (Ascend hardware) necessitates software layers that do not rely solely on CUDA-centric workflows. It aligns with efforts to maintain access to the 200,000+ model catalog hosted on Hugging Face Hub without dependency on specific hardware vendor lock-in for training environments.
 

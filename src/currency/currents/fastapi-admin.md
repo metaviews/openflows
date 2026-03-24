@@ -26,11 +26,7 @@ mediation:
 ---
 
 ### Signal
-**Source:** GitHub  
-**URL:** https://github.com/iimeta/fastapi-admin  
-**Date:** 2026-03-15  
-**Summary:** Enterprise-level LLM API integration system supporting OpenAI, Azure, Wenxin, Spark, Qwen, GLM, Gemini, DeepSeek, Claude, and OpenAI-compatible models. Features include a lightweight dashboard, Docker deployment, multi-role access (admin, reseller, user), billing management, and extensive logging.
-
+[fastapi-admin](https://github.com/iimeta/fastapi-admin) · GitHub · 2026-03-15
 ### Context
 As LLM adoption expands, organizations require centralized infrastructure to manage API costs, model selection, and access permissions without building custom wrappers for each provider. fastapi-admin addresses the operational overhead of integrating multiple model APIs into business systems by providing a unified interface and standardized API endpoints.
 

@@ -21,8 +21,9 @@ mediation:
 ---
 
 ### Signal
-A March 2026 signal from opensourceprojects.dev highlights the repository `Gen-Verse/OpenClaw-RL`. The entry claims to enable reinforcement learning (RL) agent training through natural language instructions, bypassing the traditional requirement for explicit reward function specification and environment code debugging.
+[Train any agent simply by talking](https://github.com/Gen-Verse/OpenClaw-RL)
 
+A March 2026 signal from opensourceprojects.dev highlights the repository `Gen-Verse/OpenClaw-RL`. The entry claims to enable reinforcement learning (RL) agent training through natural language instructions, bypassing the traditional requirement for explicit reward function specification and environment code debugging.
 ### Context
 Reinforcement learning typically requires significant engineering overhead: defining reward landscapes, managing sparse rewards, and debugging agent behavior in simulation. Recent trends in LLM alignment have shifted focus toward instruction tuning and natural language interfaces. This signal represents an attempt to apply that paradigm to RL, treating agent training as a conversational configuration task rather than a mathematical optimization problem.
 

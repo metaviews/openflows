@@ -21,11 +21,7 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects
-URL: https://opensourceprojects.dev/post/21759282-a8a5-4eb9-adcd-bd2d633af2c2
-Repository: https://github.com/ysharma3501/LuxTTS
-Date: 2026-03-22
-
+[LuxTTS](https://opensourceprojects.dev/post/21759282-a8a5-4eb9-adcd-bd2d633af2c2) · opensourceprojects · 2026-03-22
 ### Context
 High-fidelity voice synthesis has historically required significant computational resources or proprietary API access. This signal identifies a shift toward open-source implementations that aim to reduce barriers for custom voice cloning and text-to-speech generation.
 

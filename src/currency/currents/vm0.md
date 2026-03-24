@@ -26,8 +26,9 @@ mediation:
 ---
 
 ### Signal
-Repository `vm0-ai/vm0` published 2026-03-19. Describes an agent runtime for natural language-described workflows. Key tags include `agentic-workflow`, `ai-agent`, `ai-runtime`, `ai-sandbox`, `claude-code`, `dev-tools`, `sandbox`.
+[vm0](https://github.com/vm0-ai/vm0) · 2026-03-19
 
+Repository `vm0-ai/vm0` published 2026-03-19. Describes an agent runtime for natural language-described workflows. Key tags include `agentic-workflow`, `ai-agent`, `ai-runtime`, `ai-sandbox`, `claude-code`, `dev-tools`, `sandbox`.
 ### Context
 vm0 positions itself as a cloud-native agent execution layer. It abstracts the complexity of persistent agent environments by providing a remote sandbox that runs 24/7. The runtime leverages the Claude Code interface, allowing users to define workflows via natural language instructions rather than explicit code scaffolding.
 

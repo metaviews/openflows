@@ -25,11 +25,9 @@ mediation:
 ---
 
 ### Signal
-Source: Brave
-URL: https://apidog.com/blog/paperclip/
-Date: 2026-03-18
-Content: Analysis of Paperclip as an open-source framework for running a one-person company, highlighting org charts, budgets, heartbeats, and governance features.
+[Paperclip Solo Operations Framework](https://apidog.com/blog/paperclip/) · Brave · 2026-03-18
 
+Analysis of Paperclip as an open-source framework for running a one-person company, highlighting org charts, budgets, heartbeats, and governance features.
 ### Context
 Solo-founder operations increasingly rely on autonomous agent infrastructure to replace traditional organizational layers. The signal identifies a shift where governance tools typically reserved for teams are being adapted for individual operator workflows.
 

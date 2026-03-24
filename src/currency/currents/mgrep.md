@@ -25,13 +25,10 @@ mediation:
 ---
 
 ### Signal
-Source: opensourceprojects
-Title: CLI-native way to semantically grep everything, like code, images, pdfs and more
-URL: https://opensourceprojects.dev/post/b4ec22f5-eac5-4f60-91cf-fa09a8115d6c
-Date: 2026-03-18
-Content: Ever found yourself grepping through a codebase for a specific concept, only to realize you need to search through PDFs, images, or documents too? Or maybe you've tried to find "that one function" but can only remember what it does, not its exact name. Traditional grep hits a wall when the search needs semantic understanding rather than string matching.
-GitHub Repository: https://github.com/mixedbread-ai/mgrep
+[CLI-native way to semantically grep everything, like code, images, pdfs and more](https://opensourceprojects.dev/post/b4ec22f5-eac5-4f60-91cf-fa09a8115d6c) · opensourceprojects · 2026-03-18
 
+Ever found yourself grepping through a codebase for a specific concept, only to realize you need to search through PDFs, images, or documents too? Or maybe you've tried to find "that one function" but can only remember what it does, not its exact name. Traditional grep hits a wall when the search needs semantic understanding rather than string matching.
+GitHub Repository: https://github.com/mixedbread-ai/mgrep
 ### Context
 Traditional text-based search tools (grep, ripgrep) operate on exact string matches within text files, failing to index binary formats, images, or understand conceptual relationships. As AI-native workflows increase, the need to query local knowledge bases semantically—rather than syntactically—has become a standard requirement for developer tooling. mgrep addresses this by integrating embedding models directly into the CLI workflow, allowing semantic queries across mixed media types without requiring a dedicated vector database or cloud service.
 

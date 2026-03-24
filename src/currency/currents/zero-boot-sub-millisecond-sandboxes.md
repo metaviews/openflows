@@ -25,8 +25,9 @@ mediation:
 ---
 
 ### Signal
-Signal source: opensourceprojects.dev (2026-03-20). GitHub repository: zerobootdev/zeroboot. The project proposes a runtime mechanism for AI agent isolation using copy-on-write (CoW) forking to achieve sub-millisecond sandbox initialization.
+[ZeroBoot Sub-millisecond Sandboxes](https://opensourceprojects.dev) · 2026-03-20
 
+Signal source: opensourceprojects.dev . GitHub repository: zerobootdev/zeroboot. The project proposes a runtime mechanism for AI agent isolation using copy-on-write (CoW) forking to achieve sub-millisecond sandbox initialization.
 ### Context
 Standard containerization (Docker) and virtual machine provisioning introduce significant latency (seconds to minutes) unsuitable for high-frequency autonomous agent loops or rapid untrusted code execution. ZeroBoot targets the operational gap where isolation is required but startup time is a bottleneck. The technology relies on kernel-level copy-on-write semantics rather than full process recreation, allowing the agent to branch into a secure execution context almost instantly.
 

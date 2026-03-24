@@ -30,12 +30,9 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Source: github
-Title: chatluna
-URL: https://github.com/ChatLunaLab/chatluna
-Date: 2026-03-14
-Content: Multi-platform model integration, extensible, various output formats, LLM chat bot plugin.
+[chatluna](https://github.com/ChatLunaLab/chatluna) · GitHub · 2026-03-14
 
+Multi-platform model integration, extensible, various output formats, LLM chat bot plugin.
 ### Context
 ChatLuna operates as a plugin within the Koishi framework, designed to facilitate multi-model LLM access through bot interfaces. It supports text, voice, and image outputs, with a focus on extensibility via LangChain and Koishi API. The project provides session management, rate limiting, and content auditing capabilities.
 

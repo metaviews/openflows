@@ -28,8 +28,9 @@ mediation:
 ---
 
 ### Signal
-ClawWork is a GitHub-hosted desktop application (repository: `clawwork-ai/ClawWork`) designed as a client for the OpenClaw agent framework. Built with Electron, TypeScript, and React, it provides a persistent workspace interface distinct from chat-based interactions (Telegram/Slack). Key capabilities include parallel task sessions, local SQLite storage for artifacts, and scoped gateway/agent settings per task. Distribution is available via Homebrew for macOS and GitHub releases.
+[ClawWork](https://github.com/clawwork-ai/ClawWork)
 
+ClawWork is a GitHub-hosted desktop application (repository: `clawwork-ai/ClawWork`) designed as a client for the OpenClaw agent framework. Built with Electron, TypeScript, and React, it provides a persistent workspace interface distinct from chat-based interactions (Telegram/Slack). Key capabilities include parallel task sessions, local SQLite storage for artifacts, and scoped gateway/agent settings per task. Distribution is available via Homebrew for macOS and GitHub releases.
 ### Context
 Standard chat interfaces for LLM agents often obscure state management during complex operations. Task status disappears into message streams, concurrent sessions require manual tab juggling, and generated files are ephemeral within chat history. ClawWork addresses these friction points by treating each agent task as an isolated workspace with visible tool activity, persistent file associations, and explicit approval gates for risky execution actions.
 
