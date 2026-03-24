@@ -13,7 +13,7 @@ links:
     relation: "is a founding signal for the physical-world deployment governance loop represented by"
   - id: inspectable-agent-operations
     relation: "extends software agent orchestration principles into physical control systems, raising the stakes addressed by"
-lastReviewed: 2026-03-15
+lastReviewed: 2026-03-23
 ---
 
 ### Signal

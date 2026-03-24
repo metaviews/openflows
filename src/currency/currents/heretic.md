@@ -23,6 +23,7 @@ mediation:
     - "researched from primary source"
   humanRole: "full authorship"
   limits: "document as ecosystem signal; verify technical mechanism and current model compatibility before publishing"
+lastReviewed: 2026-03-23
 ---
 
 ### Signal

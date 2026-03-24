@@ -23,6 +23,7 @@ mediation:
     - "researched from primary source"
   humanRole: "full authorship"
   limits: "verify current feature set against primary source before publishing"
+lastReviewed: 2026-03-23
 ---
 
 ### Signal

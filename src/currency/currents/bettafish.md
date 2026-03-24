@@ -11,7 +11,7 @@ permalink: /currency/currents/bettafish/
 links:
   - id: local-inference-baseline
     relation: "extends the baseline established in"
-lastReviewed: 2026-03-15
+lastReviewed: 2026-03-22
 ---
 
 ### Signal

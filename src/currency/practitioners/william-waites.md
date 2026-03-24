@@ -19,6 +19,7 @@ mediation:
     - "reviewed arXiv:2602.13275 and leithdocs.com"
   humanRole: "full authorship"
   limits: "limited public biographical information; entry focuses on documented work"
+lastReviewed: 2026-03-22
 ---
 
 ### Signal

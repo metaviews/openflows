@@ -15,7 +15,7 @@ links:
     relation: "is directly operated by"
   - id: local-inference-baseline
     relation: "depends on single-GPU local compute conditions established by"
-lastReviewed: 2026-03-15
+lastReviewed: 2026-03-22
 ---
 
 ### Signal

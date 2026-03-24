@@ -15,7 +15,7 @@ links:
     relation: "contributes open tooling infrastructure to"
   - id: operational-literacy-interface
     relation: "enables practical spatial literacy through"
-lastReviewed: 2026-03-15
+lastReviewed: 2026-03-23
 ---
 
 ### Signal
