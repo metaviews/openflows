@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-23T07:12:09.490Z",
+  "lastUpdated": "2026-03-24T07:17:38.392Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1376,6 +1376,159 @@
       "title": "Breaking: Open Source LLM Updates & AI Releases (March 2026) | ClawPod",
       "source": "brave",
       "file": "open-source-llm-updates-ai-releases-march-2026.md"
+    },
+    "https://opensourceprojects.dev/post/941aa352-a600-4503-a5dc-f60ff7f3fccc": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "Automate your entire coding workflow with a team of AI agents",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Relies on proprietary Claude Code rather than open models; title and summary exhibit marketing hype; limited value for documenting open source AI infrastructure"
+    },
+    "https://github.com/lich0821/WeChatFerry": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "WeChatFerry",
+      "source": "github",
+      "score": 2,
+      "reason": "Tool focuses on automating a closed proprietary platform (WeChat) via hooks; tangentially related to AI as it integrates models rather than advancing open source infrastructure."
+    },
+    "https://opensourceprojects.dev/post/8b814e4f-bf3f-46d6-b1bd-2ea7ef9d6959": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "Code with Claude Code and Gemini offline on your mobile device",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Repo is open source, but claims to run proprietary models offline, conflicting with open-source focus and likely involving hype or API wrappers."
+    },
+    "https://opensourceprojects.dev/post/64cb5362-6bd6-438b-bf9c-b212f3afbe1b": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "Turn your terminal into a complete development and deployment environment",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source development tool without explicit AI integration or focus; tangential to the specific AI ecosystem scope of Openflows."
+    },
+    "https://opensourceprojects.dev/post/03c9cd8d-578e-42c7-99f6-457e0633cc02": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "Build Claude AI agents that execute code and complete tasks",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Centered on a proprietary model (Claude) and reflects trend-chasing; conflicts with Openflows' focus on open-source infrastructure and avoidance of closed systems."
+    },
+    "https://opensourceprojects.dev/post/bddcc3b6-8707-440a-a2a4-5533e7423957": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "Generate efficient C code from Go using this command line transpiler",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Signal describes a general-purpose programming transpiler without specific AI context. Openflows focuses on the AI ecosystem, and generic software development utilities fall outside this domain scope."
+    },
+    "https://opensourceprojects.dev/post/fe765088-9d13-4024-ad72-1b37be57dea2": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "Master Seedance API workflows with this open-source prompt engineering guide",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Prompt collections are usage artifacts rather than core infrastructure tools or frameworks. The specific API service is not a widely recognized open source component, reducing relevance for the broader ecosystem knowledge base."
+    },
+    "https://opensourceprojects.dev/post/8d4347fa-1ee8-4d57-bf9e-9176549aa922": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "The definitive open-source tool for building fast and portable automations",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Signal describes general IoT automation and hardware control rather than AI-specific tools, models, or frameworks central to the Openflows scope."
+    },
+    "https://opensourceprojects.dev/post/596bfb9a-6db7-4bab-8c9a-92fbbbaa06cd": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "The definitive Mesa driver for Android container graphics with Freedreno",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source graphics driver; tangentially related to AI infrastructure (containers/gpu) but lacks direct AI tooling or model focus."
+    },
+    "https://www.bilibili.com/video/BV1EQPLzBEnE/": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "爆炸更新灵境4.0智能体上线，让seedance2.0更听你的话，不卡审核，生成爆款视频_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Claims open source but relies on private cloud links; uses clickbait language; lacks verifiable public repository or technical documentation for inspection."
+    },
+    "https://opensourceprojects.dev/post/c9ded1fa-a0a5-4d68-b694-06e9d9dbf005": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "Manage your entire iOS sideloading workflow with this Rust-based application",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Unrelated to the open source AI ecosystem; focuses on general iOS app deployment rather than AI-specific tools or frameworks."
+    },
+    "https://opensourceprojects.dev/post/10300a29-53b3-42e6-a680-35dffca8ce17": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "Build and run R code faster with this terminal written in Rust",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tangential to core AI ecosystem; focuses on general R execution speed rather than AI-specific frameworks, models, or infrastructure."
+    },
+    "https://www.bilibili.com/video/BV1DGcnzZEqA/": {
+      "date": "2026-03-24",
+      "decision": "skipped",
+      "title": "推出 EdgeClaw：基于 OpenClaw 的端云协同个人 AI 智能体 💁_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Marketing-heavy video summary with hype language; lacks inspectable open-source artifacts (repos/docs) and conflates project names, reducing reliability for an open-source knowledge base."
+    },
+    "https://github.com/mindfold-ai/Trellis": {
+      "date": "2026-03-24",
+      "decision": "drafted",
+      "title": "Trellis",
+      "source": "github",
+      "file": "trellis.md"
+    },
+    "https://github.com/SciSharp/BotSharp": {
+      "date": "2026-03-24",
+      "decision": "drafted",
+      "title": "BotSharp",
+      "source": "github",
+      "file": "botsharp.md"
+    },
+    "https://github.com/vakovalskii/ValeDesk": {
+      "date": "2026-03-24",
+      "decision": "drafted",
+      "title": "ValeDesk",
+      "source": "github",
+      "file": "valedesk.md"
+    },
+    "https://opensourceprojects.dev/post/7c5aedc0-8700-4faa-a41f-b7342a053d6f": {
+      "date": "2026-03-24",
+      "decision": "drafted",
+      "title": "Build and manage AI agents directly from your terminal interface",
+      "source": "opensourceprojects",
+      "file": "incur-terminal-agent-interface.md"
+    },
+    "https://huggingface.co/Xenova/nllb-200-distilled-600M": {
+      "date": "2026-03-24",
+      "decision": "drafted",
+      "title": "Xenova/nllb-200-distilled-600M",
+      "source": "huggingface",
+      "file": "xenova-nllb-200-distilled-600m.md"
+    },
+    "https://huggingface.co/zai-org/GLM-5": {
+      "date": "2026-03-24",
+      "decision": "drafted",
+      "title": "zai-org/GLM-5",
+      "source": "huggingface",
+      "file": "zai-org-glm-5.md"
+    },
+    "https://opensourceprojects.dev/post/3e6cd957-c969-47c7-b488-f75b2fbfd95e": {
+      "date": "2026-03-24",
+      "decision": "drafted",
+      "title": "A self-hosted knowledge base for every conversation with ChatGPT and Claude",
+      "source": "opensourceprojects",
+      "file": "vesti-self-hosted-ai-knowledge-base.md"
     }
   }
 }
