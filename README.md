@@ -54,16 +54,24 @@ RSS and JSON feeds are also available at `/currency/feed.xml` and `/currency/fee
 
 All scripts require `OPENROUTER_API_KEY` in `.env`. See `.env.example`. `FALLBACK_OPENROUTER_MODEL` is optional — used when the primary model hits a rate limit.
 
-Two automated workflows run via GitHub Actions:
-- **`peng-intake.yml`** — daily at 06:00 UTC: intake → audit → queue → PR with new drafts
-- **`peng-perspective.yml`** — Monday, Wednesday, Friday at 08:00 UTC: synthesize → digest → PR with Peng's editorial briefing as the PR body
+Automated workflows run via `server/cron.js` on the self-hosted server:
+- **intake** — daily at 06:00 UTC: intake → audit → queue
+- **perspective** — Monday, Wednesday, Friday at 08:00 UTC: synthesize → digest
+- **refresh** — daily at 09:00 UTC
+
+## Dashboard
+
+Peng's admin dashboard runs at `https://admin.openflows.org`, gated behind Cloudflare Access. It provides queue management, run history, trigger controls, and an epistemic window for querying Peng directly.
+
+The server runs on self-hosted hardware (Debian Trixie), exposed via Cloudflare Tunnel, managed by PM2. See `server/` for the Fastify application.
 
 ## Stack
 
 - [Eleventy](https://www.11ty.dev/) (v3) — static site generator
 - [OpenRouter](https://openrouter.ai/) — model-agnostic API layer for all AI calls
 - [Cloudflare Pages](https://pages.cloudflare.com/) — hosting and deployment
-- GitHub Actions — scheduled intake and pull request automation
+- [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/) + Tunnel — admin auth and server exposure
+- Fastify 5 + node:sqlite + node-cron — self-hosted agent server
 
 ## Operator
 

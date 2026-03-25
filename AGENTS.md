@@ -286,15 +286,20 @@ Peng's highest function is not intake — it's synthesis. Cycle 9 adds a synthes
 - **Promotion workflow for circuit drafts**: move `drafts/{id}.md` to `src/currency/circuits/`; run `node scripts/translate.js --id {id}`; review `drafts/zh/{id}.md`; move to `src/currency/zh/circuits/`
 
 #### Cycle 10: Foundation — Server Setup
-**Status**: in progress
+**Status**: complete
 
 Move from local CLI tooling to a web-native control plane. A self-hosted server handles dynamic logic and agent state; Cloudflare Pages continues to serve the static site.
 
-- **Auth**: Cloudflare Access — admin gate, zero-maintenance, email/GitHub OAuth; no self-managed auth layer
-- **Server**: Node.js + Hono or Fastify on self-hosted hardware; not PaaS, not VPS rental
-- **Database**: SQLite on the server — single file, zero ops, sufficient at this scale
-- **Dashboard panels**: status (pending drafts, KB counts, audit state) and queue (QUEUE.md rendered in-browser); no AI yet
-- **Content source of truth**: git/GitHub stays canonical; dashboard reads but does not write entries; human promotion workflow preserved
+- **Auth**: Cloudflare Access — email-gated, zero-maintenance; no self-managed auth layer
+- **Server**: Fastify 5 on self-hosted hardware (Debian Trixie); not PaaS, not VPS rental
+- **Tunnel**: Cloudflare Tunnel (`cloudflared`) exposes the server at `admin.openflows.org`; no open ports
+- **Process manager**: PM2 — `pm2 start server/index.js --name peng --cwd /home/jesse/openflows`
+- **Database**: node:sqlite (built-in, Node 22+) at `data/openflows.db` — single file, zero ops
+- **Dashboard panels**: status, queue (promote/reject), run history, trigger controls, epistemic window (SSE streaming)
+- **Cron**: `server/cron.js` replaces all retired GitHub Actions — intake 06:00 UTC daily, perspective MWF 08:00, refresh 09:00 daily
+- **Deployment**: SSH + `git pull` on server; `pm2 restart peng` to apply
+- **Git identity**: SSH keys for push; `GIT_USER_NAME` / `GIT_USER_EMAIL` in `.env` for commit authorship
+- **Content source of truth**: git/GitHub stays canonical; promotion goes through git; human-in-the-loop preserved
 - **Why not Pages Functions**: GitHub API as a write layer is too indirect (3 hops: Function → GitHub API → commit → deploy); serverless timeout/connection constraints limit agent capability as Peng grows
 
 #### Cycle 11: Agent Interface — Dashboard Conversation
