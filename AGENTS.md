@@ -302,6 +302,24 @@ Move from local CLI tooling to a web-native control plane. A self-hosted server 
 - **Content source of truth**: git/GitHub stays canonical; promotion goes through git; human-in-the-loop preserved
 - **Why not Pages Functions**: GitHub API as a write layer is too indirect (3 hops: Function → GitHub API → commit → deploy); serverless timeout/connection constraints limit agent capability as Peng grows
 
+#### Cycle 10.5: KB Browser & Draft Editor
+**Status**: complete (2026-03-25)
+
+Admin tools for managing the knowledge base and draft queue directly from the dashboard, without touching the filesystem.
+
+- **`/entries`** — browse all KB entries (from manifest); filterable by type and lang; links to edit page
+- **`/entries/:id?lang=`** — full markdown editor for any KB entry; Save & Commit writes file and pushes; Delete removes file and pushes; manifest rebuilt after each change
+- **`/queue/:id/edit?lang=`** — draft editor; Save updates content in SQLite only (no git); Promote saves then promotes; Reject marks rejected
+- **`server/routes/entries.js`** — browse, edit, save, delete routes
+- **`server/views/entries.njk`**, **`entry-edit.njk`**, **`draft-edit.njk`** — new views
+- **`server/lib/git.js`** — added `commitEdit` and `removeEntry`
+- **Nav**: Dashboard and Knowledge Base links in header across all pages
+- **Bug fixes applied during Cycle 10 setup**:
+  - `practitioners.js` used `require('dotenv')` directly — replaced with shared `loadEnv`
+  - htmx POST requests returned 415 — added `application/x-www-form-urlencoded` content type parser
+  - Manifest only counted English entries — added `allCurrency` collection to `.eleventy.js`
+  - `git pull --rebase` failed with unstaged changes on server — fixed with `--autostash`
+
 #### Cycle 11: Agent Interface — Dashboard Conversation
 **Status**: not started
 
