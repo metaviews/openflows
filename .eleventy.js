@@ -36,6 +36,10 @@ module.exports = function(eleventyConfig) {
     return newestFirst(items);
   });
 
+  eleventyConfig.addCollection("allCurrency", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByTag("currency"));
+  });
+
   eleventyConfig.addCollection("currents", function(collectionApi) {
     const items = collectionApi.getFilteredByTag("currency").filter((item) => {
       return item.data.currencyType === "current" && item.data.lang !== "zh";

@@ -7,7 +7,7 @@ module.exports = class KnowledgeManifest {
   }
 
   render(data) {
-    const entries = (data.collections && data.collections.currency) || [];
+    const entries = (data.collections && data.collections.allCurrency) || [];
 
     const items = entries.map((item) => ({
       title: item.data.title || "",
