@@ -19,6 +19,10 @@ async function start() {
   const db = initDb()
   fastify.decorate('db', db)
 
+  // ── Content type parsers ─────────────────────────────────────────────────────
+  // htmx sends POST requests as application/x-www-form-urlencoded by default.
+  fastify.addContentTypeParser('application/x-www-form-urlencoded', (req, payload, done) => done(null, {}))
+
   // ── Plugins ─────────────────────────────────────────────────────────────────
   await fastify.register(require('@fastify/static'), {
     root: path.join(__dirname, 'public'),
