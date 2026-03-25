@@ -11,11 +11,10 @@
 
 'use strict';
 
-require('dotenv').config();
-
 const { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } = require('fs');
 const { join } = require('path');
 const or = require('./lib/openrouter');
+or.loadEnv();
 
 const BRAVE_API_KEY = process.env.BRAVE_API_KEY;
 const SCREEN_MODEL = process.env.SCREEN_MODEL || null; // null = use primary model
