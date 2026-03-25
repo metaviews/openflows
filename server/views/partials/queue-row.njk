@@ -11,6 +11,7 @@
   <td class="run-time">{{ draft.created_at | truncate(10, true, '') if draft.created_at }}</td>
   <td class="actions-cell">
     {% if draft.status == 'pending' %}
+    <a href="/queue/{{ draft.id }}/edit?lang={{ draft.lang }}" class="btn btn-sm">Edit</a>
     <button class="btn btn-sm btn-promote"
             hx-post="/api/queue/{{ draft.id }}/promote?lang={{ draft.lang }}"
             hx-target="#draft-{{ draft.id }}-{{ draft.lang }}"

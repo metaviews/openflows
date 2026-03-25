@@ -43,6 +43,15 @@ async function start() {
   fastify.register(require('./routes/ask'), { prefix: '/api' })
   fastify.register(require('./routes/entries'))
 
+  // ── Queue draft edit page ─────────────────────────────────────────────────────
+  fastify.get('/queue/:id/edit', async (req, reply) => {
+    const { id } = req.params
+    const lang = req.query.lang || 'en'
+    const draft = db.prepare('SELECT * FROM drafts WHERE id = ? AND lang = ?').get(id, lang)
+    if (!draft) return reply.code(404).send('Draft not found')
+    return reply.view('draft-edit.njk', { draft, lang })
+  })
+
   // ── Dashboard ────────────────────────────────────────────────────────────────
   fastify.get('/', async (req, reply) => {
     const manifest = loadManifest()

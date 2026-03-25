@@ -22,13 +22,32 @@ async function queueRoutes(fastify) {
     return reply.send({ drafts })
   })
 
-  // Get a single draft with full content.
+  // Get a single draft with full content (JSON).
   fastify.get('/queue/:id', async (req, reply) => {
     const lang = req.query.lang || 'en'
     const draft = fastify.db.prepare('SELECT * FROM drafts WHERE id = ? AND lang = ?')
       .get(req.params.id, lang)
     if (!draft) return reply.code(404).send({ error: 'Not found' })
     return reply.send(draft)
+  })
+
+  // Update draft content in SQLite (pre-promotion editing).
+  fastify.post('/queue/:id/update', async (req, reply) => {
+    const { id } = req.params
+    const lang = req.query.lang || 'en'
+    const { content } = req.body || {}
+    if (!content) return reply.code(400).send({ error: 'content required' })
+
+    const db = fastify.db
+    const draft = db.prepare('SELECT id, lang, status FROM drafts WHERE id = ? AND lang = ?').get(id, lang)
+    if (!draft) return reply.code(404).send({ error: 'Not found' })
+    if (draft.status !== 'pending') return reply.code(409).send({ error: 'Draft is not pending' })
+
+    const now = new Date().toISOString()
+    db.prepare('UPDATE drafts SET content = ?, updated_at = ? WHERE id = ? AND lang = ?')
+      .run(content, now, id, lang)
+
+    return reply.send({ ok: true })
   })
 
   // Promote a draft to src/ via git.

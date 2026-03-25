@@ -1,0 +1,94 @@
+{% extends "base.njk" %}
+{% block title %}Draft: {{ draft.title or draft.id }}{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <span class="page-title">{{ draft.title or draft.id }}</span>
+      <span style="margin-left:0.5rem">
+        <span class="badge badge-{{ draft.type or 'unknown' }}">{{ draft.type or '?' }}</span>
+        <span class="badge badge-{{ lang }}">{{ lang }}</span>
+        <span class="badge badge-{{ draft.status }}">{{ draft.status }}</span>
+      </span>
+      <div class="muted" style="font-size:0.7rem;margin-top:0.2rem">{{ draft.id }}</div>
+    </div>
+    <a href="/" class="btn">← Dashboard</a>
+  </div>
+
+  <div class="edit-actions">
+    <button class="btn btn-primary" onclick="saveDraft()">Save Draft</button>
+    <button class="btn btn-promote" onclick="promoteDraft()">Promote to src/</button>
+    <button class="btn btn-reject" onclick="rejectDraft()">Reject</button>
+    <span id="save-status" class="muted"></span>
+  </div>
+
+  <textarea id="draft-content" class="entry-editor">{{ draft.content }}</textarea>
+</div>
+
+<script>
+async function saveDraft() {
+  const content = document.getElementById('draft-content').value
+  const status = document.getElementById('save-status')
+  status.textContent = 'Saving...'
+  try {
+    const resp = await fetch('/api/queue/{{ draft.id }}/update?lang={{ lang }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content })
+    })
+    const data = await resp.json()
+    if (!resp.ok) { status.textContent = 'Error: ' + (data.error || resp.statusText); return }
+    status.textContent = 'Saved.'
+  } catch (err) {
+    status.textContent = 'Error: ' + err.message
+  }
+}
+
+async function promoteDraft() {
+  if (!confirm('Promote {{ draft.id }} ({{ lang }}) to src/ and commit?')) return
+  const status = document.getElementById('save-status')
+  // Save first, then promote.
+  const content = document.getElementById('draft-content').value
+  status.textContent = 'Saving...'
+  try {
+    const saveResp = await fetch('/api/queue/{{ draft.id }}/update?lang={{ lang }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content })
+    })
+    if (!saveResp.ok) { status.textContent = 'Save failed'; return }
+
+    status.textContent = 'Promoting...'
+    const resp = await fetch('/api/queue/{{ draft.id }}/promote?lang={{ lang }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{}'
+    })
+    const data = await resp.json()
+    if (!resp.ok) { status.textContent = 'Error: ' + (data.error || resp.statusText); return }
+    status.textContent = 'Promoted. Returning to dashboard...'
+    setTimeout(() => { window.location.href = '/' }, 1200)
+  } catch (err) {
+    status.textContent = 'Error: ' + err.message
+  }
+}
+
+async function rejectDraft() {
+  if (!confirm('Reject {{ draft.id }} ({{ lang }})?')) return
+  const status = document.getElementById('save-status')
+  status.textContent = 'Rejecting...'
+  try {
+    const resp = await fetch('/api/queue/{{ draft.id }}/reject?lang={{ lang }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{}'
+    })
+    if (!resp.ok) { status.textContent = 'Reject failed'; return }
+    window.location.href = '/'
+  } catch (err) {
+    status.textContent = 'Error: ' + err.message
+  }
+}
+</script>
+{% endblock %}
