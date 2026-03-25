@@ -1,0 +1,36 @@
+<div class="panel">
+  <div class="panel-header">
+    <span class="panel-title">Triggers</span>
+  </div>
+  <div class="panel-body">
+    <div class="trigger-grid">
+      <button id="trigger-intake" class="btn btn-primary btn-trigger"
+              onclick="trigger('intake')">
+        Run Intake
+      </button>
+      <button id="trigger-perspective" class="btn btn-primary btn-trigger"
+              onclick="trigger('perspective')">
+        Run Perspective
+      </button>
+      <button id="trigger-audit" class="btn btn-trigger"
+              onclick="trigger('audit')">
+        Run Audit
+      </button>
+      <button id="trigger-translate" class="btn btn-trigger"
+              onclick="trigger('translate')">
+        Run Translate
+      </button>
+      <button id="trigger-enrich" class="btn btn-trigger"
+              onclick="trigger('enrich')">
+        Run Enrich
+      </button>
+      <button id="trigger-refresh" class="btn btn-trigger"
+              onclick="trigger('refresh')">
+        Run Refresh
+      </button>
+    </div>
+    <p class="muted" style="font-size:0.7rem;margin-top:0.5rem">
+      Runs execute in the background. Check Activity for status.
+    </p>
+  </div>
+</div>

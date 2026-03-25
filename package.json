@@ -3,7 +3,9 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "build": "eleventy"
+    "build": "eleventy",
+    "server": "node server/index.js",
+    "server:dev": "node --watch server/index.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0"

@@ -1,0 +1,24 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="layout">
+
+  {# ── Left column: status + triggers + activity ── #}
+  <div class="col-left">
+    {% include "partials/status.njk" %}
+    {% include "partials/triggers.njk" %}
+    {% include "partials/activity.njk" %}
+  </div>
+
+  {# ── Right column: queue ── #}
+  <div class="col-right">
+    {% include "partials/queue.njk" %}
+  </div>
+
+  {# ── Full width: epistemic window ── #}
+  <div class="col-full">
+    {% include "partials/epistemic.njk" %}
+  </div>
+
+</div>
+{% endblock %}

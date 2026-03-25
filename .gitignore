@@ -1,8 +1,9 @@
 node_modules/
 _site/
 .env
-# Draft markdown files are committed — reviewed locally and promoted via scripts/promote.js
-# seen.json, QUEUE.md, and all draft .md files are tracked
+data/
+# Draft .md files are now tracked in SQLite (server/data/openflows.db)
+# seen.json and QUEUE.md remain committed as persistent state
 drafts/enriched/*.md
 # audit/QUALITY.md is committed — persistent quality state
 

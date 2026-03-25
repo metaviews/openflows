@@ -1,0 +1,66 @@
+<div id="status-panel" class="panel"
+     hx-get="/api/status"
+     hx-trigger="every 60s"
+     hx-target="#status-panel"
+     hx-swap="outerHTML">
+  <div class="panel-header">
+    <span class="panel-title">Knowledge Base</span>
+    <span class="muted" style="font-size:0.7rem">{{ now | truncate(16, true, '') if now }}</span>
+  </div>
+  <div class="panel-body">
+    {% if kbCounts %}
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat-label">Entries (en)</div>
+        <div class="stat-value">{{ kbCounts.byLang.en or 0 }}</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Entries (zh)</div>
+        <div class="stat-value">{{ kbCounts.byLang.zh or 0 }}</div>
+      </div>
+    </div>
+
+    <div class="sub-counts">
+      <table>
+        {% if kbCounts.byType.current %}<tr><td>Currents</td><td>{{ kbCounts.byType.current }}</td></tr>{% endif %}
+        {% if kbCounts.byType.circuit %}<tr><td>Circuits</td><td>{{ kbCounts.byType.circuit }}</td></tr>{% endif %}
+        {% if kbCounts.byType.practitioner %}<tr><td>Practitioners</td><td>{{ kbCounts.byType.practitioner }}</td></tr>{% endif %}
+      </table>
+    </div>
+    {% else %}
+    <p class="empty-state">Manifest not built yet. Run <code>npm run build</code>.</p>
+    {% endif %}
+
+    {% if auditState and auditState.passing !== null %}
+    <div class="audit-line">
+      Audit: <strong>{{ auditState.passing }}/{{ auditState.total }}</strong> passing
+      {% if auditState.date %}<span class="muted">({{ auditState.date }})</span>{% endif %}
+    </div>
+    {% endif %}
+
+    {% if pendingSummary and pendingSummary.length %}
+    <div class="sub-counts" style="margin-top:0.75rem">
+      <div style="color:var(--muted);font-size:0.7rem;margin-bottom:0.2rem;text-transform:uppercase;letter-spacing:0.05em">Pending drafts</div>
+      <table>
+        {% for row in pendingSummary %}
+        <tr>
+          <td>
+            <span class="badge badge-{{ row.lang }}">{{ row.lang }}</span>
+            <span class="badge badge-{{ row.type or 'unknown' }}">{{ row.type or '?' }}</span>
+          </td>
+          <td>{{ row.count }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% endif %}
+
+    {% if recentRun %}
+    <div class="last-run">
+      Last run: <strong>{{ recentRun.type }}</strong>
+      <span class="badge badge-{{ recentRun.status }}">{{ recentRun.status }}</span>
+      <span class="muted">{{ recentRun.started_at | truncate(16, true, '') }}</span>
+    </div>
+    {% endif %}
+  </div>
+</div>

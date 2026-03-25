@@ -1,0 +1,27 @@
+<tr id="draft-{{ draft.id }}-{{ draft.lang }}"
+    class="{% if draft.status == 'promoted' %}draft-promoted{% elif draft.status == 'rejected' %}draft-rejected{% endif %}">
+  <td class="id-cell">{{ draft.id }}</td>
+  <td>
+    <span class="badge badge-{{ draft.type or 'unknown' }}">{{ draft.type or '?' }}</span>
+  </td>
+  <td>
+    <span class="badge badge-{{ draft.lang }}">{{ draft.lang }}</span>
+  </td>
+  <td class="title-cell" title="{{ draft.title }}">{{ draft.title or '(untitled)' }}</td>
+  <td class="run-time">{{ draft.created_at | truncate(10, true, '') if draft.created_at }}</td>
+  <td class="actions-cell">
+    {% if draft.status == 'pending' %}
+    <button class="btn btn-sm btn-promote"
+            hx-post="/api/queue/{{ draft.id }}/promote?lang={{ draft.lang }}"
+            hx-target="#draft-{{ draft.id }}-{{ draft.lang }}"
+            hx-swap="outerHTML"
+            hx-confirm="Promote {{ draft.id }} ({{ draft.lang }}) to src/?">P</button>
+    <button class="btn btn-sm btn-reject"
+            hx-post="/api/queue/{{ draft.id }}/reject?lang={{ draft.lang }}"
+            hx-target="#draft-{{ draft.id }}-{{ draft.lang }}"
+            hx-swap="outerHTML">R</button>
+    {% else %}
+    <span class="badge badge-{{ draft.status }}">{{ draft.status }}</span>
+    {% endif %}
+  </td>
+</tr>

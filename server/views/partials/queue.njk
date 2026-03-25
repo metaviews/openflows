@@ -1,0 +1,54 @@
+<div id="queue-panel" class="panel" style="min-height: 300px;">
+  <div class="panel-header">
+    <span class="panel-title">
+      Queue
+      {% if drafts %}
+        <span class="muted">({{ drafts | length }} pending)</span>
+      {% endif %}
+    </span>
+    <div class="filter-bar">
+      <span>Lang:</span>
+      <select onchange="filterQueue(this.value)">
+        <option value="">all</option>
+        <option value="en">en</option>
+        <option value="zh">zh</option>
+      </select>
+      <button class="btn btn-sm"
+              hx-get="/api/queue"
+              hx-target="#queue-panel"
+              hx-swap="outerHTML">Refresh</button>
+    </div>
+  </div>
+  <div class="panel-body-flush">
+    {% if drafts and drafts.length %}
+    <table class="queue-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Type</th>
+          <th>Lang</th>
+          <th>Title</th>
+          <th>Date</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for draft in drafts %}
+          {% include "partials/queue-row.njk" %}
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <div class="panel-body">
+      <p class="empty-state">No pending drafts.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+function filterQueue(lang) {
+  const url = lang ? '/api/queue?lang=' + lang : '/api/queue'
+  htmx.ajax('GET', url, { target: '#queue-panel', swap: 'outerHTML' })
+}
+</script>
