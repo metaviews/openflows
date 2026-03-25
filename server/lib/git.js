@@ -37,7 +37,7 @@ async function promoteEntry({ id, lang, content, currencyType }) {
   const relPath = path.relative(ROOT, destPath).replace(/\\/g, '/')
   const git = makeGit()
 
-  await git.pull(['--rebase', 'origin', 'main'])
+  await git.pull(['--rebase', '--autostash', 'origin', 'main'])
   await git.add(relPath)
   const date = new Date().toISOString().slice(0, 10)
   await git.commit(`promote: ${id} (${lang}) — ${date}`)
@@ -49,7 +49,7 @@ async function promoteEntry({ id, lang, content, currencyType }) {
 // Commit any changes in src/perspective/ (digest auto-publish).
 async function commitPerspective() {
   const git = makeGit()
-  await git.pull(['--rebase', 'origin', 'main'])
+  await git.pull(['--rebase', '--autostash', 'origin', 'main'])
   await git.add('src/perspective/')
   const diff = await git.diff(['--staged', '--name-only'])
   if (!diff.trim()) return { committed: false }
@@ -62,7 +62,7 @@ async function commitPerspective() {
 // Commit drafts/seen.json after intake (deduplication memory).
 async function commitSeen() {
   const git = makeGit()
-  await git.pull(['--rebase', 'origin', 'main'])
+  await git.pull(['--rebase', '--autostash', 'origin', 'main'])
   await git.add('drafts/seen.json')
   const diff = await git.diff(['--staged', '--name-only'])
   if (!diff.trim()) return { committed: false }
@@ -75,7 +75,7 @@ async function commitSeen() {
 // Commit an edited entry back to src/.
 async function commitEdit({ relPath, id, lang }) {
   const git = makeGit()
-  await git.pull(['--rebase', 'origin', 'main'])
+  await git.pull(['--rebase', '--autostash', 'origin', 'main'])
   await git.add(relPath)
   const diff = await git.diff(['--staged', '--name-only'])
   if (!diff.trim()) return { committed: false }
@@ -88,7 +88,7 @@ async function commitEdit({ relPath, id, lang }) {
 // Remove an entry from src/ and commit.
 async function removeEntry({ relPath, id, lang }) {
   const git = makeGit()
-  await git.pull(['--rebase', 'origin', 'main'])
+  await git.pull(['--rebase', '--autostash', 'origin', 'main'])
   await git.rm(relPath)
   const date = new Date().toISOString().slice(0, 10)
   await git.commit(`remove: ${id} (${lang}) — ${date}`)
