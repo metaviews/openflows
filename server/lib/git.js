@@ -72,4 +72,28 @@ async function commitSeen() {
   return { committed: true }
 }
 
-module.exports = { promoteEntry, commitPerspective, commitSeen }
+// Commit an edited entry back to src/.
+async function commitEdit({ relPath, id, lang }) {
+  const git = makeGit()
+  await git.pull(['--rebase', 'origin', 'main'])
+  await git.add(relPath)
+  const diff = await git.diff(['--staged', '--name-only'])
+  if (!diff.trim()) return { committed: false }
+  const date = new Date().toISOString().slice(0, 10)
+  await git.commit(`edit: ${id} (${lang}) — ${date}`)
+  await git.push('origin', 'main')
+  return { committed: true }
+}
+
+// Remove an entry from src/ and commit.
+async function removeEntry({ relPath, id, lang }) {
+  const git = makeGit()
+  await git.pull(['--rebase', 'origin', 'main'])
+  await git.rm(relPath)
+  const date = new Date().toISOString().slice(0, 10)
+  await git.commit(`remove: ${id} (${lang}) — ${date}`)
+  await git.push('origin', 'main')
+  return { committed: true }
+}
+
+module.exports = { promoteEntry, commitPerspective, commitSeen, commitEdit, removeEntry }

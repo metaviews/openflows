@@ -1,0 +1,64 @@
+{% extends "base.njk" %}
+{% block title %}Knowledge Base{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <div class="page-header">
+    <span class="page-title">
+      Knowledge Base
+      <span class="muted">({{ entries | length }}{% if entries | length != total %} of {{ total }}{% endif %} entries)</span>
+    </span>
+    <div class="filter-bar">
+      <span>Type:</span>
+      <select id="filter-type" onchange="applyFilters()">
+        <option value="" {% if not filterType %}selected{% endif %}>all</option>
+        <option value="current"      {% if filterType == 'current' %}selected{% endif %}>current</option>
+        <option value="circuit"      {% if filterType == 'circuit' %}selected{% endif %}>circuit</option>
+        <option value="practitioner" {% if filterType == 'practitioner' %}selected{% endif %}>practitioner</option>
+      </select>
+      <span>Lang:</span>
+      <select id="filter-lang" onchange="applyFilters()">
+        <option value="" {% if not filterLang %}selected{% endif %}>all</option>
+        <option value="en" {% if filterLang == 'en' %}selected{% endif %}>en</option>
+        <option value="zh" {% if filterLang == 'zh' %}selected{% endif %}>zh</option>
+      </select>
+    </div>
+  </div>
+
+  <table class="entries-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Type</th>
+        <th>Lang</th>
+        <th>Title</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in entries %}
+      <tr>
+        <td class="id-cell">
+          <a href="/entries/{{ entry.currencyId }}?lang={{ entry.lang }}">{{ entry.currencyId }}</a>
+        </td>
+        <td><span class="badge badge-{{ entry.currencyType }}">{{ entry.currencyType }}</span></td>
+        <td><span class="badge badge-{{ entry.lang }}">{{ entry.lang }}</span></td>
+        <td class="title-cell">{{ entry.title }}</td>
+        <td class="run-time">{{ entry.date | truncate(10, true, '') if entry.date }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<script>
+function applyFilters() {
+  const type = document.getElementById('filter-type').value
+  const lang = document.getElementById('filter-lang').value
+  const params = new URLSearchParams()
+  if (type) params.set('type', type)
+  if (lang) params.set('lang', lang)
+  window.location.href = '/entries' + (params.toString() ? '?' + params.toString() : '')
+}
+</script>
+{% endblock %}

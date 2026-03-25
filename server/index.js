@@ -41,6 +41,7 @@ async function start() {
   fastify.register(require('./routes/runs'), { prefix: '/api' })
   fastify.register(require('./routes/trigger'), { prefix: '/api' })
   fastify.register(require('./routes/ask'), { prefix: '/api' })
+  fastify.register(require('./routes/entries'))
 
   // ── Dashboard ────────────────────────────────────────────────────────────────
   fastify.get('/', async (req, reply) => {

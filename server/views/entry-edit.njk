@@ -1,0 +1,64 @@
+{% extends "base.njk" %}
+{% block title %}{{ entry.title }}{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <span class="page-title">{{ entry.title }}</span>
+      <span style="margin-left:0.5rem">
+        <span class="badge badge-{{ entry.currencyType }}">{{ entry.currencyType }}</span>
+        <span class="badge badge-{{ lang }}">{{ lang }}</span>
+      </span>
+      <div class="muted" style="font-size:0.7rem;margin-top:0.2rem">{{ relPath }}</div>
+    </div>
+    <a href="/entries?lang={{ lang }}" class="btn">← Back</a>
+  </div>
+
+  <div class="edit-actions">
+    <button class="btn btn-primary" onclick="saveEntry()">Save &amp; Commit</button>
+    <button class="btn btn-danger" onclick="deleteEntry()">Delete</button>
+    <span id="save-status" class="muted"></span>
+  </div>
+
+  <textarea id="entry-content" class="entry-editor">{{ content }}</textarea>
+</div>
+
+<script>
+async function saveEntry() {
+  const content = document.getElementById('entry-content').value
+  const status = document.getElementById('save-status')
+  status.textContent = 'Saving...'
+  try {
+    const resp = await fetch('/api/entries/{{ entry.currencyId }}/save?lang={{ lang }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content })
+    })
+    const data = await resp.json()
+    if (!resp.ok) { status.textContent = 'Error: ' + (data.error || resp.statusText); return }
+    status.textContent = data.committed ? 'Saved and committed.' : 'Saved (no changes detected).'
+  } catch (err) {
+    status.textContent = 'Error: ' + err.message
+  }
+}
+
+async function deleteEntry() {
+  if (!confirm('Delete {{ entry.currencyId }} ({{ lang }}) from src/ and commit? This cannot be undone.')) return
+  const status = document.getElementById('save-status')
+  status.textContent = 'Deleting...'
+  try {
+    const resp = await fetch('/api/entries/{{ entry.currencyId }}/delete?lang={{ lang }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: '{}'
+    })
+    const data = await resp.json()
+    if (!resp.ok) { status.textContent = 'Error: ' + (data.error || resp.statusText); return }
+    window.location.href = '/entries'
+  } catch (err) {
+    status.textContent = 'Error: ' + err.message
+  }
+}
+</script>
+{% endblock %}
