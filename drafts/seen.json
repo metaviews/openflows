@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24T07:17:38.392Z",
+  "lastUpdated": "2026-03-26T06:38:37.039Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1529,6 +1529,165 @@
       "title": "A self-hosted knowledge base for every conversation with ChatGPT and Claude",
       "source": "opensourceprojects",
       "file": "vesti-self-hosted-ai-knowledge-base.md"
+    },
+    "https://opensourceprojects.dev/post/b12f98ba-8f50-46f6-bf2f-53ccdfadfda4": {
+      "date": "2026-03-25",
+      "decision": "skipped",
+      "title": "A minimalist React Native client for Bilibili with DASH and danmaku",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The project is a general-purpose media client with no AI components, models, or frameworks, falling outside the specific AI ecosystem scope of Openflows."
+    },
+    "https://zhaoyanblog.com/posts/ai-model-vendors-survival-2026/": {
+      "date": "2026-03-25",
+      "decision": "skipped",
+      "title": "大模型的生存游戏：谁在赚钱，谁在等死？ | 赵岩的技术笔记",
+      "source": "brave",
+      "score": 2,
+      "reason": "Topic fits open source scope, but content is sensationalized, contains future dates (2026), and references non-existent models (GPT-5.2). Violates Openflows criteria for verifiable, operational data and avoiding hype."
+    },
+    "https://boulderbubble.com/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in-the-claude-code-moment-53/": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Nous Research’s NousCoder-14B is an open-source coding model landing right in the Claude Code moment - Boulder Bubble",
+      "source": "brave",
+      "file": "nouscoder-14b.md"
+    },
+    "https://aimultiple.com/agentic-frameworks": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Top 5 Open-Source Agentic AI Frameworks in 2026",
+      "source": "brave",
+      "file": "top-5-open-source-agentic-ai-frameworks-in-2026.md"
+    },
+    "https://aihaven.com/guides/best-open-source-ai-agent-frameworks-2026/": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Best Open Source AI Agent Frameworks 2026 | AI Haven",
+      "source": "brave",
+      "file": "crewai-streaming-tool-calls-update.md"
+    },
+    "https://www.bentoml.com/blog/navigating-the-world-of-open-source-large-language-models": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "The Best Open-Source LLMs in 2026",
+      "source": "brave",
+      "file": "best-open-source-llms-2026.md"
+    },
+    "https://agentconn.com/blog/best-open-source-ai-agent-frameworks-2026/": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Best Open-Source AI Agent Frameworks for Building Custom Agents (2026) - AgentConn Blog",
+      "source": "brave",
+      "file": "best-open-source-ai-agent-frameworks-comparison-2026.md"
+    },
+    "https://zeeklog.com/2026nian-8kuan-aida-mo-xing-shi-ce-pai-ming-guo-chan-sha-ru-quan-qiu-qian-10-zui-bian-yi-zhi-yao-2mao-qian-3/": {
+      "date": "2026-03-25",
+      "decision": "skipped",
+      "title": "2026年8款AI大模型实测排名！国产杀入全球前10，最便宜只要2毛钱",
+      "source": "brave",
+      "score": 2,
+      "reason": "Clickbait ranking with speculative dates; mentions open-source models but lacks operational specifics and inspectability; focuses on commercial benchmarks rather than ecosystem documentation."
+    },
+    "https://github.com/winstonkoh87/Athena-Public": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Athena-Public",
+      "source": "github",
+      "file": "athena-public.md"
+    },
+    "https://github.com/LearningCircuit/local-deep-research": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "local-deep-research",
+      "source": "github",
+      "file": "local-deep-research.md"
+    },
+    "https://opensourceprojects.dev/post/7818b02f-db4f-41e3-8b9b-1d11abceb967": {
+      "date": "2026-03-26",
+      "decision": "skipped",
+      "title": "The definitive open-source engine for optimizing UniFi network performance and security",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a networking infrastructure tool for UniFi hardware, not an AI-related project. Openflows is defined as documenting the open source AI ecosystem, making this signal unrelated."
+    },
+    "https://opensourceprojects.dev/post/d6cfd19f-6d74-4c0f-a293-bb28a0bf8115": {
+      "date": "2026-03-26",
+      "decision": "skipped",
+      "title": "Turn any HTML template into a PDF or image instantly",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Generic web development utility; lacks direct connection to AI models, frameworks, or infrastructure."
+    },
+    "https://github.com/alvinunreal/awesome-opensource-ai": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "awesome-opensource-ai",
+      "source": "github",
+      "file": "awesome-opensource-ai.md"
+    },
+    "https://github.com/skyzh/tiny-llm": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "tiny-llm",
+      "source": "github",
+      "file": "tiny-llm.md"
+    },
+    "https://github.com/lemonade-sdk/lemonade": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "lemonade",
+      "source": "github",
+      "file": "lemonade.md"
+    },
+    "https://opensourceprojects.dev/post/09cf0336-f813-4a38-9041-c3b21d555c8c": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Route local LLM requests intelligently to maintain quality and reduce spending",
+      "source": "opensourceprojects",
+      "file": "intelligent-local-llm-request-routing.md"
+    },
+    "https://opensourceprojects.dev/post/f31bddd1-0757-4677-afc4-57d30e7b889c": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Build and deploy autonomous AI product managers with this open-source toolkit",
+      "source": "opensourceprojects",
+      "file": "autonomous-ai-product-manager-toolkit.md"
+    },
+    "https://opensourceprojects.dev/post/3fe5f078-c9ea-4d42-a328-457b2b4b712c": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Run a powerful conversational AI locally with this open-source project",
+      "source": "opensourceprojects",
+      "file": "nanochat.md"
+    },
+    "https://opensourceprojects.dev/post/6a14c787-b770-47ff-902c-a2d9bcfb9dc2": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "The open-source specification for building autonomous AI agents",
+      "source": "opensourceprojects",
+      "file": "open-source-specification-building-autonomous-ai-agents.md"
+    },
+    "https://opensourceprojects.dev/post/cb82b8a0-213e-435b-ad82-71f812e00898": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Stop paying for depth APIs Use this self-hosted computer vision model instead",
+      "source": "opensourceprojects",
+      "file": "depth-anything-3-self-hosted-vision-model.md"
+    },
+    "https://www.v2ex.com/t/1201135": {
+      "date": "2026-03-26",
+      "decision": "error",
+      "title": "分享一个 AI 漫剧 Agent 项目： Anime AI Studio，已开源 - V2EX",
+      "source": "brave",
+      "reason": "terminated"
+    },
+    "https://aitoolly.com/ai-news/article/2026-03-24-bytedance-open-sours-deer-flow-a-super-agent-architecture-for-research-coding-and-creative-tasks": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Deer-Flow: ByteDance's New Open-Source Super-Agent Framework | AIToolly",
+      "source": "brave",
+      "file": "deerflow.md"
     }
   }
 }
