@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-26T06:38:37.039Z",
+  "lastUpdated": "2026-03-27T06:14:36.812Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1688,6 +1688,79 @@
       "title": "Deer-Flow: ByteDance's New Open-Source Super-Agent Framework | AIToolly",
       "source": "brave",
       "file": "deerflow.md"
+    },
+    "https://opensourceprojects.dev/post/17f87eb8-9461-456a-b296-3d2127638e42": {
+      "date": "2026-03-27",
+      "decision": "skipped",
+      "title": "The definitive self-hostable observability platform for mobile applications",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general mobile application observability tool, not an AI-specific framework, model, or infrastructure. It falls outside the core scope of documenting the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/7703f94a-399f-451a-8708-118e3bd8c0ae": {
+      "date": "2026-03-27",
+      "decision": "skipped",
+      "title": "The open-source engine for deploying isolated AI agent teams at scale",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Signal claims open-source AI agent infrastructure but lacks technical specifics. The project is not a recognized ecosystem component, and the marketing-heavy title suggests hype over substance, limiting immediate value for the knowledge base."
+    },
+    "https://www.bilibili.com/video/av281556329/": {
+      "date": "2026-03-27",
+      "decision": "skipped",
+      "title": "用开源大模型 5分钟搭建自己的AI智能助理_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal is saturated with hype (2026 version, get employed) and transient video content rather than stable ecosystem documentation; mentions relevant tools (Ollama, LM Studio) but lacks operational depth."
+    },
+    "https://github.com/pathintegral-institute/mcpm.sh": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "mcpm.sh",
+      "source": "github",
+      "file": "mcpm-sh.md"
+    },
+    "https://github.com/Mintplex-Labs/anything-llm": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "anything-llm",
+      "source": "github",
+      "file": "anything-llm.md"
+    },
+    "https://opensourceprojects.dev/post/bf7714f0-7f6e-4702-a1f2-e52bc75015d0": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "The definitive tool for converting websites into AI-ready data pipelines",
+      "source": "opensourceprojects",
+      "file": "pipiclaw-web-data-pipeline.md"
+    },
+    "https://techcrunch.com/2026/03/26/mistral-releases-a-new-open-source-model-for-speech-generation/": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "Mistral releases a new open source model for speech generation | TechCrunch",
+      "source": "brave",
+      "file": "mistral-voxtral-tts.md"
+    },
+    "https://github.com/datawhalechina/hello-agents": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "GitHub - datawhalechina/hello-agents: 📚 《从零开始构建智能体》——从零开始的智能体原理与实践教程",
+      "source": "brave",
+      "file": "datawhale-hello-agents.md"
+    },
+    "https://huggingface.co/humarin/chatgpt_paraphraser_on_T5_base": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "humarin/chatgpt_paraphraser_on_T5_base",
+      "source": "huggingface",
+      "file": "chatgpt-paraphraser-t5-base.md"
+    },
+    "https://www.cnblogs.com/xueweihan/p/19657046": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "这个年轻的开源项目，想让每个人都能拥有自己的专业级 AI 智能体 - 削微寒 - 博客园",
+      "source": "brave",
+      "file": "nexent.md"
     }
   }
 }
