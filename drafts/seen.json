@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-27T06:14:36.812Z",
+  "lastUpdated": "2026-03-28T06:20:09.148Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1761,6 +1761,103 @@
       "title": "这个年轻的开源项目，想让每个人都能拥有自己的专业级 AI 智能体 - 削微寒 - 博客园",
       "source": "brave",
       "file": "nexent.md"
+    },
+    "https://github.com/hugohe3/ppt-master": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "ppt-master",
+      "source": "github",
+      "score": 2,
+      "reason": "Marketing-heavy summary lacks technical specifics on models or architecture; likely a wrapper around closed APIs rather than open AI infrastructure."
+    },
+    "https://github.com/secmon-lab/warren": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "warren",
+      "source": "github",
+      "score": 2,
+      "reason": "Vague marketing summary, ambiguous project identity, lacks confirmed open-source status or operational specifics."
+    },
+    "https://opensourceprojects.dev/post/1146695e-6f6a-4041-a5c2-604b03c4cc59": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "Turn any video stream into a real-time AI agent pipeline",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Likely a commercial tutorial tied to GetStream's proprietary API rather than a standalone open-source tool; aligns with trend-chasing ('AI agents') more than foundational infrastructure."
+    },
+    "https://opensourceprojects.dev/post/ab519b1d-1f61-497a-a19c-f7f661aa3352": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "Relive the classic 2003 top-down shooter with this faithful rewrite",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a video game rewrite project, which falls outside the scope of the open source AI ecosystem that Openflows documents."
+    },
+    "https://opensourceprojects.dev/post/a61506a9-16b5-41e7-9f74-78f5318d0717": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "The definitive tool for secure peer-to-peer data transfer over WebRTC",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source utility but general-purpose networking tool rather than AI-specific framework, model, or governance resource."
+    },
+    "https://huggingface.co/CohereLabs/cohere-transcribe-03-2026": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "CohereLabs/cohere-transcribe-03-2026",
+      "source": "huggingface",
+      "score": 2,
+      "reason": "Cohere is primarily a commercial API provider; open-weight availability is limited compared to community-driven projects. Future-dated versioning (2026) suggests metadata instability or noise, reducing operational value for the open source ecosystem."
+    },
+    "https://opensourceprojects.dev/post/090d237a-fd3c-403a-976f-7eae1243d42b": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "Deploy and manage AI agents at scale with this open-source runtime",
+      "source": "opensourceprojects",
+      "file": "hive-runtime.md"
+    },
+    "https://opensourceprojects.dev/post/fdfe8608-14ad-4bc2-9dae-9776ac8b3119": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "The definitive tool for testing LangGraph and CrewAI agents",
+      "source": "opensourceprojects",
+      "file": "eval-view.md"
+    },
+    "https://blog.csdn.net/qq_29462849/article/details/159417734": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "2026年，这些开源的具身大脑模型正在改变着技术格局......-CSDN博客",
+      "source": "brave",
+      "file": "xiaomi-robotics-0.md"
+    },
+    "https://github.com/hanzili/hanzi-browse": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "hanzi-browse",
+      "source": "github",
+      "file": "hanzi-browse.md"
+    },
+    "https://opensourceprojects.dev/post/97880866-ca4d-410c-9b86-a727ef1732cc": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "Run your own skill hub for AI agents with Kubernetes and audit trails",
+      "source": "opensourceprojects",
+      "file": "ai-agent-skill-hub-kubernetes.md"
+    },
+    "https://github.com/tang-vu/ContribAI": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "ContribAI",
+      "source": "github",
+      "file": "contribai.md"
+    },
+    "https://opensourceprojects.dev/post/98258f76-86c9-4980-9616-b5ad00cb6df4": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "Give your AI agent eyes to see the entire internet for free",
+      "source": "opensourceprojects",
+      "file": "agent-reach-web-browsing.md"
     }
   }
 }
