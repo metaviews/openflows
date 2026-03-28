@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-24T07:17:38.392Z",
+  "lastUpdated": "2026-03-28T06:20:09.148Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1529,6 +1529,335 @@
       "title": "A self-hosted knowledge base for every conversation with ChatGPT and Claude",
       "source": "opensourceprojects",
       "file": "vesti-self-hosted-ai-knowledge-base.md"
+    },
+    "https://opensourceprojects.dev/post/b12f98ba-8f50-46f6-bf2f-53ccdfadfda4": {
+      "date": "2026-03-25",
+      "decision": "skipped",
+      "title": "A minimalist React Native client for Bilibili with DASH and danmaku",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The project is a general-purpose media client with no AI components, models, or frameworks, falling outside the specific AI ecosystem scope of Openflows."
+    },
+    "https://zhaoyanblog.com/posts/ai-model-vendors-survival-2026/": {
+      "date": "2026-03-25",
+      "decision": "skipped",
+      "title": "大模型的生存游戏：谁在赚钱，谁在等死？ | 赵岩的技术笔记",
+      "source": "brave",
+      "score": 2,
+      "reason": "Topic fits open source scope, but content is sensationalized, contains future dates (2026), and references non-existent models (GPT-5.2). Violates Openflows criteria for verifiable, operational data and avoiding hype."
+    },
+    "https://boulderbubble.com/nous-researchs-nouscoder-14b-is-an-open-source-coding-model-landing-right-in-the-claude-code-moment-53/": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Nous Research’s NousCoder-14B is an open-source coding model landing right in the Claude Code moment - Boulder Bubble",
+      "source": "brave",
+      "file": "nouscoder-14b.md"
+    },
+    "https://aimultiple.com/agentic-frameworks": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Top 5 Open-Source Agentic AI Frameworks in 2026",
+      "source": "brave",
+      "file": "top-5-open-source-agentic-ai-frameworks-in-2026.md"
+    },
+    "https://aihaven.com/guides/best-open-source-ai-agent-frameworks-2026/": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Best Open Source AI Agent Frameworks 2026 | AI Haven",
+      "source": "brave",
+      "file": "crewai-streaming-tool-calls-update.md"
+    },
+    "https://www.bentoml.com/blog/navigating-the-world-of-open-source-large-language-models": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "The Best Open-Source LLMs in 2026",
+      "source": "brave",
+      "file": "best-open-source-llms-2026.md"
+    },
+    "https://agentconn.com/blog/best-open-source-ai-agent-frameworks-2026/": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Best Open-Source AI Agent Frameworks for Building Custom Agents (2026) - AgentConn Blog",
+      "source": "brave",
+      "file": "best-open-source-ai-agent-frameworks-comparison-2026.md"
+    },
+    "https://zeeklog.com/2026nian-8kuan-aida-mo-xing-shi-ce-pai-ming-guo-chan-sha-ru-quan-qiu-qian-10-zui-bian-yi-zhi-yao-2mao-qian-3/": {
+      "date": "2026-03-25",
+      "decision": "skipped",
+      "title": "2026年8款AI大模型实测排名！国产杀入全球前10，最便宜只要2毛钱",
+      "source": "brave",
+      "score": 2,
+      "reason": "Clickbait ranking with speculative dates; mentions open-source models but lacks operational specifics and inspectability; focuses on commercial benchmarks rather than ecosystem documentation."
+    },
+    "https://github.com/winstonkoh87/Athena-Public": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "Athena-Public",
+      "source": "github",
+      "file": "athena-public.md"
+    },
+    "https://github.com/LearningCircuit/local-deep-research": {
+      "date": "2026-03-25",
+      "decision": "drafted",
+      "title": "local-deep-research",
+      "source": "github",
+      "file": "local-deep-research.md"
+    },
+    "https://opensourceprojects.dev/post/7818b02f-db4f-41e3-8b9b-1d11abceb967": {
+      "date": "2026-03-26",
+      "decision": "skipped",
+      "title": "The definitive open-source engine for optimizing UniFi network performance and security",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a networking infrastructure tool for UniFi hardware, not an AI-related project. Openflows is defined as documenting the open source AI ecosystem, making this signal unrelated."
+    },
+    "https://opensourceprojects.dev/post/d6cfd19f-6d74-4c0f-a293-bb28a0bf8115": {
+      "date": "2026-03-26",
+      "decision": "skipped",
+      "title": "Turn any HTML template into a PDF or image instantly",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Generic web development utility; lacks direct connection to AI models, frameworks, or infrastructure."
+    },
+    "https://github.com/alvinunreal/awesome-opensource-ai": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "awesome-opensource-ai",
+      "source": "github",
+      "file": "awesome-opensource-ai.md"
+    },
+    "https://github.com/skyzh/tiny-llm": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "tiny-llm",
+      "source": "github",
+      "file": "tiny-llm.md"
+    },
+    "https://github.com/lemonade-sdk/lemonade": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "lemonade",
+      "source": "github",
+      "file": "lemonade.md"
+    },
+    "https://opensourceprojects.dev/post/09cf0336-f813-4a38-9041-c3b21d555c8c": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Route local LLM requests intelligently to maintain quality and reduce spending",
+      "source": "opensourceprojects",
+      "file": "intelligent-local-llm-request-routing.md"
+    },
+    "https://opensourceprojects.dev/post/f31bddd1-0757-4677-afc4-57d30e7b889c": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Build and deploy autonomous AI product managers with this open-source toolkit",
+      "source": "opensourceprojects",
+      "file": "autonomous-ai-product-manager-toolkit.md"
+    },
+    "https://opensourceprojects.dev/post/3fe5f078-c9ea-4d42-a328-457b2b4b712c": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Run a powerful conversational AI locally with this open-source project",
+      "source": "opensourceprojects",
+      "file": "nanochat.md"
+    },
+    "https://opensourceprojects.dev/post/6a14c787-b770-47ff-902c-a2d9bcfb9dc2": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "The open-source specification for building autonomous AI agents",
+      "source": "opensourceprojects",
+      "file": "open-source-specification-building-autonomous-ai-agents.md"
+    },
+    "https://opensourceprojects.dev/post/cb82b8a0-213e-435b-ad82-71f812e00898": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Stop paying for depth APIs Use this self-hosted computer vision model instead",
+      "source": "opensourceprojects",
+      "file": "depth-anything-3-self-hosted-vision-model.md"
+    },
+    "https://www.v2ex.com/t/1201135": {
+      "date": "2026-03-26",
+      "decision": "error",
+      "title": "分享一个 AI 漫剧 Agent 项目： Anime AI Studio，已开源 - V2EX",
+      "source": "brave",
+      "reason": "terminated"
+    },
+    "https://aitoolly.com/ai-news/article/2026-03-24-bytedance-open-sours-deer-flow-a-super-agent-architecture-for-research-coding-and-creative-tasks": {
+      "date": "2026-03-26",
+      "decision": "drafted",
+      "title": "Deer-Flow: ByteDance's New Open-Source Super-Agent Framework | AIToolly",
+      "source": "brave",
+      "file": "deerflow.md"
+    },
+    "https://opensourceprojects.dev/post/17f87eb8-9461-456a-b296-3d2127638e42": {
+      "date": "2026-03-27",
+      "decision": "skipped",
+      "title": "The definitive self-hostable observability platform for mobile applications",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general mobile application observability tool, not an AI-specific framework, model, or infrastructure. It falls outside the core scope of documenting the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/7703f94a-399f-451a-8708-118e3bd8c0ae": {
+      "date": "2026-03-27",
+      "decision": "skipped",
+      "title": "The open-source engine for deploying isolated AI agent teams at scale",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Signal claims open-source AI agent infrastructure but lacks technical specifics. The project is not a recognized ecosystem component, and the marketing-heavy title suggests hype over substance, limiting immediate value for the knowledge base."
+    },
+    "https://www.bilibili.com/video/av281556329/": {
+      "date": "2026-03-27",
+      "decision": "skipped",
+      "title": "用开源大模型 5分钟搭建自己的AI智能助理_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal is saturated with hype (2026 version, get employed) and transient video content rather than stable ecosystem documentation; mentions relevant tools (Ollama, LM Studio) but lacks operational depth."
+    },
+    "https://github.com/pathintegral-institute/mcpm.sh": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "mcpm.sh",
+      "source": "github",
+      "file": "mcpm-sh.md"
+    },
+    "https://github.com/Mintplex-Labs/anything-llm": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "anything-llm",
+      "source": "github",
+      "file": "anything-llm.md"
+    },
+    "https://opensourceprojects.dev/post/bf7714f0-7f6e-4702-a1f2-e52bc75015d0": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "The definitive tool for converting websites into AI-ready data pipelines",
+      "source": "opensourceprojects",
+      "file": "pipiclaw-web-data-pipeline.md"
+    },
+    "https://techcrunch.com/2026/03/26/mistral-releases-a-new-open-source-model-for-speech-generation/": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "Mistral releases a new open source model for speech generation | TechCrunch",
+      "source": "brave",
+      "file": "mistral-voxtral-tts.md"
+    },
+    "https://github.com/datawhalechina/hello-agents": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "GitHub - datawhalechina/hello-agents: 📚 《从零开始构建智能体》——从零开始的智能体原理与实践教程",
+      "source": "brave",
+      "file": "datawhale-hello-agents.md"
+    },
+    "https://huggingface.co/humarin/chatgpt_paraphraser_on_T5_base": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "humarin/chatgpt_paraphraser_on_T5_base",
+      "source": "huggingface",
+      "file": "chatgpt-paraphraser-t5-base.md"
+    },
+    "https://www.cnblogs.com/xueweihan/p/19657046": {
+      "date": "2026-03-27",
+      "decision": "drafted",
+      "title": "这个年轻的开源项目，想让每个人都能拥有自己的专业级 AI 智能体 - 削微寒 - 博客园",
+      "source": "brave",
+      "file": "nexent.md"
+    },
+    "https://github.com/hugohe3/ppt-master": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "ppt-master",
+      "source": "github",
+      "score": 2,
+      "reason": "Marketing-heavy summary lacks technical specifics on models or architecture; likely a wrapper around closed APIs rather than open AI infrastructure."
+    },
+    "https://github.com/secmon-lab/warren": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "warren",
+      "source": "github",
+      "score": 2,
+      "reason": "Vague marketing summary, ambiguous project identity, lacks confirmed open-source status or operational specifics."
+    },
+    "https://opensourceprojects.dev/post/1146695e-6f6a-4041-a5c2-604b03c4cc59": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "Turn any video stream into a real-time AI agent pipeline",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Likely a commercial tutorial tied to GetStream's proprietary API rather than a standalone open-source tool; aligns with trend-chasing ('AI agents') more than foundational infrastructure."
+    },
+    "https://opensourceprojects.dev/post/ab519b1d-1f61-497a-a19c-f7f661aa3352": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "Relive the classic 2003 top-down shooter with this faithful rewrite",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a video game rewrite project, which falls outside the scope of the open source AI ecosystem that Openflows documents."
+    },
+    "https://opensourceprojects.dev/post/a61506a9-16b5-41e7-9f74-78f5318d0717": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "The definitive tool for secure peer-to-peer data transfer over WebRTC",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source utility but general-purpose networking tool rather than AI-specific framework, model, or governance resource."
+    },
+    "https://huggingface.co/CohereLabs/cohere-transcribe-03-2026": {
+      "date": "2026-03-28",
+      "decision": "skipped",
+      "title": "CohereLabs/cohere-transcribe-03-2026",
+      "source": "huggingface",
+      "score": 2,
+      "reason": "Cohere is primarily a commercial API provider; open-weight availability is limited compared to community-driven projects. Future-dated versioning (2026) suggests metadata instability or noise, reducing operational value for the open source ecosystem."
+    },
+    "https://opensourceprojects.dev/post/090d237a-fd3c-403a-976f-7eae1243d42b": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "Deploy and manage AI agents at scale with this open-source runtime",
+      "source": "opensourceprojects",
+      "file": "hive-runtime.md"
+    },
+    "https://opensourceprojects.dev/post/fdfe8608-14ad-4bc2-9dae-9776ac8b3119": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "The definitive tool for testing LangGraph and CrewAI agents",
+      "source": "opensourceprojects",
+      "file": "eval-view.md"
+    },
+    "https://blog.csdn.net/qq_29462849/article/details/159417734": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "2026年，这些开源的具身大脑模型正在改变着技术格局......-CSDN博客",
+      "source": "brave",
+      "file": "xiaomi-robotics-0.md"
+    },
+    "https://github.com/hanzili/hanzi-browse": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "hanzi-browse",
+      "source": "github",
+      "file": "hanzi-browse.md"
+    },
+    "https://opensourceprojects.dev/post/97880866-ca4d-410c-9b86-a727ef1732cc": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "Run your own skill hub for AI agents with Kubernetes and audit trails",
+      "source": "opensourceprojects",
+      "file": "ai-agent-skill-hub-kubernetes.md"
+    },
+    "https://github.com/tang-vu/ContribAI": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "ContribAI",
+      "source": "github",
+      "file": "contribai.md"
+    },
+    "https://opensourceprojects.dev/post/98258f76-86c9-4980-9616-b5ad00cb6df4": {
+      "date": "2026-03-28",
+      "decision": "drafted",
+      "title": "Give your AI agent eyes to see the entire internet for free",
+      "source": "opensourceprojects",
+      "file": "agent-reach-web-browsing.md"
     }
   }
 }
