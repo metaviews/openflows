@@ -89,18 +89,40 @@ English at `/`, Chinese at `/zh/`. The `lang: zh` frontmatter field distinguishe
 
 `src/knowledge-manifest.11ty.js` generates `_site/knowledge-manifest.json` (includes `lang` field and `byLang` counts). **Synthesis (`synthesize.js`) is English-only** — it filters `lang !== 'zh'` before building context.
 
+## Dashboard Layout
+
+The admin dashboard (`/`) has three sections:
+- **Full-width top**: epistemic window (Ask Peng) — conversation panel with session history, multi-turn, "New" button
+- **Left column**: KB status panel · trigger buttons · activity log (runs clickable)
+- **Right column**: live log panel (hidden until triggered) · queue-state panel · queue table
+
 ## Server Routes and Views
 
-- `GET /` — Dashboard (Nunjucks + htmx)
-- `GET /entries` — Browse KB entries from manifest; filter by type/lang
-- `GET /entries/:id?lang=` — Markdown editor; Save & Commit writes file + pushes; Delete removes + pushes
-- `GET /queue/:id/edit?lang=` — Draft editor; Promote saves then promotes; Reject marks rejected
-- `POST /api/trigger/{type}` — Manually fire intake/synthesize/refresh
-- `GET /api/ask` (SSE) — Stream OpenRouter response for dashboard query
+**Page routes** (no prefix):
+- `GET /` — Dashboard
+- `GET /entries` — Browse KB entries; filter by type/lang; Translate button on untranslated English rows
+- `GET /entries/:id?lang=` — Markdown editor; Save & Commit or Delete
+- `GET /queue/:id/edit?lang=` — Draft editor; Save / Promote / Reject
 
-Views use Nunjucks (`server/views/`) rendered via `@fastify/view`. htmx handles dynamic interactions without a JS framework. Content-type parser for `application/x-www-form-urlencoded` is registered explicitly (required for htmx POST requests).
+**API routes** (`/api/` prefix, registered with `{ prefix: '/api' }`):
+- `POST /api/ask` (SSE) — Stream OpenRouter conversation; injects manifest + queue + status into system prompt
+- `GET /api/queue` — Pending drafts list (htmx-aware)
+- `GET /api/queue/state` — Compact queue state for queue-state panel (htmx refresh target)
+- `POST /api/queue/:id/promote` · `POST /api/queue/:id/reject` — Draft actions
+- `GET /api/runs` — Recent runs list (htmx-aware)
+- `GET /api/runs/:id` — Single run detail (JSON)
+- `GET /api/runs/:id/stream` (SSE) — Live log stream; serves in-memory buffer for running jobs, stored log for completed ones
+- `POST /api/trigger/:type` — Fire a script; returns `{ ok, queued, runId }` for single-script types
+- `GET /api/status` — KB status (htmx-aware)
+- `POST /api/entries/:id/save` · `POST /api/entries/:id/delete` — KB entry mutations
 
-`server/lib/git.js` wraps all git operations: `promoteEntry`, `commitEdit`, `removeEntry`, `commitPerspective`, `commitSeen`. All pulls use `--autostash` to handle unstaged changes on server.
+**Route registration note**: `entries.js` is registered without a prefix. All other route files use `{ prefix: '/api' }`. The `entries.js` file hard-codes `/api/` in its mutation route paths. Don't add a prefix when registering it.
+
+Views use Nunjucks (`server/views/`) via `@fastify/view`. htmx handles panel refreshes. Content-type parser for `application/x-www-form-urlencoded` is registered explicitly (required for htmx POST requests).
+
+`server/lib/git.js` wraps all git operations: `promoteEntry`, `commitEdit`, `removeEntry`, `commitPerspective`, `commitSeen`. All pulls use `--autostash`.
+
+`server/lib/runner.js` maintains an in-memory stream registry (`runStreams` map). Each `runScript` call creates a stream entry; stdout and stderr both pipe into it. `getRunStream(runId)` is exported for the SSE endpoint. Streams evict after 15 minutes.
 
 ## Instruction Priority
 
@@ -116,3 +138,6 @@ Technical, civic, dense — no hype, no marketing voice, no blog-post feel. Trea
 - HTTP headers must be ASCII — em dash in `X-Title` caused a `ByteString` error.
 - `practitioners.js` uses the shared `loadEnv` helper, not `require('dotenv')` directly.
 - `manifest.js` uses `ensureManifest` which rebuilds `_site/knowledge-manifest.json` if stale; the server does not read `src/` directly.
+- Nunjucks `in` operator does not work on JS arrays — pass membership sets as plain objects `{ id: true }` and check with `obj[key]`.
+- The live log panel (`#live-log`) is an inline panel in the dashboard right column, not a fixed overlay. `openLog()` sets `display: flex`; `closeLiveLog()` sets `display: none`.
+- `trigger.js` pre-creates the run record for single-script triggers so `runId` is available before `setImmediate` fires. For compound types (`intake`, `perspective`), `runId` is `null` in the response.

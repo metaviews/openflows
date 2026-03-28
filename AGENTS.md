@@ -303,7 +303,7 @@ Move from local CLI tooling to a web-native control plane. A self-hosted server 
 - **Why not Pages Functions**: GitHub API as a write layer is too indirect (3 hops: Function → GitHub API → commit → deploy); serverless timeout/connection constraints limit agent capability as Peng grows
 
 #### Cycle 10.5: KB Browser & Draft Editor
-**Status**: complete (2026-03-25)
+**Status**: complete (2026-03-25, extended 2026-03-28)
 
 Admin tools for managing the knowledge base and draft queue directly from the dashboard, without touching the filesystem.
 
@@ -314,21 +314,39 @@ Admin tools for managing the knowledge base and draft queue directly from the da
 - **`server/views/entries.njk`**, **`entry-edit.njk`**, **`draft-edit.njk`** — new views
 - **`server/lib/git.js`** — added `commitEdit` and `removeEntry`
 - **Nav**: Dashboard and Knowledge Base links in header across all pages
+- **Queue IDs clickable**: draft IDs in the queue panel link directly to `/queue/:id/edit` — no need to navigate separately
+- **Translate button**: KB browser shows a Translate button on English entries with no zh counterpart; fires `POST /api/trigger/translate --id {id}`; result visible in live log
 - **Bug fixes applied during Cycle 10 setup**:
   - `practitioners.js` used `require('dotenv')` directly — replaced with shared `loadEnv`
   - htmx POST requests returned 415 — added `application/x-www-form-urlencoded` content type parser
   - Manifest only counted English entries — added `allCurrency` collection to `.eleventy.js`
   - `git pull --rebase` failed with unstaged changes on server — fixed with `--autostash`
+  - Nunjucks `in` operator does not work on arrays — `translatedIds` passed as object `{ id: true }`, checked via `translatedIds[id]`
 
 #### Cycle 11: Agent Interface — Dashboard Conversation
-**Status**: not started
+**Status**: 11a complete (2026-03-28) · 11b not started
 
 Peng becomes conversational inside the dashboard. Admins can query the knowledge base, inspect queue state, and direct Peng's attention from within the browser.
 
-- **Streaming conversation**: server streams OpenRouter responses to the dashboard; no page reload
-- **Peng queries manifest**: conversation context includes the full knowledge manifest; Peng can look up entries, surface connections, and answer questions about the ecosystem
-- **Tool calls**: entry lookup, queue inspection, and status queries exposed as tools Peng can call during conversation
-- **Scope**: admin-only; behind Cloudflare Access; Peng does not publish from this interface
+##### Cycle 11a: Conversational Peng with live context
+**Status**: complete (2026-03-28)
+
+- **Epistemic window** redesigned as a persistent conversation panel: alternating user/Peng message bubbles, session history accumulated across turns, "New" button to clear, input form at bottom
+- **Queue + status context**: `ask.js` injects live queue state (all pending drafts by type/id/lang/title) and KB status (entry counts, last run) into the system prompt on every request — Peng has full awareness of what is pending without tool calls
+- **Multi-turn**: frontend accumulates message history within the session; full history passed with each request; `ask.js` uses it correctly
+- **Conversation persistence**: completed conversations (all turns including assistant response) saved to the `conversations` table in SQLite as audit trail
+- **Queue State panel** (`partials/queue-state.njk`): new independent panel in the right column showing pending drafts as a compact table (type/lang/id/title); `GET /api/queue/state` htmx endpoint; auto-refreshes every 30s; no action buttons — purely for inspection
+- **Live log panel**: inline panel in the right column above queue-state; streams stdout+stderr of any running script via SSE (`GET /api/runs/:id/stream`); opens automatically when a trigger fires or when any activity row is clicked; shows stored log for completed runs; `runner.js` maintains an in-memory stream registry with 15-minute eviction
+- **Activity runs clickable**: every row in the activity panel opens the live log — running jobs stream live, completed jobs serve the stored DB log
+- **Trigger flow**: `trigger.js` pre-creates the run record for single-script triggers (all except intake/perspective) and returns `runId` in the response; client opens the live log immediately
+- **Dashboard layout**: epistemic window full-width at top; left column: status + triggers + activity; right column: live log + queue-state + queue
+
+##### Cycle 11b: Tool calls
+**Status**: not started
+
+- Define 3 tools: `get_queue(lang?, type?)`, `get_entry(currencyId, lang?)`, `get_status()`
+- Two-phase execution: non-streaming first pass to detect tool calls, execute server-side, then streaming for final answer
+- This enables Peng to proactively look up specific entries, drill into queue details, and answer questions that require live data beyond what's in the system prompt
 
 #### Cycle 12: MCP Layer
 **Status**: not started
