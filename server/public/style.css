@@ -216,12 +216,18 @@ nav a:hover { color: var(--text); }
 }
 .run-item:last-child { border-bottom: none; }
 .run-item-clickable { cursor: pointer; }
-.run-item-clickable:hover { background: #fafaf8; }
+.run-item-clickable:hover { background: #efefeb; }
+.run-item-clickable:hover .run-type { color: var(--accent); }
 .run-type  { font-weight: bold; }
 .run-time  { color: var(--muted); font-size: 0.7rem; }
 .run-summary { color: var(--muted); font-size: 0.72rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.run-log-hint { color: var(--accent); font-size: 0.65rem; opacity: 0.5; margin-left: 0.25rem; }
+.run-item-clickable:hover .run-log-hint { opacity: 1; }
 
 /* ── Live log drawer ───────────────────────────────────────────── */
+
+body { transition: padding-bottom 0.15s ease; }
+body.log-open { padding-bottom: 260px; }
 
 #live-log {
   position: fixed;

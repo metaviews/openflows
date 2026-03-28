@@ -183,6 +183,7 @@
       if (_liveLogSource) { _liveLogSource.close(); _liveLogSource = null }
 
       panel.style.display = 'flex'
+      document.body.classList.add('log-open')
       title.textContent = (label || 'run') + ' #' + runId
       output.textContent = ''
       statusEl.textContent = 'running'
@@ -233,6 +234,7 @@
       if (_liveLogSource) { _liveLogSource.close(); _liveLogSource = null }
       const panel = document.getElementById('live-log')
       if (panel) panel.style.display = 'none'
+      document.body.classList.remove('log-open')
     }
   </script>
 </body>
