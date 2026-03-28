@@ -15,8 +15,18 @@
     {% include "partials/activity.njk" %}
   </div>
 
-  {# ── Right column: queue state summary + queue ── #}
+  {# ── Right column: live log + queue state summary + queue ── #}
   <div class="col-right">
+    <div id="live-log">
+      <div class="live-log-header">
+        <span id="live-log-title" class="live-log-title">Log</span>
+        <div style="display:flex;gap:0.5rem;align-items:center">
+          <span id="live-log-status" class="badge"></span>
+          <button onclick="closeLiveLog()" class="live-log-close">✕</button>
+        </div>
+      </div>
+      <pre id="live-log-output"></pre>
+    </div>
     {% include "partials/queue-state.njk" %}
     {% include "partials/queue.njk" %}
   </div>

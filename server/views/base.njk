@@ -22,18 +22,6 @@
 
   {% block content %}{% endblock %}
 
-  {# ── Live log drawer (fixed bottom, shown when a run is active) ── #}
-  <div id="live-log">
-    <div class="live-log-header">
-      <span id="live-log-title" class="live-log-title">Log</span>
-      <div style="display:flex;gap:0.5rem;align-items:center">
-        <span id="live-log-status" class="badge"></span>
-        <button onclick="closeLiveLog()" class="live-log-close">✕</button>
-      </div>
-    </div>
-    <pre id="live-log-output"></pre>
-  </div>
-
   <script>
     // ── Epistemic conversation ────────────────────────────────────────────────
     let conversationHistory = []
@@ -183,7 +171,6 @@
       if (_liveLogSource) { _liveLogSource.close(); _liveLogSource = null }
 
       panel.style.display = 'flex'
-      document.body.classList.add('log-open')
       title.textContent = (label || 'run') + ' #' + runId
       output.textContent = ''
       statusEl.textContent = 'running'
@@ -234,7 +221,6 @@
       if (_liveLogSource) { _liveLogSource.close(); _liveLogSource = null }
       const panel = document.getElementById('live-log')
       if (panel) panel.style.display = 'none'
-      document.body.classList.remove('log-open')
     }
   </script>
 </body>
