@@ -4,7 +4,6 @@ const path = require('path')
 const fs = require('fs')
 const { loadManifest, ensureManifest } = require('../lib/manifest')
 const { commitEdit, removeEntry } = require('../lib/git')
-const { runScript } = require('../lib/runner')
 
 const ROOT = path.join(__dirname, '..', '..')
 
@@ -104,18 +103,7 @@ async function entriesRoutes(fastify) {
     }
   })
 
-  // ── Translate (fire-and-forget, queues a zh draft) ──────────────────────────
-  fastify.post('/api/entries/:id/translate', async (req, reply) => {
-    const { id } = req.params
-    setImmediate(async () => {
-      try {
-        await runScript(fastify.db, 'translate', ['--id', id])
-      } catch (err) {
-        fastify.log.error(err)
-      }
-    })
-    return reply.send({ ok: true, queued: id })
-  })
+
 }
 
 module.exports = entriesRoutes

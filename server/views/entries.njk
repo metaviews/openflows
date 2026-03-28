@@ -73,7 +73,11 @@ async function translateEntry(id, btn) {
   btn.disabled = true
   btn.textContent = 'queued…'
   try {
-    const resp = await fetch('/api/entries/' + id + '/translate', { method: 'POST' })
+    const resp = await fetch('/api/trigger/translate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ args: ['--id', id] })
+    })
     if (!resp.ok) {
       const data = await resp.json().catch(() => ({}))
       btn.textContent = 'error'
