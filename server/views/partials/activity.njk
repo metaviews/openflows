@@ -14,7 +14,7 @@
     {% if runs and runs.length %}
     <ul class="run-list">
       {% for run in runs %}
-      <li class="run-item">
+      <li class="run-item run-item-clickable" onclick="openLog({{ run.id }}, '{{ run.type }}')">
         <span class="run-type">{{ run.type }}</span>
         <span class="badge badge-{{ run.status }}">{{ run.status }}</span>
         <span class="run-summary" title="{{ run.summary }}">{{ run.summary or '—' }}</span>

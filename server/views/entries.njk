@@ -78,11 +78,13 @@ async function translateEntry(id, btn) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ args: ['--id', id] })
     })
+    const data = await resp.json().catch(() => ({}))
     if (!resp.ok) {
-      const data = await resp.json().catch(() => ({}))
       btn.textContent = 'error'
       btn.disabled = false
       alert(data.error || 'Translation failed')
+    } else {
+      if (data.runId && typeof openLog === 'function') openLog(data.runId, 'translate')
     }
   } catch (err) {
     btn.textContent = 'error'

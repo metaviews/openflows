@@ -16,10 +16,19 @@ const DRAFT_LOCATIONS = [
 
 const SKIP_FILES = new Set(['QUEUE.md', 'peng-attention.md'])
 
+// In-memory stream registry: runId -> { lines, listeners, doneListeners, done }
+// Kept for 15 minutes after completion then evicted.
+const runStreams = new Map()
+
+function getRunStream(runId) {
+  return runStreams.get(runId) || null
+}
+
 // Run a named script (e.g. 'intake', 'synthesize') as a child process.
-// Captures stdout+stderr into the runs table. Imports any new draft files into SQLite after completion.
+// If preRunId is provided, the run record was already created by the caller;
+// skip the INSERT and attach the stream to that ID instead.
 // Returns a Promise<{ runId, status, newDrafts, log }>.
-function runScript(db, type, args = []) {
+function runScript(db, type, args = [], preRunId = null) {
   const scriptPath = path.join(ROOT, 'scripts', `${type}.js`)
 
   if (!fs.existsSync(scriptPath)) {
@@ -29,11 +38,25 @@ function runScript(db, type, args = []) {
   }
 
   const startedAt = new Date().toISOString()
-  const { lastInsertRowid: runId } = db.prepare(
-    `INSERT INTO runs (type, started_at, status) VALUES (?, ?, 'running')`
-  ).run(type, startedAt)
+  let runId = preRunId
+  if (!runId) {
+    const { lastInsertRowid } = db.prepare(
+      `INSERT INTO runs (type, started_at, status) VALUES (?, ?, 'running')`
+    ).run(type, startedAt)
+    runId = Number(lastInsertRowid)
+  }
+
+  // Create in-memory stream for live tailing.
+  const stream = { lines: [], listeners: new Set(), doneListeners: new Set(), done: false }
+  runStreams.set(runId, stream)
+  setTimeout(() => runStreams.delete(runId), 15 * 60 * 1000)
 
   let log = ''
+
+  const emit = (text) => {
+    stream.lines.push(text)
+    stream.listeners.forEach(fn => fn(text))
+  }
 
   return new Promise((resolve) => {
     const proc = spawn('node', [scriptPath, ...args], {
@@ -46,11 +69,13 @@ function runScript(db, type, args = []) {
       const text = chunk.toString()
       process.stdout.write(`[${type}] ${text}`)
       log += text
+      emit(text)
     })
     proc.stderr.on('data', (chunk) => {
       const text = chunk.toString()
       process.stderr.write(`[${type}:err] ${text}`)
       log += text
+      emit(text)
     })
 
     proc.on('close', (code) => {
@@ -64,6 +89,9 @@ function runScript(db, type, args = []) {
 
       db.prepare(`INSERT INTO events (type, payload, created_at) VALUES (?, ?, ?)`)
         .run('run_complete', JSON.stringify({ runId, type, status, newDrafts }), completedAt)
+
+      stream.done = true
+      stream.doneListeners.forEach(fn => fn(status))
 
       console.log(`[runner] ${type} finished — status=${status} drafts=${newDrafts}`)
       resolve({ runId, status, newDrafts, log })
@@ -121,4 +149,4 @@ function importDraftFiles(db, runId = null) {
   return count
 }
 
-module.exports = { runScript, importDraftFiles }
+module.exports = { runScript, importDraftFiles, getRunStream }

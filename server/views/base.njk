@@ -22,6 +22,18 @@
 
   {% block content %}{% endblock %}
 
+  {# ── Live log drawer (fixed bottom, shown when a run is active) ── #}
+  <div id="live-log">
+    <div class="live-log-header">
+      <span id="live-log-title" class="live-log-title">Log</span>
+      <div style="display:flex;gap:0.5rem;align-items:center">
+        <span id="live-log-status" class="badge"></span>
+        <button onclick="closeLiveLog()" class="live-log-close">✕</button>
+      </div>
+    </div>
+    <pre id="live-log-output"></pre>
+  </div>
+
   <script>
     // ── Epistemic conversation ────────────────────────────────────────────────
     let conversationHistory = []
@@ -145,16 +157,82 @@
       try {
         const resp = await fetch('/api/trigger/' + type, { method: 'POST' })
         const data = await resp.json()
-        if (!resp.ok) alert(data.error || 'Trigger failed')
+        if (!resp.ok) {
+          alert(data.error || 'Trigger failed')
+          if (btn) btn.disabled = false
+        } else {
+          if (data.runId) openLog(data.runId, type)
+          if (btn) btn.disabled = false
+        }
       } catch (err) {
         alert('Trigger error: ' + err.message)
-      }
-      // Refresh the activity panel after a short delay.
-      setTimeout(() => {
-        const panel = document.getElementById('activity-panel')
-        if (panel) htmx.trigger(panel, 'refresh')
         if (btn) btn.disabled = false
-      }, 1500)
+      }
+    }
+
+    // ── Live log ──────────────────────────────────────────────────────────────
+    let _liveLogSource = null
+
+    function openLog(runId, label) {
+      const panel = document.getElementById('live-log')
+      const title = document.getElementById('live-log-title')
+      const output = document.getElementById('live-log-output')
+      const statusEl = document.getElementById('live-log-status')
+      if (!panel) return
+
+      if (_liveLogSource) { _liveLogSource.close(); _liveLogSource = null }
+
+      panel.style.display = 'flex'
+      title.textContent = (label || 'run') + ' #' + runId
+      output.textContent = ''
+      statusEl.textContent = 'running'
+      statusEl.className = 'badge badge-running'
+
+      const es = new EventSource('/api/runs/' + runId + '/stream')
+      _liveLogSource = es
+
+      es.onmessage = (e) => {
+        if (e.data === '[DONE]') {
+          es.close()
+          _liveLogSource = null
+          fetch('/api/runs/' + runId)
+            .then(r => r.json())
+            .then(d => {
+              statusEl.textContent = d.status
+              statusEl.className = 'badge badge-' + d.status
+              const activity = document.getElementById('activity-panel')
+              if (activity) htmx.trigger(activity, 'refresh')
+            }).catch(() => {})
+          return
+        }
+        try {
+          const parsed = JSON.parse(e.data)
+          if (parsed.text) {
+            output.textContent += parsed.text
+            output.scrollTop = output.scrollHeight
+          }
+          if (parsed.error) {
+            output.textContent += '\n[error] ' + parsed.error
+            statusEl.textContent = 'error'
+            statusEl.className = 'badge badge-error'
+            es.close()
+            _liveLogSource = null
+          }
+        } catch {}
+      }
+
+      es.onerror = () => {
+        statusEl.textContent = 'disconnected'
+        statusEl.className = 'badge badge-error'
+        es.close()
+        _liveLogSource = null
+      }
+    }
+
+    function closeLiveLog() {
+      if (_liveLogSource) { _liveLogSource.close(); _liveLogSource = null }
+      const panel = document.getElementById('live-log')
+      if (panel) panel.style.display = 'none'
     }
   </script>
 </body>
