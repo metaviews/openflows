@@ -3,6 +3,11 @@
 {% block content %}
 <div class="layout">
 
+  {# ── Full width: epistemic window ── #}
+  <div class="col-full">
+    {% include "partials/epistemic.njk" %}
+  </div>
+
   {# ── Left column: status + triggers + activity ── #}
   <div class="col-left">
     {% include "partials/status.njk" %}
@@ -10,14 +15,10 @@
     {% include "partials/activity.njk" %}
   </div>
 
-  {# ── Right column: queue ── #}
+  {# ── Right column: queue state summary + queue ── #}
   <div class="col-right">
+    {% include "partials/queue-state.njk" %}
     {% include "partials/queue.njk" %}
-  </div>
-
-  {# ── Full width: epistemic window ── #}
-  <div class="col-full">
-    {% include "partials/epistemic.njk" %}
   </div>
 
 </div>

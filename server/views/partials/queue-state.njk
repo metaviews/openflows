@@ -1,0 +1,30 @@
+<div id="queue-state-panel" class="panel"
+     hx-get="/api/queue/state"
+     hx-trigger="every 30s"
+     hx-target="#queue-state-panel"
+     hx-swap="outerHTML">
+  <div class="panel-header">
+    <span class="panel-title">Queue State</span>
+    <span class="muted" style="font-size:0.7rem">{{ drafts | length if drafts else 0 }} pending</span>
+  </div>
+  {% if drafts and drafts.length %}
+  <div class="panel-body-flush">
+    <table class="queue-state-table">
+      <tbody>
+        {% for d in drafts %}
+        <tr>
+          <td><span class="badge badge-{{ d.lang }}">{{ d.lang }}</span></td>
+          <td><span class="badge badge-{{ d.type or 'unknown' }}">{{ d.type or '?' }}</span></td>
+          <td class="id-cell"><a href="/queue/{{ d.id }}/edit?lang={{ d.lang }}">{{ d.id }}</a></td>
+          <td class="queue-state-title">{{ d.title or '(untitled)' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="panel-body">
+    <p class="empty-state">No pending drafts.</p>
+  </div>
+  {% endif %}
+</div>

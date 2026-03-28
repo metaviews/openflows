@@ -22,6 +22,14 @@ async function queueRoutes(fastify) {
     return reply.send({ drafts })
   })
 
+  // Queue state panel (htmx refresh target).
+  fastify.get('/queue/state', async (req, reply) => {
+    const drafts = fastify.db.prepare(
+      `SELECT id, lang, type, title FROM drafts WHERE status = 'pending' ORDER BY created_at DESC`
+    ).all()
+    return reply.view('partials/queue-state.njk', { drafts })
+  })
+
   // Get a single draft with full content (JSON).
   fastify.get('/queue/:id', async (req, reply) => {
     const lang = req.query.lang || 'en'
