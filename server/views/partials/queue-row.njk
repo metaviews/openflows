@@ -1,6 +1,6 @@
 <tr id="draft-{{ draft.id }}-{{ draft.lang }}"
     class="{% if draft.status == 'promoted' %}draft-promoted{% elif draft.status == 'rejected' %}draft-rejected{% endif %}">
-  <td class="id-cell">{{ draft.id }}</td>
+  <td class="id-cell"><a href="/queue/{{ draft.id }}/edit?lang={{ draft.lang }}">{{ draft.id }}</a></td>
   <td>
     <span class="badge badge-{{ draft.type or 'unknown' }}">{{ draft.type or '?' }}</span>
   </td>

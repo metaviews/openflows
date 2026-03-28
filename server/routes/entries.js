@@ -4,6 +4,7 @@ const path = require('path')
 const fs = require('fs')
 const { loadManifest, ensureManifest } = require('../lib/manifest')
 const { commitEdit, removeEntry } = require('../lib/git')
+const { runScript } = require('../lib/runner')
 
 const ROOT = path.join(__dirname, '..', '..')
 
@@ -26,11 +27,14 @@ async function entriesRoutes(fastify) {
     if (type) entries = entries.filter(e => e.currencyType === type)
     if (lang) entries = entries.filter(e => e.lang === lang)
     entries = [...entries].sort((a, b) => a.currencyId.localeCompare(b.currencyId))
+    const allEntries = manifest?.entries || []
+    const translatedIds = allEntries.filter(e => e.lang === 'zh').map(e => e.currencyId)
     return reply.view('entries.njk', {
       entries,
       total: manifest?.entries?.length || 0,
       filterType: type || '',
       filterLang: lang || '',
+      translatedIds,
     })
   })
 
@@ -97,6 +101,19 @@ async function entriesRoutes(fastify) {
       fastify.log.error(err)
       return reply.code(500).send({ error: err.message })
     }
+  })
+
+  // ── Translate (fire-and-forget, queues a zh draft) ──────────────────────────
+  fastify.post('/api/entries/:id/translate', async (req, reply) => {
+    const { id } = req.params
+    setImmediate(async () => {
+      try {
+        await runScript(fastify.db, 'translate', ['--id', id])
+      } catch (err) {
+        fastify.log.error(err)
+      }
+    })
+    return reply.send({ ok: true, queued: id })
   })
 }
 
