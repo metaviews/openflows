@@ -28,7 +28,8 @@ async function entriesRoutes(fastify) {
     if (lang) entries = entries.filter(e => e.lang === lang)
     entries = [...entries].sort((a, b) => a.currencyId.localeCompare(b.currencyId))
     const allEntries = manifest?.entries || []
-    const translatedIds = allEntries.filter(e => e.lang === 'zh').map(e => e.currencyId)
+    const translatedIds = {}
+    allEntries.filter(e => e.lang === 'zh').forEach(e => { translatedIds[e.currencyId] = true })
     return reply.view('entries.njk', {
       entries,
       total: manifest?.entries?.length || 0,

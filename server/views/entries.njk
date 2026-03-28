@@ -47,7 +47,7 @@
         <td class="title-cell">{{ entry.title }}</td>
         <td class="run-time">{{ entry.date | truncate(10, true, '') if entry.date }}</td>
         <td class="actions-cell">
-          {% if entry.lang === 'en' and entry.currencyId not in translatedIds %}
+          {% if entry.lang === 'en' and not translatedIds[entry.currencyId] %}
           <button class="btn btn-sm"
                   id="translate-{{ entry.currencyId }}"
                   onclick="translateEntry('{{ entry.currencyId }}', this)">Translate</button>
