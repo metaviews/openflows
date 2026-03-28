@@ -1,19 +1,20 @@
 <div class="panel col-full">
   <div class="panel-header">
     <span class="panel-title">Epistemic Window — Ask Peng</span>
-    <span class="muted" style="font-size:0.7rem">Knowledge manifest · OpenRouter · streaming</span>
+    <div style="display:flex;align-items:center;gap:0.75rem">
+      <span class="muted" style="font-size:0.7rem">manifest · queue · streaming</span>
+      <button class="btn btn-sm" onclick="clearConversation()">New</button>
+    </div>
   </div>
-  <div class="panel-body">
+  <div class="panel-body" style="display:flex;flex-direction:column;gap:0.75rem">
+    <div id="conversation" class="conversation"></div>
     <div class="ask-form">
       <input id="peng-query"
              type="text"
-             placeholder="Ask Peng about the ecosystem… (Enter to send)"
+             placeholder="Ask Peng about entries, queue state, patterns… (Enter to send)"
              autocomplete="off"
              spellcheck="false">
       <button id="peng-ask-btn" class="btn btn-primary" onclick="askPeng()">Ask</button>
-    </div>
-    <div id="peng-response" class="muted" style="font-style:italic">
-      Peng is ready. Ask about patterns, entries, connections, or what the ecosystem is doing.
     </div>
   </div>
 </div>

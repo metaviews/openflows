@@ -23,35 +23,64 @@
   {% block content %}{% endblock %}
 
   <script>
-    // ── Epistemic query streaming ─────────────────────────────────────────────
+    // ── Epistemic conversation ────────────────────────────────────────────────
+    let conversationHistory = []
+
+    function appendMessage(role, text, id) {
+      const container = document.getElementById('conversation')
+      if (!container) return null
+      const div = document.createElement('div')
+      div.className = 'msg msg-' + role
+      if (id) div.id = id
+      div.textContent = text
+      container.appendChild(div)
+      container.scrollTop = container.scrollHeight
+      return div
+    }
+
+    function clearConversation() {
+      conversationHistory = []
+      const container = document.getElementById('conversation')
+      if (container) container.innerHTML = ''
+    }
+
     async function askPeng() {
       const input = document.getElementById('peng-query')
       const question = input.value.trim()
       if (!question) return
 
-      const output = document.getElementById('peng-response')
       const btn = document.getElementById('peng-ask-btn')
-
-      output.textContent = ''
-      output.classList.add('thinking')
+      input.value = ''
       btn.disabled = true
 
-      // Build message history from any prior exchange shown in the DOM.
-      const messages = []
+      appendMessage('user', question)
+      const responseEl = appendMessage('peng', '…', 'peng-streaming')
+      responseEl.classList.add('thinking')
+
+      // Snapshot history before this turn, then push user message.
+      const priorHistory = [...conversationHistory]
+      conversationHistory.push({ role: 'user', content: question })
+
+      let fullText = ''
 
       try {
         const resp = await fetch('/api/ask', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ question, messages })
+          body: JSON.stringify({ question, messages: priorHistory })
         })
 
         if (!resp.ok) {
-          output.textContent = 'Error: ' + resp.statusText
+          responseEl.textContent = 'Error: ' + resp.statusText
+          responseEl.classList.remove('thinking')
+          conversationHistory.pop()
+          btn.disabled = false
           return
         }
 
-        output.classList.remove('thinking')
+        responseEl.textContent = ''
+        responseEl.classList.remove('thinking')
+
         const reader = resp.body.getReader()
         const decoder = new TextDecoder()
         let buffer = ''
@@ -65,23 +94,41 @@
           for (const line of lines) {
             if (!line.startsWith('data: ')) continue
             const data = line.slice(6).trim()
-            if (data === '[DONE]') return
+            if (data === '[DONE]') {
+              responseEl.removeAttribute('id')
+              conversationHistory.push({ role: 'assistant', content: fullText })
+              btn.disabled = false
+              return
+            }
             try {
               const parsed = JSON.parse(data)
-              if (parsed.text) output.textContent += parsed.text
-              if (parsed.error) { output.textContent = 'Error: ' + parsed.error; return }
+              if (parsed.text) {
+                fullText += parsed.text
+                responseEl.textContent = fullText
+                const container = document.getElementById('conversation')
+                if (container) container.scrollTop = container.scrollHeight
+              }
+              if (parsed.error) {
+                responseEl.textContent = 'Error: ' + parsed.error
+                responseEl.classList.add('thinking')
+                conversationHistory.pop()
+                btn.disabled = false
+                return
+              }
             } catch {}
           }
         }
       } catch (err) {
-        output.textContent = 'Error: ' + err.message
-      } finally {
-        btn.disabled = false
-        output.classList.remove('thinking')
+        responseEl.textContent = 'Error: ' + err.message
+        responseEl.classList.add('thinking')
+        conversationHistory.pop()
       }
+
+      responseEl.removeAttribute('id')
+      if (fullText) conversationHistory.push({ role: 'assistant', content: fullText })
+      btn.disabled = false
     }
 
-    // Allow Enter to submit (Shift+Enter for newline if we add textarea later).
     document.addEventListener('DOMContentLoaded', () => {
       const input = document.getElementById('peng-query')
       if (input) {

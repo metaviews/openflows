@@ -221,7 +221,7 @@ nav a:hover { color: var(--text); }
 
 /* ── Epistemic panel ───────────────────────────────────────────── */
 
-.ask-form { display: flex; gap: 0.5rem; margin-bottom: 0.75rem; }
+.ask-form { display: flex; gap: 0.5rem; }
 #peng-query {
   flex: 1;
   padding: 0.45rem 0.6rem;
@@ -233,19 +233,44 @@ nav a:hover { color: var(--text); }
 }
 #peng-query:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
 
-#peng-response {
-  min-height: 80px;
-  padding: 0.75rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  white-space: pre-wrap;
-  font-size: 0.83rem;
-  line-height: 1.65;
-  color: var(--text);
+.conversation {
+  min-height: 60px;
+  max-height: 480px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-#peng-response.thinking { color: var(--muted); font-style: italic; }
+.conversation:empty::before {
+  content: 'Peng is ready. Ask about entries, queue state, patterns, or what the ecosystem is doing.';
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.83rem;
+}
+
+.msg {
+  padding: 0.5rem 0.75rem;
+  border-radius: 2px;
+  font-size: 0.83rem;
+  line-height: 1.65;
+  white-space: pre-wrap;
+  max-width: 88%;
+}
+
+.msg-user {
+  align-self: flex-end;
+  background: var(--bg);
+  border: 1px solid var(--border);
+}
+
+.msg-peng {
+  align-self: flex-start;
+  background: var(--success-bg);
+  border: 1px solid var(--border-light);
+}
+
+.msg.thinking { color: var(--muted); font-style: italic; }
 
 /* ── Misc ──────────────────────────────────────────────────────── */
 
