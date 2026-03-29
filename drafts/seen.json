@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-29T01:49:52.049Z",
+  "lastUpdated": "2026-03-29T06:05:42.413Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1879,6 +1879,49 @@
       "title": "multi-agent-shogun",
       "source": "github",
       "file": "multi-agent-shogun.md"
+    },
+    "https://opensourceprojects.dev/post/efc39e4f-688f-4d04-ab28-aa7ea19e2a8b": {
+      "date": "2026-03-29",
+      "decision": "skipped",
+      "title": "Automatically convert your app&apos;s prices to local user currency",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "This signal describes a general web development utility library for currency conversion, which is unrelated to the open source AI ecosystem that Openflows documents."
+    },
+    "https://github.com/SharpAI/DeepCamera": {
+      "date": "2026-03-29",
+      "decision": "drafted",
+      "title": "DeepCamera",
+      "source": "github",
+      "file": "deepcamera.md"
+    },
+    "https://github.com/generalaction/emdash": {
+      "date": "2026-03-29",
+      "decision": "drafted",
+      "title": "emdash",
+      "source": "github",
+      "file": "emdash.md"
+    },
+    "https://github.com/antinomyhq/forgecode": {
+      "date": "2026-03-29",
+      "decision": "drafted",
+      "title": "forgecode",
+      "source": "github",
+      "file": "forgecode.md"
+    },
+    "https://opensourceprojects.dev/post/70effc4b-1e25-480d-8b60-5acab56f8f8e": {
+      "date": "2026-03-29",
+      "decision": "drafted",
+      "title": "A minimalist overlay to translate foreign language software and games",
+      "source": "opensourceprojects",
+      "file": "translumo.md"
+    },
+    "https://opensourceprojects.dev/post/5b46be26-8fb1-44aa-963e-34847fada55f": {
+      "date": "2026-03-29",
+      "decision": "drafted",
+      "title": "Turn your documents into a production-ready AI agent with this repository",
+      "source": "opensourceprojects",
+      "file": "production-agentic-rag-course.md"
     }
   }
 }
