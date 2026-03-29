@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-28T06:20:09.148Z",
+  "lastUpdated": "2026-03-29T01:49:52.049Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1858,6 +1858,27 @@
       "title": "Give your AI agent eyes to see the entire internet for free",
       "source": "opensourceprojects",
       "file": "agent-reach-web-browsing.md"
+    },
+    "https://aibusiness.com/language-models/cohere-transcribe-open-source-small-speech-model-edge-devices": {
+      "date": "2026-03-29",
+      "decision": "drafted",
+      "title": "Cohere Unveils Open Source Speech Model for Edge Devices",
+      "source": "brave",
+      "file": "cohere-transcribe.md"
+    },
+    "https://aitoolly.com/ai-news/article/2026-03-01-datawhalechina-launches-hello-agents-a-comprehensive-tutorial-for-building-intelligent-agents-from-s": {
+      "date": "2026-03-29",
+      "decision": "drafted",
+      "title": "Datawhalechina's 'Hello-Agents': Build AI Agents from Scratch | AIToolly",
+      "source": "brave",
+      "file": "hello-agents-datawhalechina.md"
+    },
+    "https://github.com/yohey-w/multi-agent-shogun": {
+      "date": "2026-03-29",
+      "decision": "drafted",
+      "title": "multi-agent-shogun",
+      "source": "github",
+      "file": "multi-agent-shogun.md"
     }
   }
 }
