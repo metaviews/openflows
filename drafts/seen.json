@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-29T06:05:42.413Z",
+  "lastUpdated": "2026-03-30T06:13:13.539Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1922,6 +1922,65 @@
       "title": "Turn your documents into a production-ready AI agent with this repository",
       "source": "opensourceprojects",
       "file": "production-agentic-rag-course.md"
+    },
+    "https://opensourceprojects.dev/post/fd384c09-df9b-47b6-aec3-459503738059": {
+      "date": "2026-03-30",
+      "decision": "skipped",
+      "title": "The definitive tool for managing AI skills across multiple coding platforms",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Vague scope and marketing-heavy language ('definitive tool') lack operational specifics; unclear value to open source AI infrastructure."
+    },
+    "https://opensourceprojects.dev/post/f0a117a3-8a2c-422d-8e5f-6d8b7cffc9f2": {
+      "date": "2026-03-30",
+      "decision": "skipped",
+      "title": "Stop using static charts for complex data use this visual explorer",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tangential relevance; primarily a data visualization tool rather than core AI infrastructure. Title uses hype language and lacks specific AI operational details."
+    },
+    "https://opensourceprojects.dev/post/96f7e89e-9d5a-4df2-b20a-69c52613f07b": {
+      "date": "2026-03-30",
+      "decision": "skipped",
+      "title": "The definitive open-source tool for downloading videos and audio on desktop",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Tool is a general-purpose media downloader, unrelated to the open source AI ecosystem scope."
+    },
+    "https://github.com/cloudwego/abcoder": {
+      "date": "2026-03-30",
+      "decision": "drafted",
+      "title": "abcoder",
+      "source": "github",
+      "file": "abcoder.md"
+    },
+    "https://github.com/nirholas/XActions": {
+      "date": "2026-03-30",
+      "decision": "drafted",
+      "title": "XActions",
+      "source": "github",
+      "file": "xactions.md"
+    },
+    "https://github.com/onestardao/WFGY": {
+      "date": "2026-03-30",
+      "decision": "error",
+      "title": "WFGY",
+      "source": "github",
+      "reason": "Unexpected end of JSON input"
+    },
+    "https://opensourceprojects.dev/post/50215a9d-4021-4347-ba9f-52ab5190cd13": {
+      "date": "2026-03-30",
+      "decision": "drafted",
+      "title": "Launch a customizable AI-powered interactive classroom instantly",
+      "source": "opensourceprojects",
+      "file": "plumio.md"
+    },
+    "https://opensourceprojects.dev/post/0a6c8746-24b9-4dc9-a1d4-2ace8227413c": {
+      "date": "2026-03-30",
+      "decision": "drafted",
+      "title": "The self-hosted platform for your autonomous AI employee workforce",
+      "source": "opensourceprojects",
+      "file": "tinyagi.md"
     }
   }
 }
