@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-30T06:13:13.539Z",
+  "lastUpdated": "2026-03-31T06:14:34.261Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -1981,6 +1981,127 @@
       "title": "The self-hosted platform for your autonomous AI employee workforce",
       "source": "opensourceprojects",
       "file": "tinyagi.md"
+    },
+    "https://opensourceprojects.dev/post/5ccba61f-b799-478c-86e7-9b863713c25c": {
+      "date": "2026-03-31",
+      "decision": "skipped",
+      "title": "Stop managing knowledge manually. Automate it with these free plugins.",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tangentially related via Anthropic GitHub, but focuses on generic productivity tools rather than core open-source AI infrastructure; likely relies on closed APIs."
+    },
+    "https://opensourceprojects.dev/post/65f9c904-588c-4764-95d9-8a75f166ab88": {
+      "date": "2026-03-31",
+      "decision": "skipped",
+      "title": "Reverse engineer the Stella Sora game with this updated datamined database",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Unrelated to the open source AI ecosystem; focuses on game reverse engineering and asset datamining rather than AI tools, models, or frameworks."
+    },
+    "https://opensourceprojects.dev/post/cdaa8cfc-fb18-4bb2-b012-8e76367ed471": {
+      "date": "2026-03-31",
+      "decision": "skipped",
+      "title": "Reverse engineer any website to extract and enforce its design system",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general web development tool for extracting design systems, which is unrelated to the open source AI ecosystem that Openflows documents."
+    },
+    "https://www.bilibili.com/video/BV19qX9B3E95/": {
+      "date": "2026-03-31",
+      "decision": "skipped",
+      "title": "盘点一周AI大事(3月29日)｜GPT 6 决战 Claude 5.0_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal is a hype-driven video summary dominated by closed-source rumors (GPT 6, Claude 5). While it mentions open-source models, it lacks operational specifics, verification, and direct links to inspectable artifacts."
+    },
+    "https://opensourceprojects.dev/post/5fff32ed-c240-4cdf-be35-7e38dc7169bc": {
+      "date": "2026-03-31",
+      "decision": "skipped",
+      "title": "Stop paying for native haptic APIs use this web library instead",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Signal describes a general web development utility for haptic feedback, unrelated to the open source AI ecosystem (models, frameworks, governance) that defines Openflows' scope."
+    },
+    "https://opensourceprojects.dev/post/f531ee09-f4a3-4a04-9467-44c10c71ebab": {
+      "date": "2026-03-31",
+      "decision": "skipped",
+      "title": "The definitive tool for discovering every device on your local network",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "RackPeek is a general network discovery utility, not an AI-specific tool, framework, or model. It falls outside the Openflows scope of documenting the open source AI ecosystem."
+    },
+    "https://www.lindy.ai/blog/best-ai-agent-frameworks": {
+      "date": "2026-03-31",
+      "decision": "skipped",
+      "title": "Top 11 AI Agent Frameworks (2026): Expert-Tested & Reviewed | Lindy",
+      "source": "brave",
+      "score": 2,
+      "reason": "Lists relevant frameworks but is primarily promotional (Lindy branding, 2026 hype) and includes closed APIs, lacking the operational specifics Openflows requires."
+    },
+    "https://zhuanlan.zhihu.com/p/670574382": {
+      "date": "2026-03-31",
+      "decision": "skipped",
+      "title": "国内外知名大模型及应用——模型/应用维度（2026/03/27） - 知乎",
+      "source": "brave",
+      "score": 1,
+      "reason": "Kimi is a closed-source commercial model, conflicting with Openflows' focus on open-source ecosystems. The future date (2026) indicates potential hallucination or unreliability."
+    },
+    "https://news.17173.com/content/03142026/080222998.shtml": {
+      "date": "2026-03-31",
+      "decision": "skipped",
+      "title": "AMD 发布 OpenClaw 部署方案：在 Ryzen AI Max+ 395 或 Radeon AI PRO R9700 平台上运行自己的 AI 智能体_网络游戏新闻_17173.com中国游戏门户站",
+      "source": "brave",
+      "score": 1,
+      "reason": "Source is a gaming news portal, not technical. 'OpenClaw' is likely proprietary AMD marketing, not an open-source project. Focuses on closed hardware ecosystem deployment."
+    },
+    "https://github.com/langchain-ai/agent-chat-ui": {
+      "date": "2026-03-31",
+      "decision": "drafted",
+      "title": "agent-chat-ui",
+      "source": "github",
+      "file": "agent-chat-ui.md"
+    },
+    "https://opensourceprojects.dev/post/8ffd7d60-c098-4431-8a3a-19d79d95596a": {
+      "date": "2026-03-31",
+      "decision": "drafted",
+      "title": "A minimalist CLI to manage your entire AI agent development workflow",
+      "source": "opensourceprojects",
+      "file": "minimalist-ai-agent-cli-workflow.md"
+    },
+    "https://opensourceprojects.dev/post/4cf02642-0f72-4664-83ff-9805781119be": {
+      "date": "2026-03-31",
+      "decision": "drafted",
+      "title": "Stop paying for AI game dev tools. Use this open-source toolkit instead.",
+      "source": "opensourceprojects",
+      "file": "godot-mcp-pro.md"
+    },
+    "https://opensourceprojects.dev/post/f7bf9509-0395-40a4-88f7-951e779a90a6": {
+      "date": "2026-03-31",
+      "decision": "drafted",
+      "title": "Turn a single prompt into a continually learning AI system",
+      "source": "opensourceprojects",
+      "file": "prompt-evolution-system.md"
+    },
+    "https://opensourceprojects.dev/post/c4960bb0-554f-4bed-abc9-c4e74d8b457e": {
+      "date": "2026-03-31",
+      "decision": "drafted",
+      "title": "Automate your 1C code analysis with this self-hosted AI assistant",
+      "source": "opensourceprojects",
+      "file": "mini-ai-1c-assistant.md"
+    },
+    "https://opensourceprojects.dev/post/a9b06ecb-bbab-4403-8abc-99be24ec89c9": {
+      "date": "2026-03-31",
+      "decision": "drafted",
+      "title": "Stop managing product roadmaps Let AI agents generate and ship features",
+      "source": "opensourceprojects",
+      "file": "mission-control-agent-orchestration.md"
+    },
+    "https://www.shakudo.io/blog/top-9-ai-agent-frameworks": {
+      "date": "2026-03-31",
+      "decision": "drafted",
+      "title": "Top 9 AI Agent Frameworks as of March 2026 | Shakudo",
+      "source": "brave",
+      "file": "rasa.md"
     }
   }
 }
