@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-03-31T06:14:34.261Z",
+  "lastUpdated": "2026-04-01T06:37:15.992Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2102,6 +2102,134 @@
       "title": "Top 9 AI Agent Frameworks as of March 2026 | Shakudo",
       "source": "brave",
       "file": "rasa.md"
+    },
+    "https://github.com/tingly-dev/tingly-box": {
+      "date": "2026-04-01",
+      "decision": "skipped",
+      "title": "tingly-box",
+      "source": "github",
+      "score": 2,
+      "reason": "Marketing-heavy summary lacks operational specifics; potential reliance on closed APIs (Claude) reduces open ecosystem value."
+    },
+    "https://opensourceprojects.dev/post/f6858183-3529-410a-a124-bb02b4508534": {
+      "date": "2026-04-01",
+      "decision": "skipped",
+      "title": "Query your private documents and get citation-backed answers from Gemini",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tool depends on proprietary Gemini model rather than open weights; conflicts with Openflows' focus on open source ecosystems and avoidance of closed systems."
+    },
+    "https://opensourceprojects.dev/post/2f521c13-8ae4-490f-b730-1ecdda990f3e": {
+      "date": "2026-04-01",
+      "decision": "skipped",
+      "title": "Stop using complex IDEs for simple ESP32 command line tasks",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Unrelated to AI ecosystem; focuses on general embedded hardware development rather than AI tools, models, or infrastructure."
+    },
+    "https://opensourceprojects.dev/post/eb944216-563e-4009-82b3-3ecf4ee27ea0": {
+      "date": "2026-04-01",
+      "decision": "skipped",
+      "title": "Stop paying for AI coding assistants with this open-source alternative",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Repository title suggests documentation for a proprietary tool (Claude Code) rather than a functional open-source alternative. Signal relies on hype and likely documents closed-source usage, conflicting with Openflows' focus."
+    },
+    "https://opensourceprojects.dev/post/60f7113f-8565-4ed0-add5-d7acfde56598": {
+      "date": "2026-04-01",
+      "decision": "skipped",
+      "title": "The open-source React Native stack for cross-platform apps and web",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general-purpose cross-platform development framework (React Native/UI) rather than an AI-specific tool, model, or infrastructure. It falls outside the Openflows scope of documenting the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/2816d17a-b9a5-4998-9dd4-9c16318fd663": {
+      "date": "2026-04-01",
+      "decision": "skipped",
+      "title": "Create and share 3D architectural projects.",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "This is a general 3D architectural modeling tool, not an AI-specific project. Openflows specifically documents the open source AI ecosystem, making this unrelated to the core scope."
+    },
+    "https://opensourceprojects.dev/post/a45e0698-dbdc-4ac3-bf95-2d1ccbe957ab": {
+      "date": "2026-04-01",
+      "decision": "skipped",
+      "title": "Turn any TV into a retro split-flap display.",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a DIY hardware display project with no connection to AI models, frameworks, or tools. While open source, it falls outside the specific AI ecosystem focus of Openflows."
+    },
+    "https://opensourceprojects.dev/post/8e64ef9a-9f78-45e8-831b-966ae105443b": {
+      "date": "2026-04-01",
+      "decision": "skipped",
+      "title": "Plan group trips with real-time maps and budgets in one place",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Signal describes a general travel planning application with no indication of open-source AI technologies. Openflows specifically documents the open source AI ecosystem, making this unrelated to its core scope."
+    },
+    "https://www.secrss.com/articles/88391": {
+      "date": "2026-04-01",
+      "decision": "skipped",
+      "title": "关于开源AI智能体OpenClaw发展现状、风险挑战与对策建议的分析报告 - 安全内参 | 决策者的网络安全知识库",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal relies on future-dated claims (2026) and hype language, lacking verifiable operational specifics. Content prioritizes security governance over operational specifics required by Openflows."
+    },
+    "https://github.com/promptfoo/promptfoo": {
+      "date": "2026-04-01",
+      "decision": "drafted",
+      "title": "promptfoo",
+      "source": "github",
+      "file": "promptfoo.md"
+    },
+    "https://github.com/ray-project/ray": {
+      "date": "2026-04-01",
+      "decision": "drafted",
+      "title": "ray",
+      "source": "github",
+      "file": "ray.md"
+    },
+    "https://github.com/alvinreal/awesome-opensource-ai": {
+      "date": "2026-04-01",
+      "decision": "drafted",
+      "title": "awesome-opensource-ai",
+      "source": "github",
+      "file": "awesome-opensource-ai.md"
+    },
+    "https://opensourceprojects.dev/post/b540087c-d671-4b06-a90e-b0e0cd0705a3": {
+      "date": "2026-04-01",
+      "decision": "drafted",
+      "title": "Generate complex web map code with a simple AI instruction",
+      "source": "opensourceprojects",
+      "file": "maplibre-agent-skills.md"
+    },
+    "https://opensourceprojects.dev/post/c76da451-6ecc-4903-a7b8-e023fbcc7587": {
+      "date": "2026-04-01",
+      "decision": "drafted",
+      "title": "Manage your entire agent sandbox workflow with this minimalist Go operator",
+      "source": "opensourceprojects",
+      "file": "openkruise-agent-sandbox-operator.md"
+    },
+    "https://opensourceprojects.dev/post/0ab7462f-616d-4463-a753-f5fee9610912": {
+      "date": "2026-04-01",
+      "decision": "drafted",
+      "title": "OCR model that handles complex tables, forms, handwriting with full layout.",
+      "source": "opensourceprojects",
+      "file": "chandra-ocr-layout-preservation.md"
+    },
+    "https://opensourceprojects.dev/post/c170e6ad-4b18-42ce-814f-38602a0c0a7f": {
+      "date": "2026-04-01",
+      "decision": "drafted",
+      "title": "Attach a persistent task manager and file viewer to any CLI agent",
+      "source": "opensourceprojects",
+      "file": "persistent-cli-agent-dashboard.md"
+    },
+    "https://github.com/ooyinet/WeClone": {
+      "date": "2026-04-01",
+      "decision": "drafted",
+      "title": "WeClone",
+      "source": "github",
+      "file": "weclone.md"
     }
   }
 }
