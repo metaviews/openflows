@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-01T06:37:15.992Z",
+  "lastUpdated": "2026-04-02T06:11:00.853Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2230,6 +2230,103 @@
       "title": "WeClone",
       "source": "github",
       "file": "weclone.md"
+    },
+    "https://github.com/tony1223/better-agent-terminal": {
+      "date": "2026-04-02",
+      "decision": "skipped",
+      "title": "better-agent-terminal",
+      "source": "github",
+      "score": 2,
+      "reason": "Tool centers on closed-source model integration (Claude) rather than open models; aligns with current trend-chasing (terminal agents) rather than foundational open infrastructure."
+    },
+    "https://huggingface.co/SII-GAIR-NLP/davinci-llm-model": {
+      "date": "2026-04-02",
+      "decision": "skipped",
+      "title": "SII-GAIR-NLP/davinci-llm-model",
+      "source": "huggingface",
+      "score": 1,
+      "reason": "Conflicts with open-source focus due to proprietary naming ('davinci'); low engagement indicates negligible ecosystem value; risks documenting closed systems."
+    },
+    "https://opensourceprojects.dev/post/b9c5f3dc-5b98-4e5f-98e6-baa4a8c71be7": {
+      "date": "2026-04-02",
+      "decision": "skipped",
+      "title": "Automate your entire software development lifecycle with one command",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general software development lifecycle automation tool, not an AI-specific framework, model, or infrastructure. It falls outside Openflows' scope of documenting the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/e10eee74-8cbc-4421-bf1b-a288b2cf54eb": {
+      "date": "2026-04-02",
+      "decision": "skipped",
+      "title": "Turn any audio sample into a time-stretched intersecting instrument instantly",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source audio utility focused on traditional DSP (granular synthesis) rather than AI/ML. Lacks explicit AI components, making it tangential to the core AI ecosystem scope."
+    },
+    "https://opensourceprojects.dev/post/ba08ecd5-3029-4c60-b835-ddd0bea7f1bb": {
+      "date": "2026-04-02",
+      "decision": "skipped",
+      "title": "The self-hosted desktop engine for creating professional invoices offline",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "This is a general business utility tool for invoicing and has no connection to the open source AI ecosystem, models, or infrastructure that Openflows documents."
+    },
+    "https://opensourceprojects.dev/post/fcdaf8de-301e-4ac6-a47c-0c74b247c4f0": {
+      "date": "2026-04-02",
+      "decision": "skipped",
+      "title": "The ultimate dark theme for VSCode based on JetBrains and easemate designs",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Cosmetic VS Code theme; while open source, it is not an AI-specific tool or framework and does not advance understanding of the AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/a3b0db2c-bf1f-4089-b66f-f14f91e98779": {
+      "date": "2026-04-02",
+      "decision": "drafted",
+      "title": "Stop paying for TTS services with this on-device Vietnamese voice engine",
+      "source": "opensourceprojects",
+      "file": "vieu-neu-tts.md"
+    },
+    "https://opensourceprojects.dev/post/9d679b07-8ad1-4164-9229-c28b5fe2e7a4": {
+      "date": "2026-04-02",
+      "decision": "drafted",
+      "title": "The secure private alternative to cloud-based AI agent platforms",
+      "source": "opensourceprojects",
+      "file": "open-shell.md"
+    },
+    "https://github.com/dromara/Omega-AI": {
+      "date": "2026-04-02",
+      "decision": "drafted",
+      "title": "Omega-AI",
+      "source": "github",
+      "file": "omega-ai.md"
+    },
+    "https://github.com/openagents-org/openagents": {
+      "date": "2026-04-02",
+      "decision": "drafted",
+      "title": "openagents",
+      "source": "github",
+      "file": "openagents.md"
+    },
+    "https://github.com/athola/claude-night-market": {
+      "date": "2026-04-02",
+      "decision": "drafted",
+      "title": "claude-night-market",
+      "source": "github",
+      "file": "claude-night-market.md"
+    },
+    "https://opensourceprojects.dev/post/0497add4-89f5-4190-9384-a6f52207dce0": {
+      "date": "2026-04-02",
+      "decision": "drafted",
+      "title": "Deploy an AI agent to manage your infrastructure and code deployments",
+      "source": "opensourceprojects",
+      "file": "ai-infrastructure-deployment-agent.md"
+    },
+    "https://opensourceprojects.dev/post/2936b547-b96d-4438-9c39-f8a7f2a0eaf2": {
+      "date": "2026-04-02",
+      "decision": "drafted",
+      "title": "Deploy autonomous AI agents that write and execute their own code",
+      "source": "opensourceprojects",
+      "file": "autonomous-coding-agent-execution.md"
     }
   }
 }
