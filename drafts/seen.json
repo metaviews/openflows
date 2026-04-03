@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-02T06:11:00.853Z",
+  "lastUpdated": "2026-04-03T06:21:28.905Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2327,6 +2327,134 @@
       "title": "Deploy autonomous AI agents that write and execute their own code",
       "source": "opensourceprojects",
       "file": "autonomous-coding-agent-execution.md"
+    },
+    "https://github.com/nokodo-labs/os1": {
+      "date": "2026-04-03",
+      "decision": "skipped",
+      "title": "os1",
+      "source": "github",
+      "score": 2,
+      "reason": "Generic title and marketing-heavy summary ('next-gen') lack operational specifics; likely a wrapper project with low substantive value for the ecosystem."
+    },
+    "https://opensourceprojects.dev/post/0fbcf440-1214-4e39-b382-e0b6d0337578": {
+      "date": "2026-04-03",
+      "decision": "skipped",
+      "title": "Extract and analyze competitor SEO data using this open-source Python tool",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The tool is a general SEO marketing utility for analyzing SERPs and keywords, not an AI-specific tool, framework, or model. It falls outside the open source AI ecosystem scope defined for Openflows."
+    },
+    "https://opensourceprojects.dev/post/80ed7846-f834-4504-8df4-84a5cf4ff338": {
+      "date": "2026-04-03",
+      "decision": "skipped",
+      "title": "Stop paying for e-commerce platforms for your digital products",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general e-commerce tool for digital products without explicit AI functionality or relevance to the AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/338f0c14-76fe-4789-88e2-6099519198c7": {
+      "date": "2026-04-03",
+      "decision": "skipped",
+      "title": "Parse Apple Health and Whoop exports into a local SQLite database",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The tool is a personal health data utility for local database management, lacking any direct application to AI models, frameworks, or infrastructure required by the Openflows scope."
+    },
+    "https://opensourceprojects.dev/post/bbd19e72-1258-46cb-b302-abc0af643acf": {
+      "date": "2026-04-03",
+      "decision": "skipped",
+      "title": "Stop paying for AI training data generation use this tool instead",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "While the topic (AI data tools) fits the ecosystem scope, the clickbait title and lack of technical detail in the summary suggest promotional hype rather than substantive documentation, reducing its value for a rigorous knowledge base."
+    },
+    "https://opensourceprojects.dev/post/15fe7b2d-3906-4bc9-9f78-028a896876c4": {
+      "date": "2026-04-03",
+      "decision": "skipped",
+      "title": "Stop manually typing brackets around recurring terms in your notes",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Not relevant to the open-source AI ecosystem; this is a general productivity utility for note-taking rather than an AI tool, framework, or model."
+    },
+    "https://www.bilibili.com/video/BV1VN2EBRED4/": {
+      "date": "2026-04-03",
+      "decision": "skipped",
+      "title": "百万级Agent训练轨迹！Agent数据协议开辟LLM Agent微调新路径_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Content is a marketing-heavy video tutorial with hype claims ('salary raise', '2026 version') rather than technical documentation. While it mentions open source tools, it lacks verifiable operational specifics and prioritizes commercial education over ecosystem documentation."
+    },
+    "https://opensourceprojects.dev/post/961aba89-c251-4060-8b52-c8fd6443521d": {
+      "date": "2026-04-03",
+      "decision": "skipped",
+      "title": "Build your own dedicated Minecraft console with this C++ server framework",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Unrelated to AI ecosystem; focuses on game server infrastructure rather than AI tools, models, or frameworks."
+    },
+    "https://opensourceprojects.dev/post/a577033d-7896-4b4b-a4f6-afe781a1bb0a": {
+      "date": "2026-04-03",
+      "decision": "skipped",
+      "title": "Build fast software in a high-level language that compiles to C",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "General-purpose programming language without specific AI integration or focus; tangentially related to software development but not core to the AI ecosystem."
+    },
+    "https://github.com/zjunlp/LightMem": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "LightMem",
+      "source": "github",
+      "file": "lightmem.md"
+    },
+    "https://github.com/Enderfga/openclaw-claude-code": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "openclaw-claude-code",
+      "source": "github",
+      "file": "openclaw-claude-code.md"
+    },
+    "https://opensourceprojects.dev/post/0fa62eee-f97a-40e0-ac1e-f38cab2682d5": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "The definitive tool to connect your Rails application to any MCP client",
+      "source": "opensourceprojects",
+      "file": "rails-mcp-context-bridge.md"
+    },
+    "https://opensourceprojects.dev/post/84d2ba8a-a83b-459e-81b5-88488fae4766": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "Control hardware and software with a single AI assistant interface",
+      "source": "opensourceprojects",
+      "file": "robo-claw-unified-interface.md"
+    },
+    "https://www.ibm.com/think/topics/langgraph": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "What is LangGraph? | IBM",
+      "source": "brave",
+      "file": "langgraph.md"
+    },
+    "https://opensourceprojects.dev/post/83a3be4c-aa63-4b15-a44b-3361604dbc27": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "The definitive Chinese guide for building practical AI automation agents",
+      "source": "opensourceprojects",
+      "file": "chinese-ai-automation-agents-guide.md"
+    },
+    "https://opensourceprojects.dev/post/1c3abba5-d81c-4b2a-8152-9fabc52fa67f": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "Turn your DingTalk group into an automated AI assistant channel",
+      "source": "opensourceprojects",
+      "file": "dingtalk-ai-assistant-channel.md"
+    },
+    "https://www.engadget.com/ai/google-releases-gemma-4-a-family-of-open-models-built-off-of-gemini-3-160000332.html": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "Google releases Gemma 4, a family of open models built off of Gemini 3",
+      "source": "brave",
+      "file": "gemma-4-open-weight-release.md"
     }
   }
 }
