@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-03T06:21:28.905Z",
+  "lastUpdated": "2026-04-03T23:40:07.686Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2455,6 +2455,34 @@
       "title": "Google releases Gemma 4, a family of open models built off of Gemini 3",
       "source": "brave",
       "file": "gemma-4-open-weight-release.md"
+    },
+    "https://opensourceprojects.dev/post/bb316f5f-3c93-4cfc-acdb-12cecc239936": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "Build and customize any AI agent with this minimalist Rust framework",
+      "source": "opensourceprojects",
+      "file": "loongclaw.md"
+    },
+    "https://mashable.com/article/google-releases-gemma-4-open-ai-model-now-open-source-how-to-try-it": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "Google launches Gemma 4, a new open-source model: How to try it",
+      "source": "brave",
+      "file": "google-gemma-4-open-source-launch.md"
+    },
+    "https://business.theeveningleader.com/theeveningleader/article/247pressrelease-2026-4-2-claw-code-launches-open-source-ai-coding-agent-framework-with-72000-github-stars-in-first-days": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "User | theeveningleader.com - Claw Code Launches Open-Source AI Coding Agent Framework With 72,000 GitHub Stars in First Days",
+      "source": "brave",
+      "file": "claw-code.md"
+    },
+    "https://huggingface.co/Aratako/T5Gemma-TTS-2b-2b": {
+      "date": "2026-04-03",
+      "decision": "drafted",
+      "title": "Aratako/T5Gemma-TTS-2b-2b",
+      "source": "huggingface",
+      "file": "t5gemma-tts-2b-2b.md"
     }
   }
 }
