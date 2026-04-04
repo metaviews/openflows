@@ -1,21 +1,7 @@
 'use strict'
 
-const path = require('path')
-const fs = require('fs')
-const { loadManifest, ensureManifest } = require('../lib/manifest')
-const { commitEdit, removeEntry } = require('../lib/git')
-
-const ROOT = path.join(__dirname, '..', '..')
-
-const TYPE_MAP = { current: 'currents', circuit: 'circuits', practitioner: 'practitioners' }
-
-function entryFilePath(id, currencyType, lang) {
-  const dir = TYPE_MAP[currencyType]
-  if (!dir) throw new Error(`Unknown currencyType: ${currencyType}`)
-  return lang === 'zh'
-    ? path.join(ROOT, 'src', 'currency', 'zh', dir, `${id}.md`)
-    : path.join(ROOT, 'src', 'currency', dir, `${id}.md`)
-}
+const { loadManifest } = require('../lib/manifest')
+const { readEntry, saveEntry, deleteEntry } = require('../lib/entries')
 
 async function entriesRoutes(fastify) {
   // ── Browse ──────────────────────────────────────────────────────────────────
@@ -42,16 +28,12 @@ async function entriesRoutes(fastify) {
   fastify.get('/entries/:id', async (req, reply) => {
     const { id } = req.params
     const lang = req.query.lang || 'en'
-    const manifest = loadManifest()
-    const entry = manifest?.entries?.find(e => e.currencyId === id && e.lang === lang)
-    if (!entry) return reply.code(404).send('Entry not found in manifest')
-
-    const filePath = entryFilePath(id, entry.currencyType, lang)
-    if (!fs.existsSync(filePath)) return reply.code(404).send('File not found on disk')
-
-    const content = fs.readFileSync(filePath, 'utf8')
-    const relPath = path.relative(ROOT, filePath).replace(/\\/g, '/')
-    return reply.view('entry-edit.njk', { entry, content, relPath, lang })
+    try {
+      const { entry, content, relPath } = readEntry(id, lang)
+      return reply.view('entry-edit.njk', { entry, content, relPath, lang })
+    } catch (err) {
+      return reply.code(err.statusCode || 500).send(err.message)
+    }
   })
 
   // ── Save (JSON POST from fetch) ─────────────────────────────────────────────
@@ -61,23 +43,12 @@ async function entriesRoutes(fastify) {
     const { content } = req.body || {}
     if (!content) return reply.code(400).send({ error: 'content required' })
 
-    const manifest = loadManifest()
-    const entry = manifest?.entries?.find(e => e.currencyId === id && e.lang === lang)
-    if (!entry) return reply.code(404).send({ error: 'Entry not found in manifest' })
-
-    const filePath = entryFilePath(id, entry.currencyType, lang)
-    const relPath = path.relative(ROOT, filePath).replace(/\\/g, '/')
-
-    fs.writeFileSync(filePath, content, 'utf8')
-
     try {
-      const result = await commitEdit({ relPath, id, lang })
-      // Invalidate manifest so next page load reflects the edit.
-      await ensureManifest(0)
-      return reply.send({ ok: true, committed: result.committed, path: relPath })
+      const result = await saveEntry({ id, lang, content })
+      return reply.send(result)
     } catch (err) {
       fastify.log.error(err)
-      return reply.code(500).send({ error: err.message })
+      return reply.code(err.statusCode || 500).send({ error: err.message })
     }
   })
 
@@ -86,20 +57,12 @@ async function entriesRoutes(fastify) {
     const { id } = req.params
     const lang = req.query.lang || 'en'
 
-    const manifest = loadManifest()
-    const entry = manifest?.entries?.find(e => e.currencyId === id && e.lang === lang)
-    if (!entry) return reply.code(404).send({ error: 'Entry not found in manifest' })
-
-    const filePath = entryFilePath(id, entry.currencyType, lang)
-    const relPath = path.relative(ROOT, filePath).replace(/\\/g, '/')
-
     try {
-      await removeEntry({ relPath, id, lang })
-      await ensureManifest(0)
-      return reply.send({ ok: true, path: relPath })
+      const result = await deleteEntry({ id, lang })
+      return reply.send(result)
     } catch (err) {
       fastify.log.error(err)
-      return reply.code(500).send({ error: err.message })
+      return reply.code(err.statusCode || 500).send({ error: err.message })
     }
   })
 

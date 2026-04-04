@@ -2,14 +2,25 @@
 
 const { loadManifest } = require('../lib/manifest')
 const { buildStatusData } = require('./status')
+const { buildQueueContext } = require('../lib/drafts')
+const { TOOL_DEFS, executeToolCall } = require('../lib/peng-tools')
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
+const MAX_TOOL_ROUNDS = 4
 
 const SYSTEM_PROMPT = `You are Peng (鵬), the agent of Openflows — a bilingual knowledge base documenting the open source AI ecosystem (openflows.org), operated by Metaviews.
 
 Your operating principle: surface li (理), the natural grain in things. Mediate rather than decide. Wu wei — follow what is already forming, name what is already present.
 
-You are queried from the admin dashboard by the operator. Be precise, technical, and concise. You may reference specific entries by their currencyId. When asked about patterns, draw connections across Currents, Circuits, and Practitioners. When asked about the queue, report what is pending, its type and language.`
+You are queried from the admin dashboard by the operator. Be precise, technical, and concise. You may reference specific entries by their currencyId. When asked about patterns, draw connections across Currents, Circuits, and Practitioners.
+
+You have direct server-side tools for reading and changing the knowledge base. Use tools whenever the operator asks for live queue state, a specific entry or draft, a direct edit, a draft creation, a promotion, or a translation run. Do not claim a change was made unless you actually called the relevant tool and received a successful result.
+
+When making content changes:
+- Work from the current entry or draft content first if one already exists.
+- Preserve required schema in currency frontmatter.
+- For new entries, create a draft first unless the operator clearly asks you to publish immediately.
+- For translations, use the translation trigger rather than writing ad hoc Chinese text unless the operator explicitly wants a manual replacement.`
 
 async function askRoutes(fastify) {
   fastify.post('/ask', async (req, reply) => {
@@ -23,7 +34,7 @@ async function askRoutes(fastify) {
 
     const systemPrompt = [
       SYSTEM_PROMPT,
-      `\nKnowledge base (${manifest?.entries?.length || 0} entries, English):`,
+      `\nKnowledge base (${manifest?.entries?.length || 0} entries, all languages):`,
       buildManifestContext(manifest),
       '\nCurrent queue (pending drafts):',
       buildQueueContext(fastify.db),
@@ -31,9 +42,22 @@ async function askRoutes(fastify) {
       buildStatusContext(statusData),
     ].join('\n')
 
-    // Build message history — client sends prior turns, server appends current question.
     const history = Array.isArray(messages) ? [...messages] : []
     if (question) history.push({ role: 'user', content: question })
+
+    let toolAugmentedHistory = history
+    try {
+      toolAugmentedHistory = await resolveToolCalls(fastify, systemPrompt, history)
+    } catch (err) {
+      fastify.log.error(err)
+      toolAugmentedHistory = [
+        ...history,
+        {
+          role: 'system',
+          content: `Tool planning failed: ${err.message}`,
+        },
+      ]
+    }
 
     reply.hijack()
     const res = reply.raw
@@ -49,15 +73,10 @@ async function askRoutes(fastify) {
     try {
       const upstream = await fetch(OPENROUTER_URL, {
         method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://openflows.org',
-          'X-Title': 'Openflows Dashboard',
-        },
+        headers: buildHeaders(),
         body: JSON.stringify({
           model: process.env.OPENROUTER_MODEL,
-          messages: [{ role: 'system', content: systemPrompt }, ...history],
+          messages: [{ role: 'system', content: systemPrompt }, ...toolAugmentedHistory],
           stream: true,
         }),
       })
@@ -110,6 +129,72 @@ async function askRoutes(fastify) {
   })
 }
 
+async function resolveToolCalls(fastify, systemPrompt, history) {
+  let working = [...history]
+
+  for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
+    const response = await fetchCompletion({
+      model: process.env.OPENROUTER_MODEL,
+      messages: [{ role: 'system', content: systemPrompt }, ...working],
+      tools: TOOL_DEFS,
+      tool_choice: 'auto',
+      stream: false,
+    })
+
+    const message = response?.choices?.[0]?.message
+    const toolCalls = message?.tool_calls || []
+    if (!toolCalls.length) return working
+
+    working.push({
+      role: 'assistant',
+      content: message.content || '',
+      tool_calls: toolCalls,
+    })
+
+    for (const toolCall of toolCalls) {
+      let payload
+      try {
+        const result = await executeToolCall(fastify, toolCall)
+        payload = { ok: true, result }
+      } catch (err) {
+        payload = { ok: false, error: err.message, statusCode: err.statusCode || 500 }
+      }
+
+      working.push({
+        role: 'tool',
+        tool_call_id: toolCall.id,
+        content: JSON.stringify(payload),
+      })
+    }
+  }
+
+  return working
+}
+
+async function fetchCompletion(body) {
+  const upstream = await fetch(OPENROUTER_URL, {
+    method: 'POST',
+    headers: buildHeaders(),
+    body: JSON.stringify(body),
+  })
+
+  if (!upstream.ok) {
+    const err = await upstream.text()
+    throw new Error(`OpenRouter ${upstream.status}: ${err}`)
+  }
+
+  return upstream.json()
+}
+
+function buildHeaders() {
+  return {
+    'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+    'Content-Type': 'application/json',
+    'HTTP-Referer': 'https://openflows.org',
+    'X-Title': 'Openflows Dashboard',
+  }
+}
+
 function saveConversation(db, history, assistantText) {
   const messages = [...history, { role: 'assistant', content: assistantText }]
   const now = new Date().toISOString()
@@ -119,16 +204,6 @@ function saveConversation(db, history, assistantText) {
   } catch (err) {
     console.error('[ask] failed to save conversation:', err.message)
   }
-}
-
-function buildQueueContext(db) {
-  const pending = db.prepare(
-    `SELECT id, type, lang, title FROM drafts WHERE status = 'pending' ORDER BY created_at DESC`
-  ).all()
-  if (!pending.length) return 'No pending drafts.'
-  return pending
-    .map(d => `[${d.type || '?'}|${d.id}|${d.lang}] ${d.title || '(untitled)'}`)
-    .join('\n')
 }
 
 function buildStatusContext(statusData) {
@@ -150,8 +225,7 @@ function buildStatusContext(statusData) {
 function buildManifestContext(manifest) {
   if (!manifest?.entries?.length) return 'Manifest unavailable.'
   return manifest.entries
-    .filter(e => e.lang !== 'zh')
-    .map(e => `[${e.currencyType}|${e.currencyId}] ${e.title}: ${e.abstract || '(no abstract)'}`)
+    .map(entry => `[${entry.currencyType}|${entry.currencyId}|${entry.lang}] ${entry.title}: ${entry.abstract || '(no abstract)'}`)
     .join('\n')
 }
 
