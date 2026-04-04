@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-03T23:40:07.686Z",
+  "lastUpdated": "2026-04-04T06:06:15.250Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2483,6 +2483,50 @@
       "title": "Aratako/T5Gemma-TTS-2b-2b",
       "source": "huggingface",
       "file": "t5gemma-tts-2b-2b.md"
+    },
+    "https://opensourceprojects.dev/post/98820789-646d-43b1-8794-4540638a5345": {
+      "date": "2026-04-04",
+      "decision": "skipped",
+      "title": "The definitive tool for modifying uname data via kernel patching",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "This is a general-purpose OS/kernel utility for spoofing system identification, with no direct connection to AI models, frameworks, tools, or governance. While open-source, it falls outside the specific scope of the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/5bf75a94-4043-4e05-bc53-158f20b759af": {
+      "date": "2026-04-04",
+      "decision": "skipped",
+      "title": "Stop paying for separate health and productivity tools use this",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a self-hosted CLI tool for productivity and health tracking with no AI or machine learning components, falling entirely outside Openflows' focus on the open source AI ecosystem."
+    },
+    "https://github.com/CronusL-1141/AI-company": {
+      "date": "2026-04-04",
+      "decision": "drafted",
+      "title": "AI-company",
+      "source": "github",
+      "file": "ai-team-os.md"
+    },
+    "https://github.com/chopratejas/headroom": {
+      "date": "2026-04-04",
+      "decision": "drafted",
+      "title": "headroom",
+      "source": "github",
+      "file": "headroom-context-optimization.md"
+    },
+    "https://opensourceprojects.dev/post/978ba772-a765-4140-97d2-d9bf4d6bdbfa": {
+      "date": "2026-04-04",
+      "decision": "drafted",
+      "title": "Stop building custom bridges Use this agent protocol instead",
+      "source": "opensourceprojects",
+      "file": "openclaw-a2a-gateway.md"
+    },
+    "https://github.com/happier-dev/happier": {
+      "date": "2026-04-04",
+      "decision": "drafted",
+      "title": "happier",
+      "source": "github",
+      "file": "happier-dev-client.md"
     }
   }
 }
