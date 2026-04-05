@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-04T06:06:15.250Z",
+  "lastUpdated": "2026-04-05T06:16:58.039Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2527,6 +2527,120 @@
       "title": "happier",
       "source": "github",
       "file": "happier-dev-client.md"
+    },
+    "https://opensourceprojects.dev/post/67d4497e-94df-4e26-bf3a-4a07488b271d": {
+      "date": "2026-04-05",
+      "decision": "skipped",
+      "title": "Self-host your BMW vehicle data and analytics with this Python tool",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes an open-source Python utility for extracting and self-hosting automotive telemetry data. It has no connection to artificial intelligence, machine learning, or the open-source AI ecosystem that Openflows documents."
+    },
+    "https://blog.csdn.net/weixin_45092204/article/details/159385249": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "字节跳动王炸开源！DeerFlow 2.0：从“深度研究”到“全能超级AI员工”的华丽蜕变-CSDN博客",
+      "source": "brave",
+      "file": "deerflow-2-0.md"
+    },
+    "https://huggingface.co/nvidia/music-flamingo-2601-hf": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "nvidia/music-flamingo-2601-hf",
+      "source": "huggingface",
+      "file": "nvidia-music-flamingo-audio-model.md"
+    },
+    "https://www.bilibili.com/video/BV1tZ9TBNEj5/": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "Gemma 4 现已发布｜同等规模下性能最强的开放模型_哔哩哔哩_bilibili",
+      "source": "brave",
+      "file": "gemma-4-local-inference-zh.md"
+    },
+    "https://opensourceprojects.dev/post/a6ec17dd-006f-45ea-afd0-21ed0874e2e0": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "Deploy omni-modality models from research papers to production seamlessly",
+      "source": "opensourceprojects",
+      "file": "vllm-omni-deployment-pipeline.md"
+    },
+    "https://opensource.microsoft.com/blog/2026/04/02/introducing-the-agent-governance-toolkit-open-source-runtime-security-for-ai-agents/": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "Introducing the Agent Governance Toolkit: Open-source runtime security for AI agents | Microsoft Open Source Blog",
+      "source": "brave",
+      "file": "agent-governance-toolkit.md"
+    },
+    "https://aitoolly.com/ai-news/article/2026-03-25-nousresearch-launches-hermes-agent-a-new-intelligent-agent-framework-designed-to-grow-with-users": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "Hermes Agent: The New Evolving AI Agent by NousResearch | AIToolly",
+      "source": "brave",
+      "file": "hermes-agent-evolving-framework.md"
+    },
+    "https://vellum.ai/open-llm-leaderboard": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "Open Source LLM Leaderboard - Vellum AI",
+      "source": "brave",
+      "file": "vellum-open-llm-leaderboard.md"
+    },
+    "https://github.com/rhino-acoustic/NeuronFS": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "NeuronFS",
+      "source": "github",
+      "file": "neuronfs.md"
+    },
+    "https://huggingface.co/nvidia/music-flamingo-hf": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "nvidia/music-flamingo-hf",
+      "source": "huggingface",
+      "file": "draft-2026-04-05-huggingface-8.md"
+    },
+    "https://opensourceprojects.dev/post/e8a995e9-dd86-4b15-a84e-e8e218b6a7d2": {
+      "date": "2026-04-05",
+      "decision": "drafted",
+      "title": "Manage your entire coding session with this minimalist TUI assistant",
+      "source": "opensourceprojects",
+      "file": "minicode.md"
+    },
+    "https://opensourceprojects.dev/post/222249d4-5632-4fdf-955f-d5eae2bc8153": {
+      "date": "2026-04-05",
+      "decision": "deferred",
+      "title": "The self-hosted tool for AI-powered multilingual RSS aggregation",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Fits the open source AI tools scope as a self-hosted, inspectable application combining RSS aggregation with AI summarization. While it is a niche end-user utility rather than a foundational framework or model, its public GitHub repository and clear operational specifics make it worth documenting.",
+      "signal": {
+        "title": "The self-hosted tool for AI-powered multilingual RSS aggregation",
+        "url": "https://opensourceprojects.dev/post/222249d4-5632-4fdf-955f-d5eae2bc8153",
+        "summary": "Keeping up with the internet is a full-time job. Between your favorite tech blogs, niche newsletters, and international news sites, your RSS reader can quickly become a firehose of content in a dozen languages. What if you could not only aggregate all those feeds but also have an AI assistant summar...\n\nGitHub Repository: https://github.com/Sallyn0225/gemini-rss-app",
+        "source": "opensourceprojects",
+        "date": "2026-04-04T07:20:27.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://opensourceprojects.dev/post/2bddd5a5-2a9c-4c58-bb45-f5eb0e228a0f": {
+      "date": "2026-04-05",
+      "decision": "deferred",
+      "title": "Automate browser testing with a crew of autonomous AI agents",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Open-source AI tool for automated browser testing that fits the operational tooling scope. While the summary leans slightly into agent-hype language, the public GitHub repository provides inspectable, operationally specific code, making it worth documenting as a niche ecosystem tool.",
+      "signal": {
+        "title": "Automate browser testing with a crew of autonomous AI agents",
+        "url": "https://opensourceprojects.dev/post/2bddd5a5-2a9c-4c58-bb45-f5eb0e228a0f",
+        "summary": "Let&apos;s be honest, writing and maintaining browser tests can be a grind. You set up a framework, write a bunch of scripts, and then spend just as much time fixing flaky tests and updating selectors as you do building features. What if you could just describe what you want to test and let a team handle...\n\nGitHub Repository: https://github.com/AISquare-Studio/AISquare-Studio-QA",
+        "source": "opensourceprojects",
+        "date": "2026-04-04T07:07:18.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
     }
   }
 }
