@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-05T06:16:58.039Z",
+  "lastUpdated": "2026-04-06T06:19:26.489Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2607,40 +2607,123 @@
       "file": "minicode.md"
     },
     "https://opensourceprojects.dev/post/222249d4-5632-4fdf-955f-d5eae2bc8153": {
-      "date": "2026-04-05",
-      "decision": "deferred",
+      "date": "2026-04-06",
+      "decision": "drafted",
       "title": "The self-hosted tool for AI-powered multilingual RSS aggregation",
       "source": "opensourceprojects",
-      "score": 3,
-      "reason": "Fits the open source AI tools scope as a self-hosted, inspectable application combining RSS aggregation with AI summarization. While it is a niche end-user utility rather than a foundational framework or model, its public GitHub repository and clear operational specifics make it worth documenting.",
-      "signal": {
-        "title": "The self-hosted tool for AI-powered multilingual RSS aggregation",
-        "url": "https://opensourceprojects.dev/post/222249d4-5632-4fdf-955f-d5eae2bc8153",
-        "summary": "Keeping up with the internet is a full-time job. Between your favorite tech blogs, niche newsletters, and international news sites, your RSS reader can quickly become a firehose of content in a dozen languages. What if you could not only aggregate all those feeds but also have an AI assistant summar...\n\nGitHub Repository: https://github.com/Sallyn0225/gemini-rss-app",
-        "source": "opensourceprojects",
-        "date": "2026-04-04T07:20:27.000Z",
-        "meta": {
-          "stars": null
-        }
-      }
+      "file": "self-hosted-tool-for-ai-powered-multilingual-rss-aggregation.md"
     },
     "https://opensourceprojects.dev/post/2bddd5a5-2a9c-4c58-bb45-f5eb0e228a0f": {
-      "date": "2026-04-05",
-      "decision": "deferred",
+      "date": "2026-04-06",
+      "decision": "drafted",
       "title": "Automate browser testing with a crew of autonomous AI agents",
       "source": "opensourceprojects",
-      "score": 3,
-      "reason": "Open-source AI tool for automated browser testing that fits the operational tooling scope. While the summary leans slightly into agent-hype language, the public GitHub repository provides inspectable, operationally specific code, making it worth documenting as a niche ecosystem tool.",
-      "signal": {
-        "title": "Automate browser testing with a crew of autonomous AI agents",
-        "url": "https://opensourceprojects.dev/post/2bddd5a5-2a9c-4c58-bb45-f5eb0e228a0f",
-        "summary": "Let&apos;s be honest, writing and maintaining browser tests can be a grind. You set up a framework, write a bunch of scripts, and then spend just as much time fixing flaky tests and updating selectors as you do building features. What if you could just describe what you want to test and let a team handle...\n\nGitHub Repository: https://github.com/AISquare-Studio/AISquare-Studio-QA",
-        "source": "opensourceprojects",
-        "date": "2026-04-04T07:07:18.000Z",
-        "meta": {
-          "stars": null
-        }
-      }
+      "file": "autonomous-browser-testing-crew.md"
+    },
+    "https://opensourceprojects.dev/post/d236b50d-1883-455c-853d-24dce5f8018b": {
+      "date": "2026-04-06",
+      "decision": "skipped",
+      "title": "Check Codex and Claude consumption statistics with no account needed",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tool tracks usage of proprietary AI assistants; not directly about open source AI models/frameworks."
+    },
+    "https://opensourceprojects.dev/post/293bb0a0-48d5-4001-946b-b93b0359f427": {
+      "date": "2026-04-06",
+      "decision": "skipped",
+      "title": "Access a curated global TV guide and stream channels without logging in",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a TV guide streaming project unrelated to open-source AI tools, frameworks, models, or governance."
+    },
+    "https://opensourceprojects.dev/post/1546d261-a9c0-4206-a06d-a5d52853c438": {
+      "date": "2026-04-06",
+      "decision": "skipped",
+      "title": "A clean single interface to launch Hytale and control all your mods",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a game mod launcher for Hytale, which is unrelated to the open source AI ecosystem, tools, frameworks, models, or governance that Openflows documents."
+    },
+    "https://opensourceprojects.dev/post/2d69d7a9-7357-4ffd-9b52-89d97853dc94": {
+      "date": "2026-04-06",
+      "decision": "skipped",
+      "title": "A simple TUI that turns your terminal into a video editing workstation",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The tool is a general-purpose terminal video editor with no AI/ML components or direct relevance to the open source AI ecosystem, placing it outside Openflows' specific scope."
+    },
+    "https://opensourceprojects.dev/post/49e259ef-9e25-4c26-99c2-ba6173afa9fe": {
+      "date": "2026-04-06",
+      "decision": "skipped",
+      "title": "Stop managing complex validation state in Blazor use this integrated library",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a Blazor web development validation library, which is entirely unrelated to the open source AI ecosystem. It does not cover AI tools, frameworks, models, or governance, placing it outside Openflows' scope."
+    },
+    "https://opensourceprojects.dev/post/8e227982-e5f1-44ed-be5e-34c6cb587215": {
+      "date": "2026-04-06",
+      "decision": "skipped",
+      "title": "Turn this hourly updated list into your private proxy infrastructure instantly",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a proxy list repository unrelated to AI tools, frameworks, models, governance, or key figures; it does not pertain to the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/64bcbf5c-d15a-4ab2-8828-8672b564ee0f": {
+      "date": "2026-04-06",
+      "decision": "skipped",
+      "title": "Turn your local data into private Mermaid diagrams and charts instantly",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "The project is an open-source local data visualization utility, but it is not specific to AI/ML workflows, models, or frameworks. While operationally specific and publicly accessible, it is only tangentially related to the core open source AI ecosystem scope."
+    },
+    "https://opensourceprojects.dev/post/36577054-9f11-4fc0-9e01-68d148d8d558": {
+      "date": "2026-04-06",
+      "decision": "drafted",
+      "title": "Scale your semantic search to one billion vectors on your own hardware",
+      "source": "opensourceprojects",
+      "file": "endee-billion-vector-search.md"
+    },
+    "https://github.com/LnYo-Cly/ai4j": {
+      "date": "2026-04-06",
+      "decision": "drafted",
+      "title": "ai4j",
+      "source": "github",
+      "file": "ai4j-java-agentic-sdk.md"
+    },
+    "https://opensourceprojects.dev/post/e954a5d2-5ac6-4c51-9ee3-b2f78131ea4b": {
+      "date": "2026-04-06",
+      "decision": "drafted",
+      "title": "Orchestrate multiple AI coding agents into a cohesive workflow system",
+      "source": "opensourceprojects",
+      "file": "orchestrate-multiple-ai-coding-agents.md"
+    },
+    "https://opensourceprojects.dev/post/ceb4cfaa-a6fb-4061-b474-68f8b60bba39": {
+      "date": "2026-04-06",
+      "decision": "drafted",
+      "title": "Add infinite memory to any AI application with this TypeScript library",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-06-opensourceprojects-3.md"
+    },
+    "https://opensourceprojects.dev/post/ad5ea210-9e83-442c-a879-585307f686da": {
+      "date": "2026-04-06",
+      "decision": "drafted",
+      "title": "Extract text from images with high accuracy using this open-source model",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-06-opensourceprojects-4.md"
+    },
+    "https://opensourceprojects.dev/post/9faf5a5f-de7f-40a0-b01f-d1effb308f64": {
+      "date": "2026-04-06",
+      "decision": "drafted",
+      "title": "Add production-grade memory with hybrid search to any AI agent",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-06-opensourceprojects-7.md"
+    },
+    "https://xingyun3d.csdn.net/69b756cc0a2f6a37c597bcdf.html": {
+      "date": "2026-04-06",
+      "decision": "drafted",
+      "title": "2026 全球 AI 大模型实力榜：国产崛起与国际争锋的全新格局_人工智能_AI-小柒-魔珐星云开发社区",
+      "source": "brave",
+      "file": "dataeyes-api-free-access-open-source-models.md"
     }
   }
 }
