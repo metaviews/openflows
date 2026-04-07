@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-06T06:19:26.489Z",
+  "lastUpdated": "2026-04-07T06:07:25.726Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2724,6 +2724,79 @@
       "title": "2026 全球 AI 大模型实力榜：国产崛起与国际争锋的全新格局_人工智能_AI-小柒-魔珐星云开发社区",
       "source": "brave",
       "file": "dataeyes-api-free-access-open-source-models.md"
+    },
+    "https://opensourceprojects.dev/post/5660526d-8e47-4ccf-abfb-ac489f99b092": {
+      "date": "2026-04-07",
+      "decision": "skipped",
+      "title": "Stop paying for container monitoring. Use this self-hosted updater instead.",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "The signal describes a generic self-hosted container monitoring/updater tool without clear AI-specific focus or operational details relevant to the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/ab8939e7-f902-4242-b302-9d28fe627a8d": {
+      "date": "2026-04-07",
+      "decision": "skipped",
+      "title": "Turn a messy desktop into a clean slate with one command",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Signal is about a desktop cleanup utility unrelated to open source AI tools, frameworks, models, or governance."
+    },
+    "https://www.oschina.net/news/410911": {
+      "date": "2026-04-07",
+      "decision": "skipped",
+      "title": "OSCHINA - 开源 × AI · 开发者生态社区",
+      "source": "brave",
+      "score": 1,
+      "reason": "The signal describes a macOS Dock enhancement tool unrelated to AI, open source AI ecosystem, or inspectable AI tools/frameworks."
+    },
+    "https://www.cometapi.com/zh-CN/google-releases-gemma-4-open-source-model/": {
+      "date": "2026-04-07",
+      "decision": "drafted",
+      "title": "Google Gemma 4：Google 开源 AI 模型完整指南（2026） - CometAPI - 所有 AI 模型都集中在一个 API 中",
+      "source": "brave",
+      "file": "draft-2026-04-07-brave-0.md"
+    },
+    "https://github.com/agents-io/PokeClaw": {
+      "date": "2026-04-07",
+      "decision": "drafted",
+      "title": "PokeClaw",
+      "source": "github",
+      "file": "draft-2026-04-07-github-1.md"
+    },
+    "https://opensourceprojects.dev/post/c81903f9-3273-4e3f-af79-9749681f4f82": {
+      "date": "2026-04-07",
+      "decision": "error",
+      "title": "Replace three separate AI clients with this single open-source adapter",
+      "source": "opensourceprojects",
+      "reason": "OpenRouter 429: {\"error\":{\"message\":\"Rate limit exceeded: @ratelimit/too-many-requests. \",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1775542080000\"},\"provider_name\":null}},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/NVIDIA-NeMo/Automodel": {
+      "date": "2026-04-07",
+      "decision": "error",
+      "title": "Automodel",
+      "source": "github",
+      "reason": "OpenRouter 429: {\"error\":{\"message\":\"Rate limit exceeded: @ratelimit/too-many-requests. \",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1775542080000\"},\"provider_name\":null}},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://www.agent-zero.ai/": {
+      "date": "2026-04-07",
+      "decision": "error",
+      "title": "Agent Zero AI: Open Source Agentic Framework & Computer Assistant",
+      "source": "brave",
+      "reason": "OpenRouter 429: {\"error\":{\"message\":\"Rate limit exceeded: @ratelimit/too-many-requests. \",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1775542080000\"},\"provider_name\":null}},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://www.vellum.ai/open-llm-leaderboard": {
+      "date": "2026-04-07",
+      "decision": "error",
+      "title": "Open Source LLM Leaderboard - Vellum AI",
+      "source": "brave",
+      "reason": "OpenRouter 429: {\"error\":{\"message\":\"Rate limit exceeded: @ratelimit/too-many-requests. \",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1775542080000\"},\"provider_name\":null}},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://github.com/abraxas914/VESTI": {
+      "date": "2026-04-07",
+      "decision": "error",
+      "title": "VESTI",
+      "source": "github",
+      "reason": "OpenRouter 429: {\"error\":{\"message\":\"Rate limit exceeded: @ratelimit/too-many-requests. \",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1775542080000\"},\"provider_name\":null}},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
     }
   }
 }
