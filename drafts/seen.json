@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-07T06:07:25.726Z",
+  "lastUpdated": "2026-04-08T06:24:01.851Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2797,6 +2797,116 @@
       "title": "VESTI",
       "source": "github",
       "reason": "OpenRouter 429: {\"error\":{\"message\":\"Rate limit exceeded: @ratelimit/too-many-requests. \",\"code\":429,\"metadata\":{\"headers\":{\"X-RateLimit-Remaining\":\"0\",\"X-RateLimit-Reset\":\"1775542080000\"},\"provider_name\":null}},\"user_id\":\"user_39de1R3ugcPeascNEPi4n0cyZ2l\"}"
+    },
+    "https://opensourceprojects.dev/post/ac3975d7-409e-40e6-b6c8-7dee3f342297": {
+      "date": "2026-04-08",
+      "decision": "skipped",
+      "title": "Master prompt engineering for AI image generation with this resource",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tangentially related; focuses on prompt engineering techniques rather than a specific open-source tool, framework, model, or governance aspect."
+    },
+    "https://www.v2ex.com/t/1204224": {
+      "date": "2026-04-08",
+      "decision": "skipped",
+      "title": "[开源] 做了个桌面虚拟陪伴助手 CodeWalkers - V2EX",
+      "source": "brave",
+      "score": 2,
+      "reason": "The project is open source but appears to be a desktop companion assistant focused on Tauri UI capabilities rather than AI tools, frameworks, or models, making it only tangentially related to the Openflows scope."
+    },
+    "https://opensourceprojects.dev/post/e38ed21b-e68b-41a3-8289-452125b97c25": {
+      "date": "2026-04-08",
+      "decision": "skipped",
+      "title": "Bypass national internet censorship with this multi-platform DNS tunnel",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a DNS tunneling tool for bypassing internet censorship, which is unrelated to the open source AI ecosystem, tools, frameworks, models, governance, or key figures that Openflows documents."
+    },
+    "https://opensourceprojects.dev/post/add7f5f3-77c7-4fc9-a8d1-859f4ea38f57": {
+      "date": "2026-04-08",
+      "decision": "skipped",
+      "title": "Run Apple Intelligence from your terminal with zero dependencies",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "The signal centers on accessing Apple's proprietary Apple Intelligence via a terminal tool, which is a closed-source system; it does not contribute open-source AI tools, models, or governance insights."
+    },
+    "https://learn.microsoft.com/en-us/agent-framework/overview/": {
+      "date": "2026-04-08",
+      "decision": "skipped",
+      "title": "Microsoft Agent Framework Overview | Microsoft Learn",
+      "source": "brave",
+      "score": 2,
+      "reason": "Primarily describes Microsoft's Agent Framework (likely proprietary); only tangentially related via mention of open-source Semantic Kernel and AutoGen."
+    },
+    "https://github.com/jnMetaCode/agency-agents-zh": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "agency-agents-zh",
+      "source": "github",
+      "file": "draft-2026-04-08-github-0.md"
+    },
+    "https://github.com/OpenBMB/UltraRAG": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "UltraRAG",
+      "source": "github",
+      "file": "draft-2026-04-08-github-1.md"
+    },
+    "https://opensourceprojects.dev/post/38b74f29-e967-443d-8b31-0cf9203f9011": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "Build complete self-driving car intelligence with perception and planning unified",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-08-opensourceprojects-2.md"
+    },
+    "https://huggingface.co/nvidia/music-flamingo-think-2601-hf": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "nvidia/music-flamingo-think-2601-hf",
+      "source": "huggingface",
+      "file": "draft-2026-04-08-huggingface-3.md"
+    },
+    "https://opensourceprojects.dev/post/bf535172-9f61-4036-8ef6-34b11e1b4ebd": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "The open-source AI agent that automates your entire job search process",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-08-opensourceprojects-4.md"
+    },
+    "https://opensourceprojects.dev/post/0c01e50d-ff30-44ab-b37e-fb713d833020": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "Stop overpaying for AI conversations by implementing this token reduction strategy",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-08-opensourceprojects-5.md"
+    },
+    "https://opensourceprojects.dev/post/8809125f-1dce-4c35-bb50-ceaa568b906c": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "Autonomously handle merge conflicts and code reviews with agent swarms",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-08-opensourceprojects-6.md"
+    },
+    "https://siliconangle.com/2026/04/06/report-meta-developing-open-source-versions-upcoming-ai-models/": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "Report: Meta developing open-source versions of upcoming AI models - SiliconANGLE",
+      "source": "brave",
+      "file": "llama-4-maverick-open-source.md"
+    },
+    "https://www.scensmart.com/news/rockchip-launched-the-lobster-platform-clawchips/": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "瑞芯微龙虾平台 “ClawChips”：开启 AIoT2.0 新征程 | ScenSmart一站式智能制造平台",
+      "source": "brave",
+      "file": "draft-2026-04-08-brave-8.md"
+    },
+    "https://opensourceprojects.dev/post/1d1715f9-293d-4816-be92-7ee6e39bc747": {
+      "date": "2026-04-08",
+      "decision": "drafted",
+      "title": "The open-source engine for collaborative AGI research via autonomous agents",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-08-opensourceprojects-9.md"
     }
   }
 }
