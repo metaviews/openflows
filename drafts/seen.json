@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-08T06:24:01.851Z",
+  "lastUpdated": "2026-04-09T06:09:35.197Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2907,6 +2907,50 @@
       "title": "The open-source engine for collaborative AGI research via autonomous agents",
       "source": "opensourceprojects",
       "file": "draft-2026-04-08-opensourceprojects-9.md"
+    },
+    "https://opensourceprojects.dev/post/e49b3faa-a05f-4557-8295-f915fe780261": {
+      "date": "2026-04-09",
+      "decision": "skipped",
+      "title": "Turn this repository into your Claude AI agent development standard",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source repository but focused on Claude API (closed-source) and boilerplate code; tangential to open source AI ecosystem with limited operational specificity."
+    },
+    "https://opensourceprojects.dev/post/64df59b6-c05b-44b5-9f7d-eb74ed5a141c": {
+      "date": "2026-04-09",
+      "decision": "skipped",
+      "title": "Access your Twitter feed and bookmarks directly from the terminal",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a terminal-based Twitter client unrelated to open source AI tools, frameworks, models, or governance; it does not contribute to the Openflows knowledge base."
+    },
+    "https://opensourceprojects.dev/post/272c2e48-c6bf-4cfa-832a-e17e540b4dd3": {
+      "date": "2026-04-09",
+      "decision": "drafted",
+      "title": "Manage and deploy skills across all your AI agents from one tool",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-09-opensourceprojects-0.md"
+    },
+    "https://gizmodo.com/as-meta-flounders-it-reportedly-plans-to-open-source-its-new-ai-models-2000743047": {
+      "date": "2026-04-09",
+      "decision": "drafted",
+      "title": "As Meta Flounders, It Reportedly Plans to Open Source Its New AI Models",
+      "source": "brave",
+      "file": "draft-2026-04-09-brave-1.md"
+    },
+    "https://www.helpnetsecurity.com/2026/04/03/microsoft-ai-agent-governance-toolkit/": {
+      "date": "2026-04-09",
+      "decision": "drafted",
+      "title": "Microsoft releases open-source toolkit to govern autonomous AI agents - Help Net Security",
+      "source": "brave",
+      "file": "microsoft-ai-agent-governance-toolkit.md"
+    },
+    "https://cloud.tencent.com/developer/article/2638697": {
+      "date": "2026-04-09",
+      "decision": "drafted",
+      "title": "构建多智能体 AI 应用的5个最佳框架-腾讯云开发者社区-腾讯云",
+      "source": "brave",
+      "file": "draft-2026-04-09-brave-3.md"
     }
   }
 }
