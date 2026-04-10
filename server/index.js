@@ -11,12 +11,17 @@ const { initDb } = require('./db')
 const { startCron } = require('./cron')
 const { buildStatusData } = require('./routes/status')
 const { loadManifest } = require('./lib/manifest')
+const { pruneMalformedDrafts } = require('./lib/drafts')
 
 async function start() {
   const fastify = Fastify({ logger: { level: process.env.LOG_LEVEL || 'info' } })
 
   // ── Database ────────────────────────────────────────────────────────────────
   const db = initDb()
+  const prunedDrafts = pruneMalformedDrafts(db)
+  if (prunedDrafts.length) {
+    console.log(`[server] pruned ${prunedDrafts.length} malformed draft(s) from the queue`)
+  }
   fastify.decorate('db', db)
 
   // ── Content type parsers ─────────────────────────────────────────────────────

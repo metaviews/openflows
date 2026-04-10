@@ -8,6 +8,7 @@ const { promoteEntry } = require('./git')
 const ROOT = path.join(__dirname, '..', '..')
 const DRAFTS_ROOT = path.join(ROOT, 'drafts')
 const SKIP_FILES = new Set(['QUEUE.md', 'peng-attention.md'])
+const ALLOWED_TYPES = new Set(['current', 'circuit', 'practitioner'])
 
 function draftFilePath(id, lang = 'en') {
   const existing = existingDraftFilePath(id, lang)
@@ -25,6 +26,45 @@ function existingDraftFilePath(id, lang = 'en') {
         path.join(DRAFTS_ROOT, 'practitioners', `${id}.md`),
       ]
   return candidates.find(candidate => fs.existsSync(candidate)) || null
+}
+
+function inspectDraft({ id, content, type, title, abstract }) {
+  const issues = []
+  const normalizedId = typeof id === 'string' ? id.trim() : ''
+  const normalizedContent = typeof content === 'string' ? content : ''
+
+  if (!normalizedId) issues.push('missing id')
+  if (!normalizedContent.trim()) issues.push('empty content')
+
+  const { frontmatter, body } = parseFrontmatter(normalizedContent)
+
+  if (!frontmatter.currencyId) issues.push('missing currencyId in frontmatter')
+  if (frontmatter.currencyId && normalizedId && frontmatter.currencyId !== normalizedId) {
+    issues.push(`currencyId mismatch (${frontmatter.currencyId} != ${normalizedId})`)
+  }
+
+  const draftType = frontmatter.currencyType || type || null
+  if (!draftType) {
+    issues.push('missing currencyType')
+  } else if (!ALLOWED_TYPES.has(draftType)) {
+    issues.push(`invalid currencyType (${draftType})`)
+  }
+
+  const draftTitle = frontmatter.title || title || ''
+  if (!String(draftTitle).trim()) issues.push('missing title')
+
+  if (!String(body || '').trim()) issues.push('empty body')
+
+  if (!String(frontmatter.abstract || abstract || '').trim()) {
+    issues.push('missing abstract')
+  }
+
+  return {
+    issues,
+    frontmatter,
+    body,
+    valid: issues.length === 0,
+  }
 }
 
 function listDrafts(db, { status = 'pending', lang, type, limit } = {}) {
@@ -81,7 +121,14 @@ function upsertDraft(db, { id, lang = 'en', content, status = 'pending', runId =
     throw err
   }
 
-  const { frontmatter } = parseFrontmatter(content)
+  const inspection = inspectDraft({ id, content })
+  if (!inspection.valid) {
+    const err = new Error(`invalid draft: ${inspection.issues.join('; ')}`)
+    err.statusCode = 400
+    throw err
+  }
+
+  const { frontmatter } = inspection
   const now = new Date().toISOString()
   const filePath = syncDraftFile({ id, lang, content })
   const createdAt = fs.statSync(filePath).mtime.toISOString()
@@ -174,12 +221,45 @@ function buildQueueContext(db) {
     .join('\n')
 }
 
+function pruneMalformedDrafts(db, { status = 'pending' } = {}) {
+  const drafts = db.prepare(`
+    SELECT id, lang, type, title, abstract, content, status, created_at, updated_at
+    FROM drafts
+    WHERE status = ?
+    ORDER BY created_at DESC
+  `).all(status)
+  const bad = []
+
+  for (const draft of drafts) {
+    const inspection = inspectDraft(draft)
+    if (!inspection.valid) {
+      bad.push({ draft, issues: inspection.issues })
+    }
+  }
+
+  if (!bad.length) return []
+
+  const removeStmt = db.prepare('DELETE FROM drafts WHERE id = ? AND lang = ?')
+  const eventStmt = db.prepare('INSERT INTO events (type, payload, created_at) VALUES (?, ?, ?)')
+  const now = new Date().toISOString()
+
+  for (const { draft, issues } of bad) {
+    removeStmt.run(draft.id, draft.lang)
+    removeDraftFile(draft.id, draft.lang)
+    eventStmt.run('prune_malformed_draft', JSON.stringify({ id: draft.id, lang: draft.lang, issues }), now)
+  }
+
+  return bad
+}
+
 module.exports = {
   ROOT,
   DRAFTS_ROOT,
   SKIP_FILES,
+  ALLOWED_TYPES,
   draftFilePath,
   existingDraftFilePath,
+  inspectDraft,
   listDrafts,
   getDraft,
   upsertDraft,
@@ -187,4 +267,5 @@ module.exports = {
   promoteDraft,
   rejectDraft,
   buildQueueContext,
+  pruneMalformedDrafts,
 }
