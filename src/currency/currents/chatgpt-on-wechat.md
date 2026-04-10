@@ -13,7 +13,7 @@ tags:
   - skills
 permalink: /currency/currents/chatgpt-on-wechat/
 links:
-  - id: co-paw
+  - id: copaw
     relation: "parallel personal AI assistant framework with multi-channel messaging support"
   - id: openclaw
     relation: "aligns with OpenClaw architecture via skills system and inspectability tags"

@@ -14,7 +14,7 @@ links:
     relation: "模型发布的互补资源聚合"
   - id: chinese-open-source-llm-landscape-2026
     relation: "中国开源基础设施内的区域策展"
-  - id: skills.sh
+  - id: skills-sh
     relation: "技能层的资源策展"
 mediation:
   tooling: "OpenRouter / qwen/qwen3.5-flash-02-23"

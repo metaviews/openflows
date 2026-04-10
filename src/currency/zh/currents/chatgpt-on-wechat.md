@@ -14,7 +14,7 @@ tags:
   - wechat
 permalink: /zh/currency/currents/chatgpt-on-wechat/
 links:
-  - id: co-paw
+  - id: copaw
     relation: "与多渠道消息支持并行的个人 AI 助手框架"
   - id: openclaw
     relation: "通过技能系统和可检查性标签与 OpenClaw 架构对齐"

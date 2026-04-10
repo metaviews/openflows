@@ -11,7 +11,7 @@ tags:
   - operations
 permalink: /currency/currents/paperclip-solo-ops-framework/
 links:
-  - id: paperclip
+  - id: paperclip-ai
     relation: "Underlying orchestration framework"
   - id: artificial-organisations
     relation: "Governance and role specialization alignment"

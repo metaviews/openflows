@@ -16,7 +16,7 @@ links:
     relation: "Complementary high-throughput inference and serving engine for large language models"
   - id: sglang
     relation: "Complementary high-performance serving framework optimizing inference latency and throughput"
-  - id: gpu-stack
+  - id: gpustack
     relation: "Infrastructure for managing GPU clusters where Ray workloads may be deployed"
   - id: open-source-ai-agent-framework-landscape-2026
     relation: "Reference overview aggregating open-source agent frameworks including orchestration capabilities"

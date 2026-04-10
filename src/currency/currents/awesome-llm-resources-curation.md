@@ -15,7 +15,7 @@ links:
     relation: "Complementary resource aggregation for model releases"
   - id: chinese-open-source-llm-landscape-2026
     relation: "Regional curation within the Chinese open-source infrastructure"
-  - id: skills.sh
+  - id: skills-sh
     relation: "Resource curation for the skills layer"
 mediation:
   tooling: "OpenRouter / qwen/qwen3.5-flash-02-23"

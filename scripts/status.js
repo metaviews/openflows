@@ -35,7 +35,7 @@ function draftsIn(subdir) {
   const dir = subdir ? join(draftsDir, subdir) : draftsDir;
   if (!existsSync(dir)) return [];
   return readdirSync(dir)
-    .filter(f => f.endsWith('.md') && f !== '.gitkeep')
+    .filter(f => f.endsWith('.md') && !isOperationalDraft(f))
     .map(f => f.replace('.md', ''));
 }
 
@@ -55,6 +55,10 @@ function isInSrcZh(id) {
 
 function isDigest(id) {
   return id.startsWith('digest-');
+}
+
+function isOperationalDraft(name) {
+  return ['.gitkeep', 'QUEUE.md', 'peng-attention.md'].includes(name);
 }
 
 // --- Audit state ---

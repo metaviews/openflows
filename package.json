@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "eleventy",
+    "check:links": "node scripts/validate-links.js",
     "server": "node server/index.js",
     "server:dev": "node --watch server/index.js"
   },
