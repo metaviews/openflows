@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-09T06:09:35.197Z",
+  "lastUpdated": "2026-04-10T06:17:06.579Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -2951,6 +2951,79 @@
       "title": "构建多智能体 AI 应用的5个最佳框架-腾讯云开发者社区-腾讯云",
       "source": "brave",
       "file": "draft-2026-04-09-brave-3.md"
+    },
+    "https://opensourceprojects.dev/post/871774c0-1ce3-4b6b-9e50-a92b8e4a8c4d": {
+      "date": "2026-04-10",
+      "decision": "skipped",
+      "title": "Access the entire YouTube Music library from a minimalist terminal interface",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a terminal-based YouTube Music client, which is unrelated to the open source AI ecosystem (tools, frameworks, models, governance, or key figures) and does not provide operational specifics relevant to Openflows."
+    },
+    "https://opensourceprojects.dev/post/7d59a3cb-e365-4ea6-8c0d-ea4f3dac314f": {
+      "date": "2026-04-10",
+      "decision": "skipped",
+      "title": "Bring the Windows 11 clipboard experience to your Linux desktop",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a clipboard utility for Linux, unrelated to open-source AI tools, frameworks, models, governance, or key figures."
+    },
+    "https://opensourceprojects.dev/post/2358b133-2e06-4797-9de0-b031012abbc8": {
+      "date": "2026-04-10",
+      "decision": "skipped",
+      "title": "Stop paying for premium watch apps use this open-source alternative instead.",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Signal concerns an open-source smartwatch app alternative with no clear connection to AI tools, frameworks, models, governance, or key figures in the open-source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/aa704682-0587-463c-93d7-829d3906de95": {
+      "date": "2026-04-10",
+      "decision": "drafted",
+      "title": "Turn any command line into an intelligent conversation with your computer",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-10-opensourceprojects-0.md"
+    },
+    "https://opensourceprojects.dev/post/634ad562-83d4-4a7b-8a74-b61e47ad68aa": {
+      "date": "2026-04-10",
+      "decision": "drafted",
+      "title": "Stop using heavy frameworks for simple data science dashboards",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-10-opensourceprojects-1.md"
+    },
+    "https://opensourceprojects.dev/post/dc694ec6-1f68-461e-8e2e-a6d723eaccb6": {
+      "date": "2026-04-10",
+      "decision": "drafted",
+      "title": "Open-source AI coworker that turns work into a knowledge graph and acts on it",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-10-opensourceprojects-2.md"
+    },
+    "https://help.apiyi.com/en/glm-5-1-open-source-api-launched-on-apiyi-en.html": {
+      "date": "2026-04-10",
+      "decision": "drafted",
+      "title": "GLM-5.1 API is now open source and available on APIYI: 7 key points analyzing this new open-source king that topped SWE-Bench Pro - Apiyi.com Blog",
+      "source": "brave",
+      "file": "draft-2026-04-10-brave-3.md"
+    },
+    "https://opensourceprojects.dev/post/1086f295-9627-490a-a94b-024d61682611": {
+      "date": "2026-04-10",
+      "decision": "drafted",
+      "title": "The agent harness performance optimization system. Skills, instincts, memory, security, and research...",
+      "source": "opensourceprojects",
+      "file": "draft-2026-04-10-opensourceprojects-4.md"
+    },
+    "https://aitoolly.com/zh/ai-news/article/2026-04-07-onyx-an-open-source-ai-platform-featuring-advanced-chat-capabilities-and-multi-llm-support": {
+      "date": "2026-04-10",
+      "decision": "drafted",
+      "title": "Onyx 开源 AI 平台：支持全模型接入的高级 AI 聊天系统 | AIToolly",
+      "source": "brave",
+      "file": "draft-2026-04-10-brave-5.md"
+    },
+    "https://help.apiyi.com/en/hermes-agent-introduction-beginner-guide-en.html": {
+      "date": "2026-04-10",
+      "decision": "drafted",
+      "title": "What is Hermes Agent? Understand this self-evolving open-source AI agent in 5 minutes - Apiyi.com Blog",
+      "source": "brave",
+      "file": "draft-2026-04-10-brave-6.md"
     }
   }
 }
