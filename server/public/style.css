@@ -201,6 +201,7 @@ nav a:hover { color: var(--text); }
 .badge-success     { background: #f0f7f0; color: var(--accent); }
 .badge-error       { background: var(--danger-bg); color: var(--danger); }
 .badge-running     { background: #fef9e7; color: var(--warn); }
+.badge-canceled    { background: #f0f0f0; color: var(--muted); }
 
 /* ── Activity log ──────────────────────────────────────────────── */
 
@@ -317,6 +318,53 @@ nav a:hover { color: var(--text); }
   line-height: 1.65;
   white-space: pre-wrap;
   max-width: 88%;
+}
+
+.msg-rendered { white-space: normal; }
+.msg-rendered > * + * { margin-top: 0.65rem; }
+.msg-rendered ul,
+.msg-rendered ol { padding-left: 1.35rem; }
+.msg-rendered li + li { margin-top: 0.25rem; }
+.msg-rendered p code,
+.msg-rendered li code {
+  padding: 0.05rem 0.25rem;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  background: var(--surface);
+  font-size: 0.78rem;
+}
+.msg-rendered pre {
+  max-width: 100%;
+  overflow-x: auto;
+  padding: 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+  white-space: pre;
+}
+.msg-rendered pre code {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-size: 0.78rem;
+}
+.msg-rendered blockquote {
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+}
+.msg-rendered table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+.msg-rendered th,
+.msg-rendered td {
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--border);
 }
 
 .msg-user {

@@ -34,6 +34,18 @@ async function start() {
     prefix: '/',
   })
 
+  await fastify.register(require('@fastify/static'), {
+    root: path.dirname(require.resolve('marked')),
+    prefix: '/vendor/marked/',
+    decorateReply: false,
+  })
+
+  await fastify.register(require('@fastify/static'), {
+    root: path.dirname(require.resolve('dompurify')),
+    prefix: '/vendor/dompurify/',
+    decorateReply: false,
+  })
+
   await fastify.register(require('@fastify/view'), {
     engine: { nunjucks: require('nunjucks') },
     templates: path.join(__dirname, 'views'),

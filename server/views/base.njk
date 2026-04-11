@@ -6,6 +6,8 @@
   <title>{% block title %}Peng Dashboard{% endblock %} — Openflows</title>
   <link rel="stylesheet" href="/style.css">
   <script src="https://unpkg.com/htmx.org@2.0.3" crossorigin="anonymous" defer></script>
+  <script src="/vendor/marked/marked.umd.js"></script>
+  <script src="/vendor/dompurify/purify.min.js"></script>
 </head>
 <body>
   <header>
@@ -36,6 +38,27 @@
       container.appendChild(div)
       container.scrollTop = container.scrollHeight
       return div
+    }
+
+    function renderPengMarkdown(el, markdown) {
+      if (!el) return
+      const raw = markdown || ''
+      if (!window.marked || !window.DOMPurify) {
+        el.textContent = raw
+        return
+      }
+
+      const html = window.marked.parse(raw, {
+        async: false,
+        breaks: true,
+        gfm: true,
+      })
+      el.innerHTML = window.DOMPurify.sanitize(html, { USE_PROFILES: { html: true } })
+      el.classList.add('msg-rendered')
+      el.querySelectorAll('a').forEach(link => {
+        link.setAttribute('target', '_blank')
+        link.setAttribute('rel', 'noopener noreferrer')
+      })
     }
 
     function clearConversation() {
@@ -96,6 +119,7 @@
             const data = line.slice(6).trim()
             if (data === '[DONE]') {
               responseEl.removeAttribute('id')
+              renderPengMarkdown(responseEl, fullText)
               conversationHistory.push({ role: 'assistant', content: fullText })
               btn.disabled = false
               return
@@ -130,14 +154,20 @@
       }
 
       responseEl.removeAttribute('id')
-      if (fullText) conversationHistory.push({ role: 'assistant', content: fullText })
+      if (fullText) {
+        renderPengMarkdown(responseEl, fullText)
+        conversationHistory.push({ role: 'assistant', content: fullText })
+      }
       btn.disabled = false
     }
 
     function renderConfirmation(responseEl, confirmation) {
       responseEl.removeAttribute('id')
       responseEl.classList.remove('thinking')
+      responseEl.classList.remove('msg-rendered')
       responseEl.textContent = ''
+      if (confirmation.runId) openLog(confirmation.runId, 'peng-tool')
+      refreshDashboardPanels()
       const tools = confirmation.tools || []
       const summary = tools.map(tool => {
         const details = [tool.id, tool.lang, tool.type, tool.status].filter(Boolean).join(' / ')
@@ -168,6 +198,11 @@
       cancelBtn.className = 'btn btn-sm'
       cancelBtn.textContent = 'Cancel'
       cancelBtn.onclick = () => {
+        if (confirmation.token) {
+          fetch('/api/ask/confirmation/' + encodeURIComponent(confirmation.token) + '/cancel', { method: 'POST' })
+            .then(() => refreshDashboardPanels())
+            .catch(() => {})
+        }
         responseEl.textContent = 'Canceled before running the proposed tool call.'
         conversationHistory.push({ role: 'assistant', content: responseEl.textContent })
       }
@@ -217,7 +252,11 @@
             if (!line.startsWith('data: ')) continue
             const data = line.slice(6).trim()
             if (data === '[DONE]') {
-              if (fullText) conversationHistory.push({ role: 'assistant', content: fullText })
+              if (fullText) {
+                renderPengMarkdown(responseEl, fullText)
+                conversationHistory.push({ role: 'assistant', content: fullText })
+              }
+              refreshDashboardPanels()
               if (btn) btn.disabled = false
               return
             }
@@ -248,8 +287,22 @@
         responseEl.classList.add('thinking')
       }
 
-      if (fullText) conversationHistory.push({ role: 'assistant', content: fullText })
+      if (fullText) {
+        renderPengMarkdown(responseEl, fullText)
+        conversationHistory.push({ role: 'assistant', content: fullText })
+      }
+      refreshDashboardPanels()
       if (btn) btn.disabled = false
+    }
+
+    function refreshDashboardPanels() {
+      if (!window.htmx) return
+      const activity = document.getElementById('activity-panel')
+      const queueState = document.getElementById('queue-state-panel')
+      const queue = document.getElementById('queue-panel')
+      if (activity) htmx.ajax('GET', '/api/runs', { target: '#activity-panel', swap: 'outerHTML' })
+      if (queueState) htmx.ajax('GET', '/api/queue/state', { target: '#queue-state-panel', swap: 'outerHTML' })
+      if (queue) htmx.ajax('GET', '/api/queue', { target: '#queue-panel', swap: 'outerHTML' })
     }
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -311,8 +364,7 @@
             .then(d => {
               statusEl.textContent = d.status
               statusEl.className = 'badge badge-' + d.status
-              const activity = document.getElementById('activity-panel')
-              if (activity) htmx.trigger(activity, 'refresh')
+              refreshDashboardPanels()
             }).catch(() => {})
           return
         }

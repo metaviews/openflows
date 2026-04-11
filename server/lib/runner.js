@@ -24,6 +24,41 @@ function getRunStream(runId) {
   return runStreams.get(runId) || null
 }
 
+function createManualRun(db, type, summary) {
+  const startedAt = new Date().toISOString()
+  const { lastInsertRowid } = db.prepare(
+    `INSERT INTO runs (type, started_at, status, summary, log) VALUES (?, ?, 'running', ?, '')`
+  ).run(type, startedAt, summary || null)
+  const runId = Number(lastInsertRowid)
+  const stream = { lines: [], listeners: new Set(), doneListeners: new Set(), done: false }
+  runStreams.set(runId, stream)
+  setTimeout(() => runStreams.delete(runId), 15 * 60 * 1000)
+  return runId
+}
+
+function appendRunLog(db, runId, text) {
+  const stream = runStreams.get(runId)
+  if (stream) {
+    stream.lines.push(text)
+    stream.listeners.forEach(fn => fn(text))
+  }
+  db.prepare(`UPDATE runs SET log = COALESCE(log, '') || ? WHERE id = ?`).run(text, runId)
+}
+
+function completeManualRun(db, runId, { status = 'success', summary } = {}) {
+  const completedAt = new Date().toISOString()
+  db.prepare(`UPDATE runs SET completed_at = ?, status = ?, summary = ? WHERE id = ?`)
+    .run(completedAt, status, summary || status, runId)
+  db.prepare(`INSERT INTO events (type, payload, created_at) VALUES (?, ?, ?)`)
+    .run('run_complete', JSON.stringify({ runId, type: 'peng-tool', status }), completedAt)
+
+  const stream = runStreams.get(runId)
+  if (stream) {
+    stream.done = true
+    stream.doneListeners.forEach(fn => fn(status))
+  }
+}
+
 // Run a named script (e.g. 'intake', 'synthesize') as a child process.
 // If preRunId is provided, the run record was already created by the caller;
 // skip the INSERT and attach the stream to that ID instead.
@@ -149,4 +184,4 @@ function importDraftFiles(db, runId = null) {
   return count
 }
 
-module.exports = { runScript, importDraftFiles, getRunStream }
+module.exports = { runScript, importDraftFiles, getRunStream, createManualRun, appendRunLog, completeManualRun }

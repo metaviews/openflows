@@ -11,6 +11,7 @@ const {
   summarizeToolCall,
   logConfirmedToolCall,
 } = require('../lib/peng-tools')
+const { createManualRun, appendRunLog, completeManualRun } = require('../lib/runner')
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
 const MAX_TOOL_ROUNDS = 4
@@ -33,6 +34,11 @@ When making content changes:
 - Read tools may run immediately. Write or run tools require operator confirmation; if confirmation is required, briefly explain the proposed action and wait for the dashboard confirmation flow.`
 
 async function askRoutes(fastify) {
+  fastify.post('/ask/confirmation/:token/cancel', async (req, reply) => {
+    const canceled = cancelPendingConfirmation(fastify.db, req.params.token)
+    return reply.send({ ok: true, canceled })
+  })
+
   fastify.post('/ask', async (req, reply) => {
     const { question, messages, confirmation } = req.body || {}
     if (!question && (!messages || messages.length === 0)) {
@@ -147,6 +153,7 @@ async function resolveToolCalls(fastify, systemPrompt, history, { confirmation }
   let working = [...history]
 
   if (confirmation?.token) {
+    prunePendingConfirmations(fastify.db)
     const pending = consumePendingConfirmation(confirmation.token)
     if (!pending) {
       const err = new Error('Confirmation expired or already used')
@@ -154,14 +161,22 @@ async function resolveToolCalls(fastify, systemPrompt, history, { confirmation }
       throw err
     }
     working = pending.working
+    const runId = pending.runId || createManualRun(fastify.db, 'peng-tool', 'confirmed dashboard tool call')
+    appendRunLog(fastify.db, runId, `Confirmed by operator at ${new Date().toISOString()}\n`)
+    let failed = 0
     for (const toolCall of pending.toolCalls) {
       let payload
+      const summary = summarizeToolCall(toolCall)
+      appendRunLog(fastify.db, runId, `\n> ${summary.name}${summary.id ? ` ${summary.id}` : ''}${summary.lang ? ` (${summary.lang})` : ''}\n`)
       try {
         const result = await executeToolCall(fastify, toolCall)
         logConfirmedToolCall(fastify.db, { toolCall, result })
+        appendRunLog(fastify.db, runId, `${JSON.stringify(safeToolResult(result), null, 2)}\n`)
         payload = { ok: true, result }
       } catch (err) {
+        failed++
         logConfirmedToolCall(fastify.db, { toolCall, error: err })
+        appendRunLog(fastify.db, runId, `ERROR: ${err.message}\n`)
         payload = { ok: false, error: err.message, statusCode: err.statusCode || 500 }
       }
 
@@ -171,6 +186,10 @@ async function resolveToolCalls(fastify, systemPrompt, history, { confirmation }
         content: JSON.stringify(payload),
       })
     }
+    completeManualRun(fastify.db, runId, {
+      status: failed ? 'error' : 'success',
+      summary: `${pending.toolCalls.length} confirmed Peng tool call(s), ${failed} error(s)`,
+    })
   }
 
   for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
@@ -211,7 +230,7 @@ async function resolveToolCalls(fastify, systemPrompt, history, { confirmation }
 
     if (writeToolCalls.length) {
       return {
-        confirmationRequired: storePendingConfirmation({ working, toolCalls: writeToolCalls }),
+        confirmationRequired: storePendingConfirmation(fastify.db, { working, toolCalls: writeToolCalls }),
       }
     }
   }
@@ -233,20 +252,41 @@ function streamConfirmation(reply, confirmation) {
   res.end()
 }
 
-function storePendingConfirmation({ working, toolCalls }) {
-  prunePendingConfirmations()
+function storePendingConfirmation(db, { working, toolCalls }) {
+  prunePendingConfirmations(db)
   const token = crypto.randomUUID()
   const expiresAt = Date.now() + CONFIRMATION_TTL_MS
-  pendingConfirmations.set(token, { working, toolCalls, expiresAt })
+  const runId = createManualRun(db, 'peng-tool', 'awaiting operator confirmation')
+  appendRunLog(db, runId, `Peng proposed ${toolCalls.length} write/run tool call(s).\n`)
+  for (const toolCall of toolCalls) {
+    appendRunLog(db, runId, `${JSON.stringify(summarizeToolCall(toolCall), null, 2)}\n`)
+  }
+  appendRunLog(db, runId, `Awaiting confirmation until ${new Date(expiresAt).toISOString()}.\n`)
+  pendingConfirmations.set(token, { working, toolCalls, expiresAt, runId })
   return {
     token,
+    runId,
     expiresAt: new Date(expiresAt).toISOString(),
     tools: toolCalls.map(summarizeToolCall),
   }
 }
 
+function safeToolResult(result) {
+  if (!result || typeof result !== 'object') return result
+  const safe = {
+    ok: result.ok !== false,
+    id: result.id || result.draft?.id || result.entry?.currencyId || null,
+    lang: result.lang || result.draft?.lang || result.entry?.lang || null,
+    type: result.type || result.draft?.type || result.entry?.currencyType || null,
+    status: result.status || result.draft?.status || null,
+    path: result.path || null,
+    runId: result.runId || null,
+    queued: result.queued || null,
+  }
+  return Object.fromEntries(Object.entries(safe).filter(([, value]) => value !== null))
+}
+
 function consumePendingConfirmation(token) {
-  prunePendingConfirmations()
   const pending = pendingConfirmations.get(token)
   if (!pending) return null
   pendingConfirmations.delete(token)
@@ -254,10 +294,25 @@ function consumePendingConfirmation(token) {
   return pending
 }
 
-function prunePendingConfirmations() {
+function cancelPendingConfirmation(db, token) {
+  const pending = pendingConfirmations.get(token)
+  if (!pending) return false
+  pendingConfirmations.delete(token)
+  appendRunLog(db, pending.runId, `Canceled by operator at ${new Date().toISOString()}.\n`)
+  completeManualRun(db, pending.runId, { status: 'canceled', summary: 'operator canceled Peng tool call' })
+  return true
+}
+
+function prunePendingConfirmations(db) {
   const now = Date.now()
   for (const [token, pending] of pendingConfirmations.entries()) {
-    if (pending.expiresAt < now) pendingConfirmations.delete(token)
+    if (pending.expiresAt < now) {
+      pendingConfirmations.delete(token)
+      if (db && pending.runId) {
+        appendRunLog(db, pending.runId, `Confirmation expired at ${new Date(now).toISOString()}.\n`)
+        completeManualRun(db, pending.runId, { status: 'error', summary: 'Peng tool confirmation expired' })
+      }
+    }
   }
 }
 
