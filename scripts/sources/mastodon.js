@@ -69,6 +69,7 @@ async function fetch(token, sourceConfig = DEFAULT_CONFIG) {
           sourceId: config.sourceId || 'mastodon',
           instance: baseUrl,
           reason: `account:${acct}`,
+          practitioner: account.practitioner,
         });
         if (signal) signals.push(signal);
       }
@@ -106,7 +107,7 @@ function normalizeInstances(config) {
   }];
 }
 
-function normalizeStatus(status, { sourceId = 'mastodon', instance, reason } = {}) {
+function normalizeStatus(status, { sourceId = 'mastodon', instance, reason, practitioner } = {}) {
   const text = stripHtml(status?.content || '').trim();
   if (!text) return null;
   const acct = status.account?.acct || status.account?.username || 'unknown';
@@ -124,6 +125,9 @@ function normalizeStatus(status, { sourceId = 'mastodon', instance, reason } = {
       displayName: status.account?.display_name || null,
       id: status.id || null,
       reason,
+      practitionerId: practitioner?.id || null,
+      practitionerTitle: practitioner?.title || null,
+      sourceProfileUrl: practitioner?.profileUrl || null,
       links,
       favourites: status.favourites_count || 0,
       reblogs: status.reblogs_count || 0,

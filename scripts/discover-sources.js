@@ -25,7 +25,7 @@ Return ONLY valid JSON with this shape:
 
 Rules:
 - Propose sources only as inactive review proposals.
-- Use only existing source modules: github, huggingface, brave, twitter, bluesky, mastodon, opensourceprojects.
+- Use only existing source modules: github, huggingface, brave, twitter, bluesky, mastodon, practitioner-social, opensourceprojects.
 - For social media sources, propose disabled review candidates only; never imply that social posts are primary evidence.
 - Prefer Brave query sources for new topical web discovery unless a GitHub/HuggingFace source is clearly better.
 - Do not duplicate an existing source id.

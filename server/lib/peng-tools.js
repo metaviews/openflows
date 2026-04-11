@@ -207,7 +207,7 @@ const TOOL_DEFS = [
         type: 'object',
         properties: {
           id: { type: 'string' },
-          module: { type: 'string', enum: ['github', 'huggingface', 'brave', 'twitter', 'bluesky', 'mastodon', 'opensourceprojects'] },
+          module: { type: 'string', enum: ['github', 'huggingface', 'brave', 'twitter', 'bluesky', 'mastodon', 'practitioner-social', 'opensourceprojects'] },
           label: { type: 'string' },
           reason: { type: 'string' },
           config: { type: 'object' },
@@ -241,7 +241,7 @@ const TOOL_DEFS = [
         type: 'object',
         properties: {
           id: { type: 'string' },
-          module: { type: 'string', enum: ['github', 'huggingface', 'brave', 'twitter', 'bluesky', 'mastodon', 'opensourceprojects'] },
+          module: { type: 'string', enum: ['github', 'huggingface', 'brave', 'twitter', 'bluesky', 'mastodon', 'practitioner-social', 'opensourceprojects'] },
           label: { type: 'string' },
           enabled: { type: 'boolean' },
           notes: { type: 'string' },

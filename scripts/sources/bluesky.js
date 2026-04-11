@@ -50,6 +50,7 @@ async function fetch(_token, sourceConfig = DEFAULT_CONFIG) {
       const signal = normalizePost(item.post, {
         sourceId: config.sourceId || 'bluesky',
         reason: `actor:${handle}`,
+        practitioner: actor.practitioner,
       });
       if (signal) signals.push(signal);
     }
@@ -62,7 +63,7 @@ async function enrich(signal) {
   return signal;
 }
 
-function normalizePost(post, { sourceId = 'bluesky', reason } = {}) {
+function normalizePost(post, { sourceId = 'bluesky', reason, practitioner } = {}) {
   if (!post?.record?.text) return null;
   const handle = post.author?.handle || 'unknown';
   const url = postUrl(post, handle);
@@ -81,6 +82,9 @@ function normalizePost(post, { sourceId = 'bluesky', reason } = {}) {
       uri: post.uri || null,
       cid: post.cid || null,
       reason,
+      practitionerId: practitioner?.id || null,
+      practitionerTitle: practitioner?.title || null,
+      sourceProfileUrl: practitioner?.profileUrl || null,
       links,
     },
   };

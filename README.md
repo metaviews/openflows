@@ -48,6 +48,7 @@ RSS and JSON feeds are also available at `/currency/feed.xml` and `/currency/fee
 | `node scripts/query.js "..."` | Query the knowledge base via OpenRouter |
 | `node scripts/queue.js` | Generate `drafts/QUEUE.md` — summary of pending drafts |
 | `node scripts/audit.js` | Scan knowledge base quality; report to `audit/QUALITY.md` |
+| `npm run audit:practitioner-social` | Report missing/candidate Practitioner social profile metadata |
 | `node scripts/enrich.js --fix mediation` | Add mediation blocks to circuits; drafts to `drafts/enriched/` |
 | `node scripts/enrich.js --fix links` | Suggest circuit links for unlinked currents |
 | `node scripts/status.js` | Local dashboard: pending drafts, stale drafts, KB counts, audit state |
@@ -55,7 +56,7 @@ RSS and JSON feeds are also available at `/currency/feed.xml` and `/currency/fee
 
 All scripts require `OPENROUTER_API_KEY` in `.env`. See `.env.example`. `FALLBACK_OPENROUTER_MODEL` is optional — used when the primary model hits a rate limit.
 
-Social intake sources are disabled by default in `scripts/intake-sources.json`. Bluesky uses public AppView APIs, Mastodon uses public instance APIs with optional `MASTODON_ACCESS_TOKEN`, and X/Twitter uses XActions through read-only scraper calls. XActions supports broader automation; Openflows only calls search/profile tweet collection paths. Operators are responsible for complying with X/Twitter terms, should review XActions licensing before production use, and should keep XActions session values such as `XACTIONS_AUTH_TOKEN` and `XACTIONS_USER_DATA_DIR` outside git. On local Windows/Node 24 installs, `npm install --ignore-scripts` avoids native/browser postinstall work from XActions' dependency graph.
+Social intake sources are disabled by default in `scripts/intake-sources.json`. Bluesky uses public AppView APIs, Mastodon uses public instance APIs with optional `MASTODON_ACCESS_TOKEN`, and X/Twitter uses XActions through read-only scraper calls. The `practitioner-social` source tracks only verified `socialProfiles` metadata on Practitioner entries; `npm run audit:practitioner-social` writes candidate snippets for human review without editing entries. XActions supports broader automation; Openflows only calls search/profile tweet collection paths. Operators are responsible for complying with X/Twitter terms, should review XActions licensing before production use, and should keep XActions session values such as `XACTIONS_AUTH_TOKEN` and `XACTIONS_USER_DATA_DIR` outside git. On local Windows/Node 24 installs, `npm install --ignore-scripts` avoids native/browser postinstall work from XActions' dependency graph.
 
 Automated workflows run via `server/cron.js` on the self-hosted server:
 - **intake** — daily at 06:00 UTC: intake → audit → queue

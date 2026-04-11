@@ -114,6 +114,22 @@
       }
     },
     {
+      "id": "practitioner-social",
+      "module": "practitioner-social",
+      "label": "Practitioner social profiles",
+      "enabled": false,
+      "notes": "Tracks verified socialProfiles declared on practitioner entries. Disabled by default until handles are reviewed.",
+      "config": {
+        "platforms": [
+          "bluesky",
+          "mastodon",
+          "twitter"
+        ],
+        "limitPerProfile": 5,
+        "headless": true
+      }
+    },
+    {
       "id": "opensourceprojects",
       "module": "opensourceprojects",
       "label": "OpenSourceProjects RSS",

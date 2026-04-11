@@ -24,7 +24,7 @@ const requestedSources = getArg(args, 'sources')
   : null;
 const limit = parseInt(getArg(args, 'limit') || '10', 10);
 const registry = loadSourceRegistry();
-const enabledSources = listEnabledSources(registry, requestedSources);
+const enabledSources = listEnabledSources(registry, requestedSources, { includeDisabledRequested: !!requestedSources });
 
 const SCREEN_MODEL = config.screening.model || or.primaryModel;
 const SCREEN_THRESHOLD = config.screening.threshold ?? 3;

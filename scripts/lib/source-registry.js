@@ -46,10 +46,11 @@ function validateSource(source, ids = new Set()) {
   return true
 }
 
-function listEnabledSources(registry, requested = null) {
+function listEnabledSources(registry, requested = null, options = {}) {
   const requestedSet = requested?.length ? new Set(requested) : null
   return registry.sources.filter(source => {
     if (requestedSet && !requestedSet.has(source.id) && !requestedSet.has(source.module)) return false
+    if (requestedSet && options.includeDisabledRequested) return true
     return source.enabled
   })
 }

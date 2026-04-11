@@ -45,6 +45,9 @@ test('source registry loads, validates, and filters enabled sources', () => {
 
   const filtered = listEnabledSources(registry, ['github', 'twitter'])
   assert.deepEqual(filtered.map(source => source.id), ['github'])
+
+  const explicit = listEnabledSources(registry, ['twitter'], { includeDisabledRequested: true })
+  assert.deepEqual(explicit.map(source => source.id), ['twitter'])
 })
 
 test('source registry can be saved and reloaded from an alternate path', () => {

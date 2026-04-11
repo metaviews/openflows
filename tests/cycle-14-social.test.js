@@ -6,22 +6,28 @@ const assert = require('node:assert/strict')
 const bluesky = require('../scripts/sources/bluesky')
 const mastodon = require('../scripts/sources/mastodon')
 const twitter = require('../scripts/sources/twitter')
+const practitionerSocial = require('../scripts/sources/practitioner-social')
 const xactionsAdapter = require('../scripts/lib/xactions-adapter')
 const { loadSourceRegistry, listEnabledSources } = require('../scripts/lib/source-registry')
+const fs = require('node:fs')
+const os = require('node:os')
+const path = require('node:path')
 
 test('social registry entries are present and disabled by default', () => {
   const registry = loadSourceRegistry()
   const social = Object.fromEntries(registry.sources
-    .filter(source => ['bluesky', 'mastodon', 'twitter'].includes(source.id))
+    .filter(source => ['bluesky', 'mastodon', 'twitter', 'practitioner-social'].includes(source.id))
     .map(source => [source.id, source]))
 
   assert.equal(social.bluesky.module, 'bluesky')
   assert.equal(social.mastodon.module, 'mastodon')
   assert.equal(social.twitter.module, 'twitter')
+  assert.equal(social['practitioner-social'].module, 'practitioner-social')
   assert.equal(social.bluesky.enabled, false)
   assert.equal(social.mastodon.enabled, false)
   assert.equal(social.twitter.enabled, false)
-  assert.equal(listEnabledSources(registry).some(source => ['bluesky', 'mastodon', 'twitter'].includes(source.id)), false)
+  assert.equal(social['practitioner-social'].enabled, false)
+  assert.equal(listEnabledSources(registry).some(source => ['bluesky', 'mastodon', 'twitter', 'practitioner-social'].includes(source.id)), false)
 })
 
 test('Bluesky source normalizes keyword search and actor feed posts', async () => {
@@ -135,6 +141,65 @@ test('XActions adapter exposes only read-intake methods', () => {
     assert.equal(xactionsAdapter.READ_ONLY_METHODS.includes(forbidden), false)
   }
   assert.deepEqual(twitter.READ_ONLY_XACTIONS_METHODS, xactionsAdapter.READ_ONLY_METHODS)
+})
+
+test('practitioner social source reads verified profiles and propagates practitioner metadata', async () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'openflows-practitioners-'))
+  fs.writeFileSync(path.join(dir, 'peng.md'), `---
+layout: layouts/currency-item.njk
+title: "Peng Operator"
+date: 2026-04-11
+currencyType: "practitioner"
+currencyId: peng-operator
+tags:
+  - currency
+permalink: /currency/practitioners/peng-operator/
+socialProfiles:
+  - platform: bluesky
+    handle: peng.bsky.social
+    url: https://bsky.app/profile/peng.bsky.social
+    monitor: true
+    verifiedBy: human
+  - platform: twitter
+    handle: peng
+    url: https://x.com/peng
+    monitor: true
+    verifiedBy: human
+---
+
+Body.
+`, 'utf8')
+
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = async () => jsonResponse({
+    feed: [{ post: bskyPost({ text: 'Practitioner post from Bluesky', handle: 'peng.bsky.social', rkey: 'p1' }) }],
+  })
+
+  try {
+    const signals = await practitionerSocial.fetch(null, {
+      sourceId: 'practitioner-social',
+      practitionersDir: dir,
+      platforms: ['bluesky', 'twitter'],
+      limitPerProfile: 1,
+      xactions: {
+        READ_ONLY_METHODS: xactionsAdapter.READ_ONLY_METHODS,
+        async scrapeTweets(handle) {
+          return [{ id: '9', author: handle, text: 'Practitioner post from XActions', timestamp: '2026-04-11T00:00:00Z' }]
+        },
+        async searchTweets() {
+          return []
+        },
+      },
+    })
+
+    assert.equal(signals.length, 2)
+    assert.equal(signals.every(signal => signal.source === 'practitioner-social'), true)
+    assert.equal(signals.every(signal => signal.meta.practitionerId === 'peng-operator'), true)
+    assert.equal(signals.every(signal => signal.meta.practitionerTitle === 'Peng Operator'), true)
+  } finally {
+    globalThis.fetch = originalFetch
+    fs.rmSync(dir, { recursive: true, force: true })
+  }
 })
 
 function bskyPost({ text, handle, rkey }) {

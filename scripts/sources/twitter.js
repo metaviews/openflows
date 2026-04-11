@@ -52,6 +52,7 @@ async function fetch(_token, sourceConfig = DEFAULT_CONFIG) {
         const signal = normalizeTweet(tweet, {
           sourceId: config.sourceId || 'twitter',
           reason: `actor:${handle}`,
+          practitioner: actor.practitioner,
         });
         if (signal) signals.push(signal);
       }
@@ -67,7 +68,7 @@ async function enrich(signal) {
   return signal;
 }
 
-function normalizeTweet(tweet, { sourceId = 'twitter', reason } = {}) {
+function normalizeTweet(tweet, { sourceId = 'twitter', reason, practitioner } = {}) {
   const text = String(tweet?.text || tweet?.content || '').trim();
   if (!text) return null;
   const handle = (tweet.author || tweet.username || tweet.handle || 'unknown').replace(/^@/, '');
@@ -84,6 +85,9 @@ function normalizeTweet(tweet, { sourceId = 'twitter', reason } = {}) {
       handle,
       id: tweet.id || null,
       reason,
+      practitionerId: practitioner?.id || null,
+      practitionerTitle: practitioner?.title || null,
+      sourceProfileUrl: practitioner?.profileUrl || null,
       likes: tweet.likes || 0,
       retweets: tweet.retweets || 0,
       replies: tweet.replies || 0,
