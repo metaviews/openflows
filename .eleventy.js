@@ -173,13 +173,11 @@ module.exports = function(eleventyConfig) {
     return newestFirst(collectionApi.getFilteredByGlob("src/perspective/*.md"));
   });
 
-  // Recent entries — last 14 days, all types, English only, newest first, max 12
+  // Latest entries — all types, English only, newest frontmatter date first, max 12.
+  // Avoid a moving cutoff so the homepage never quietly goes stale or empty.
   eleventyConfig.addCollection("recentCurrency", function(collectionApi) {
-    const cutoff = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
     return newestFirst(
-      collectionApi.getFilteredByTag("currency").filter(item =>
-        item.data.lang !== "zh" && (item.date instanceof Date ? item.date : new Date(item.date)) >= cutoff
-      )
+      collectionApi.getFilteredByTag("currency").filter(item => item.data.lang !== "zh")
     ).slice(0, 12);
   });
 
@@ -206,13 +204,10 @@ module.exports = function(eleventyConfig) {
     ));
   });
 
-  // Recent zh entries — last 14 days, all types, newest first, max 12
+  // Latest zh entries — all types, newest frontmatter date first, max 12.
   eleventyConfig.addCollection("zh_recentCurrency", function(collectionApi) {
-    const cutoff = new Date(Date.now() - 14 * 24 * 60 * 60 * 1000);
     return newestFirst(
-      collectionApi.getFilteredByTag("currency").filter(item =>
-        item.data.lang === "zh" && (item.date instanceof Date ? item.date : new Date(item.date)) >= cutoff
-      )
+      collectionApi.getFilteredByTag("currency").filter(item => item.data.lang === "zh")
     ).slice(0, 12);
   });
 
