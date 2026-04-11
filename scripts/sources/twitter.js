@@ -1,68 +1,116 @@
-// Twitter API v2 — requires Bearer token (Basic tier or above)
-// Get your Bearer token from: https://developer.twitter.com/en/portal/dashboard
-const { twitter: config } = require('../intake.config');
+const xactions = require('../lib/xactions-adapter');
 
-async function fetch(bearerToken, sourceConfig = config) {
-  if (!bearerToken) {
-    console.warn('  Twitter: TWITTER_BEARER_TOKEN not set, skipping.');
-    return [];
-  }
+const DEFAULT_CONFIG = {
+  queries: [],
+  actors: [],
+  limit: 10,
+  filter: 'latest',
+  headless: true,
+};
 
-  const headers = { 'Authorization': `Bearer ${bearerToken}` };
+async function fetch(_token, sourceConfig = DEFAULT_CONFIG) {
+  const config = { ...DEFAULT_CONFIG, ...sourceConfig };
+  const adapter = config.xactions || xactions;
+  const limit = clampLimit(config.limit, 1, 100);
   const signals = [];
 
-  for (const query of sourceConfig.queries || []) {
-    const params = new URLSearchParams({
-      query,
-      max_results: String(sourceConfig.maxResults),
-      'tweet.fields': 'created_at,public_metrics,author_id',
-      expansions: 'author_id',
-      'user.fields': 'username',
-    });
-
-    const res = await globalThis.fetch(
-      `https://api.twitter.com/2/tweets/search/recent?${params}`,
-      { headers }
-    );
-
-    if (!res.ok) {
-      console.warn(`  Twitter: query "${query}" failed (${res.status})`);
-      continue;
-    }
-    const data = await res.json();
-
-    // Build username map from includes
-    const userMap = {};
-    for (const user of data.includes?.users || []) {
-      userMap[user.id] = user.username;
-    }
-
-    for (const tweet of data.data || []) {
-      const metrics = tweet.public_metrics || {};
-      if ((metrics.like_count || 0) < (sourceConfig.minLikes || 0)) continue;
-
-      const handle = userMap[tweet.author_id] || 'unknown';
-      signals.push({
-        title: `@${handle}: ${tweet.text.slice(0, 80)}`,
-        url: `https://x.com/${handle}/status/${tweet.id}`,
-        summary: tweet.text,
-        source: sourceConfig.sourceId || 'twitter',
-        date: tweet.created_at,
-        meta: { handle, likes: metrics.like_count, retweets: metrics.retweet_count },
+  for (const query of config.queries || []) {
+    try {
+      const tweets = await adapter.searchTweets(query, {
+        limit,
+        filter: config.filter || 'latest',
+        headless: config.headless,
+        userDataDir: config.userDataDir,
+        authToken: config.authToken,
+        browserOptions: config.browserOptions,
       });
+      for (const tweet of tweets || []) {
+        const signal = normalizeTweet(tweet, {
+          sourceId: config.sourceId || 'twitter',
+          reason: `query:${query}`,
+        });
+        if (signal) signals.push(signal);
+      }
+    } catch (err) {
+      console.warn(`  XActions: query "${query}" failed (${err.message})`);
+    }
+  }
+
+  for (const actor of config.actors || []) {
+    const handle = typeof actor === 'string' ? actor : actor.handle;
+    if (!handle) continue;
+    try {
+      const tweets = await adapter.scrapeTweets(handle.replace(/^@/, ''), {
+        limit: clampLimit(actor.limit || limit, 1, 100),
+        includeReplies: !!actor.includeReplies,
+        headless: config.headless,
+        userDataDir: config.userDataDir,
+        authToken: config.authToken,
+        browserOptions: config.browserOptions,
+      });
+      for (const tweet of tweets || []) {
+        const signal = normalizeTweet(tweet, {
+          sourceId: config.sourceId || 'twitter',
+          reason: `actor:${handle}`,
+        });
+        if (signal) signals.push(signal);
+      }
+    } catch (err) {
+      console.warn(`  XActions: actor "${handle}" failed (${err.message})`);
     }
   }
 
   return dedup(signals);
 }
 
-// Tweet text is the full content — no enrichment needed
 async function enrich(signal) {
   return signal;
 }
 
-function dedup(signals) {
-  return [...new Map(signals.map(s => [s.url, s])).values()];
+function normalizeTweet(tweet, { sourceId = 'twitter', reason } = {}) {
+  const text = String(tweet?.text || tweet?.content || '').trim();
+  if (!text) return null;
+  const handle = (tweet.author || tweet.username || tweet.handle || 'unknown').replace(/^@/, '');
+  const url = normalizeTweetUrl(tweet, handle);
+  return {
+    title: `@${handle}: ${text.slice(0, 90)}`,
+    url,
+    summary: text,
+    source: sourceId,
+    date: tweet.timestamp || tweet.time || tweet.created_at || new Date().toISOString(),
+    meta: {
+      platform: 'x-twitter',
+      provider: 'xactions',
+      handle,
+      id: tweet.id || null,
+      reason,
+      likes: tweet.likes || 0,
+      retweets: tweet.retweets || 0,
+      replies: tweet.replies || 0,
+    },
+  };
 }
 
-module.exports = { fetch, enrich };
+function normalizeTweetUrl(tweet, handle) {
+  if (tweet?.url) return String(tweet.url).replace('https://twitter.com/', 'https://x.com/');
+  if (tweet?.link) return String(tweet.link).replace('https://twitter.com/', 'https://x.com/');
+  if (tweet?.id && handle) return `https://x.com/${handle}/status/${tweet.id}`;
+  return `https://x.com/${handle}`;
+}
+
+function clampLimit(value, min, max) {
+  const parsed = parseInt(value, 10);
+  if (!Number.isFinite(parsed)) return min;
+  return Math.max(min, Math.min(max, parsed));
+}
+
+function dedup(signals) {
+  return [...new Map(signals.map(signal => [signal.url, signal])).values()];
+}
+
+module.exports = {
+  fetch,
+  enrich,
+  normalizeTweet,
+  READ_ONLY_XACTIONS_METHODS: xactions.READ_ONLY_METHODS,
+};

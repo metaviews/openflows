@@ -55,6 +55,8 @@ RSS and JSON feeds are also available at `/currency/feed.xml` and `/currency/fee
 
 All scripts require `OPENROUTER_API_KEY` in `.env`. See `.env.example`. `FALLBACK_OPENROUTER_MODEL` is optional — used when the primary model hits a rate limit.
 
+Social intake sources are disabled by default in `scripts/intake-sources.json`. Bluesky uses public AppView APIs, Mastodon uses public instance APIs with optional `MASTODON_ACCESS_TOKEN`, and X/Twitter uses XActions through read-only scraper calls. XActions supports broader automation; Openflows only calls search/profile tweet collection paths. Operators are responsible for complying with X/Twitter terms, should review XActions licensing before production use, and should keep XActions session values such as `XACTIONS_AUTH_TOKEN` and `XACTIONS_USER_DATA_DIR` outside git. On local Windows/Node 24 installs, `npm install --ignore-scripts` avoids native/browser postinstall work from XActions' dependency graph.
+
 Automated workflows run via `server/cron.js` on the self-hosted server:
 - **intake** — daily at 06:00 UTC: intake → audit → queue
 - **perspective** — Monday, Wednesday, Friday at 08:00 UTC: synthesize → digest
@@ -71,7 +73,7 @@ The server runs on self-hosted hardware (Debian Trixie), exposed via Cloudflare 
 The current development sequence after the public UX pass is:
 
 - **Cycle 13: Sources** — implemented: manage tracked intake sources directly from the dashboard and let Peng propose inactive sources for human approval.
-- **Cycle 14: Social media integration** — add governed intake from Bluesky, Mastodon, and X/Twitter.
+- **Cycle 14: Social media integration** — implemented: disabled-by-default intake from Bluesky, Mastodon, and X/Twitter via XActions.
 - **Cycle 15: Public conversation interface** — expose read-only knowledge-base querying on the public site.
 - **Cycle 16: MCP layer** — expose Peng's tools and knowledge manifest through Model Context Protocol.
 
@@ -82,6 +84,7 @@ The current development sequence after the public UX pass is:
 - [Cloudflare Pages](https://pages.cloudflare.com/) — hosting and deployment
 - [Cloudflare Access](https://developers.cloudflare.com/cloudflare-one/applications/configure-apps/) + Tunnel — admin auth and server exposure
 - Fastify 5 + node:sqlite + node-cron — self-hosted agent server
+- [XActions](https://github.com/nirholas/XActions) — read-only X/Twitter intake adapter; use responsibly and comply with X/Twitter terms
 
 ## Operator
 

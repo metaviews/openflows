@@ -388,7 +388,7 @@ Peng's intake should become easier to steer without editing code. Sources should
 - **Implemented**: added tracked `scripts/intake-sources.json`, shared registry validation, registry-backed intake defaults, source run stats, `/sources` admin management, proposal approval/rejection, `discover-sources` trigger, and Peng tools for source reads/proposals/registry edits with confirmation gates.
 
 #### Cycle 14: Social Media Integration
-**Status**: not started
+**Status**: complete (2026-04-11)
 
 Peng should track social signals as first-class intake surfaces, beginning with Bluesky, Mastodon, and X/Twitter. Social intake must be governance-oriented, transparent, and bounded by platform rules and public visibility.
 
@@ -397,6 +397,7 @@ Peng should track social signals as first-class intake surfaces, beginning with 
 - **Deduplication and enrichment**: dedupe social signals against existing entries and drafts; enrich with linked primary sources when available rather than treating social posts as sufficient evidence.
 - **Review workflow**: social signals draft into the same human-reviewed queue as other intake outputs; high-uncertainty or thin social-only signals should be marked clearly.
 - **Risk controls**: avoid private data, harassment amplification, and overconfident claims from social chatter; prefer social media as discovery and context, not as authority.
+- **Implemented**: added disabled-by-default Bluesky and Mastodon intake sources, replaced X/Twitter API intake with a read-only XActions-backed source, extended the source registry and Peng source tools to recognize the social modules, and documented XActions setup, licensing, and terms cautions. XActions is installed with scripts disabled in local setup when needed because its dependency graph includes native/browser automation components.
 
 #### Cycle 15: Public — Open Conversation Interface
 **Status**: not started

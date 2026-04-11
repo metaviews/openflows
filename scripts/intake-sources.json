@@ -57,9 +57,9 @@
     {
       "id": "twitter",
       "module": "twitter",
-      "label": "X/Twitter keyword search",
+      "label": "X/Twitter via XActions",
       "enabled": false,
-      "notes": "Existing Twitter source retained but disabled by default until social integration expands in Cycle 14.",
+      "notes": "X/Twitter intake through XActions read-only scraper paths. Disabled by default; comply with X terms and local session policy before enabling.",
       "config": {
         "queries": [
           "open source LLM release -is:retweet lang:en",
@@ -67,8 +67,50 @@
           "开源 大模型 发布 -is:retweet lang:zh",
           "AI 智能体 开源 -is:retweet lang:zh"
         ],
-        "maxResults": 10,
-        "minLikes": 25
+        "actors": [],
+        "limit": 10,
+        "filter": "latest",
+        "headless": true
+      }
+    },
+    {
+      "id": "bluesky",
+      "module": "bluesky",
+      "label": "Bluesky social posts",
+      "enabled": false,
+      "notes": "Public Bluesky AppView search and actor-feed intake. Disabled by default until operator review.",
+      "config": {
+        "service": "https://public.api.bsky.app",
+        "queries": [
+          "open source AI",
+          "\"local LLM\"",
+          "AI agent framework"
+        ],
+        "actors": [],
+        "limit": 10
+      }
+    },
+    {
+      "id": "mastodon",
+      "module": "mastodon",
+      "label": "Mastodon social posts",
+      "enabled": false,
+      "notes": "Public Mastodon search and account-status intake across configured instances. Disabled by default until operator review.",
+      "config": {
+        "instances": [
+          {
+            "baseUrl": "https://mastodon.social",
+            "queries": [
+              "open source AI",
+              "local LLM",
+              "AI agent"
+            ],
+            "accounts": [],
+            "limit": 10,
+            "resolve": false
+          }
+        ],
+        "limit": 10
       }
     },
     {

@@ -30,7 +30,7 @@ const SCREEN_MODEL = config.screening.model || or.primaryModel;
 const SCREEN_THRESHOLD = config.screening.threshold ?? 3;
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 const BRAVE_API_KEY = process.env.BRAVE_API_KEY;
-const TWITTER_BEARER_TOKEN = process.env.TWITTER_BEARER_TOKEN;
+const MASTODON_ACCESS_TOKEN = process.env.MASTODON_ACCESS_TOKEN;
 
 // Load manifest — run `npm run build` first
 const manifestPath = join(__dirname, '..', '_site', 'knowledge-manifest.json');
@@ -215,7 +215,7 @@ function getSourceToken(source) {
   const moduleName = typeof source === 'string' ? source : source.module;
   if (moduleName === 'github') return GITHUB_TOKEN;
   if (moduleName === 'brave') return BRAVE_API_KEY;
-  if (moduleName === 'twitter') return TWITTER_BEARER_TOKEN;
+  if (moduleName === 'mastodon') return MASTODON_ACCESS_TOKEN;
   return undefined;
 }
 
