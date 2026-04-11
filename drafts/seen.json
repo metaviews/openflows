@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-10T06:17:06.579Z",
+  "lastUpdated": "2026-04-11T15:58:55.115Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3024,6 +3024,92 @@
       "title": "What is Hermes Agent? Understand this self-evolving open-source AI agent in 5 minutes - Apiyi.com Blog",
       "source": "brave",
       "file": "draft-2026-04-10-brave-6.md"
+    },
+    "https://opensourceprojects.dev/post/a392ff57-ac14-443b-a255-e693ed3cabae": {
+      "date": "2026-04-11",
+      "decision": "skipped",
+      "title": "Terminal task manager with intelligent schedule optimization. Keyboard-only. No dragging, no microma...",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "General productivity tool rather than AI infrastructure; tangential relevance to the AI ecosystem focus."
+    },
+    "https://opensourceprojects.dev/post/a4faa7ff-0e0b-4ab0-8c97-cffeca1268dd": {
+      "date": "2026-04-11",
+      "decision": "skipped",
+      "title": "Clone any website with one command using AI coding agents",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tangentially related niche utility; uses AI agents but focuses on website cloning rather than core AI ecosystem infrastructure. Title suggests hype."
+    },
+    "https://opensourceprojects.dev/post/ad4c476c-be45-4b87-a475-668e3b759613": {
+      "date": "2026-04-11",
+      "decision": "skipped",
+      "title": "Automate Your Workflows with Floci",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source workflow tool with no explicit AI/ML context described; tangentially related to developer workflows but outside core AI ecosystem scope."
+    },
+    "https://opensourceprojects.dev/post/5f572e35-2ae5-47c8-a6cc-ce47d614b14f": {
+      "date": "2026-04-11",
+      "decision": "skipped",
+      "title": "The open-source engine for enterprise-grade Claude research pipelines",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Focuses on closed-source model integration (Claude) rather than open-source infrastructure; title suggests marketing hype; tangential to open-source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/d52e0bcb-9d1d-4d9b-80eb-8d93353f13b7": {
+      "date": "2026-04-11",
+      "decision": "skipped",
+      "title": "Turn any Reddit thread into a video with a single command",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source utility tool but tangential to core AI ecosystem; leans towards trend-chasing automation rather than foundational AI tools or models."
+    },
+    "https://opensourceprojects.dev/post/2854ec69-9554-4c61-9254-de476bfe454a": {
+      "date": "2026-04-11",
+      "decision": "skipped",
+      "title": "The definitive tool for researching and writing SEO-optimized blog posts",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Focuses on SEO and content marketing rather than core AI infrastructure or models; tangential value to the open source AI ecosystem scope."
+    },
+    "https://www.bilibili.com/video/BV1D1DrB8Eya/": {
+      "date": "2026-04-11",
+      "decision": "skipped",
+      "title": "断档第一！对标Claude Opus 4.6，GLM 5.1杀疯了！_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Promotional video with clickbait tone; lacks technical verification; future-dated claims reduce factual reliability."
+    },
+    "https://opensourceprojects.dev/post/9de72de8-415b-4c7a-917c-8f54f893dd12": {
+      "date": "2026-04-11",
+      "decision": "skipped",
+      "title": "Build your personal codex of skills with this self-hosted repository",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a personal skills/resume tracking tool, which is unrelated to the open source AI ecosystem (tools, frameworks, models, governance) that Openflows documents."
+    },
+    "https://opensourceprojects.dev/post/bd38b91c-8aaa-4067-a0c3-3745f728b104": {
+      "date": "2026-04-11",
+      "decision": "skipped",
+      "title": "Download videos from any website with this self-hosted tool",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "While open source, it is a general-purpose video downloading utility with no AI functionality or direct application to the AI development lifecycle."
+    },
+    "https://github.com/SyntheticAutonomicMind/SAM": {
+      "date": "2026-04-11",
+      "decision": "drafted",
+      "title": "SAM",
+      "source": "github",
+      "file": "sam.md"
+    },
+    "https://opensourceprojects.dev/post/9688f783-8182-437f-97da-cf1831bc5df6": {
+      "date": "2026-04-11",
+      "decision": "drafted",
+      "title": "The definitive open-source engine for compounding AI agent skills",
+      "source": "opensourceprojects",
+      "file": "multica.md"
     }
   }
 }
