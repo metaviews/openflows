@@ -108,6 +108,11 @@
                 const container = document.getElementById('conversation')
                 if (container) container.scrollTop = container.scrollHeight
               }
+              if (parsed.confirmation) {
+                renderConfirmation(responseEl, parsed.confirmation)
+                btn.disabled = false
+                return
+              }
               if (parsed.error) {
                 responseEl.textContent = 'Error: ' + parsed.error
                 responseEl.classList.add('thinking')
@@ -127,6 +132,124 @@
       responseEl.removeAttribute('id')
       if (fullText) conversationHistory.push({ role: 'assistant', content: fullText })
       btn.disabled = false
+    }
+
+    function renderConfirmation(responseEl, confirmation) {
+      responseEl.removeAttribute('id')
+      responseEl.classList.remove('thinking')
+      responseEl.textContent = ''
+      const tools = confirmation.tools || []
+      const summary = tools.map(tool => {
+        const details = [tool.id, tool.lang, tool.type, tool.status].filter(Boolean).join(' / ')
+        const suffix = details ? ' - ' + details : ''
+        const content = tool.contentLength ? ` (${tool.contentLength} chars)` : ''
+        return `${tool.name}${suffix}${content}`
+      }).join('\n')
+
+      const text = document.createElement('div')
+      text.textContent = 'Peng wants confirmation before running:'
+      responseEl.appendChild(text)
+
+      const pre = document.createElement('pre')
+      pre.textContent = summary || 'write action'
+      responseEl.appendChild(pre)
+
+      const actions = document.createElement('div')
+      actions.style.display = 'flex'
+      actions.style.gap = '0.5rem'
+      actions.style.marginTop = '0.5rem'
+
+      const confirmBtn = document.createElement('button')
+      confirmBtn.className = 'btn btn-primary btn-sm'
+      confirmBtn.textContent = 'Confirm'
+      confirmBtn.onclick = () => confirmPengTool(confirmation.token, responseEl, confirmBtn, cancelBtn)
+
+      const cancelBtn = document.createElement('button')
+      cancelBtn.className = 'btn btn-sm'
+      cancelBtn.textContent = 'Cancel'
+      cancelBtn.onclick = () => {
+        responseEl.textContent = 'Canceled before running the proposed tool call.'
+        conversationHistory.push({ role: 'assistant', content: responseEl.textContent })
+      }
+
+      actions.appendChild(confirmBtn)
+      actions.appendChild(cancelBtn)
+      responseEl.appendChild(actions)
+    }
+
+    async function confirmPengTool(token, responseEl, confirmBtn, cancelBtn) {
+      const btn = document.getElementById('peng-ask-btn')
+      if (btn) btn.disabled = true
+      confirmBtn.disabled = true
+      cancelBtn.disabled = true
+      responseEl.textContent = 'Confirmed. Running tool call...'
+      responseEl.classList.add('thinking')
+
+      let fullText = ''
+      try {
+        const resp = await fetch('/api/ask', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: conversationHistory, confirmation: { token } })
+        })
+
+        if (!resp.ok) {
+          responseEl.textContent = 'Error: ' + resp.statusText
+          responseEl.classList.remove('thinking')
+          if (btn) btn.disabled = false
+          return
+        }
+
+        responseEl.textContent = ''
+        responseEl.classList.remove('thinking')
+
+        const reader = resp.body.getReader()
+        const decoder = new TextDecoder()
+        let buffer = ''
+
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split('\n')
+          buffer = lines.pop()
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue
+            const data = line.slice(6).trim()
+            if (data === '[DONE]') {
+              if (fullText) conversationHistory.push({ role: 'assistant', content: fullText })
+              if (btn) btn.disabled = false
+              return
+            }
+            try {
+              const parsed = JSON.parse(data)
+              if (parsed.text) {
+                fullText += parsed.text
+                responseEl.textContent = fullText
+                const container = document.getElementById('conversation')
+                if (container) container.scrollTop = container.scrollHeight
+              }
+              if (parsed.confirmation) {
+                renderConfirmation(responseEl, parsed.confirmation)
+                if (btn) btn.disabled = false
+                return
+              }
+              if (parsed.error) {
+                responseEl.textContent = 'Error: ' + parsed.error
+                responseEl.classList.add('thinking')
+                if (btn) btn.disabled = false
+                return
+              }
+            } catch {}
+          }
+        }
+      } catch (err) {
+        responseEl.textContent = 'Error: ' + err.message
+        responseEl.classList.add('thinking')
+      }
+
+      if (fullText) conversationHistory.push({ role: 'assistant', content: fullText })
+      if (btn) btn.disabled = false
     }
 
     document.addEventListener('DOMContentLoaded', () => {

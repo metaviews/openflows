@@ -1,12 +1,21 @@
 'use strict'
 
+const crypto = require('crypto')
 const { loadManifest } = require('../lib/manifest')
 const { buildStatusData } = require('./status')
 const { buildQueueContext } = require('../lib/drafts')
-const { TOOL_DEFS, executeToolCall } = require('../lib/peng-tools')
+const {
+  TOOL_DEFS,
+  executeToolCall,
+  partitionToolCalls,
+  summarizeToolCall,
+  logConfirmedToolCall,
+} = require('../lib/peng-tools')
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
 const MAX_TOOL_ROUNDS = 4
+const CONFIRMATION_TTL_MS = 10 * 60 * 1000
+const pendingConfirmations = new Map()
 
 const SYSTEM_PROMPT = `You are Peng (鵬), the agent of Openflows — a bilingual knowledge base documenting the open source AI ecosystem (openflows.org), operated by Metaviews.
 
@@ -20,11 +29,12 @@ When making content changes:
 - Work from the current entry or draft content first if one already exists.
 - Preserve required schema in currency frontmatter.
 - For new entries, create a draft first unless the operator clearly asks you to publish immediately.
-- For translations, use the translation trigger rather than writing ad hoc Chinese text unless the operator explicitly wants a manual replacement.`
+- For translations, use the translation trigger rather than writing ad hoc Chinese text unless the operator explicitly wants a manual replacement.
+- Read tools may run immediately. Write or run tools require operator confirmation; if confirmation is required, briefly explain the proposed action and wait for the dashboard confirmation flow.`
 
 async function askRoutes(fastify) {
   fastify.post('/ask', async (req, reply) => {
-    const { question, messages } = req.body || {}
+    const { question, messages, confirmation } = req.body || {}
     if (!question && (!messages || messages.length === 0)) {
       return reply.code(400).send({ error: 'question or messages required' })
     }
@@ -47,7 +57,11 @@ async function askRoutes(fastify) {
 
     let toolAugmentedHistory = history
     try {
-      toolAugmentedHistory = await resolveToolCalls(fastify, systemPrompt, history)
+      const resolved = await resolveToolCalls(fastify, systemPrompt, history, { confirmation })
+      if (resolved.confirmationRequired) {
+        return streamConfirmation(reply, resolved.confirmationRequired)
+      }
+      toolAugmentedHistory = resolved.history
     } catch (err) {
       fastify.log.error(err)
       toolAugmentedHistory = [
@@ -129,8 +143,35 @@ async function askRoutes(fastify) {
   })
 }
 
-async function resolveToolCalls(fastify, systemPrompt, history) {
+async function resolveToolCalls(fastify, systemPrompt, history, { confirmation } = {}) {
   let working = [...history]
+
+  if (confirmation?.token) {
+    const pending = consumePendingConfirmation(confirmation.token)
+    if (!pending) {
+      const err = new Error('Confirmation expired or already used')
+      err.statusCode = 409
+      throw err
+    }
+    working = pending.working
+    for (const toolCall of pending.toolCalls) {
+      let payload
+      try {
+        const result = await executeToolCall(fastify, toolCall)
+        logConfirmedToolCall(fastify.db, { toolCall, result })
+        payload = { ok: true, result }
+      } catch (err) {
+        logConfirmedToolCall(fastify.db, { toolCall, error: err })
+        payload = { ok: false, error: err.message, statusCode: err.statusCode || 500 }
+      }
+
+      working.push({
+        role: 'tool',
+        tool_call_id: toolCall.id,
+        content: JSON.stringify(payload),
+      })
+    }
+  }
 
   for (let round = 0; round < MAX_TOOL_ROUNDS; round++) {
     const response = await fetchCompletion({
@@ -143,7 +184,7 @@ async function resolveToolCalls(fastify, systemPrompt, history) {
 
     const message = response?.choices?.[0]?.message
     const toolCalls = message?.tool_calls || []
-    if (!toolCalls.length) return working
+    if (!toolCalls.length) return { history: working }
 
     working.push({
       role: 'assistant',
@@ -151,7 +192,8 @@ async function resolveToolCalls(fastify, systemPrompt, history) {
       tool_calls: toolCalls,
     })
 
-    for (const toolCall of toolCalls) {
+    const { readToolCalls, writeToolCalls } = partitionToolCalls(toolCalls)
+    for (const toolCall of readToolCalls) {
       let payload
       try {
         const result = await executeToolCall(fastify, toolCall)
@@ -166,9 +208,57 @@ async function resolveToolCalls(fastify, systemPrompt, history) {
         content: JSON.stringify(payload),
       })
     }
+
+    if (writeToolCalls.length) {
+      return {
+        confirmationRequired: storePendingConfirmation({ working, toolCalls: writeToolCalls }),
+      }
+    }
   }
 
-  return working
+  return { history: working }
+}
+
+function streamConfirmation(reply, confirmation) {
+  reply.hijack()
+  const res = reply.raw
+  res.writeHead(200, {
+    'Content-Type': 'text/event-stream',
+    'Cache-Control': 'no-cache',
+    'Connection': 'keep-alive',
+    'X-Accel-Buffering': 'no',
+  })
+  res.write(`data: ${JSON.stringify({ confirmation })}\n\n`)
+  res.write('data: [DONE]\n\n')
+  res.end()
+}
+
+function storePendingConfirmation({ working, toolCalls }) {
+  prunePendingConfirmations()
+  const token = crypto.randomUUID()
+  const expiresAt = Date.now() + CONFIRMATION_TTL_MS
+  pendingConfirmations.set(token, { working, toolCalls, expiresAt })
+  return {
+    token,
+    expiresAt: new Date(expiresAt).toISOString(),
+    tools: toolCalls.map(summarizeToolCall),
+  }
+}
+
+function consumePendingConfirmation(token) {
+  prunePendingConfirmations()
+  const pending = pendingConfirmations.get(token)
+  if (!pending) return null
+  pendingConfirmations.delete(token)
+  if (pending.expiresAt < Date.now()) return null
+  return pending
+}
+
+function prunePendingConfirmations() {
+  const now = Date.now()
+  for (const [token, pending] of pendingConfirmations.entries()) {
+    if (pending.expiresAt < now) pendingConfirmations.delete(token)
+  }
 }
 
 async function fetchCompletion(body) {

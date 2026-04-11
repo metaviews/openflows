@@ -7,6 +7,7 @@
     "check:links": "node scripts/validate-links.js",
     "cleanup:drafts": "node scripts/cleanup-malformed-drafts.js",
     "server": "node server/index.js",
+    "test": "node --test tests/*.test.js",
     "server:dev": "node --watch server/index.js"
   },
   "devDependencies": {

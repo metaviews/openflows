@@ -324,7 +324,7 @@ Admin tools for managing the knowledge base and draft queue directly from the da
   - Nunjucks `in` operator does not work on arrays — `translatedIds` passed as object `{ id: true }`, checked via `translatedIds[id]`
 
 #### Cycle 11: Agent Interface — Dashboard Conversation
-**Status**: 11a complete (2026-03-28) · 11b not started
+**Status**: complete through 11b hardening (2026-04-11)
 
 Peng becomes conversational inside the dashboard. Admins can query the knowledge base, inspect queue state, and direct Peng's attention from within the browser.
 
@@ -342,11 +342,14 @@ Peng becomes conversational inside the dashboard. Admins can query the knowledge
 - **Dashboard layout**: epistemic window full-width at top; left column: status + triggers + activity; right column: live log + queue-state + queue
 
 ##### Cycle 11b: Tool calls
-**Status**: not started
+**Status**: complete with confirmation gate (2026-04-11)
 
-- Define 3 tools: `get_queue(lang?, type?)`, `get_entry(currencyId, lang?)`, `get_status()`
-- Two-phase execution: non-streaming first pass to detect tool calls, execute server-side, then streaming for final answer
-- This enables Peng to proactively look up specific entries, drill into queue details, and answer questions that require live data beyond what's in the system prompt
+- **Read tools**: `get_status`, `get_queue(lang?, type?, status?, limit?)`, `get_entry(currencyId, lang?)`, `get_draft(currencyId, lang?)` execute immediately from the dashboard conversation.
+- **Write/run tools**: `create_draft`, `update_draft`, `promote_draft`, `save_entry`, and `trigger_translate` require explicit operator confirmation before execution. The server stores the exact proposed tool call under a short-lived token and consumes it once after confirmation.
+- **Two-phase execution**: `ask.js` first performs a non-streaming tool-planning pass, executes safe read tools, pauses for confirmation when a write tool is proposed, then resumes the final streaming response after confirmed writes finish.
+- **Validation**: draft writes use frontmatter/body validation; promotions re-check draft validity before git writes; live entry saves must preserve `currencyId`, `currencyType`, and language identity.
+- **Audit trail**: confirmed write tool calls are recorded in SQLite `events` as `confirmed_tool_call`, with operational metadata rather than full markdown content.
+- **Boundary**: Cycle 12 MCP should wrap this hardened tool layer rather than defining a parallel policy. Cycle 13 public querying must expose read-only tools only.
 
 #### Cycle 12: MCP Layer
 **Status**: not started

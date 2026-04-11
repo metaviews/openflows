@@ -179,6 +179,12 @@ async function promoteDraft(db, { id, lang = 'en' }) {
     err.statusCode = 400
     throw err
   }
+  const inspection = inspectDraft(draft)
+  if (!inspection.valid) {
+    const err = new Error(`invalid draft: ${inspection.issues.join('; ')}`)
+    err.statusCode = 400
+    throw err
+  }
   if (draft.status === 'promoted') {
     const err = new Error('Draft already promoted')
     err.statusCode = 409

@@ -5,6 +5,15 @@ const { listDrafts, getDraft, upsertDraft, updateDraftContent, promoteDraft } = 
 const { readEntry, saveEntry } = require('./entries')
 const { queueTrigger } = require('./triggers')
 
+const READ_TOOL_NAMES = new Set(['get_status', 'get_queue', 'get_entry', 'get_draft'])
+const WRITE_TOOL_NAMES = new Set([
+  'create_draft',
+  'update_draft',
+  'promote_draft',
+  'save_entry',
+  'trigger_translate',
+])
+
 const TOOL_DEFS = [
   {
     type: 'function',
@@ -192,6 +201,64 @@ async function executeToolCall(fastify, toolCall) {
   }
 }
 
+function toolRequiresConfirmation(toolCallOrName) {
+  const name = typeof toolCallOrName === 'string'
+    ? toolCallOrName
+    : toolCallOrName?.function?.name
+  return WRITE_TOOL_NAMES.has(name)
+}
+
+function isReadTool(toolCallOrName) {
+  const name = typeof toolCallOrName === 'string'
+    ? toolCallOrName
+    : toolCallOrName?.function?.name
+  return READ_TOOL_NAMES.has(name)
+}
+
+function summarizeToolCall(toolCall) {
+  const name = toolCall.function?.name || 'unknown'
+  const args = parseArguments(toolCall.function?.arguments)
+  const summary = {
+    name,
+    id: args.currencyId || args.id || null,
+    lang: args.lang || null,
+    type: args.type || null,
+    status: args.status || null,
+    force: typeof args.force === 'boolean' ? args.force : null,
+    contentLength: typeof args.content === 'string' ? args.content.length : null,
+  }
+  return Object.fromEntries(Object.entries(summary).filter(([, value]) => value !== null))
+}
+
+function partitionToolCalls(toolCalls) {
+  return {
+    readToolCalls: toolCalls.filter(toolCall => !toolRequiresConfirmation(toolCall)),
+    writeToolCalls: toolCalls.filter(toolRequiresConfirmation),
+  }
+}
+
+function logConfirmedToolCall(db, { toolCall, result, error }) {
+  const now = new Date().toISOString()
+  const payload = {
+    tool: summarizeToolCall(toolCall),
+    result: result
+      ? {
+          ok: result.ok !== false,
+          id: result.id || result.draft?.id || null,
+          lang: result.lang || result.draft?.lang || null,
+          path: result.path || null,
+          runId: result.runId || null,
+          status: result.status || result.draft?.status || null,
+        }
+      : null,
+    error: error ? error.message : null,
+    confirmedAt: now,
+  }
+
+  db.prepare('INSERT INTO events (type, payload, created_at) VALUES (?, ?, ?)')
+    .run('confirmed_tool_call', JSON.stringify(payload), now)
+}
+
 function parseArguments(raw) {
   if (!raw) return {}
   if (typeof raw === 'object') return raw
@@ -205,4 +272,11 @@ function parseArguments(raw) {
 module.exports = {
   TOOL_DEFS,
   executeToolCall,
+  READ_TOOL_NAMES,
+  WRITE_TOOL_NAMES,
+  toolRequiresConfirmation,
+  isReadTool,
+  summarizeToolCall,
+  partitionToolCalls,
+  logConfirmedToolCall,
 }
