@@ -79,10 +79,10 @@ async function start() {
       `SELECT id, lang, type, title, abstract, status, created_at FROM drafts WHERE status = 'pending' ORDER BY created_at DESC LIMIT 100`
     ).all()
     const runs = db.prepare(
-      `SELECT id, type, started_at, completed_at, status, summary FROM runs ORDER BY id DESC LIMIT 30`
+      `SELECT id, type, started_at, completed_at, status, summary FROM runs ORDER BY id DESC LIMIT 10`
     ).all()
     const { buildTimeline } = require('./lib/timeline')
-    const timeline = buildTimeline(db, { limit: 30 })
+    const timeline = buildTimeline(db, { limit: 10 })
     const conversations = db.prepare(`
       SELECT id, messages, created_at, updated_at
       FROM conversations

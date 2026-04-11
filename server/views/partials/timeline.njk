@@ -1,12 +1,12 @@
 <div id="timeline-panel" class="panel"
-     hx-get="/api/timeline"
+     hx-get="/api/timeline?limit=10"
      hx-trigger="every 20s"
      hx-target="#timeline-panel"
      hx-swap="outerHTML">
   <div class="panel-header">
     <span class="panel-title">Action Timeline</span>
     <button class="btn btn-sm"
-            hx-get="/api/timeline"
+            hx-get="/api/timeline?limit=10"
             hx-target="#timeline-panel"
             hx-swap="outerHTML">Refresh</button>
   </div>

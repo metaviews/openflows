@@ -1,12 +1,12 @@
 <div id="activity-panel" class="panel"
-     hx-get="/api/runs"
+     hx-get="/api/runs?limit=10"
      hx-trigger="every 15s, refresh from:body"
      hx-target="#activity-panel"
      hx-swap="outerHTML">
   <div class="panel-header">
     <span class="panel-title">Activity</span>
     <button class="btn btn-sm"
-            hx-get="/api/runs"
+            hx-get="/api/runs?limit=10"
             hx-target="#activity-panel"
             hx-swap="outerHTML">Refresh</button>
   </div>

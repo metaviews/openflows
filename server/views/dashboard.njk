@@ -31,15 +31,14 @@
 
   <div class="col-full workbench-grid">
     <section class="workbench-main">
-      {% include "partials/queue-state.njk" %}
       {% include "partials/queue.njk" %}
+      {% include "partials/conversations.njk" %}
       <div id="draft-preview" class="panel" style="display:none"></div>
     </section>
 
     <aside class="workbench-ops">
       {% include "partials/activity.njk" %}
       {% include "partials/timeline.njk" %}
-      {% include "partials/conversations.njk" %}
     </aside>
   </div>
 
