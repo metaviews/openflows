@@ -9,10 +9,31 @@ async function entriesRoutes(fastify) {
   fastify.get('/entries', async (req, reply) => {
     const manifest = loadManifest()
     const { type, lang } = req.query
+    const sortFields = {
+      id: 'currencyId',
+      type: 'currencyType',
+      lang: 'lang',
+      title: 'title',
+      date: 'date',
+    }
+    const sort = sortFields[req.query.sort] ? req.query.sort : 'id'
+    const sortDir = req.query.dir === 'desc' ? 'desc' : 'asc'
     let entries = manifest?.entries || []
     if (type) entries = entries.filter(e => e.currencyType === type)
     if (lang) entries = entries.filter(e => e.lang === lang)
-    entries = [...entries].sort((a, b) => a.currencyId.localeCompare(b.currencyId))
+    entries = [...entries].sort((a, b) => {
+      const field = sortFields[sort]
+      let result
+      if (sort === 'date') {
+        result = new Date(a.date || 0) - new Date(b.date || 0)
+      } else {
+        result = String(a[field] || '').localeCompare(String(b[field] || ''), undefined, { sensitivity: 'base' })
+      }
+      if (result === 0) {
+        result = String(a.currencyId || '').localeCompare(String(b.currencyId || ''), undefined, { sensitivity: 'base' })
+      }
+      return sortDir === 'desc' ? -result : result
+    })
     const allEntries = manifest?.entries || []
     const translatedIds = {}
     allEntries.filter(e => e.lang === 'zh').forEach(e => { translatedIds[e.currencyId] = true })
@@ -21,6 +42,8 @@ async function entriesRoutes(fastify) {
       total: manifest?.entries?.length || 0,
       filterType: type || '',
       filterLang: lang || '',
+      sort,
+      sortDir,
       translatedIds,
     })
   })
