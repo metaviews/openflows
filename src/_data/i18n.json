@@ -19,9 +19,6 @@
       "language": "Language",
       "currency_id": "Currency ID",
       "last_reviewed": "Last reviewed",
-      "translation": "Translation",
-      "translation_available": "Counterpart available",
-      "translation_missing": "No counterpart translation yet",
       "connections": "Connections",
       "backlinks": "Linked from",
       "references": "External references",
@@ -49,8 +46,6 @@
       "chinese": "Chinese",
       "results": "results",
       "no_results": "No matching entries.",
-      "missing_zh": "Chinese counterpart pending",
-      "missing_en": "English counterpart pending",
       "open": "Open"
     },
     "type_labels": {
@@ -77,9 +72,6 @@
       "language": "语言",
       "currency_id": "流通 ID",
       "last_reviewed": "最近审阅",
-      "translation": "对应译文",
-      "translation_available": "对应条目可用",
-      "translation_missing": "暂无对应译文",
       "connections": "关联",
       "backlinks": "被这些条目引用",
       "references": "外部参考",
@@ -107,8 +99,6 @@
       "chinese": "中文",
       "results": "条结果",
       "no_results": "没有匹配条目。",
-      "missing_zh": "中文对应条目待补",
-      "missing_en": "英文对应条目待补",
       "open": "打开"
     },
     "type_labels": {

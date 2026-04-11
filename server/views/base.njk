@@ -529,20 +529,37 @@
     // ── Trigger buttons ───────────────────────────────────────────────────────
     async function trigger(type) {
       const btn = document.getElementById('trigger-' + type)
-      if (btn) btn.disabled = true
+      const originalText = btn ? btn.textContent : ''
+      if (btn) {
+        btn.disabled = true
+        btn.textContent = 'Queued…'
+      }
       try {
-        const resp = await fetch('/api/trigger/' + type, { method: 'POST' })
+        const resp = await fetch('/api/trigger/' + type, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ args: [] })
+        })
         const data = await resp.json()
         if (!resp.ok) {
           alert(data.error || 'Trigger failed')
-          if (btn) btn.disabled = false
+          if (btn) {
+            btn.disabled = false
+            btn.textContent = originalText
+          }
         } else {
           if (data.runId) openLog(data.runId, type)
-          if (btn) btn.disabled = false
+          if (btn) {
+            btn.disabled = false
+            btn.textContent = originalText
+          }
         }
       } catch (err) {
         alert('Trigger error: ' + err.message)
-        if (btn) btn.disabled = false
+        if (btn) {
+          btn.disabled = false
+          btn.textContent = originalText
+        }
       }
     }
 

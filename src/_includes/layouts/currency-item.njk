@@ -3,7 +3,6 @@ layout: layouts/base.njk
 ---
 {% set strings = i18n[lang or 'en'] %}
 {% set entryLang = lang or 'en' %}
-{% set counterpart = collections.allCurrency | currencyCounterpart(currencyId, entryLang) %}
 {% set backlinks = collections.allCurrency | currencyBacklinks(currencyId, entryLang) %}
 {% set references = content | externalLinks %}
 
@@ -31,14 +30,6 @@ layout: layouts/base.njk
         <strong>{{ lastReviewed | readableDate }}</strong>
       </div>
       {% endif %}
-      <div class="entry-meta-item">
-        <span>{{ strings.entry.translation }}</span>
-        {% if counterpart %}
-        <a href="{{ counterpart.url }}">{{ strings.entry.translation_available }}</a>
-        {% else %}
-        <strong>{{ strings.entry.translation_missing }}</strong>
-        {% endif %}
-      </div>
     </div>
   </header>
 

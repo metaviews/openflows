@@ -17,14 +17,9 @@ module.exports = class CurrencySearchIndex {
 
   render(data) {
     const entries = (data.collections && data.collections.allCurrency) || [];
-    const idsByLang = new Set(entries.map((item) => {
-      const lang = item.data.lang === "zh" ? "zh" : "en";
-      return `${lang}:${item.data.currencyId}`;
-    }));
 
     const items = entries.map((item) => {
       const lang = item.data.lang === "zh" ? "zh" : "en";
-      const counterpartLang = lang === "zh" ? "en" : "zh";
       const linkIds = (item.data.links || [])
         .map((link) => link && link.id)
         .filter(Boolean);
@@ -47,8 +42,6 @@ module.exports = class CurrencySearchIndex {
         abstract: item.data.abstract || "",
         permalink: item.url,
         links: item.data.links || [],
-        hasCounterpart: idsByLang.has(`${counterpartLang}:${item.data.currencyId}`),
-        counterpartLang,
         lastReviewed: item.data.lastReviewed || null,
         mediated: Boolean(item.data.mediation),
         searchable

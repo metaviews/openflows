@@ -86,16 +86,12 @@
     }
 
     results.innerHTML = filtered.slice(0, maxResults).map(function(entry) {
-      const missing = !entry.hasCounterpart
-        ? '<span class="chip alert">' + escapeHtml(entry.lang === 'en' ? labels.browser.missing_zh : labels.browser.missing_en) + '</span>'
-        : '';
       return '<article class="browser-result">'
         + '<h3><a href="' + escapeHtml(entry.permalink) + '">' + escapeHtml(entry.title) + '</a></h3>'
         + '<div class="item-meta">'
         + '<span class="chip">' + escapeHtml(typeLabels[entry.currencyType] || entry.currencyType) + '</span>'
         + '<span class="chip">' + escapeHtml(entry.lang) + '</span>'
         + '<span class="muted">' + escapeHtml(formatDate(entry.date)) + '</span>'
-        + missing
         + '</div>'
         + (entry.abstract ? '<p class="item-abstract">' + escapeHtml(entry.abstract) + '</p>' : '')
         + '</article>';

@@ -84,7 +84,9 @@ async function translateEntry(id, btn) {
       btn.disabled = false
       alert(data.error || 'Translation failed')
     } else {
+      btn.textContent = 'running…'
       if (data.runId && typeof openLog === 'function') openLog(data.runId, 'translate')
+      if (typeof refreshDashboardPanels === 'function') refreshDashboardPanels()
     }
   } catch (err) {
     btn.textContent = 'error'
