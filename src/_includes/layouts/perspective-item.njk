@@ -4,5 +4,5 @@ layout: layouts/base.njk
 <article class="perspective-entry">
   <h2>{{ title }}</h2>
   <p class="muted">{{ date | readableDate }}</p>
-  {{ content | safe }}
+  {{ content | linkCurrencyRefs(collections.allCurrency) | safe }}
 </article>

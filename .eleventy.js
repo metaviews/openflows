@@ -101,6 +101,37 @@ module.exports = function(eleventyConfig) {
     }
     return links;
   });
+  eleventyConfig.addFilter("linkCurrencyRefs", function(html, items) {
+    if (!Array.isArray(items) || !html) {
+      return html || "";
+    }
+    const byId = new Map(items
+      .filter((item) => item && item.data && item.data.currencyId && itemLang(item) === "en")
+      .map((item) => [item.data.currencyId, item]));
+    const replaceRef = (id, label) => {
+      const item = byId.get(id);
+      if (!item) {
+        return label;
+      }
+      return `<a href="${item.url}">${label}</a>`;
+    };
+
+    return String(html).replace(/(<a\b[\s\S]*?<\/a>)|<code>([a-z0-9][a-z0-9-]+)<\/code>|\[([a-z0-9][a-z0-9-]+)\]|\(([a-z0-9][a-z0-9-]+)\)/g, (match, anchor, codeId, bracketId, parenId) => {
+      if (anchor) {
+        return anchor;
+      }
+      if (codeId) {
+        return `<code>${replaceRef(codeId, codeId)}</code>`;
+      }
+      if (bracketId) {
+        return replaceRef(bracketId, bracketId);
+      }
+      if (parenId) {
+        return `(${replaceRef(parenId, parenId)})`;
+      }
+      return match;
+    });
+  });
   eleventyConfig.addFilter("compactText", stripHtml);
   eleventyConfig.addFilter("startsWith", function(value, prefix) {
     return String(value || "").startsWith(prefix);

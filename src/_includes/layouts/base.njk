@@ -143,6 +143,32 @@
       font-size: 0.92rem;
       line-height: 1.2;
     }
+    .nav-group {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+    .subnav {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.25rem);
+      right: 0;
+      min-width: 9rem;
+      padding: 0.35rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      z-index: 3;
+    }
+    .subnav a {
+      display: block;
+      white-space: nowrap;
+    }
+    .nav-group:hover .subnav,
+    .nav-group:focus-within .subnav {
+      display: block;
+    }
     nav a:hover {
       border-color: var(--line);
       background: rgba(255, 255, 255, 0.7);
@@ -512,7 +538,9 @@
       <nav>
         {% if lang == 'zh' %}
           <a href="/zh/currency/">流通</a>
-          <a href="/about/">关于</a>
+          <span class="nav-group">
+            <a href="/about/">关于</a>
+          </span>
           <a href="/contact/">联系</a>
           {% if currencyId %}
             {% set langTarget = collections.allCurrency | currencyCounterpart(currencyId, lang) %}
@@ -529,11 +557,15 @@
             {% endif %}
           {% endif %}
         {% else %}
-          <a href="/system/">System</a>
-          <a href="/methods/">Methods</a>
           <a href="/currency/">Currency</a>
           <a href="/perspective/">Perspective</a>
-          <a href="/about/">About</a>
+          <span class="nav-group">
+            <a href="/about/">About</a>
+            <span class="subnav">
+              <a href="/system/">System</a>
+              <a href="/methods/">Methods</a>
+            </span>
+          </span>
           <a href="/contact/">Contact</a>
           {% if currencyId %}
             {% set langTarget = collections.allCurrency | currencyCounterpart(currencyId, lang) %}
