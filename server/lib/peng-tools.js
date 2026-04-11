@@ -12,8 +12,12 @@ const {
   upsertSource,
   removeSource,
 } = require('./sources')
+const {
+  readPractitionerSocialAudit,
+  applyPractitionerSocialCandidate,
+} = require('./practitioner-social')
 
-const READ_TOOL_NAMES = new Set(['get_status', 'get_queue', 'get_entry', 'get_draft', 'get_sources', 'get_source_proposals'])
+const READ_TOOL_NAMES = new Set(['get_status', 'get_queue', 'get_entry', 'get_draft', 'get_sources', 'get_source_proposals', 'get_practitioner_social_audit'])
 const WRITE_TOOL_NAMES = new Set([
   'create_draft',
   'update_draft',
@@ -24,6 +28,7 @@ const WRITE_TOOL_NAMES = new Set([
   'approve_source',
   'update_source',
   'remove_source',
+  'apply_practitioner_social_candidate',
 ])
 
 const TOOL_DEFS = [
@@ -201,6 +206,18 @@ const TOOL_DEFS = [
   {
     type: 'function',
     function: {
+      name: 'get_practitioner_social_audit',
+      description: 'Read the practitioner social profile audit report and candidate profile snippets.',
+      parameters: {
+        type: 'object',
+        properties: {},
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
       name: 'propose_source',
       description: 'Create an inactive source proposal for human review.',
       parameters: {
@@ -267,6 +284,24 @@ const TOOL_DEFS = [
       },
     },
   },
+  {
+    type: 'function',
+    function: {
+      name: 'apply_practitioner_social_candidate',
+      description: 'Apply a reviewed social profile candidate to a Practitioner entry socialProfiles field and commit the edit.',
+      parameters: {
+        type: 'object',
+        properties: {
+          currencyId: { type: 'string' },
+          candidateKey: { type: 'string' },
+          monitor: { type: 'boolean' },
+          verifiedBy: { type: 'string' },
+        },
+        required: ['currencyId', 'candidateKey'],
+        additionalProperties: false,
+      },
+    },
+  },
 ]
 
 async function executeToolCall(fastify, toolCall) {
@@ -292,6 +327,8 @@ async function executeToolCall(fastify, toolCall) {
       return { sources: listSources(fastify.db) }
     case 'get_source_proposals':
       return { proposals: listSourceProposals(fastify.db, args) }
+    case 'get_practitioner_social_audit':
+      return readPractitionerSocialAudit()
     case 'create_draft':
       return upsertDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: args.content })
     case 'update_draft':
@@ -313,6 +350,13 @@ async function executeToolCall(fastify, toolCall) {
       return upsertSource(fastify.db, args)
     case 'remove_source':
       return removeSource(fastify.db, args.id)
+    case 'apply_practitioner_social_candidate':
+      return applyPractitionerSocialCandidate(fastify.db, {
+        currencyId: args.currencyId,
+        candidateKey: args.candidateKey,
+        monitor: args.monitor !== false,
+        verifiedBy: args.verifiedBy || 'human',
+      })
     default: {
       const err = new Error(`Unknown tool: ${name}`)
       err.statusCode = 400
@@ -341,6 +385,7 @@ function summarizeToolCall(toolCall) {
   const summary = {
     name,
     id: args.currencyId || args.id || null,
+    candidateKey: args.candidateKey || null,
     proposalId: args.proposalId || null,
     lang: args.lang || null,
     type: args.type || null,

@@ -76,6 +76,7 @@ function summarizeEvent(type, payload) {
   if (type === 'source_proposal_create') return `proposed source ${payload.id || ''}`.trim()
   if (type === 'source_proposal_approve') return `approved source proposal ${payload.id || payload.proposalId || ''}`.trim()
   if (type === 'source_proposal_reject') return `rejected source proposal ${payload.id || payload.proposalId || ''}`.trim()
+  if (type === 'practitioner_social_apply') return `applied social profile to ${payload.id || 'practitioner'}`
   return type.replaceAll('_', ' ')
 }
 

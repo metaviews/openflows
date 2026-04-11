@@ -665,6 +665,43 @@
       }
     }
 
+    async function runPractitionerSocialAudit() {
+      const resp = await fetch('/api/sources/practitioner-social/audit/run', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ brave: true }),
+      })
+      const data = await resp.json().catch(() => ({}))
+      if (!resp.ok) return alert(data.error || 'Practitioner social audit failed')
+      if (data.runId) openLog(data.runId, 'practitioner-social-audit')
+    }
+
+    function applyPractitionerSocialCandidate(currencyId, candidateKey, monitor) {
+      confirmAction({
+        title: 'Apply Practitioner Social Profile',
+        body: [
+          'Action: apply_practitioner_social_profile',
+          'Practitioner: ' + currencyId,
+          'Candidate: ' + candidateKey,
+          'Monitor: ' + (monitor ? 'yes' : 'no'),
+          'Writes src/: yes',
+          'Commits/pushes: yes',
+        ].join('\n'),
+        confirmText: 'Apply',
+        onConfirm: async () => {
+          const resp = await fetch('/api/sources/practitioner-social/audit/apply', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ currencyId, candidateKey, monitor, verifiedBy: 'human' }),
+          })
+          const data = await resp.json().catch(() => ({}))
+          if (!resp.ok) return alert(data.error || 'Apply failed')
+          if (data.runId) openLog(data.runId, 'practitioner-social')
+          window.location.reload()
+        }
+      })
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
       const input = document.getElementById('peng-query')
       if (input) {

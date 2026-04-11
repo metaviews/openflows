@@ -116,5 +116,53 @@
       </table>
     </div>
   </section>
+
+  <section class="panel" style="margin-top:1rem">
+    <div class="panel-header">
+      <span class="panel-title">Practitioner Social Audit</span>
+      <button class="btn btn-sm" onclick="runPractitionerSocialAudit()">Run Audit</button>
+    </div>
+    <div class="panel-body">
+      {% if practitionerSocialAudit.exists %}
+        <p class="muted">{{ practitionerSocialAudit.summary }} Generated: {{ practitionerSocialAudit.generated }}</p>
+        <div class="social-audit-list">
+          {% for item in practitionerSocialAudit.entries %}
+            <details class="social-audit-item">
+              <summary><strong>{{ item.title }}</strong> <span class="muted">{{ item.currencyId }}</span> <span class="badge badge-unknown">{{ item.candidates.length }} candidates</span></summary>
+              {% if item.candidates.length %}
+                <table class="entries-table">
+                  <thead>
+                    <tr>
+                      <th>Platform</th>
+                      <th>Handle</th>
+                      <th>URL</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for candidate in item.candidates %}
+                      <tr>
+                        <td><span class="badge badge-unknown">{{ candidate.platform }}</span></td>
+                        <td>{{ candidate.handle }}</td>
+                        <td><a href="{{ candidate.url }}" target="_blank" rel="noopener">{{ candidate.url }}</a></td>
+                        <td class="actions-cell">
+                          <button class="btn btn-sm btn-promote" onclick="applyPractitionerSocialCandidate('{{ item.currencyId }}', '{{ candidate.key }}', true)">Apply + Monitor</button>
+                          <button class="btn btn-sm" onclick="applyPractitionerSocialCandidate('{{ item.currencyId }}', '{{ candidate.key }}', false)">Apply Only</button>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              {% else %}
+                <p class="empty-state">No candidates in the current audit report.</p>
+              {% endif %}
+            </details>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="empty-state">No practitioner social audit report found. Run the audit to generate candidate profiles for review.</p>
+      {% endif %}
+    </div>
+  </section>
 </div>
 {% endblock %}

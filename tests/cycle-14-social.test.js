@@ -7,6 +7,7 @@ const bluesky = require('../scripts/sources/bluesky')
 const mastodon = require('../scripts/sources/mastodon')
 const twitter = require('../scripts/sources/twitter')
 const practitionerSocial = require('../scripts/sources/practitioner-social')
+const { applySocialProfile } = require('../server/lib/practitioner-social')
 const xactionsAdapter = require('../scripts/lib/xactions-adapter')
 const { loadSourceRegistry, listEnabledSources } = require('../scripts/lib/source-registry')
 const fs = require('node:fs')
@@ -200,6 +201,45 @@ Body.
     globalThis.fetch = originalFetch
     fs.rmSync(dir, { recursive: true, force: true })
   }
+})
+
+test('applying a practitioner social candidate updates frontmatter only through explicit save path', async () => {
+  const existingContent = `---
+layout: layouts/currency-item.njk
+title: "Peng Operator"
+date: 2026-04-11
+currencyType: "practitioner"
+currencyId: peng-operator
+tags:
+  - currency
+permalink: /currency/practitioners/peng-operator/
+---
+
+Body.
+`
+  let saved = null
+  const result = await applySocialProfile({
+    currencyId: 'peng-operator',
+    candidate: {
+      platform: 'twitter',
+      handle: 'peng',
+      url: 'https://x.com/peng',
+    },
+    monitor: true,
+    verifiedBy: 'human',
+    entryReader: () => ({ entry: { currencyType: 'practitioner' }, content: existingContent }),
+    entrySaver: async ({ content }) => {
+      saved = content
+      return { ok: true, path: 'src/currency/practitioners/peng-operator.md' }
+    },
+  })
+
+  assert.equal(result.ok, true)
+  assert.match(saved, /socialProfiles:/)
+  assert.match(saved, /platform: twitter/)
+  assert.match(saved, /handle: peng/)
+  assert.match(saved, /monitor: true/)
+  assert.match(saved, /verifiedBy: human/)
 })
 
 function bskyPost({ text, handle, rkey }) {

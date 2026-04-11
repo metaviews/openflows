@@ -553,6 +553,15 @@ nav a:hover { color: var(--text); }
 }
 .source-form textarea { resize: vertical; line-height: 1.5; }
 .sources-table td { vertical-align: top; }
+.social-audit-list { display: grid; gap: 0.5rem; margin-top: 0.75rem; }
+.social-audit-item {
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  padding: 0.55rem 0.65rem;
+  background: var(--surface);
+}
+.social-audit-item summary { cursor: pointer; }
+.social-audit-item table { margin-top: 0.65rem; }
 
 .entry-editor {
   width: 100%;

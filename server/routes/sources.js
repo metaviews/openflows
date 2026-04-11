@@ -15,6 +15,11 @@ const {
 } = require('../lib/sources')
 const { loadSourceRegistry } = require('../../scripts/lib/source-registry')
 const { queueTrigger } = require('../lib/triggers')
+const {
+  readPractitionerSocialAudit,
+  queuePractitionerSocialAudit,
+  applyPractitionerSocialCandidate,
+} = require('../lib/practitioner-social')
 
 const ROOT = path.join(__dirname, '..', '..')
 const MODULES_DIR = path.join(ROOT, 'scripts', 'sources')
@@ -24,6 +29,7 @@ async function sourcesRoutes(fastify) {
     return reply.view('sources.njk', {
       sources: listSources(fastify.db),
       proposals: listSourceProposals(fastify.db, { status: req.query.status || 'pending' }),
+      practitionerSocialAudit: readPractitionerSocialAudit(),
     })
   })
 
@@ -124,6 +130,27 @@ async function sourcesRoutes(fastify) {
     try {
       return reply.send(await queueTrigger(fastify.db, 'discover-sources', []))
     } catch (err) {
+      return reply.code(err.statusCode || 500).send({ error: err.message })
+    }
+  })
+
+  fastify.get('/api/sources/practitioner-social/audit', async (req, reply) => {
+    return reply.send(readPractitionerSocialAudit())
+  })
+
+  fastify.post('/api/sources/practitioner-social/audit/run', async (req, reply) => {
+    try {
+      return reply.send(await queuePractitionerSocialAudit(fastify.db, { brave: req.body?.brave !== false }))
+    } catch (err) {
+      return reply.code(err.statusCode || 500).send({ error: err.message })
+    }
+  })
+
+  fastify.post('/api/sources/practitioner-social/audit/apply', async (req, reply) => {
+    try {
+      return reply.send(await applyPractitionerSocialCandidate(fastify.db, req.body || {}))
+    } catch (err) {
+      fastify.log.error(err)
       return reply.code(err.statusCode || 500).send({ error: err.message })
     }
   })
