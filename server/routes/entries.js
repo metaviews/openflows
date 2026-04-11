@@ -2,6 +2,7 @@
 
 const { loadManifest } = require('../lib/manifest')
 const { readEntry, saveEntry, deleteEntry } = require('../lib/entries')
+const { validateCurrencyMarkdown } = require('../lib/validation')
 
 async function entriesRoutes(fastify) {
   // ── Browse ──────────────────────────────────────────────────────────────────
@@ -48,6 +49,25 @@ async function entriesRoutes(fastify) {
       return reply.send(result)
     } catch (err) {
       fastify.log.error(err)
+      return reply.code(err.statusCode || 500).send({ error: err.message })
+    }
+  })
+
+  fastify.post('/api/entries/:id/validate', async (req, reply) => {
+    const { id } = req.params
+    const lang = req.query.lang || 'en'
+    try {
+      const existing = readEntry(id, lang)
+      const validation = validateCurrencyMarkdown({
+        id,
+        lang,
+        content: req.body?.content || existing.content,
+        manifest: loadManifest(),
+        existingType: existing.entry.currencyType,
+        strictAbstract: false,
+      })
+      return reply.send(validation)
+    } catch (err) {
       return reply.code(err.statusCode || 500).send({ error: err.message })
     }
   })

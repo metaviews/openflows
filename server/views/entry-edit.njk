@@ -16,15 +16,59 @@
   </div>
 
   <div class="edit-actions">
-    <button class="btn btn-primary" onclick="saveEntry()">Save &amp; Commit</button>
+    <button class="btn btn-primary" onclick="confirmSaveEntry()">Save &amp; Commit</button>
+    <button class="btn" onclick="validateEntry()">Validate</button>
     <button class="btn btn-danger" onclick="deleteEntry()">Delete</button>
     <span id="save-status" class="muted"></span>
   </div>
 
-  <textarea id="entry-content" class="entry-editor">{{ content }}</textarea>
+  <div class="editor-grid">
+    <textarea id="entry-content" class="entry-editor">{{ content }}</textarea>
+    <aside class="editor-side">
+      <div id="validation-panel" class="validation-box">Validation not run yet.</div>
+      <div class="panel" style="margin-top:1rem">
+        <div class="panel-header"><span class="panel-title">Preview</span></div>
+        <div id="entry-preview" class="panel-body preview-body"></div>
+      </div>
+    </aside>
+  </div>
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => { renderEntryPreview(); validateEntry() })
+document.addEventListener('input', (event) => {
+  if (event.target && event.target.id === 'entry-content') renderEntryPreview()
+})
+
+function renderEntryPreview() {
+  const raw = document.getElementById('entry-content').value
+  const body = raw.replace(/^---[\s\S]*?---\s*/, '')
+  const preview = document.getElementById('entry-preview')
+  if (typeof renderMarkdownInto === 'function') renderMarkdownInto(preview, body)
+  else preview.textContent = body
+}
+
+async function validateEntry() {
+  const content = document.getElementById('entry-content').value
+  const panel = document.getElementById('validation-panel')
+  panel.textContent = 'Validating...'
+  const resp = await fetch('/api/entries/{{ entry.currencyId }}/validate?lang={{ lang }}', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content })
+  })
+  const data = await resp.json()
+  panel.innerHTML = ''
+  panel.appendChild(renderValidationBlock(data))
+  return data
+}
+
+async function confirmSaveEntry() {
+  const validation = await validateEntry()
+  const body = 'Save {{ entry.currencyId }} ({{ lang }}) to src, commit the edit, and push to GitHub. Validation: ' + validation.counts.error + ' error(s), ' + validation.counts.warning + ' warning(s).'
+  confirmAction({ title: 'Save & Commit', body, confirmText: 'Save & Commit', onConfirm: saveEntry })
+}
+
 async function saveEntry() {
   const content = document.getElementById('entry-content').value
   const status = document.getElementById('save-status')
@@ -44,7 +88,15 @@ async function saveEntry() {
 }
 
 async function deleteEntry() {
-  if (!confirm('Delete {{ entry.currencyId }} ({{ lang }}) from src/ and commit? This cannot be undone.')) return
+  confirmAction({
+    title: 'Delete Entry',
+    body: 'Delete {{ entry.currencyId }} ({{ lang }}) from src, commit, and push. This cannot be undone from the dashboard.',
+    confirmText: 'Delete',
+    onConfirm: performDeleteEntry
+  })
+}
+
+async function performDeleteEntry() {
   const status = document.getElementById('save-status')
   status.textContent = 'Deleting...'
   try {

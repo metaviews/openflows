@@ -349,17 +349,30 @@ Peng becomes conversational inside the dashboard. Admins can query the knowledge
 - **Two-phase execution**: `ask.js` first performs a non-streaming tool-planning pass, executes safe read tools, pauses for confirmation when a write tool is proposed, then resumes the final streaming response after confirmed writes finish.
 - **Validation**: draft writes use frontmatter/body validation; promotions re-check draft validity before git writes; live entry saves must preserve `currencyId`, `currencyType`, and language identity.
 - **Audit trail**: confirmed write tool calls are recorded in SQLite `events` as `confirmed_tool_call`, with operational metadata rather than full markdown content.
-- **Boundary**: Cycle 12 MCP should wrap this hardened tool layer rather than defining a parallel policy. Cycle 13 public querying must expose read-only tools only.
+- **Boundary**: MCP should wrap this hardened tool layer later rather than defining a parallel policy. Public querying must expose read-only tools only.
 
-#### Cycle 12: MCP Layer
+#### Cycle 12: Interface — Dashboard UX and Operator Trust
+**Status**: complete (2026-04-11)
+
+Before adding external protocol surfaces, improve the admin interface so Peng's work is legible from proposal to result. The dashboard should feel like an operator workbench: every agent action should be visible, inspectable, and reversible enough for human oversight.
+
+- **Operator visibility**: merge confirmed Peng tool calls into the same Activity/log surface as script triggers; show proposal, confirmation, execution result, affected ids/paths, and errors in plain language.
+- **Queue workbench**: improve filtering by language/type/status/source; add clearer new/stale/updated markers; make queue refresh immediate after Peng actions; add affected-item links from logs and activity rows.
+- **Chat polish**: render sanitized Markdown; add tool-use summaries under Peng answers; make referenced `currencyId`s clickable; add copy affordances for code blocks; preserve recent conversations for audit and resumption.
+- **Editor safety**: add Markdown preview, frontmatter validation, and link-id validation before commit-producing actions. Rich diff previews remain deferred; validation is the v1 review primitive.
+- **Action safety UX**: strengthen confirmation copy for live `src/` edits and promotions; show blast radius before writes; surface resulting commit/run ids and basic undo guidance.
+- **Implemented**: added Action Timeline and Recent Conversations panels; queue filtering by status/lang/type with draft preview; validation endpoints for entries and drafts; side-by-side editor preview/validation; dashboard confirmation modal for save/promote/delete/reject; code-copy buttons, clickable `currencyId`s, and tool-use summaries in Peng chat.
+
+#### Cycle 12B: Public Site UX and Knowledge Navigation
 **Status**: not started
 
-Expose Peng's tools as a Model Context Protocol endpoint. The dashboard becomes the first MCP client; external agents and editors can also connect.
+Upgrade the public-facing static site so the knowledge base is easier to browse, trust, and understand before adding a public conversation interface. This cycle should preserve the site as the durable record while improving its readability and navigability for visitors.
 
-- **MCP server**: wraps the knowledge manifest and Peng's query tools; runs on the self-hosted server
-- **Dashboard as first client**: the Cycle 11 conversation interface connects via MCP rather than direct API calls
-- **External access**: Claude, Cursor, and any MCP-compatible client can query Openflows directly; no scraping required
-- **Agent registry**: submit the manifest and MCP endpoint to emerging agent-discovery directories
+- **Knowledge navigation**: improve search/browse paths across Currents, Circuits, Practitioners, and languages; add stronger filters and clearer type/language affordances.
+- **Relationship visibility**: make entry links more legible with related-entry sections, circuit/current/practitioner context, and clearer backlinks where available.
+- **Bilingual UX**: improve language switching and translation parity cues; make missing or stale translations visible without treating either language as secondary.
+- **Reading experience**: refine entry typography, metadata hierarchy, and mobile layouts; improve code/link/list rendering and long-title wrapping.
+- **Public trust cues**: surface mediation notes, last-reviewed dates, source links, and uncertainty signals in a way that is visible but not visually heavy.
 
 #### Cycle 13: Public — Open Conversation Interface
 **Status**: not started
@@ -370,6 +383,16 @@ The conversation interface goes public. Visitors can query the knowledge base di
 - **Bilingual from the start**: input in either language, response in the same language
 - **Scoped tools**: public interface exposes read-only manifest queries only; no queue or admin tools
 - **Context strategy**: compact mode (abstracts only) for cost efficiency; full body mode for deep queries on demand
+
+#### Cycle 14: MCP Layer
+**Status**: deferred from Cycle 12; not started
+
+Expose Peng's tools as a Model Context Protocol endpoint after the admin and public UX passes make the system's action model and knowledge navigation more legible. The dashboard can then become the first MCP client; external agents and editors can also connect.
+
+- **MCP server**: wraps the knowledge manifest and hardened Peng query tools; runs on the self-hosted server
+- **Dashboard as first client**: the conversation interface connects via MCP rather than direct API calls once parity is clear
+- **External access**: Claude, Cursor, and any MCP-compatible client can query Openflows directly; no scraping required
+- **Agent registry**: submit the manifest and MCP endpoint to emerging agent-discovery directories
 
 ### The Recursive Principle
 

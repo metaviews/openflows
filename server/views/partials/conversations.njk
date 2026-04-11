@@ -1,0 +1,27 @@
+<div id="conversations-panel" class="panel"
+     hx-get="/api/conversations"
+     hx-trigger="every 60s"
+     hx-target="#conversations-panel"
+     hx-swap="outerHTML">
+  <div class="panel-header">
+    <span class="panel-title">Recent Conversations</span>
+    <button class="btn btn-sm"
+            hx-get="/api/conversations"
+            hx-target="#conversations-panel"
+            hx-swap="outerHTML">Refresh</button>
+  </div>
+  <div class="panel-body" style="padding: 0.5rem 1rem;">
+    {% if conversations and conversations.length %}
+    <ul class="conversation-list">
+      {% for convo in conversations %}
+      <li class="conversation-item">
+        <button class="conversation-link" onclick="loadConversation({{ convo.id }})">{{ convo.title }}</button>
+        <span class="run-time">{{ convo.created_at | truncate(16, true, '') }} · {{ convo.turns }} turns</span>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty-state">No saved conversations yet.</p>
+    {% endif %}
+  </div>
+</div>

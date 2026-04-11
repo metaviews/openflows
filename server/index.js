@@ -58,6 +58,8 @@ async function start() {
   fastify.register(require('./routes/runs'), { prefix: '/api' })
   fastify.register(require('./routes/trigger'), { prefix: '/api' })
   fastify.register(require('./routes/ask'), { prefix: '/api' })
+  fastify.register(require('./routes/timeline'), { prefix: '/api' })
+  fastify.register(require('./routes/conversations'), { prefix: '/api' })
   fastify.register(require('./routes/entries'))
 
   // ── Queue draft edit page ─────────────────────────────────────────────────────
@@ -79,12 +81,34 @@ async function start() {
     const runs = db.prepare(
       `SELECT id, type, started_at, completed_at, status, summary FROM runs ORDER BY id DESC LIMIT 30`
     ).all()
+    const { buildTimeline } = require('./lib/timeline')
+    const timeline = buildTimeline(db, { limit: 30 })
+    const conversations = db.prepare(`
+      SELECT id, messages, created_at, updated_at
+      FROM conversations
+      ORDER BY created_at DESC
+      LIMIT 10
+    `).all().map(row => {
+      let messages = []
+      try { messages = JSON.parse(row.messages) } catch {}
+      const firstUser = Array.isArray(messages) ? messages.find(message => message.role === 'user') : null
+      return {
+        id: row.id,
+        title: String(firstUser?.content || 'Conversation').slice(0, 90),
+        turns: Array.isArray(messages) ? messages.length : 0,
+        created_at: row.created_at,
+        updated_at: row.updated_at,
+      }
+    })
 
     const { manifestAge } = require('./lib/manifest')
     return reply.view('dashboard.njk', {
       ...statusData,
       drafts,
       runs,
+      timeline,
+      conversations,
+      manifestIdsJson: JSON.stringify((manifest?.entries || []).map(entry => entry.currencyId)),
       manifestAgeMin: manifest ? Math.round(manifestAge() / 60000) : null,
     })
   })

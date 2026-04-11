@@ -7,11 +7,24 @@
       {% endif %}
     </span>
     <div class="filter-bar">
+      <span>Status:</span>
+      <select id="queue-filter-status" onchange="applyQueueFilters()">
+        <option value="pending" {% if status == 'pending' or not status %}selected{% endif %}>pending</option>
+        <option value="promoted" {% if status == 'promoted' %}selected{% endif %}>promoted</option>
+        <option value="rejected" {% if status == 'rejected' %}selected{% endif %}>rejected</option>
+      </select>
       <span>Lang:</span>
-      <select onchange="filterQueue(this.value)">
-        <option value="">all</option>
-        <option value="en">en</option>
-        <option value="zh">zh</option>
+      <select id="queue-filter-lang" onchange="applyQueueFilters()">
+        <option value="" {% if not lang %}selected{% endif %}>all</option>
+        <option value="en" {% if lang == 'en' %}selected{% endif %}>en</option>
+        <option value="zh" {% if lang == 'zh' %}selected{% endif %}>zh</option>
+      </select>
+      <span>Type:</span>
+      <select id="queue-filter-type" onchange="applyQueueFilters()">
+        <option value="" {% if not type %}selected{% endif %}>all</option>
+        <option value="current" {% if type == 'current' %}selected{% endif %}>current</option>
+        <option value="circuit" {% if type == 'circuit' %}selected{% endif %}>circuit</option>
+        <option value="practitioner" {% if type == 'practitioner' %}selected{% endif %}>practitioner</option>
       </select>
       <button class="btn btn-sm"
               hx-get="/api/queue"
@@ -47,8 +60,14 @@
 </div>
 
 <script>
-function filterQueue(lang) {
-  const url = lang ? '/api/queue?lang=' + lang : '/api/queue'
-  htmx.ajax('GET', url, { target: '#queue-panel', swap: 'outerHTML' })
+function applyQueueFilters() {
+  const params = new URLSearchParams()
+  const status = document.getElementById('queue-filter-status')?.value
+  const lang = document.getElementById('queue-filter-lang')?.value
+  const type = document.getElementById('queue-filter-type')?.value
+  if (status) params.set('status', status)
+  if (lang) params.set('lang', lang)
+  if (type) params.set('type', type)
+  htmx.ajax('GET', '/api/queue?' + params.toString(), { target: '#queue-panel', swap: 'outerHTML' })
 }
 </script>

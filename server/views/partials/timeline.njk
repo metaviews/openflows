@@ -1,0 +1,40 @@
+<div id="timeline-panel" class="panel"
+     hx-get="/api/timeline"
+     hx-trigger="every 20s"
+     hx-target="#timeline-panel"
+     hx-swap="outerHTML">
+  <div class="panel-header">
+    <span class="panel-title">Action Timeline</span>
+    <button class="btn btn-sm"
+            hx-get="/api/timeline"
+            hx-target="#timeline-panel"
+            hx-swap="outerHTML">Refresh</button>
+  </div>
+  <div class="panel-body" style="padding: 0.5rem 1rem;">
+    {% if timeline and timeline.length %}
+    <ul class="timeline-list">
+      {% for item in timeline %}
+      <li class="timeline-item">
+        <div>
+          <span class="run-type">{{ item.type }}</span>
+          <span class="badge badge-{{ item.status or 'unknown' }}">{{ item.status or item.kind }}</span>
+        </div>
+        <div class="timeline-summary">{{ item.summary }}</div>
+        <div class="timeline-links">
+          <span class="run-time">{{ item.created_at | truncate(16, true, '') }}</span>
+          {% if item.runId %}
+          <button class="btn btn-sm" onclick="openLog({{ item.runId }}, '{{ item.type }}')">Log #{{ item.runId }}</button>
+          {% endif %}
+          {% if item.id and item.lang %}
+          <a class="btn btn-sm" href="/queue/{{ item.id }}/edit?lang={{ item.lang }}">Draft</a>
+          <a class="btn btn-sm" href="/entries/{{ item.id }}?lang={{ item.lang }}">Entry</a>
+          {% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p class="empty-state">No activity yet.</p>
+    {% endif %}
+  </div>
+</div>

@@ -1,6 +1,7 @@
 {% extends "base.njk" %}
 
 {% block content %}
+<script>window.OPENFLOWS_IDS = {{ manifestIdsJson | safe }}</script>
 <div class="layout">
 
   {# ── Full width: epistemic window ── #}
@@ -13,6 +14,8 @@
     {% include "partials/status.njk" %}
     {% include "partials/triggers.njk" %}
     {% include "partials/activity.njk" %}
+    {% include "partials/timeline.njk" %}
+    {% include "partials/conversations.njk" %}
   </div>
 
   {# ── Right column: live log + queue state summary + queue ── #}
@@ -29,6 +32,7 @@
     </div>
     {% include "partials/queue-state.njk" %}
     {% include "partials/queue.njk" %}
+    <div id="draft-preview" class="panel" style="display:none"></div>
   </div>
 
 </div>

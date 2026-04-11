@@ -62,12 +62,14 @@ async function askRoutes(fastify) {
     if (question) history.push({ role: 'user', content: question })
 
     let toolAugmentedHistory = history
+    let toolSummaries = []
     try {
       const resolved = await resolveToolCalls(fastify, systemPrompt, history, { confirmation })
       if (resolved.confirmationRequired) {
         return streamConfirmation(reply, resolved.confirmationRequired)
       }
       toolAugmentedHistory = resolved.history
+      toolSummaries = collectToolSummaries(toolAugmentedHistory)
     } catch (err) {
       fastify.log.error(err)
       toolAugmentedHistory = [
@@ -123,6 +125,7 @@ async function askRoutes(fastify) {
           const data = line.slice(6).trim()
           if (data === '[DONE]') {
             saveConversation(fastify.db, history, fullText)
+            if (toolSummaries.length) res.write(`data: ${JSON.stringify({ tools: toolSummaries })}\n\n`)
             res.write('data: [DONE]\n\n')
             res.end()
             return
@@ -145,6 +148,7 @@ async function askRoutes(fastify) {
     }
 
     if (fullText) saveConversation(fastify.db, history, fullText)
+    if (toolSummaries.length) res.write(`data: ${JSON.stringify({ tools: toolSummaries })}\n\n`)
     res.end()
   })
 }
@@ -372,6 +376,17 @@ function buildManifestContext(manifest) {
   return manifest.entries
     .map(entry => `[${entry.currencyType}|${entry.currencyId}|${entry.lang}] ${entry.title}: ${entry.abstract || '(no abstract)'}`)
     .join('\n')
+}
+
+function collectToolSummaries(messages) {
+  const summaries = []
+  for (const message of messages) {
+    if (!Array.isArray(message.tool_calls)) continue
+    for (const toolCall of message.tool_calls) {
+      summaries.push(summarizeToolCall(toolCall))
+    }
+  }
+  return summaries
 }
 
 module.exports = askRoutes

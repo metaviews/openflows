@@ -18,15 +18,53 @@
 
   <div class="edit-actions">
     <button class="btn btn-primary" onclick="saveDraft()">Save Draft</button>
-    <button class="btn btn-promote" onclick="promoteDraft()">Promote to src/</button>
+    <button class="btn" onclick="validateDraft()">Validate</button>
+    <button class="btn btn-promote" onclick="confirmPromoteDraft()">Promote to src/</button>
     <button class="btn btn-reject" onclick="rejectDraft()">Reject</button>
     <span id="save-status" class="muted"></span>
   </div>
 
-  <textarea id="draft-content" class="entry-editor">{{ draft.content }}</textarea>
+  <div class="editor-grid">
+    <textarea id="draft-content" class="entry-editor">{{ draft.content }}</textarea>
+    <aside class="editor-side">
+      <div id="validation-panel" class="validation-box">Validation not run yet.</div>
+      <div class="panel" style="margin-top:1rem">
+        <div class="panel-header"><span class="panel-title">Preview</span></div>
+        <div id="draft-preview-body" class="panel-body preview-body"></div>
+      </div>
+    </aside>
+  </div>
 </div>
 
 <script>
+document.addEventListener('DOMContentLoaded', () => { renderDraftPreview(); validateDraft() })
+document.addEventListener('input', (event) => {
+  if (event.target && event.target.id === 'draft-content') renderDraftPreview()
+})
+
+function renderDraftPreview() {
+  const raw = document.getElementById('draft-content').value
+  const body = raw.replace(/^---[\s\S]*?---\s*/, '')
+  const preview = document.getElementById('draft-preview-body')
+  if (typeof renderMarkdownInto === 'function') renderMarkdownInto(preview, body)
+  else preview.textContent = body
+}
+
+async function validateDraft() {
+  const content = document.getElementById('draft-content').value
+  const panel = document.getElementById('validation-panel')
+  panel.textContent = 'Validating...'
+  const resp = await fetch('/api/queue/{{ draft.id }}/validate?lang={{ lang }}', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ content })
+  })
+  const data = await resp.json()
+  panel.innerHTML = ''
+  panel.appendChild(renderValidationBlock(data))
+  return data
+}
+
 async function saveDraft() {
   const content = document.getElementById('draft-content').value
   const status = document.getElementById('save-status')
@@ -45,8 +83,13 @@ async function saveDraft() {
   }
 }
 
+async function confirmPromoteDraft() {
+  const validation = await validateDraft()
+  const body = 'Promote {{ draft.id }} ({{ lang }}) to src, commit, and push. Validation: ' + validation.counts.error + ' error(s), ' + validation.counts.warning + ' warning(s).'
+  confirmAction({ title: 'Promote Draft', body, confirmText: 'Promote', onConfirm: promoteDraft })
+}
+
 async function promoteDraft() {
-  if (!confirm('Promote {{ draft.id }} ({{ lang }}) to src/ and commit?')) return
   const status = document.getElementById('save-status')
   // Save first, then promote.
   const content = document.getElementById('draft-content').value
@@ -75,7 +118,15 @@ async function promoteDraft() {
 }
 
 async function rejectDraft() {
-  if (!confirm('Reject {{ draft.id }} ({{ lang }})?')) return
+  confirmAction({
+    title: 'Reject Draft',
+    body: 'Reject {{ draft.id }} ({{ lang }}) and keep it in the database audit trail.',
+    confirmText: 'Reject',
+    onConfirm: performRejectDraft
+  })
+}
+
+async function performRejectDraft() {
   const status = document.getElementById('save-status')
   status.textContent = 'Rejecting...'
   try {

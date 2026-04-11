@@ -59,12 +59,63 @@
         link.setAttribute('target', '_blank')
         link.setAttribute('rel', 'noopener noreferrer')
       })
+      enhanceRenderedMarkdown(el)
+      linkCurrencyIds(el)
+    }
+
+    function enhanceRenderedMarkdown(root) {
+      root.querySelectorAll('pre').forEach(pre => {
+        if (pre.querySelector('.copy-code')) return
+        const btn = document.createElement('button')
+        btn.className = 'btn btn-sm copy-code'
+        btn.textContent = 'Copy'
+        btn.onclick = () => navigator.clipboard?.writeText(pre.innerText.replace(/^Copy\s*/, ''))
+        pre.prepend(btn)
+      })
+    }
+
+    function linkCurrencyIds(root) {
+      const ids = new Set((window.OPENFLOWS_IDS || []))
+      if (!ids.size) return
+      const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT)
+      const nodes = []
+      while (walker.nextNode()) nodes.push(walker.currentNode)
+      for (const node of nodes) {
+        const words = node.nodeValue.split(/(\b[a-z0-9]+(?:-[a-z0-9]+)+\b)/g)
+        if (!words.some(word => ids.has(word))) continue
+        const frag = document.createDocumentFragment()
+        for (const word of words) {
+          if (ids.has(word)) {
+            const a = document.createElement('a')
+            a.href = '/entries/' + word + '?lang=en'
+            a.textContent = word
+            frag.appendChild(a)
+          } else {
+            frag.appendChild(document.createTextNode(word))
+          }
+        }
+        node.parentNode.replaceChild(frag, node)
+      }
     }
 
     function clearConversation() {
       conversationHistory = []
       const container = document.getElementById('conversation')
       if (container) container.innerHTML = ''
+    }
+
+    async function loadConversation(id) {
+      const resp = await fetch('/api/conversations/' + id)
+      const data = await resp.json()
+      if (!resp.ok) return alert(data.error || 'Conversation not found')
+      conversationHistory = data.conversation.messages || []
+      const container = document.getElementById('conversation')
+      if (!container) return
+      container.innerHTML = ''
+      for (const message of conversationHistory) {
+        const el = appendMessage(message.role === 'assistant' ? 'peng' : 'user', message.content || '')
+        if (message.role === 'assistant') renderPengMarkdown(el, message.content || '')
+      }
     }
 
     async function askPeng() {
@@ -85,6 +136,7 @@
       conversationHistory.push({ role: 'user', content: question })
 
       let fullText = ''
+      let toolSummaries = []
 
       try {
         const resp = await fetch('/api/ask', {
@@ -120,6 +172,7 @@
             if (data === '[DONE]') {
               responseEl.removeAttribute('id')
               renderPengMarkdown(responseEl, fullText)
+              appendToolSummary(responseEl, toolSummaries)
               conversationHistory.push({ role: 'assistant', content: fullText })
               btn.disabled = false
               return
@@ -131,6 +184,9 @@
                 responseEl.textContent = fullText
                 const container = document.getElementById('conversation')
                 if (container) container.scrollTop = container.scrollHeight
+              }
+              if (parsed.tools) {
+                toolSummaries = parsed.tools
               }
               if (parsed.confirmation) {
                 renderConfirmation(responseEl, parsed.confirmation)
@@ -156,6 +212,7 @@
       responseEl.removeAttribute('id')
       if (fullText) {
         renderPengMarkdown(responseEl, fullText)
+        appendToolSummary(responseEl, toolSummaries)
         conversationHistory.push({ role: 'assistant', content: fullText })
       }
       btn.disabled = false
@@ -221,6 +278,7 @@
       responseEl.classList.add('thinking')
 
       let fullText = ''
+      let toolSummaries = []
       try {
         const resp = await fetch('/api/ask', {
           method: 'POST',
@@ -254,6 +312,7 @@
             if (data === '[DONE]') {
               if (fullText) {
                 renderPengMarkdown(responseEl, fullText)
+                appendToolSummary(responseEl, toolSummaries)
                 conversationHistory.push({ role: 'assistant', content: fullText })
               }
               refreshDashboardPanels()
@@ -267,6 +326,9 @@
                 responseEl.textContent = fullText
                 const container = document.getElementById('conversation')
                 if (container) container.scrollTop = container.scrollHeight
+              }
+              if (parsed.tools) {
+                toolSummaries = parsed.tools
               }
               if (parsed.confirmation) {
                 renderConfirmation(responseEl, parsed.confirmation)
@@ -289,6 +351,7 @@
 
       if (fullText) {
         renderPengMarkdown(responseEl, fullText)
+        appendToolSummary(responseEl, toolSummaries)
         conversationHistory.push({ role: 'assistant', content: fullText })
       }
       refreshDashboardPanels()
@@ -300,9 +363,158 @@
       const activity = document.getElementById('activity-panel')
       const queueState = document.getElementById('queue-state-panel')
       const queue = document.getElementById('queue-panel')
+      const timeline = document.getElementById('timeline-panel')
+      const conversations = document.getElementById('conversations-panel')
       if (activity) htmx.ajax('GET', '/api/runs', { target: '#activity-panel', swap: 'outerHTML' })
       if (queueState) htmx.ajax('GET', '/api/queue/state', { target: '#queue-state-panel', swap: 'outerHTML' })
       if (queue) htmx.ajax('GET', '/api/queue', { target: '#queue-panel', swap: 'outerHTML' })
+      if (timeline) htmx.ajax('GET', '/api/timeline', { target: '#timeline-panel', swap: 'outerHTML' })
+      if (conversations) htmx.ajax('GET', '/api/conversations', { target: '#conversations-panel', swap: 'outerHTML' })
+    }
+
+    function appendToolSummary(responseEl, tools) {
+      if (!tools || !tools.length) return
+      const details = document.createElement('details')
+      details.className = 'tool-summary'
+      const summary = document.createElement('summary')
+      summary.textContent = `Tools used (${tools.length})`
+      details.appendChild(summary)
+      const list = document.createElement('ul')
+      for (const tool of tools) {
+        const li = document.createElement('li')
+        li.textContent = [tool.name, tool.id, tool.lang].filter(Boolean).join(' / ')
+        list.appendChild(li)
+      }
+      details.appendChild(list)
+      responseEl.appendChild(details)
+    }
+
+    async function previewDraft(id, lang) {
+      const panel = document.getElementById('draft-preview')
+      if (!panel) return
+      panel.style.display = 'block'
+      panel.innerHTML = '<div class="panel-header"><span class="panel-title">Draft Preview</span></div><div class="panel-body">Loading...</div>'
+      const resp = await fetch('/api/queue/' + encodeURIComponent(id) + '/preview?lang=' + encodeURIComponent(lang))
+      const data = await resp.json()
+      if (!resp.ok) {
+        panel.innerHTML = '<div class="panel-header"><span class="panel-title">Draft Preview</span></div><div class="panel-body">Error: ' + (data.error || resp.statusText) + '</div>'
+        return
+      }
+      const body = document.createElement('div')
+      body.className = 'panel-body'
+      const header = document.createElement('div')
+      header.innerHTML = `<strong>${data.draft.title || data.draft.id}</strong> <span class="badge badge-${data.draft.lang}">${data.draft.lang}</span> <span class="badge badge-${data.draft.type || 'unknown'}">${data.draft.type || '?'}</span>`
+      body.appendChild(header)
+      body.appendChild(renderValidationBlock(data.validation))
+      const preview = document.createElement('div')
+      preview.className = 'preview-body msg-rendered'
+      renderMarkdownInto(preview, data.body || '')
+      body.appendChild(preview)
+      panel.innerHTML = '<div class="panel-header"><span class="panel-title">Draft Preview</span><button class="btn btn-sm" onclick="document.getElementById(\\'draft-preview\\').style.display=\\'none\\'">Close</button></div>'
+      panel.appendChild(body)
+    }
+
+    async function confirmQueuePromote(id, lang) {
+      let validationText = 'Validation state: unavailable'
+      try {
+        const resp = await fetch('/api/queue/' + encodeURIComponent(id) + '/preview?lang=' + encodeURIComponent(lang))
+        const data = await resp.json()
+        if (resp.ok && data.validation) {
+          validationText = data.validation.ok
+            ? 'Validation state: clean'
+            : `Validation state: ${data.validation.counts.error} error(s), ${data.validation.counts.warning} warning(s)`
+        }
+      } catch {}
+
+      confirmAction({
+        title: 'Promote Draft',
+        body: [
+          `Action: promote_draft`,
+          `Affected: ${id} (${lang})`,
+          `Writes src/: yes`,
+          `Commits/pushes: yes`,
+          validationText,
+        ].join('\n'),
+        confirmText: 'Promote',
+        onConfirm: async () => {
+          const resp = await fetch('/api/queue/' + encodeURIComponent(id) + '/promote?lang=' + encodeURIComponent(lang), { method: 'POST' })
+          const data = await resp.json().catch(() => ({}))
+          if (!resp.ok) return alert(data.error || 'Promote failed')
+          refreshDashboardPanels()
+        }
+      })
+    }
+
+    function confirmQueueReject(id, lang) {
+      confirmAction({
+        title: 'Reject Draft',
+        body: [
+          `Action: reject_draft`,
+          `Affected: ${id} (${lang})`,
+          `Writes src/: no`,
+          `Commits/pushes: no`,
+          `Result: marks the draft rejected in the queue`,
+        ].join('\n'),
+        confirmText: 'Reject',
+        onConfirm: async () => {
+          const resp = await fetch('/api/queue/' + encodeURIComponent(id) + '/reject?lang=' + encodeURIComponent(lang), { method: 'POST' })
+          const data = await resp.json().catch(() => ({}))
+          if (!resp.ok) return alert(data.error || 'Reject failed')
+          refreshDashboardPanels()
+        }
+      })
+    }
+
+    function renderMarkdownInto(el, markdown) {
+      if (window.marked && window.DOMPurify) {
+        el.innerHTML = window.DOMPurify.sanitize(window.marked.parse(markdown || '', { breaks: true, gfm: true }), { USE_PROFILES: { html: true } })
+        enhanceRenderedMarkdown(el)
+      } else {
+        el.textContent = markdown || ''
+      }
+    }
+
+    function renderValidationBlock(validation) {
+      const box = document.createElement('div')
+      box.className = 'validation-box ' + (validation.ok ? 'validation-ok' : 'validation-error')
+      const title = document.createElement('strong')
+      title.textContent = validation.ok ? 'Validation passed' : `Validation issues: ${validation.counts.error} error(s), ${validation.counts.warning} warning(s)`
+      box.appendChild(title)
+      if (validation.issues?.length) {
+        const list = document.createElement('ul')
+        for (const issue of validation.issues) {
+          const li = document.createElement('li')
+          li.textContent = `${issue.severity}: ${issue.field} - ${issue.message}`
+          list.appendChild(li)
+        }
+        box.appendChild(list)
+      }
+      return box
+    }
+
+    function confirmAction({ title, body, confirmText = 'Confirm', onConfirm }) {
+      const existing = document.getElementById('confirm-overlay')
+      if (existing) existing.remove()
+      const overlay = document.createElement('div')
+      overlay.id = 'confirm-overlay'
+      overlay.className = 'confirm-overlay'
+      overlay.innerHTML = `
+        <div class="confirm-modal">
+          <div class="panel-header"><span class="panel-title">${title}</span></div>
+          <div class="panel-body"><div class="confirm-body"></div>
+            <div class="edit-actions" style="margin-top:1rem;margin-bottom:0">
+              <button class="btn btn-primary" id="confirm-action-btn">${confirmText}</button>
+              <button class="btn" id="confirm-cancel-btn">Cancel</button>
+            </div>
+          </div>
+        </div>`
+      overlay.querySelector('.confirm-body').textContent = body
+      document.body.appendChild(overlay)
+      overlay.querySelector('#confirm-cancel-btn').onclick = () => overlay.remove()
+      overlay.querySelector('#confirm-action-btn').onclick = async () => {
+        overlay.remove()
+        await onConfirm()
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {

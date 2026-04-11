@@ -68,7 +68,7 @@ function inspectDraft({ id, content, type, title, abstract }) {
 }
 
 function listDrafts(db, { status = 'pending', lang, type, limit } = {}) {
-  let query = `SELECT id, lang, type, title, abstract, status, created_at, updated_at
+  let query = `SELECT id, lang, type, title, abstract, source_url, run_id, status, created_at, updated_at
                FROM drafts WHERE status = ?`
   const params = [status]
   if (lang) {
