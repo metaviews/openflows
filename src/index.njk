@@ -4,13 +4,48 @@ title: Openflows
 permalink: /
 ---
 
-<p>The open source AI ecosystem is a field in motion: tools lowering barriers to inference and orchestration, models circulating as shared infrastructure, governance experiments running in public, practitioners shaping direction without institutional cover. Openflows documents what is moving — <strong>Currents</strong> — and synthesizes the patterns that form across them into <strong>Circuits</strong>. Key figures are tracked as <strong>Practitioners</strong>.</p>
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">Public record for open source AI</p>
+    <h2>Follow what is moving. See what is stabilizing.</h2>
+    <p>Openflows documents the open source AI ecosystem as a field in motion: tools lowering barriers to inference and orchestration, models circulating as shared infrastructure, governance experiments running in public, and practitioners shaping direction through sustained work.</p>
+  </div>
+  <div class="stat-grid" aria-label="Knowledge base counts">
+    <div class="stat"><strong>{{ collections.currency.length }}</strong><span>English entries</span></div>
+    <div class="stat"><strong>{{ collections.zh_currency.length }}</strong><span>Chinese entries</span></div>
+    <div class="stat"><strong>{{ collections.circuits.length }}</strong><span>Circuits</span></div>
+    <div class="stat"><strong>{{ collections.allCurrency | missingCounterpartCount('en') }}</strong><span>Chinese counterparts pending</span></div>
+  </div>
+</section>
 
-<p>This knowledge base is maintained by <strong>Peng (鵬)</strong>, an agent named from Zhuangzi's <em>Inner Chapters</em>. Peng monitors signals, drafts entries, and identifies emerging patterns — proposing rather than publishing, with human review at every threshold. All agent-generated content carries a mediation note. The site is the record; Peng keeps it current.</p>
+<p>This knowledge base is maintained by <strong>Peng (鵬)</strong>, an agent named from Zhuangzi's <em>Inner Chapters</em>. Peng monitors signals, drafts entries, and identifies emerging patterns, proposing rather than publishing, with human review at every threshold. The site is the record; Peng keeps it current.</p>
+
+{% set browserId = "home-browser" %}
+{% include "currency-browser.njk" %}
+
+<section class="section-band">
+  <div class="grid-list">
+    <article class="hub-card">
+      <h3><a href="/currency/currents/">Currents</a></h3>
+      <p class="meta">{{ collections.currents.length }} entries</p>
+      <p>Signals, tools, projects, tensions, and early patterning from the open source AI ecosystem.</p>
+    </article>
+    <article class="hub-card">
+      <h3><a href="/currency/circuits/">Circuits</a></h3>
+      <p class="meta">{{ collections.circuits.length }} entries</p>
+      <p>Synthesized patterns that have stabilized across multiple currents.</p>
+    </article>
+    <article class="hub-card">
+      <h3><a href="/currency/practitioners/">Practitioners</a></h3>
+      <p class="meta">{{ collections.practitioners.length }} entries</p>
+      <p>People whose sustained practice makes the field more legible.</p>
+    </article>
+  </div>
+</section>
 
 <section>
-  <h2>What's New</h2>
-  <p class="meta">Recently added across Currents, Circuits, and Practitioners.</p>
+  <h2>Recently Added</h2>
+  <p class="meta">Recent entries across Currents, Circuits, and Practitioners.</p>
   <ul class="currency-list">
     {% for item in collections.recentCurrency %}
     <li>
@@ -23,52 +58,14 @@ permalink: /
     </li>
     {% endfor %}
   </ul>
-  <p><a href="/currency/">View all entries →</a></p>
-</section>
-
-<section>
-  <h2>Circuits</h2>
-  <p class="meta">Synthesized patterns across the knowledge base. Each Circuit names what is already forming.</p>
-  <ul class="currency-list">
-    {% for item in collections.circuits %}
-      {% if loop.index0 < 3 %}
-      <li>
-        <a href="{{ item.url }}">{{ item.data.title }}</a>
-        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
-        <div class="item-meta">
-          <span class="muted">{{ item.date | readableDate }}</span>
-        </div>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-  <p><a href="/currency/circuits/">View all circuits →</a></p>
-</section>
-
-<section>
-  <h2>Currents</h2>
-  <p class="meta">Signals moving through the ecosystem. <a href="/currency/currents/">View all</a> · <a href="/currency/practitioners/">Practitioners</a></p>
-  <ul class="currency-list">
-    {% for item in collections.currents %}
-      {% if loop.index0 < 6 %}
-      <li>
-        <a href="{{ item.url }}">{{ item.data.title }}</a>
-        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
-        <div class="item-meta">
-          <span class="muted">{{ item.date | readableDate }}</span>
-        </div>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
 </section>
 
 <section>
   <h2>For Agents and Developers</h2>
   <p class="meta">The knowledge base is available in structured form for programmatic access.</p>
   <ul>
-    <li><a href="/knowledge-manifest.json"><code>knowledge-manifest.json</code></a> — complete knowledge base in JSON: all entries with titles, abstracts, links, body content, and metadata. Rebuilt on every deploy.</li>
-    <li><a href="/currency/feed.xml">RSS feed</a> — subscribe to new currency entries as they are published.</li>
-    <li><a href="/currency/feed.json">JSON feed</a> — lightweight feed of recent entries with abstracts and permalinks.</li>
+    <li><a href="/currency/search-index.json"><code>currency/search-index.json</code></a> provides the public search index used by this site.</li>
+    <li><a href="/knowledge-manifest.json"><code>knowledge-manifest.json</code></a> provides the complete knowledge base with body content and metadata.</li>
+    <li><a href="/currency/feed.xml">RSS feed</a> and <a href="/currency/feed.json">JSON feed</a> publish new currency entries.</li>
   </ul>
 </section>

@@ -5,9 +5,44 @@ lang: zh
 permalink: /zh/
 ---
 
-<p>开源AI生态系统是一个流动中的领域：工具降低推理与编排的门槛，模型作为共享基础设施流通，治理实验公开运行，修行者在没有机构背书的情况下塑造方向。Openflows（开流）记录流动之物——<strong>流</strong>——并将其中形成的模式综合为<strong>回路</strong>。关键人物以<strong>修行者</strong>身份被追踪。</p>
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">开源 AI 的公共记录</p>
+    <h2>看见正在流动之物，也看见正在稳定之物。</h2>
+    <p>Openflows（开流）记录开源 AI 生态系统的运动：工具降低推理与编排门槛，模型作为共享基础设施流通，治理实验公开运行，修行者通过持续实践塑造方向。</p>
+  </div>
+  <div class="stat-grid" aria-label="知识库数量">
+    <div class="stat"><strong>{{ collections.zh_currency.length }}</strong><span>中文条目</span></div>
+    <div class="stat"><strong>{{ collections.currency.length }}</strong><span>英文条目</span></div>
+    <div class="stat"><strong>{{ collections.zh_circuits.length }}</strong><span>回路</span></div>
+    <div class="stat"><strong>{{ collections.allCurrency | missingCounterpartCount('zh') }}</strong><span>英文对应条目待补</span></div>
+  </div>
+</section>
 
-<p>这一知识库由<strong>鵬</strong>维护——以庄子《内篇》中鹏鸟命名的智能体。鵬监测信号、起草条目、识别涌现中的模式——提议而非发布，在每个关键节点保留人工审阅。所有智能体生成的内容均附有调解说明。此站为记录；鵬使其持续更新。</p>
+<p>这一知识库由<strong>鵬</strong>维护，以庄子《内篇》中鹏鸟命名。鵬监测信号、起草条目、识别涌现中的模式；它提出而不发布，在每个关键节点保留人工审阅。此站为记录；鵬使其持续更新。</p>
+
+{% set browserId = "home-browser-zh" %}
+{% include "currency-browser.njk" %}
+
+<section class="section-band">
+  <div class="grid-list">
+    <article class="hub-card">
+      <h3><a href="/zh/currency/currents/">流</a></h3>
+      <p class="meta">{{ collections.zh_currents.length }} 条目</p>
+      <p>来自开源 AI 生态系统的信号、工具、项目、张力与早期模式。</p>
+    </article>
+    <article class="hub-card">
+      <h3><a href="/zh/currency/circuits/">回路</a></h3>
+      <p class="meta">{{ collections.zh_circuits.length }} 条目</p>
+      <p>跨多条流稳定下来的综合模式。</p>
+    </article>
+    <article class="hub-card">
+      <h3><a href="/zh/currency/practitioners/">修行者</a></h3>
+      <p class="meta">{{ collections.zh_practitioners.length }} 条目</p>
+      <p>通过持续实践使这一领域更加可读的人。</p>
+    </article>
+  </div>
+</section>
 
 <section>
   <h2>最新内容</h2>
@@ -24,52 +59,14 @@ permalink: /zh/
     </li>
     {% endfor %}
   </ul>
-  <p><a href="/zh/currency/">查看全部条目 →</a></p>
-</section>
-
-<section>
-  <h2>回路</h2>
-  <p class="meta">跨知识库的综合模式。每条回路命名已然成形之物。</p>
-  <ul class="currency-list">
-    {% for item in collections.zh_circuits %}
-      {% if loop.index0 < 3 %}
-      <li>
-        <a href="{{ item.url }}">{{ item.data.title }}</a>
-        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
-        <div class="item-meta">
-          <span class="muted">{{ item.date | readableDate }}</span>
-        </div>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-  <p><a href="/zh/currency/circuits/">查看全部回路 →</a></p>
-</section>
-
-<section>
-  <h2>流</h2>
-  <p class="meta">流动于生态系统中的信号。<a href="/zh/currency/currents/">查看全部</a> · <a href="/zh/currency/practitioners/">修行者</a></p>
-  <ul class="currency-list">
-    {% for item in collections.zh_currents %}
-      {% if loop.index0 < 6 %}
-      <li>
-        <a href="{{ item.url }}">{{ item.data.title }}</a>
-        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
-        <div class="item-meta">
-          <span class="muted">{{ item.date | readableDate }}</span>
-        </div>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
 </section>
 
 <section>
   <h2>面向智能体与开发者</h2>
   <p class="meta">知识库以结构化形式提供，支持程序化访问。</p>
   <ul>
-    <li><a href="/knowledge-manifest.json"><code>knowledge-manifest.json</code></a> — 完整知识库的JSON格式：包含所有条目的标题、摘要、关联、正文内容及元数据。每次部署时自动重建。</li>
-    <li><a href="/currency/feed.xml">RSS订阅</a> — 订阅新流通条目发布通知。</li>
-    <li><a href="/currency/feed.json">JSON订阅</a> — 包含近期条目摘要与永久链接的轻量级订阅源。</li>
+    <li><a href="/currency/search-index.json"><code>currency/search-index.json</code></a> 是本站使用的公共搜索索引。</li>
+    <li><a href="/knowledge-manifest.json"><code>knowledge-manifest.json</code></a> 提供包含正文与元数据的完整知识库。</li>
+    <li><a href="/currency/feed.xml">RSS 订阅</a> 与 <a href="/currency/feed.json">JSON 订阅</a> 发布新的流通条目。</li>
   </ul>
 </section>

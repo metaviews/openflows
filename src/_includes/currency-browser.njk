@@ -1,0 +1,120 @@
+{% set strings = i18n[lang or 'en'] %}
+{% set browserId = browserId or "currency-browser" %}
+<section class="browser-panel" id="{{ browserId }}" data-browser data-lang="{{ lang or 'en' }}"{% if browserType %} data-type="{{ browserType }}"{% endif %}>
+  <h2>{{ strings.browser.title }}</h2>
+  <p class="meta">{{ strings.browser.summary }}</p>
+  <div class="browser-controls">
+    <label>
+      <span class="muted">{{ strings.browser.search }}</span>
+      <input type="search" data-browser-search placeholder="{{ strings.browser.search_placeholder }}" autocomplete="off">
+    </label>
+    <label>
+      <span class="muted">{{ strings.browser.type }}</span>
+      <select data-browser-type{% if browserType %} disabled{% endif %}>
+        <option value="">{{ strings.browser.all_types }}</option>
+        <option value="current"{% if browserType == "current" %} selected{% endif %}>{{ "current" | typeLabel(lang) }}</option>
+        <option value="circuit"{% if browserType == "circuit" %} selected{% endif %}>{{ "circuit" | typeLabel(lang) }}</option>
+        <option value="practitioner"{% if browserType == "practitioner" %} selected{% endif %}>{{ "practitioner" | typeLabel(lang) }}</option>
+      </select>
+    </label>
+    <label>
+      <span class="muted">{{ strings.browser.language }}</span>
+      <select data-browser-lang>
+        <option value="">{{ strings.browser.all_languages }}</option>
+        <option value="en"{% if lang != "zh" %} selected{% endif %}>{{ strings.browser.english }}</option>
+        <option value="zh"{% if lang == "zh" %} selected{% endif %}>{{ strings.browser.chinese }}</option>
+      </select>
+    </label>
+  </div>
+  <p class="meta" data-browser-count></p>
+  <div class="browser-results" data-browser-results></div>
+  <noscript>
+    <p class="meta">{{ strings.list.sorted }}</p>
+  </noscript>
+</section>
+
+<script>
+(function() {
+  const root = document.getElementById({{ browserId | dump | safe }});
+  if (!root) return;
+
+  const labels = {{ strings | dump | safe }};
+  const typeLabels = {{ strings.type_labels | dump | safe }};
+  const search = root.querySelector('[data-browser-search]');
+  const typeSelect = root.querySelector('[data-browser-type]');
+  const langSelect = root.querySelector('[data-browser-lang]');
+  const count = root.querySelector('[data-browser-count]');
+  const results = root.querySelector('[data-browser-results]');
+  const fixedType = root.dataset.type || '';
+  const initialLang = root.dataset.lang || '';
+  const maxResults = Number(root.dataset.limit || 24);
+  let entries = [];
+
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, function(ch) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch];
+    });
+  }
+
+  function formatDate(value) {
+    try {
+      return new Intl.DateTimeFormat(initialLang === 'zh' ? 'zh-CN' : 'en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: '2-digit'
+      }).format(new Date(value));
+    } catch (err) {
+      return value;
+    }
+  }
+
+  function render() {
+    const q = (search.value || '').trim().toLowerCase();
+    const selectedType = fixedType || typeSelect.value;
+    const selectedLang = langSelect.value;
+    const filtered = entries.filter(function(entry) {
+      if (selectedType && entry.currencyType !== selectedType) return false;
+      if (selectedLang && entry.lang !== selectedLang) return false;
+      if (!q) return true;
+      return String(entry.searchable || '').toLowerCase().includes(q);
+    });
+
+    count.textContent = filtered.length + ' ' + labels.browser.results;
+    if (!filtered.length) {
+      results.innerHTML = '<p class="meta">' + escapeHtml(labels.browser.no_results) + '</p>';
+      return;
+    }
+
+    results.innerHTML = filtered.slice(0, maxResults).map(function(entry) {
+      const missing = !entry.hasCounterpart
+        ? '<span class="chip alert">' + escapeHtml(entry.lang === 'en' ? labels.browser.missing_zh : labels.browser.missing_en) + '</span>'
+        : '';
+      return '<article class="browser-result">'
+        + '<h3><a href="' + escapeHtml(entry.permalink) + '">' + escapeHtml(entry.title) + '</a></h3>'
+        + '<div class="item-meta">'
+        + '<span class="chip">' + escapeHtml(typeLabels[entry.currencyType] || entry.currencyType) + '</span>'
+        + '<span class="chip">' + escapeHtml(entry.lang) + '</span>'
+        + '<span class="muted">' + escapeHtml(formatDate(entry.date)) + '</span>'
+        + missing
+        + '</div>'
+        + (entry.abstract ? '<p class="item-abstract">' + escapeHtml(entry.abstract) + '</p>' : '')
+        + '</article>';
+    }).join('');
+  }
+
+  fetch('/currency/search-index.json')
+    .then(function(response) { return response.json(); })
+    .then(function(index) {
+      entries = index.entries || [];
+      render();
+    })
+    .catch(function() {
+      count.textContent = '';
+    });
+
+  [search, typeSelect, langSelect].forEach(function(control) {
+    control.addEventListener('input', render);
+    control.addEventListener('change', render);
+  });
+})();
+</script>

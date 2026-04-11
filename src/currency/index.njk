@@ -3,17 +3,52 @@ layout: layouts/base.njk
 title: Currency
 permalink: /currency/
 ---
-<p>Currency is the living layer of Openflows: what is currently moving through the system as conditions change. Three forms, each with a different level of stability and focus.</p>
+
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">Knowledge navigation</p>
+    <h2>Currency is the living layer of Openflows.</h2>
+    <p>Currency tracks what is moving as conditions change. Currents hold provisional signals, Circuits name stabilized patterns, and Practitioners mark sustained methods of shaping the field.</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.currents.length }}</strong><span>Currents</span></div>
+    <div class="stat"><strong>{{ collections.circuits.length }}</strong><span>Circuits</span></div>
+    <div class="stat"><strong>{{ collections.practitioners.length }}</strong><span>Practitioners</span></div>
+    <div class="stat"><strong>{{ collections.allCurrency | missingCounterpartCount('en') }}</strong><span>Chinese counterparts pending</span></div>
+  </div>
+</section>
+
+{% set browserId = "currency-browser-en" %}
+{% include "currency-browser.njk" %}
+
+<section class="section-band">
+  <div class="grid-list">
+    <article class="hub-card">
+      <h3><a href="/currency/currents/">Currents</a></h3>
+      <p class="meta">{{ collections.currents.length }} entries</p>
+      <p>Provisional movement: signals, tensions, and early patterning from the open source AI ecosystem.</p>
+    </article>
+    <article class="hub-card">
+      <h3><a href="/currency/circuits/">Circuits</a></h3>
+      <p class="meta">{{ collections.circuits.length }} entries</p>
+      <p>Completed loops: synthesized patterns that have stabilized across multiple currents.</p>
+    </article>
+    <article class="hub-card">
+      <h3><a href="/currency/practitioners/">Practitioners</a></h3>
+      <p class="meta">{{ collections.practitioners.length }} entries</p>
+      <p>Those who have shaped the field through sustained practice and inspectable work.</p>
+    </article>
+  </div>
+</section>
 
 <section class="currency-section">
   <div class="currency-section-header">
-    <h2>Currents</h2>
+    <h2>Recent Currents</h2>
     <span class="entry-count muted">{{ collections.currents.length }} entries</span>
   </div>
-  <p class="meta">Provisional movement: signals, tensions, and early patterning from the open source AI ecosystem.</p>
   <ul class="currency-list">
     {% for item in collections.currents %}
-      {% if loop.index0 < 3 %}
+      {% if loop.index0 < 5 %}
       <li>
         <a href="{{ item.url }}">{{ item.data.title }}</a>
         {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
@@ -24,49 +59,4 @@ permalink: /currency/
       {% endif %}
     {% endfor %}
   </ul>
-  <p><a href="/currency/currents/">View all currents →</a></p>
-</section>
-
-<section class="currency-section">
-  <div class="currency-section-header">
-    <h2>Circuits</h2>
-    <span class="entry-count muted">{{ collections.circuits.length }} entries</span>
-  </div>
-  <p class="meta">Completed loops: synthesized patterns that have stabilized across multiple currents.</p>
-  <ul class="currency-list">
-    {% for item in collections.circuits %}
-      {% if loop.index0 < 3 %}
-      <li>
-        <a href="{{ item.url }}">{{ item.data.title }}</a>
-        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
-        <div class="item-meta">
-          <span class="muted">{{ item.date | readableDate }}</span>
-        </div>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-  <p><a href="/currency/circuits/">View all circuits →</a></p>
-</section>
-
-<section class="currency-section">
-  <div class="currency-section-header">
-    <h2>Practitioners</h2>
-    <span class="entry-count muted">{{ collections.practitioners.length }} entries</span>
-  </div>
-  <p class="meta">Those who have shaped the field through sustained practice — tracked by depth of engagement, not institutional position.</p>
-  <ul class="currency-list">
-    {% for item in collections.practitioners %}
-      {% if loop.index0 < 3 %}
-      <li>
-        <a href="{{ item.url }}">{{ item.data.title }}</a>
-        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
-        <div class="item-meta">
-          <span class="muted">{{ item.date | readableDate }}</span>
-        </div>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-  <p><a href="/currency/practitioners/">View all practitioners →</a></p>
 </section>

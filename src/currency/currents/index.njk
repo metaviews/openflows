@@ -3,22 +3,21 @@ layout: layouts/base.njk
 title: Currents
 permalink: /currency/currents/
 ---
-<p>Directional movement signals captured as entries. Currents preserve sensitivity to change and resist premature certainty.</p>
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">Current</p>
+    <h2>Signals before they harden into patterns.</h2>
+    <p>Currents preserve sensitivity to change: tools, projects, models, governance signals, and early tensions moving through the open source AI ecosystem.</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.currents.length }}</strong><span>English currents</span></div>
+    <div class="stat"><strong>{{ collections.zh_currents.length }}</strong><span>Chinese currents</span></div>
+  </div>
+</section>
 
-<div class="filter-bar">
-  <input type="text" id="entry-filter" placeholder="Filter by title or description…" autocomplete="off">
-</div>
+{% set browserId = "currents-browser" %}
+{% set browserType = "current" %}
+{% include "currency-browser.njk" %}
 
 {% set items = collections.currents %}
 {% include "currency-list.njk" %}
-
-<script>
-  const input = document.getElementById('entry-filter');
-  const items = document.querySelectorAll('.currency-list li');
-  input.addEventListener('input', function() {
-    const q = this.value.toLowerCase();
-    items.forEach(function(li) {
-      li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
-    });
-  });
-</script>

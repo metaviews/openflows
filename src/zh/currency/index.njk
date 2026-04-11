@@ -4,17 +4,52 @@ title: 流通
 lang: zh
 permalink: /zh/currency/
 ---
-<p>流通是Openflows的活态层：随条件变化而在系统中当下流动之物。三种形式，各具不同的稳定程度与关注焦点。</p>
+
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">知识导航</p>
+    <h2>流通是 Openflows 的活态层。</h2>
+    <p>流通记录随条件变化而在系统中当下流动之物。流保存暂时性的信号，回路命名已经稳定的模式，修行者标记塑造这一领域的持续实践。</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.zh_currents.length }}</strong><span>流</span></div>
+    <div class="stat"><strong>{{ collections.zh_circuits.length }}</strong><span>回路</span></div>
+    <div class="stat"><strong>{{ collections.zh_practitioners.length }}</strong><span>修行者</span></div>
+    <div class="stat"><strong>{{ collections.allCurrency | missingCounterpartCount('zh') }}</strong><span>英文对应条目待补</span></div>
+  </div>
+</section>
+
+{% set browserId = "currency-browser-zh" %}
+{% include "currency-browser.njk" %}
+
+<section class="section-band">
+  <div class="grid-list">
+    <article class="hub-card">
+      <h3><a href="/zh/currency/currents/">流</a></h3>
+      <p class="meta">{{ collections.zh_currents.length }} 条目</p>
+      <p>暂时性的运动：来自开源 AI 生态系统的信号、张力与早期模式。</p>
+    </article>
+    <article class="hub-card">
+      <h3><a href="/zh/currency/circuits/">回路</a></h3>
+      <p class="meta">{{ collections.zh_circuits.length }} 条目</p>
+      <p>完成的循环：跨多条流稳定下来的综合模式。</p>
+    </article>
+    <article class="hub-card">
+      <h3><a href="/zh/currency/practitioners/">修行者</a></h3>
+      <p class="meta">{{ collections.zh_practitioners.length }} 条目</p>
+      <p>通过持续实践塑造这一领域的人。</p>
+    </article>
+  </div>
+</section>
 
 <section class="currency-section">
   <div class="currency-section-header">
-    <h2>流</h2>
+    <h2>近期的流</h2>
     <span class="entry-count muted">{{ collections.zh_currents.length }} 条目</span>
   </div>
-  <p class="meta">暂时性的运动：来自开源AI生态系统的信号、张力与早期模式。</p>
   <ul class="currency-list">
     {% for item in collections.zh_currents %}
-      {% if loop.index0 < 3 %}
+      {% if loop.index0 < 5 %}
       <li>
         <a href="{{ item.url }}">{{ item.data.title }}</a>
         {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
@@ -25,49 +60,4 @@ permalink: /zh/currency/
       {% endif %}
     {% endfor %}
   </ul>
-  <p><a href="/zh/currency/currents/">查看全部流 →</a></p>
-</section>
-
-<section class="currency-section">
-  <div class="currency-section-header">
-    <h2>回路</h2>
-    <span class="entry-count muted">{{ collections.zh_circuits.length }} 条目</span>
-  </div>
-  <p class="meta">完成的循环：跨多条流稳定下来的综合模式。</p>
-  <ul class="currency-list">
-    {% for item in collections.zh_circuits %}
-      {% if loop.index0 < 3 %}
-      <li>
-        <a href="{{ item.url }}">{{ item.data.title }}</a>
-        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
-        <div class="item-meta">
-          <span class="muted">{{ item.date | readableDate }}</span>
-        </div>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-  <p><a href="/zh/currency/circuits/">查看全部回路 →</a></p>
-</section>
-
-<section class="currency-section">
-  <div class="currency-section-header">
-    <h2>修行者</h2>
-    <span class="entry-count muted">{{ collections.zh_practitioners.length }} 条目</span>
-  </div>
-  <p class="meta">通过持续实践塑造这一领域的人——凭借对工作深度与品质的投入，而非权威或职位。</p>
-  <ul class="currency-list">
-    {% for item in collections.zh_practitioners %}
-      {% if loop.index0 < 3 %}
-      <li>
-        <a href="{{ item.url }}">{{ item.data.title }}</a>
-        {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
-        <div class="item-meta">
-          <span class="muted">{{ item.date | readableDate }}</span>
-        </div>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-  <p><a href="/zh/currency/practitioners/">查看全部修行者 →</a></p>
 </section>

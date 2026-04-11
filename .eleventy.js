@@ -2,6 +2,17 @@ module.exports = function(eleventyConfig) {
   function newestFirst(items) {
     return [...items].sort((a, b) => b.date - a.date);
   }
+  function itemLang(item) {
+    return item && item.data && item.data.lang === "zh" ? "zh" : "en";
+  }
+  function stripHtml(value) {
+    return String(value || "")
+      .replace(/<script[\s\S]*?<\/script>/gi, " ")
+      .replace(/<style[\s\S]*?<\/style>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
   function readableDate(value) {
     const date = value instanceof Date ? value : new Date(value);
     return new Intl.DateTimeFormat("en-US", {
@@ -28,6 +39,71 @@ module.exports = function(eleventyConfig) {
       return null;
     }
     return items.find((item) => item.data && item.data.currencyId === id) || null;
+  });
+  eleventyConfig.addFilter("currencyByIdForLang", function(items, id, lang) {
+    if (!Array.isArray(items) || !id) {
+      return null;
+    }
+    const requestedLang = lang === "zh" ? "zh" : "en";
+    return items.find((item) => item.data && item.data.currencyId === id && itemLang(item) === requestedLang)
+      || items.find((item) => item.data && item.data.currencyId === id && itemLang(item) === "en")
+      || items.find((item) => item.data && item.data.currencyId === id)
+      || null;
+  });
+  eleventyConfig.addFilter("currencyCounterpart", function(items, id, lang) {
+    if (!Array.isArray(items) || !id) {
+      return null;
+    }
+    const targetLang = lang === "zh" ? "en" : "zh";
+    return items.find((item) => item.data && item.data.currencyId === id && itemLang(item) === targetLang) || null;
+  });
+  eleventyConfig.addFilter("currencyBacklinks", function(items, id, lang) {
+    if (!Array.isArray(items) || !id) {
+      return [];
+    }
+    const requestedLang = lang === "zh" ? "zh" : "en";
+    return newestFirst(items.filter((item) => {
+      if (!item.data || item.data.currencyId === id || itemLang(item) !== requestedLang) {
+        return false;
+      }
+      return Array.isArray(item.data.links) && item.data.links.some((link) => link && link.id === id);
+    }));
+  });
+  eleventyConfig.addFilter("missingCounterpartCount", function(items, lang) {
+    if (!Array.isArray(items)) {
+      return 0;
+    }
+    const sourceLang = lang === "zh" ? "zh" : "en";
+    const targetLang = sourceLang === "zh" ? "en" : "zh";
+    const ids = new Set(items
+      .filter((item) => item && item.data && itemLang(item) === targetLang)
+      .map((item) => item.data.currencyId));
+    return items.filter((item) => {
+      return item && item.data && itemLang(item) === sourceLang && !ids.has(item.data.currencyId);
+    }).length;
+  });
+  eleventyConfig.addFilter("externalLinks", function(html) {
+    const links = [];
+    const seen = new Set();
+    const source = String(html || "");
+    const pattern = /<a\s+[^>]*href=["'](https?:\/\/[^"']+)["'][^>]*>([\s\S]*?)<\/a>/gi;
+    let match;
+    while ((match = pattern.exec(source)) !== null) {
+      const url = match[1];
+      if (seen.has(url)) {
+        continue;
+      }
+      seen.add(url);
+      links.push({
+        url,
+        label: stripHtml(match[2]) || url.replace(/^https?:\/\//, "")
+      });
+    }
+    return links;
+  });
+  eleventyConfig.addFilter("compactText", stripHtml);
+  eleventyConfig.addFilter("startsWith", function(value, prefix) {
+    return String(value || "").startsWith(prefix);
   });
   eleventyConfig.addPassthroughCopy("src/assets");
 

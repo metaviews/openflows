@@ -4,22 +4,21 @@ title: 流
 lang: zh
 permalink: /zh/currency/currents/
 ---
-<p>流记录流动于开源AI生态系统中的个体信号——工具、项目、模型与早期迹象。</p>
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">流</p>
+    <h2>尚未凝固成模式的信号。</h2>
+    <p>流保存变化中的敏感性：工具、项目、模型、治理信号，以及开源 AI 生态系统中的早期张力。</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.zh_currents.length }}</strong><span>中文流</span></div>
+    <div class="stat"><strong>{{ collections.currents.length }}</strong><span>英文流</span></div>
+  </div>
+</section>
 
-<div class="filter-bar">
-  <input type="text" id="entry-filter" placeholder="按标题或描述筛选…" autocomplete="off">
-</div>
+{% set browserId = "currents-browser-zh" %}
+{% set browserType = "current" %}
+{% include "currency-browser.njk" %}
 
 {% set items = collections.zh_currents %}
 {% include "currency-list.njk" %}
-
-<script>
-  const input = document.getElementById('entry-filter');
-  const items = document.querySelectorAll('.currency-list li');
-  input.addEventListener('input', function() {
-    const q = this.value.toLowerCase();
-    items.forEach(function(li) {
-      li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
-    });
-  });
-</script>

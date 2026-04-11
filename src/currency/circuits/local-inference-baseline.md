@@ -7,6 +7,7 @@ currencyId: local-inference-baseline
 abstract: "Language model inference is now treated as ordinary local infrastructure within Openflows."
 tags:
   - currency
+permalink: /currency/circuits/local-inference-baseline/
 links:
   - id: lm-studio
     relation: "stabilizes signals first explored in"

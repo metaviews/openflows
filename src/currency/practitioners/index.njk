@@ -3,7 +3,21 @@ layout: layouts/base.njk
 title: Practitioners
 permalink: /currency/practitioners/
 ---
-<p>Practitioners are those who have shaped the open source AI ecosystem through sustained practice — not through authority or position, but through the depth and quality of their engagement with the work.</p>
-<p class="meta">Filtered by type: practitioner. Sorted newest first.</p>
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">Practitioner</p>
+    <h2>People tracked by sustained practice.</h2>
+    <p>Practitioners are those who have shaped the open source AI ecosystem through the depth, durability, and inspectability of their work.</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.practitioners.length }}</strong><span>English practitioners</span></div>
+    <div class="stat"><strong>{{ collections.zh_practitioners.length }}</strong><span>Chinese practitioners</span></div>
+  </div>
+</section>
+
+{% set browserId = "practitioners-browser" %}
+{% set browserType = "practitioner" %}
+{% include "currency-browser.njk" %}
+
 {% set items = collections.practitioners %}
 {% include "currency-list.njk" %}

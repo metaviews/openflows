@@ -7,6 +7,7 @@ currencyId: lm-studio
 abstract: "A desktop application that makes local language model inference accessible and ordinary."
 tags:
   - currency
+permalink: /currency/currents/lm-studio/
 links:
   - id: local-inference-baseline
     relation: "consolidates into"

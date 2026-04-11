@@ -14,7 +14,14 @@
     {% endif %}
     <div class="item-meta">
       <span class="chip">{{ item.data.currencyType | typeLabel(lang) }}</span>
+      <span class="chip">{{ item.data.lang or 'en' }}</span>
       <span class="muted">{{ item.date | readableDate }}</span>
+      {% set counterpart = collections.allCurrency | currencyCounterpart(item.data.currencyId, item.data.lang) %}
+      {% if not counterpart %}
+      <span class="chip alert">
+        {% if item.data.lang == 'zh' %}{{ strings.browser.missing_en }}{% else %}{{ strings.browser.missing_zh }}{% endif %}
+      </span>
+      {% endif %}
     </div>
   </li>
   {% endfor %}

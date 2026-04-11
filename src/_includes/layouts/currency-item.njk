@@ -2,25 +2,91 @@
 layout: layouts/base.njk
 ---
 {% set strings = i18n[lang or 'en'] %}
-<h2>{{ title }}</h2>
-<p class="muted">{{ strings.entry.type_label }}: {{ currencyType | typeLabel(lang) }}</p>
-{{ content | safe }}
+{% set entryLang = lang or 'en' %}
+{% set counterpart = collections.allCurrency | currencyCounterpart(currencyId, entryLang) %}
+{% set backlinks = collections.allCurrency | currencyBacklinks(currencyId, entryLang) %}
+{% set references = content | externalLinks %}
+
+<article class="entry-shell">
+  <header class="entry-header">
+    <p class="hero-kicker">{{ currencyType | typeLabel(lang) }}</p>
+    <h2>{{ title }}</h2>
+    {% if abstract %}<p class="item-abstract">{{ abstract }}</p>{% endif %}
+    <div class="entry-meta-grid">
+      <div class="entry-meta-item">
+        <span>{{ strings.entry.currency_id }}</span>
+        <strong>{{ currencyId }}</strong>
+      </div>
+      <div class="entry-meta-item">
+        <span>{{ strings.entry.date }}</span>
+        <strong>{{ date | readableDate }}</strong>
+      </div>
+      <div class="entry-meta-item">
+        <span>{{ strings.entry.language }}</span>
+        <strong>{% if entryLang == 'zh' %}{{ strings.browser.chinese }}{% else %}{{ strings.browser.english }}{% endif %}</strong>
+      </div>
+      {% if lastReviewed %}
+      <div class="entry-meta-item">
+        <span>{{ strings.entry.last_reviewed }}</span>
+        <strong>{{ lastReviewed | readableDate }}</strong>
+      </div>
+      {% endif %}
+      <div class="entry-meta-item">
+        <span>{{ strings.entry.translation }}</span>
+        {% if counterpart %}
+        <a href="{{ counterpart.url }}">{{ strings.entry.translation_available }}</a>
+        {% else %}
+        <strong>{{ strings.entry.translation_missing }}</strong>
+        {% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="entry-body">
+    {{ content | safe }}
+  </div>
+</article>
 
 {% if links and links.length %}
 <section class="connection-note">
   <h3>{{ strings.entry.connections }}</h3>
   <ul class="connection-list">
     {% for link in links %}
-    {% set target = collections.currency | currencyById(link.id) %}
+    {% set target = collections.allCurrency | currencyByIdForLang(link.id, entryLang) %}
     {% if target %}
     <li>
       <a href="{{ target.url }}">{{ target.data.title }}</a>
       {% if link.relation %}<span class="muted"> - {{ link.relation }}</span>{% endif %}
-      <span class="muted">({{ target.data.currencyType | typeLabel(lang) }})</span>
+      <span class="muted">({{ target.data.currencyType | typeLabel(lang) }} · {{ target.data.lang or 'en' }})</span>
     </li>
     {% else %}
     <li><span class="muted">{{ strings.entry.missing_connection }}: {{ link.id }}</span></li>
     {% endif %}
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if backlinks and backlinks.length %}
+<section class="connection-note">
+  <h3>{{ strings.entry.backlinks }}</h3>
+  <ul class="connection-list">
+    {% for item in backlinks %}
+    <li>
+      <a href="{{ item.url }}">{{ item.data.title }}</a>
+      <span class="muted">({{ item.data.currencyType | typeLabel(lang) }})</span>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if references and references.length %}
+<section class="connection-note">
+  <h3>{{ strings.entry.references }}</h3>
+  <ul class="connection-list">
+    {% for reference in references %}
+    <li><a href="{{ reference.url }}" rel="noopener">{{ reference.label }}</a></li>
     {% endfor %}
   </ul>
 </section>

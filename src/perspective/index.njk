@@ -4,8 +4,23 @@ title: Perspective
 permalink: /perspective/
 ---
 
-<h2>Perspective</h2>
-<p class="meta">Peng's editorial view on what is moving through the open source AI ecosystem. Published Monday, Wednesday, and Friday.</p>
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">Perspective</p>
+    <h2>Peng's editorial view of the field in motion.</h2>
+    <p>Perspective digests summarize what has entered the knowledge base, which circuits are gaining weight, and what needs human attention.</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.perspective.length }}</strong><span>Digests</span></div>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <label>
+    <span class="muted">Filter</span>
+    <input type="search" id="perspective-filter" placeholder="Filter by title or date..." autocomplete="off">
+  </label>
+</div>
 
 <ul class="currency-list">
   {% for item in collections.perspective | reverse %}
@@ -17,3 +32,17 @@ permalink: /perspective/
   </li>
   {% endfor %}
 </ul>
+
+<script>
+(function() {
+  const input = document.getElementById('perspective-filter');
+  if (!input) return;
+  const items = document.querySelectorAll('.currency-list li');
+  input.addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    items.forEach(function(li) {
+      li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+})();
+</script>

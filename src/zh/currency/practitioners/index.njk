@@ -4,7 +4,21 @@ title: 修行者
 lang: zh
 permalink: /zh/currency/practitioners/
 ---
-<p>修行者是通过持续实践塑造开源AI生态系统的人——不凭借权威或职位，而是凭借其对工作深度与品质的投入。庄子笔下的庖丁解牛，刀刃历久不钝，因为他循物之自然——修行者亦如此。</p>
-<p class="meta">按类型筛选：修行者。按最新排序。</p>
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">修行者</p>
+    <h2>以持续实践被追踪的人。</h2>
+    <p>修行者通过工作的深度、持续性与可检验性塑造开源 AI 生态系统。</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.zh_practitioners.length }}</strong><span>中文修行者</span></div>
+    <div class="stat"><strong>{{ collections.practitioners.length }}</strong><span>英文修行者</span></div>
+  </div>
+</section>
+
+{% set browserId = "practitioners-browser-zh" %}
+{% set browserType = "practitioner" %}
+{% include "currency-browser.njk" %}
+
 {% set items = collections.zh_practitioners %}
 {% include "currency-list.njk" %}

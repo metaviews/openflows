@@ -15,7 +15,16 @@
     },
     "entry": {
       "type_label": "Type",
+      "date": "Date",
+      "language": "Language",
+      "currency_id": "Currency ID",
+      "last_reviewed": "Last reviewed",
+      "translation": "Translation",
+      "translation_available": "Counterpart available",
+      "translation_missing": "No counterpart translation yet",
       "connections": "Connections",
+      "backlinks": "Linked from",
+      "references": "External references",
       "mediation_note": "Mediation note",
       "tooling": "Tooling",
       "use": "Use",
@@ -26,6 +35,23 @@
     "list": {
       "sorted": "Sorted newest first.",
       "no_entries": "No entries yet."
+    },
+    "browser": {
+      "title": "Browse the knowledge base",
+      "summary": "Search across titles, abstracts, ids, and relationships.",
+      "search": "Search",
+      "search_placeholder": "Search entries, ids, links, or themes...",
+      "type": "Type",
+      "all_types": "All types",
+      "language": "Language",
+      "all_languages": "All languages",
+      "english": "English",
+      "chinese": "Chinese",
+      "results": "results",
+      "no_results": "No matching entries.",
+      "missing_zh": "Chinese counterpart pending",
+      "missing_en": "English counterpart pending",
+      "open": "Open"
     },
     "type_labels": {
       "current": "Current",
@@ -47,7 +73,16 @@
     },
     "entry": {
       "type_label": "类型",
+      "date": "日期",
+      "language": "语言",
+      "currency_id": "流通 ID",
+      "last_reviewed": "最近审阅",
+      "translation": "对应译文",
+      "translation_available": "对应条目可用",
+      "translation_missing": "暂无对应译文",
       "connections": "关联",
+      "backlinks": "被这些条目引用",
+      "references": "外部参考",
       "mediation_note": "调解说明",
       "tooling": "工具",
       "use": "使用",
@@ -58,6 +93,23 @@
     "list": {
       "sorted": "按最新排序。",
       "no_entries": "暂无条目。"
+    },
+    "browser": {
+      "title": "浏览知识库",
+      "summary": "检索标题、摘要、ID 与关联关系。",
+      "search": "搜索",
+      "search_placeholder": "搜索条目、ID、关联或主题……",
+      "type": "类型",
+      "all_types": "全部类型",
+      "language": "语言",
+      "all_languages": "全部语言",
+      "english": "英文",
+      "chinese": "中文",
+      "results": "条结果",
+      "no_results": "没有匹配条目。",
+      "missing_zh": "中文对应条目待补",
+      "missing_en": "英文对应条目待补",
+      "open": "打开"
     },
     "type_labels": {
       "current": "流",

@@ -4,7 +4,21 @@ title: 回路
 lang: zh
 permalink: /zh/currency/circuits/
 ---
-<p>回路记录跨多条流稳定下来的模式——完成的循环，综合后的基础设施层。</p>
-<p class="meta">按类型筛选：回路。按最新排序。</p>
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">回路</p>
+    <h2>已经开始循环的模式。</h2>
+    <p>回路命名跨多条流稳定下来的路径，使其能够成为共享的基础设施或方法。</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.zh_circuits.length }}</strong><span>中文回路</span></div>
+    <div class="stat"><strong>{{ collections.circuits.length }}</strong><span>英文回路</span></div>
+  </div>
+</section>
+
+{% set browserId = "circuits-browser-zh" %}
+{% set browserType = "circuit" %}
+{% include "currency-browser.njk" %}
+
 {% set items = collections.zh_circuits %}
 {% include "currency-list.njk" %}
