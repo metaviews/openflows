@@ -1,0 +1,86 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": "github",
+      "module": "github",
+      "label": "GitHub repositories",
+      "enabled": true,
+      "notes": "Repository search across English and Chinese open source AI ecosystem topics.",
+      "config": {
+        "queries": [
+          "topic:llm is:public",
+          "topic:ai-agent is:public",
+          "topic:local-llm is:public",
+          "topic:open-source-ai is:public",
+          "topic:chinese-llm is:public",
+          "topic:qwen is:public",
+          "topic:chatglm is:public",
+          "topic:baichuan is:public"
+        ],
+        "minStars": 100,
+        "perPage": 10
+      }
+    },
+    {
+      "id": "huggingface",
+      "module": "huggingface",
+      "label": "Hugging Face models",
+      "enabled": true,
+      "notes": "Model hub scan for recent open model releases by task.",
+      "config": {
+        "tasks": [
+          "text-generation",
+          "text2text-generation",
+          "automatic-speech-recognition"
+        ],
+        "minLikes": 20,
+        "limit": 15
+      }
+    },
+    {
+      "id": "brave",
+      "module": "brave",
+      "label": "Brave web search",
+      "enabled": true,
+      "notes": "Web search queries for recent English and Chinese ecosystem signals.",
+      "config": {
+        "queries": [
+          "open source AI agent framework 2026",
+          "new open source language model release",
+          "开源 AI 大模型 2026",
+          "AI 智能体 开源框架 发布"
+        ],
+        "count": 5
+      }
+    },
+    {
+      "id": "twitter",
+      "module": "twitter",
+      "label": "X/Twitter keyword search",
+      "enabled": false,
+      "notes": "Existing Twitter source retained but disabled by default until social integration expands in Cycle 14.",
+      "config": {
+        "queries": [
+          "open source LLM release -is:retweet lang:en",
+          "new AI agent framework open source -is:retweet lang:en",
+          "开源 大模型 发布 -is:retweet lang:zh",
+          "AI 智能体 开源 -is:retweet lang:zh"
+        ],
+        "maxResults": 10,
+        "minLikes": 25
+      }
+    },
+    {
+      "id": "opensourceprojects",
+      "module": "opensourceprojects",
+      "label": "OpenSourceProjects RSS",
+      "enabled": true,
+      "notes": "Curated RSS feed of open source GitHub projects.",
+      "config": {
+        "limit": 20,
+        "minStars": 0
+      }
+    }
+  ]
+}

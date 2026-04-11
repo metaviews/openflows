@@ -70,6 +70,12 @@ function summarizeEvent(type, payload) {
   if (type === 'reject') return `rejected ${payload.id || 'draft'}`
   if (type === 'run_complete') return `${payload.type || 'run'} completed (${payload.status || 'unknown'})`
   if (type === 'prune_malformed_draft') return `pruned malformed draft ${payload.id || ''}`.trim()
+  if (type === 'source_create') return `created source ${payload.id || ''}`.trim()
+  if (type === 'source_update') return `updated source ${payload.id || ''}`.trim()
+  if (type === 'source_remove') return `removed source ${payload.id || ''}`.trim()
+  if (type === 'source_proposal_create') return `proposed source ${payload.id || ''}`.trim()
+  if (type === 'source_proposal_approve') return `approved source proposal ${payload.id || payload.proposalId || ''}`.trim()
+  if (type === 'source_proposal_reject') return `rejected source proposal ${payload.id || payload.proposalId || ''}`.trim()
   return type.replaceAll('_', ' ')
 }
 

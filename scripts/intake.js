@@ -10,6 +10,7 @@ const { readFileSync, writeFileSync, mkdirSync, existsSync } = require('fs');
 const { join } = require('path');
 const config = require('./intake.config');
 const { loadEnv, createClient, getArg } = require('./lib/openrouter');
+const { loadSourceRegistry, listEnabledSources, sourceConfigForModule } = require('./lib/source-registry');
 
 loadEnv();
 
@@ -18,8 +19,12 @@ const or = createClient({ title: 'Openflows Intake Agent' });
 // Parse args
 const args = process.argv.slice(2);
 
-const enabledSources = (getArg(args, 'sources') || 'github,huggingface').split(',');
+const requestedSources = getArg(args, 'sources')
+  ? getArg(args, 'sources').split(',').map(source => source.trim()).filter(Boolean)
+  : null;
 const limit = parseInt(getArg(args, 'limit') || '10', 10);
+const registry = loadSourceRegistry();
+const enabledSources = listEnabledSources(registry, requestedSources);
 
 const SCREEN_MODEL = config.screening.model || or.primaryModel;
 const SCREEN_THRESHOLD = config.screening.threshold ?? 3;
@@ -207,15 +212,16 @@ function writeDraft(markdown, signal, index) {
 }
 
 function getSourceToken(source) {
-  if (source === 'github') return GITHUB_TOKEN;
-  if (source === 'brave') return BRAVE_API_KEY;
-  if (source === 'twitter') return TWITTER_BEARER_TOKEN;
+  const moduleName = typeof source === 'string' ? source : source.module;
+  if (moduleName === 'github') return GITHUB_TOKEN;
+  if (moduleName === 'brave') return BRAVE_API_KEY;
+  if (moduleName === 'twitter') return TWITTER_BEARER_TOKEN;
   return undefined;
 }
 
 async function main() {
   console.log(`\nOpenflows Intake`);
-  console.log(`Sources: ${enabledSources.join(', ')} | Limit: ${limit}`);
+  console.log(`Sources: ${enabledSources.map(source => source.id).join(', ')} | Limit: ${limit}`);
   console.log(`Draft model: ${or.primaryModel} | Screen model: ${SCREEN_MODEL} (threshold: ${SCREEN_THRESHOLD}/5)`);
   console.log(`Knowledge base: ${manifest.count} entries (built ${manifest.generated.slice(0, 10)})\n`);
 
@@ -230,15 +236,41 @@ async function main() {
 
   // Collect signals
   let allSignals = [];
+  const sourceStats = [];
+  const sourceRuntime = new Map();
+  const sourceRuntimeByModule = new Map();
   for (const source of enabledSources) {
+    const startedAt = new Date().toISOString();
     try {
-      const mod = require(`./sources/${source}`);
-      process.stdout.write(`Fetching ${source}... `);
-      const signals = await mod.fetch(getSourceToken(source));
+      const mod = require(`./sources/${source.module}`);
+      const sourceConfig = sourceConfigForModule(source);
+      sourceRuntime.set(source.id, { source, mod, config: sourceConfig });
+      sourceRuntimeByModule.set(source.module, { source, mod, config: sourceConfig });
+      process.stdout.write(`Fetching ${source.id}... `);
+      const signals = await mod.fetch(getSourceToken(source), sourceConfig);
       console.log(`${signals.length} signals`);
+      sourceStats.push({
+        id: source.id,
+        module: source.module,
+        status: 'success',
+        fetched: signals.length,
+        drafted: 0,
+        startedAt,
+        completedAt: new Date().toISOString(),
+      });
       allSignals.push(...signals);
     } catch (err) {
       console.log(`failed: ${err.message}`);
+      sourceStats.push({
+        id: source.id,
+        module: source.module,
+        status: 'error',
+        fetched: 0,
+        drafted: 0,
+        error: err.message,
+        startedAt,
+        completedAt: new Date().toISOString(),
+      });
     }
   }
 
@@ -309,13 +341,16 @@ async function main() {
     process.stdout.write(`[${i + 1}/${candidates.length}] ${signal.title}${signal._deferred ? ' (deferred)' : ''} → `);
 
     try {
-      const mod = require(`./sources/${signal.source}`);
-      const enriched = await mod.enrich(signal, getSourceToken(signal.source));
+      const runtime = sourceRuntime.get(signal.source) || sourceRuntimeByModule.get(signal.source);
+      const mod = runtime?.mod || require(`./sources/${signal.source}`);
+      const enriched = await mod.enrich(signal, getSourceToken(runtime?.source || signal.source), runtime?.config);
       const markdown = await or.ask(buildDraftPrompt(enriched));
       const filename = writeDraft(markdown, signal, i);
 
       console.log(`drafts/${filename}`);
       drafted.push(filename);
+      const stat = sourceStats.find(item => item.id === signal.source);
+      if (stat) stat.drafted += 1;
 
       seenData.seen[signal.url] = {
         date: today,
@@ -356,6 +391,7 @@ async function main() {
   saveSeen(seenData);
 
   console.log(`\n${drafted.length} draft(s) written to drafts/`);
+  console.log(`INTAKE_SOURCE_STATS ${JSON.stringify(sourceStats)}`);
   if (drafted.length > 0) {
     console.log('Review each file, edit as needed, then move to src/currency/currents/');
   }

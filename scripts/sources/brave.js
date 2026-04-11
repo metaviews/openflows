@@ -1,6 +1,6 @@
 const { brave: config } = require('../intake.config');
 
-async function fetch(apiKey) {
+async function fetch(apiKey, sourceConfig = config) {
   if (!apiKey) {
     console.warn('  Brave: BRAVE_API_KEY not set, skipping.');
     return [];
@@ -8,9 +8,9 @@ async function fetch(apiKey) {
 
   const signals = [];
 
-  for (const query of config.queries) {
+  for (const query of sourceConfig.queries || []) {
     // freshness=pm = past month
-    const url = `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(query)}&count=${config.count}&freshness=pm`;
+    const url = `https://api.search.brave.com/res/v1/web/search?q=${encodeURIComponent(query)}&count=${sourceConfig.count}&freshness=pm`;
     const res = await globalThis.fetch(url, {
       headers: {
         'X-Subscription-Token': apiKey,
@@ -29,7 +29,7 @@ async function fetch(apiKey) {
         title: result.title,
         url: result.url,
         summary: result.description || '',
-        source: 'brave',
+        source: sourceConfig.sourceId || 'brave',
         date: result.page_age || new Date().toISOString(),
         meta: {},
       });

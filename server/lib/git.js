@@ -96,4 +96,16 @@ async function removeEntry({ relPath, id, lang }) {
   return { committed: true }
 }
 
-module.exports = { promoteEntry, commitPerspective, commitSeen, commitEdit, removeEntry }
+async function commitSourceRegistry({ id, action }) {
+  const git = makeGit()
+  await git.pull(['--rebase', '--autostash', 'origin', 'main'])
+  await git.add('scripts/intake-sources.json')
+  const diff = await git.diff(['--staged', '--name-only'])
+  if (!diff.trim()) return { committed: false }
+  const date = new Date().toISOString().slice(0, 10)
+  await git.commit(`sources: ${action} ${id} — ${date}`)
+  await git.push('origin', 'main')
+  return { committed: true }
+}
+
+module.exports = { promoteEntry, commitPerspective, commitSeen, commitEdit, removeEntry, commitSourceRegistry }

@@ -4,14 +4,26 @@ const { buildStatusData } = require('../routes/status')
 const { listDrafts, getDraft, upsertDraft, updateDraftContent, promoteDraft } = require('./drafts')
 const { readEntry, saveEntry } = require('./entries')
 const { queueTrigger } = require('./triggers')
+const {
+  listSources,
+  listSourceProposals,
+  proposeSource,
+  approveSourceProposal,
+  upsertSource,
+  removeSource,
+} = require('./sources')
 
-const READ_TOOL_NAMES = new Set(['get_status', 'get_queue', 'get_entry', 'get_draft'])
+const READ_TOOL_NAMES = new Set(['get_status', 'get_queue', 'get_entry', 'get_draft', 'get_sources', 'get_source_proposals'])
 const WRITE_TOOL_NAMES = new Set([
   'create_draft',
   'update_draft',
   'promote_draft',
   'save_entry',
   'trigger_translate',
+  'propose_source',
+  'approve_source',
+  'update_source',
+  'remove_source',
 ])
 
 const TOOL_DEFS = [
@@ -159,6 +171,102 @@ const TOOL_DEFS = [
       },
     },
   },
+  {
+    type: 'function',
+    function: {
+      name: 'get_sources',
+      description: 'List approved intake sources with enabled state and recent run stats.',
+      parameters: {
+        type: 'object',
+        properties: {},
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_source_proposals',
+      description: 'List Peng-discovered source proposals.',
+      parameters: {
+        type: 'object',
+        properties: {
+          status: { type: 'string', enum: ['pending', 'approved', 'rejected'] },
+          limit: { type: 'integer', minimum: 1, maximum: 100 },
+        },
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'propose_source',
+      description: 'Create an inactive source proposal for human review.',
+      parameters: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          module: { type: 'string', enum: ['github', 'huggingface', 'brave', 'twitter', 'opensourceprojects'] },
+          label: { type: 'string' },
+          reason: { type: 'string' },
+          config: { type: 'object' },
+        },
+        required: ['id', 'module', 'label', 'config'],
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'approve_source',
+      description: 'Approve a pending source proposal into the tracked registry as disabled.',
+      parameters: {
+        type: 'object',
+        properties: {
+          proposalId: { type: 'integer' },
+        },
+        required: ['proposalId'],
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'update_source',
+      description: 'Create or update an approved source in the tracked registry.',
+      parameters: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+          module: { type: 'string', enum: ['github', 'huggingface', 'brave', 'twitter', 'opensourceprojects'] },
+          label: { type: 'string' },
+          enabled: { type: 'boolean' },
+          notes: { type: 'string' },
+          config: { type: 'object' },
+        },
+        required: ['id', 'module', 'label', 'enabled', 'config'],
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'remove_source',
+      description: 'Remove an approved source from the tracked registry.',
+      parameters: {
+        type: 'object',
+        properties: {
+          id: { type: 'string' },
+        },
+        required: ['id'],
+        additionalProperties: false,
+      },
+    },
+  },
 ]
 
 async function executeToolCall(fastify, toolCall) {
@@ -180,6 +288,10 @@ async function executeToolCall(fastify, toolCall) {
     }
     case 'get_draft':
       return getDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en' })
+    case 'get_sources':
+      return { sources: listSources(fastify.db) }
+    case 'get_source_proposals':
+      return { proposals: listSourceProposals(fastify.db, args) }
     case 'create_draft':
       return upsertDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: args.content })
     case 'update_draft':
@@ -193,6 +305,14 @@ async function executeToolCall(fastify, toolCall) {
       if (args.force) triggerArgs.push('--force')
       return queueTrigger(fastify.db, 'translate', triggerArgs)
     }
+    case 'propose_source':
+      return proposeSource(fastify.db, { ...args, proposedBy: 'peng-tool' })
+    case 'approve_source':
+      return approveSourceProposal(fastify.db, args.proposalId)
+    case 'update_source':
+      return upsertSource(fastify.db, args)
+    case 'remove_source':
+      return removeSource(fastify.db, args.id)
     default: {
       const err = new Error(`Unknown tool: ${name}`)
       err.statusCode = 400
@@ -221,6 +341,7 @@ function summarizeToolCall(toolCall) {
   const summary = {
     name,
     id: args.currencyId || args.id || null,
+    proposalId: args.proposalId || null,
     lang: args.lang || null,
     type: args.type || null,
     status: args.status || null,
@@ -245,6 +366,7 @@ function logConfirmedToolCall(db, { toolCall, result, error }) {
       ? {
           ok: result.ok !== false,
           id: result.id || result.draft?.id || null,
+          proposalId: result.proposalId || result.proposal?.id || null,
           lang: result.lang || result.draft?.lang || null,
           path: result.path || null,
           runId: result.runId || null,

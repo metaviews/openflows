@@ -1,0 +1,120 @@
+{% extends "base.njk" %}
+
+{% block title %}Sources{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <div class="page-title">Intake Sources</div>
+      <div class="muted">Approved sources are stored in scripts/intake-sources.json. Proposals stay inactive until approved.</div>
+    </div>
+    <div class="edit-actions">
+      <a class="btn" href="/sources/new">Add Source</a>
+      <button id="trigger-discover-sources" class="btn btn-primary" onclick="discoverSources()">Discover Sources</button>
+    </div>
+  </div>
+
+  <section class="panel" style="margin-bottom:1rem">
+    <div class="panel-header">
+      <span class="panel-title">Approved Registry</span>
+    </div>
+    <div class="panel-body-flush">
+      <table class="entries-table sources-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Module</th>
+            <th>Enabled</th>
+            <th>Scope</th>
+            <th>Last Run</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for source in sources %}
+            <tr>
+              <td>
+                <strong>{{ source.id }}</strong><br>
+                <span class="muted">{{ source.label }}</span>
+              </td>
+              <td><span class="badge badge-unknown">{{ source.module }}</span></td>
+              <td>
+                {% if source.enabled %}
+                  <span class="badge badge-success">enabled</span>
+                {% else %}
+                  <span class="badge badge-canceled">disabled</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if source.queryCount %}{{ source.queryCount }} queries{% endif %}
+                {% if source.taskCount %}{{ source.taskCount }} tasks{% endif %}
+                {% if not source.queryCount and not source.taskCount %}configured{% endif %}
+                {% if source.pendingProposals %}<span class="badge badge-pending">{{ source.pendingProposals }} proposal</span>{% endif %}
+              </td>
+              <td>
+                {% if source.stats %}
+                  <span class="badge badge-{{ source.stats.status }}">{{ source.stats.status }}</span>
+                  <span class="muted">{{ source.stats.fetched }} fetched / {{ source.stats.drafted }} drafted</span><br>
+                  <span class="muted">{{ source.stats.completed_at or source.stats.updated_at }}</span>
+                {% else %}
+                  <span class="muted">No run yet</span>
+                {% endif %}
+              </td>
+              <td class="actions-cell">
+                <a class="btn btn-sm" href="/sources/{{ source.id }}/edit">Edit</a>
+                <button class="btn btn-sm" onclick="toggleSource('{{ source.id }}', {{ 'false' if source.enabled else 'true' }})">{{ 'Disable' if source.enabled else 'Enable' }}</button>
+                <button class="btn btn-sm btn-danger" onclick="removeSource('{{ source.id }}')">Remove</button>
+              </td>
+            </tr>
+          {% else %}
+            <tr><td colspan="6" class="empty-state">No approved sources.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Peng Source Proposals</span>
+    </div>
+    <div class="panel-body-flush">
+      <table class="entries-table sources-table">
+        <thead>
+          <tr>
+            <th>Proposal</th>
+            <th>Module</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for proposal in proposals %}
+            <tr>
+              <td>
+                <strong>{{ proposal.source_id }}</strong><br>
+                <span class="muted">{{ proposal.label }}</span>
+              </td>
+              <td><span class="badge badge-unknown">{{ proposal.module }}</span></td>
+              <td class="title-cell">{{ proposal.reason or 'No reason recorded.' }}</td>
+              <td><span class="badge badge-{{ proposal.status }}">{{ proposal.status }}</span></td>
+              <td class="actions-cell">
+                {% if proposal.status == 'pending' %}
+                  <button class="btn btn-sm btn-promote" onclick="approveProposal({{ proposal.id }}, '{{ proposal.source_id }}')">Approve</button>
+                  <button class="btn btn-sm btn-reject" onclick="rejectProposal({{ proposal.id }}, '{{ proposal.source_id }}')">Reject</button>
+                {% else %}
+                  <span class="muted">{{ proposal.updated_at }}</span>
+                {% endif %}
+              </td>
+            </tr>
+          {% else %}
+            <tr><td colspan="5" class="empty-state">No pending source proposals.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+{% endblock %}

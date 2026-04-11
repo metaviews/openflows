@@ -2,7 +2,7 @@ const { opensourceprojects: config } = require('../intake.config');
 
 const FEED_URL = 'https://opensourceprojects.dev/rss';
 
-async function fetch() {
+async function fetch(_token, sourceConfig = config) {
   const res = await globalThis.fetch(FEED_URL, {
     headers: { 'Accept': 'application/rss+xml, application/xml, text/xml' },
   });
@@ -16,13 +16,13 @@ async function fetch() {
 
   return items
     .filter(item => item.title && item.url)
-    .filter(item => !config.minStars || (item.stars || 0) >= config.minStars)
-    .slice(0, config.limit)
+    .filter(item => !sourceConfig.minStars || (item.stars || 0) >= sourceConfig.minStars)
+    .slice(0, sourceConfig.limit)
     .map(item => ({
       title: item.title,
       url: item.url,
       summary: item.description || '',
-      source: 'opensourceprojects',
+      source: sourceConfig.sourceId || 'opensourceprojects',
       date: item.pubDate || new Date().toISOString(),
       meta: { stars: item.stars },
     }));

@@ -41,7 +41,8 @@ RSS and JSON feeds are also available at `/currency/feed.xml` and `/currency/fee
 
 | Script | Purpose |
 |---|---|
-| `node scripts/intake.js` | Fetch signals from GitHub, HuggingFace, Brave; screen and draft new Currents |
+| `node scripts/intake.js` | Fetch signals from enabled `scripts/intake-sources.json` sources; screen and draft new Currents |
+| `node scripts/discover-sources.js` | Ask Peng to propose inactive intake sources for dashboard review |
 | `node scripts/synthesize.js` | Draft a new Circuit from existing Currents |
 | `node scripts/translate.js` | Produce Chinese drafts of entries for review |
 | `node scripts/query.js "..."` | Query the knowledge base via OpenRouter |
@@ -61,9 +62,18 @@ Automated workflows run via `server/cron.js` on the self-hosted server:
 
 ## Dashboard
 
-Peng's admin dashboard runs at `https://admin.openflows.org`, gated behind Cloudflare Access. It provides queue management, run history, trigger controls, and an epistemic window for querying Peng directly.
+Peng's admin dashboard runs at `https://admin.openflows.org`, gated behind Cloudflare Access. It provides queue management, run history, trigger controls, source management, and an epistemic window for querying Peng directly.
 
 The server runs on self-hosted hardware (Debian Trixie), exposed via Cloudflare Tunnel, managed by PM2. See `server/` for the Fastify application.
+
+## Roadmap
+
+The current development sequence after the public UX pass is:
+
+- **Cycle 13: Sources** — implemented: manage tracked intake sources directly from the dashboard and let Peng propose inactive sources for human approval.
+- **Cycle 14: Social media integration** — add governed intake from Bluesky, Mastodon, and X/Twitter.
+- **Cycle 15: Public conversation interface** — expose read-only knowledge-base querying on the public site.
+- **Cycle 16: MCP layer** — expose Peng's tools and knowledge manifest through Model Context Protocol.
 
 ## Stack
 

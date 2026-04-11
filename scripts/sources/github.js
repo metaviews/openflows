@@ -1,13 +1,13 @@
 const { github: config } = require('../intake.config');
 
-async function fetch(token) {
+async function fetch(token, sourceConfig = config) {
   const headers = { 'Accept': 'application/vnd.github.v3+json' };
   if (token) headers['Authorization'] = `token ${token}`;
 
   const signals = [];
 
-  for (const query of config.queries) {
-    const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=updated&order=desc&per_page=${config.perPage}`;
+  for (const query of sourceConfig.queries || []) {
+    const url = `https://api.github.com/search/repositories?q=${encodeURIComponent(query)}&sort=updated&order=desc&per_page=${sourceConfig.perPage}`;
     const res = await globalThis.fetch(url, { headers });
     if (!res.ok) {
       console.warn(`  GitHub: query "${query}" failed (${res.status})`);
@@ -16,12 +16,12 @@ async function fetch(token) {
     const data = await res.json();
 
     for (const repo of data.items || []) {
-      if (repo.stargazers_count < config.minStars) continue;
+      if (repo.stargazers_count < (sourceConfig.minStars || 0)) continue;
       signals.push({
         title: repo.name,
         url: repo.html_url,
         summary: [repo.description, repo.topics?.join(', ')].filter(Boolean).join(' | '),
-        source: 'github',
+        source: sourceConfig.sourceId || 'github',
         date: repo.updated_at,
         meta: {
           fullName: repo.full_name,

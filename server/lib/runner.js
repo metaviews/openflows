@@ -4,6 +4,7 @@ const { spawn } = require('child_process')
 const path = require('path')
 const fs = require('fs')
 const { parseFrontmatter } = require('./parse')
+const { updateSourceStats } = require('./sources')
 
 const ROOT = path.join(__dirname, '..', '..')
 const DRAFTS_ROOT = path.join(ROOT, 'drafts')
@@ -117,6 +118,7 @@ function runScript(db, type, args = [], preRunId = null) {
       const completedAt = new Date().toISOString()
       const status = code === 0 ? 'success' : 'error'
       const newDrafts = importDraftFiles(db, runId)
+      importSourceStats(db, log)
 
       db.prepare(
         `UPDATE runs SET completed_at = ?, status = ?, log = ?, summary = ? WHERE id = ?`
@@ -132,6 +134,17 @@ function runScript(db, type, args = [], preRunId = null) {
       resolve({ runId, status, newDrafts, log })
     })
   })
+}
+
+function importSourceStats(db, log) {
+  for (const line of String(log || '').split(/\r?\n/)) {
+    if (!line.startsWith('INTAKE_SOURCE_STATS ')) continue
+    try {
+      updateSourceStats(db, JSON.parse(line.slice('INTAKE_SOURCE_STATS '.length)))
+    } catch (err) {
+      console.warn(`[runner] source stats import failed: ${err.message}`)
+    }
+  }
 }
 
 // Scan draft directories and upsert any .md files into the drafts table.

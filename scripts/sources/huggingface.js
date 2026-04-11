@@ -1,10 +1,10 @@
 const { huggingface: config } = require('../intake.config');
 
-async function fetch() {
+async function fetch(_token, sourceConfig = config) {
   const signals = [];
 
-  for (const task of config.tasks) {
-    const url = `https://huggingface.co/api/models?sort=lastModified&direction=-1&limit=${config.limit}&filter=${task}`;
+  for (const task of sourceConfig.tasks || []) {
+    const url = `https://huggingface.co/api/models?sort=lastModified&direction=-1&limit=${sourceConfig.limit}&filter=${task}`;
     const res = await globalThis.fetch(url);
     if (!res.ok) {
       console.warn(`  HuggingFace: task "${task}" failed (${res.status})`);
@@ -13,12 +13,12 @@ async function fetch() {
     const models = await res.json();
 
     for (const model of models) {
-      if ((model.likes || 0) < config.minLikes) continue;
+      if ((model.likes || 0) < (sourceConfig.minLikes || 0)) continue;
       signals.push({
         title: model.modelId,
         url: `https://huggingface.co/${model.modelId}`,
         summary: `${task} model | likes: ${model.likes} | downloads: ${model.downloads || 0}`,
-        source: 'huggingface',
+        source: sourceConfig.sourceId || 'huggingface',
         date: model.lastModified,
         meta: {
           likes: model.likes,

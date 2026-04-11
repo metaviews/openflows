@@ -5,7 +5,7 @@ const { ensureManifest } = require('./manifest')
 const { commitPerspective, commitSeen } = require('./git')
 
 const activeRuns = new Set()
-const ALLOWED = ['intake', 'perspective', 'synthesize', 'digest', 'translate', 'audit', 'enrich', 'refresh']
+const ALLOWED = ['intake', 'perspective', 'synthesize', 'digest', 'translate', 'audit', 'enrich', 'refresh', 'discover-sources']
 const COMPOUND = ['intake', 'perspective']
 
 function isTriggerActive(type) {
@@ -38,7 +38,7 @@ async function queueTrigger(db, type, args = []) {
   setImmediate(async () => {
     try {
       if (type === 'intake') {
-        const intakeArgs = args.length ? args : ['--sources', 'github,huggingface,brave,opensourceprojects', '--limit', '10']
+        const intakeArgs = args.length ? args : ['--limit', '10']
         await ensureManifest()
         await runScript(db, 'intake', intakeArgs)
         await runScript(db, 'practitioners', ['--limit', '3'])

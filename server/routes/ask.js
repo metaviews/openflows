@@ -31,6 +31,7 @@ When making content changes:
 - Preserve required schema in currency frontmatter.
 - For new entries, create a draft first unless the operator clearly asks you to publish immediately.
 - For translations, use the translation trigger rather than writing ad hoc Chinese text unless the operator explicitly wants a manual replacement.
+- For source discovery, create source proposals only; do not activate discovered sources without operator approval.
 - Read tools may run immediately. Write or run tools require operator confirmation; if confirmation is required, briefly explain the proposed action and wait for the dashboard confirmation flow.`
 
 async function askRoutes(fastify) {
@@ -280,6 +281,7 @@ function safeToolResult(result) {
   const safe = {
     ok: result.ok !== false,
     id: result.id || result.draft?.id || result.entry?.currencyId || null,
+    proposalId: result.proposalId || result.proposal?.id || null,
     lang: result.lang || result.draft?.lang || result.entry?.lang || null,
     type: result.type || result.draft?.type || result.entry?.currencyType || null,
     status: result.status || result.draft?.status || null,

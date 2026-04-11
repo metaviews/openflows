@@ -66,6 +66,33 @@ function initDb() {
       created_at TEXT NOT NULL,
       updated_at TEXT
     );
+
+    CREATE TABLE IF NOT EXISTS source_proposals (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      source_id TEXT NOT NULL,
+      module TEXT NOT NULL,
+      label TEXT NOT NULL,
+      config TEXT NOT NULL DEFAULT '{}',
+      reason TEXT,
+      status TEXT NOT NULL DEFAULT 'pending',
+      proposed_by TEXT,
+      created_at TEXT NOT NULL,
+      updated_at TEXT
+    );
+
+    CREATE INDEX IF NOT EXISTS source_proposals_status ON source_proposals(status);
+
+    CREATE TABLE IF NOT EXISTS source_run_stats (
+      source_id TEXT PRIMARY KEY,
+      module TEXT,
+      status TEXT,
+      fetched INTEGER DEFAULT 0,
+      drafted INTEGER DEFAULT 0,
+      error TEXT,
+      started_at TEXT,
+      completed_at TEXT,
+      updated_at TEXT
+    );
   `)
 
   migrateDrafts(db)

@@ -364,7 +364,7 @@ Before adding external protocol surfaces, improve the admin interface so Peng's 
 - **Implemented**: added Action Timeline and Recent Conversations panels; queue filtering by status/lang/type with draft preview; validation endpoints for entries and drafts; side-by-side editor preview/validation; dashboard confirmation modal for save/promote/delete/reject; code-copy buttons, clickable `currencyId`s, and tool-use summaries in Peng chat.
 
 #### Cycle 12B: Public Site UX and Knowledge Navigation
-**Status**: not started
+**Status**: complete (2026-04-11)
 
 Upgrade the public-facing static site so the knowledge base is easier to browse, trust, and understand before adding a public conversation interface. This cycle should preserve the site as the durable record while improving its readability and navigability for visitors.
 
@@ -373,8 +373,32 @@ Upgrade the public-facing static site so the knowledge base is easier to browse,
 - **Bilingual UX**: improve language switching and translation parity cues; make missing or stale translations visible without treating either language as secondary.
 - **Reading experience**: refine entry typography, metadata hierarchy, and mobile layouts; improve code/link/list rendering and long-title wrapping.
 - **Public trust cues**: surface mediation notes, last-reviewed dates, source links, and uncertainty signals in a way that is visible but not visually heavy.
+- **Implemented**: refreshed the public visual system; added `/currency/search-index.json`; added vanilla JS knowledge browsing across title, abstract, id, type, language, and links; improved entry metadata, backlinks, external references, and mediation rendering; redesigned English and Chinese home/currency/type pages; removed visitor-facing translation parity warnings; renamed the homepage section to Latest Entries with a stable newest-entry list.
 
-#### Cycle 13: Public — Open Conversation Interface
+#### Cycle 13: Sources — Intake Source Management
+**Status**: complete (2026-04-11)
+
+Peng's intake should become easier to steer without editing code. Sources should be visible, editable, and reviewable from the admin interface, while Peng gains a governed path for proposing new sources as the ecosystem shifts.
+
+- **Source registry**: store intake sources and source configuration in a managed registry rather than only in static script configuration; preserve git as the durable record when source definitions change.
+- **Admin source management**: add dashboard views and actions to list, add, edit, disable, and remove sources used by intake; show source type, query/config fields, last run, recent yield, and error state.
+- **Peng source discovery**: allow Peng to propose new sources from observed signals, operator prompts, or failed coverage areas; proposed sources require human approval before active intake use.
+- **Auditability**: record source changes, approvals, removals, and Peng-proposed source candidates in the Action Timeline.
+- **Safety boundary**: source discovery should collect public, appropriate signals only; do not add sources that require evasion, scraping around access controls, or collection of sensitive personal data.
+- **Implemented**: added tracked `scripts/intake-sources.json`, shared registry validation, registry-backed intake defaults, source run stats, `/sources` admin management, proposal approval/rejection, `discover-sources` trigger, and Peng tools for source reads/proposals/registry edits with confirmation gates.
+
+#### Cycle 14: Social Media Integration
+**Status**: not started
+
+Peng should track social signals as first-class intake surfaces, beginning with Bluesky, Mastodon, and X/Twitter. Social intake must be governance-oriented, transparent, and bounded by platform rules and public visibility.
+
+- **Initial platforms**: add source modules and admin configuration for Bluesky, Mastodon, and X/Twitter, with per-platform enable/disable controls.
+- **Signal capture**: support account, keyword, list, hashtag, and URL-based monitoring where platform APIs and terms allow; retain source URL, author handle, timestamp, and excerpted context.
+- **Deduplication and enrichment**: dedupe social signals against existing entries and drafts; enrich with linked primary sources when available rather than treating social posts as sufficient evidence.
+- **Review workflow**: social signals draft into the same human-reviewed queue as other intake outputs; high-uncertainty or thin social-only signals should be marked clearly.
+- **Risk controls**: avoid private data, harassment amplification, and overconfident claims from social chatter; prefer social media as discovery and context, not as authority.
+
+#### Cycle 15: Public — Open Conversation Interface
 **Status**: not started
 
 The conversation interface goes public. Visitors can query the knowledge base directly from the site.
@@ -384,7 +408,7 @@ The conversation interface goes public. Visitors can query the knowledge base di
 - **Scoped tools**: public interface exposes read-only manifest queries only; no queue or admin tools
 - **Context strategy**: compact mode (abstracts only) for cost efficiency; full body mode for deep queries on demand
 
-#### Cycle 14: MCP Layer
+#### Cycle 16: MCP Layer
 **Status**: deferred from Cycle 12; not started
 
 Expose Peng's tools as a Model Context Protocol endpoint after the admin and public UX passes make the system's action model and knowledge navigation more legible. The dashboard can then become the first MCP client; external agents and editors can also connect.

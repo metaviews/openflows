@@ -1,0 +1,50 @@
+{% extends "base.njk" %}
+
+{% block title %}{{ 'New Source' if mode == 'new' else source.id }}{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <div class="page-title">{{ 'New Source' if mode == 'new' else 'Edit Source: ' + source.id }}</div>
+      <div class="muted">Saving updates the tracked intake source registry and commits the change.</div>
+    </div>
+    <a class="btn" href="/sources">Back to Sources</a>
+  </div>
+
+  <div class="editor-grid">
+    <section class="panel">
+      <div class="panel-header"><span class="panel-title">Definition</span></div>
+      <div class="panel-body">
+        <div class="source-form">
+          <label>ID <input id="source-id" value="{{ source.id }}" {% if mode != 'new' %}readonly{% endif %}></label>
+          <label>Label <input id="source-label" value="{{ source.label }}"></label>
+          <label>Module
+            <select id="source-module">
+              {% for module in modules %}
+                <option value="{{ module }}" {% if module == source.module %}selected{% endif %}>{{ module }}</option>
+              {% endfor %}
+            </select>
+          </label>
+          <label><input id="source-enabled" type="checkbox" {% if source.enabled %}checked{% endif %}> Enabled</label>
+          <label>Notes <textarea id="source-notes" rows="3">{{ source.notes }}</textarea></label>
+          <label>Config JSON <textarea id="source-config" rows="18">{{ sourceConfigJson }}</textarea></label>
+        </div>
+        <div class="edit-actions" style="margin-top:1rem">
+          <button class="btn btn-primary" onclick="confirmSaveSource()">Save and Commit</button>
+          <button class="btn" onclick="validateSourceForm()">Validate</button>
+        </div>
+      </div>
+    </section>
+
+    <aside class="editor-side">
+      <div class="panel">
+        <div class="panel-header"><span class="panel-title">Validation</span></div>
+        <div class="panel-body" id="source-validation">
+          <div class="empty-state">Validation will appear here.</div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+{% endblock %}

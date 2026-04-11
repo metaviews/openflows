@@ -2,7 +2,7 @@
 // Get your Bearer token from: https://developer.twitter.com/en/portal/dashboard
 const { twitter: config } = require('../intake.config');
 
-async function fetch(bearerToken) {
+async function fetch(bearerToken, sourceConfig = config) {
   if (!bearerToken) {
     console.warn('  Twitter: TWITTER_BEARER_TOKEN not set, skipping.');
     return [];
@@ -11,10 +11,10 @@ async function fetch(bearerToken) {
   const headers = { 'Authorization': `Bearer ${bearerToken}` };
   const signals = [];
 
-  for (const query of config.queries) {
+  for (const query of sourceConfig.queries || []) {
     const params = new URLSearchParams({
       query,
-      max_results: String(config.maxResults),
+      max_results: String(sourceConfig.maxResults),
       'tweet.fields': 'created_at,public_metrics,author_id',
       expansions: 'author_id',
       'user.fields': 'username',
@@ -39,14 +39,14 @@ async function fetch(bearerToken) {
 
     for (const tweet of data.data || []) {
       const metrics = tweet.public_metrics || {};
-      if ((metrics.like_count || 0) < config.minLikes) continue;
+      if ((metrics.like_count || 0) < (sourceConfig.minLikes || 0)) continue;
 
       const handle = userMap[tweet.author_id] || 'unknown';
       signals.push({
         title: `@${handle}: ${tweet.text.slice(0, 80)}`,
         url: `https://x.com/${handle}/status/${tweet.id}`,
         summary: tweet.text,
-        source: 'twitter',
+        source: sourceConfig.sourceId || 'twitter',
         date: tweet.created_at,
         meta: { handle, likes: metrics.like_count, retweets: metrics.retweet_count },
       });
