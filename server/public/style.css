@@ -75,6 +75,35 @@ nav a:hover { color: var(--text); }
 .col-right { grid-column: 2; display: flex; flex-direction: column; gap: 1.25rem; }
 .col-full  { grid-column: 1 / -1; }
 
+.ops-grid {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(260px, 0.8fr) minmax(420px, 1.4fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.ops-status,
+.ops-triggers,
+.ops-log,
+.workbench-main,
+.workbench-ops {
+  min-width: 0;
+}
+
+.workbench-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.8fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.workbench-main,
+.workbench-ops {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
 /* ── Panels ────────────────────────────────────────────────────── */
 
 .panel {
@@ -252,9 +281,10 @@ nav a:hover { color: var(--text); }
 /* ── Live log panel ────────────────────────────────────────────── */
 
 #live-log {
-  display: none;
+  display: flex;
   flex-direction: column;
-  height: 260px;
+  height: 100%;
+  min-height: 260px;
   background: #1e1e1e;
   color: #d4d4d4;
   border: 1px solid var(--border);
@@ -303,6 +333,11 @@ nav a:hover { color: var(--text); }
   white-space: pre-wrap;
   word-break: break-all;
   line-height: 1.5;
+}
+
+#live-log-output:empty::before {
+  content: 'Run logs will appear here when a trigger or activity row is opened.';
+  color: #888;
 }
 
 /* ── Epistemic panel ───────────────────────────────────────────── */
@@ -552,6 +587,8 @@ nav a:hover { color: var(--text); }
   .layout { grid-template-columns: 1fr; }
   .col-left,
   .col-right { grid-column: 1; }
+  .ops-grid,
+  .workbench-grid { grid-template-columns: 1fr; }
   .editor-grid { grid-template-columns: 1fr; }
   .editor-side { position: static; }
 }
