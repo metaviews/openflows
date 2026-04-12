@@ -58,7 +58,7 @@
       "id": "twitter",
       "module": "twitter",
       "label": "X/Twitter via XActions",
-      "enabled": false,
+      "enabled": true,
       "notes": "X/Twitter intake through XActions read-only scraper paths. Disabled by default; comply with X terms and local session policy before enabling.",
       "config": {
         "queries": [
