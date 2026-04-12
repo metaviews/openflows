@@ -1,21 +1,27 @@
 ---
 layout: layouts/currency-item.njk
-title: "Andrej Karpathy"
-date: 2026-03-07
-currencyType: "practitioner"
+title: Andrej Karpathy
+date: 2026-03-07T00:00:00.000Z
+currencyType: practitioner
 currencyId: andrej-karpathy
-abstract: "Andrej Karpathy models open, minimal, and independently reproducible AI research and education as an operating practice."
+abstract: Andrej Karpathy models open, minimal, and independently reproducible AI research and education as an operating practice.
 tags:
   - currency
 permalink: /currency/practitioners/andrej-karpathy/
 links:
   - id: autoresearch-karpathy
-    relation: "direct operator behind the autonomous overnight research loop represented by"
+    relation: direct operator behind the autonomous overnight research loop represented by
   - id: local-inference-baseline
-    relation: "educational practice strengthens practitioner foundation for local model operation represented by"
+    relation: educational practice strengthens practitioner foundation for local model operation represented by
   - id: autonomous-research-accountability
-    relation: "is the primary operator anchor for the research constraint design practice represented by"
-lastReviewed: 2026-03-15
+    relation: is the primary operator anchor for the research constraint design practice represented by
+lastReviewed: 2026-04-03T00:00:00.000Z
+socialProfiles:
+  - platform: twitter
+    handle: karpathy
+    url: https://x.com/karpathy
+    monitor: true
+    verifiedBy: human
 ---
 
 ### Signal
