@@ -77,7 +77,7 @@
       "id": "bluesky",
       "module": "bluesky",
       "label": "Bluesky social posts",
-      "enabled": false,
+      "enabled": true,
       "notes": "Public Bluesky AppView search and actor-feed intake. Disabled by default until operator review.",
       "config": {
         "service": "https://public.api.bsky.app",
