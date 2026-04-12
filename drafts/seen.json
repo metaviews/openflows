@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-11T15:58:55.115Z",
+  "lastUpdated": "2026-04-12T06:14:17.583Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3110,6 +3110,42 @@
       "title": "The definitive open-source engine for compounding AI agent skills",
       "source": "opensourceprojects",
       "file": "multica.md"
+    },
+    "https://www.bilibili.com/video/BV1uQSZBqEzB/": {
+      "date": "2026-04-12",
+      "decision": "skipped",
+      "title": "手机能跑+强到离谱？！Google 开源 Gemma 4，真得这么好吗？_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Clickbait title violates 'avoid hype' policy; video format lacks technical inspectability; model version claims (Gemma 4) appear unverified."
+    },
+    "https://github.com/PaddlePaddle/FastDeploy": {
+      "date": "2026-04-12",
+      "decision": "drafted",
+      "title": "FastDeploy",
+      "source": "github",
+      "file": "fastdeploy.md"
+    },
+    "https://github.com/MemPalace/mempalace": {
+      "date": "2026-04-12",
+      "decision": "drafted",
+      "title": "mempalace",
+      "source": "github",
+      "file": "mempalace.md"
+    },
+    "https://github.com/AstrBotDevs/AstrBot": {
+      "date": "2026-04-12",
+      "decision": "drafted",
+      "title": "AstrBot",
+      "source": "github",
+      "file": "astrbot.md"
+    },
+    "https://huggingface.co/unsloth/MiniMax-M2.7-GGUF": {
+      "date": "2026-04-12",
+      "decision": "drafted",
+      "title": "unsloth/MiniMax-M2.7-GGUF",
+      "source": "huggingface",
+      "file": "minimax-m2-7-gguf-unsloth.md"
     }
   }
 }
