@@ -117,7 +117,7 @@
       "id": "practitioner-social",
       "module": "practitioner-social",
       "label": "Practitioner social profiles",
-      "enabled": false,
+      "enabled": true,
       "notes": "Tracks verified socialProfiles declared on practitioner entries. Disabled by default until handles are reviewed.",
       "config": {
         "platforms": [
