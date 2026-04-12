@@ -1,17 +1,23 @@
 ---
 layout: layouts/currency-item.njk
-title: "Moxie Marlinspike"
-date: 2026-02-18
-currencyType: "practitioner"
+title: Moxie Marlinspike
+date: 2026-02-18T00:00:00.000Z
+currencyType: practitioner
 currencyId: moxie-marlinspike
-abstract: "Moxie Marlinspike exemplifies security-first communication design, turning strong cryptography into usable public infrastructure."
+abstract: Moxie Marlinspike exemplifies security-first communication design, turning strong cryptography into usable public infrastructure.
 tags:
   - currency
 permalink: /currency/practitioners/moxie-marlinspike/
 links:
   - id: confer-to
-    relation: "grounds anonymous AI interaction in security-first communication design and trust boundaries"
-lastReviewed: 2026-03-15
+    relation: grounds anonymous AI interaction in security-first communication design and trust boundaries
+lastReviewed: 2026-04-03T00:00:00.000Z
+socialProfiles:
+  - platform: twitter
+    handle: moxie
+    url: https://x.com/moxie
+    monitor: true
+    verifiedBy: human
 ---
 
 ### Signal
