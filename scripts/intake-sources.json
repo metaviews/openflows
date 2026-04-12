@@ -94,7 +94,7 @@
       "id": "mastodon",
       "module": "mastodon",
       "label": "Mastodon social posts",
-      "enabled": false,
+      "enabled": true,
       "notes": "Public Mastodon search and account-status intake across configured instances. Disabled by default until operator review.",
       "config": {
         "instances": [
