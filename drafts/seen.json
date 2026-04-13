@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-12T06:14:17.583Z",
+  "lastUpdated": "2026-04-13T06:02:57.786Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3146,6 +3146,27 @@
       "title": "unsloth/MiniMax-M2.7-GGUF",
       "source": "huggingface",
       "file": "minimax-m2-7-gguf-unsloth.md"
+    },
+    "https://opensourceprojects.dev/post/67d52a08-203a-4166-a90e-cc6dea5ea422": {
+      "date": "2026-04-13",
+      "decision": "drafted",
+      "title": "The highest-scoring memory system ever benchmarked for large language models",
+      "source": "opensourceprojects",
+      "file": "mempalace.md"
+    },
+    "https://huggingface.co/miromind-ai/MiroThinker-1.7": {
+      "date": "2026-04-13",
+      "decision": "drafted",
+      "title": "miromind-ai/MiroThinker-1.7",
+      "source": "huggingface",
+      "file": "miromind-mirothinker-1-7.md"
+    },
+    "https://huggingface.co/miromind-ai/MiroThinker-1.7-mini": {
+      "date": "2026-04-13",
+      "decision": "drafted",
+      "title": "miromind-ai/MiroThinker-1.7-mini",
+      "source": "huggingface",
+      "file": "miromind-mirothinker-1-7-mini.md"
     }
   }
 }
