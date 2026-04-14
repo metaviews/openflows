@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-13T06:02:57.786Z",
+  "lastUpdated": "2026-04-14T06:31:41.739Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3167,6 +3167,77 @@
       "title": "miromind-ai/MiroThinker-1.7-mini",
       "source": "huggingface",
       "file": "miromind-mirothinker-1-7-mini.md"
+    },
+    "https://opensourceprojects.dev/post/43e0f07a-0070-4dc9-a3b2-e91f94020a69": {
+      "date": "2026-04-14",
+      "decision": "skipped",
+      "title": "The open-source foundation model for financial market language analysis",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source but lacks technical specifics; 'foundation model' claim appears inflated for a personal repo, offering limited value to ecosystem documentation."
+    },
+    "https://github.com/gptme/gptme": {
+      "date": "2026-04-14",
+      "decision": "drafted",
+      "title": "gptme",
+      "source": "github",
+      "file": "gptme.md"
+    },
+    "https://github.com/tenstorrent/tt-metal": {
+      "date": "2026-04-14",
+      "decision": "drafted",
+      "title": "tt-metal",
+      "source": "github",
+      "file": "tt-metal.md"
+    },
+    "https://github.com/holaboss-ai/holaOS": {
+      "date": "2026-04-14",
+      "decision": "drafted",
+      "title": "holaOS",
+      "source": "github",
+      "file": "holaos.md"
+    },
+    "https://github.com/dineshsoudagar/local-llms-on-android": {
+      "date": "2026-04-14",
+      "decision": "drafted",
+      "title": "local-llms-on-android",
+      "source": "github",
+      "file": "local-llms-on-android.md"
+    },
+    "https://opensourceprojects.dev/post/7192f36e-1fa8-4640-a282-99a45317dec7": {
+      "date": "2026-04-14",
+      "decision": "drafted",
+      "title": "Turn your terminal into an AI pair programmer for any language.",
+      "source": "opensourceprojects",
+      "file": "aider.md"
+    },
+    "https://finance.sina.com.cn/tech/digi/2026-04-13/doc-inhufuxw6413787.shtml": {
+      "date": "2026-04-14",
+      "decision": "drafted",
+      "title": "智元机器人 4 月 17 日举办 2026 合作伙伴大会，将发 4 款本体新品及 4 个 AI 大模型|机器人|AI_新浪科技_新浪网",
+      "source": "brave",
+      "file": "agibot-2026-partner-conference-embodied-release.md"
+    },
+    "https://www.bilibili.com/video/BV1umQwBSEA4/": {
+      "date": "2026-04-14",
+      "decision": "drafted",
+      "title": "AI 大模型周报 2026年4月 b（附链接）_哔哩哔哩_bilibili",
+      "source": "brave",
+      "file": "hermes-agent-v0-8-0-release.md"
+    },
+    "https://huggingface.co/nvidia/audio-flamingo-3-hf": {
+      "date": "2026-04-14",
+      "decision": "drafted",
+      "title": "nvidia/audio-flamingo-3-hf",
+      "source": "huggingface",
+      "file": "nvidia-audio-flamingo-3.md"
+    },
+    "https://opensourceprojects.dev/post/0859776c-5f94-4169-bf94-bd2deb84dcf5": {
+      "date": "2026-04-14",
+      "decision": "drafted",
+      "title": "Orchestrate coding agents remotely from your phone, desktop and CLI",
+      "source": "opensourceprojects",
+      "file": "paseo.md"
     }
   }
 }
