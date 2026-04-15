@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-14T06:31:41.739Z",
+  "lastUpdated": "2026-04-15T06:08:48.612Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3238,6 +3238,86 @@
       "title": "Orchestrate coding agents remotely from your phone, desktop and CLI",
       "source": "opensourceprojects",
       "file": "paseo.md"
+    },
+    "https://www.bilibili.com/video/BV1PwDyBtEpN/": {
+      "date": "2026-04-15",
+      "decision": "skipped",
+      "title": "GitHub 斩获 4万星 Hermes Agent：新一代“超越OpenClaw 龙虾引擎”！_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal is a promotional video tutorial with clickbait claims ('2026 best', 'Surpassing OpenClaw') rather than operational documentation. While it references a GitHub project, the hype-driven content and video format conflict with Openflows' focus on inspectable, non-trend-chasing open source tools."
+    },
+    "https://www.bilibili.com/video/BV1cPk3BBExq/": {
+      "date": "2026-04-15",
+      "decision": "skipped",
+      "title": "【开源项目MiroFish】基于红楼梦前80回数十万字，深度预测失传结局_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Claims open source status but relies on marketing hype and viral video content rather than technical substance. Lacks operational specifics and appears to be a niche trend project rather than a valuable ecosystem tool."
+    },
+    "https://opensourceprojects.dev/post/73425c25-9968-46aa-8f02-29b2834e314c": {
+      "date": "2026-04-15",
+      "decision": "skipped",
+      "title": "Download any ebook from major platforms with a single Python script",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general Python automation script for downloading ebooks, which is unrelated to the open source AI ecosystem, tools, models, or governance that Openflows documents."
+    },
+    "https://github.com/HKUDS/LightRAG": {
+      "date": "2026-04-15",
+      "decision": "drafted",
+      "title": "LightRAG",
+      "source": "github",
+      "file": "lightrag.md"
+    },
+    "https://github.com/olimorris/codecompanion.nvim": {
+      "date": "2026-04-15",
+      "decision": "drafted",
+      "title": "codecompanion.nvim",
+      "source": "github",
+      "file": "codecompanion-nvim.md"
+    },
+    "https://www.v2ex.com/t/1205998": {
+      "date": "2026-04-15",
+      "decision": "drafted",
+      "title": "做了个 TS 多 Agent 框架拿了 5700+ stars，但发现国内几乎没人用，想了解下大家的情况 - V2EX",
+      "source": "brave",
+      "file": "open-multi-agent.md"
+    },
+    "https://opensourceprojects.dev/post/d4ec4ca0-a0d8-41b7-a37f-9dccd72573b7": {
+      "date": "2026-04-15",
+      "decision": "drafted",
+      "title": "Migrate your entire AI automation stack with a single command in Rust",
+      "source": "opensourceprojects",
+      "file": "rust-ai-stack-migration.md"
+    },
+    "https://github.com/lsdefine/GenericAgent": {
+      "date": "2026-04-15",
+      "decision": "drafted",
+      "title": "GenericAgent",
+      "source": "github",
+      "file": "generic-agent.md"
+    },
+    "https://github.com/LyubomirT/intense-rp-next": {
+      "date": "2026-04-15",
+      "decision": "drafted",
+      "title": "intense-rp-next",
+      "source": "github",
+      "file": "intense-rp-next.md"
+    },
+    "https://opensourceprojects.dev/post/37807508-38bd-47df-a113-58ac24e96d02": {
+      "date": "2026-04-15",
+      "decision": "drafted",
+      "title": "Validate and standardize chemical structures for machine learning with one tool",
+      "source": "opensourceprojects",
+      "file": "chemaudit-chemical-structure-validation.md"
+    },
+    "https://opensourceprojects.dev/post/b31bf5e2-3504-442f-8452-7b05e04da4f9": {
+      "date": "2026-04-15",
+      "decision": "drafted",
+      "title": "Research any topic across Reddit X and YouTube with one AI agent",
+      "source": "opensourceprojects",
+      "file": "last30days-skill.md"
     }
   }
 }
