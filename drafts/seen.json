@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-15T06:08:48.612Z",
+  "lastUpdated": "2026-04-16T06:05:14.964Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3318,6 +3318,58 @@
       "title": "Research any topic across Reddit X and YouTube with one AI agent",
       "source": "opensourceprojects",
       "file": "last30days-skill.md"
+    },
+    "https://opensourceprojects.dev/post/3e7dd958-b490-4cc6-88b9-02e3a7fe9403": {
+      "date": "2026-04-16",
+      "decision": "skipped",
+      "title": "“Navic: Modular Navigation Library for Structured App Routing”",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Navic is a general-purpose frontend navigation library unrelated to the AI ecosystem. Openflows focuses specifically on open source AI tools, frameworks, and models."
+    },
+    "https://opensourceprojects.dev/post/839edc9d-9d55-43f5-983e-266f96f899dc": {
+      "date": "2026-04-16",
+      "decision": "skipped",
+      "title": "Turn any folder of code into a queryable knowledge graph instantly",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open-source tool but lacks explicit AI integration; primarily a general code analysis utility rather than an AI ecosystem component."
+    },
+    "https://opensourceprojects.dev/post/e3cc5d68-7842-4474-96b2-145226b84706": {
+      "date": "2026-04-16",
+      "decision": "skipped",
+      "title": "The open-source GPU terminal that puts all sessions on one canvas",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "General developer workflow tool rather than an AI-specific framework, model, or infrastructure component."
+    },
+    "https://github.com/SharpAI/SwiftLM": {
+      "date": "2026-04-16",
+      "decision": "drafted",
+      "title": "SwiftLM",
+      "source": "github",
+      "file": "swiftlm.md"
+    },
+    "https://github.com/superset-sh/superset": {
+      "date": "2026-04-16",
+      "decision": "drafted",
+      "title": "superset",
+      "source": "github",
+      "file": "superset.md"
+    },
+    "https://opensourceprojects.dev/post/919087ae-a160-4a63-9e97-ad7179719db8": {
+      "date": "2026-04-16",
+      "decision": "drafted",
+      "title": "cmux: Open-Source Terminal for Managing AI Coding Agents”",
+      "source": "opensourceprojects",
+      "file": "cmux-terminal-agent-manager.md"
+    },
+    "https://www.aipuzi.cn/ai-news/glm-5-1.html": {
+      "date": "2026-04-16",
+      "decision": "drafted",
+      "title": "GLM-5.1：智谱AI开源的8小时级自治工程大模型，超长上下文与强代码能力双突破 | AI铺子",
+      "source": "brave",
+      "file": "glm-5-1.md"
     }
   }
 }
