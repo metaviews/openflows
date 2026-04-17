@@ -27,9 +27,7 @@ async function scrapeTweets(username, options = {}) {
 
 async function postTweet(text, options = {}) {
   return withBrowserSession(options, async ({ page }) => {
-    const scraperPath = require.resolve('xactions/scrapers/twitter')
-    const xactionsRoot = path.resolve(path.dirname(scraperPath), '..', '..', '..')
-    const composerPath = path.join(xactionsRoot, 'src', 'postComposer.js')
+    const composerPath = path.join(xactionsRoot(), 'src', 'postComposer.js')
     const { postTweet: doPost } = await import(pathToFileURL(composerPath).href)
     return doPost(page, text, {
       replyTo: options.replyTo || null,
@@ -38,11 +36,20 @@ async function postTweet(text, options = {}) {
   })
 }
 
+// Resolve xactions package root by walking up from this file — avoids
+// relying on the package exports map, which differs across versions.
+function xactionsRoot() {
+  return path.resolve(__dirname, '..', '..', 'node_modules', 'xactions')
+}
+
 async function withBrowserSession(options, fn) {
-  const importer = options.importer || ((specifier) => import(specifier))
   let scrapers
   try {
-    scrapers = await importer('xactions/scrapers/twitter')
+    // Import via file URL to bypass exports map — works on all xactions versions.
+    const scraperPath = path.join(xactionsRoot(), 'src', 'scrapers', 'twitter', 'index.js')
+    scrapers = options.importer
+      ? await options.importer('xactions/scrapers/twitter')
+      : await import(pathToFileURL(scraperPath).href)
   } catch (err) {
     throw new Error(`XActions Twitter scraper import failed: ${err.message}`)
   }

@@ -96,7 +96,8 @@
       "Bash(node -e \"const m = require\\('./scripts/sources/twitter.js'\\); console.log\\(typeof m.post, typeof m.fetch\\)\")",
       "Bash(node -e \"const m = require\\('./scripts/lib/xactions-adapter.js'\\); console.log\\(typeof m.postTweet, typeof m.searchTweets\\)\")",
       "Bash(node -e \"const m = require\\('./server/lib/social-publisher.js'\\); console.log\\(typeof m.postToSource, [...m.SOCIAL_MODULES]\\)\")",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const m = require\\('./scripts/lib/xactions-adapter.js'\\); console.log\\(typeof m.searchTweets, typeof m.postTweet\\)\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
