@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-16T06:05:14.964Z",
+  "lastUpdated": "2026-04-17T06:21:38.726Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3370,6 +3370,140 @@
       "title": "GLM-5.1：智谱AI开源的8小时级自治工程大模型，超长上下文与强代码能力双突破 | AI铺子",
       "source": "brave",
       "file": "glm-5-1.md"
+    },
+    "https://github.com/ArcReel/ArcReel": {
+      "date": "2026-04-17",
+      "decision": "skipped",
+      "title": "ArcReel",
+      "source": "github",
+      "score": 2,
+      "reason": "Aligns poorly with open system preference by aggregating closed APIs; model names suggest potential hype or inaccuracy; tangential relevance to open infrastructure."
+    },
+    "https://github.com/rcarmo/piclaw": {
+      "date": "2026-04-17",
+      "decision": "skipped",
+      "title": "piclaw",
+      "source": "github",
+      "score": 2,
+      "reason": "Personal project announcement with hype-driven language; lacks operational maturity and professional tone for ecosystem documentation."
+    },
+    "https://opensourceprojects.dev/post/f90be5e4-e121-4ac5-a297-010fca866368": {
+      "date": "2026-04-17",
+      "decision": "skipped",
+      "title": "macOS ISO Builder for Generating Official macOS ISOs",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Unrelated to the open source AI ecosystem; focuses on macOS system installation tooling rather than AI tools, models, or frameworks."
+    },
+    "https://opensourceprojects.dev/post/5ddf9632-4fdb-4a12-9dd4-2287fd989248": {
+      "date": "2026-04-17",
+      "decision": "skipped",
+      "title": "OpenCLI: Turn Any Website into a Command-Line Interface",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source utility but generic web tool without specific AI functionality or integration; tangential to the core AI ecosystem scope."
+    },
+    "https://opensourceprojects.dev/post/b516256b-0612-4712-9da0-ed22061621cd": {
+      "date": "2026-04-17",
+      "decision": "skipped",
+      "title": "Async: Self Hosted SaaS for Team Chat and Collaboration",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "It is a general open-source collaboration tool rather than an AI-specific framework or model. While open source, it does not contribute directly to understanding the AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/d3da536d-4a91-4f53-85b7-b13f2851a51e": {
+      "date": "2026-04-17",
+      "decision": "skipped",
+      "title": "Financial Services Plugins AI Powered Workflow Automation for Finance",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Anthropic is primarily a proprietary AI vendor; signal describes a commercial workflow tool with marketing hype rather than inspectable open-source infrastructure, violating Openflows' scope."
+    },
+    "https://opensourceprojects.dev/post/ea498ac6-bbcd-4bc3-9cdd-d7a29567f242": {
+      "date": "2026-04-17",
+      "decision": "skipped",
+      "title": "👉 Domain Monitor: Self-Hosted Domain &amp; SSL Expiry Tracking System",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "General infrastructure utility unrelated to AI technologies, frameworks, or governance; does not advance understanding of the open source AI ecosystem."
+    },
+    "https://gitcode.csdn.net/69bf767c54b52172bc6342b5.html": {
+      "date": "2026-04-17",
+      "decision": "skipped",
+      "title": "最新！2026年3月全球大模型全景：国产登顶、百万上下文、智能体爆发，AI进入实用新纪元_人工智能_人道领域-AtomGit开源社区",
+      "source": "brave",
+      "score": 2,
+      "reason": "Title relies on hype ('New Era', 'Explosion') and lacks specific model names or repository links; the future date (2026) suggests speculation or error, reducing reliability for an inspectable knowledge base."
+    },
+    "https://github.com/volcengine/OpenViking": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "OpenViking",
+      "source": "github",
+      "file": "openviking.md"
+    },
+    "https://github.com/alibaba/OpenSandbox": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "OpenSandbox",
+      "source": "github",
+      "file": "opensandbox.md"
+    },
+    "https://opensourceprojects.dev/post/11a4c7cd-f35a-49ec-bc79-993046be3efd": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "JSON Render: Schema-Driven AI UI Rendering Engine",
+      "source": "opensourceprojects",
+      "file": "json-render-schema-ui.md"
+    },
+    "https://github.com/OpenBMB/EdgeClaw/blob/main/readme_zh.md": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "EdgeClaw/readme_zh.md at main · OpenBMB/EdgeClaw",
+      "source": "brave",
+      "file": "edgeclaw.md"
+    },
+    "https://github.com/llama-farm/llamafarm": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "llamafarm",
+      "source": "github",
+      "file": "llamafarm.md"
+    },
+    "https://huggingface.co/OBLITERATUS/gemma-4-E4B-it-OBLITERATED": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "OBLITERATUS/gemma-4-E4B-it-OBLITERATED",
+      "source": "huggingface",
+      "file": "gemma-4-e4b-obliterated.md"
+    },
+    "https://opensourceprojects.dev/post/d2d77c13-f645-4172-b524-0c3b6ff78576": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "Clawdbot Feishu: AI Agent Integration for Feishu (Lark)",
+      "source": "opensourceprojects",
+      "file": "clawdbot-feishu-integration.md"
+    },
+    "https://opensourceprojects.dev/post/17de373f-eba4-4940-a570-bd3722f885b8": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "ArcKit: AI-Powered Enterprise Architecture Toolkit",
+      "source": "opensourceprojects",
+      "file": "arckit.md"
+    },
+    "https://aitoolly.com/ai-news/article/2026-04-14-nousresearch-unveils-hermes-agent-a-new-evolution-in-personal-ai-agents-that-grow-with-users": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "Hermes Agent: The New Growing AI Agent by NousResearch | AIToolly",
+      "source": "brave",
+      "file": "hermes-agent.md"
+    },
+    "https://gitcode.csdn.net/69d36f9354b52172bc674818.html": {
+      "date": "2026-04-17",
+      "decision": "drafted",
+      "title": "2026年开源大模型完整榜单_开源_Joshkhh-AtomGit开源社区",
+      "source": "brave",
+      "file": "open-weight-model-infrastructure.md"
     }
   }
 }
