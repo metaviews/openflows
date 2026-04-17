@@ -1,17 +1,23 @@
 ---
 layout: layouts/currency-item.njk
-title: "Audrey Tang"
-date: 2026-02-18
-currencyType: "practitioner"
+title: Audrey Tang
+date: 2026-02-18T00:00:00.000Z
+currencyType: practitioner
 currencyId: audrey-tang
-abstract: "Audrey Tang models public-interest technology practice where digital systems are designed as participatory civic infrastructure."
+abstract: Audrey Tang models public-interest technology practice where digital systems are designed as participatory civic infrastructure.
 tags:
   - currency
 permalink: /currency/practitioners/audrey-tang/
 links:
   - id: 6pack-care
-    relation: "complements personal-scale health feedback loops with civic-scale participatory governance practice"
-lastReviewed: 2026-03-15
+    relation: complements personal-scale health feedback loops with civic-scale participatory governance practice
+lastReviewed: 2026-04-03T00:00:00.000Z
+socialProfiles:
+  - platform: twitter
+    handle: audreyt
+    url: https://x.com/audreyt
+    monitor: true
+    verifiedBy: human
 ---
 
 ### Signal

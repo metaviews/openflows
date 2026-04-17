@@ -58,7 +58,7 @@
       "id": "twitter",
       "module": "twitter",
       "label": "X/Twitter via XActions",
-      "enabled": false,
+      "enabled": true,
       "notes": "X/Twitter intake through XActions read-only scraper paths. Disabled by default; comply with X terms and local session policy before enabling.",
       "config": {
         "queries": [
@@ -77,7 +77,7 @@
       "id": "bluesky",
       "module": "bluesky",
       "label": "Bluesky social posts",
-      "enabled": false,
+      "enabled": true,
       "notes": "Public Bluesky AppView search and actor-feed intake. Disabled by default until operator review.",
       "config": {
         "service": "https://public.api.bsky.app",
@@ -94,7 +94,7 @@
       "id": "mastodon",
       "module": "mastodon",
       "label": "Mastodon social posts",
-      "enabled": false,
+      "enabled": true,
       "notes": "Public Mastodon search and account-status intake across configured instances. Disabled by default until operator review.",
       "config": {
         "instances": [
@@ -117,7 +117,7 @@
       "id": "practitioner-social",
       "module": "practitioner-social",
       "label": "Practitioner social profiles",
-      "enabled": false,
+      "enabled": true,
       "notes": "Tracks verified socialProfiles declared on practitioner entries. Disabled by default until handles are reviewed.",
       "config": {
         "platforms": [
