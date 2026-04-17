@@ -119,37 +119,6 @@
 
   <section class="panel" style="margin-top:1rem">
     <div class="panel-header">
-      <span class="panel-title">Compose &amp; Post</span>
-    </div>
-    <div class="panel-body">
-      {% set socialModules = { bluesky: true, mastodon: true, twitter: true } %}
-      {% set hasSocial = false %}
-      {% for s in sources %}{% if socialModules[s.module] %}{% set hasSocial = true %}{% endif %}{% endfor %}
-      {% if hasSocial %}
-        <div style="display:flex;flex-direction:column;gap:0.75rem;max-width:640px">
-          <div style="display:flex;gap:0.5rem;align-items:center">
-            <label for="compose-source" style="white-space:nowrap;font-size:0.85rem">Post as:</label>
-            <select id="compose-source" class="input" style="flex:1">
-              {% for s in sources %}{% if socialModules[s.module] %}
-                <option value="{{ s.id }}">{{ s.label or s.id }} ({{ s.module }})</option>
-              {% endif %}{% endfor %}
-            </select>
-          </div>
-          <textarea id="compose-text" class="input" rows="4" maxlength="500" placeholder="What's flowing?" style="resize:vertical;font-family:inherit"></textarea>
-          <div style="display:flex;justify-content:space-between;align-items:center">
-            <span id="compose-count" class="muted" style="font-size:0.8rem">0 / 500</span>
-            <button class="btn btn-primary" onclick="submitPost()">Post</button>
-          </div>
-          <div id="compose-result" style="display:none"></div>
-        </div>
-      {% else %}
-        <p class="empty-state">No social sources configured. Add a source with module bluesky, mastodon, or twitter.</p>
-      {% endif %}
-    </div>
-  </section>
-
-  <section class="panel" style="margin-top:1rem">
-    <div class="panel-header">
       <span class="panel-title">Practitioner Social Audit</span>
       <button class="btn btn-sm" onclick="runPractitionerSocialAudit()">Run Audit</button>
     </div>
@@ -196,43 +165,4 @@
     </div>
   </section>
 </div>
-<script>
-  const composeText = document.getElementById('compose-text')
-  const composeCount = document.getElementById('compose-count')
-  if (composeText) {
-    composeText.addEventListener('input', () => {
-      composeCount.textContent = composeText.value.length + ' / 500'
-    })
-  }
-
-  async function submitPost() {
-    const sourceId = document.getElementById('compose-source')?.value
-    const content = composeText?.value?.trim()
-    const resultEl = document.getElementById('compose-result')
-    if (!sourceId || !content) return
-    resultEl.style.display = 'none'
-    try {
-      const res = await fetch('/api/social/post', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sourceId, content }),
-      })
-      const data = await res.json()
-      resultEl.style.display = 'block'
-      if (data.ok) {
-        resultEl.className = 'badge badge-success'
-        resultEl.textContent = 'Posted' + (data.url ? ' — ' + data.url : '')
-        composeText.value = ''
-        composeCount.textContent = '0 / 500'
-      } else {
-        resultEl.className = 'badge badge-error'
-        resultEl.textContent = data.error || 'Post failed'
-      }
-    } catch (err) {
-      resultEl.style.display = 'block'
-      resultEl.className = 'badge badge-error'
-      resultEl.textContent = err.message
-    }
-  }
-</script>
 {% endblock %}

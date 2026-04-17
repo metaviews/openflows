@@ -62,6 +62,7 @@ async function start() {
   fastify.register(require('./routes/conversations'), { prefix: '/api' })
   fastify.register(require('./routes/entries'))
   fastify.register(require('./routes/sources'))
+  fastify.register(require('./routes/social'))
 
   // ── Queue draft edit page ─────────────────────────────────────────────────────
   fastify.get('/queue/:id/edit', async (req, reply) => {

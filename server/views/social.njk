@@ -1,0 +1,278 @@
+{% extends "base.njk" %}
+{% block title %}Social{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <div class="page-title">Social</div>
+      <div class="muted">Compose and post to connected social sources. Peng can draft based on any KB entry.</div>
+    </div>
+  </div>
+
+  <div class="editor-grid">
+
+    {# ── Compose ─────────────────────────────────────────────────────────── #}
+    <div style="display:flex;flex-direction:column;gap:1rem">
+
+      {% if socialSources.length %}
+      <section class="panel">
+        <div class="panel-header"><span class="panel-title">Compose</span></div>
+        <div class="panel-body">
+          <div class="social-compose">
+
+            {# Platform #}
+            <div class="field-row">
+              <label class="field-label">Platform</label>
+              <select id="compose-source" class="input" onchange="onSourceChange()">
+                {% for s in socialSources %}
+                  <option value="{{ s.id }}" data-module="{{ s.module }}">{{ s.label or s.id }} ({{ s.module }})</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            {# Entry picker #}
+            <div class="field-row">
+              <label class="field-label">Entry <span class="muted">(optional)</span></label>
+              <input id="entry-search" class="input" type="search" placeholder="Search by title or ID…" oninput="filterEntries()" autocomplete="off">
+            </div>
+
+            <div id="entry-list" class="entry-picker" style="display:none"></div>
+
+            <div id="entry-preview" class="entry-card" style="display:none">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div>
+                  <strong id="preview-title"></strong>
+                  <span id="preview-type" class="badge badge-unknown" style="margin-left:0.4rem"></span>
+                </div>
+                <button class="btn btn-sm" onclick="clearEntry()">Clear</button>
+              </div>
+              <p id="preview-abstract" class="muted" style="margin:0.4rem 0 0;font-size:0.85rem"></p>
+              <a id="preview-url" href="#" target="_blank" rel="noopener" class="muted" style="font-size:0.8rem"></a>
+            </div>
+
+            {# Content #}
+            <div class="field-row">
+              <label class="field-label">Content</label>
+              <div style="position:relative">
+                <textarea id="compose-text" class="input" rows="5" style="resize:vertical;font-family:inherit;width:100%" oninput="updateCount()"></textarea>
+              </div>
+              <div style="display:flex;justify-content:space-between;margin-top:0.25rem">
+                <span id="compose-count" class="muted" style="font-size:0.8rem">0 / 280</span>
+                <span id="compose-over" class="muted" style="font-size:0.8rem;color:var(--color-error,#c0392b);display:none">Over limit</span>
+              </div>
+            </div>
+
+            {# Optional hint for Peng #}
+            <div class="field-row">
+              <label class="field-label">Hint for Peng <span class="muted">(optional)</span></label>
+              <input id="compose-hint" class="input" type="text" placeholder="e.g. emphasise governance angle, keep it short">
+            </div>
+
+            {# Actions #}
+            <div style="display:flex;gap:0.5rem;justify-content:space-between;align-items:center;margin-top:0.25rem">
+              <button class="btn" id="btn-draft" onclick="draftWithPeng()">Draft with Peng</button>
+              <button class="btn btn-primary" id="btn-post" onclick="submitPost()">Post</button>
+            </div>
+
+            <div id="compose-status" style="display:none;margin-top:0.5rem"></div>
+
+          </div>
+        </div>
+      </section>
+      {% else %}
+      <section class="panel">
+        <div class="panel-body">
+          <p class="empty-state">No social sources configured. Add a source with module <code>bluesky</code>, <code>mastodon</code>, or <code>twitter</code> on the <a href="/sources">Sources</a> page.</p>
+        </div>
+      </section>
+      {% endif %}
+
+    </div>
+
+    {# ── Recent posts ────────────────────────────────────────────────────── #}
+    <div>
+      <section class="panel">
+        <div class="panel-header"><span class="panel-title">Recent Posts</span></div>
+        <div class="panel-body-flush">
+          {% if recentPosts.length %}
+          <table class="entries-table">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Platform</th>
+                <th>Link</th>
+                <th>When</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for post in recentPosts %}
+              <tr>
+                <td>{{ post.sourceId }}</td>
+                <td><span class="badge badge-unknown">{{ post.module }}</span></td>
+                <td>
+                  {% if post.url %}
+                    <a href="{{ post.url }}" target="_blank" rel="noopener">↗</a>
+                  {% else %}
+                    <span class="muted">—</span>
+                  {% endif %}
+                </td>
+                <td class="muted" style="font-size:0.8rem;white-space:nowrap">{{ post.created_at | truncate(16, true, '') }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p class="empty-state" style="padding:1rem">No posts yet.</p>
+          {% endif %}
+        </div>
+      </section>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  const ENTRIES = JSON.parse(document.getElementById('entries-data').textContent)
+  const CHAR_LIMITS = JSON.parse(document.getElementById('char-limits-data').textContent)
+  const SITE_URL = 'https://openflows.org'
+
+  let selectedEntry = null
+  let charLimit = 280
+
+  // ── Initialise ──────────────────────────────────────────────────────────────
+  onSourceChange()
+
+  function onSourceChange() {
+    const sel = document.getElementById('compose-source')
+    const mod = sel?.selectedOptions[0]?.dataset.module || 'twitter'
+    charLimit = CHAR_LIMITS[mod] || 280
+    updateCount()
+  }
+
+  // ── Entry search ────────────────────────────────────────────────────────────
+  function filterEntries() {
+    const q = document.getElementById('entry-search').value.trim().toLowerCase()
+    const list = document.getElementById('entry-list')
+    if (!q) { list.style.display = 'none'; return }
+    const hits = ENTRIES.filter(e =>
+      e.title.toLowerCase().includes(q) || e.id.toLowerCase().includes(q) || e.type.toLowerCase().includes(q)
+    ).slice(0, 12)
+    if (!hits.length) { list.innerHTML = '<div class="empty-state" style="padding:0.5rem">No matches</div>'; list.style.display = 'block'; return }
+    list.innerHTML = hits.map(e =>
+      `<div class="entry-pick-item" onclick="selectEntry(${JSON.stringify(e).replace(/"/g, '&quot;')})">
+        <span>${e.title}</span>
+        <span class="badge badge-unknown" style="margin-left:0.4rem">${e.type}</span>
+      </div>`
+    ).join('')
+    list.style.display = 'block'
+  }
+
+  function selectEntry(entry) {
+    selectedEntry = entry
+    document.getElementById('entry-search').value = entry.title
+    document.getElementById('entry-list').style.display = 'none'
+
+    document.getElementById('preview-title').textContent = entry.title
+    document.getElementById('preview-type').textContent = entry.type
+    document.getElementById('preview-abstract').textContent = entry.abstract || ''
+    const link = SITE_URL + entry.permalink
+    const urlEl = document.getElementById('preview-url')
+    urlEl.href = link
+    urlEl.textContent = link
+    document.getElementById('entry-preview').style.display = 'block'
+  }
+
+  function clearEntry() {
+    selectedEntry = null
+    document.getElementById('entry-search').value = ''
+    document.getElementById('entry-preview').style.display = 'none'
+    document.getElementById('entry-list').style.display = 'none'
+  }
+
+  // ── Char counter ────────────────────────────────────────────────────────────
+  function updateCount() {
+    const text = document.getElementById('compose-text').value
+    const count = text.length
+    document.getElementById('compose-count').textContent = `${count} / ${charLimit}`
+    document.getElementById('compose-over').style.display = count > charLimit ? 'inline' : 'none'
+  }
+
+  // ── Draft with Peng ─────────────────────────────────────────────────────────
+  async function draftWithPeng() {
+    const sourceId = document.getElementById('compose-source')?.value
+    const hint = document.getElementById('compose-hint')?.value?.trim()
+    const btn = document.getElementById('btn-draft')
+    setStatus('')
+    btn.disabled = true
+    btn.textContent = 'Drafting…'
+    try {
+      const res = await fetch('/api/social/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sourceId, entryId: selectedEntry?.id || null, hint: hint || null }),
+      })
+      const data = await res.json()
+      if (data.ok && data.content) {
+        document.getElementById('compose-text').value = data.content
+        updateCount()
+      } else {
+        setStatus(data.error || 'Draft failed', 'error')
+      }
+    } catch (err) {
+      setStatus(err.message, 'error')
+    } finally {
+      btn.disabled = false
+      btn.textContent = 'Draft with Peng'
+    }
+  }
+
+  // ── Post ─────────────────────────────────────────────────────────────────────
+  async function submitPost() {
+    const sourceId = document.getElementById('compose-source')?.value
+    const content = document.getElementById('compose-text')?.value?.trim()
+    if (!content) { setStatus('Content is empty', 'error'); return }
+    const btn = document.getElementById('btn-post')
+    setStatus('')
+    btn.disabled = true
+    btn.textContent = 'Posting…'
+    try {
+      const res = await fetch('/api/social/post', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sourceId, content }),
+      })
+      const data = await res.json()
+      if (data.ok) {
+        setStatus('Posted' + (data.url ? ` — <a href="${data.url}" target="_blank" rel="noopener">${data.url}</a>` : ''), 'success')
+        document.getElementById('compose-text').value = ''
+        updateCount()
+        setTimeout(() => location.reload(), 2000)
+      } else {
+        setStatus(data.error || 'Post failed', 'error')
+      }
+    } catch (err) {
+      setStatus(err.message, 'error')
+    } finally {
+      btn.disabled = false
+      btn.textContent = 'Post'
+    }
+  }
+
+  function setStatus(msg, type) {
+    const el = document.getElementById('compose-status')
+    el.style.display = msg ? 'block' : 'none'
+    el.className = type === 'error' ? 'badge badge-error' : type === 'success' ? 'badge badge-success' : ''
+    el.innerHTML = msg
+  }
+
+  // ── Close entry list on outside click ───────────────────────────────────────
+  document.addEventListener('click', e => {
+    if (!e.target.closest('#entry-search') && !e.target.closest('#entry-list')) {
+      document.getElementById('entry-list').style.display = 'none'
+    }
+  })
+</script>
+<script type="application/json" id="entries-data">{{ entriesJson | safe }}</script>
+<script type="application/json" id="char-limits-data">{{ charLimitsJson | safe }}</script>
+{% endblock %}
