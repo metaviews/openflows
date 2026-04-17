@@ -127,8 +127,10 @@ Observation on which circuits are gaining weight — where the loops are closing
 ## Peng's Note
 One short paragraph — Peng's own perspective on where the ecosystem is moving right now. This is the editorial voice, not a summary.
 
-OUTPUT: Return the complete digest as markdown, starting with the title line:
-# Peng's View — ${today}`;
+OUTPUT: Return the complete digest as markdown. Start with:
+1. A descriptive title: # {Title} — a short phrase (4-7 words) capturing the dominant pattern this digest observes. Not the date, not "Peng's View". Examples: "Orchestration Becomes Infrastructure", "Terminal Sovereignty and the Cost of Containment".
+2. A one-sentence abstract as a blockquote: > {One sentence, ~20 words, summarising what this digest covers.}
+3. Then the three required sections.`;
 
 const userPrompt = `KNOWLEDGE BASE: ${manifest.count} entries (${enEntries.length} English / ${manifest.count - enEntries.length} Chinese)
 Circuits: ${circuits.length} | Currents: ${currents.length}
@@ -155,9 +157,28 @@ async function main() {
     return;
   }
 
-  // Strip the leading `# Peng's View — {date}` line — the layout renders the title from frontmatter
-  const body = digest.replace(/^#[^\n]*\n+/, '');
-  const frontmatter = `---\nlayout: layouts/perspective-item.njk\ntitle: "Peng's View — ${today}"\ndate: ${today}\npermalink: /perspective/${today}/\n---\n\n`;
+  // Parse descriptive title and abstract from model output, then strip them from the body
+  const titleMatch = digest.match(/^#\s+(.+)/m)
+  const abstractMatch = digest.match(/^>\s+(.+)/m)
+  const title = titleMatch ? titleMatch[1].trim() : `Peng's View — ${today}`
+  const abstract = abstractMatch ? abstractMatch[1].trim() : ''
+
+  const body = digest
+    .replace(/^#[^\n]*\n+/, '')
+    .replace(/^>[^\n]*\n+/, '')
+  const escapedTitle = title.replace(/"/g, '\\"')
+  const escapedAbstract = abstract.replace(/"/g, '\\"')
+  const frontmatter = [
+    '---',
+    'layout: layouts/perspective-item.njk',
+    `title: "${escapedTitle}"`,
+    `date: ${today}`,
+    `permalink: /perspective/${today}/`,
+    abstract ? `abstract: "${escapedAbstract}"` : null,
+    '---',
+    '',
+    '',
+  ].filter(l => l !== null).join('\n')
 
   if (!existsSync(perspectiveDir)) mkdirSync(perspectiveDir, { recursive: true });
   const outPath = join(perspectiveDir, `${today}.md`);

@@ -100,7 +100,8 @@
       "Bash(node -e \"const m = require\\('./scripts/lib/xactions-adapter.js'\\); console.log\\(typeof m.searchTweets, typeof m.postTweet\\)\")"
     ],
     "additionalDirectories": [
-      "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"
+      "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh",
+      "c:\\Users\\jesse\\webdev\\openflows\\src\\perspective"
     ]
   }
 }
