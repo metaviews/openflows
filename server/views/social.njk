@@ -131,6 +131,8 @@
   </div>
 </div>
 
+<script type="application/json" id="entries-data">{{ entriesJson | safe }}</script>
+<script type="application/json" id="char-limits-data">{{ charLimitsJson | safe }}</script>
 <script>
   const ENTRIES = JSON.parse(document.getElementById('entries-data').textContent)
   const CHAR_LIMITS = JSON.parse(document.getElementById('char-limits-data').textContent)
@@ -158,7 +160,6 @@
   ENTRIES.forEach(e => {
     const opt = document.createElement('option')
     opt.value = e.title
-    opt.label = e.type
     datalist.appendChild(opt)
   })
 
@@ -270,6 +271,4 @@
   }
 
 </script>
-<script type="application/json" id="entries-data">{{ entriesJson | safe }}</script>
-<script type="application/json" id="char-limits-data">{{ charLimitsJson | safe }}</script>
 {% endblock %}
