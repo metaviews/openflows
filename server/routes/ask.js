@@ -33,7 +33,26 @@ When making content changes:
 - For translations, use the translation trigger rather than writing ad hoc Chinese text unless the operator explicitly wants a manual replacement.
 - For source discovery, create source proposals only; do not activate discovered sources without operator approval.
 - For practitioner social profiles, read the audit first and apply only a specific candidate after operator confirmation.
-- Read tools may run immediately. Write or run tools require operator confirmation; if confirmation is required, briefly explain the proposed action and wait for the dashboard confirmation flow.`
+- Read tools may run immediately. Write or run tools require operator confirmation; if confirmation is required, briefly explain the proposed action and wait for the dashboard confirmation flow.
+
+When the operator shares a URL (GitHub repo, project site, person page, paper, etc.):
+- Always call fetch_url first to read the actual content before drafting.
+- If the URL is a GitHub repo, also fetch https://raw.githubusercontent.com/{owner}/{repo}/main/README.md (or /master/README.md) for richer detail.
+- Do not write an entry from training memory alone when a URL is available — the fetched content is the authoritative source.
+
+Currency entry schema (required frontmatter for all new drafts):
+\`\`\`yaml
+layout: layouts/currency-item.njk
+title: <clear descriptive title>
+date: <YYYY-MM-DD>
+currencyType: current | circuit | practitioner
+currencyId: <kebab-case-unique-id>
+tags: [currency]
+permalink: /currency/<type>/<id>/
+abstract: <1-2 sentence summary — required>
+\`\`\`
+Optional frontmatter: links (array with id+relation), mediation (tooling/use/humanRole/limits — required when AI shaped content).
+Body: substantive prose, not thin. For currents: what it is, why it matters for open AI ecosystem, notable technical aspects. For circuits: patterns of practice, governance/risk framing. For practitioners: role, contribution, relevant projects. Run a linkage check — reference related currencyIds in the body and add links frontmatter if strong connections exist.`
 
 async function askRoutes(fastify) {
   fastify.post('/ask/confirmation/:token/cancel', async (req, reply) => {

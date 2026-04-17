@@ -17,7 +17,7 @@ const {
   applyPractitionerSocialCandidate,
 } = require('./practitioner-social')
 
-const READ_TOOL_NAMES = new Set(['get_status', 'get_queue', 'get_entry', 'get_draft', 'get_sources', 'get_source_proposals', 'get_practitioner_social_audit'])
+const READ_TOOL_NAMES = new Set(['get_status', 'get_queue', 'get_entry', 'get_draft', 'get_sources', 'get_source_proposals', 'get_practitioner_social_audit', 'fetch_url'])
 const WRITE_TOOL_NAMES = new Set([
   'create_draft',
   'update_draft',
@@ -219,6 +219,21 @@ const TOOL_DEFS = [
   {
     type: 'function',
     function: {
+      name: 'fetch_url',
+      description: 'Fetch the text content of a public URL. Use this before drafting an entry about a project, tool, or person — fetch the URL first to get accurate, current information. Returns stripped text up to 6000 characters.',
+      parameters: {
+        type: 'object',
+        properties: {
+          url: { type: 'string', description: 'The https URL to fetch.' },
+        },
+        required: ['url'],
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
       name: 'propose_source',
       description: 'Create an inactive source proposal for human review.',
       parameters: {
@@ -346,6 +361,38 @@ async function executeToolCall(fastify, toolCall) {
       return { proposals: listSourceProposals(fastify.db, args) }
     case 'get_practitioner_social_audit':
       return readPractitionerSocialAudit()
+    case 'fetch_url': {
+      const url = args.url
+      if (!url || typeof url !== 'string') throw new Error('url is required')
+      const parsed = new URL(url)
+      if (!['http:', 'https:'].includes(parsed.protocol)) throw new Error('Only http and https URLs are supported')
+      const controller = new AbortController()
+      const timer = setTimeout(() => controller.abort(), 12000)
+      let raw
+      try {
+        const response = await fetch(url, {
+          signal: controller.signal,
+          headers: { 'User-Agent': 'Openflows/1.0 (+https://openflows.org)' },
+        })
+        if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+        raw = await response.text()
+      } finally {
+        clearTimeout(timer)
+      }
+      const stripped = raw
+        .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+        .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+        .replace(/<[^>]+>/g, ' ')
+        .replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
+        .replace(/\s+/g, ' ')
+        .trim()
+      const MAX = 6000
+      const text = stripped.length > MAX
+        ? stripped.slice(0, MAX) + `\n\n[truncated — ${stripped.length - MAX} chars omitted]`
+        : stripped
+      return { url, text, length: stripped.length }
+    }
     case 'create_draft':
       return upsertDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: args.content })
     case 'update_draft':
