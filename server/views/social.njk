@@ -34,10 +34,9 @@
             {# Entry picker #}
             <div class="field-row">
               <label class="field-label">Entry <span class="muted">(optional)</span></label>
-              <input id="entry-search" class="input" type="search" placeholder="Search by title or ID…" oninput="filterEntries()" autocomplete="off">
+              <input id="entry-search" class="input" type="text" list="entry-datalist" placeholder="Type to search entries…">
+              <datalist id="entry-datalist"></datalist>
             </div>
-
-            <div id="entry-list" class="entry-picker" style="display:none"></div>
 
             <div id="entry-preview" class="entry-card" style="display:none">
               <div style="display:flex;justify-content:space-between;align-items:flex-start">
@@ -150,29 +149,30 @@
     updateCount()
   }
 
-  // ── Entry search ────────────────────────────────────────────────────────────
-  function filterEntries() {
-    const q = document.getElementById('entry-search').value.trim().toLowerCase()
-    const list = document.getElementById('entry-list')
-    if (!q) { list.style.display = 'none'; return }
-    const hits = ENTRIES.filter(e =>
-      e.title.toLowerCase().includes(q) || e.id.toLowerCase().includes(q) || e.type.toLowerCase().includes(q)
-    ).slice(0, 12)
-    if (!hits.length) { list.innerHTML = '<div class="empty-state" style="padding:0.5rem">No matches</div>'; list.style.display = 'block'; return }
-    list.innerHTML = hits.map(e =>
-      `<div class="entry-pick-item" onclick="selectEntry(${JSON.stringify(e).replace(/"/g, '&quot;')})">
-        <span>${e.title}</span>
-        <span class="badge badge-unknown" style="margin-left:0.4rem">${e.type}</span>
-      </div>`
-    ).join('')
-    list.style.display = 'block'
-  }
+  // ── Entry autocomplete ──────────────────────────────────────────────────────
+  const entryByTitle = new Map(ENTRIES.map(e => [e.title, e]))
+  const entryById = new Map(ENTRIES.map(e => [e.id, e]))
 
-  function selectEntry(entry) {
+  // Populate datalist from JS to avoid Nunjucks escaping issues
+  const datalist = document.getElementById('entry-datalist')
+  ENTRIES.forEach(e => {
+    const opt = document.createElement('option')
+    opt.value = e.title
+    opt.label = e.type
+    datalist.appendChild(opt)
+  })
+
+  document.getElementById('entry-search').addEventListener('input', function () {
+    const entry = entryByTitle.get(this.value)
+    if (entry) {
+      showEntryPreview(entry)
+    } else if (this.value === '') {
+      hideEntryPreview()
+    }
+  })
+
+  function showEntryPreview(entry) {
     selectedEntry = entry
-    document.getElementById('entry-search').value = entry.title
-    document.getElementById('entry-list').style.display = 'none'
-
     document.getElementById('preview-title').textContent = entry.title
     document.getElementById('preview-type').textContent = entry.type
     document.getElementById('preview-abstract').textContent = entry.abstract || ''
@@ -183,11 +183,14 @@
     document.getElementById('entry-preview').style.display = 'block'
   }
 
-  function clearEntry() {
+  function hideEntryPreview() {
     selectedEntry = null
-    document.getElementById('entry-search').value = ''
     document.getElementById('entry-preview').style.display = 'none'
-    document.getElementById('entry-list').style.display = 'none'
+  }
+
+  function clearEntry() {
+    document.getElementById('entry-search').value = ''
+    hideEntryPreview()
   }
 
   // ── Char counter ────────────────────────────────────────────────────────────
@@ -266,12 +269,6 @@
     el.innerHTML = msg
   }
 
-  // ── Close entry list on outside click ───────────────────────────────────────
-  document.addEventListener('click', e => {
-    if (!e.target.closest('#entry-search') && !e.target.closest('#entry-list')) {
-      document.getElementById('entry-list').style.display = 'none'
-    }
-  })
 </script>
 <script type="application/json" id="entries-data">{{ entriesJson | safe }}</script>
 <script type="application/json" id="char-limits-data">{{ charLimitsJson | safe }}</script>
