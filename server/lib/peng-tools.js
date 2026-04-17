@@ -29,6 +29,7 @@ const WRITE_TOOL_NAMES = new Set([
   'update_source',
   'remove_source',
   'apply_practitioner_social_candidate',
+  'post_social',
 ])
 
 const TOOL_DEFS = [
@@ -287,6 +288,22 @@ const TOOL_DEFS = [
   {
     type: 'function',
     function: {
+      name: 'post_social',
+      description: 'Post content to a social media source (Bluesky, Mastodon, or Twitter/X). The sourceId must be an approved source with module bluesky, mastodon, or twitter.',
+      parameters: {
+        type: 'object',
+        properties: {
+          sourceId: { type: 'string' },
+          content: { type: 'string' },
+        },
+        required: ['sourceId', 'content'],
+        additionalProperties: false,
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
       name: 'apply_practitioner_social_candidate',
       description: 'Apply a reviewed social profile candidate to a Practitioner entry socialProfiles field and commit the edit.',
       parameters: {
@@ -350,6 +367,10 @@ async function executeToolCall(fastify, toolCall) {
       return upsertSource(fastify.db, args)
     case 'remove_source':
       return removeSource(fastify.db, args.id)
+    case 'post_social': {
+      const { postToSource } = require('./social-publisher')
+      return postToSource(fastify.db, { sourceId: args.sourceId, content: args.content })
+    }
     case 'apply_practitioner_social_candidate':
       return applyPractitionerSocialCandidate(fastify.db, {
         currencyId: args.currencyId,

@@ -146,6 +146,20 @@ async function sourcesRoutes(fastify) {
     }
   })
 
+  fastify.post('/api/social/post', async (req, reply) => {
+    const { sourceId, content } = req.body || {}
+    if (!sourceId || !content) {
+      return reply.code(400).send({ error: 'sourceId and content required' })
+    }
+    try {
+      const { postToSource } = require('../lib/social-publisher')
+      return reply.send(await postToSource(fastify.db, { sourceId, content }))
+    } catch (err) {
+      fastify.log.error(err)
+      return reply.code(err.statusCode || 500).send({ error: err.message })
+    }
+  })
+
   fastify.post('/api/sources/practitioner-social/audit/apply', async (req, reply) => {
     try {
       return reply.send(await applyPractitionerSocialCandidate(fastify.db, req.body || {}))

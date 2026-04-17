@@ -170,4 +170,30 @@ function dedup(signals) {
   return [...new Map(signals.map(signal => [signal.url, signal])).values()];
 }
 
-module.exports = { fetch, enrich, normalizeStatus, stripHtml, normalizeInstances };
+async function post(config, text) {
+  const instances = normalizeInstances(config)
+  const results = []
+  for (const instance of instances) {
+    const baseUrl = String(instance.baseUrl || '').replace(/\/$/, '')
+    const token = instance.token || config.token
+    if (!token) {
+      console.warn(`  Mastodon post: no token for ${baseUrl}, skipping`)
+      continue
+    }
+    const res = await globalThis.fetch(`${baseUrl}/api/v1/statuses`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      body: JSON.stringify({ status: text }),
+    })
+    if (!res.ok) {
+      const body = await res.text()
+      throw new Error(`Mastodon post failed on ${baseUrl} (${res.status}): ${body}`)
+    }
+    const result = await res.json()
+    results.push({ ok: true, id: result.id, url: result.url })
+  }
+  if (!results.length) throw new Error('Mastodon post: no instances with a valid token configured')
+  return results.length === 1 ? results[0] : { ok: true, results }
+}
+
+module.exports = { fetch, enrich, post, normalizeStatus, stripHtml, normalizeInstances };

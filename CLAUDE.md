@@ -22,6 +22,8 @@ node scripts/enrich.js [--fix mediation|links|all] [--id slug]
 node scripts/status.js                        # Local dashboard, no API/build needed
 node scripts/digest.js [--stdout]             # Peng's editorial briefing
 node scripts/queue.js                         # Regenerate drafts/QUEUE.md
+node scripts/refresh.js [--limit 10] [--id slug] [--days 7]  # Check stale entries for updates
+node scripts/practitioners.js [--limit 3]     # Enrich practitioner entries
 
 # Deployment (on server)
 git pull --rebase
@@ -103,26 +105,52 @@ The admin dashboard (`/`) has three sections:
 - `GET /entries` — Browse KB entries; filter by type/lang; Translate button on untranslated English rows
 - `GET /entries/:id?lang=` — Markdown editor; Save & Commit or Delete
 - `GET /queue/:id/edit?lang=` — Draft editor; Save / Promote / Reject
+- `GET /sources` — Source registry; proposals list; practitioner social audit panel
+- `GET /sources/new` · `GET /sources/:id/edit` — Source editor
 
 **API routes** (`/api/` prefix, registered with `{ prefix: '/api' }`):
-- `POST /api/ask` (SSE) — Stream OpenRouter conversation; injects manifest + queue + status into system prompt
+
+- `POST /api/ask` (SSE) — Stream OpenRouter conversation with Peng tool calls; injects manifest + queue + status into system prompt
+- `POST /api/ask/confirmation/:token/cancel` — Cancel a pending write-tool confirmation
 - `GET /api/queue` — Pending drafts list (htmx-aware)
 - `GET /api/queue/state` — Compact queue state for queue-state panel (htmx refresh target)
 - `POST /api/queue/:id/promote` · `POST /api/queue/:id/reject` — Draft actions
 - `GET /api/runs` — Recent runs list (htmx-aware)
 - `GET /api/runs/:id` — Single run detail (JSON)
 - `GET /api/runs/:id/stream` (SSE) — Live log stream; serves in-memory buffer for running jobs, stored log for completed ones
-- `POST /api/trigger/:type` — Fire a script; returns `{ ok, queued, runId }` for single-script types
+- `POST /api/trigger/:type` — Fire a script; allowed types: `intake`, `perspective`, `synthesize`, `digest`, `translate`, `audit`, `enrich`, `refresh`, `discover-sources`
 - `GET /api/status` — KB status (htmx-aware)
 - `POST /api/entries/:id/save` · `POST /api/entries/:id/delete` — KB entry mutations
+- `GET /api/timeline` — Recent activity timeline (htmx-aware)
+- `GET /api/conversations` · `GET /api/conversations/:id` — Conversation history
+- `GET /api/sources` · `POST /api/sources/save` · `POST /api/sources/:id/remove` · `POST /api/sources/:id/toggle` — Source CRUD
+- `GET /api/sources/proposals` · `POST /api/sources/proposals` · `POST /api/sources/proposals/:id/approve` · `POST /api/sources/proposals/:id/reject` — Source proposals
+- `POST /api/sources/discover` — Run `discover-sources` script
+- `GET /api/sources/practitioner-social/audit` · `POST .../audit/run` · `POST .../audit/apply` — Practitioner social profile enrichment
 
-**Route registration note**: `entries.js` is registered without a prefix. All other route files use `{ prefix: '/api' }`. The `entries.js` file hard-codes `/api/` in its mutation route paths. Don't add a prefix when registering it.
+**Route registration notes**:
+
+- `entries.js` is registered without a prefix; it hard-codes `/api/` in mutation route paths. Don't add a prefix when registering it.
+- `sources.js` is also registered without a prefix; it handles both page routes (`/sources/*`) and API routes (`/api/sources/*`) internally.
 
 Views use Nunjucks (`server/views/`) via `@fastify/view`. htmx handles panel refreshes. Content-type parser for `application/x-www-form-urlencoded` is registered explicitly (required for htmx POST requests).
 
 `server/lib/git.js` wraps all git operations: `promoteEntry`, `commitEdit`, `removeEntry`, `commitPerspective`, `commitSeen`. All pulls use `--autostash`.
 
 `server/lib/runner.js` maintains an in-memory stream registry (`runStreams` map). Each `runScript` call creates a stream entry; stdout and stderr both pipe into it. `getRunStream(runId)` is exported for the SSE endpoint. Streams evict after 15 minutes.
+
+## Peng Tool Call System
+
+`server/lib/peng-tools.js` defines Peng's server-side tools and the execution/confirmation flow.
+
+**Tool sets:**
+
+- **Read tools** (`READ_TOOL_NAMES`): `get_status`, `get_queue`, `get_entry`, `get_draft`, `get_sources`, `get_source_proposals`, `get_practitioner_social_audit` — execute immediately without confirmation.
+- **Write tools** (`WRITE_TOOL_NAMES`): `create_draft`, `update_draft`, `promote_draft`, `save_entry`, `trigger_translate`, `propose_source`, `approve_source`, `update_source`, `remove_source`, `apply_practitioner_social_candidate` — require operator confirmation via the dashboard before execution.
+
+**Confirmation flow** (`server/routes/ask.js`): When a response includes write tool calls, the server returns a `confirmationRequired` SSE event containing a one-time token (TTL 10 min, stored in `pendingConfirmations` Map). The dashboard shows the proposed action; the operator confirms by resubmitting with `{ confirmation: token }`. The token is consumed on use. `POST /api/ask/confirmation/:token/cancel` aborts a pending confirmation.
+
+**Tool rounds**: `MAX_TOOL_ROUNDS = 4`. Each round: call model → detect tool calls → execute read tools immediately or pause for write confirmation → inject tool results → continue. All confirmed write tool calls are logged to the `events` table with `type = 'confirmed_tool_call'`.
 
 ## Instruction Priority
 

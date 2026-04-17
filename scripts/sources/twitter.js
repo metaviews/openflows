@@ -112,9 +112,20 @@ function dedup(signals) {
   return [...new Map(signals.map(signal => [signal.url, signal])).values()];
 }
 
+async function post(config, text, options = {}) {
+  return xactions.postTweet(text, {
+    ...options,
+    authToken: config.authToken,
+    userDataDir: config.userDataDir,
+    headless: config.headless ?? true,
+    browserOptions: config.browserOptions,
+  })
+}
+
 module.exports = {
   fetch,
   enrich,
+  post,
   normalizeTweet,
   READ_ONLY_XACTIONS_METHODS: xactions.READ_ONLY_METHODS,
 };

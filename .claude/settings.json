@@ -88,7 +88,14 @@
       "Bash(node -e \"const d = require\\(''''./_site/knowledge-manifest.json''''\\); console.log\\(''''Manifest:'''', d.count, ''''entries | byLang:'''', JSON.stringify\\(d.byLang\\)\\)\")",
       "Bash(python3 -:*)",
       "Bash(node -e \"const s = require\\(''./drafts/seen.json''\\); const keys = Object.keys\\(s\\); console.log\\(''Total seen:'', keys.length\\); const missing = [''open-source-ai-agent-frameworks-2026'',''ccg-workflow-multi-model-development-stack-orchestration'',''codebuddy'']; missing.forEach\\(id => console.log\\(id, ''→'', s[id] ? JSON.stringify\\(s[id]\\) : ''NOT IN SEEN''\\)\\)\")",
-      "Read(//c/Users/jesse/webdev/openflows/drafts/zh/**)"
+      "Read(//c/Users/jesse/webdev/openflows/drafts/zh/**)",
+      "Bash(node -e \"const pkg = require\\('./node_modules/xactions/package.json'\\); console.log\\(JSON.stringify\\(Object.keys\\(pkg.exports || {}\\), null, 2\\)\\)\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(list\\(\\(d.get\\('exports'\\) or {}\\).keys\\(\\)\\)[:20]\\)\")",
+      "Bash(node -e \"const m = require\\('./scripts/sources/bluesky.js'\\); console.log\\(typeof m.post, typeof m.fetch\\)\")",
+      "Bash(node -e \"const m = require\\('./scripts/sources/mastodon.js'\\); console.log\\(typeof m.post, typeof m.fetch\\)\")",
+      "Bash(node -e \"const m = require\\('./scripts/sources/twitter.js'\\); console.log\\(typeof m.post, typeof m.fetch\\)\")",
+      "Bash(node -e \"const m = require\\('./scripts/lib/xactions-adapter.js'\\); console.log\\(typeof m.postTweet, typeof m.searchTweets\\)\")",
+      "Bash(node -e \"const m = require\\('./server/lib/social-publisher.js'\\); console.log\\(typeof m.postToSource, [...m.SOCIAL_MODULES]\\)\")"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh"

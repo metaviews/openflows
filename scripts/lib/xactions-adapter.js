@@ -1,9 +1,12 @@
 'use strict'
 
+const { pathToFileURL } = require('url')
+const path = require('path')
+
 const READ_ONLY_METHODS = Object.freeze(['createBrowser', 'createPage', 'loginWithCookie', 'searchTweets', 'scrapeTweets'])
 
 async function searchTweets(query, options = {}) {
-  return withReadOnlySession(options, async ({ scrapers, page }) => {
+  return withBrowserSession(options, async ({ scrapers, page }) => {
     assertReadMethod(scrapers, 'searchTweets')
     return scrapers.searchTweets(page, query, {
       limit: options.limit,
@@ -13,7 +16,7 @@ async function searchTweets(query, options = {}) {
 }
 
 async function scrapeTweets(username, options = {}) {
-  return withReadOnlySession(options, async ({ scrapers, page }) => {
+  return withBrowserSession(options, async ({ scrapers, page }) => {
     assertReadMethod(scrapers, 'scrapeTweets')
     return scrapers.scrapeTweets(page, username, {
       limit: options.limit,
@@ -22,7 +25,20 @@ async function scrapeTweets(username, options = {}) {
   })
 }
 
-async function withReadOnlySession(options, fn) {
+async function postTweet(text, options = {}) {
+  return withBrowserSession(options, async ({ page }) => {
+    const scraperPath = require.resolve('xactions/scrapers/twitter')
+    const xactionsRoot = path.resolve(path.dirname(scraperPath), '..', '..', '..')
+    const composerPath = path.join(xactionsRoot, 'src', 'postComposer.js')
+    const { postTweet: doPost } = await import(pathToFileURL(composerPath).href)
+    return doPost(page, text, {
+      replyTo: options.replyTo || null,
+      media: options.media || null,
+    })
+  })
+}
+
+async function withBrowserSession(options, fn) {
   const importer = options.importer || ((specifier) => import(specifier))
   let scrapers
   try {
@@ -48,6 +64,9 @@ async function withReadOnlySession(options, fn) {
   }
 }
 
+// Keep old name for any external callers
+const withReadOnlySession = withBrowserSession
+
 function buildBrowserOptions(options = {}) {
   const headless = options.headless ?? (process.env.XACTIONS_HEADLESS !== 'false')
   const browserOptions = {
@@ -69,5 +88,6 @@ module.exports = {
   READ_ONLY_METHODS,
   searchTweets,
   scrapeTweets,
+  postTweet,
   buildBrowserOptions,
 }

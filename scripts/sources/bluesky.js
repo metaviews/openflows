@@ -118,4 +118,40 @@ function dedup(signals) {
   return [...new Map(signals.map(signal => [signal.url, signal])).values()];
 }
 
-module.exports = { fetch, enrich, normalizePost, extractBlueskyLinks };
+async function post(config, text) {
+  const { identifier, appPassword } = config
+  if (!identifier || !appPassword) throw new Error('Bluesky post requires config.identifier and config.appPassword')
+  const service = String(config.service || 'https://bsky.social').replace(/\/$/, '')
+
+  const sessionRes = await globalThis.fetch(`${service}/xrpc/com.atproto.server.createSession`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ identifier, password: appPassword }),
+  })
+  if (!sessionRes.ok) {
+    const body = await sessionRes.text()
+    throw new Error(`Bluesky auth failed (${sessionRes.status}): ${body}`)
+  }
+  const session = await sessionRes.json()
+
+  const record = { $type: 'app.bsky.feed.post', text, createdAt: new Date().toISOString() }
+  const postRes = await globalThis.fetch(`${service}/xrpc/com.atproto.repo.createRecord`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${session.accessJwt}` },
+    body: JSON.stringify({ repo: session.did, collection: 'app.bsky.feed.post', record }),
+  })
+  if (!postRes.ok) {
+    const body = await postRes.text()
+    throw new Error(`Bluesky post failed (${postRes.status}): ${body}`)
+  }
+  const result = await postRes.json()
+  const rkey = String(result.uri || '').split('/').pop()
+  return {
+    ok: true,
+    uri: result.uri,
+    cid: result.cid,
+    url: rkey ? `https://bsky.app/profile/${session.handle}/post/${rkey}` : null,
+  }
+}
+
+module.exports = { fetch, enrich, post, normalizePost, extractBlueskyLinks };
