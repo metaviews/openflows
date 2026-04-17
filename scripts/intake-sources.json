@@ -61,6 +61,7 @@
       "enabled": true,
       "notes": "X/Twitter intake through XActions read-only scraper paths. Disabled by default; comply with X terms and local session policy before enabling.",
       "config": {
+        "authToken": "REPLACE_WITH_X_AUTH_TOKEN_COOKIE",
         "queries": [
           "open source LLM release -is:retweet lang:en",
           "new AI agent framework open source -is:retweet lang:en",
@@ -80,7 +81,9 @@
       "enabled": true,
       "notes": "Public Bluesky AppView search and actor-feed intake. Disabled by default until operator review.",
       "config": {
-        "service": "https://public.api.bsky.app",
+        "identifier": "REPLACE_WITH_HANDLE.bsky.social",
+        "appPassword": "REPLACE_WITH_APP_PASSWORD",
+        "service": "https://bsky.social",
         "queries": [
           "open source AI",
           "\"local LLM\"",
@@ -100,6 +103,7 @@
         "instances": [
           {
             "baseUrl": "https://mastodon.social",
+            "token": "REPLACE_WITH_MASTODON_ACCESS_TOKEN",
             "queries": [
               "open source AI",
               "local LLM",
