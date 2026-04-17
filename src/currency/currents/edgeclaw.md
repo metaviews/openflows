@@ -1,47 +1,40 @@
 ---
 layout: layouts/currency-item.njk
 title: "EdgeClaw"
-date: 2026-02-24
+date: 2026-04-17
 currencyType: "current"
-currencyId: edgeclaw
-abstract: "An open repository signal oriented toward edge-facing AI and robotics experimentation."
+currencyId: "edgeclaw"
+abstract: "EdgeClaw is an OpenBMB open-source agent framework designed for edge-cloud collaborative AI workflows with cost-aware routing and privacy-preserving coordination."
 tags:
   - currency
 permalink: /currency/currents/edgeclaw/
 links:
-  - id: local-inference-baseline
-    relation: "contributes edge-specific inference patterns to"
-  - id: inspectable-agent-operations
-    relation: "provides visibility constraints for"
-  - id: embodied-ai-governance
-    relation: "supplies robotics experimentation signals for"
-lastReviewed: 2026-03-23
+  - id: "openclaw"
+    relation: "related agent framework focusing on inspectability and configuration"
+mediation:
+  tooling: "OpenRouter / qwen/qwen3.5-flash-02-23"
+  use:
+    - "drafted entry from external signal"
+    - "assessed linkage against existing knowledge base"
+  humanRole: "review, edit, and approve before publication"
+  limits: "signal content may be incomplete; verify primary sources before publishing"
 ---
 
 ### Signal
-
-[EdgeClaw](https://github.com/openbmb/edgeclaw) is a public repository signal in the edge AI and robotics-adjacent development space.
+[EdgeClaw/readme_zh.md at main · OpenBMB/EdgeClaw](https://github.com/OpenBMB/EdgeClaw/blob/main/readme_zh.md) · GitHub · 2026-03-19
+OpenBMB released EdgeClaw as an open-source edge-cloud collaborative AI agent framework, featuring ClawXRouter for cost-efficient model routing, privacy collaboration layers, and a visual dashboard for task management.
 
 ### Context
-
-Open edge projects matter because they move intelligence workflows closer to local hardware constraints and real-world operational conditions.
+Edge computing and local inference are becoming standard for agent autonomy, requiring frameworks that balance local execution with cloud scaling. EdgeClaw addresses the need for cost-aware routing and privacy in distributed agent workflows, positioning itself within the infrastructure layer where agents interact with heterogeneous hardware and network constraints.
 
 ### Relevance
-
-For Openflows, this aligns with inspectable autonomy at the edge, where configuration and execution decisions remain visible to practitioners.
+Aligns with the Local Inference as Baseline circuit and Edge-Cloud infrastructure patterns. Complements existing agent frameworks by focusing on economic and privacy constraints in multi-node execution, specifically targeting the operational costs of cloud model access versus local inference capabilities.
 
 ### Current State
-
-Early movement signal with practical relevance to local inference and embodied systems.
+Open-sourced in February 2026, with recent updates to ClawXRouter (March 2026) introducing 5-level cost routing and 3-level privacy collaboration. The framework includes a visual dashboard for managing gateway connections, agent tasks, and job configurations.
 
 ### Open Questions
-
-- Which parts of the stack are currently most reusable for small local deployments?
-- How does the project handle deployment constraints across heterogeneous hardware?
-- What safety and observability patterns are emerging at runtime?
+How does ClawXRouter compare to existing routing mechanisms in terms of latency and cost accuracy? What is the specific implementation of the 3-level privacy collaboration? How does the framework handle state synchronization between edge and cloud nodes during long-horizon workflows?
 
 ### Connections
-
-Linked to `local-inference-baseline` as EdgeClaw contributes edge-specific inference patterns to the baseline infrastructure.
-Linked to `inspectable-agent-operations` as the project provides visibility constraints for configuration and execution decisions at the edge.
-Linked to `embodied-ai-governance` as it supplies robotics experimentation signals for systems acting in the physical world.
+The framework operates in parallel with other agent orchestration tools but distinguishes itself through its explicit focus on cost-aware routing and privacy layers. It shares the "Claw" nomenclature with OpenClaw, though they represent distinct organizational efforts with different technical priorities.
