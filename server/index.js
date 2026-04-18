@@ -9,6 +9,7 @@ loadEnv(path.join(__dirname, '..'))
 
 const { initDb } = require('./db')
 const { startCron } = require('./cron')
+const { initDiscord } = require('./discord')
 const { buildStatusData } = require('./routes/status')
 const { loadManifest } = require('./lib/manifest')
 const { pruneMalformedDrafts } = require('./lib/drafts')
@@ -115,8 +116,11 @@ async function start() {
     })
   })
 
+  // ── Discord bot ───────────────────────────────────────────────────────────────
+  const discord = initDiscord(db)
+
   // ── Cron ─────────────────────────────────────────────────────────────────────
-  startCron(db)
+  startCron(db, discord)
 
   // ── Listen ───────────────────────────────────────────────────────────────────
   try {

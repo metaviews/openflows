@@ -100,7 +100,9 @@
       "Bash(node -e \"const m = require\\('./scripts/lib/xactions-adapter.js'\\); console.log\\(typeof m.searchTweets, typeof m.postTweet\\)\")",
       "Bash(gh auth *)",
       "Bash(gh repo *)",
-      "Bash(gh issue *)"
+      "Bash(gh issue *)",
+      "Bash(node -e \"require\\('discord.js'\\); console.log\\('ok'\\)\")",
+      "Bash(timeout 4 node server/index.js)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh",

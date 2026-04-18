@@ -5,18 +5,20 @@ const { runScript } = require('./lib/runner')
 const { ensureManifest } = require('./lib/manifest')
 const { commitPerspective, commitSeen } = require('./lib/git')
 
-function startCron(db) {
+function startCron(db, discord = null) {
   // Daily intake — 06:00 UTC (mirrors retired peng-intake.yml)
   cron.schedule('0 6 * * *', async () => {
     console.log('[cron] intake run starting')
     try {
       await ensureManifest()
-      await runScript(db, 'intake', ['--sources', 'github,huggingface,brave,opensourceprojects', '--limit', '10'])
+      const intakeResult = await runScript(db, 'intake', ['--sources', 'github,huggingface,brave,opensourceprojects', '--limit', '10'])
       await runScript(db, 'practitioners', ['--limit', '3'])
       await runScript(db, 'audit')
       await commitSeen()
+      await discord?.notify('intake', { db, runId: intakeResult.runId })
     } catch (err) {
       console.error('[cron] intake error:', err.message)
+      try { await discord?.notify('error', { type: 'intake', error: err.message }) } catch {}
     }
   }, { timezone: 'UTC' })
 
@@ -28,8 +30,10 @@ function startCron(db) {
       await runScript(db, 'synthesize')
       await runScript(db, 'digest')
       await commitPerspective()
+      await discord?.notify('digest', { db })
     } catch (err) {
       console.error('[cron] perspective error:', err.message)
+      try { await discord?.notify('error', { type: 'perspective', error: err.message }) } catch {}
     }
   }, { timezone: 'UTC' })
 
