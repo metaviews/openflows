@@ -394,9 +394,9 @@ async function executeToolCall(fastify, toolCall) {
       return { url, text, length: stripped.length }
     }
     case 'create_draft':
-      return upsertDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: args.content })
+      return upsertDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: stripCodeFence(args.content) })
     case 'update_draft':
-      return updateDraftContent(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: args.content })
+      return updateDraftContent(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: stripCodeFence(args.content) })
     case 'promote_draft':
       return promoteDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en' })
     case 'save_entry':
@@ -492,6 +492,13 @@ function logConfirmedToolCall(db, { toolCall, result, error }) {
 
   db.prepare('INSERT INTO events (type, payload, created_at) VALUES (?, ?, ?)')
     .run('confirmed_tool_call', JSON.stringify(payload), now)
+}
+
+function stripCodeFence(content) {
+  if (typeof content !== 'string') return content
+  // Strip opening ```markdown, ```yaml, ``` etc. and closing ``` that models sometimes add
+  const stripped = content.replace(/^```[^\n]*\n/, '').replace(/\n```\s*$/, '').trimStart()
+  return stripped
 }
 
 function parseArguments(raw) {
