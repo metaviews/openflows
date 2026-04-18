@@ -6,18 +6,22 @@
     {% set nextDir = 'desc' %}
   {% endif %}
   <a class="sort-link{% if sort == key %} sort-active{% endif %}"
-     href="/entries?sort={{ key }}&dir={{ nextDir }}{% if filterType %}&type={{ filterType }}{% endif %}{% if filterLang %}&lang={{ filterLang }}{% endif %}">
+     href="/entries?sort={{ key }}&dir={{ nextDir }}{% if filterType %}&type={{ filterType }}{% endif %}{% if filterLang %}&lang={{ filterLang }}{% endif %}&limit={{ limit }}">
     {{ label }}
     {% if sort == key %}<span class="sort-arrow">{% if sortDir == 'asc' %}↑{% else %}↓{% endif %}</span>{% endif %}
   </a>
 {% endmacro %}
+
+{% macro pageUrl(p) %}/entries?page={{ p }}&limit={{ limit }}&sort={{ sort }}&dir={{ sortDir }}{% if filterType %}&type={{ filterType }}{% endif %}{% if filterLang %}&lang={{ filterLang }}{% endif %}{% endmacro %}
 
 {% block content %}
 <div class="page-container">
   <div class="page-header">
     <span class="page-title">
       Knowledge Base
-      <span class="muted">({{ entries | length }}{% if entries | length != total %} of {{ total }}{% endif %} entries)</span>
+      <span class="muted">
+        ({% if filteredTotal > 0 %}{{ rangeStart }}–{{ rangeEnd }} of {{ filteredTotal }}{% if filteredTotal != total %} filtered, {{ total }} total{% endif %}{% else %}0 entries{% endif %})
+      </span>
     </span>
     <div class="filter-bar">
       <span>Type:</span>
@@ -32,6 +36,12 @@
         <option value="" {% if not filterLang %}selected{% endif %}>all</option>
         <option value="en" {% if filterLang == 'en' %}selected{% endif %}>en</option>
         <option value="zh" {% if filterLang == 'zh' %}selected{% endif %}>zh</option>
+      </select>
+      <span>Per page:</span>
+      <select id="filter-limit" onchange="applyFilters()">
+        <option value="25"  {% if limit == 25  %}selected{% endif %}>25</option>
+        <option value="50"  {% if limit == 50  %}selected{% endif %}>50</option>
+        <option value="100" {% if limit == 100 %}selected{% endif %}>100</option>
       </select>
     </div>
   </div>
@@ -68,15 +78,43 @@
       {% endfor %}
     </tbody>
   </table>
+
+  {% if pageCount > 1 %}
+  <nav class="pagination">
+    {% if page > 1 %}
+      <a class="page-link" href="{{ pageUrl(page - 1) }}">← Prev</a>
+    {% else %}
+      <span class="page-link disabled">← Prev</span>
+    {% endif %}
+
+    {% for link in pageLinks %}
+      {% if link.ellipsis %}
+        <span class="page-ellipsis">…</span>
+      {% elif link.page == page %}
+        <span class="page-link page-current">{{ link.label }}</span>
+      {% else %}
+        <a class="page-link" href="{{ pageUrl(link.page) }}">{{ link.label }}</a>
+      {% endif %}
+    {% endfor %}
+
+    {% if page < pageCount %}
+      <a class="page-link" href="{{ pageUrl(page + 1) }}">Next →</a>
+    {% else %}
+      <span class="page-link disabled">Next →</span>
+    {% endif %}
+  </nav>
+  {% endif %}
 </div>
 
 <script>
 function applyFilters() {
   const type = document.getElementById('filter-type').value
   const lang = document.getElementById('filter-lang').value
+  const limit = document.getElementById('filter-limit').value
   const params = new URLSearchParams()
   if (type) params.set('type', type)
   if (lang) params.set('lang', lang)
+  params.set('limit', limit)
   params.set('sort', '{{ sort }}')
   params.set('dir', '{{ sortDir }}')
   window.location.href = '/entries' + (params.toString() ? '?' + params.toString() : '')

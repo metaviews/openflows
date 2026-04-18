@@ -534,6 +534,13 @@ nav a:hover { color: var(--text); }
 .entries-table tr:hover td { background: #fafaf8; }
 .entries-table .title-cell { max-width: 400px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
+.pagination { display: flex; gap: 0.25rem; align-items: center; margin-top: 1rem; flex-wrap: wrap; }
+.page-link { font-size: 0.75rem; font-family: inherit; padding: 0.2rem 0.5rem; border: 1px solid var(--border); border-radius: 2px; background: var(--surface); color: var(--text); text-decoration: none; cursor: pointer; }
+.page-link:hover:not(.disabled):not(.page-current) { background: #f0efeb; border-color: var(--accent); }
+.page-link.page-current { background: var(--accent); color: #fff; border-color: var(--accent); font-weight: bold; cursor: default; }
+.page-link.disabled { color: var(--muted); cursor: default; opacity: 0.5; }
+.page-ellipsis { font-size: 0.75rem; color: var(--muted); padding: 0.2rem 0.25rem; }
+
 .edit-actions { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; }
 
 .source-form { display: grid; gap: 0.75rem; }

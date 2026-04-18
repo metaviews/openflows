@@ -4,6 +4,25 @@ const { loadManifest } = require('../lib/manifest')
 const { readEntry, saveEntry, deleteEntry } = require('../lib/entries')
 const { validateCurrencyMarkdown } = require('../lib/validation')
 
+const ALLOWED_LIMITS = [25, 50, 100]
+
+function buildPageLinks(page, pageCount) {
+  if (pageCount <= 7) {
+    return Array.from({ length: pageCount }, (_, i) => ({ page: i + 1, label: String(i + 1) }))
+  }
+  const show = new Set(
+    [1, pageCount, page - 1, page, page + 1].filter(p => p >= 1 && p <= pageCount)
+  )
+  const links = []
+  let prev = 0
+  for (const p of [...show].sort((a, b) => a - b)) {
+    if (p - prev > 1) links.push({ ellipsis: true, label: '…' })
+    links.push({ page: p, label: String(p) })
+    prev = p
+  }
+  return links
+}
+
 async function entriesRoutes(fastify) {
   // ── Browse ──────────────────────────────────────────────────────────────────
   fastify.get('/entries', async (req, reply) => {
@@ -18,6 +37,7 @@ async function entriesRoutes(fastify) {
     }
     const sort = sortFields[req.query.sort] ? req.query.sort : 'id'
     const sortDir = req.query.dir === 'desc' ? 'desc' : 'asc'
+    const limit = ALLOWED_LIMITS.includes(Number(req.query.limit)) ? Number(req.query.limit) : 50
     let entries = manifest?.entries || []
     if (type) entries = entries.filter(e => e.currencyType === type)
     if (lang) entries = entries.filter(e => e.lang === lang)
@@ -34,16 +54,29 @@ async function entriesRoutes(fastify) {
       }
       return sortDir === 'desc' ? -result : result
     })
+    const filteredTotal = entries.length
+    const pageCount = Math.ceil(filteredTotal / limit) || 1
+    const page = Math.min(Math.max(1, parseInt(req.query.page, 10) || 1), pageCount)
+    const rangeStart = filteredTotal > 0 ? (page - 1) * limit + 1 : 0
+    const rangeEnd = Math.min(page * limit, filteredTotal)
+    const pageEntries = entries.slice((page - 1) * limit, page * limit)
     const allEntries = manifest?.entries || []
     const translatedIds = {}
     allEntries.filter(e => e.lang === 'zh').forEach(e => { translatedIds[e.currencyId] = true })
     return reply.view('entries.njk', {
-      entries,
+      entries: pageEntries,
       total: manifest?.entries?.length || 0,
+      filteredTotal,
+      rangeStart,
+      rangeEnd,
       filterType: type || '',
       filterLang: lang || '',
       sort,
       sortDir,
+      limit,
+      page,
+      pageCount,
+      pageLinks: buildPageLinks(page, pageCount),
       translatedIds,
     })
   })
