@@ -97,7 +97,10 @@
       "Bash(node -e \"const m = require\\('./scripts/lib/xactions-adapter.js'\\); console.log\\(typeof m.postTweet, typeof m.searchTweets\\)\")",
       "Bash(node -e \"const m = require\\('./server/lib/social-publisher.js'\\); console.log\\(typeof m.postToSource, [...m.SOCIAL_MODULES]\\)\")",
       "Bash(node -e ' *)",
-      "Bash(node -e \"const m = require\\('./scripts/lib/xactions-adapter.js'\\); console.log\\(typeof m.searchTweets, typeof m.postTweet\\)\")"
+      "Bash(node -e \"const m = require\\('./scripts/lib/xactions-adapter.js'\\); console.log\\(typeof m.searchTweets, typeof m.postTweet\\)\")",
+      "Bash(gh auth *)",
+      "Bash(gh repo *)",
+      "Bash(gh issue *)"
     ],
     "additionalDirectories": [
       "C:\\Users\\jesse\\webdev\\openflows\\drafts\\zh",

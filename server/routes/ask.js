@@ -91,6 +91,7 @@ async function askRoutes(fastify) {
       }
       toolAugmentedHistory = resolved.history
       toolSummaries = collectToolSummaries(toolAugmentedHistory)
+      if (toolSummaries.length) fastify.log.info({ tools: toolSummaries.map(t => t.name) }, '[ask] tool rounds complete')
     } catch (err) {
       fastify.log.error(err)
       toolAugmentedHistory = [
@@ -228,7 +229,10 @@ async function resolveToolCalls(fastify, systemPrompt, history, { confirmation }
 
     const message = response?.choices?.[0]?.message
     const toolCalls = message?.tool_calls || []
-    if (!toolCalls.length) return { history: working }
+    if (!toolCalls.length) {
+      if (message?.content) working.push({ role: 'assistant', content: message.content })
+      return { history: working }
+    }
 
     working.push({
       role: 'assistant',

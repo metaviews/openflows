@@ -387,7 +387,7 @@ async function executeToolCall(fastify, toolCall) {
         .replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'")
         .replace(/\s+/g, ' ')
         .trim()
-      const MAX = 6000
+      const MAX = 3000
       const text = stripped.length > MAX
         ? stripped.slice(0, MAX) + `\n\n[truncated — ${stripped.length - MAX} chars omitted]`
         : stripped
