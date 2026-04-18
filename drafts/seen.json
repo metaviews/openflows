@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-17T06:21:38.726Z",
+  "lastUpdated": "2026-04-18T06:13:06.777Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3504,6 +3504,117 @@
       "title": "2026年开源大模型完整榜单_开源_Joshkhh-AtomGit开源社区",
       "source": "brave",
       "file": "open-weight-model-infrastructure.md"
+    },
+    "https://opensourceprojects.dev/post/264ae5ee-ae23-43a1-a85c-7860bab925d5": {
+      "date": "2026-04-18",
+      "decision": "skipped",
+      "title": "BarraCUDA: GPU-Accelerated Framework for High-Performance Compute on CUDA",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source CUDA framework, but focuses on general-purpose HPC rather than AI-specific tools or models, making it tangential to the Openflows AI ecosystem scope."
+    },
+    "https://opensourceprojects.dev/post/81a58eae-2101-4bb1-bb92-de733d2789ef": {
+      "date": "2026-04-18",
+      "decision": "skipped",
+      "title": "markit: Convert Any File Format to Clean Markdown via CLI",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tangentially related to AI workflows; title/repo mismatch reduces inspectability."
+    },
+    "https://opensourceprojects.dev/post/e1897ade-3ffd-4a20-9184-1119c0691306": {
+      "date": "2026-04-18",
+      "decision": "skipped",
+      "title": "Fireworks Tech Graph AI Driven Knowledge Graph for Technology Analysis",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Marketing-heavy description lacks operational specifics; likely a niche personal project rather than significant ecosystem infrastructure."
+    },
+    "https://opensourceprojects.dev/post/6d3af576-60ff-4a11-a8f2-ef45fe7bea66": {
+      "date": "2026-04-18",
+      "decision": "skipped",
+      "title": "Git City: Turn GitHub Profiles into a 3D Interactive City",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "General-purpose GitHub visualization tool rather than an AI-specific framework or model. It does not advance understanding of the open source AI ecosystem and leans towards novelty."
+    },
+    "https://opensourceprojects.dev/post/d3042444-77f4-4fb2-9725-bbaaac960978": {
+      "date": "2026-04-18",
+      "decision": "skipped",
+      "title": "Colleague-Skill: Turn Departed Teammates into Reusable AI Skills",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Title suggests marketing hype over operational substance; project is niche and tangential to core AI infrastructure; lacks clear adoption metrics."
+    },
+    "https://opensourceprojects.dev/post/43c26216-5ed6-4a34-8edd-b446394b58a2": {
+      "date": "2026-04-18",
+      "decision": "skipped",
+      "title": "Dingo: A Modern Language That Compiles to Go",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "General-purpose language without AI focus; tangentially related to infrastructure but outside open source AI ecosystem scope."
+    },
+    "https://github.com/fiveoutofnine/whatcanirun": {
+      "date": "2026-04-18",
+      "decision": "drafted",
+      "title": "whatcanirun",
+      "source": "github",
+      "file": "whatcanirun.md"
+    },
+    "https://opensourceprojects.dev/post/77fe6dc5-751e-4c33-907c-ee421b15fc9f": {
+      "date": "2026-04-18",
+      "decision": "drafted",
+      "title": "Flash MoE C and Metal Based Engine for Running Large Scale MoE Models",
+      "source": "opensourceprojects",
+      "file": "flash-moe-metal-engine.md"
+    },
+    "https://sotasync.com/reader/2026-04-12-top-40-ai-github-repos-2026/": {
+      "date": "2026-04-18",
+      "decision": "drafted",
+      "title": "2026年最值得关注的40个AI开源项目：从模型部署到Agent开发 | SOTA Sync",
+      "source": "brave",
+      "file": "deep-agents-deploy.md"
+    },
+    "https://github.com/AutoX-AI-Labs/AutoR": {
+      "date": "2026-04-18",
+      "decision": "drafted",
+      "title": "AutoR",
+      "source": "github",
+      "file": "autor.md"
+    },
+    "https://opensourceprojects.dev/post/9f3fa9d4-1b59-47de-ac3d-2af16e4ef03c": {
+      "date": "2026-04-18",
+      "decision": "drafted",
+      "title": "T3 Code: Minimal Web UI for AI Coding Agents like Codex and Claude",
+      "source": "opensourceprojects",
+      "file": "t3-code.md"
+    },
+    "https://opensourceprojects.dev/post/cd2fb631-88c1-41a3-8473-1bbe36cea17c": {
+      "date": "2026-04-18",
+      "decision": "drafted",
+      "title": "OmniVoice – State-of-the-Art Diffusion-Based TTS with Voice Cloning",
+      "source": "opensourceprojects",
+      "file": "omnivoice.md"
+    },
+    "https://opensourceprojects.dev/post/884f13b4-c935-4cf6-ab31-bae8c88bc46d": {
+      "date": "2026-04-18",
+      "decision": "drafted",
+      "title": "PaperBanana: Generate Research Diagrams and Plots from Text",
+      "source": "opensourceprojects",
+      "file": "paperbanana.md"
+    },
+    "https://opensourceprojects.dev/post/a0655858-60e9-41eb-8f0e-f8e66cfd0c01": {
+      "date": "2026-04-18",
+      "decision": "drafted",
+      "title": "autoskills: AI That Understands Your Codebase Automatically",
+      "source": "opensourceprojects",
+      "file": "autoskills.md"
+    },
+    "https://opensourceprojects.dev/post/02712fb3-31ce-44de-9489-2ac02eed2a58": {
+      "date": "2026-04-18",
+      "decision": "drafted",
+      "title": "Open Multi-Agent – Build and Orchestrate Collaborative AI Agents",
+      "source": "opensourceprojects",
+      "file": "open-multi-agent.md"
     }
   }
 }
