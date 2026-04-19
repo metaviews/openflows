@@ -24,6 +24,7 @@ node scripts/digest.js [--stdout]             # Peng's editorial briefing
 node scripts/queue.js                         # Regenerate drafts/QUEUE.md
 node scripts/refresh.js [--limit 10] [--id slug] [--days 7]  # Check stale entries for updates
 node scripts/practitioners.js [--limit 3]     # Enrich practitioner entries
+node scripts/intake-urls.js                   # One-shot: fetch URL list → generate drafts → queue
 
 # Deployment (on server)
 git pull --rebase
@@ -33,6 +34,8 @@ pm2 restart peng
 ## Environment
 
 Copy `.env.example` to `.env`. Required keys: `OPENROUTER_API_KEY`, `OPENROUTER_MODEL`, `FALLBACK_OPENROUTER_MODEL`, `BRAVE_API_KEY`. Optional: `TWITTER_BEARER_TOKEN`, `PORT`, `DB_PATH`, `GIT_USER_NAME`, `GIT_USER_EMAIL`. All scripts use `scripts/lib/openrouter.js` for model calls — model is env-configurable, never hardcoded.
+
+Discord bot (all optional — omit `DISCORD_BOT_TOKEN` to disable): `DISCORD_BOT_TOKEN`, `DISCORD_GUILD_ID` (server ID for slash command registration), `DISCORD_CHANNEL_ID` (notification channel), `DISCORD_AUTHORIZED_USERS` (comma-separated user IDs for write tools and `/trigger`).
 
 ## Architecture
 
@@ -45,9 +48,12 @@ Copy `.env.example` to `.env`. Required keys: `OPENROUTER_API_KEY`, `OPENROUTER_
 **Human-in-the-loop is the core invariant.** Peng (the agent) proposes; humans approve before anything enters `src/`. Drafts live in `drafts/` (gitignored except `seen.json`, `QUEUE.md`, `.gitkeep`). Promotion moves a file from `drafts/` to `src/currency/{type}/` via git commit + push, triggering Cloudflare deploy.
 
 **Cron** (`server/cron.js`) runs all automation:
-- `06:00 UTC daily` — intake → practitioners → audit → commit
-- `08:00 UTC Mon/Wed/Fri` — synthesize → digest → commit
+
+- `06:00 UTC daily` — intake → practitioners → audit → commit → Discord intake notification
+- `08:00 UTC Mon/Wed/Fri` — synthesize → digest → commit → Discord digest notification
 - `09:00 UTC daily` — refresh
+
+**Discord bot** (`server/discord.js`): optional Peng presence. `initDiscord(db)` returns `{ notify }` or null if `DISCORD_BOT_TOKEN` is absent. Handles mention-based chat (read tools for anyone, write tools for authorized users with button confirmation), slash commands (`/ask`, `/status`, `/queue`, `/trigger`), and automated notifications after cron jobs. Per-channel conversation history capped at 20 messages. `executeToolCall` is called with `{ db }` as a duck-typed fastify object.
 
 GitHub Actions are retired. All automation runs from the self-hosted server.
 
@@ -102,7 +108,7 @@ The admin dashboard (`/`) has three sections:
 
 **Page routes** (no prefix):
 - `GET /` — Dashboard
-- `GET /entries` — Browse KB entries; filter by type/lang; Translate button on untranslated English rows
+- `GET /entries` — Browse KB entries; paginated (50/page default); filter by type/lang; per-page selector (25/50/100); sort by any column; Translate button on untranslated English rows
 - `GET /entries/:id?lang=` — Markdown editor; Save & Commit or Delete
 - `GET /queue/:id/edit?lang=` — Draft editor; Save / Promote / Reject
 - `GET /sources` — Source registry; proposals list; practitioner social audit panel
@@ -146,7 +152,7 @@ Views use Nunjucks (`server/views/`) via `@fastify/view`. htmx handles panel ref
 **Tool sets:**
 
 - **Read tools** (`READ_TOOL_NAMES`): `get_status`, `get_queue`, `get_entry`, `get_draft`, `get_sources`, `get_source_proposals`, `get_practitioner_social_audit` — execute immediately without confirmation.
-- **Write tools** (`WRITE_TOOL_NAMES`): `create_draft`, `update_draft`, `promote_draft`, `save_entry`, `trigger_translate`, `propose_source`, `approve_source`, `update_source`, `remove_source`, `apply_practitioner_social_candidate` — require operator confirmation via the dashboard before execution.
+- **Write tools** (`WRITE_TOOL_NAMES`): `create_draft`, `update_draft`, `promote_draft`, `save_entry`, `trigger_translate`, `propose_source`, `approve_source`, `update_source`, `remove_source`, `apply_practitioner_social_candidate` — require operator confirmation via the dashboard before execution. `create_draft` accepts an optional `sourceUrl` parameter stored in the `drafts.source_url` column.
 
 **Confirmation flow** (`server/routes/ask.js`): When a response includes write tool calls, the server returns a `confirmationRequired` SSE event containing a one-time token (TTL 10 min, stored in `pendingConfirmations` Map). The dashboard shows the proposed action; the operator confirms by resubmitting with `{ confirmation: token }`. The token is consumed on use. `POST /api/ask/confirmation/:token/cancel` aborts a pending confirmation.
 
