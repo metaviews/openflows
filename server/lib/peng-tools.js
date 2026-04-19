@@ -105,6 +105,7 @@ const TOOL_DEFS = [
           currencyId: { type: 'string' },
           lang: { type: 'string', enum: ['en', 'zh'] },
           content: { type: 'string' },
+          sourceUrl: { type: 'string', description: 'Origin URL the entry was sourced from, if any.' },
         },
         required: ['currencyId', 'content'],
         additionalProperties: false,
@@ -394,7 +395,7 @@ async function executeToolCall(fastify, toolCall) {
       return { url, text, length: stripped.length }
     }
     case 'create_draft':
-      return upsertDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: stripCodeFence(args.content) })
+      return upsertDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: stripCodeFence(args.content), sourceUrl: args.sourceUrl || null })
     case 'update_draft':
       return updateDraftContent(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: stripCodeFence(args.content) })
     case 'promote_draft':
