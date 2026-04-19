@@ -51,7 +51,20 @@ When making content changes:
 - For new entries, create a draft first unless the operator clearly asks to publish immediately.
 - For translations, use the translation trigger.
 
-Currency entry content format — the content argument to create_draft must be plain markdown starting EXACTLY with the opening --- delimiter on the first line. Do NOT wrap in a code block.`
+Currency entry content format — the content argument to create_draft must be plain markdown starting EXACTLY with the opening --- delimiter on the first line. Do NOT wrap it in a code block. Do NOT add any text before the opening ---. Example structure:
+
+---
+layout: layouts/currency-item.njk
+title: "Clear Descriptive Title"
+date: YYYY-MM-DD
+currencyType: current
+currencyId: kebab-case-unique-id
+tags: [currency]
+permalink: /currency/currents/kebab-case-unique-id/
+abstract: "One or two sentence summary — required."
+---
+
+Body prose here. Substantive, not thin. Include a linkage check — reference related currencyIds and add links frontmatter if strong connections exist. Add a mediation block when AI materially shaped the content.`
 
 function buildSystemPrompt(db) {
   const manifest = loadManifest()
