@@ -6,7 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Static site
-npm run build          # Eleventy: src/ → _site/
+npm run build          # Clean _site, then Eleventy: src/ → _site/
+npm run check:links    # Validate currency links.id references
+npm run check:seo      # Validate generated SEO/discovery metadata
 
 # Server (Fastify dashboard)
 npm run server         # Production: node server/index.js
@@ -96,6 +98,19 @@ mediation:
 English at `/`, Chinese at `/zh/`. The `lang: zh` frontmatter field distinguishes entries. Collections are duplicated in `.eleventy.js`: `currency`/`zh_currency`, `currents`/`zh_currents`, etc. UI strings in `src/_data/i18n.json`, keyed by `en`/`zh`. Templates use `{{ i18n[lang or 'en'] }}`.
 
 `src/knowledge-manifest.11ty.js` generates `_site/knowledge-manifest.json` (includes `lang` field and `byLang` counts). **Synthesis (`synthesize.js`) is English-only** — it filters `lang !== 'zh'` before building context.
+
+## Public Discovery and SEO
+
+The static build generates crawler and agent discovery files:
+
+- `src/sitemap.11ty.js` -> `/sitemap.xml` with canonical public URLs, `lastmod`, and bilingual alternates where available.
+- `src/robots.11ty.js` -> `/robots.txt`, allowing crawl access and pointing to the sitemap.
+- `src/llms.11ty.js` -> `/llms.txt`, a compact map for agents and LLM-mediated retrieval.
+- `src/favicon.svg` and `src/site.webmanifest` provide browser/app metadata.
+
+`src/_includes/layouts/base.njk` owns canonical tags, `hreflang`, Open Graph/Twitter metadata, JSON-LD, skip link, and the hidden primary page `<h1>`. Keep new public pages on this layout unless there is a deliberate reason to opt out.
+
+Run `npm run check:seo` after build-facing template or permalink changes. It validates generated HTML for sitemap coverage, canonical tags, descriptions, JSON-LD parseability, and primary headings.
 
 ## Dashboard Layout
 

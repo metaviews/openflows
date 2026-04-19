@@ -4,6 +4,7 @@ A bilingual knowledge base documenting the open source AI ecosystem — maintain
 
 **Live site:** [openflows.org](https://openflows.org) · [中文版](https://openflows.org/zh/)
 **Knowledge base (JSON):** [openflows.org/knowledge-manifest.json](https://openflows.org/knowledge-manifest.json)
+**Agent map:** [openflows.org/llms.txt](https://openflows.org/llms.txt)
 
 ---
 
@@ -33,9 +34,15 @@ The knowledge base is available in structured JSON, rebuilt on every deploy:
 GET https://openflows.org/knowledge-manifest.json
 ```
 
-Each entry includes: `title`, `currencyId`, `currencyType`, `lang`, `date`, `abstract`, `links`, `permalink`, and rendered body HTML. The `byLang` field gives a count by language.
+Each entry includes: `title`, `currencyId`, `currencyType`, `lang`, `date`, `abstract`, `links`, `permalink`, absolute `url`, and rendered body HTML. The `byLang` field gives a count by language.
 
-RSS and JSON feeds are also available at `/currency/feed.xml` and `/currency/feed.json`.
+Agent and crawler discovery surfaces are also generated on every build:
+
+- `/llms.txt` — compact map for agents and LLM-mediated retrieval
+- `/sitemap.xml` — canonical public URL map with bilingual alternates where available
+- `/robots.txt` — crawler policy and sitemap pointer
+- `/currency/search-index.json` — compact public search index
+- `/currency/feed.xml` and `/currency/feed.json` — RSS and JSON feeds
 
 ## How it runs
 
@@ -53,10 +60,12 @@ RSS and JSON feeds are also available at `/currency/feed.xml` and `/currency/fee
 | `node scripts/enrich.js --fix links` | Suggest circuit links for unlinked currents |
 | `node scripts/status.js` | Local dashboard: pending drafts, stale drafts, KB counts, audit state |
 | `node scripts/digest.js` | Peng writes a short editorial briefing on current flow and pending review items |
+| `npm run check:links` | Validate `links.id` references against known `currencyId`s |
+| `npm run check:seo` | Validate built public HTML for sitemap coverage, canonical tags, descriptions, JSON-LD, and primary headings |
 
 All scripts require `OPENROUTER_API_KEY` in `.env`. See `.env.example`. `FALLBACK_OPENROUTER_MODEL` is optional — used when the primary model hits a rate limit.
 
-Social intake sources are disabled by default in `scripts/intake-sources.json`. Bluesky uses public AppView APIs, Mastodon uses public instance APIs with optional `MASTODON_ACCESS_TOKEN`, and X/Twitter uses XActions through read-only scraper calls. The `practitioner-social` source tracks only verified `socialProfiles` metadata on Practitioner entries; the dashboard Sources page can run the practitioner social audit and apply selected candidates after confirmation. XActions supports broader automation; Openflows only calls search/profile tweet collection paths. Operators are responsible for complying with X/Twitter terms, should review XActions licensing before production use, and should keep XActions session values such as `XACTIONS_AUTH_TOKEN` and `XACTIONS_USER_DATA_DIR` outside git. On local Windows/Node 24 installs, `npm install --ignore-scripts` avoids native/browser postinstall work from XActions' dependency graph.
+Social intake sources are intended to remain disabled until their accounts and credentials are deliberately configured. Bluesky uses public AppView APIs, Mastodon uses public instance APIs with optional `MASTODON_ACCESS_TOKEN`, and X/Twitter uses XActions through read-only scraper calls. The `practitioner-social` source tracks only verified `socialProfiles` metadata on Practitioner entries; the dashboard Sources page can run the practitioner social audit and apply selected candidates after confirmation. XActions supports broader automation; Openflows only calls search/profile tweet collection paths. Operators are responsible for complying with X/Twitter terms, should review XActions licensing before production use, and should keep XActions session values such as `XACTIONS_AUTH_TOKEN` and `XACTIONS_USER_DATA_DIR` outside git. On local Windows/Node 24 installs, `npm install --ignore-scripts` avoids native/browser postinstall work from XActions' dependency graph. If unconfigured social sources are enabled in `scripts/intake-sources.json`, the Cycle 13/14 tests that assert disabled defaults will fail until the registry is corrected or the tests are updated for the new intended default.
 
 Automated workflows run via `server/cron.js` on the self-hosted server:
 - **intake** — daily at 06:00 UTC: intake → audit → queue
@@ -75,6 +84,7 @@ The current development sequence after the public UX pass is:
 
 - **Cycle 13: Sources** — implemented: manage tracked intake sources directly from the dashboard and let Peng propose inactive sources for human approval.
 - **Cycle 14: Social media integration** — implemented: disabled-by-default intake from Bluesky, Mastodon, and X/Twitter via XActions.
+- **Cycle 14B: Public discoverability** — implemented: sitemap, robots, `llms.txt`, canonical/hreflang tags, structured data, favicon/manifest, and SEO validation.
 - **Cycle 15: Public conversation interface** — expose read-only knowledge-base querying on the public site.
 - **Cycle 16: MCP layer** — expose Peng's tools and knowledge manifest through Model Context Protocol.
 

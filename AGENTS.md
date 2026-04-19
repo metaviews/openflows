@@ -99,9 +99,11 @@ Do not fabricate mediation notes. If uncertain, omit and explain in commit/PR no
 Run:
 
 1. `npm run build`
-2. Confirm no broken `links.id` references against existing `currencyId`s
-3. Ensure new `currencyId` is unique
-4. Ensure permalink path matches file intent
+2. `npm run check:links`
+3. `npm run check:seo`
+4. Confirm no broken `links.id` references against existing `currencyId`s
+5. Ensure new `currencyId` is unique
+6. Ensure permalink path matches file intent
 
 Do not mark work complete until checks pass or blockers are stated.
 
@@ -400,6 +402,19 @@ Peng should track social signals as first-class intake surfaces, beginning with 
 - **Review workflow**: social signals draft into the same human-reviewed queue as other intake outputs; high-uncertainty or thin social-only signals should be marked clearly.
 - **Risk controls**: avoid private data, harassment amplification, and overconfident claims from social chatter; prefer social media as discovery and context, not as authority.
 - **Implemented**: added disabled-by-default Bluesky and Mastodon intake sources, replaced X/Twitter API intake with a read-only XActions-backed source, added a disabled `practitioner-social` source that tracks verified `socialProfiles` metadata on Practitioner entries, added practitioner social audit reporting and dashboard review/apply actions, extended the source registry and Peng source tools to recognize the social modules and apply reviewed practitioner social candidates with confirmation, and documented XActions setup, licensing, and terms cautions. XActions is installed with scripts disabled in local setup when needed because its dependency graph includes native/browser automation components.
+
+#### Cycle 14B: Public Discoverability and Agent Access
+**Status**: complete (2026-04-19)
+
+The public static site now exposes explicit discovery surfaces for search engines, bilingual visitors, and agentic retrieval systems.
+
+- **Crawl surfaces**: `/sitemap.xml` is generated from public Eleventy pages with absolute canonical URLs, `lastmod`, and English/Chinese alternate links where counterparts exist; `/robots.txt` allows crawling and points to the sitemap.
+- **Agent map**: `/llms.txt` summarizes project scope, human pages, machine-readable resources, and use guidance for agents.
+- **Head metadata**: `base.njk` emits canonical links, `hreflang` alternates, favicon/manifest tags, Open Graph/Twitter metadata, article timestamps, and JSON-LD for `Organization`, `WebSite`, `WebPage`/`Article`/`ProfilePage`, and breadcrumbs.
+- **Structured resources**: `knowledge-manifest.json` and `currency/search-index.json` include schema version, site URL, absolute entry URLs, and resource pointers.
+- **Accessibility/discoverability**: pages expose a primary `<h1>` for semantic structure, a skip link, announced browser result counts, and a no-JavaScript fallback list.
+- **Validation**: `scripts/validate-seo.js` backs `npm run check:seo`, verifying generated HTML has sitemap coverage, canonical tags, descriptions, parseable JSON-LD, and primary headings.
+- **Content hygiene**: malformed Chinese entry front matter that generated legacy `/currency/zh/...` URLs was repaired; the stale `paperclip` link was corrected to `paperclip-ai`.
 
 #### Cycle 15: Public — Open Conversation Interface
 **Status**: not started
