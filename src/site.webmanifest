@@ -1,0 +1,16 @@
+{
+  "name": "Openflows",
+  "short_name": "Openflows",
+  "description": "A bilingual public record of the open source AI ecosystem.",
+  "start_url": "/",
+  "display": "minimal-ui",
+  "background_color": "#f4f7f8",
+  "theme_color": "#0b6b61",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

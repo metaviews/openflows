@@ -20,7 +20,7 @@ links:
     relation: "manages local file persistence and scoped configuration outside chat interfaces"
   - id: gitagent
     relation: "applies version control principles to agent logic, prompts, and model configurations"
-  - id: paperclip
+  - id: paperclip-ai
     relation: "introduces organizational governance primitives into the file-based agent structure"
 mediation:
   tooling: "OpenRouter / qwen/qwen3.5-flash-02-23"

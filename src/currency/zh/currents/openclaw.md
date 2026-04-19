@@ -1,3 +1,4 @@
+---
 layout: layouts/currency-item.njk
 title: OpenClaw（开放之爪）
 lang: zh

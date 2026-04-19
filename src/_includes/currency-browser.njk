@@ -26,10 +26,21 @@
       </select>
     </label>
   </div>
-  <p class="meta" data-browser-count></p>
+  <p class="meta" data-browser-count role="status" aria-live="polite"></p>
   <div class="browser-results" data-browser-results></div>
   <noscript>
     <p class="meta">{{ strings.list.sorted }}</p>
+    <ul class="currency-list">
+      {% for item in collections.allCurrency %}
+        {% set itemLang = item.data.lang or 'en' %}
+        {% if (not browserType or item.data.currencyType == browserType) and itemLang == (lang or 'en') and loop.index0 < 12 %}
+        <li>
+          <a href="{{ item.url }}">{{ item.data.title }}</a>
+          {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
+        </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
   </noscript>
 </section>
 

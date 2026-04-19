@@ -20,8 +20,9 @@ module.exports = class KnowledgeManifest {
       abstract: item.data.abstract || null,
       tags: item.data.tags || [],
       links: item.data.links || [],
-      permalink: item.url,
-      body: item.content || ""
+        permalink: item.url,
+        url: `https://openflows.org${item.url}`,
+        body: item.content || ""
     }));
 
     const enEntries = items.filter(e => e.lang === "en");
@@ -29,9 +30,18 @@ module.exports = class KnowledgeManifest {
 
     return JSON.stringify(
       {
+        schemaVersion: "1.1.0",
+        site: "https://openflows.org",
         generated: new Date().toISOString(),
         count: items.length,
         byLang: { en: enEntries.length, zh: zhEntries.length },
+        resources: {
+          llms: "https://openflows.org/llms.txt",
+          sitemap: "https://openflows.org/sitemap.xml",
+          searchIndex: "https://openflows.org/currency/search-index.json",
+          rss: "https://openflows.org/currency/feed.xml",
+          jsonFeed: "https://openflows.org/currency/feed.json"
+        },
         entries: items
       },
       null,

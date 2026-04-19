@@ -1,6 +1,3 @@
-
-</think>
-
 ---
 layout: layouts/currency-item.njk
 title: "微软 BitNet 1-bit 大语言模型 (LLM)"

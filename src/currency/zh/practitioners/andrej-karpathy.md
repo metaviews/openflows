@@ -1,3 +1,4 @@
+---
 layout: layouts/currency-item.njk
 title: "安德烈·卡尔帕西 (Andrej Karpathy)"
 lang: zh

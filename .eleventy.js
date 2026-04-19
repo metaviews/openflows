@@ -21,8 +21,39 @@ module.exports = function(eleventyConfig) {
       day: "2-digit"
     }).format(date);
   }
+  function isoDate(value) {
+    if (!value) {
+      return "";
+    }
+    const date = value instanceof Date ? value : new Date(value);
+    if (Number.isNaN(date.getTime())) {
+      return "";
+    }
+    return date.toISOString();
+  }
+  function absoluteUrl(path, siteUrl) {
+    const base = String(siteUrl || "").replace(/\/$/, "");
+    if (!path) {
+      return base + "/";
+    }
+    if (/^https?:\/\//i.test(path)) {
+      return path;
+    }
+    return base + (String(path).startsWith("/") ? path : `/${path}`);
+  }
+  function xmlEscape(value) {
+    return String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&apos;");
+  }
 
   eleventyConfig.addFilter("readableDate", readableDate);
+  eleventyConfig.addFilter("isoDate", isoDate);
+  eleventyConfig.addFilter("absoluteUrl", absoluteUrl);
+  eleventyConfig.addFilter("xmlEscape", xmlEscape);
   eleventyConfig.addFilter("isRecent", function(date, days) {
     const cutoff = new Date(Date.now() - (days || 14) * 24 * 60 * 60 * 1000);
     return (date instanceof Date ? date : new Date(date)) >= cutoff;
@@ -137,6 +168,20 @@ module.exports = function(eleventyConfig) {
     return String(value || "").startsWith(prefix);
   });
   eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy({ "src/favicon.svg": "favicon.svg" });
+  eleventyConfig.addPassthroughCopy({ "src/site.webmanifest": "site.webmanifest" });
+
+  eleventyConfig.addCollection("publicPages", function(collectionApi) {
+    return collectionApi.getAll().filter((item) => {
+      if (!item || !item.url || item.data.eleventyExcludeFromCollections) {
+        return false;
+      }
+      if (item.url.endsWith(".json") || item.url.endsWith(".xml") || item.url.endsWith(".txt")) {
+        return false;
+      }
+      return true;
+    });
+  });
 
   eleventyConfig.addCollection("currency", function(collectionApi) {
     const items = collectionApi.getFilteredByTag("currency").filter(item => item.data.lang !== "zh");

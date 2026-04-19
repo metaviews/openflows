@@ -1,6 +1,3 @@
-
-</think>
-
 ---
 layout: layouts/currency-item.njk
 title: "公民 AI — 六包关怀"

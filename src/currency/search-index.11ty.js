@@ -41,6 +41,7 @@ module.exports = class CurrencySearchIndex {
         date: item.date instanceof Date ? item.date.toISOString() : new Date(item.date).toISOString(),
         abstract: item.data.abstract || "",
         permalink: item.url,
+        url: `https://openflows.org${item.url}`,
         links: item.data.links || [],
         lastReviewed: item.data.lastReviewed || null,
         mediated: Boolean(item.data.mediation),
@@ -49,6 +50,8 @@ module.exports = class CurrencySearchIndex {
     });
 
     return JSON.stringify({
+      schemaVersion: "1.1.0",
+      site: "https://openflows.org",
       generated: new Date().toISOString(),
       count: items.length,
       entries: items

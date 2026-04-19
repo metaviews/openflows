@@ -1,6 +1,3 @@
-
-</think>
-
 ---
 layout: layouts/currency-item.njk
 title: "人工组织"

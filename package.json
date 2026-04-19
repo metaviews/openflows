@@ -3,8 +3,9 @@
   "private": true,
   "version": "0.1.0",
   "scripts": {
-    "build": "eleventy",
+    "build": "node scripts/clean-site.js && eleventy",
     "check:links": "node scripts/validate-links.js",
+    "check:seo": "node scripts/validate-seo.js",
     "cleanup:drafts": "node scripts/cleanup-malformed-drafts.js",
     "audit:practitioner-social": "node scripts/audit-practitioner-social.js",
     "server": "node server/index.js",

@@ -6,11 +6,43 @@
   <title>{{ title or "Openflows" }}{% if title and title != "Openflows" %} — Openflows{% endif %}</title>
 
   {% set pageTitle = title or metadata.title %}
-  {% set pageDescription = abstract or metadata.description %}
+  {% set pageDescription = abstract or description or metadata.description %}
   {% set pageUrl = metadata.url + page.url %}
   {% set pageImage = metadata.url + metadata.image %}
+  {% set pageLang = lang or 'en' %}
+  {% set schemaLang = 'zh-Hans' if pageLang == 'zh' else 'en' %}
+  {% set alternateUrl = "" %}
+  {% if currencyId %}
+    {% set langTarget = collections.allCurrency | currencyCounterpart(currencyId, pageLang) %}
+    {% if langTarget %}
+      {% set alternateUrl = metadata.url + langTarget.url %}
+    {% endif %}
+  {% elif page.url == "/" %}
+    {% set alternateUrl = metadata.url + "/zh/" %}
+  {% elif page.url == "/zh/" %}
+    {% set alternateUrl = metadata.url + "/" %}
+  {% elif page.url == "/currency/" or page.url == "/currency/currents/" or page.url == "/currency/circuits/" or page.url == "/currency/practitioners/" %}
+    {% set alternateUrl = metadata.url + "/zh" + page.url %}
+  {% elif page.url == "/zh/currency/" or page.url == "/zh/currency/currents/" or page.url == "/zh/currency/circuits/" or page.url == "/zh/currency/practitioners/" %}
+    {% set alternateUrl = metadata.url + (page.url | replace("/zh", "")) %}
+  {% endif %}
 
   <meta name="description" content="{{ pageDescription }}">
+  <meta name="theme-color" content="#0b6b61">
+  <link rel="canonical" href="{{ pageUrl }}">
+  {% if alternateUrl %}
+    {% if pageLang == 'zh' %}
+  <link rel="alternate" hreflang="zh-Hans" href="{{ pageUrl }}">
+  <link rel="alternate" hreflang="en" href="{{ alternateUrl }}">
+  <link rel="alternate" hreflang="x-default" href="{{ alternateUrl }}">
+    {% else %}
+  <link rel="alternate" hreflang="en" href="{{ pageUrl }}">
+  <link rel="alternate" hreflang="zh-Hans" href="{{ alternateUrl }}">
+  <link rel="alternate" hreflang="x-default" href="{{ pageUrl }}">
+    {% endif %}
+  {% endif %}
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/site.webmanifest">
 
   <!-- Open Graph -->
   <meta property="og:site_name" content="Openflows">
@@ -19,6 +51,12 @@
   <meta property="og:url" content="{{ pageUrl }}">
   <meta property="og:image" content="{{ pageImage }}">
   <meta property="og:type" content="{% if currencyType %}article{% else %}website{% endif %}">
+  {% if currencyType %}
+  <meta property="article:published_time" content="{{ date | isoDate }}">
+    {% if lastReviewed %}
+  <meta property="article:modified_time" content="{{ lastReviewed | isoDate }}">
+    {% endif %}
+  {% endif %}
   {% if lang == 'zh' %}
   <meta property="og:locale" content="zh_CN">
   <meta property="og:locale:alternate" content="en_US">
@@ -35,6 +73,89 @@
 
   <link rel="alternate" type="application/rss+xml" title="Openflows Currency RSS" href="/currency/feed.xml">
   <link rel="alternate" type="application/feed+json" title="Openflows Currency JSON Feed" href="/currency/feed.json">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "{{ metadata.url }}/#organization",
+        "name": "Openflows",
+        "url": "{{ metadata.url }}/",
+        "logo": "{{ pageImage }}"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ metadata.url }}/#website",
+        "name": "Openflows",
+        "url": "{{ metadata.url }}/",
+        "description": {{ metadata.description | dump | safe }},
+        "publisher": { "@id": "{{ metadata.url }}/#organization" },
+        "inLanguage": ["en", "zh-Hans"],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "{{ metadata.url }}/currency/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "{% if currencyType == 'practitioner' %}ProfilePage{% elif currencyType %}Article{% else %}WebPage{% endif %}",
+        "@id": "{{ pageUrl }}#primary",
+        "url": "{{ pageUrl }}",
+        "name": {{ pageTitle | dump | safe }},
+        "description": {{ pageDescription | dump | safe }},
+        "isPartOf": { "@id": "{{ metadata.url }}/#website" },
+        "publisher": { "@id": "{{ metadata.url }}/#organization" },
+        "inLanguage": "{{ schemaLang }}"{% if currencyId %},
+        "identifier": {{ currencyId | dump | safe }},
+        "genre": {{ currencyType | dump | safe }},
+        "datePublished": "{{ date | isoDate }}"{% if lastReviewed %},
+        "dateModified": "{{ lastReviewed | isoDate }}"{% endif %}{% endif %}{% if currencyType == 'practitioner' %},
+        "mainEntity": {
+          "@type": "Person",
+          "name": {{ pageTitle | dump | safe }}{% if socialProfiles and socialProfiles.length %},
+          "sameAs": [{% for profile in socialProfiles %}{{ profile.url | dump | safe }}{% if not loop.last %}, {% endif %}{% endfor %}]{% endif %}
+        }{% endif %}
+      }{% if page.url != "/" %},
+      {
+        "@type": "BreadcrumbList",
+        "@id": "{{ pageUrl }}#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Openflows",
+            "item": "{{ metadata.url }}/"
+          }{% if currencyType %},
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Currency",
+            "item": "{{ metadata.url }}/currency/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "{{ currencyType | typeLabel('en') }}",
+            "item": "{{ metadata.url }}/currency/{{ currencyType }}{% if currencyType == 'current' %}s{% elif currencyType == 'circuit' %}s{% else %}s{% endif %}/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": {{ pageTitle | dump | safe }},
+            "item": "{{ pageUrl }}"
+          }{% else %},
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": {{ pageTitle | dump | safe }},
+            "item": "{{ pageUrl }}"
+          }{% endif %}
+        ]
+      }{% endif %}
+    ]
+  }
+  </script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F7DCVTHTKE"></script>
   <script>
@@ -126,6 +247,29 @@
     }
     a { color: var(--accent); text-underline-offset: 0.15em; }
     a:hover { color: var(--accent-2); }
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -4rem;
+      z-index: 10;
+      padding: 0.55rem 0.75rem;
+      border-radius: 8px;
+      background: var(--ink);
+      color: #fff;
+      font-family: Arial, "Helvetica Neue", sans-serif;
+    }
+    .skip-link:focus { top: 1rem; }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
     nav {
       display: flex;
       align-items: center;
@@ -522,10 +666,11 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <div class="wrap">
     <header class="site-header">
       <div class="header-row">
-        <h1>
+        <div class="site-brand">
           {% if lang == 'zh' %}
           <a href="/zh/" class="brand">
           {% else %}
@@ -534,7 +679,7 @@
             <img src="/assets/img/openflowslogo.jpg" alt="Openflows logo" class="brand-logo">
             <span>Openflows</span>
           </a>
-        </h1>
+        </div>
       <nav>
         {% if lang == 'zh' %}
           <a href="/zh/currency/">流通</a>
@@ -588,7 +733,8 @@
       </div>
       <hr>
     </header>
-    <main>
+    <main id="main">
+      {% if title %}<h1 class="sr-only">{{ title }}</h1>{% endif %}
       {{ content | safe }}
     </main>
     <footer>
