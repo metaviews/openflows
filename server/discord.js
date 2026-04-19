@@ -281,6 +281,7 @@ async function handleButtonInteraction(db, interaction) {
   for (const toolCall of pending.toolCalls) {
     const name = toolCall.function?.name || 'unknown'
     try {
+      console.log(`[discord] executing tool ${name}:`, toolCall.function?.arguments?.slice?.(0, 300) ?? toolCall.function?.arguments)
       const result = await executeToolCall({ db }, toolCall)
       working.push({ role: 'tool', tool_call_id: toolCall.id, content: JSON.stringify({ ok: true, result }) })
     } catch (err) {
