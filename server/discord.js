@@ -264,12 +264,16 @@ async function handleButtonInteraction(db, interaction) {
   const working = [...pending.working]
   let failed = 0
 
+  const toolErrors = []
   for (const toolCall of pending.toolCalls) {
+    const name = toolCall.function?.name || 'unknown'
     try {
       const result = await executeToolCall({ db }, toolCall)
       working.push({ role: 'tool', tool_call_id: toolCall.id, content: JSON.stringify({ ok: true, result }) })
     } catch (err) {
       failed++
+      toolErrors.push(`${name}: ${err.message}`)
+      console.error(`[discord] tool error (${name}):`, err)
       working.push({ role: 'tool', tool_call_id: toolCall.id, content: JSON.stringify({ ok: false, error: err.message }) })
     }
   }
@@ -281,9 +285,10 @@ async function handleButtonInteraction(db, interaction) {
       messages: [{ role: 'system', content: buildSystemPrompt(db) }, ...working],
       stream: false,
     })
-    finalText = response?.choices?.[0]?.message?.content || (failed ? 'Tool call failed.' : 'Done.')
+    finalText = response?.choices?.[0]?.message?.content || (failed ? `Tool call failed:\n${toolErrors.join('\n')}` : 'Done.')
   } catch (err) {
     finalText = `Tool call${failed ? ' partially' : ''} executed. Follow-up error: ${err.message}`
+    if (toolErrors.length) finalText += `\nTool errors:\n${toolErrors.join('\n')}`
   }
 
   const chunks = splitMessage(finalText)
