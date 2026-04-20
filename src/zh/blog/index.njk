@@ -1,0 +1,71 @@
+---
+layout: layouts/base.njk
+title: AI 生态田野札记
+description: "Openflows（开流）关于开源 AI 生态系统的长篇田野札记、综合与分析。"
+lang: zh
+permalink: /zh/blog/
+---
+
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">田野札记</p>
+    <h2>AI 生态田野札记</h2>
+    <p>这里的文章越过周期性摘要，展开对开源 AI 基础设施、治理实践与生态张力的较长篇幅观察。</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.zh_blog.length }}</strong><span>中文文章</span></div>
+    <div class="stat"><strong>{{ collections.blog.length }}</strong><span>英文文章</span></div>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <label>
+    <span class="muted">筛选</span>
+    <input type="search" id="blog-filter" placeholder="按标题、主题或摘要筛选..." autocomplete="off">
+  </label>
+</div>
+
+{% if collections.zh_blog.length %}
+<ul class="currency-list blog-list">
+  {% for item in collections.zh_blog %}
+  <li data-blog-item>
+    {% if item.data.heroImage %}
+    <a href="{{ item.url }}" class="blog-list-image">
+      <img src="{{ item.data.heroImage }}" alt="{{ item.data.heroImageAlt or '' }}">
+    </a>
+    {% endif %}
+    <div>
+      <a href="{{ item.url }}">{{ item.data.title }}</a>
+      {% if item.data.abstract %}
+      <p class="item-abstract">{{ item.data.abstract }}</p>
+      {% endif %}
+      <div class="item-meta">
+        <span class="muted">{{ item.date | readableDate }}</span>
+        {% set itemTopics = item.data.topics or [] %}
+        {% for topic in itemTopics %}
+        <span class="chip">{{ topic }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<section class="section-band">
+  <p>暂无中文田野札记。已审阅并发布的中文博客译稿会显示在这里。</p>
+</section>
+{% endif %}
+
+<script>
+(function() {
+  const input = document.getElementById('blog-filter');
+  if (!input) return;
+  const items = document.querySelectorAll('[data-blog-item]');
+  input.addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    items.forEach(function(li) {
+      li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+})();
+</script>

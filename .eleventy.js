@@ -94,6 +94,13 @@ module.exports = function(eleventyConfig) {
     const targetLang = lang === "zh" ? "en" : "zh";
     return items.find((item) => item.data && item.data.currencyId === id && itemLang(item) === targetLang) || null;
   });
+  eleventyConfig.addFilter("blogCounterpart", function(items, id, lang) {
+    if (!Array.isArray(items) || !id) {
+      return null;
+    }
+    const targetLang = lang === "zh" ? "en" : "zh";
+    return items.find((item) => item.data && item.data.blogId === id && itemLang(item) === targetLang) || null;
+  });
   eleventyConfig.addFilter("currencyBacklinks", function(items, id, lang) {
     if (!Array.isArray(items) || !id) {
       return [];
@@ -227,6 +234,13 @@ module.exports = function(eleventyConfig) {
   // Longform analysis posts.
   eleventyConfig.addCollection("blog", function(collectionApi) {
     return newestFirst(collectionApi.getFilteredByGlob("src/blog/*.md").filter(item => item.data.lang !== "zh"));
+  });
+
+  eleventyConfig.addCollection("allBlog", function(collectionApi) {
+    return newestFirst([
+      ...collectionApi.getFilteredByGlob("src/blog/*.md"),
+      ...collectionApi.getFilteredByGlob("src/blog/zh/*.md")
+    ]);
   });
 
   eleventyConfig.addCollection("recentBlog", function(collectionApi) {

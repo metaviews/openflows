@@ -17,10 +17,19 @@
     {% if langTarget %}
       {% set alternateUrl = metadata.url + langTarget.url %}
     {% endif %}
+  {% elif blogId %}
+    {% set langTarget = collections.allBlog | blogCounterpart(blogId, pageLang) %}
+    {% if langTarget %}
+      {% set alternateUrl = metadata.url + langTarget.url %}
+    {% endif %}
   {% elif page.url == "/" %}
     {% set alternateUrl = metadata.url + "/zh/" %}
   {% elif page.url == "/zh/" %}
     {% set alternateUrl = metadata.url + "/" %}
+  {% elif page.url == "/blog/" %}
+    {% set alternateUrl = metadata.url + "/zh/blog/" %}
+  {% elif page.url == "/zh/blog/" %}
+    {% set alternateUrl = metadata.url + "/blog/" %}
   {% elif page.url == "/currency/" or page.url == "/currency/currents/" or page.url == "/currency/circuits/" or page.url == "/currency/practitioners/" %}
     {% set alternateUrl = metadata.url + "/zh" + page.url %}
   {% elif page.url == "/zh/currency/" or page.url == "/zh/currency/currents/" or page.url == "/zh/currency/circuits/" or page.url == "/zh/currency/practitioners/" %}
@@ -160,8 +169,8 @@
           {
             "@type": "ListItem",
             "position": 2,
-            "name": "Field Notes",
-            "item": "{{ metadata.url }}/blog/"
+            "name": "{% if pageLang == 'zh' %}田野札记{% else %}Field Notes{% endif %}",
+            "item": "{{ metadata.url }}{% if pageLang == 'zh' %}/zh/blog/{% else %}/blog/{% endif %}"
           },
           {
             "@type": "ListItem",
@@ -844,6 +853,7 @@
       <nav>
         {% if lang == 'zh' %}
           <a href="/zh/currency/">流通</a>
+          <a href="/zh/blog/">田野札记</a>
           <span class="nav-group">
             <a href="/about/">关于</a>
           </span>
@@ -855,8 +865,17 @@
             {% else %}
               <a href="{{ page.url | replace('/zh/', '/') }}" class="lang-switch">English</a>
             {% endif %}
+          {% elif blogId %}
+            {% set langTarget = collections.allBlog | blogCounterpart(blogId, lang) %}
+            {% if langTarget %}
+              <a href="{{ langTarget.url }}" class="lang-switch">English</a>
+            {% else %}
+              <a href="{{ page.url | replace('/zh/', '/') }}" class="lang-switch">English</a>
+            {% endif %}
           {% else %}
             {% if page.url | startsWith('/zh/currency/') %}
+              <a href="{{ page.url | replace('/zh/', '/') }}" class="lang-switch">English</a>
+            {% elif page.url | startsWith('/zh/blog/') %}
               <a href="{{ page.url | replace('/zh/', '/') }}" class="lang-switch">English</a>
             {% else %}
               <a href="/" class="lang-switch">English</a>
@@ -881,10 +900,19 @@
             {% else %}
               <a href="/zh{{ page.url }}" class="lang-switch">中文</a>
             {% endif %}
+          {% elif blogId %}
+            {% set langTarget = collections.allBlog | blogCounterpart(blogId, lang) %}
+            {% if langTarget %}
+              <a href="{{ langTarget.url }}" class="lang-switch">中文</a>
+            {% else %}
+              <a href="/zh{{ page.url }}" class="lang-switch">中文</a>
+            {% endif %}
           {% else %}
             {% if page.url == "/" %}
               <a href="/zh/" class="lang-switch">中文</a>
             {% elif page.url | startsWith('/currency/') %}
+              <a href="/zh{{ page.url }}" class="lang-switch">中文</a>
+            {% elif page.url | startsWith('/blog/') %}
               <a href="/zh{{ page.url }}" class="lang-switch">中文</a>
             {% else %}
               <a href="/zh/" class="lang-switch">中文</a>
