@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-19T06:01:07.896Z",
+  "lastUpdated": "2026-04-20T06:13:44.652Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3622,6 +3622,59 @@
       "title": "ChuanhuChatGPT",
       "source": "github",
       "file": "chuanhu-chatgpt.md"
+    },
+    "https://opensourceprojects.dev/post/5637e297-444c-41e8-b100-7e53eb88bed6": {
+      "date": "2026-04-20",
+      "decision": "skipped",
+      "title": "The open-source observability platform that replaces DataDog and NewRelic.",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "SigNoz is a general-purpose DevOps tool, not AI-specific. Tangentially related to AI infrastructure rather than the core AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/361aa4f6-a556-48ef-8bf8-6d06603f5c6b": {
+      "date": "2026-04-20",
+      "decision": "skipped",
+      "title": "Self-hosted TeamViewer alternative.",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "RustDesk is a general remote desktop utility, not an AI-specific tool, framework, or model. It falls outside the defined scope of the open source AI ecosystem."
+    },
+    "https://www.bilibili.com/video/BV1jRQxBAERc/": {
+      "date": "2026-04-20",
+      "decision": "skipped",
+      "title": "这绝对是B站讲的最好的Hermes Agent教程，从入门到项目实战彻底讲透，比付费效果强百倍，少走99%弯路！存下吧，很难找全！_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Hype-driven video tutorial with questionable technical claims (e.g., Gemma 4) and suspicious cost assertions. Lacks operational specificity and reliability for an open source knowledge base."
+    },
+    "https://opensourceprojects.dev/post/985298b3-81e5-4fac-91f9-7b9a7314ebe1": {
+      "date": "2026-04-20",
+      "decision": "skipped",
+      "title": "Instantly lock your Mac and disable Touch ID with one click",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Signal describes a macOS security utility unrelated to AI tools, frameworks, or models. It falls outside the Openflows scope of the open source AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/2044dcd1-da99-4d8a-bb69-55c224785f3a": {
+      "date": "2026-04-20",
+      "decision": "drafted",
+      "title": "Turn any AI agent into a secure isolated process instantly",
+      "source": "opensourceprojects",
+      "file": "microsandbox-agent-isolation.md"
+    },
+    "https://opensourceprojects.dev/post/705142dc-012a-4eaa-b8e8-62e92d4837c3": {
+      "date": "2026-04-20",
+      "decision": "drafted",
+      "title": "The definitive open-source tool for monitoring network traffic visually",
+      "source": "opensourceprojects",
+      "file": "sniffnet-visual-network-monitor.md"
+    },
+    "https://opensourceprojects.dev/post/130a9f03-b87c-436d-8b2f-af16c5eada84": {
+      "date": "2026-04-20",
+      "decision": "drafted",
+      "title": "Professional-grade quant analytics, AI-powered market research, and economic data tools.",
+      "source": "opensourceprojects",
+      "file": "fincept-terminal.md"
     }
   }
 }
