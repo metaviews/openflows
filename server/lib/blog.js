@@ -13,6 +13,16 @@ const BLOG_IMAGE_DIR = path.join(ROOT, 'src', 'assets', 'img', 'blog')
 const BLOG_ID_PATTERN = /^[a-z0-9][a-z0-9-]*$/
 const ALLOWED_IMAGE_EXT = new Set(['.jpg', '.jpeg', '.png', '.webp'])
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024
+const DEFAULT_BLOG_MEDIATION = {
+  tooling: 'Peng assisted with blog drafting and metadata generation through OpenRouter; image generation may be performed separately.',
+  use: [
+    'synthesized related Openflows Currency entries',
+    'suggested editorial metadata and longform structure',
+    'supported human review without publishing autonomously',
+  ],
+  humanRole: 'selected topic, reviewed claims, edited prose, approved publication',
+  limits: 'analysis depends on available Openflows entries and reviewed public sources; verify time-sensitive claims before publication',
+}
 
 function normalizeId(value) {
   return String(value || '')
@@ -96,7 +106,7 @@ function buildBlogMarkdown(input = {}) {
   const blogId = normalizeId(input.blogId || input.id || input.title)
   const topics = normalizeList(input.topics)
   const linkedEntries = normalizeList(input.linkedEntries)
-  const mediationUse = normalizeList(input.mediationUse)
+  const mediationUse = normalizeList(input.mediationUse || DEFAULT_BLOG_MEDIATION.use)
   const body = String(input.body || '').trim()
 
   const frontmatter = {
@@ -112,10 +122,10 @@ function buildBlogMarkdown(input = {}) {
     heroImageAlt: String(input.heroImageAlt || '').trim(),
     humanEditor: String(input.humanEditor || '').trim(),
     mediation: {
-      tooling: String(input.mediationTooling || '').trim(),
+      tooling: String(input.mediationTooling || DEFAULT_BLOG_MEDIATION.tooling).trim(),
       use: mediationUse,
-      humanRole: String(input.mediationHumanRole || '').trim(),
-      limits: String(input.mediationLimits || '').trim(),
+      humanRole: String(input.mediationHumanRole || DEFAULT_BLOG_MEDIATION.humanRole).trim(),
+      limits: String(input.mediationLimits || DEFAULT_BLOG_MEDIATION.limits).trim(),
     },
   }
 
@@ -254,4 +264,5 @@ module.exports = {
   savePublishedBlogPost,
   deletePublishedBlogPost,
   saveUploadedHeroImage,
+  DEFAULT_BLOG_MEDIATION,
 }

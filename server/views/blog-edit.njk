@@ -31,6 +31,7 @@
     <button class="btn btn-danger" onclick="confirmDeletePublishedBlog()">Delete</button>
     <a class="btn" href="https://openflows.org/blog/{{ fields.blogId }}/" target="_blank" rel="noopener">Open Public</a>
     {% endif %}
+    <button class="btn" onclick="generateBlogSuggestions()">Generate Suggestions</button>
     <button class="btn" onclick="validateBlog()">Validate</button>
     <span id="save-status" class="muted"></span>
   </div>
@@ -56,6 +57,18 @@
         <label>Abstract
           <textarea id="blog-abstract" class="input small-textarea">{{ fields.abstract }}</textarea>
         </label>
+      </div>
+
+      <div class="blog-form-section">
+        <div class="blog-form-section-title">Peng Assist</div>
+        <label>Optional Prompt <span class="muted">used only for this generation request</span>
+          <textarea id="blog-assist-prompt" class="input small-textarea" placeholder="Ask Peng to emphasize a theme, audience, source, or angle."></textarea>
+        </label>
+        <div class="blog-assist-actions">
+          <button class="btn btn-sm" type="button" onclick="generateBlogSuggestions()">Generate content and metadata</button>
+          <span id="blog-assist-status" class="muted"></span>
+        </div>
+        <div id="blog-suggestions" class="blog-suggestions" hidden></div>
       </div>
 
       <div class="blog-form-section">
@@ -99,21 +112,10 @@
         </details>
       </div>
 
-      <div class="blog-form-section">
-        <div class="blog-form-section-title">Mediation</div>
-        <label>Mediation Tooling
-          <input id="blog-mediation-tooling" class="input" value="{{ fields.mediationTooling }}">
-        </label>
-        <label>Mediation Use <span class="muted">one per line</span>
-          <textarea id="blog-mediation-use" class="input small-textarea">{{ fields.mediationUse }}</textarea>
-        </label>
-        <label>Human Role
-          <input id="blog-mediation-human" class="input" value="{{ fields.mediationHumanRole }}">
-        </label>
-        <label>Limits
-          <textarea id="blog-mediation-limits" class="input small-textarea">{{ fields.mediationLimits }}</textarea>
-        </label>
-      </div>
+      <textarea id="blog-mediation-tooling" hidden>{{ fields.mediationTooling }}</textarea>
+      <textarea id="blog-mediation-use" hidden>{{ fields.mediationUse }}</textarea>
+      <textarea id="blog-mediation-human" hidden>{{ fields.mediationHumanRole }}</textarea>
+      <textarea id="blog-mediation-limits" hidden>{{ fields.mediationLimits }}</textarea>
 
       <div class="blog-form-section">
         <div class="blog-form-section-title">Body</div>
@@ -177,10 +179,10 @@ function collectBlogForm() {
     imagePrompt: document.getElementById('blog-image-prompt').value,
     imageTooling: document.getElementById('blog-image-tooling').value,
     humanEditor: document.getElementById('blog-human-editor').value,
-    mediationTooling: document.getElementById('blog-mediation-tooling').value,
-    mediationUse: document.getElementById('blog-mediation-use').value,
-    mediationHumanRole: document.getElementById('blog-mediation-human').value,
-    mediationLimits: document.getElementById('blog-mediation-limits').value,
+    mediationTooling: document.getElementById('blog-mediation-tooling')?.value || '',
+    mediationUse: document.getElementById('blog-mediation-use')?.value || '',
+    mediationHumanRole: document.getElementById('blog-mediation-human')?.value || '',
+    mediationLimits: document.getElementById('blog-mediation-limits')?.value || '',
     body: document.getElementById('blog-body').value,
   }
 }
@@ -215,6 +217,118 @@ async function validateBlog() {
   panel.innerHTML = ''
   panel.appendChild(renderValidationBlock(data))
   return data
+}
+
+async function generateBlogSuggestions() {
+  const status = document.getElementById('blog-assist-status')
+  const panel = document.getElementById('blog-suggestions')
+  status.textContent = 'Generating...'
+  panel.hidden = true
+  panel.innerHTML = ''
+
+  const payload = collectBlogForm()
+  payload.assistPrompt = document.getElementById('blog-assist-prompt').value
+
+  try {
+    const resp = await fetch('/api/blog/assist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    const data = await resp.json().catch(() => ({}))
+    if (!resp.ok) {
+      status.textContent = 'Assist failed: ' + (data.error || resp.statusText)
+      return
+    }
+    applyBlankBlogSuggestions(data.suggestions || {})
+    renderBlogSuggestions(data.suggestions || {})
+    status.textContent = 'Suggestions generated. Blank fields were filled.'
+    renderBlogPreview()
+    validateBlog()
+  } catch (err) {
+    status.textContent = 'Assist failed: ' + err.message
+  }
+}
+
+function applyBlankBlogSuggestions(suggestions) {
+  fillIfBlank('blog-title', suggestions.title)
+  fillIfBlank('blog-abstract', suggestions.abstract)
+  fillIfBlank('blog-topics', listValue(suggestions.topics))
+  fillIfBlank('blog-linked', listValue(suggestions.linkedEntries))
+  fillIfBlank('blog-hero-alt', suggestions.heroImageAlt)
+  fillIfBlank('blog-body', suggestions.body)
+  maybeUpdateSlug()
+}
+
+function fillIfBlank(id, value) {
+  const el = document.getElementById(id)
+  const text = String(value || '').trim()
+  if (!el || !text || el.value.trim()) return false
+  el.value = text
+  return true
+}
+
+function listValue(value) {
+  return Array.isArray(value) ? value.filter(Boolean).join('\n') : String(value || '').trim()
+}
+
+function renderBlogSuggestions(suggestions) {
+  const panel = document.getElementById('blog-suggestions')
+  panel.innerHTML = ''
+  panel.hidden = false
+  const rows = [
+    ['Title', 'blog-title', suggestions.title],
+    ['Abstract', 'blog-abstract', suggestions.abstract],
+    ['Topics', 'blog-topics', listValue(suggestions.topics)],
+    ['Linked entries', 'blog-linked', listValue(suggestions.linkedEntries)],
+    ['Hero alt text', 'blog-hero-alt', suggestions.heroImageAlt],
+    ['Body', 'blog-body', suggestions.body],
+  ].filter(([, , value]) => String(value || '').trim())
+
+  if (!rows.length && !(suggestions.notes || []).length) {
+    panel.textContent = 'No suggestions returned.'
+    return
+  }
+
+  rows.forEach(([label, fieldId, value]) => {
+    const item = document.createElement('div')
+    item.className = 'blog-suggestion-item'
+    const head = document.createElement('div')
+    head.className = 'blog-suggestion-head'
+    const title = document.createElement('strong')
+    title.textContent = label
+    const btn = document.createElement('button')
+    btn.className = 'btn btn-sm'
+    btn.type = 'button'
+    btn.textContent = 'Accept'
+    btn.onclick = () => {
+      document.getElementById(fieldId).value = String(value || '').trim()
+      if (fieldId === 'blog-title') maybeUpdateSlug()
+      renderBlogPreview()
+      validateBlog()
+    }
+    head.appendChild(title)
+    head.appendChild(btn)
+    const pre = document.createElement('pre')
+    pre.textContent = String(value || '').trim()
+    item.appendChild(head)
+    item.appendChild(pre)
+    panel.appendChild(item)
+  })
+
+  if (Array.isArray(suggestions.notes) && suggestions.notes.length) {
+    const notes = document.createElement('div')
+    notes.className = 'blog-suggestion-notes'
+    notes.innerHTML = '<strong>Notes</strong>'
+    const list = document.createElement('ul')
+    suggestions.notes.forEach(note => {
+      const li = document.createElement('li')
+      li.textContent = note
+      list.appendChild(li)
+    })
+    notes.appendChild(list)
+    panel.appendChild(notes)
+  }
 }
 
 async function saveBlogDraft() {

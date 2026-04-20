@@ -10,9 +10,11 @@ const {
   deletePublishedBlogPost,
   saveUploadedHeroImage,
   normalizeId,
+  DEFAULT_BLOG_MEDIATION,
 } = require('../lib/blog')
 const { loadManifest } = require('../lib/manifest')
 const { getDraft, listDrafts, upsertDraft, updateDraftContent, promoteDraft, rejectDraft } = require('../lib/drafts')
+const { createClient } = require('../../scripts/lib/openrouter')
 
 async function blogRoutes(fastify) {
   fastify.get('/blog-admin', async (req, reply) => {
@@ -176,6 +178,17 @@ async function blogRoutes(fastify) {
       return reply.code(err.statusCode || 500).send({ error: err.message })
     }
   })
+
+  fastify.post('/api/blog/assist', async (req, reply) => {
+    try {
+      const manifest = loadManifest()
+      const suggestions = await suggestBlogFields(req.body || {}, manifest)
+      return reply.send({ ok: true, suggestions })
+    } catch (err) {
+      fastify.log.error(err)
+      return reply.code(err.statusCode || 500).send({ error: err.message })
+    }
+  })
 }
 
 function defaultFields() {
@@ -193,16 +206,110 @@ function defaultFields() {
     imagePrompt: '',
     imageTooling: '',
     humanEditor: 'Jesse',
-    mediationTooling: 'Peng drafted the analysis with OpenRouter; image generated separately.',
-    mediationUse: [
-      'synthesized related Openflows Currency entries',
-      'drafted longform structure and editorial framing',
-      'helped specify the hero image prompt',
-    ].join('\n'),
-    mediationHumanRole: 'selected topic, reviewed claims, edited prose, approved publication',
-    mediationLimits: 'analysis depends on available Openflows entries and reviewed public sources; verify time-sensitive claims before publication',
+    mediationTooling: DEFAULT_BLOG_MEDIATION.tooling,
+    mediationUse: DEFAULT_BLOG_MEDIATION.use.join('\n'),
+    mediationHumanRole: DEFAULT_BLOG_MEDIATION.humanRole,
+    mediationLimits: DEFAULT_BLOG_MEDIATION.limits,
     body: '',
   }
+}
+
+async function suggestBlogFields(input, manifest) {
+  const body = String(input.body || '').trim()
+  const current = {
+    title: String(input.title || '').trim(),
+    blogId: normalizeId(input.blogId || input.title || ''),
+    abstract: String(input.abstract || '').trim(),
+    topics: normalizeList(input.topics),
+    linkedEntries: normalizeList(input.linkedEntries),
+    heroImageAlt: String(input.heroImageAlt || '').trim(),
+    body,
+    assistPrompt: String(input.assistPrompt || '').trim(),
+  }
+
+  if (!current.title && !current.abstract && !current.body && !current.assistPrompt) {
+    const err = new Error('Add a title, abstract, body, or assist prompt before generating suggestions.')
+    err.statusCode = 400
+    throw err
+  }
+
+  const entries = (manifest?.entries || [])
+    .filter(entry => entry.lang !== 'zh')
+    .map(entry => ({
+      id: entry.currencyId,
+      type: entry.currencyType,
+      title: entry.title,
+      abstract: entry.abstract || '',
+    }))
+
+  const systemPrompt = `You assist Openflows editors with longform blog drafts.
+
+Return only valid JSON. Do not wrap it in markdown.
+
+The blog is analytical, technical, civic, and grounded in the Openflows knowledge base. Avoid hype and broad unsupported claims. Treat AI as infrastructure, not authority.
+
+Generate suggestions for blank or weak metadata. If body is empty, draft a substantive markdown body. If body is already present, do not rewrite it; return an empty string for body.
+
+Use only linkedEntries that appear in the provided knowledge base entries. Topics must be kebab-case. linkedEntries must be currencyId strings.`
+
+  const userPrompt = JSON.stringify({
+    current,
+    requiredJsonShape: {
+      title: 'string, optional suggestion',
+      abstract: 'string',
+      topics: ['kebab-case-topic'],
+      linkedEntries: ['existing-currency-id'],
+      heroImageAlt: 'string',
+      body: body ? '' : 'markdown body only when current.body is empty',
+      notes: ['short editorial notes or cautions'],
+    },
+    knowledgeBaseEntries: entries,
+  }, null, 2)
+
+  const client = createClient({
+    title: 'Openflows Blog Assist',
+    referer: 'https://admin.openflows.org',
+    temperature: 0.25,
+  })
+  const raw = await client.chat(systemPrompt, userPrompt)
+  const parsed = parseJsonResponse(raw)
+  const validIds = new Set(entries.map(entry => entry.id))
+  const suggestions = {
+    title: String(parsed.title || '').trim(),
+    abstract: String(parsed.abstract || '').trim(),
+    topics: normalizeList(parsed.topics).map(normalizeId).filter(Boolean).slice(0, 8),
+    linkedEntries: normalizeList(parsed.linkedEntries).filter(id => validIds.has(id)).slice(0, 12),
+    heroImageAlt: String(parsed.heroImageAlt || '').trim(),
+    body: body ? '' : String(parsed.body || '').trim(),
+    notes: normalizeList(parsed.notes).slice(0, 8),
+  }
+
+  if (!suggestions.topics.length && current.topics.length) suggestions.topics = current.topics
+  if (!suggestions.linkedEntries.length && current.linkedEntries.length) suggestions.linkedEntries = current.linkedEntries.filter(id => validIds.has(id))
+  return suggestions
+}
+
+function parseJsonResponse(raw) {
+  const text = String(raw || '').trim()
+  try {
+    return JSON.parse(text)
+  } catch {}
+  const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/i)
+  if (fenced) {
+    try {
+      return JSON.parse(fenced[1].trim())
+    } catch {}
+  }
+  const start = text.indexOf('{')
+  const end = text.lastIndexOf('}')
+  if (start !== -1 && end > start) {
+    try {
+      return JSON.parse(text.slice(start, end + 1))
+    } catch {}
+  }
+  const err = new Error('OpenRouter returned a non-JSON blog suggestion response.')
+  err.statusCode = 502
+  throw err
 }
 
 function hasStructuredBody(body) {
@@ -220,6 +327,14 @@ function buildEntriesJson() {
     }))
     .sort((a, b) => a.id.localeCompare(b.id))
   return JSON.stringify(entries)
+}
+
+function normalizeList(value) {
+  if (Array.isArray(value)) return value.map(item => String(item).trim()).filter(Boolean)
+  return String(value || '')
+    .split(/[\n,]/)
+    .map(item => String(item).trim())
+    .filter(Boolean)
 }
 
 function decorateDraft(draft) {
