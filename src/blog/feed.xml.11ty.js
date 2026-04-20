@@ -44,9 +44,9 @@ module.exports = class BlogRssTemplate {
     return `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Openflows Blog</title>
+    <title>Openflows Field Notes from the AI Ecosystem</title>
     <link>${SITE_URL}/blog/</link>
-    <description>Longform analysis on the open source AI ecosystem</description>
+    <description>Longform field notes and analysis on the open source AI ecosystem</description>
     <language>en-us</language>
     <lastBuildDate>${escapeXml(new Date().toUTCString())}</lastBuildDate>
     <atom:link href="${escapeXml(FEED_URL)}" rel="self" type="application/rss+xml"/>

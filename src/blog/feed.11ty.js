@@ -25,6 +25,8 @@ module.exports = class BlogFeedTemplate {
     return JSON.stringify(
       {
         site: SITE_URL,
+        title: "Openflows Field Notes from the AI Ecosystem",
+        description: "Longform field notes and analysis on the open source AI ecosystem",
         generatedAt: new Date().toISOString(),
         count: items.length,
         items
