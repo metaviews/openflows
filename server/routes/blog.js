@@ -164,6 +164,9 @@ async function blogRoutes(fastify) {
 
   fastify.post('/api/blog/images/upload', async (req, reply) => {
     try {
+      if (typeof req.file !== 'function') {
+        return reply.code(503).send({ error: 'Blog image upload is unavailable until @fastify/multipart is installed in server dependencies.' })
+      }
       const blogId = normalizeId(req.query.blogId || '')
       const part = await req.file()
       if (!part) return reply.code(400).send({ error: 'file required' })

@@ -110,8 +110,6 @@ function validateBlogMarkdown({ id, content, manifest, existingIds = [] }) {
   requireField(issues, frontmatter.blogId, 'blogId', 'Missing blogId.')
   requireField(issues, frontmatter.heroImage, 'heroImage', 'Missing heroImage.')
   requireField(issues, frontmatter.heroImageAlt, 'heroImageAlt', 'Missing heroImageAlt.')
-  requireField(issues, frontmatter.imagePrompt, 'imagePrompt', 'Missing imagePrompt.')
-  requireField(issues, frontmatter.imageTooling, 'imageTooling', 'Missing imageTooling.')
   requireField(issues, frontmatter.humanEditor, 'humanEditor', 'Missing humanEditor.')
 
   if (frontmatter.layout && frontmatter.layout !== 'layouts/blog-item.njk') {

@@ -37,69 +37,90 @@
 
   <div class="editor-grid">
     <section class="blog-form">
-      <label>Title
-        <input id="blog-title" class="input" value="{{ fields.title }}">
-      </label>
-      <label>Blog ID
-        <input id="blog-id" class="input" value="{{ fields.blogId }}" {% if mode != 'new' %}readonly{% endif %}>
-      </label>
-      <label>Date
-        <input id="blog-date" class="input" type="date" value="{{ fields.date }}">
-      </label>
-      <label>Abstract
-        <textarea id="blog-abstract" class="input small-textarea">{{ fields.abstract }}</textarea>
-      </label>
-      <label>Topics <span class="muted">one per line or comma-separated</span>
-        <textarea id="blog-topics" class="input small-textarea">{{ fields.topics }}</textarea>
-      </label>
-      <label>Linked Currency Entries <span class="muted">one currencyId per line</span>
-        <textarea id="blog-linked" class="input small-textarea" list="entry-datalist">{{ fields.linkedEntries }}</textarea>
-      </label>
-      <datalist id="entry-datalist"></datalist>
-
-      <div class="panel" style="margin:1rem 0">
-        <div class="panel-header"><span class="panel-title">Hero Image</span></div>
-        <div class="panel-body">
-          <label>Hero Image Path
-            <input id="blog-hero-image" class="input" value="{{ fields.heroImage }}" placeholder="/assets/img/blog/post-id.jpg">
+      <div class="blog-form-section">
+        <div class="blog-form-section-title">Post Basics</div>
+        <div class="blog-field-grid">
+          <label>Title
+            <input id="blog-title" class="input" value="{{ fields.title }}">
           </label>
-          <div class="edit-actions" style="margin:0.5rem 0">
-            <input id="blog-image-file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
-            <button class="btn btn-sm" type="button" onclick="uploadHeroImage()">Upload Image</button>
-          </div>
+          <label>Blog ID
+            <input id="blog-id" class="input" value="{{ fields.blogId }}" {% if mode != 'new' %}readonly{% endif %}>
+          </label>
+          <label>Date
+            <input id="blog-date" class="input" type="date" value="{{ fields.date }}">
+          </label>
+          <label>Human Editor
+            <input id="blog-human-editor" class="input" value="{{ fields.humanEditor }}">
+          </label>
+        </div>
+        <label>Abstract
+          <textarea id="blog-abstract" class="input small-textarea">{{ fields.abstract }}</textarea>
+        </label>
+      </div>
+
+      <div class="blog-form-section">
+        <div class="blog-form-section-title">Navigation and Links</div>
+        <div class="blog-field-grid">
+          <label>Topics <span class="muted">one per line or comma-separated</span>
+            <textarea id="blog-topics" class="input small-textarea">{{ fields.topics }}</textarea>
+          </label>
+          <label>Linked Currency Entries <span class="muted">one currencyId per line</span>
+            <textarea id="blog-linked" class="input small-textarea" list="entry-datalist">{{ fields.linkedEntries }}</textarea>
+          </label>
+        </div>
+        <datalist id="entry-datalist"></datalist>
+      </div>
+
+      <div class="blog-form-section">
+        <div class="blog-form-section-title">Hero Image</div>
+        <label>Hero Image Path
+          <input id="blog-hero-image" class="input" value="{{ fields.heroImage }}" placeholder="/assets/img/blog/post-id.jpg">
+        </label>
+        <div class="blog-upload-row">
+          <input id="blog-image-file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+          <button class="btn btn-sm" type="button" onclick="uploadHeroImage()">Upload Image</button>
+        </div>
+        <div class="blog-field-grid">
           <label>Alt Text
             <input id="blog-hero-alt" class="input" value="{{ fields.heroImageAlt }}">
           </label>
-          <label>Caption
+          <label>Caption <span class="muted">optional</span>
             <input id="blog-hero-caption" class="input" value="{{ fields.heroImageCaption }}">
           </label>
-          <label>Image Prompt
+        </div>
+        <details class="blog-optional">
+          <summary>Optional image provenance</summary>
+          <label>Image Prompt <span class="muted">optional</span>
             <textarea id="blog-image-prompt" class="input small-textarea">{{ fields.imagePrompt }}</textarea>
           </label>
-          <label>Image Tooling
+          <label>Image Tooling <span class="muted">optional</span>
             <input id="blog-image-tooling" class="input" value="{{ fields.imageTooling }}">
           </label>
-        </div>
+        </details>
       </div>
 
-      <label>Human Editor
-        <input id="blog-human-editor" class="input" value="{{ fields.humanEditor }}">
-      </label>
-      <label>Mediation Tooling
-        <input id="blog-mediation-tooling" class="input" value="{{ fields.mediationTooling }}">
-      </label>
-      <label>Mediation Use <span class="muted">one per line</span>
-        <textarea id="blog-mediation-use" class="input small-textarea">{{ fields.mediationUse }}</textarea>
-      </label>
-      <label>Human Role
-        <input id="blog-mediation-human" class="input" value="{{ fields.mediationHumanRole }}">
-      </label>
-      <label>Limits
-        <textarea id="blog-mediation-limits" class="input small-textarea">{{ fields.mediationLimits }}</textarea>
-      </label>
-      <label>Body Markdown
-        <textarea id="blog-body" class="entry-editor">{{ fields.body }}</textarea>
-      </label>
+      <div class="blog-form-section">
+        <div class="blog-form-section-title">Mediation</div>
+        <label>Mediation Tooling
+          <input id="blog-mediation-tooling" class="input" value="{{ fields.mediationTooling }}">
+        </label>
+        <label>Mediation Use <span class="muted">one per line</span>
+          <textarea id="blog-mediation-use" class="input small-textarea">{{ fields.mediationUse }}</textarea>
+        </label>
+        <label>Human Role
+          <input id="blog-mediation-human" class="input" value="{{ fields.mediationHumanRole }}">
+        </label>
+        <label>Limits
+          <textarea id="blog-mediation-limits" class="input small-textarea">{{ fields.mediationLimits }}</textarea>
+        </label>
+      </div>
+
+      <div class="blog-form-section">
+        <div class="blog-form-section-title">Body</div>
+        <label>Body Markdown
+          <textarea id="blog-body" class="entry-editor">{{ fields.body }}</textarea>
+        </label>
+      </div>
     </section>
 
     <aside class="editor-side">

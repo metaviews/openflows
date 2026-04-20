@@ -47,12 +47,20 @@ async function start() {
     decorateReply: false,
   })
 
-  await fastify.register(require('@fastify/multipart'), {
-    limits: {
-      fileSize: 5 * 1024 * 1024,
-      files: 1,
-    },
-  })
+  try {
+    await fastify.register(require('@fastify/multipart'), {
+      limits: {
+        fileSize: 5 * 1024 * 1024,
+        files: 1,
+      },
+    })
+  } catch (err) {
+    if (err && err.code === 'MODULE_NOT_FOUND') {
+      console.warn('[server] @fastify/multipart is not installed; blog image upload is disabled until server dependencies are installed')
+    } else {
+      throw err
+    }
+  }
 
   await fastify.register(require('@fastify/view'), {
     engine: { nunjucks: require('nunjucks') },

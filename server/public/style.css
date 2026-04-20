@@ -664,7 +664,7 @@ nav a:hover { color: var(--text); }
 .blog-form {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 1rem;
 }
 .blog-form label {
   display: flex;
@@ -687,6 +687,48 @@ nav a:hover { color: var(--text); }
 .blog-form .small-textarea {
   min-height: 4.5rem;
   resize: vertical;
+}
+.blog-form-section {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.blog-form-section-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.45rem;
+}
+.blog-field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.75rem;
+}
+.blog-upload-row {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.blog-optional {
+  border-top: 1px solid var(--border-light);
+  padding-top: 0.55rem;
+}
+.blog-optional summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-bottom: 0.65rem;
+}
+.blog-optional label + label {
+  margin-top: 0.65rem;
 }
 .entry-card {
   padding: 0.6rem 0.75rem;

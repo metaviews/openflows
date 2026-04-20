@@ -110,8 +110,6 @@ function buildBlogMarkdown(input = {}) {
     linkedEntries,
     heroImage: String(input.heroImage || '').trim(),
     heroImageAlt: String(input.heroImageAlt || '').trim(),
-    imagePrompt: String(input.imagePrompt || '').trim(),
-    imageTooling: String(input.imageTooling || '').trim(),
     humanEditor: String(input.humanEditor || '').trim(),
     mediation: {
       tooling: String(input.mediationTooling || '').trim(),
@@ -123,6 +121,10 @@ function buildBlogMarkdown(input = {}) {
 
   const caption = String(input.heroImageCaption || '').trim()
   if (caption) frontmatter.heroImageCaption = caption
+  const imagePrompt = String(input.imagePrompt || '').trim()
+  const imageTooling = String(input.imageTooling || '').trim()
+  if (imagePrompt) frontmatter.imagePrompt = imagePrompt
+  if (imageTooling) frontmatter.imageTooling = imageTooling
 
   return `---\n${yaml.dump(frontmatter, { lineWidth: 100, noRefs: true })}---\n\n${body}\n`
 }
