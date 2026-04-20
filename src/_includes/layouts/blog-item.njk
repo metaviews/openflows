@@ -10,12 +10,6 @@ layout: layouts/base.njk
         <span>Published</span>
         <strong>{{ date | readableDate }}</strong>
       </div>
-      {% if humanEditor %}
-      <div class="entry-meta-item">
-        <span>Human editor</span>
-        <strong>{{ humanEditor }}</strong>
-      </div>
-      {% endif %}
       {% if topics and topics.length %}
       <div class="entry-meta-item">
         <span>Topics</span>
@@ -34,12 +28,13 @@ layout: layouts/base.njk
   {% endif %}
 
   <div class="share-row" aria-label="Share this post">
-    <button type="button" class="share-button" data-copy-url="{{ metadata.url }}{{ page.url }}">Copy link</button>
-    <a class="share-button" href="https://bsky.app/intent/compose?text={{ (title + ' ' + metadata.url + page.url) | urlencode }}" rel="noopener">Bluesky</a>
-    <a class="share-button" href="https://www.linkedin.com/sharing/share-offsite/?url={{ (metadata.url + page.url) | urlencode }}" rel="noopener">LinkedIn</a>
-    <a class="share-button" href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ (metadata.url + page.url) | urlencode }}" rel="noopener">X</a>
-    <a class="share-button" href="mailto:?subject={{ title | urlencode }}&body={{ (metadata.url + page.url) | urlencode }}">Email</a>
-    <a class="share-button" href="https://mastodonshare.com/?text={{ (title + ' ' + metadata.url + page.url) | urlencode }}" rel="noopener">Mastodon</a>
+    <span class="share-label">Share</span>
+    <button type="button" class="share-button" data-copy-url="{{ metadata.url }}{{ page.url }}"><span class="share-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9.5 14.5 14.5 9.5M10.5 6.5l1.2-1.2a4 4 0 0 1 5.7 5.7l-2 2a4 4 0 0 1-5.7 0M13.5 17.5l-1.2 1.2a4 4 0 0 1-5.7-5.7l2-2a4 4 0 0 1 5.7 0"/></svg></span><span class="share-text">Copy link</span></button>
+    <a class="share-button" href="https://bsky.app/intent/compose?text={{ (title + ' ' + metadata.url + page.url) | urlencode }}" target="_blank" rel="noopener"><span class="share-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 5c2.2 1.7 3.7 3.5 5 5.7C13.3 8.5 14.8 6.7 17 5c1.4-1.1 3-.3 2.7 1.5-.3 2.1-1.5 4.2-3.4 5.8 2.2.4 3.2 2.5 1.9 4.1-1.6 2-4.1 1.2-6.2-1.7-2.1 2.9-4.6 3.7-6.2 1.7-1.3-1.6-.3-3.7 1.9-4.1-1.9-1.6-3.1-3.7-3.4-5.8C4 4.7 5.6 3.9 7 5Z"/></svg></span><span>Bluesky</span></a>
+    <a class="share-button" href="https://www.linkedin.com/sharing/share-offsite/?url={{ (metadata.url + page.url) | urlencode }}" target="_blank" rel="noopener"><span class="share-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.5 10v8M6.5 6v.1M11 18v-8M11 13.4c.4-2.2 1.7-3.6 3.8-3.6 2.2 0 3.7 1.5 3.7 4.3V18"/></svg></span><span>LinkedIn</span></a>
+    <a class="share-button" href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ (metadata.url + page.url) | urlencode }}" target="_blank" rel="noopener"><span class="share-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 5l12 14M18 5 6 19"/></svg></span><span>X</span></a>
+    <a class="share-button" href="mailto:?subject={{ title | urlencode }}&body={{ (metadata.url + page.url) | urlencode }}"><span class="share-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16v10H4z"/><path d="m4 8 8 5 8-5"/></svg></span><span>Email</span></a>
+    <a class="share-button" href="https://mastodonshare.com/?text={{ (title + ' ' + metadata.url + page.url) | urlencode }}" target="_blank" rel="noopener"><span class="share-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17.5c-1.4-.4-2-1.4-2-3V9.3C5 6.5 6.8 5 9.5 5h5C17.2 5 19 6.5 19 9.3v3.2c0 2.8-1.8 4.3-4.5 4.3h-2.1L9 19v-2.2c-.7 0-1.4 0-2-.3Z"/><path d="M8.5 14v-4c0-1 .6-1.7 1.6-1.7.9 0 1.5.5 1.9 1.3.4-.8 1-1.3 1.9-1.3 1 0 1.6.7 1.6 1.7v4"/></svg></span><span>Mastodon</span></a>
   </div>
 
   <div class="entry-body">
@@ -65,18 +60,6 @@ layout: layouts/base.njk
   </section>
   {% endif %}
 
-  {% if mediation %}
-  <section class="mediation-note">
-    <h3>Mediation</h3>
-    {% if mediation.tooling %}<p><strong>Tooling:</strong> {{ mediation.tooling }}</p>{% endif %}
-    {% if mediation.use and mediation.use.length %}
-    <p><strong>Use:</strong> {{ mediation.use | join("; ") }}</p>
-    {% endif %}
-    {% if mediation.humanRole %}<p><strong>Human role:</strong> {{ mediation.humanRole }}</p>{% endif %}
-    {% if mediation.limits %}<p><strong>Limits:</strong> {{ mediation.limits }}</p>{% endif %}
-  </section>
-  {% endif %}
-
   {% if imagePrompt or imageTooling %}
   <section class="connection-note">
     <h3>Image Provenance</h3>
@@ -91,10 +74,11 @@ layout: layouts/base.njk
   document.querySelectorAll('[data-copy-url]').forEach(function(button) {
     button.addEventListener('click', async function() {
       const url = button.getAttribute('data-copy-url');
+      const label = button.querySelector('.share-text');
       try {
         await navigator.clipboard.writeText(url);
-        button.textContent = 'Copied';
-        setTimeout(function() { button.textContent = 'Copy link'; }, 1800);
+        if (label) label.textContent = 'Copied';
+        setTimeout(function() { if (label) label.textContent = 'Copy link'; }, 1800);
       } catch {
         window.prompt('Copy this link', url);
       }
