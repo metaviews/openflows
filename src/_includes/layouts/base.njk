@@ -8,7 +8,7 @@
   {% set pageTitle = title or metadata.title %}
   {% set pageDescription = abstract or description or metadata.description %}
   {% set pageUrl = metadata.url + page.url %}
-  {% set pageImage = metadata.url + metadata.image %}
+  {% set pageImage = (heroImage or image or metadata.image) | absoluteUrl(metadata.url) %}
   {% set pageLang = lang or 'en' %}
   {% set schemaLang = 'zh-Hans' if pageLang == 'zh' else 'en' %}
   {% set alternateUrl = "" %}
@@ -50,11 +50,16 @@
   <meta property="og:description" content="{{ pageDescription }}">
   <meta property="og:url" content="{{ pageUrl }}">
   <meta property="og:image" content="{{ pageImage }}">
-  <meta property="og:type" content="{% if currencyType %}article{% else %}website{% endif %}">
-  {% if currencyType %}
+  <meta property="og:type" content="{% if currencyType or blogId %}article{% else %}website{% endif %}">
+  {% if currencyType or blogId %}
   <meta property="article:published_time" content="{{ date | isoDate }}">
     {% if lastReviewed %}
   <meta property="article:modified_time" content="{{ lastReviewed | isoDate }}">
+    {% endif %}
+    {% if topics %}
+      {% for topic in topics %}
+  <meta property="article:tag" content="{{ topic }}">
+      {% endfor %}
     {% endif %}
   {% endif %}
   {% if lang == 'zh' %}
@@ -66,13 +71,15 @@
   {% endif %}
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="{% if heroImage or image %}summary_large_image{% else %}summary{% endif %}">
   <meta name="twitter:title" content="{{ pageTitle }}">
   <meta name="twitter:description" content="{{ pageDescription }}">
   <meta name="twitter:image" content="{{ pageImage }}">
 
   <link rel="alternate" type="application/rss+xml" title="Openflows Currency RSS" href="/currency/feed.xml">
   <link rel="alternate" type="application/feed+json" title="Openflows Currency JSON Feed" href="/currency/feed.json">
+  <link rel="alternate" type="application/rss+xml" title="Openflows Blog RSS" href="/blog/feed.xml">
+  <link rel="alternate" type="application/feed+json" title="Openflows Blog JSON Feed" href="/blog/feed.json">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -99,18 +106,23 @@
         }
       },
       {
-        "@type": "{% if currencyType == 'practitioner' %}ProfilePage{% elif currencyType %}Article{% else %}WebPage{% endif %}",
+        "@type": "{% if currencyType == 'practitioner' %}ProfilePage{% elif currencyType or blogId %}Article{% else %}WebPage{% endif %}",
         "@id": "{{ pageUrl }}#primary",
         "url": "{{ pageUrl }}",
         "name": {{ pageTitle | dump | safe }},
         "description": {{ pageDescription | dump | safe }},
         "isPartOf": { "@id": "{{ metadata.url }}/#website" },
         "publisher": { "@id": "{{ metadata.url }}/#organization" },
-        "inLanguage": "{{ schemaLang }}"{% if currencyId %},
-        "identifier": {{ currencyId | dump | safe }},
-        "genre": {{ currencyType | dump | safe }},
+        "inLanguage": "{{ schemaLang }}"{% if currencyType or blogId %},
         "datePublished": "{{ date | isoDate }}"{% if lastReviewed %},
-        "dateModified": "{{ lastReviewed | isoDate }}"{% endif %}{% endif %}{% if currencyType == 'practitioner' %},
+        "dateModified": "{{ lastReviewed | isoDate }}"{% endif %},
+        "image": "{{ pageImage }}"{% if humanEditor %},
+        "editor": {{ humanEditor | dump | safe }}{% endif %}{% if topics %},
+        "keywords": {{ topics | dump | safe }}{% endif %}{% endif %}{% if currencyId %},
+        "identifier": {{ currencyId | dump | safe }},
+        "genre": {{ currencyType | dump | safe }}{% endif %}{% if blogId %},
+        "identifier": {{ blogId | dump | safe }},
+        "genre": "longform analysis"{% endif %}{% if currencyType == 'practitioner' %},
         "mainEntity": {
           "@type": "Person",
           "name": {{ pageTitle | dump | safe }}{% if socialProfiles and socialProfiles.length %},
@@ -142,6 +154,18 @@
           {
             "@type": "ListItem",
             "position": 4,
+            "name": {{ pageTitle | dump | safe }},
+            "item": "{{ pageUrl }}"
+          }{% elif blogId %},
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "{{ metadata.url }}/blog/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
             "name": {{ pageTitle | dump | safe }},
             "item": "{{ pageUrl }}"
           }{% else %},
@@ -626,6 +650,56 @@
       max-width: 100%;
       height: auto;
     }
+    .blog-hero {
+      margin: 1.25rem 0;
+      max-width: none;
+    }
+    .blog-hero img,
+    .blog-list-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+    }
+    .blog-hero figcaption {
+      margin-top: 0.45rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .share-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin: 1rem 0 1.35rem;
+      font-family: Arial, "Helvetica Neue", sans-serif;
+    }
+    .share-button {
+      display: inline-flex;
+      align-items: center;
+      min-height: 2rem;
+      padding: 0.35rem 0.6rem;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--surface);
+      color: var(--ink);
+      text-decoration: none;
+      font: inherit;
+      cursor: pointer;
+    }
+    .share-button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .blog-list li {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    .blog-list-image {
+      display: block;
+      max-width: 16rem;
+    }
     pre, code {
       white-space: pre-wrap;
       overflow-wrap: anywhere;
@@ -652,6 +726,9 @@
       }
       .browser-results {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .blog-list li {
+        grid-template-columns: 12rem minmax(0, 1fr);
       }
       .filter-bar {
         grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.4fr);
@@ -703,6 +780,7 @@
           {% endif %}
         {% else %}
           <a href="/currency/">Currency</a>
+          <a href="/blog/">Blog</a>
           <a href="/perspective/">Perspective</a>
           <span class="nav-group">
             <a href="/about/">About</a>

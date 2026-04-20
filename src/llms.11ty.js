@@ -29,6 +29,7 @@ Openflows is a public, bilingual knowledge base documenting the open source AI e
 - Home: https://openflows.org/
 - Chinese home: https://openflows.org/zh/
 - Currency browser: https://openflows.org/currency/
+- Blog: https://openflows.org/blog/
 - Currents: https://openflows.org/currency/currents/
 - Circuits: https://openflows.org/currency/circuits/
 - Practitioners: https://openflows.org/currency/practitioners/
@@ -42,6 +43,8 @@ Openflows is a public, bilingual knowledge base documenting the open source AI e
 - Compact search index: https://openflows.org/currency/search-index.json
 - RSS feed: https://openflows.org/currency/feed.xml
 - JSON feed: https://openflows.org/currency/feed.json
+- Blog RSS feed: https://openflows.org/blog/feed.xml
+- Blog JSON feed: https://openflows.org/blog/feed.json
 - Sitemap: https://openflows.org/sitemap.xml
 
 ## Use Guidance

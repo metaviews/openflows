@@ -2,7 +2,7 @@
 
 const { listDrafts, getDraft, updateDraftContent, promoteDraft, rejectDraft } = require('../lib/drafts')
 const { loadManifest } = require('../lib/manifest')
-const { validateCurrencyMarkdown } = require('../lib/validation')
+const { validateCurrencyMarkdown, validateBlogMarkdown } = require('../lib/validation')
 
 async function queueRoutes(fastify) {
   // List pending drafts (or by status).
@@ -41,14 +41,7 @@ async function queueRoutes(fastify) {
     const lang = req.query.lang || 'en'
     try {
       const draft = getDraft(fastify.db, { id: req.params.id, lang })
-      const validation = validateCurrencyMarkdown({
-        id: draft.id,
-        lang: draft.lang,
-        content: draft.content,
-        manifest: loadManifest(),
-        existingType: draft.type,
-        strictAbstract: true,
-      })
+      const validation = validateDraft(draft, draft.content)
       return reply.send({ draft: decorateDraft(draft), body: validation.body, frontmatter: validation.frontmatter, validation })
     } catch (err) {
       return reply.code(err.statusCode || 500).send({ error: err.message })
@@ -60,14 +53,7 @@ async function queueRoutes(fastify) {
     try {
       const draft = getDraft(fastify.db, { id: req.params.id, lang })
       const content = req.body?.content || draft.content
-      const validation = validateCurrencyMarkdown({
-        id: draft.id,
-        lang: draft.lang,
-        content,
-        manifest: loadManifest(),
-        existingType: draft.type,
-        strictAbstract: true,
-      })
+      const validation = validateDraft(draft, content)
       return reply.send(validation)
     } catch (err) {
       return reply.code(err.statusCode || 500).send({ error: err.message })
@@ -120,6 +106,24 @@ async function queueRoutes(fastify) {
     } catch (err) {
       return reply.code(err.statusCode || 500).send({ error: err.message })
     }
+  })
+}
+
+function validateDraft(draft, content) {
+  if (draft.type === 'blog') {
+    return validateBlogMarkdown({
+      id: draft.id,
+      content,
+      manifest: loadManifest(),
+    })
+  }
+  return validateCurrencyMarkdown({
+    id: draft.id,
+    lang: draft.lang,
+    content,
+    manifest: loadManifest(),
+    existingType: draft.type,
+    strictAbstract: true,
   })
 }
 

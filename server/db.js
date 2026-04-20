@@ -108,6 +108,7 @@ function migrateDrafts(db) {
     { dir: DRAFTS_ROOT, lang: 'en' },
     { dir: path.join(DRAFTS_ROOT, 'zh'), lang: 'zh' },
     { dir: path.join(DRAFTS_ROOT, 'practitioners'), lang: 'en' },
+    { dir: path.join(DRAFTS_ROOT, 'blog'), lang: 'en', type: 'blog' },
   ]
 
   const insert = db.prepare(`
@@ -117,7 +118,7 @@ function migrateDrafts(db) {
 
   const SKIP = new Set(['QUEUE.md', 'peng-attention.md'])
 
-  for (const { dir, lang } of locations) {
+  for (const { dir, lang, type } of locations) {
     if (!fs.existsSync(dir)) continue
     for (const file of fs.readdirSync(dir)) {
       if (!file.endsWith('.md') || SKIP.has(file) || file.startsWith('digest-')) continue
@@ -129,7 +130,7 @@ function migrateDrafts(db) {
         const stat = fs.statSync(filePath)
         insert.run(
           id, lang,
-          frontmatter.currencyType || null,
+          frontmatter.currencyType || frontmatter.type || (frontmatter.blogId ? 'blog' : type) || null,
           frontmatter.title || null,
           frontmatter.abstract || null,
           content,

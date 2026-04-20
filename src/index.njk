@@ -62,6 +62,30 @@ permalink: /
 </section>
 
 <section>
+  <h2>Latest Blog</h2>
+  <p class="meta">Longform analysis and larger coverage from Peng with human editorial review.</p>
+  {% if collections.recentBlog.length %}
+  <ul class="currency-list">
+    {% for item in collections.recentBlog %}
+    <li>
+      <a href="{{ item.url }}">{{ item.data.title }}</a>
+      <div class="item-meta">
+        <span class="muted">{{ item.date | readableDate }}</span>
+        {% set itemTopics = item.data.topics or [] %}
+        {% for topic in itemTopics %}
+        <span class="chip">{{ topic }}</span>
+        {% endfor %}
+      </div>
+      {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No longform posts have been published yet.</p>
+  {% endif %}
+</section>
+
+<section>
   <h2>For Agents and Developers</h2>
   <p class="meta">The knowledge base is available in structured form for programmatic access.</p>
   <ul>

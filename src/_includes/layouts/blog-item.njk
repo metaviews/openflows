@@ -1,0 +1,104 @@
+---
+layout: layouts/base.njk
+---
+<article class="entry-shell blog-entry">
+  <header class="entry-header blog-header">
+    <p class="hero-kicker">Blog</p>
+    <h2>{{ title }}</h2>
+    <div class="entry-meta-grid">
+      <div class="entry-meta-item">
+        <span>Published</span>
+        <strong>{{ date | readableDate }}</strong>
+      </div>
+      {% if humanEditor %}
+      <div class="entry-meta-item">
+        <span>Human editor</span>
+        <strong>{{ humanEditor }}</strong>
+      </div>
+      {% endif %}
+      {% if topics and topics.length %}
+      <div class="entry-meta-item">
+        <span>Topics</span>
+        <strong>{% for topic in topics %}<span class="chip">{{ topic }}</span>{% if not loop.last %} {% endif %}{% endfor %}</strong>
+      </div>
+      {% endif %}
+    </div>
+    {% if abstract %}<p class="item-abstract">{{ abstract }}</p>{% endif %}
+  </header>
+
+  {% if heroImage %}
+  <figure class="blog-hero">
+    <img src="{{ heroImage }}" alt="{{ heroImageAlt }}">
+    {% if heroImageCaption %}<figcaption>{{ heroImageCaption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <div class="share-row" aria-label="Share this post">
+    <button type="button" class="share-button" data-copy-url="{{ metadata.url }}{{ page.url }}">Copy link</button>
+    <a class="share-button" href="https://bsky.app/intent/compose?text={{ (title + ' ' + metadata.url + page.url) | urlencode }}" rel="noopener">Bluesky</a>
+    <a class="share-button" href="https://www.linkedin.com/sharing/share-offsite/?url={{ (metadata.url + page.url) | urlencode }}" rel="noopener">LinkedIn</a>
+    <a class="share-button" href="https://twitter.com/intent/tweet?text={{ title | urlencode }}&url={{ (metadata.url + page.url) | urlencode }}" rel="noopener">X</a>
+    <a class="share-button" href="mailto:?subject={{ title | urlencode }}&body={{ (metadata.url + page.url) | urlencode }}">Email</a>
+    <a class="share-button" href="https://mastodonshare.com/?text={{ (title + ' ' + metadata.url + page.url) | urlencode }}" rel="noopener">Mastodon</a>
+  </div>
+
+  <div class="entry-body">
+    {{ content | linkCurrencyRefs(collections.allCurrency) | safe }}
+  </div>
+
+  {% if linkedEntries and linkedEntries.length %}
+  <section class="connection-note">
+    <h3>Referenced Entries</h3>
+    <ul class="connection-list">
+      {% for id in linkedEntries %}
+        {% set entry = collections.allCurrency | currencyByIdForLang(id, lang or 'en') %}
+        <li>
+          {% if entry %}
+          <a href="{{ entry.url }}">{{ entry.data.title }}</a>
+          <span class="muted">({{ id }})</span>
+          {% else %}
+          <span>{{ id }}</span>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if mediation %}
+  <section class="mediation-note">
+    <h3>Mediation</h3>
+    {% if mediation.tooling %}<p><strong>Tooling:</strong> {{ mediation.tooling }}</p>{% endif %}
+    {% if mediation.use and mediation.use.length %}
+    <p><strong>Use:</strong> {{ mediation.use | join("; ") }}</p>
+    {% endif %}
+    {% if mediation.humanRole %}<p><strong>Human role:</strong> {{ mediation.humanRole }}</p>{% endif %}
+    {% if mediation.limits %}<p><strong>Limits:</strong> {{ mediation.limits }}</p>{% endif %}
+  </section>
+  {% endif %}
+
+  {% if imagePrompt or imageTooling %}
+  <section class="connection-note">
+    <h3>Image Provenance</h3>
+    {% if imageTooling %}<p><strong>Tooling:</strong> {{ imageTooling }}</p>{% endif %}
+    {% if imagePrompt %}<p><strong>Prompt:</strong> {{ imagePrompt }}</p>{% endif %}
+  </section>
+  {% endif %}
+</article>
+
+<script>
+(function() {
+  document.querySelectorAll('[data-copy-url]').forEach(function(button) {
+    button.addEventListener('click', async function() {
+      const url = button.getAttribute('data-copy-url');
+      try {
+        await navigator.clipboard.writeText(url);
+        button.textContent = 'Copied';
+        setTimeout(function() { button.textContent = 'Copy link'; }, 1800);
+      } catch {
+        window.prompt('Copy this link', url);
+      }
+    });
+  });
+})();
+</script>

@@ -25,6 +25,7 @@
         <option value="current" {% if type == 'current' %}selected{% endif %}>current</option>
         <option value="circuit" {% if type == 'circuit' %}selected{% endif %}>circuit</option>
         <option value="practitioner" {% if type == 'practitioner' %}selected{% endif %}>practitioner</option>
+        <option value="blog" {% if type == 'blog' %}selected{% endif %}>blog</option>
       </select>
       <button class="btn btn-sm"
               hx-get="/api/queue"

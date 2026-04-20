@@ -3,16 +3,18 @@
 const path = require('path')
 const fs = require('fs')
 const { parseFrontmatter } = require('./parse')
-const { promoteEntry } = require('./git')
+const { promoteEntry, promoteBlogPost } = require('./git')
+const { validateBlogMarkdown } = require('./validation')
 
 const ROOT = path.join(__dirname, '..', '..')
 const DRAFTS_ROOT = path.join(ROOT, 'drafts')
 const SKIP_FILES = new Set(['QUEUE.md', 'peng-attention.md'])
-const ALLOWED_TYPES = new Set(['current', 'circuit', 'practitioner'])
+const ALLOWED_TYPES = new Set(['current', 'circuit', 'practitioner', 'blog'])
 
-function draftFilePath(id, lang = 'en') {
+function draftFilePath(id, lang = 'en', type = null) {
   const existing = existingDraftFilePath(id, lang)
   if (existing) return existing
+  if (type === 'blog') return path.join(DRAFTS_ROOT, 'blog', `${id}.md`)
   return lang === 'zh'
     ? path.join(DRAFTS_ROOT, 'zh', `${id}.md`)
     : path.join(DRAFTS_ROOT, `${id}.md`)
@@ -24,6 +26,7 @@ function existingDraftFilePath(id, lang = 'en') {
     : [
         path.join(DRAFTS_ROOT, `${id}.md`),
         path.join(DRAFTS_ROOT, 'practitioners', `${id}.md`),
+        path.join(DRAFTS_ROOT, 'blog', `${id}.md`),
       ]
   return candidates.find(candidate => fs.existsSync(candidate)) || null
 }
@@ -37,13 +40,23 @@ function inspectDraft({ id, content, type, title, abstract }) {
   if (!normalizedContent.trim()) issues.push('empty content')
 
   const { frontmatter, body } = parseFrontmatter(normalizedContent)
+  const draftType = frontmatter.currencyType || frontmatter.type || type || (frontmatter.blogId ? 'blog' : null)
+
+  if (draftType === 'blog') {
+    const validation = validateBlogMarkdown({ id: normalizedId, content: normalizedContent })
+    return {
+      issues: validation.issues.filter(issue => issue.severity === 'error').map(issue => issue.message),
+      frontmatter,
+      body,
+      valid: validation.ok,
+    }
+  }
 
   if (!frontmatter.currencyId) issues.push('missing currencyId in frontmatter')
   if (frontmatter.currencyId && normalizedId && frontmatter.currencyId !== normalizedId) {
     issues.push(`currencyId mismatch (${frontmatter.currencyId} != ${normalizedId})`)
   }
 
-  const draftType = frontmatter.currencyType || type || null
   if (!draftType) {
     issues.push('missing currencyType')
   } else if (!ALLOWED_TYPES.has(draftType)) {
@@ -97,8 +110,8 @@ function getDraft(db, { id, lang = 'en' }) {
   return draft
 }
 
-function syncDraftFile({ id, lang = 'en', content }) {
-  const filePath = draftFilePath(id, lang)
+function syncDraftFile({ id, lang = 'en', content, type = null }) {
+  const filePath = draftFilePath(id, lang, type)
   fs.mkdirSync(path.dirname(filePath), { recursive: true })
   fs.writeFileSync(filePath, content, 'utf8')
   return filePath
@@ -130,7 +143,8 @@ function upsertDraft(db, { id, lang = 'en', content, status = 'pending', runId =
 
   const { frontmatter } = inspection
   const now = new Date().toISOString()
-  const filePath = syncDraftFile({ id, lang, content })
+  const draftType = frontmatter.currencyType || frontmatter.type || (frontmatter.blogId ? 'blog' : null)
+  const filePath = syncDraftFile({ id, lang, content, type: draftType })
   const createdAt = fs.statSync(filePath).mtime.toISOString()
 
   db.prepare(`
@@ -148,7 +162,7 @@ function upsertDraft(db, { id, lang = 'en', content, status = 'pending', runId =
   `).run(
     id,
     lang,
-    frontmatter.currencyType || null,
+    draftType,
     frontmatter.title || null,
     frontmatter.abstract || null,
     content,
@@ -175,7 +189,7 @@ function updateDraftContent(db, { id, lang = 'en', content }) {
 async function promoteDraft(db, { id, lang = 'en' }) {
   const draft = getDraft(db, { id, lang })
   if (!draft.type) {
-    const err = new Error('Draft has no currencyType')
+    const err = new Error('Draft has no type')
     err.statusCode = 400
     throw err
   }
@@ -191,12 +205,33 @@ async function promoteDraft(db, { id, lang = 'en' }) {
     throw err
   }
 
-  const result = await promoteEntry({
-    id: draft.id,
-    lang: draft.lang,
-    content: draft.content,
-    currencyType: draft.type,
-  })
+  let result
+  if (draft.type === 'blog') {
+    const validation = validateBlogMarkdown({ id: draft.id, content: draft.content })
+    if (!validation.ok) {
+      const err = new Error(`invalid blog draft: ${validation.issues.map(issue => issue.message).join('; ')}`)
+      err.statusCode = 400
+      throw err
+    }
+    const imagePath = path.join(ROOT, 'src', String(validation.frontmatter.heroImage).replace(/^\//, ''))
+    if (!fs.existsSync(imagePath)) {
+      const err = new Error(`hero image does not exist: ${validation.frontmatter.heroImage}`)
+      err.statusCode = 400
+      throw err
+    }
+    result = await promoteBlogPost({
+      id: draft.id,
+      content: draft.content,
+      heroImage: validation.frontmatter.heroImage,
+    })
+  } else {
+    result = await promoteEntry({
+      id: draft.id,
+      lang: draft.lang,
+      content: draft.content,
+      currencyType: draft.type,
+    })
+  }
 
   const now = new Date().toISOString()
   db.prepare(`UPDATE drafts SET status = 'promoted', updated_at = ? WHERE id = ? AND lang = ?`)

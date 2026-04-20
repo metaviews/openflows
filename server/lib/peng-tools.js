@@ -70,7 +70,7 @@ const TOOL_DEFS = [
       parameters: {
         type: 'object',
         properties: {
-          currencyId: { type: 'string' },
+          currencyId: { type: 'string', description: 'Currency id for knowledge entries, or blogId for blog drafts.' },
           lang: { type: 'string', enum: ['en', 'zh'] },
         },
         required: ['currencyId'],
@@ -98,11 +98,11 @@ const TOOL_DEFS = [
     type: 'function',
     function: {
       name: 'create_draft',
-      description: 'Create or replace a queue draft by providing full markdown with frontmatter.',
+      description: 'Create or replace a queue draft by providing full markdown with frontmatter. Use currencyId for knowledge entries or blogId for blog drafts.',
       parameters: {
         type: 'object',
         properties: {
-          currencyId: { type: 'string' },
+          currencyId: { type: 'string', description: 'Currency id for knowledge entries, or blogId for blog drafts.' },
           lang: { type: 'string', enum: ['en', 'zh'] },
           content: { type: 'string' },
           sourceUrl: { type: 'string', description: 'Origin URL the entry was sourced from, if any.' },
@@ -120,7 +120,7 @@ const TOOL_DEFS = [
       parameters: {
         type: 'object',
         properties: {
-          currencyId: { type: 'string' },
+          currencyId: { type: 'string', description: 'Currency id for knowledge entries, or blogId for blog drafts.' },
           lang: { type: 'string', enum: ['en', 'zh'] },
           content: { type: 'string' },
         },
@@ -133,11 +133,11 @@ const TOOL_DEFS = [
     type: 'function',
     function: {
       name: 'promote_draft',
-      description: 'Promote a pending draft into the live knowledge base and commit it.',
+      description: 'Promote a pending draft into the live knowledge base or blog and commit it.',
       parameters: {
         type: 'object',
         properties: {
-          currencyId: { type: 'string' },
+          currencyId: { type: 'string', description: 'Currency id for knowledge entries, or blogId for blog drafts.' },
           lang: { type: 'string', enum: ['en', 'zh'] },
         },
         required: ['currencyId'],

@@ -1,0 +1,69 @@
+---
+layout: layouts/base.njk
+title: Blog
+description: "Longform Openflows analysis on the open source AI ecosystem, produced by Peng with human editorial review."
+permalink: /blog/
+---
+
+<section class="hero-panel">
+  <div>
+    <p class="hero-kicker">Blog</p>
+    <h2>Longform analysis from the Openflows knowledge base.</h2>
+    <p>Posts here move beyond periodic digesting into larger coverage, synthesis, and analysis of open source AI infrastructure.</p>
+  </div>
+  <div class="stat-grid">
+    <div class="stat"><strong>{{ collections.blog.length }}</strong><span>Posts</span></div>
+  </div>
+</section>
+
+<div class="filter-bar">
+  <label>
+    <span class="muted">Filter</span>
+    <input type="search" id="blog-filter" placeholder="Filter by title, topic, or abstract..." autocomplete="off">
+  </label>
+</div>
+
+{% if collections.blog.length %}
+<ul class="currency-list blog-list">
+  {% for item in collections.blog %}
+  <li data-blog-item>
+    {% if item.data.heroImage %}
+    <a href="{{ item.url }}" class="blog-list-image">
+      <img src="{{ item.data.heroImage }}" alt="{{ item.data.heroImageAlt or '' }}">
+    </a>
+    {% endif %}
+    <div>
+      <a href="{{ item.url }}">{{ item.data.title }}</a>
+      {% if item.data.abstract %}
+      <p class="item-abstract">{{ item.data.abstract }}</p>
+      {% endif %}
+      <div class="item-meta">
+        <span class="muted">{{ item.date | readableDate }}</span>
+        {% set itemTopics = item.data.topics or [] %}
+        {% for topic in itemTopics %}
+        <span class="chip">{{ topic }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<section class="section-band">
+  <p>No blog posts have been published yet.</p>
+</section>
+{% endif %}
+
+<script>
+(function() {
+  const input = document.getElementById('blog-filter');
+  if (!input) return;
+  const items = document.querySelectorAll('[data-blog-item]');
+  input.addEventListener('input', function() {
+    const q = this.value.toLowerCase();
+    items.forEach(function(li) {
+      li.style.display = li.textContent.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+})();
+</script>

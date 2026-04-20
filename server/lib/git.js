@@ -46,6 +46,34 @@ async function promoteEntry({ id, lang, content, currencyType }) {
   return { path: relPath }
 }
 
+async function promoteBlogPost({ id, content, heroImage }) {
+  const dir = path.join(ROOT, 'src', 'blog')
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
+
+  const destPath = path.join(dir, `${id}.md`)
+  fs.writeFileSync(destPath, content, 'utf8')
+
+  const relPath = path.relative(ROOT, destPath).replace(/\\/g, '/')
+  const addPaths = [relPath]
+  if (heroImage && String(heroImage).startsWith('/assets/')) {
+    const imagePath = path.join(ROOT, 'src', String(heroImage).replace(/^\//, ''))
+    if (fs.existsSync(imagePath)) {
+      addPaths.push(path.relative(ROOT, imagePath).replace(/\\/g, '/'))
+    }
+  }
+
+  const git = makeGit()
+  await git.pull(['--rebase', '--autostash', 'origin', 'main'])
+  await git.add(addPaths)
+  const diff = await git.diff(['--staged', '--name-only'])
+  if (!diff.trim()) return { path: relPath, committed: false }
+  const date = new Date().toISOString().slice(0, 10)
+  await git.commit(`blog: ${id} — ${date}`)
+  await git.push('origin', 'main')
+
+  return { path: relPath, committed: true }
+}
+
 // Commit any changes in src/perspective/ (digest auto-publish).
 async function commitPerspective() {
   const git = makeGit()
@@ -108,4 +136,4 @@ async function commitSourceRegistry({ id, action }) {
   return { committed: true }
 }
 
-module.exports = { promoteEntry, commitPerspective, commitSeen, commitEdit, removeEntry, commitSourceRegistry }
+module.exports = { promoteEntry, promoteBlogPost, commitPerspective, commitSeen, commitEdit, removeEntry, commitSourceRegistry }

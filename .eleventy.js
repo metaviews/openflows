@@ -53,7 +53,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("readableDate", readableDate);
   eleventyConfig.addFilter("isoDate", isoDate);
   eleventyConfig.addFilter("absoluteUrl", absoluteUrl);
+  eleventyConfig.addFilter("assetUrl", function(path, siteUrl) {
+    return absoluteUrl(path, siteUrl);
+  });
   eleventyConfig.addFilter("xmlEscape", xmlEscape);
+  eleventyConfig.addFilter("urlencode", function(value) {
+    return encodeURIComponent(String(value || ""));
+  });
   eleventyConfig.addFilter("isRecent", function(date, days) {
     const cutoff = new Date(Date.now() - (days || 14) * 24 * 60 * 60 * 1000);
     return (date instanceof Date ? date : new Date(date)) >= cutoff;
@@ -216,6 +222,15 @@ module.exports = function(eleventyConfig) {
   // Perspective digests
   eleventyConfig.addCollection("perspective", function(collectionApi) {
     return newestFirst(collectionApi.getFilteredByGlob("src/perspective/*.md"));
+  });
+
+  // Longform analysis posts.
+  eleventyConfig.addCollection("blog", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByGlob("src/blog/*.md"));
+  });
+
+  eleventyConfig.addCollection("recentBlog", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByGlob("src/blog/*.md")).slice(0, 3);
   });
 
   // Latest entries — all types, English only, newest frontmatter date first, max 12.
