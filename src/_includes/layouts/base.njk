@@ -256,13 +256,13 @@
     }
     .brand-logo {
       display: block;
-      width: min(250px, 62vw);
+      width: clamp(220px, 30vw, 360px);
       height: auto;
       object-fit: contain;
       border-radius: 4px;
     }
     .footer-brand .brand-logo {
-      width: min(210px, 60vw);
+      width: clamp(190px, 24vw, 280px);
       height: auto;
     }
     h1, h2, h3 {
@@ -850,7 +850,7 @@
           {% else %}
           <a href="/" class="brand">
           {% endif %}
-            <img src="/assets/img/logo0426.png" alt="Openflows" class="brand-logo">
+            <img src="/assets/img/openflows.jpg" alt="Openflows" class="brand-logo">
           </a>
         </div>
       <nav>
@@ -936,7 +936,7 @@
       {% else %}
       <a href="/" class="brand footer-brand">
       {% endif %}
-        <img src="/assets/img/logo0426.png" alt="Openflows" class="brand-logo">
+        <img src="/assets/img/openflows.jpg" alt="Openflows" class="brand-logo">
       </a>
       <div class="footer-links">
         {% if lang == 'zh' %}
