@@ -200,16 +200,16 @@
   </script>
   <style>
     :root {
-      --bg: #090909;
-      --surface: #2b2727;
-      --surface-2: #3a3030;
+      --bg: #05070a;
+      --surface: #372222;
+      --surface-2: #4a2a2a;
       --ink: #f4eee9;
       --muted: #d2c4bd;
       --line: rgba(255, 238, 230, 0.28);
-      --panel: #332b2b;
-      --accent: #ff4b43;
-      --accent-2: #ff9a76;
-      --accent-3: #f2c66d;
+      --panel: #422525;
+      --accent: #ff334d;
+      --accent-2: #ff8a72;
+      --accent-3: #6fe7ff;
       --shadow: 0 18px 56px rgba(0, 0, 0, 0.42);
     }
     * { box-sizing: border-box; }
@@ -217,8 +217,9 @@
     body {
       margin: 0;
       background:
-        linear-gradient(135deg, rgba(255, 75, 67, 0.18) 0, rgba(9, 9, 9, 0) 34rem),
-        linear-gradient(180deg, #150b0b 0, var(--bg) 24rem),
+        linear-gradient(120deg, rgba(255, 51, 77, 0.34) 0, rgba(255, 51, 77, 0.13) 19rem, rgba(5, 7, 10, 0) 43rem),
+        linear-gradient(245deg, rgba(111, 231, 255, 0.18) 0, rgba(5, 7, 10, 0) 32rem),
+        linear-gradient(180deg, #12080b 0, var(--bg) 26rem),
         var(--bg);
       color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
@@ -255,14 +256,14 @@
     }
     .brand-logo {
       display: block;
-      width: 52px;
-      height: 52px;
+      width: min(250px, 62vw);
+      height: auto;
       object-fit: contain;
       border-radius: 4px;
     }
     .footer-brand .brand-logo {
-      width: 44px;
-      height: 44px;
+      width: min(210px, 60vw);
+      height: auto;
     }
     h1, h2, h3 {
       line-height: 1.18;
@@ -384,8 +385,8 @@
     .hero-panel, .section-band, .browser-panel, .entry-shell {
       border: 1px solid var(--line);
       background:
-        linear-gradient(145deg, rgba(255, 75, 67, 0.16) 0, rgba(43, 39, 39, 0.96) 32rem),
-        rgba(43, 39, 39, 0.96);
+        linear-gradient(145deg, rgba(255, 51, 77, 0.24) 0, rgba(55, 34, 34, 0.98) 30rem),
+        rgba(55, 34, 34, 0.98);
       box-shadow: var(--shadow);
       border-radius: 8px;
     }
@@ -430,7 +431,7 @@
     }
     .stat {
       border: 1px solid var(--line);
-      background: linear-gradient(160deg, rgba(255, 75, 67, 0.2), var(--surface-2) 62%);
+      background: linear-gradient(160deg, rgba(255, 51, 77, 0.34), var(--surface-2) 62%);
       border-radius: 8px;
       padding: 0.7rem;
       min-height: 5.3rem;
@@ -480,7 +481,7 @@
     }
     .hub-card {
       border: 1px solid var(--line);
-      background: linear-gradient(180deg, rgba(255, 75, 67, 0.12), var(--surface) 42%);
+      background: linear-gradient(180deg, rgba(255, 51, 77, 0.22), var(--surface) 46%);
       border-radius: 8px;
       padding: 1rem;
       min-height: 11rem;
@@ -738,7 +739,7 @@
       padding: 0.7rem;
       border: 1px solid var(--line);
       border-radius: 8px;
-      background: linear-gradient(90deg, rgba(255, 75, 67, 0.14), rgba(43, 39, 39, 0.94));
+      background: linear-gradient(90deg, rgba(255, 51, 77, 0.24), rgba(55, 34, 34, 0.96));
       font-family: Arial, "Helvetica Neue", sans-serif;
     }
     .share-label {
@@ -849,8 +850,7 @@
           {% else %}
           <a href="/" class="brand">
           {% endif %}
-            <img src="/assets/img/openflowslogo.jpg" alt="Openflows logo" class="brand-logo">
-            <span>Openflows</span>
+            <img src="/assets/img/logo0426.png" alt="Openflows" class="brand-logo">
           </a>
         </div>
       <nav>
@@ -936,8 +936,7 @@
       {% else %}
       <a href="/" class="brand footer-brand">
       {% endif %}
-        <img src="/assets/img/openflowslogo.jpg" alt="Openflows logo" class="brand-logo">
-        <span>Openflows</span>
+        <img src="/assets/img/logo0426.png" alt="Openflows" class="brand-logo">
       </a>
       <div class="footer-links">
         {% if lang == 'zh' %}
