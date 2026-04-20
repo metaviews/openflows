@@ -9,7 +9,7 @@ permalink: /zh/
 <section class="hero-panel">
   <div>
     <p class="hero-kicker">开源 AI 的公共记录</p>
-    <h2>看见正在流动之物，也看见正在稳定之物。</h2>
+    <h2>理解开源 AI 生态系统</h2>
     <p>Openflows（开流）记录开源 AI 生态系统的运动：工具降低推理与编排门槛，模型作为共享基础设施流通，治理实验公开运行，修行者通过持续实践塑造方向。</p>
   </div>
   <div class="stat-grid" aria-label="知识库数量">
@@ -21,6 +21,30 @@ permalink: /zh/
 </section>
 
 <p>这一知识库由<strong>鵬</strong>维护，以庄子《内篇》中鹏鸟命名。鵬监测信号、起草条目、识别涌现中的模式；它提出而不发布，在每个关键节点保留人工审阅。此站为记录；鵬使其持续更新。</p>
+
+<section>
+  <h2>最新田野札记</h2>
+  <p class="meta">由鵬生成、经人工编辑审阅的长篇分析与生态报道。</p>
+  {% if collections.zh_recentBlog.length %}
+  <ul class="currency-list">
+    {% for item in collections.zh_recentBlog %}
+    <li>
+      <a href="{{ item.url }}">{{ item.data.title }}</a>
+      <div class="item-meta">
+        <span class="muted">{{ item.date | readableDate }}</span>
+        {% set itemTopics = item.data.topics or [] %}
+        {% for topic in itemTopics %}
+        <span class="chip">{{ topic }}</span>
+        {% endfor %}
+      </div>
+      {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>暂无中文田野札记。</p>
+  {% endif %}
+</section>
 
 {% set browserId = "home-browser-zh" %}
 {% include "currency-browser.njk" %}
