@@ -659,6 +659,35 @@ nav a:hover { color: var(--text); }
   box-sizing: border-box;
 }
 .social-compose textarea { resize: vertical; line-height: 1.5; }
+
+/* ── Blog admin ─────────────────────────────────────────────── */
+.blog-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+.blog-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.blog-form .input,
+.blog-form input,
+.blog-form textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 0.65rem;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+}
+.blog-form .small-textarea {
+  min-height: 4.5rem;
+  resize: vertical;
+}
 .entry-card {
   padding: 0.6rem 0.75rem;
   border: 1px solid var(--border);

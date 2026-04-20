@@ -47,6 +47,13 @@ async function start() {
     decorateReply: false,
   })
 
+  await fastify.register(require('@fastify/multipart'), {
+    limits: {
+      fileSize: 5 * 1024 * 1024,
+      files: 1,
+    },
+  })
+
   await fastify.register(require('@fastify/view'), {
     engine: { nunjucks: require('nunjucks') },
     templates: path.join(__dirname, 'views'),
@@ -64,6 +71,7 @@ async function start() {
   fastify.register(require('./routes/entries'))
   fastify.register(require('./routes/sources'))
   fastify.register(require('./routes/social'))
+  fastify.register(require('./routes/blog'))
 
   // ── Queue draft edit page ─────────────────────────────────────────────────────
   fastify.get('/queue/:id/edit', async (req, reply) => {

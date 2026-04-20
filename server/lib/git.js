@@ -74,6 +74,35 @@ async function promoteBlogPost({ id, content, heroImage }) {
   return { path: relPath, committed: true }
 }
 
+async function commitBlogPostEdit({ relPath, id, heroImage }) {
+  const git = makeGit()
+  await git.pull(['--rebase', '--autostash', 'origin', 'main'])
+  const addPaths = [relPath]
+  if (heroImage && String(heroImage).startsWith('/assets/')) {
+    const imagePath = path.join(ROOT, 'src', String(heroImage).replace(/^\//, ''))
+    if (fs.existsSync(imagePath)) {
+      addPaths.push(path.relative(ROOT, imagePath).replace(/\\/g, '/'))
+    }
+  }
+  await git.add(addPaths)
+  const diff = await git.diff(['--staged', '--name-only'])
+  if (!diff.trim()) return { committed: false }
+  const date = new Date().toISOString().slice(0, 10)
+  await git.commit(`blog: edit ${id} — ${date}`)
+  await git.push('origin', 'main')
+  return { committed: true }
+}
+
+async function removeBlogPost({ relPath, id }) {
+  const git = makeGit()
+  await git.pull(['--rebase', '--autostash', 'origin', 'main'])
+  await git.rm(relPath)
+  const date = new Date().toISOString().slice(0, 10)
+  await git.commit(`blog: remove ${id} — ${date}`)
+  await git.push('origin', 'main')
+  return { committed: true }
+}
+
 // Commit any changes in src/perspective/ (digest auto-publish).
 async function commitPerspective() {
   const git = makeGit()
@@ -136,4 +165,14 @@ async function commitSourceRegistry({ id, action }) {
   return { committed: true }
 }
 
-module.exports = { promoteEntry, promoteBlogPost, commitPerspective, commitSeen, commitEdit, removeEntry, commitSourceRegistry }
+module.exports = {
+  promoteEntry,
+  promoteBlogPost,
+  commitBlogPostEdit,
+  removeBlogPost,
+  commitPerspective,
+  commitSeen,
+  commitEdit,
+  removeEntry,
+  commitSourceRegistry,
+}

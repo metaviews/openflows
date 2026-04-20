@@ -1,0 +1,319 @@
+{% extends "base.njk" %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <span class="page-title">{{ title }}</span>
+      <span style="margin-left:0.5rem">
+        <span class="badge badge-blog">blog</span>
+        <span class="badge badge-{{ mode }}">{{ mode }}</span>
+      </span>
+      {% if mode == 'published' %}
+      <div class="muted" style="font-size:0.7rem;margin-top:0.2rem">{{ post.relPath }}</div>
+      {% elif mode == 'draft' %}
+      <div class="muted" style="font-size:0.7rem;margin-top:0.2rem">{{ draft.id }}</div>
+      {% endif %}
+    </div>
+    <a href="/blog-admin" class="btn">← Blog Admin</a>
+  </div>
+
+  <div class="edit-actions">
+    {% if mode == 'new' %}
+    <button class="btn btn-primary" onclick="saveBlogDraft()">Create Draft</button>
+    {% elif mode == 'draft' %}
+    <button class="btn btn-primary" onclick="saveBlogDraft()">Save Draft</button>
+    <button class="btn btn-promote" onclick="confirmPromoteBlogDraft()">Promote</button>
+    <button class="btn btn-reject" onclick="confirmRejectBlogDraft()">Reject</button>
+    {% else %}
+    <button class="btn btn-primary" onclick="confirmSavePublishedBlog()">Save &amp; Commit</button>
+    <button class="btn btn-danger" onclick="confirmDeletePublishedBlog()">Delete</button>
+    <a class="btn" href="https://openflows.org/blog/{{ fields.blogId }}/" target="_blank" rel="noopener">Open Public</a>
+    {% endif %}
+    <button class="btn" onclick="validateBlog()">Validate</button>
+    <span id="save-status" class="muted"></span>
+  </div>
+
+  <div class="editor-grid">
+    <section class="blog-form">
+      <label>Title
+        <input id="blog-title" class="input" value="{{ fields.title }}">
+      </label>
+      <label>Blog ID
+        <input id="blog-id" class="input" value="{{ fields.blogId }}" {% if mode != 'new' %}readonly{% endif %}>
+      </label>
+      <label>Date
+        <input id="blog-date" class="input" type="date" value="{{ fields.date }}">
+      </label>
+      <label>Abstract
+        <textarea id="blog-abstract" class="input small-textarea">{{ fields.abstract }}</textarea>
+      </label>
+      <label>Topics <span class="muted">one per line or comma-separated</span>
+        <textarea id="blog-topics" class="input small-textarea">{{ fields.topics }}</textarea>
+      </label>
+      <label>Linked Currency Entries <span class="muted">one currencyId per line</span>
+        <textarea id="blog-linked" class="input small-textarea" list="entry-datalist">{{ fields.linkedEntries }}</textarea>
+      </label>
+      <datalist id="entry-datalist"></datalist>
+
+      <div class="panel" style="margin:1rem 0">
+        <div class="panel-header"><span class="panel-title">Hero Image</span></div>
+        <div class="panel-body">
+          <label>Hero Image Path
+            <input id="blog-hero-image" class="input" value="{{ fields.heroImage }}" placeholder="/assets/img/blog/post-id.jpg">
+          </label>
+          <div class="edit-actions" style="margin:0.5rem 0">
+            <input id="blog-image-file" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+            <button class="btn btn-sm" type="button" onclick="uploadHeroImage()">Upload Image</button>
+          </div>
+          <label>Alt Text
+            <input id="blog-hero-alt" class="input" value="{{ fields.heroImageAlt }}">
+          </label>
+          <label>Caption
+            <input id="blog-hero-caption" class="input" value="{{ fields.heroImageCaption }}">
+          </label>
+          <label>Image Prompt
+            <textarea id="blog-image-prompt" class="input small-textarea">{{ fields.imagePrompt }}</textarea>
+          </label>
+          <label>Image Tooling
+            <input id="blog-image-tooling" class="input" value="{{ fields.imageTooling }}">
+          </label>
+        </div>
+      </div>
+
+      <label>Human Editor
+        <input id="blog-human-editor" class="input" value="{{ fields.humanEditor }}">
+      </label>
+      <label>Mediation Tooling
+        <input id="blog-mediation-tooling" class="input" value="{{ fields.mediationTooling }}">
+      </label>
+      <label>Mediation Use <span class="muted">one per line</span>
+        <textarea id="blog-mediation-use" class="input small-textarea">{{ fields.mediationUse }}</textarea>
+      </label>
+      <label>Human Role
+        <input id="blog-mediation-human" class="input" value="{{ fields.mediationHumanRole }}">
+      </label>
+      <label>Limits
+        <textarea id="blog-mediation-limits" class="input small-textarea">{{ fields.mediationLimits }}</textarea>
+      </label>
+      <label>Body Markdown
+        <textarea id="blog-body" class="entry-editor">{{ fields.body }}</textarea>
+      </label>
+    </section>
+
+    <aside class="editor-side">
+      <div id="validation-panel" class="validation-box">Validation not run yet.</div>
+      <div class="panel" style="margin-top:1rem">
+        <div class="panel-header"><span class="panel-title">Preview</span></div>
+        <div id="blog-preview" class="panel-body preview-body"></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script type="application/json" id="entries-json">{{ entriesJson | safe }}</script>
+<script>
+const MODE = '{{ mode }}'
+const ORIGINAL_ID = '{{ fields.blogId }}'
+const ENTRIES = JSON.parse(document.getElementById('entries-json').textContent || '[]')
+
+document.addEventListener('DOMContentLoaded', () => {
+  const datalist = document.getElementById('entry-datalist')
+  ENTRIES.forEach(entry => {
+    const option = document.createElement('option')
+    option.value = entry.id
+    option.label = entry.title
+    datalist.appendChild(option)
+  })
+  document.getElementById('blog-title').addEventListener('input', maybeUpdateSlug)
+  document.getElementById('blog-body').addEventListener('input', renderBlogPreview)
+  renderBlogPreview()
+  validateBlog()
+})
+
+function slugify(value) {
+  return String(value || '').trim().toLowerCase().replace(/['"]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+}
+
+function maybeUpdateSlug() {
+  if (MODE !== 'new') return
+  const id = document.getElementById('blog-id')
+  if (!id.value.trim()) id.value = slugify(document.getElementById('blog-title').value)
+}
+
+function collectBlogForm() {
+  return {
+    blogId: slugify(document.getElementById('blog-id').value || document.getElementById('blog-title').value),
+    title: document.getElementById('blog-title').value,
+    date: document.getElementById('blog-date').value,
+    abstract: document.getElementById('blog-abstract').value,
+    topics: document.getElementById('blog-topics').value,
+    linkedEntries: document.getElementById('blog-linked').value,
+    heroImage: document.getElementById('blog-hero-image').value,
+    heroImageAlt: document.getElementById('blog-hero-alt').value,
+    heroImageCaption: document.getElementById('blog-hero-caption').value,
+    imagePrompt: document.getElementById('blog-image-prompt').value,
+    imageTooling: document.getElementById('blog-image-tooling').value,
+    humanEditor: document.getElementById('blog-human-editor').value,
+    mediationTooling: document.getElementById('blog-mediation-tooling').value,
+    mediationUse: document.getElementById('blog-mediation-use').value,
+    mediationHumanRole: document.getElementById('blog-mediation-human').value,
+    mediationLimits: document.getElementById('blog-mediation-limits').value,
+    body: document.getElementById('blog-body').value,
+  }
+}
+
+function currentId() {
+  return collectBlogForm().blogId
+}
+
+function renderBlogPreview() {
+  const preview = document.getElementById('blog-preview')
+  if (typeof renderMarkdownInto === 'function') renderMarkdownInto(preview, document.getElementById('blog-body').value)
+  else preview.textContent = document.getElementById('blog-body').value
+}
+
+async function validateBlog() {
+  const id = currentId()
+  const panel = document.getElementById('validation-panel')
+  if (!id) {
+    panel.textContent = 'Add a title or blogId before validation.'
+    return { ok: false, counts: { error: 1, warning: 0 }, issues: [] }
+  }
+  panel.textContent = 'Validating...'
+  const endpoint = MODE === 'published'
+    ? '/api/blog/posts/' + encodeURIComponent(id) + '/validate'
+    : '/api/blog/drafts/' + encodeURIComponent(id) + '/validate'
+  const resp = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(collectBlogForm())
+  })
+  const data = await resp.json()
+  panel.innerHTML = ''
+  panel.appendChild(renderValidationBlock(data))
+  return data
+}
+
+async function saveBlogDraft() {
+  const status = document.getElementById('save-status')
+  const payload = collectBlogForm()
+  status.textContent = 'Saving...'
+  const endpoint = MODE === 'new'
+    ? '/api/blog/drafts'
+    : '/api/blog/drafts/' + encodeURIComponent(ORIGINAL_ID) + '/save'
+  const resp = await fetch(endpoint, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  })
+  const data = await resp.json().catch(() => ({}))
+  if (!resp.ok) {
+    status.textContent = 'Error: ' + (data.error || 'validation failed')
+    if (data.issues) {
+      const panel = document.getElementById('validation-panel')
+      panel.innerHTML = ''
+      panel.appendChild(renderValidationBlock(data))
+    }
+    return false
+  }
+  status.textContent = 'Saved.'
+  if (MODE === 'new') window.location.href = '/blog-admin/drafts/' + encodeURIComponent(data.id) + '/edit'
+  return true
+}
+
+async function uploadHeroImage() {
+  const id = currentId()
+  if (!id) return alert('Add a blogId before uploading.')
+  const input = document.getElementById('blog-image-file')
+  if (!input.files.length) return alert('Choose an image file first.')
+  const form = new FormData()
+  form.append('file', input.files[0])
+  const status = document.getElementById('save-status')
+  status.textContent = 'Uploading image...'
+  const resp = await fetch('/api/blog/images/upload?blogId=' + encodeURIComponent(id), { method: 'POST', body: form })
+  const data = await resp.json().catch(() => ({}))
+  if (!resp.ok) {
+    status.textContent = 'Upload failed: ' + (data.error || resp.statusText)
+    return
+  }
+  document.getElementById('blog-hero-image').value = data.path
+  status.textContent = 'Uploaded ' + data.path
+  validateBlog()
+}
+
+async function confirmPromoteBlogDraft() {
+  const validation = await validateBlog()
+  confirmAction({
+    title: 'Promote Blog Draft',
+    body: 'Promote ' + ORIGINAL_ID + ' to src/blog, commit, and push. Validation: ' + validation.counts.error + ' error(s), ' + validation.counts.warning + ' warning(s).',
+    confirmText: 'Promote',
+    onConfirm: promoteBlogDraft
+  })
+}
+
+async function promoteBlogDraft() {
+  const saved = await saveBlogDraft()
+  if (!saved) return
+  const status = document.getElementById('save-status')
+  status.textContent = 'Promoting...'
+  const resp = await fetch('/api/blog/drafts/' + encodeURIComponent(ORIGINAL_ID) + '/promote', { method: 'POST' })
+  const data = await resp.json().catch(() => ({}))
+  if (!resp.ok) { status.textContent = 'Error: ' + (data.error || 'promotion failed'); return }
+  status.textContent = 'Promoted.'
+  setTimeout(() => { window.location.href = '/blog-admin' }, 1000)
+}
+
+function confirmRejectBlogDraft() {
+  confirmAction({
+    title: 'Reject Blog Draft',
+    body: 'Reject ' + ORIGINAL_ID + ' and keep it in the database audit trail.',
+    confirmText: 'Reject',
+    onConfirm: async () => {
+      const resp = await fetch('/api/blog/drafts/' + encodeURIComponent(ORIGINAL_ID) + '/reject', { method: 'POST' })
+      const data = await resp.json().catch(() => ({}))
+      if (!resp.ok) return alert(data.error || 'Reject failed')
+      window.location.href = '/blog-admin'
+    }
+  })
+}
+
+async function confirmSavePublishedBlog() {
+  const validation = await validateBlog()
+  confirmAction({
+    title: 'Save Blog Post',
+    body: 'Save ' + ORIGINAL_ID + ' to src/blog, commit, and push. Validation: ' + validation.counts.error + ' error(s), ' + validation.counts.warning + ' warning(s).',
+    confirmText: 'Save & Commit',
+    onConfirm: savePublishedBlog
+  })
+}
+
+async function savePublishedBlog() {
+  const status = document.getElementById('save-status')
+  status.textContent = 'Saving...'
+  const resp = await fetch('/api/blog/posts/' + encodeURIComponent(ORIGINAL_ID) + '/save', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(collectBlogForm())
+  })
+  const data = await resp.json().catch(() => ({}))
+  if (!resp.ok) { status.textContent = 'Error: ' + (data.error || 'save failed'); return }
+  status.textContent = data.committed ? 'Saved and committed.' : 'Saved (no changes detected).'
+}
+
+function confirmDeletePublishedBlog() {
+  confirmAction({
+    title: 'Delete Blog Post',
+    body: 'Delete ' + ORIGINAL_ID + ' from src/blog, commit, and push. Hero image assets will be left in place.',
+    confirmText: 'Delete',
+    onConfirm: async () => {
+      const resp = await fetch('/api/blog/posts/' + encodeURIComponent(ORIGINAL_ID) + '/delete', { method: 'POST' })
+      const data = await resp.json().catch(() => ({}))
+      if (!resp.ok) return alert(data.error || 'Delete failed')
+      window.location.href = '/blog-admin'
+    }
+  })
+}
+</script>
+{% endblock %}

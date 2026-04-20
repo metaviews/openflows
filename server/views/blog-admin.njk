@@ -1,0 +1,145 @@
+{% extends "base.njk" %}
+{% block title %}Blog Admin{% endblock %}
+
+{% block content %}
+<div class="page-container">
+  <div class="page-header">
+    <div>
+      <span class="page-title">Blog</span>
+      <div class="muted" style="font-size:0.75rem;margin-top:0.25rem">Server-only admin for longform Openflows analysis.</div>
+    </div>
+    <a class="btn btn-primary" href="/blog-admin/new">New Blog Draft</a>
+  </div>
+
+  <section class="panel">
+    <div class="panel-header">
+      <span class="panel-title">Drafts</span>
+      <div class="filter-bar">
+        <span>Status:</span>
+        <select id="blog-draft-status" onchange="applyBlogStatus()">
+          <option value="pending" {% if status == 'pending' %}selected{% endif %}>pending</option>
+          <option value="promoted" {% if status == 'promoted' %}selected{% endif %}>promoted</option>
+          <option value="rejected" {% if status == 'rejected' %}selected{% endif %}>rejected</option>
+        </select>
+      </div>
+    </div>
+    <div class="panel-body-flush">
+      <table class="entries-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Title</th>
+            <th>Updated</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for draft in drafts %}
+          <tr>
+            <td class="id-cell"><a href="/blog-admin/drafts/{{ draft.id }}/edit">{{ draft.id }}</a></td>
+            <td><span class="badge badge-{{ draft.status }}">{{ draft.status }}</span></td>
+            <td class="title-cell">{{ draft.title or '(untitled)' }}</td>
+            <td class="run-time">
+              {{ (draft.updated_at or draft.created_at) | truncate(10, true, '') if (draft.updated_at or draft.created_at) }}
+              {% if draft.isNew %}<span class="badge badge-new">new</span>{% endif %}
+              {% if draft.isStale %}<span class="badge badge-stale">stale</span>{% endif %}
+            </td>
+            <td class="actions-cell">
+              <a class="btn btn-sm" href="/blog-admin/drafts/{{ draft.id }}/edit">Edit</a>
+              {% if draft.status == 'pending' %}
+              <button class="btn btn-sm btn-promote" onclick="confirmBlogDraftPromote('{{ draft.id }}')">Promote</button>
+              <button class="btn btn-sm btn-reject" onclick="confirmBlogDraftReject('{{ draft.id }}')">Reject</button>
+              {% endif %}
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="5" class="empty-state">No blog drafts for this status.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="panel" style="margin-top:1rem">
+    <div class="panel-header">
+      <span class="panel-title">Published Posts</span>
+      <span class="muted" style="font-size:0.7rem">{{ published.length }} published</span>
+    </div>
+    <div class="panel-body-flush">
+      <table class="entries-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Topics</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in published %}
+          <tr>
+            <td class="id-cell"><a href="/blog-admin/posts/{{ post.id }}/edit">{{ post.id }}</a></td>
+            <td class="title-cell">{{ post.title }}</td>
+            <td class="run-time">{{ post.date | truncate(10, true, '') if post.date }}</td>
+            <td>
+              {% for topic in post.topics %}
+              <span class="badge">{{ topic }}</span>
+              {% endfor %}
+            </td>
+            <td class="actions-cell">
+              <a class="btn btn-sm" href="/blog-admin/posts/{{ post.id }}/edit">Edit</a>
+              <a class="btn btn-sm" href="{{ publicBaseUrl }}{{ post.permalink }}" target="_blank" rel="noopener">Open</a>
+            </td>
+          </tr>
+          {% else %}
+          <tr><td colspan="5" class="empty-state">No published blog posts.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
+
+<script>
+function applyBlogStatus() {
+  const status = document.getElementById('blog-draft-status').value
+  window.location.href = '/blog-admin?status=' + encodeURIComponent(status)
+}
+
+async function confirmBlogDraftPromote(id) {
+  let validationText = 'Validation state: unavailable'
+  try {
+    const resp = await fetch('/api/blog/drafts/' + encodeURIComponent(id) + '/validate', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}' })
+    const data = await resp.json()
+    if (resp.ok) validationText = data.ok ? 'Validation state: clean' : `Validation state: ${data.counts.error} error(s), ${data.counts.warning} warning(s)`
+  } catch {}
+  confirmAction({
+    title: 'Promote Blog Draft',
+    body: ['Action: promote_blog_draft', 'Affected: ' + id, 'Writes src/blog/: yes', 'Commits/pushes: yes', validationText].join('\n'),
+    confirmText: 'Promote',
+    onConfirm: async () => {
+      const resp = await fetch('/api/blog/drafts/' + encodeURIComponent(id) + '/promote', { method: 'POST' })
+      const data = await resp.json().catch(() => ({}))
+      if (!resp.ok) return alert(data.error || 'Promotion failed')
+      window.location.reload()
+    }
+  })
+}
+
+function confirmBlogDraftReject(id) {
+  confirmAction({
+    title: 'Reject Blog Draft',
+    body: 'Action: reject_blog_draft\nAffected: ' + id + '\nWrites src/: no',
+    confirmText: 'Reject',
+    onConfirm: async () => {
+      const resp = await fetch('/api/blog/drafts/' + encodeURIComponent(id) + '/reject', { method: 'POST' })
+      const data = await resp.json().catch(() => ({}))
+      if (!resp.ok) return alert(data.error || 'Reject failed')
+      window.location.reload()
+    }
+  })
+}
+</script>
+{% endblock %}
