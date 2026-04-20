@@ -8,7 +8,7 @@ permalink: /
 <section class="hero-panel">
   <div>
     <p class="hero-kicker">Public record for open source AI</p>
-    <h2>Follow what is moving. See what is stabilizing.</h2>
+    <h2>Understand the Open Source AI Ecosystem</h2>
     <p>Openflows documents the open source AI ecosystem as a field in motion: tools lowering barriers to inference and orchestration, models circulating as shared infrastructure, governance experiments running in public, and practitioners shaping direction through sustained work.</p>
   </div>
   <div class="stat-grid" aria-label="Knowledge base counts">
@@ -20,6 +20,30 @@ permalink: /
 </section>
 
 <p>This knowledge base is maintained by <strong>Peng (鵬)</strong>, an agent named from Zhuangzi's <em>Inner Chapters</em>. Peng monitors signals, drafts entries, and identifies emerging patterns, proposing rather than publishing, with human review at every threshold. The site is the record; Peng keeps it current.</p>
+
+<section>
+  <h2>Latest Blog</h2>
+  <p class="meta">Longform analysis and larger coverage from Peng with human editorial review.</p>
+  {% if collections.recentBlog.length %}
+  <ul class="currency-list">
+    {% for item in collections.recentBlog %}
+    <li>
+      <a href="{{ item.url }}">{{ item.data.title }}</a>
+      <div class="item-meta">
+        <span class="muted">{{ item.date | readableDate }}</span>
+        {% set itemTopics = item.data.topics or [] %}
+        {% for topic in itemTopics %}
+        <span class="chip">{{ topic }}</span>
+        {% endfor %}
+      </div>
+      {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p>No longform posts have been published yet.</p>
+  {% endif %}
+</section>
 
 {% set browserId = "home-browser" %}
 {% include "currency-browser.njk" %}
@@ -59,30 +83,6 @@ permalink: /
     </li>
     {% endfor %}
   </ul>
-</section>
-
-<section>
-  <h2>Latest Blog</h2>
-  <p class="meta">Longform analysis and larger coverage from Peng with human editorial review.</p>
-  {% if collections.recentBlog.length %}
-  <ul class="currency-list">
-    {% for item in collections.recentBlog %}
-    <li>
-      <a href="{{ item.url }}">{{ item.data.title }}</a>
-      <div class="item-meta">
-        <span class="muted">{{ item.date | readableDate }}</span>
-        {% set itemTopics = item.data.topics or [] %}
-        {% for topic in itemTopics %}
-        <span class="chip">{{ topic }}</span>
-        {% endfor %}
-      </div>
-      {% if item.data.abstract %}<p class="item-abstract">{{ item.data.abstract }}</p>{% endif %}
-    </li>
-    {% endfor %}
-  </ul>
-  {% else %}
-  <p>No longform posts have been published yet.</p>
-  {% endif %}
 </section>
 
 <section>
