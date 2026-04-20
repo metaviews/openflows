@@ -128,12 +128,14 @@ function validateBlogMarkdown({ id, content, manifest, existingIds = [] }) {
     addIssue(issues, 'error', 'date', 'date must be parseable.')
   }
 
-  if (frontmatter.permalink && blogId && frontmatter.permalink !== `/blog/${blogId}/`) {
-    addIssue(issues, 'error', 'permalink', `Expected permalink /blog/${blogId}/.`)
+  const expectedLang = frontmatter.lang === 'zh' ? 'zh' : 'en'
+  const expectedBlogPermalink = expectedLang === 'zh' ? `/zh/blog/${blogId}/` : `/blog/${blogId}/`
+  if (frontmatter.permalink && blogId && frontmatter.permalink !== expectedBlogPermalink) {
+    addIssue(issues, 'error', 'permalink', `Expected permalink ${expectedBlogPermalink}.`)
   }
 
-  if (frontmatter.lang && frontmatter.lang !== 'en') {
-    addIssue(issues, 'error', 'lang', 'Blog v1 is English-first; omit lang or use en.')
+  if (frontmatter.lang && !['en', 'zh'].includes(frontmatter.lang)) {
+    addIssue(issues, 'error', 'lang', 'Blog lang must be omitted, en, or zh.')
   }
 
   if (!Array.isArray(frontmatter.topics) || !frontmatter.topics.length) {

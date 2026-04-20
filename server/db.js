@@ -109,6 +109,7 @@ function migrateDrafts(db) {
     { dir: path.join(DRAFTS_ROOT, 'zh'), lang: 'zh' },
     { dir: path.join(DRAFTS_ROOT, 'practitioners'), lang: 'en' },
     { dir: path.join(DRAFTS_ROOT, 'blog'), lang: 'en', type: 'blog' },
+    { dir: path.join(DRAFTS_ROOT, 'zh', 'blog'), lang: 'zh', type: 'blog' },
   ]
 
   const insert = db.prepare(`

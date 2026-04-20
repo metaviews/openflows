@@ -46,8 +46,10 @@ async function promoteEntry({ id, lang, content, currencyType }) {
   return { path: relPath }
 }
 
-async function promoteBlogPost({ id, content, heroImage }) {
-  const dir = path.join(ROOT, 'src', 'blog')
+async function promoteBlogPost({ id, lang = 'en', content, heroImage }) {
+  const dir = lang === 'zh'
+    ? path.join(ROOT, 'src', 'blog', 'zh')
+    : path.join(ROOT, 'src', 'blog')
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
 
   const destPath = path.join(dir, `${id}.md`)
@@ -68,7 +70,7 @@ async function promoteBlogPost({ id, content, heroImage }) {
   const diff = await git.diff(['--staged', '--name-only'])
   if (!diff.trim()) return { path: relPath, committed: false }
   const date = new Date().toISOString().slice(0, 10)
-  await git.commit(`blog: ${id} — ${date}`)
+  await git.commit(lang === 'zh' ? `blog: translate ${id} — ${date}` : `blog: ${id} — ${date}`)
   await git.push('origin', 'main')
 
   return { path: relPath, committed: true }

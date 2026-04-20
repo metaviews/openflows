@@ -226,11 +226,19 @@ module.exports = function(eleventyConfig) {
 
   // Longform analysis posts.
   eleventyConfig.addCollection("blog", function(collectionApi) {
-    return newestFirst(collectionApi.getFilteredByGlob("src/blog/*.md"));
+    return newestFirst(collectionApi.getFilteredByGlob("src/blog/*.md").filter(item => item.data.lang !== "zh"));
   });
 
   eleventyConfig.addCollection("recentBlog", function(collectionApi) {
-    return newestFirst(collectionApi.getFilteredByGlob("src/blog/*.md")).slice(0, 3);
+    return newestFirst(collectionApi.getFilteredByGlob("src/blog/*.md").filter(item => item.data.lang !== "zh")).slice(0, 3);
+  });
+
+  eleventyConfig.addCollection("zh_blog", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByGlob("src/blog/zh/*.md").filter(item => item.data.lang === "zh"));
+  });
+
+  eleventyConfig.addCollection("zh_recentBlog", function(collectionApi) {
+    return newestFirst(collectionApi.getFilteredByGlob("src/blog/zh/*.md").filter(item => item.data.lang === "zh")).slice(0, 3);
   });
 
   // Latest entries — all types, English only, newest frontmatter date first, max 12.

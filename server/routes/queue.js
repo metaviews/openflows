@@ -3,10 +3,12 @@
 const { listDrafts, getDraft, updateDraftContent, promoteDraft, rejectDraft } = require('../lib/drafts')
 const { loadManifest } = require('../lib/manifest')
 const { validateCurrencyMarkdown, validateBlogMarkdown } = require('../lib/validation')
+const { importDraftFiles } = require('../lib/runner')
 
 async function queueRoutes(fastify) {
   // List pending drafts (or by status).
   fastify.get('/queue', async (req, reply) => {
+    importDraftFiles(fastify.db)
     const status = req.query.status || 'pending'
     const lang = req.query.lang
     const type = req.query.type
@@ -23,6 +25,7 @@ async function queueRoutes(fastify) {
 
   // Queue state panel (htmx refresh target).
   fastify.get('/queue/state', async (req, reply) => {
+    importDraftFiles(fastify.db)
     const drafts = listDrafts(fastify.db, { status: 'pending' })
     return reply.view('partials/queue-state.njk', { drafts: drafts.map(decorateDraft) })
   })

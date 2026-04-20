@@ -13,6 +13,8 @@ const DRAFT_LOCATIONS = [
   { dir: DRAFTS_ROOT, lang: 'en' },
   { dir: path.join(DRAFTS_ROOT, 'zh'), lang: 'zh' },
   { dir: path.join(DRAFTS_ROOT, 'practitioners'), lang: 'en' },
+  { dir: path.join(DRAFTS_ROOT, 'blog'), lang: 'en', type: 'blog' },
+  { dir: path.join(DRAFTS_ROOT, 'zh', 'blog'), lang: 'zh', type: 'blog' },
 ]
 
 const SKIP_FILES = new Set(['QUEUE.md', 'peng-attention.md'])
@@ -166,7 +168,7 @@ function importDraftFiles(db, runId = null) {
   let count = 0
   const now = new Date().toISOString()
 
-  for (const { dir, lang } of DRAFT_LOCATIONS) {
+  for (const { dir, lang, type } of DRAFT_LOCATIONS) {
     if (!fs.existsSync(dir)) continue
     for (const file of fs.readdirSync(dir)) {
       if (!file.endsWith('.md') || SKIP_FILES.has(file) || file.startsWith('digest-')) continue
@@ -179,7 +181,7 @@ function importDraftFiles(db, runId = null) {
         const existing = db.prepare('SELECT id FROM drafts WHERE id = ? AND lang = ?').get(id, lang)
         upsert.run(
           id, lang,
-          frontmatter.currencyType || null,
+          frontmatter.currencyType || frontmatter.type || (frontmatter.blogId ? 'blog' : type) || null,
           frontmatter.title || null,
           frontmatter.abstract || null,
           content,

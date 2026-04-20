@@ -14,7 +14,11 @@ const ALLOWED_TYPES = new Set(['current', 'circuit', 'practitioner', 'blog'])
 function draftFilePath(id, lang = 'en', type = null) {
   const existing = existingDraftFilePath(id, lang)
   if (existing) return existing
-  if (type === 'blog') return path.join(DRAFTS_ROOT, 'blog', `${id}.md`)
+  if (type === 'blog') {
+    return lang === 'zh'
+      ? path.join(DRAFTS_ROOT, 'zh', 'blog', `${id}.md`)
+      : path.join(DRAFTS_ROOT, 'blog', `${id}.md`)
+  }
   return lang === 'zh'
     ? path.join(DRAFTS_ROOT, 'zh', `${id}.md`)
     : path.join(DRAFTS_ROOT, `${id}.md`)
@@ -22,7 +26,10 @@ function draftFilePath(id, lang = 'en', type = null) {
 
 function existingDraftFilePath(id, lang = 'en') {
   const candidates = lang === 'zh'
-    ? [path.join(DRAFTS_ROOT, 'zh', `${id}.md`)]
+    ? [
+        path.join(DRAFTS_ROOT, 'zh', `${id}.md`),
+        path.join(DRAFTS_ROOT, 'zh', 'blog', `${id}.md`),
+      ]
     : [
         path.join(DRAFTS_ROOT, `${id}.md`),
         path.join(DRAFTS_ROOT, 'practitioners', `${id}.md`),
@@ -221,6 +228,7 @@ async function promoteDraft(db, { id, lang = 'en' }) {
     }
     result = await promoteBlogPost({
       id: draft.id,
+      lang: draft.lang,
       content: draft.content,
       heroImage: validation.frontmatter.heroImage,
     })
