@@ -1,11 +1,11 @@
 ---
-layout: layouts/practitioner-item.njk
+layout: layouts/currency-item.njk
 title: "Jeffrey Quesnelle: Machine Ethics and Open-AI Infrastructure"
 date: 2026-04-21
 currencyType: practitioner
 currencyId: jeffrey-quesnelle
-tags: [practitioner]
-permalink: /practitioner/jeffrey-quesnelle/
+tags: [currency]
+permalink: /currency/practitioners/jeffrey-quesnelle/
 abstract: "Researcher and operator working at the intersection of machine ethics, AI alignment, and open-source infrastructure."
 ---
 
