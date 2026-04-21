@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-20T06:13:44.652Z",
+  "lastUpdated": "2026-04-21T06:03:07.127Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3675,6 +3675,35 @@
       "title": "Professional-grade quant analytics, AI-powered market research, and economic data tools.",
       "source": "opensourceprojects",
       "file": "fincept-terminal.md"
+    },
+    "https://www.bilibili.com/video/BV1b1dLBAEpR/": {
+      "date": "2026-04-21",
+      "decision": "skipped",
+      "title": "「Github一周热点第111期 」 Karpathy大神的Claude Code配置，更适合程序员的显示器RD270Q_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Video compilation aggregating weekly trends; mixes open-source AI topics with closed-source tools and hardware; lacks operational specifics or direct links to inspectable artifacts."
+    },
+    "https://github.com/fim-ai/fim-one": {
+      "date": "2026-04-21",
+      "decision": "drafted",
+      "title": "fim-one",
+      "source": "github",
+      "file": "fim-one.md"
+    },
+    "https://huggingface.co/nvidia/NVIDIA-Nemotron-Nano-9B-v2-Japanese": {
+      "date": "2026-04-21",
+      "decision": "drafted",
+      "title": "nvidia/NVIDIA-Nemotron-Nano-9B-v2-Japanese",
+      "source": "huggingface",
+      "file": "nvidia-nemotron-nano-9b-v2-japanese.md"
+    },
+    "https://en.wikipedia.org/wiki/List_of_large_language_models": {
+      "date": "2026-04-21",
+      "decision": "drafted",
+      "title": "List of large language models - Wikipedia",
+      "source": "brave",
+      "file": "wikipedia-list-large-language-models.md"
     }
   }
 }
