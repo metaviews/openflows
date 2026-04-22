@@ -2,14 +2,17 @@
 
 const path = require('path')
 const fs = require('fs')
-const { parseFrontmatter } = require('./parse')
 const { promoteEntry, promoteBlogPost } = require('./git')
 const { validateBlogMarkdown } = require('./validation')
+const {
+  ALLOWED_TYPES,
+  normalizeDraftContent,
+  inspectDraftContent,
+} = require('./draft-standard')
 
 const ROOT = path.join(__dirname, '..', '..')
 const DRAFTS_ROOT = path.join(ROOT, 'drafts')
 const SKIP_FILES = new Set(['QUEUE.md', 'peng-attention.md'])
-const ALLOWED_TYPES = new Set(['current', 'circuit', 'practitioner', 'blog'])
 
 function draftFilePath(id, lang = 'en', type = null) {
   const existing = existingDraftFilePath(id, lang)
@@ -38,53 +41,8 @@ function existingDraftFilePath(id, lang = 'en') {
   return candidates.find(candidate => fs.existsSync(candidate)) || null
 }
 
-function inspectDraft({ id, content, type, title, abstract }) {
-  const issues = []
-  const normalizedId = typeof id === 'string' ? id.trim() : ''
-  const normalizedContent = typeof content === 'string' ? content : ''
-
-  if (!normalizedId) issues.push('missing id')
-  if (!normalizedContent.trim()) issues.push('empty content')
-
-  const { frontmatter, body } = parseFrontmatter(normalizedContent)
-  const draftType = frontmatter.currencyType || frontmatter.type || type || (frontmatter.blogId ? 'blog' : null)
-
-  if (draftType === 'blog') {
-    const validation = validateBlogMarkdown({ id: normalizedId, content: normalizedContent })
-    return {
-      issues: validation.issues.filter(issue => issue.severity === 'error').map(issue => issue.message),
-      frontmatter,
-      body,
-      valid: validation.ok,
-    }
-  }
-
-  if (!frontmatter.currencyId) issues.push('missing currencyId in frontmatter')
-  if (frontmatter.currencyId && normalizedId && frontmatter.currencyId !== normalizedId) {
-    issues.push(`currencyId mismatch (${frontmatter.currencyId} != ${normalizedId})`)
-  }
-
-  if (!draftType) {
-    issues.push('missing currencyType')
-  } else if (!ALLOWED_TYPES.has(draftType)) {
-    issues.push(`invalid currencyType (${draftType})`)
-  }
-
-  const draftTitle = frontmatter.title || title || ''
-  if (!String(draftTitle).trim()) issues.push('missing title')
-
-  if (!String(body || '').trim()) issues.push('empty body')
-
-  if (!String(frontmatter.abstract || abstract || '').trim()) {
-    issues.push('missing abstract')
-  }
-
-  return {
-    issues,
-    frontmatter,
-    body,
-    valid: issues.length === 0,
-  }
+function inspectDraft({ id, lang = 'en', content, type, title, abstract }) {
+  return inspectDraftContent({ id, lang, content, type, title, abstract })
 }
 
 function listDrafts(db, { status = 'pending', lang, type, limit } = {}) {
@@ -141,7 +99,8 @@ function upsertDraft(db, { id, lang = 'en', content, status = 'pending', runId =
     throw err
   }
 
-  const inspection = inspectDraft({ id, content })
+  content = normalizeDraftContent(content)
+  const inspection = inspectDraft({ id, lang, content })
   if (!inspection.valid) {
     const err = new Error(`invalid draft: ${inspection.issues.join('; ')}`)
     err.statusCode = 400

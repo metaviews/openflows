@@ -11,6 +11,7 @@ const { join } = require('path');
 const config = require('./intake.config');
 const { loadEnv, createClient, getArg } = require('./lib/openrouter');
 const { loadSourceRegistry, listEnabledSources, sourceConfigForModule } = require('./lib/source-registry');
+const { inspectDraftContent, normalizeDraftContent } = require('../server/lib/draft-standard');
 
 loadEnv();
 
@@ -199,10 +200,17 @@ function writeDraft(markdown, signal, index) {
   const draftsDir = join(__dirname, '..', 'drafts');
   if (!existsSync(draftsDir)) mkdirSync(draftsDir);
 
-  // Strip reasoning model artifacts (<think>...</think> or stray </think> tags)
-  markdown = markdown.replace(/<think>[\s\S]*?<\/think>/g, '').replace(/<\/think>/g, '').trimStart();
+  markdown = normalizeDraftContent(markdown);
 
   const currencyId = extractCurrencyId(markdown);
+  if (!currencyId) {
+    throw new Error('invalid draft: missing currencyId in frontmatter');
+  }
+  const inspection = inspectDraftContent({ id: currencyId, lang: 'en', content: markdown, manifest });
+  if (!inspection.valid) {
+    throw new Error(`invalid draft: ${inspection.issues.join('; ')}`);
+  }
+  markdown = inspection.content;
   const filename = currencyId
     ? `${currencyId}.md`
     : `draft-${today}-${signal.source}-${index}.md`;

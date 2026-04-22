@@ -34,22 +34,39 @@ title: "Clear Descriptive Title"
 date: YYYY-MM-DD
 currencyType: current
 currencyId: kebab-case-unique-id
-tags: [currency]
+tags:
+  - currency
 permalink: /currency/currents/kebab-case-unique-id/
 abstract: "One or two sentence summary — required."
+links:
+  - id: existing-currency-id
+    relation: "specific relationship description"
+mediation:
+  tooling: "OpenRouter / [model]"
+  use:
+    - "drafted entry from external signal"
+    - "assessed linkage against existing knowledge base"
+  humanRole: "review, edit, and approve before publication"
+  limits: "signal content may be incomplete; verify primary sources before publishing"
 ---
 
 Use currencyType: current for tools, frameworks, and projects.
 Use currencyType: circuit for governance patterns, workflows, or methodologies.
 Use currencyType: practitioner for individuals.
 
-Body: substantive prose — what it is, why it matters, notable technical aspects. Include a linkage check section. Add a mediation block since AI shaped this content:
+For current entries, body sections are mandatory and must be in this order:
+### Signal
+### Context
+### Relevance
+### Current State
+### Open Questions
+### Connections
 
-mediation:
-  tooling: "OpenRouter / [model]"
-  use: ["research synthesis", "entry drafting"]
-  humanRole: "queued for review"
-  limits: "sourced from public documentation; verify claims before promotion"`
+Signal section format:
+- First line: [Title](URL) · Source · Date
+- Then a concise paragraph summarising the signal content.
+
+Only include frontmatter links when the connection to an existing currencyId is genuine and specific.`
 
 async function stripHtml(raw) {
   return raw

@@ -4,6 +4,7 @@ const { DatabaseSync } = require('node:sqlite')
 const path = require('path')
 const fs = require('fs')
 const { parseFrontmatter } = require('./lib/parse')
+const { inspectDraftContent, normalizeDraftContent } = require('./lib/draft-standard')
 
 const ROOT = path.join(__dirname, '..')
 const DEFAULT_DB_PATH = path.join(ROOT, 'data', 'openflows.db')
@@ -126,7 +127,9 @@ function migrateDrafts(db) {
       const id = path.basename(file, '.md')
       const filePath = path.join(dir, file)
       try {
-        const content = fs.readFileSync(filePath, 'utf8')
+        const content = normalizeDraftContent(fs.readFileSync(filePath, 'utf8'))
+        const inspection = inspectDraftContent({ id, lang, type, content, strictSections: true })
+        if (!inspection.valid) continue
         const { frontmatter } = parseFrontmatter(content)
         const stat = fs.statSync(filePath)
         insert.run(

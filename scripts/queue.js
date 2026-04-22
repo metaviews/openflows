@@ -11,27 +11,23 @@
 
 const { readFileSync, writeFileSync, readdirSync, existsSync, statSync } = require('fs');
 const { join } = require('path');
+const { parseFrontmatter } = require('../server/lib/parse');
+const { inspectDraftContent, normalizeDraftContent } = require('../server/lib/draft-standard');
 
 const root = join(__dirname, '..');
 const draftsDir = join(root, 'drafts');
 const zhDraftsDir = join(root, 'drafts', 'zh');
 const practitionerDraftsDir = join(root, 'drafts', 'practitioners');
 
-function parseFrontmatter(filepath) {
+function readDraft(filepath, fallbackId, lang, type) {
   try {
-    const content = readFileSync(filepath, 'utf8').replace(/\r\n/g, '\n');
-    const match = content.match(/^---\n([\s\S]+?)\n---/);
-    if (!match) return {};
-    const fm = {};
-    for (const line of match[1].split('\n')) {
-      const eq = line.indexOf(':');
-      if (eq === -1) continue;
-      const key = line.slice(0, eq).trim();
-      const val = line.slice(eq + 1).trim().replace(/^["']|["']$/g, '');
-      if (key && !key.startsWith(' ') && !key.startsWith('-')) fm[key] = val;
-    }
-    return fm;
-  } catch { return {}; }
+    const content = normalizeDraftContent(readFileSync(filepath, 'utf8'));
+    const inspection = inspectDraftContent({ id: fallbackId, lang, type, content, strictSections: true });
+    if (!inspection.valid) return null;
+    return inspection.frontmatter || parseFrontmatter(content).frontmatter || {};
+  } catch {
+    return null;
+  }
 }
 
 function getMdFiles(dir, exclude = []) {
@@ -47,17 +43,21 @@ const SKIP = ['QUEUE.md', 'peng-attention.md', 'seen.json', '.gitkeep'];
 const enFiles = getMdFiles(draftsDir, SKIP);
 const zhFiles = getMdFiles(zhDraftsDir, SKIP);
 const practitionerFiles = getMdFiles(practitionerDraftsDir, SKIP);
-const total = enFiles.length + zhFiles.length;
 
 // Group by currencyType
 const buckets = { current: [], circuit: [], practitioner: [], unknown: [] };
+let enCount = 0;
+let zhCount = 0;
 
 for (const { file, path, mtime } of enFiles) {
-  const fm = parseFrontmatter(path);
+  const fallbackId = file.replace('.md', '');
+  const fm = readDraft(path, fallbackId, 'en');
+  if (!fm) continue;
+  enCount++;
   const type = fm.currencyType || 'unknown';
   const bucket = buckets[type] || buckets.unknown;
   bucket.push({
-    id: fm.currencyId || file.replace('.md', ''),
+    id: fm.currencyId || fallbackId,
     title: fm.title || file,
     abstract: fm.abstract || '',
     date: fm.date || '',
@@ -67,11 +67,14 @@ for (const { file, path, mtime } of enFiles) {
 }
 
 for (const { file, path, mtime } of zhFiles) {
-  const fm = parseFrontmatter(path);
+  const fallbackId = file.replace('.md', '');
+  const fm = readDraft(path, fallbackId, 'zh');
+  if (!fm) continue;
+  zhCount++;
   const type = fm.currencyType || 'unknown';
   const bucket = buckets[type] || buckets.unknown;
   bucket.push({
-    id: fm.currencyId || file.replace('.md', ''),
+    id: fm.currencyId || fallbackId,
     title: fm.title || file,
     abstract: fm.abstract || '',
     date: fm.date || '',
@@ -81,6 +84,7 @@ for (const { file, path, mtime } of zhFiles) {
 }
 
 const now = new Date().toISOString().slice(0, 10);
+const total = enCount + zhCount;
 
 const typeLabels = {
   current: 'Currents (流)',
@@ -98,7 +102,7 @@ const promoteInstructions = {
 let out = `# Peng Proposal Queue
 
 Generated: ${now}
-Pending: **${total}** drafts — ${enFiles.length} English · ${zhFiles.length} Chinese
+Pending: **${total}** drafts — ${enCount} English · ${zhCount} Chinese
 
 To promote an entry:
 1. Move from \`drafts/{id}.md\` → \`src/currency/{type}/{id}.md\`
@@ -141,17 +145,21 @@ if (practitionerFiles.length > 0) {
   out += `| ID | Title | Drafted |\n`;
   out += `|---|---|---|\n`;
   for (const { file, path, mtime } of practitionerFiles) {
-    const fm = parseFrontmatter(path);
+    const fallbackId = file.replace('.md', '');
+    const fm = readDraft(path, fallbackId, 'en', 'practitioner');
+    if (!fm) continue;
     const id = fm.currencyId || file.replace('.md', '');
     const title = fm.title || file;
     const drafted = mtime.toISOString().slice(0, 10);
     out += `| ${id} | ${title} | ${drafted} |\n`;
   }
   out += '\n';
-  if (practitionerFiles.some(({ path }) => parseFrontmatter(path).abstract)) {
+  if (practitionerFiles.some(({ file, path }) => readDraft(path, file.replace('.md', ''), 'en', 'practitioner')?.abstract)) {
     out += '**Abstracts:**\n\n';
     for (const { file, path } of practitionerFiles) {
-      const fm = parseFrontmatter(path);
+      const fallbackId = file.replace('.md', '');
+      const fm = readDraft(path, fallbackId, 'en', 'practitioner');
+      if (!fm) continue;
       if (fm.abstract) out += `- **${fm.currencyId || file}**: ${fm.abstract}\n`;
     }
     out += '\n';

@@ -59,12 +59,31 @@ title: "Clear Descriptive Title"
 date: YYYY-MM-DD
 currencyType: current
 currencyId: kebab-case-unique-id
-tags: [currency]
+tags:
+  - currency
 permalink: /currency/currents/kebab-case-unique-id/
 abstract: "One or two sentence summary — required."
+links:
+  - id: existing-currency-id
+    relation: "specific relationship description"
+mediation:
+  tooling: "OpenRouter / [model]"
+  use:
+    - "drafted entry from external signal"
+    - "assessed linkage against existing knowledge base"
+  humanRole: "review, edit, and approve before publication"
+  limits: "signal content may be incomplete; verify primary sources before publishing"
 ---
 
-Body prose here. Substantive, not thin. Include a linkage check — reference related currencyIds and add links frontmatter if strong connections exist. Add a mediation block when AI materially shaped the content.`
+For current entries, the body must use these sections in this order:
+### Signal
+### Context
+### Relevance
+### Current State
+### Open Questions
+### Connections
+
+The Signal section must begin with a source/reference URL line: [Title](URL) · Source · Date. Reference related currencyIds in Connections and add links frontmatter only when strong connections exist.`
 
 function buildSystemPrompt(db) {
   const manifest = loadManifest()

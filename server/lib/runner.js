@@ -5,6 +5,7 @@ const path = require('path')
 const fs = require('fs')
 const { parseFrontmatter } = require('./parse')
 const { updateSourceStats } = require('./sources')
+const { inspectDraftContent, normalizeDraftContent } = require('./draft-standard')
 
 const ROOT = path.join(__dirname, '..', '..')
 const DRAFTS_ROOT = path.join(ROOT, 'drafts')
@@ -175,7 +176,9 @@ function importDraftFiles(db, runId = null) {
       const id = path.basename(file, '.md')
       const filePath = path.join(dir, file)
       try {
-        const content = fs.readFileSync(filePath, 'utf8')
+        const content = normalizeDraftContent(fs.readFileSync(filePath, 'utf8'))
+        const inspection = inspectDraftContent({ id, lang, type, content, strictSections: true })
+        if (!inspection.valid) continue
         const { frontmatter } = parseFrontmatter(content)
         const stat = fs.statSync(filePath)
         const existing = db.prepare('SELECT id FROM drafts WHERE id = ? AND lang = ?').get(id, lang)
