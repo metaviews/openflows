@@ -27,7 +27,7 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Hermes Agent is Nous Research's production agent platform — MIT-licensed, server-side, and built to operate autonomously rather than as a coding assistant or chatbot wrapper. It integrates across Telegram, Discord, Slack, WhatsApp, Signal, Email, and CLI through a unified gateway.
+[Hermes Agent](https://github.com/NousResearch/hermes-agent) is Nous Research's production agent platform — MIT-licensed, server-side, and built to operate autonomously rather than as a coding assistant or chatbot wrapper. It integrates across Telegram, Discord, Slack, WhatsApp, Signal, Email, and CLI through a unified gateway.
 
 ### Context
 Built on Python 3.11 with the `uv` package manager, Hermes Agent connects to Nous Portal (OAuth), OpenRouter, or any OpenAI-compatible endpoint. It ships with 40+ built-in tools covering web search, browser automation, vision, image generation, code execution, and multi-model reasoning. Execution backends include local, Docker, SSH, Singularity, and Modal — with container hardening via read-only root filesystems and namespace isolation. Subagent delegation enables parallel task processing across isolated agent instances.

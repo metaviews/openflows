@@ -4,12 +4,26 @@ title: "OpenMythos: Theoretical Reconstruction of Claude Mythos Architecture"
 date: 2026-04-20
 currencyType: current
 currencyId: openmythos
-tags: [current, theory, research]
+tags: [currency, current, theory, research]
 permalink: /currency/currents/openmythos/
 abstract: "A theoretical reconstruction of the Claude Mythos architecture built from first principles using available research literature, providing a framework for understanding the theoretical underpinnings of large language models."
+links:
+  - id: autonomous-research-accountability
+    relation: "requires explicit limits and validation because it reconstructs hidden architecture from public signals"
+  - id: operational-literacy-interface
+    relation: "turns opaque model architecture into a inspectable learning artifact"
 ---
 
-**OpenMythos** (by `kyegomez`) is a GitHub-hosted theoretical framework that attempts to reconstruct the architectural principles behind the "Claude Mythos" — a conceptual model of Anthropic's Claude architecture inferred from public research, whitepapers, and observed behavior — using first-principles reasoning.
+### Signal
+OpenMythos is published at [kyegomez/OpenMythos](https://github.com/kyegomez/OpenMythos) as a theoretical reconstruction of the Claude Mythos architecture from public materials and first-principles reasoning.
+
+### Context
+The project is not evidence of Anthropic's internal implementation; it is a speculative, educational reconstruction meant to organize hypotheses about large-model architecture.
+
+### Relevance
+OpenMythos is relevant because it makes opaque model speculation inspectable, but it also requires explicit uncertainty boundaries so theory is not presented as verified internal fact.
+
+**OpenMythos** ([kyegomez/OpenMythos](https://github.com/kyegomez/OpenMythos)) is a GitHub-hosted theoretical framework that attempts to reconstruct the architectural principles behind the "Claude Mythos" — a conceptual model of Anthropic's Claude architecture inferred from public research, whitepapers, and observed behavior — using first-principles reasoning.
 
 ## Purpose and Scope
 

@@ -27,7 +27,7 @@ mediation:
 ---
 
 ### Signal
-A March 2026 blog post from Bluehost ranks seven open-source AI agent frameworks, specifically comparing LangChain, AutoGen, and CrewAI. The content focuses on developer-facing features including memory management, planning capabilities, and orchestration mechanisms for building autonomous agents.
+A March 2026 [blog post from Bluehost](https://www.bluehost.com/blog/best-open-source-ai-agent-frameworks/) ranks seven open-source AI agent frameworks, specifically comparing LangChain, AutoGen, and CrewAI. The content focuses on developer-facing features including memory management, planning capabilities, and orchestration mechanisms for building autonomous agents.
 
 ### Context
 The open-source agent ecosystem is shifting from experimental prototypes to production-grade tooling. Frameworks are increasingly competing on the stability of their orchestration layers and the quality of their memory abstractions rather than raw model inference capabilities. This signal reflects a market consolidation where developers seek standardized interfaces for multi-agent workflows.

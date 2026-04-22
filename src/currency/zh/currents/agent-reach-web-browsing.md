@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: agent-reach-web-browsing
 abstract: "Agent Reach 提供了一个轻量级的开源工具，供 AI 智能体访问实时网络内容并验证事实，而无需依赖昂贵的 API 服务。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/agent-reach-web-browsing/
 links:

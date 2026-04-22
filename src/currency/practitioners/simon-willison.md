@@ -41,3 +41,7 @@ Active and highly productive independent operator. Continuous open-source output
 ### Connections
 
 - Linked to `opencode-ai` and `skills-sh` as method-legibility and composable tooling adjacencies.
+
+### Sources
+
+- Personal site: https://simonwillison.net/

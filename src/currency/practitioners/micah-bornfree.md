@@ -39,3 +39,7 @@ Emerging but high-signal operator connection in activist-domain AI practice.
 ### Connections
 
 - Linked to `outcry-ai` as a direct operator-to-current relationship.
+
+### Sources
+
+- Personal site: https://micahmwhite.com/

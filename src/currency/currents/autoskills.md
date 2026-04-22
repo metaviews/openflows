@@ -7,9 +7,25 @@ currencyId: autoskills
 tags: [currency]
 permalink: /currency/currents/autoskills/
 abstract: "AutoSkills by midudev is a CLI tool that installs a complete AI skill stack with a single command, streamlining the setup of open-source AI agent capabilities."
+links:
+  - id: skills-sh
+    relation: "shares the modular skill-layer pattern for reusable agent behavior"
+  - id: plumbing-lang
+    relation: "complements typed protocol work by simplifying skill stack installation"
+  - id: agent-tooling-interoperability-infrastructure
+    relation: "operationalizes the tool and skill interoperability layer"
 ---
 
-AutoSkills (midudev/autoskills) is a developer-focused CLI utility that automates the installation of a comprehensive AI skill stack with a single command. With over 3,400 stars and 330+ forks on GitHub as of early 2026, it has gained traction as a practical tool for rapidly provisioning AI agent capabilities.
+### Signal
+AutoSkills is a CLI utility published at [midudev/autoskills](https://github.com/midudev/autoskills) for installing a reusable AI skill stack through a single command.
+
+### Context
+The project belongs to the skills-layer pattern: agent capabilities are packaged as modular, shareable units that can be installed and reused across different operator environments.
+
+### Relevance
+AutoSkills is relevant because it reduces the setup friction around agent skills while keeping those capabilities explicit enough to inspect, version, and compose with other tooling.
+
+[AutoSkills](https://github.com/midudev/autoskills) (midudev/autoskills) is a developer-focused CLI utility that automates the installation of a comprehensive AI skill stack with a single command. With over 3,400 stars and 330+ forks on GitHub as of early 2026, it has gained traction as a practical tool for rapidly provisioning AI agent capabilities.
 
 The project's core value proposition — **"One command. Your entire AI skill stack. Installed."** — addresses a common friction point in the AI ecosystem: the complexity of setting up and maintaining modular skills across different frameworks. AutoSkills abstracts this complexity by providing a curated collection of pre-configured skills that work across multiple AI agent platforms.
 

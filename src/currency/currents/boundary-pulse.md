@@ -21,6 +21,8 @@ lastReviewed: 2026-03-22
 
 Boundary Pulse records moments when constraints tighten or relax and where new flow becomes possible.
 
+Reference anchor: [Openflows Methods](https://openflows.org/methods/) for the project’s internal monitoring and synthesis practice.
+
 ### Context
 
 Constraints shift across technical, procedural, and social layers. Small changes in access, policy, or tooling can alter movement patterns quickly.

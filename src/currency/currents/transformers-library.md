@@ -31,7 +31,7 @@ lastReviewed: 2026-03-22
 ---
 
 ### Signal
-GitHub repository for the Hugging Face Transformers library. Describes a model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, supporting both inference and training. Repository tags include deep-learning, llm, nlp, pretrained-models, python, pytorch, and qwen.
+GitHub repository for the [Hugging Face Transformers library](https://github.com/huggingface/transformers). Describes a model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, supporting both inference and training. Repository tags include deep-learning, llm, nlp, pretrained-models, python, pytorch, and qwen.
 
 ### Context
 Transformers serves as the de facto standard implementation library for the transformer architecture in the open-source ecosystem. It abstracts the complexity of model definitions, tokenization, and training loops, allowing researchers and practitioners to focus on architecture and data rather than low-level tensor operations. It acts as the primary interface for accessing the Hugging Face Model Hub.

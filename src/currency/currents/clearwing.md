@@ -7,9 +7,25 @@ currencyId: clearwing
 tags: [currency, security, langgraph, offensive-security, vulnerability-scanning]
 permalink: /currency/currents/clearwing/
 abstract: "Autonomous dual-mode offensive-security tool built on LangGraph for network pentesting and source-code vulnerability hunting using accessible LLMs."
+links:
+  - id: autonomous-security-ops-governance
+    relation: "operates in the autonomous security operations domain requiring defensive governance"
+  - id: agent-execution-sandboxing-infrastructure
+    relation: "depends on sandboxed Kali and sanitizer environments for bounded execution"
+  - id: langgraph
+    relation: "uses LangGraph as the orchestration substrate"
 ---
 
-Clearwing is an autonomous offensive-security framework developed by Lazarus AI, designed to replicate advanced vulnerability scanning capabilities using widely accessible model endpoints. Inspired by Anthropic's Glasswing, it functions as a dual-mode infrastructure layer for security operations: a network-pentest agent and a source-code hunter. The system leverages LangGraph for orchestration, enabling complex multi-agent workflows that integrate sandboxed environments, static analysis tools, and dynamic exploitation logic.
+### Signal
+Clearwing is an autonomous security framework published at [Lazarus-AI/clearwing](https://github.com/Lazarus-AI/clearwing), combining LangGraph orchestration with network and source-code vulnerability workflows.
+
+### Context
+The project belongs to the dual-use security automation space, where agentic tooling can support authorized assessment but also requires strong scoping, logging, and execution boundaries.
+
+### Relevance
+Clearwing is relevant to Openflows as a governance case: its value depends on sandboxing, human approval, evidence grading, and clear authorization rather than autonomous capability alone.
+
+[Clearwing](https://github.com/Lazarus-AI/clearwing) is an autonomous offensive-security framework developed by Lazarus AI, designed to replicate advanced vulnerability scanning capabilities using widely accessible model endpoints. Inspired by Anthropic's Glasswing, it functions as a dual-mode infrastructure layer for security operations: a network-pentest agent and a source-code hunter. The system leverages LangGraph for orchestration, enabling complex multi-agent workflows that integrate sandboxed environments, static analysis tools, and dynamic exploitation logic.
 
 The network-pentest mode operates as a ReAct-loop agent equipped with 63 bind-tools. It scans live targets, identifies services, and executes sandboxed Kali Linux utilities. Crucially, exploit execution is gated behind a human-approval guardrail, ensuring operator control over active testing phases. Outputs are persisted to a knowledge graph for longitudinal tracking.
 
@@ -18,6 +34,7 @@ The source-code hunter mode utilizes a file-parallel agent pipeline. It ranks so
 Technical implementation relies on Python 3.10+ with a Rust toolchain for the `genai-pyo3` bridge. Docker isolation is used for Kali containers and sanitizer-image sandboxes. Configuration is managed via `~/.clearwing/config.yaml` or environment variables supporting OpenAI-compatible endpoints (OpenRouter, Ollama, vLLM, etc.).
 
 **Linkage Check**
+*   **Repository:** https://github.com/Lazarus-AI/clearwing
 *   **Dependency Verification:** Validate `genai-pyo3` Rust compilation against local toolchain versions (requires `rustup update stable`).
 *   **Endpoint Compatibility:** Confirm model provider supports tool-calling schemas required by LangGraph agents.
 *   **Network Isolation:** Ensure sandboxed Kali containers do not leak to host networks; verify firewall rules for live scanning targets.

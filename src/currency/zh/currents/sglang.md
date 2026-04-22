@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: sglang
 abstract: SGLang 是一个高性能推理服务框架，通过结构化解码和内存管理，优化大语言及多模态模型的推理延迟与吞吐量。
 tags:
+  - currency
   - attention
   - blackwell
   - cuda

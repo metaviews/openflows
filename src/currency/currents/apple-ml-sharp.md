@@ -25,7 +25,7 @@ mediation:
 ---
 
 ### Signal
-Apple has released ML-Sharp as an open-source research project focused on generating novel 3D viewpoints from a single 2D image. The implementation targets real-time inference performance, aiming to enable immediate spatial visualization from static photographic input without requiring multi-view capture or heavy post-processing pipelines.
+[Apple ML-Sharp](https://github.com/apple/ml-sharp) is an open-source research project focused on generating novel 3D viewpoints from a single 2D image. The implementation targets real-time inference performance, aiming to enable immediate spatial visualization from static photographic input without requiring multi-view capture or heavy post-processing pipelines.
 
 ### Context
 Single-view 3D reconstruction remains a computationally intensive task typically requiring assumptions about scene geometry or extensive training data. ML-Sharp addresses this by leveraging recent advances in neural rendering and latent space interpolation to infer depth and structure from monocular input. This capability reduces the barrier to entry for spatial computing workflows, allowing local devices to process visual data into 3D representations without external cloud dependencies.

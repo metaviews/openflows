@@ -7,7 +7,23 @@ currencyId: sentrysearch
 tags: [currency]
 permalink: /currency/currents/sentrysearch/
 abstract: "SentrySearch is a tool for performing semantic search over video archives using Gemini Embedding 2 or Qwen3-VL, enabling natural language queries of video content."
+links:
+  - id: deepcamera
+    relation: "shares the video understanding domain but focuses on archived search rather than live monitoring"
+  - id: local-multimodal-perception-infrastructure
+    relation: "turns video into queryable multimodal representations"
+  - id: open-model-interoperability-layer
+    relation: "supports multiple embedding and vision-language model backends"
 ---
+
+### Signal
+SentrySearch is published at [ssrajadh/sentrysearch](https://github.com/ssrajadh/sentrysearch) as a semantic search system for video archives using multimodal embedding and vision-language models.
+
+### Context
+The project converts stored video into queryable representations, making archive retrieval dependent on model choice, embedding quality, privacy boundaries, and index maintenance.
+
+### Relevance
+SentrySearch is relevant because video archives are becoming operational data surfaces for agents and institutions, and semantic search needs to remain inspectable across model and infrastructure choices.
 
 [SentrySearch](https://github.com/ssrajadh/sentrysearch) is a semantic search tool designed for video archives, leveraging multi-modal language models for content understanding. As of April 2026, the repository has achieved **3,200+ stars** and **309+ forks**, indicating strong interest in AI-powered video retrieval systems.
 

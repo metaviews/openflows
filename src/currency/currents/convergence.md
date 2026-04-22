@@ -7,11 +7,25 @@ currencyId: convergence
 tags: [currency]
 permalink: /currency/currents/convergence/
 abstract: "A simple script that finds novel insights by identifying the convergence of two existing ideas, operating on the principle that innovation often emerges from unexpected connections."
+links:
+  - id: operational-literacy-interface
+    relation: "supports discovery practices that make synthesis visible and learnable"
+  - id: simon-willison
+    relation: "aligns with rigorous documented practice for inspectable knowledge work"
 ---
+
+### Signal
+Convergence is a lightweight discovery script published at [peterpodj/convergence](https://github.com/peterpodj/convergence) for finding insight at the intersection of existing ideas.
+
+### Context
+The entry documents a small, inspectable research utility rather than a large platform: its value comes from making synthesis practice explicit and repeatable.
+
+### Relevance
+Convergence is relevant because it frames novelty as an operational workflow, helping users examine how knowledge artifacts combine instead of treating insight as hidden model authority.
 
 # Convergence: Script for Novel Insight Discovery
 
-**Convergence** (peterpodj/convergence) is a lightweight utility designed to discover novel insights by systematically analyzing the convergence of existing ideas. Based on the principle that innovation often emerges from unexpected connections between established concepts, the tool provides a scriptable framework for identifying these intersections.
+**Convergence** ([peterpodj/convergence](https://github.com/peterpodj/convergence)) is a lightweight utility designed to discover novel insights by systematically analyzing the convergence of existing ideas. Based on the principle that innovation often emerges from unexpected connections between established concepts, the tool provides a scriptable framework for identifying these intersections.
 
 ## Core Philosophy
 

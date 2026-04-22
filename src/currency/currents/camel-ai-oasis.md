@@ -7,12 +7,28 @@ currencyId: camel-ai-oasis
 tags: [currency]
 permalink: /currency/currents/camel-ai-oasis/
 abstract: "OASIS is a scalable open-source framework for simulating social media dynamics using up to one million LLM agents. It enables research into information spread, polarization, and herd behavior within digital environments."
+links:
+  - id: civic-influence-resilience
+    relation: "simulates information spread and polarization dynamics relevant to civic influence resilience"
+  - id: autonomous-research-accountability
+    relation: "raises review and validation questions for large-scale autonomous social simulation"
+  - id: artificial-organisations
+    relation: "uses many-agent interaction structures as a research substrate"
 mediation:
   tooling: "OpenRouter / [model]"
   use: ["research synthesis", "entry drafting"]
   humanRole: "queued for review"
   limits: "sourced from public documentation; verify claims before promotion"
 ---
+
+### Signal
+OASIS is an open-source simulation framework from CAMEL-AI, with public materials including the [repository](https://github.com/camel-ai/oasis), [paper](https://arxiv.org/abs/2411.11581), and [dataset](https://huggingface.co/datasets/echo-yiyiyi/oasis-dataset).
+
+### Context
+The system models large-scale social interaction by instantiating LLM agents inside simulated platform dynamics rather than live civic environments.
+
+### Relevance
+OASIS matters because many-agent simulation can support research into information spread and polarization, but its outputs need careful framing so synthetic behavior is not mistaken for social ground truth.
 
 **OASIS** (Open Agent Social Interaction Simulations) functions as infrastructure for large-scale sociotechnical research. Developed by CAMEL-AI, it provides a Python-based environment to instantiate and interact with up to one million LLM-driven agents within simulated social network topologies. The system abstracts platform mechanics from services like Twitter and Reddit, allowing for the observation of emergent phenomena such as group polarization and information cascades without the volatility of live production environments.
 

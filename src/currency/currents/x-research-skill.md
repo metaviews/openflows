@@ -4,12 +4,30 @@ title: "X Research Skill: Agentic Twitter Research for Claude Code and OpenClaw"
 date: 2026-04-19
 currencyType: current
 currencyId: x-research-skill
-tags: [skill, research, twitter, claude-code, openclaw]
+tags: [currency, skill, research, twitter, claude-code, openclaw]
 permalink: /currency/currents/x-research-skill/
 abstract: "A skills-layer implementation for autonomous X/Twitter research, enabling agentic search, thread following, deep-dives, and sourced briefings within Claude Code and OpenClaw workflows."
+links:
+  - id: skills-sh
+    relation: "uses the skills-layer pattern for modular agent capability"
+  - id: openclaw
+    relation: "is designed for use with OpenClaw workflows"
+  - id: xactions
+    relation: "shares the X/Twitter research and automation surface"
+  - id: local-first-web-access-infrastructure
+    relation: "treats social-media research as a composable web-access skill"
 ---
 
-**X Research Skill** (rohunvora/x-research-skill) is an open-source skills-layer implementation designed to extend AI coding agents with specialized X/Twitter research capabilities. Built for integration with both Claude Code and the OpenClaw agent framework, it operationalizes social media intelligence gathering as a reusable workflow component.
+### Signal
+X Research Skill is published at [rohunvora/x-research-skill](https://github.com/rohunvora/x-research-skill) as a reusable skills-layer component for X/Twitter research workflows in Claude Code and OpenClaw contexts.
+
+### Context
+The project packages social-media research as an agent skill, which means search, thread traversal, and briefings become composable capabilities inside larger operator workflows.
+
+### Relevance
+X Research Skill is relevant because social signals are useful for discovery, but the workflow must preserve provenance, platform boundaries, and human judgment over interpretation.
+
+**X Research Skill** ([rohunvora/x-research-skill](https://github.com/rohunvora/x-research-skill)) is an open-source skills-layer implementation designed to extend AI coding agents with specialized X/Twitter research capabilities. Built for integration with both Claude Code and the OpenClaw agent framework, it operationalizes social media intelligence gathering as a reusable workflow component.
 
 ## Capabilities
 

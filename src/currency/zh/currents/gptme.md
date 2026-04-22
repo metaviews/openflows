@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: gptme
 abstract: "gptme 是一个基于 Python 的命令行界面工具，支持持久化自主智能体会话，集成本地工具并支持多提供商大语言模型。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/gptme/
 links:

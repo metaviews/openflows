@@ -7,7 +7,23 @@ currencyId: video-use
 tags: [currency, video-editing, llm-agent, claude-code, automation]
 permalink: /currency/currents/video-use/
 abstract: "An open-source Claude Code skill for automated video editing via transcript analysis and structured visual composites. Removes filler words, applies color grading, and manages rendering pipelines without frame-dumping."
+links:
+  - id: hyperframes-html-video-rendering
+    relation: "shares the agent-mediated video production and rendering domain"
+  - id: terminal-native-agentic-workflows
+    relation: "operates as a CLI/skill workflow for media production"
+  - id: agent-tooling-interoperability-infrastructure
+    relation: "packages video editing as a reusable agent skill"
 ---
+
+### Signal
+video-use is published at [browser-use/video-use](https://github.com/browser-use/video-use) as an agent-facing video editing skill for transcript-driven FFmpeg workflows.
+
+### Context
+The project represents media production as structured text, timelines, and render commands, giving coding agents a lower-token path into video editing without treating every frame as primary context.
+
+### Relevance
+video-use is relevant because it turns video editing into an auditable agent workflow: transcripts, edit decision lists, and render steps can be reviewed before media is produced.
 
 # video-use
 
@@ -65,3 +81,4 @@ mediation:
   use: ["research synthesis", "entry drafting"]
   humanRole: "queued for review"
   limits: "sourced from public documentation; verify claims before promotion"
+```

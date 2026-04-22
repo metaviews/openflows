@@ -7,8 +7,9 @@ currencyType: "current"
 currencyId: evoagentx
 abstract: "EvoAgentX 是格拉斯哥大学（University of Glasgow）的一项研究框架，通过实施自演化机制，旨在优化多智能体系统的构建与部署。"
 tags:
+  - currency
   - 流通
-permalink: /zh/流通/流/evoagentx/
+permalink: /zh/currency/currents/evoagentx/
 links:
   - id: openclaw
     relation: "可比较的开源智能体框架"

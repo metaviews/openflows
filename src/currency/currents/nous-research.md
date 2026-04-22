@@ -25,7 +25,7 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Nous Research positions itself within the American open source AI movement, publishing model weights, fine-tuning infrastructure, and agent tooling publicly. Their Hermes model series has become a reference point for instruction-following and tool-use capabilities in the open weights ecosystem.
+[Nous Research](https://nousresearch.com/) positions itself within the American open source AI movement, publishing model weights, fine-tuning infrastructure, and agent tooling publicly. Their Hermes model series has become a reference point for instruction-following and tool-use capabilities in the open weights ecosystem.
 
 ### Context
 Founded around the conviction that advanced language model capabilities should be publicly accessible, Nous Research operates across model architecture, data synthesis, and fine-tuning methodology. Their work on Hermes established a fine-tuning lineage now widely used as a base for downstream deployments. They maintain a HuggingFace presence, a developer API portal (Nous Portal), and community channels on Discord. Their Psyche network explores distributed training coordination.

@@ -44,3 +44,8 @@ Durable influence on open autonomy culture and practical end-to-end engineering 
 
 - Linked to `openpilot` and `your-own-robot` as concrete autonomy and embodied build signals.
 - Linked to `embodied-ai-governance` as the operator reference for open, field-tested, safety-critical physical AI practice.
+
+### Sources
+
+- GitHub profile: https://github.com/geohot
+- comma.ai: https://comma.ai/

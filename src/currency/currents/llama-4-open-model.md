@@ -28,7 +28,7 @@ lastReviewed: 2026-03-15
 ---
 
 ### Signal
-Source signal from Exploding Topics (2026-03-06) identifies Llama 4 as an active large language model family. The entry specifies a mixture-of-models architecture including Llama 4 Scout (~109B total) and Llama 4 Maverick (~400B total). Meta has simultaneously expanded multilingual capabilities with support for eight additional languages beyond prior iterations.
+Source signal from Exploding Topics (2026-03-06) identifies Llama 4 as an active large language model family; Hugging Face’s [Llama 4 release note](https://huggingface.co/blog/llama4-release) provides an accessible weights-distribution reference. The entry specifies a mixture-of-models architecture including Llama 4 Scout (~109B total) and Llama 4 Maverick (~400B total). Meta has simultaneously expanded multilingual capabilities with support for eight additional languages beyond prior iterations.
 
 ### Context
 Llama 4 represents the continuation of Meta's open weights strategy, following Llama 2 and Llama 3 trajectories. The architecture shift toward mixture-of-experts (MoE) balances parameter count against computational efficiency, a pattern established by concurrent industry developments. The model functions as infrastructure for downstream applications rather than an end-user product.

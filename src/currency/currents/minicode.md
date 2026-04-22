@@ -8,6 +8,11 @@ abstract: MiniCode is a minimalist terminal user interface assistant that consol
 tags:
   - currency
 permalink: /currency/currents/minicode/
+links:
+  - id: forgecode
+    relation: "shares the CLI-native coding workflow domain"
+  - id: terminal-native-agentic-workflows
+    relation: "treats the terminal as the primary workspace for development operations"
 mediation:
   tooling: "OpenRouter / qwen/qwen3.6-plus:free"
   use:

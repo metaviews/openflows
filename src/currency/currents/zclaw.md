@@ -25,7 +25,7 @@ lastReviewed: 2026-03-22
 ---
 
 ### Signal
-zclaw is an AI personal assistant designed for the ESP32 family of microcontrollers — the smallest known complete LLM-connected agent implementation, fitting Wi-Fi, TLS, multi-provider LLM access, persistent memory, GPIO control, and scheduling into 888 KiB of firmware. 1.9k stars, MIT licensed, actively developed.
+[zclaw](https://github.com/tnm/zclaw) is an AI personal assistant designed for the ESP32 family of microcontrollers — the smallest known complete LLM-connected agent implementation, fitting Wi-Fi, TLS, multi-provider LLM access, persistent memory, GPIO control, and scheduling into 888 KiB of firmware. 1.9k stars, MIT licensed, actively developed.
 
 ### Context
 Written in C and built on ESP-IDF/FreeRTOS, zclaw supports four ESP32 variants (ESP32, ESP32-C3, ESP32-S3, ESP32-C6). Only ~38 KiB of the firmware is application logic; the remainder covers networking (44%), cryptography (16%), certificates (12%), and runtime systems (24%). LLM providers supported: Anthropic, OpenAI, OpenRouter, and Ollama. Interaction via Telegram or a hosted web relay. GPIO control includes safety guardrails. A USB admin console enables local recovery and diagnostics. Custom tools compose via natural language at runtime.

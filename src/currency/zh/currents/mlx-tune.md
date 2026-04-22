@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: mlx-tune
 abstract: "mlx-tune 是一个开源 Python 库，通过 MLX 框架在 Apple Silicon 上启用大型语言模型的监督、偏好和视觉微调，并提供与 Unsloth 兼容的 API。"
 tags:
+  - currency
   - 流
 permalink: /zh/currency/currents/mlx-tune/
 links:

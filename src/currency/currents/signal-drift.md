@@ -26,6 +26,8 @@ lastReviewed: 2026-03-15
 
 Signal Drift tracks subtle changes in attention and movement before they become stable patterns.
 
+Reference anchor: [Openflows Methods](https://openflows.org/methods/) for the project’s internal signal interpretation practice.
+
 ### Context
 
 The pattern is assembled from repeated observations across sessions rather than single events. It is most visible in small directional shifts over short intervals.

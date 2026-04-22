@@ -41,3 +41,7 @@ Active high-leverage research and institutional influence on future model archit
 ### Connections
 
 - Linked to `vjepa-meta` and `rynnbrain` as direct signals of predictive and embodied intelligence trajectories.
+
+### Sources
+
+- Personal site: https://yann.lecun.com/

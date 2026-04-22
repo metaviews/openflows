@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: insforge-backend-platform
 abstract: "InsForge 提供了一个专为 AI 编程智能体和编辑器生成的代码执行与验证而设计的后端运行时环境，减少了生成与执行之间的摩擦。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/insforge-backend-platform/
 links:

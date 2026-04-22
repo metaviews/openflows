@@ -25,7 +25,7 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Repository TUDB-Labs/mLoRA signals an open-source framework designed for efficient fine-tuning of multiple Large Language Models using LoRA and variants. Key technical capabilities include concurrent fine-tuning of multiple adapters, shared base model management, and an efficient pipeline parallelism algorithm. The project supports multiple base models (Baichuan, ChatGLM, Llama, etc.) and reinforcement learning preference alignment algorithms. It was accepted by VLDB'25 as of January 2025.
+Repository [TUDB-Labs/mLoRA](https://github.com/TUDB-Labs/mLoRA) signals an open-source framework designed for efficient fine-tuning of multiple Large Language Models using LoRA and variants. Key technical capabilities include concurrent fine-tuning of multiple adapters, shared base model management, and an efficient pipeline parallelism algorithm. The project supports multiple base models (Baichuan, ChatGLM, Llama, etc.) and reinforcement learning preference alignment algorithms. It was accepted by VLDB'25 as of January 2025.
 
 ### Context
 This entry falls within the parameter-efficient fine-tuning (PEFT) infrastructure layer. While many tools focus on single-model adaptation, mLoRA addresses the operational complexity of managing multiple adapters simultaneously. It targets scenarios requiring rapid iteration across different model configurations or tasks without duplicating base model weights in memory.

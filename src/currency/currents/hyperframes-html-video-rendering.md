@@ -7,7 +7,21 @@ currencyId: hyperframes-html-video-rendering
 tags: [currency, video-rendering, html, ai-agents, open-source]
 permalink: /currency/currents/hyperframes-html-video-rendering/
 abstract: "Open-source framework for declarative video composition via HTML data attributes, optimized for deterministic rendering and AI agent orchestration."
+links:
+  - id: video-use
+    relation: "shares the agent-mediated video production and rendering domain"
+  - id: agent-tooling-interoperability-infrastructure
+    relation: "exposes composable skills and commands for agent-driven media workflows"
 ---
+
+### Signal
+HyperFrames is documented through the [repository](https://github.com/heygen-com/hyperframes), [npm package](https://www.npmjs.com/package/hyperframes), and project documentation as an HTML-native video rendering framework.
+
+### Context
+The project turns web primitives into a deterministic media composition layer, allowing agents and developers to produce video through inspectable markup, CLI commands, and FFmpeg.
+
+### Relevance
+HyperFrames is relevant because it makes media generation more operationally legible: timelines, assets, and render steps can be reviewed as code instead of hidden inside a proprietary editor.
 
 HyperFrames is a video rendering engine that treats media composition as standard HTML structures. Instead of proprietary domain-specific languages or GUI-based timelines, compositions are defined using DOM elements annotated with data attributes for timing, layering, and asset sourcing. The framework relies on Node.js (>=22) and FFmpeg to convert these declarative HTML states into deterministic MP4 outputs.
 

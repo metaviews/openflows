@@ -7,11 +7,27 @@ currencyId: browser-harness
 tags: [currency]
 permalink: /currency/currents/browser-harness/
 abstract: "Self-healing browser harness enabling LLMs to complete web tasks autonomously by automatically recovering from UI changes and DOM shifts."
+links:
+  - id: agent-reach-web-browsing
+    relation: "extends agent web access from retrieval into resilient browser interaction"
+  - id: local-first-web-access-infrastructure
+    relation: "contributes to the local-first browser runtime and ingestion pattern"
+  - id: translumo
+    relation: "shares the overlay/browser interaction domain for agent-mediated web workflows"
 ---
+
+### Signal
+Browser Harness is published at [browser-use/browser-harness](https://github.com/browser-use/browser-harness) as a self-healing browser automation framework for LLM-driven web tasks.
+
+### Context
+The project addresses a recurring failure mode in browser agents: brittle selectors and DOM-dependent scripts that stop working when interfaces shift.
+
+### Relevance
+Browser Harness is relevant because resilient web interaction expands agent reach while preserving a concrete execution substrate that operators can observe and debug.
 
 # Browser Harness: Self-Healing Browser Automation for AI Agents
 
-**Browser Harness** (browser-use/browser-harness) is a self-healing browser automation framework designed to enable language models to complete web-based tasks autonomously. Unlike traditional browser automation that breaks when UI elements change, Browser Harness automatically recovers from DOM shifts, class changes, and dynamic content updates.
+**Browser Harness** ([browser-use/browser-harness](https://github.com/browser-use/browser-harness)) is a self-healing browser automation framework designed to enable language models to complete web-based tasks autonomously. Unlike traditional browser automation that breaks when UI elements change, Browser Harness automatically recovers from DOM shifts, class changes, and dynamic content updates.
 
 ## Core Architecture
 

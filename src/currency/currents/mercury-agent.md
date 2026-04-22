@@ -7,11 +7,27 @@ currencyId: mercury-agent
 tags: [currency]
 permalink: /currency/currents/mercury-agent/
 abstract: "Soul-driven AI agent with permission-hardened tools, token budgets, and multi-channel access, designed for 24/7 operation via CLI or Telegram."
+links:
+  - id: agent-governance-toolkit
+    relation: "shares policy and permission concerns for agent tool execution"
+  - id: neuronfs
+    relation: "aligns with filesystem-native constraints for agent control"
+  - id: agent-execution-sandboxing-infrastructure
+    relation: "depends on bounded execution and permission hardening for long-running agents"
 ---
+
+### Signal
+Mercury is published at [cosmicstack-labs/mercury-agent](https://github.com/cosmicstack-labs/mercury-agent) as a persistent AI agent framework with permission-hardened tools and budget controls.
+
+### Context
+The project sits in the long-running agent runtime layer, where identity, memory, tool access, messaging channels, and resource limits need to be handled as operational constraints.
+
+### Relevance
+Mercury is relevant because it foregrounds permission and budget boundaries as part of the agent design, not as after-the-fact policy wrapped around an otherwise unconstrained assistant.
 
 # Mercury: Soul-Driven AI Agent with Permission-Hardened Tools
 
-**Mercury** (cosmicstack-labs/mercury-agent) is an autonomous AI agent framework designed with a "soul" metaphor for persistent identity and ethical constraints. It distinguishes itself through permission-hardened tool execution, explicit token budgeting mechanisms, and multi-channel access patterns that enable 24/7 operation.
+**Mercury** ([cosmicstack-labs/mercury-agent](https://github.com/cosmicstack-labs/mercury-agent)) is an autonomous AI agent framework designed with a "soul" metaphor for persistent identity and ethical constraints. It distinguishes itself through permission-hardened tool execution, explicit token budgeting mechanisms, and multi-channel access patterns that enable 24/7 operation.
 
 ## Core Architecture
 

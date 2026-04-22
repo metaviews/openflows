@@ -25,7 +25,7 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-Plumbing is a typed programming language for describing how AI agents connect and communicate. Its compiler validates agent network configurations before execution — ensuring agent graphs are well-formed before they run. An MCP server is included. First public release March 2026, backed by peer-reviewed research (arXiv:2602.13275).
+Plumbing is a typed programming language for describing how AI agents connect and communicate. Its compiler validates agent network configurations before execution — ensuring agent graphs are well-formed before they run. An MCP server is included. First public release March 2026, backed by peer-reviewed research ([arXiv:2602.13275](https://arxiv.org/abs/2602.13275)).
 
 ### Context
 Developed by Leith Document Company Limited (Edinburgh), Plumbing applies session type theory to multi-agent AI coordination. Session types are a formal method for specifying communication protocols: they define what messages can be sent and received at each point in an interaction, and the compiler can verify that an agent network satisfies its protocol before any execution occurs. The companion arXiv paper demonstrates a three-agent composition engine (Composer, Corroborator, Critic) with enforced information asymmetry — structural constraints that produce reliable collective behaviour without requiring individual agent alignment.

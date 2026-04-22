@@ -46,3 +46,7 @@ Quesnelle's work intersects with:
 - [practitioner|audrey-tang](audrey-tang): Public-interest technology and participatory infrastructure design
 
 The convergence of machine ethics, AI alignment, and open infrastructure represents a critical front in ensuring that AI systems remain aligned with human values while being broadly accessible and controllable.
+
+## Sources
+
+- Personal site: https://jeffq.com/

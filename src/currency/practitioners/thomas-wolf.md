@@ -46,3 +46,8 @@ Active high-leverage operator. Hugging Face continues as a dominant open model i
 
 - Linked to `local-inference-baseline`, `arcee-ai`, and `open-webui` as direct ecosystem dependencies.
 - Linked to `open-weights-commons` as the primary operator anchor for the open model ecosystem sustaining loop.
+
+### Sources
+
+- Hugging Face organization profile: https://huggingface.co/
+- Sequoia founder profile: https://sequoiacap.com/founder/thomas-wolf/

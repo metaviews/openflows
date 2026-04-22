@@ -23,7 +23,7 @@ mediation:
 ---
 
 ### Signal
-A GitHub repository (collaborator-ai/collab-public) proposes a terminal interface designed as a shared workspace for AI agents. The signal identifies a friction point where human operators act as middlemen between command lines and assistants. The proposed solution allows agents to work directly within the terminal environment, positioning the human as a conductor rather than a manual orchestrator.
+A GitHub repository (collaborator-ai/collab-public), surfaced through an [opensourceprojects signal](https://opensourceprojects.dev/post/511271fb-af0e-4255-8c13-5922c24332c2), proposes a terminal interface designed as a shared workspace for AI agents. The signal identifies a friction point where human operators act as middlemen between command lines and assistants. The proposed solution allows agents to work directly within the terminal environment, positioning the human as a conductor rather than a manual orchestrator.
 
 ### Context
 Terminal-based agent interaction remains a primary interface for technical operators, often fragmented across distinct CLI tools. While `pi-mono` provides terminal libraries for agent toolkits, this signal targets the collaborative state management within that terminal space. It aligns with the `OpenClaw` philosophy of inspectable agent frameworks but focuses specifically on the shared execution context rather than the orchestration layer itself.

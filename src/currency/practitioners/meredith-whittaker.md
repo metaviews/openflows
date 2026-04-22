@@ -41,3 +41,7 @@ Active high-impact operator in privacy-first communication and technology policy
 ### Connections
 
 - Linked to `outcry-ai` and `confer-to` as direct communication-governance adjacencies.
+
+### Sources
+
+- Signal president announcement: https://signal.org/blog/announcing-signal-president/

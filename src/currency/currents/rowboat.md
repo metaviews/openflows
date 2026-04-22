@@ -7,9 +7,25 @@ currencyId: rowboat
 tags: [currency]
 permalink: /currency/currents/rowboat/
 abstract: "Rowboat is an open-source AI coworker emphasizing persistent memory for collaborative coding, with a lightweight architecture for local and cloud execution."
+links:
+  - id: persistent-agent-memory-infrastructure
+    relation: "centers persistent memory as a differentiator for coding assistance"
+  - id: terminal-native-agentic-workflows
+    relation: "uses a lightweight workflow aligned with terminal-native agent work"
+  - id: agentic-software-development-infrastructure
+    relation: "operates in the agentic software development tooling layer"
 ---
 
-Rowboat (rowboatlabs/rowboat) is an open-source AI coding assistant that positions itself as an "AI coworker" with persistent memory capabilities. With over 12,800 stars and 1,200 forks on GitHub as of early 2026, it has established itself as a significant project in the AI pair programming ecosystem.
+### Signal
+Rowboat is published at [rowboatlabs/rowboat](https://github.com/rowboatlabs/rowboat) as an open-source AI coworker for coding workflows with persistent memory.
+
+### Context
+The project sits in the agentic software development layer, where coding assistants are shifting from transient chat sessions toward stateful coworkers with longer task memory.
+
+### Relevance
+Rowboat is relevant because memory changes the accountability surface of coding agents: context persistence helps long-horizon work, but also needs inspectable state and operator control.
+
+[Rowboat](https://github.com/rowboatlabs/rowboat) (rowboatlabs/rowboat) is an open-source AI coding assistant that positions itself as an "AI coworker" with persistent memory capabilities. With over 12,800 stars and 1,200 forks on GitHub as of early 2026, it has established itself as a significant project in the AI pair programming ecosystem.
 
 The core differentiator of Rowboat is its emphasis on **memory** — maintaining context across sessions while supporting both local and cloud inference backends. This memory-first approach distinguishes it from transient chat-based coding assistants, aligning with the broader trend toward persistent agent state documented in the [Persistent Agent State and Memory Infrastructure](/circuit/infra/persistent-agent-memory-infrastructure) circuit.
 

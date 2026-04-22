@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: sdcb-chats
 abstract: "一个自托管的 AI 网关和前端，支持 21+ 模型提供商，内置可观测性、沙盒代码执行及企业级安全控制。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/sdcb-chats/
 links:

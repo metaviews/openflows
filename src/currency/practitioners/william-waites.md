@@ -41,3 +41,8 @@ Active researcher and operator. Leith Document Company is operational. Plumbing 
 
 ### Connections
 Waites is the practitioner most directly connected to the artificial-organisations circuit. His dual role as researcher and operator — building the formal tools and running production systems on them — distinguishes him from purely theoretical contributions to the multi-agent reliability question.
+
+### Sources
+
+- Artificial Organisations paper: https://arxiv.org/abs/2602.13275
+- OSF profile: https://osf.io/nhj8c/

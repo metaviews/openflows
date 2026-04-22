@@ -26,7 +26,7 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-GitHub repository sdcb/chats presents a powerful and flexible frontend and AI gateway for large language models. It supports 21+ mainstream AI model providers including OpenAI, DeepSeek, and DashScope. Key features include Docker deployment, code interpreter with sandboxed execution, API gateway compatibility (Chat Completions/Messages), request tracing for observability, and enterprise security features like Keycloak SSO and audit logs.
+GitHub repository [sdcb/chats](https://github.com/sdcb/chats) presents a powerful and flexible frontend and AI gateway for large language models. It supports 21+ mainstream AI model providers including OpenAI, DeepSeek, and DashScope. Key features include Docker deployment, code interpreter with sandboxed execution, API gateway compatibility (Chat Completions/Messages), request tracing for observability, and enterprise security features like Keycloak SSO and audit logs.
 
 ### Context
 Sdcb Chats occupies the infrastructure layer of the AI application stack, functioning as a centralized gateway for model routing and user management. It addresses the need for unified access across diverse model providers while maintaining local control over data and inference costs. The project is built on .NET/C# and emphasizes operational visibility through HTTP request tracing and management dashboards.

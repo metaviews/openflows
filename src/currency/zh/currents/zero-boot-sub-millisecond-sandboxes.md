@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: zero-boot-sub-millisecond-sandboxes
 abstract: "ZeroBoot 采用写时复制 (CoW) 分叉技术，在亚毫秒级内隔离不受信任的 AI 智能体代码执行，消除容器启动延迟。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/zero-boot-sub-millisecond-sandboxes/
 links:

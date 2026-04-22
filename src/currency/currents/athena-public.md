@@ -6,6 +6,7 @@ currencyType: "current"
 currencyId: athena-public
 abstract: "Athena-Public implements a local-first memory layer for AI agents using Markdown-based state persistence to enable cross-model continuity and data ownership."
 tags:
+  - currency
   - memory
   - local-first
   - agent-framework

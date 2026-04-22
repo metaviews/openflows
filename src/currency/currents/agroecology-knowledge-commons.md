@@ -18,6 +18,8 @@ lastReviewed: 2026-03-22
 
 Open agroecology practice is increasingly organized through shared knowledge layers: open seed documentation, community farm logs, and reusable field-data structures.
 
+Reference anchors: [OpenTEAM](https://openteam.community/) and the [FAIR data principles](https://www.go-fair.org/fair-principles/).
+
 ### Context
 
 This is less a single platform than an interoperability pattern. Farmers, researchers, and local groups publish methods, observations, and outcomes in ways others can inspect, adapt, and re-run. The practical unit is not just a paper or dashboard, but a transferable operational recipe tied to place-specific constraints.

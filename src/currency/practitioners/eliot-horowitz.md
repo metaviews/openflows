@@ -44,3 +44,7 @@ Active infrastructure signal at the software-robotics boundary.
 
 - Linked to `viam` and `openpilot` as adjacent infrastructure and autonomy execution pathways.
 - Linked to `embodied-ai-governance` as the operator reference for software-native robotics infrastructure and fleet-level governance.
+
+### Sources
+
+- Sequoia founder profile: https://sequoiacap.com/founder/eliot-horowitz/

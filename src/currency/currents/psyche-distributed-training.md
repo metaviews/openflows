@@ -7,7 +7,21 @@ currencyId: psyche-distributed-training
 tags: [currency, distributed-training, infrastructure]
 permalink: /currency/currents/psyche-distributed-training/
 abstract: "A protocol suite enabling distributed training of transformer-based AI models over the internet, facilitating collaboration between untrusted parties without centralized coordination."
+links:
+  - id: open-weights-commons
+    relation: "supports collaborative production of open model weights"
+  - id: autonomous-research-accountability
+    relation: "raises validation and contribution-accounting questions for distributed training"
 ---
+
+### Signal
+Psyche is documented through the [PsycheFoundation/nousnet](https://github.com/PsycheFoundation/nousnet) repository and [Psyche docs](https://docs.psyche.network) as infrastructure for distributed model training.
+
+### Context
+The project addresses collaborative training across distributed and potentially untrusted participants, where coordination, verification, and contribution accounting become central technical questions.
+
+### Relevance
+Psyche is relevant because open-weight production depends not only on released checkpoints, but also on shared infrastructure for training models outside centralized cloud control.
 
 # Psyche Distributed Training Network
 

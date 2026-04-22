@@ -44,3 +44,7 @@ The NemoClaw stack is currently in announcement phase at GTC 2026. It is positio
 
 ### Connections
 This entry links to the existing `nemoclaw` platform definition, which anticipated this launch. It connects to `openclaw` as the base framework being optimized. The `local-inference-baseline` circuit provides the context for treating inference as ordinary local infrastructure.
+
+### Sources
+- NVIDIA NemoClaw product page: https://www.nvidia.com/en-us/ai/nemoclaw/
+- NVIDIA NemoClaw developer guide: https://docs.nvidia.com/nemoclaw/0.0.4/about/how-it-works.html

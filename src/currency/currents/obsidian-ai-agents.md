@@ -26,7 +26,7 @@ mediation:
 ---
 
 ### Signal
-A March 2026 signal from opensourceprojects identifies a GitHub repository (kepano/obsidian-skills) positioning itself as the definitive tool for building AI agents within the Obsidian note-taking environment. The signal describes Obsidian not merely as a markdown editor but as a personal knowledge base capable of autonomous action, including summarization, idea generation, and note organization.
+A March 2026 [opensourceprojects signal](https://opensourceprojects.dev/post/802e6bcf-1b9b-44c4-a9d7-239ede061fde) identifies a GitHub repository (kepano/obsidian-skills) positioning itself as the definitive tool for building AI agents within the Obsidian note-taking environment. The signal describes Obsidian not merely as a markdown editor but as a personal knowledge base capable of autonomous action, including summarization, idea generation, and note organization.
 
 ### Context
 This entry situates agent execution within local-first knowledge management infrastructure. Unlike cloud-based agent platforms, this approach leverages the existing Obsidian vault as the primary memory and context store. It aligns with the Local Inference as Baseline circuit by treating model interaction as a layer on top of existing user-owned data structures rather than a separate silo.

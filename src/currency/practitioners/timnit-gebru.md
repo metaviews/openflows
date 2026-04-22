@@ -41,3 +41,7 @@ Active operator. DAIR Institute is producing ongoing research, convening indepen
 ### Connections
 
 - Linked to `institutional-trust-resilience` and `civic-influence-resilience` as the accountability operator underpinning both circuits.
+
+### Sources
+
+- DAIR Institute: https://www.dair-institute.org/

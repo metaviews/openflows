@@ -41,3 +41,7 @@ Active operator signal in open agent tooling, AI-native development workflows, a
 ### Connections
 
 - Linked to `openclaw` and `inspectable-agent-operations` as the clearest current and circuit adjacencies.
+
+### Sources
+
+- Personal site: https://steipete.me/

@@ -28,7 +28,7 @@ mediation:
 ---
 
 ### Signal
-The signal identifies a GitHub repository (abraxas914/VESTI) offering a self-hosted solution for indexing and searching local records of AI model interactions. The tool addresses the fragmentation of AI context by providing a persistent, private storage layer for technical solutions and prompts.
+The signal identifies a GitHub repository ([abraxas914/VESTI](https://github.com/abraxas914/VESTI)) offering a self-hosted solution for indexing and searching local records of AI model interactions. The tool addresses the fragmentation of AI context by providing a persistent, private storage layer for technical solutions and prompts.
 
 ### Context
 AI interactions often occur in ephemeral contexts, leading to knowledge fragmentation across sessions. Users require persistent, private storage for technical solutions and prompts without third-party dependency or cloud-based data aggregation. This aligns with the broader shift toward local-first infrastructure and data sovereignty in AI workflows.

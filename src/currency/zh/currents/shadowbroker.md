@@ -3,10 +3,11 @@ layout: layouts/currency-item.njk
 title: "Shadowbroker（影子经纪人）"
 lang: zh
 date: 2026-03-15
-currencyType: "流"
+currencyType: "current"
 currencyId: shadowbroker
 abstract: "Shadowbroker 是一个开源实时 OSINT 仪表盘，聚合来自公共情报源的实时流——包括飞机、船只、卫星、地震事件及地缘政治事件——整合至统一的交互式地图。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/shadowbroker/
 links:

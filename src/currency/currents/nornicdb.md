@@ -28,7 +28,7 @@ lastReviewed: 2026-03-15
 ---
 
 ### Signal
-NornicDB is a high-performance database combining graph and vector capabilities built in Go. It targets AI agent workflows by maintaining protocol compatibility with Neo4j (Bolt protocol, Cypher query language) and Qdrant (gRPC API). The system introduces GPU-accelerated search and a GraphQL endpoint while preserving the ability to use existing client drivers with zero code changes.
+[NornicDB](https://github.com/orneryd/NornicDB) is a high-performance database combining graph and vector capabilities built in Go. It targets AI agent workflows by maintaining protocol compatibility with Neo4j (Bolt protocol, Cypher query language) and Qdrant (gRPC API). The system introduces GPU-accelerated search and a GraphQL endpoint while preserving the ability to use existing client drivers with zero code changes.
 
 ### Context
 AI agents increasingly require hybrid retrieval patterns that combine structural relationship reasoning (graph) with semantic proximity search (vectors). Current stacks often demand maintaining two separate databases or complex middleware to bridge the gap. NornicDB positions itself as a unified persistence layer that preserves existing API contracts to reduce friction while offloading compute-heavy search operations to GPU resources.

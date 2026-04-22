@@ -6,6 +6,7 @@ currencyType: "current"
 currencyId: "openviking"
 abstract: "OpenViking is an open-source context database that unifies agent memory, resources, and skills through a hierarchical filesystem paradigm."
 tags:
+  - currency
   - agent
   - context-database
   - filesystem

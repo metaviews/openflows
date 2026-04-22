@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: generic-agent
 abstract: "一种极简的、自我演化的自主智能体框架，将执行路径结晶为可复用的技能，通过轻量级 Python 运行时赋予系统级控制。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/generic-agent/
 links:

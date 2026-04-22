@@ -6,6 +6,7 @@ const { validateCurrencyMarkdown } = require('../lib/validation')
 
 const ALLOWED_LIMITS = [25, 50, 100]
 const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+const SEARCH_STOP_WORDS = new Set(['entry', 'entries', 'knowledge', 'base', 'kb', 'result', 'results'])
 
 function normalizeSearch(value) {
   return String(value || '').trim().replace(/\s+/g, ' ').slice(0, 120)
@@ -30,6 +31,12 @@ function searchableText(entry) {
     entry.lang,
     linkedIds,
   ].filter(Boolean).join(' ').toLowerCase()
+}
+
+function searchTerms(query) {
+  const rawTerms = String(query || '').toLowerCase().split(/\s+/).filter(Boolean)
+  const meaningfulTerms = rawTerms.filter(term => !SEARCH_STOP_WORDS.has(term))
+  return meaningfulTerms.length ? meaningfulTerms : rawTerms
 }
 
 function titleBucket(entry) {
@@ -108,7 +115,7 @@ async function entriesRoutes(fastify) {
     if (type) entries = entries.filter(e => e.currencyType === type)
     if (lang) entries = entries.filter(e => e.lang === lang)
     if (searchQuery) {
-      const terms = searchQuery.toLowerCase().split(/\s+/).filter(Boolean)
+      const terms = searchTerms(searchQuery)
       entries = entries.filter(entry => {
         const haystack = searchableText(entry)
         return terms.every(term => haystack.includes(term))

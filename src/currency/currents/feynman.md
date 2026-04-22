@@ -7,9 +7,25 @@ currencyId: feynman
 tags: [currency, research, agentic-investigation, cli-native]
 permalink: /currency/currents/feynman/
 abstract: "Feynman is a CLI-native, open-source AI research agent focused on scientific literature synthesis, multi-agent investigation, and code auditing, supporting both local and cloud inference backends."
+links:
+  - id: autonomous-research-accountability
+    relation: "requires traceable citation and validation practices for autonomous research output"
+  - id: terminal-native-agentic-workflows
+    relation: "uses a CLI-first research workflow"
+  - id: inspectable-agent-operations
+    relation: "emphasizes logs, citations, and auditable research operations"
 ---
 
-Feynman is a CLI-native, open-source AI research agent designed to automate the synthesis of scientific literature, enable multi-agent investigation workflows, and audit research code. Unlike general-purpose AI assistants, Feynman is specialized for research-intensive tasks—reading papers, extracting insights, comparing methodologies, and tracing claims across the literature.
+### Signal
+Feynman is presented at [feynman.is](https://www.feynman.is/) with source available at [getcompanion-ai/feynman](https://github.com/getcompanion-ai/feynman), focused on research-agent workflows for scientific literature and code.
+
+### Context
+The project sits between research assistants and terminal-native agents, emphasizing literature synthesis, investigation, and audit trails rather than general chat.
+
+### Relevance
+Feynman matters because autonomous research systems require traceable citations, reproducible workflows, and human-maintained interpretive authority.
+
+[Feynman](https://www.feynman.is/) is a CLI-native, open-source AI research agent designed to automate the synthesis of scientific literature, enable multi-agent investigation workflows, and audit research code. Source code is published at [getcompanion-ai/feynman](https://github.com/getcompanion-ai/feynman). Unlike general-purpose AI assistants, Feynman is specialized for research-intensive tasks—reading papers, extracting insights, comparing methodologies, and tracing claims across the literature.
 
 ## Core Capabilities
 

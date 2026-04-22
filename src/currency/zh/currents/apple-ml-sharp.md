@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: apple-ml-sharp
 abstract: "Apple ML-Sharp 利用实时推理（real-time inference），从单张 2D 图像生成新的 3D 视角，扩展了 Apple Silicon 上的本地视觉重建能力。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/apple-ml-sharp/
 links:

@@ -7,7 +7,23 @@ currencyId: agentscope
 tags: [currency]
 permalink: /currency/currents/agentscope/
 abstract: "AgentScope is a production-ready, easy-to-use agent framework with essential abstractions for increasingly agentic LLMs, emphasizing visibility, trust, and built-in fine-tuning support."
+links:
+  - id: inspectable-agent-operations
+    relation: "provides observability and trust mechanisms required by inspectable agent operations"
+  - id: open-model-interoperability-layer
+    relation: "decouples agent abstractions from specific model backends"
+  - id: post-training-model-adaptation-infrastructure
+    relation: "includes fine-tuning support for adapting agent behavior"
 ---
+
+### Signal
+AgentScope is an open-source agent framework published at [agentscope-ai/agentscope](https://github.com/agentscope-ai/agentscope), positioned around production use, visibility, and trust in increasingly agentic LLM systems.
+
+### Context
+The project sits in the agent framework layer where multi-agent orchestration, model-backend flexibility, memory, and observability are becoming baseline infrastructure rather than optional extensions.
+
+### Relevance
+AgentScope matters to Openflows because it makes agent operation inspectable: operators can trace behavior, adapt models, and keep governance close to execution rather than treating agent decisions as opaque output.
 
 [AgentScope](https://github.com/agentscope-ai/agentscope) is a production-ready, easy-to-use agent framework designed for increasingly agentic LLMs. As of April 2026, the repository has garnered **24,000+ stars** and **2,600+ forks**, indicating strong adoption in both academic and industrial settings.
 

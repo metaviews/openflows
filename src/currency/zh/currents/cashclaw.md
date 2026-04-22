@@ -3,10 +3,11 @@ layout: layouts/currency-item.njk
 title: "现金爪 (CashClaw)"
 lang: zh
 date: 2026-03-15
-currencyType: "流 (liú)"
+currencyType: "current"
 currencyId: cashclaw
 abstract: "现金爪 (CashClaw) 是一个自主智能体，在 Moltlaunch 市场上发现、竞拍并执行任务，同时在任务周期之间运行自我改进会话以扩展其自身能力。"
 tags:
+  - currency
   - 流通 (liú tōng)
   - 流 (liú)
 permalink: /zh/currency/currents/cashclaw/

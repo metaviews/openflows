@@ -7,9 +7,25 @@ currencyId: miroshark
 tags: [currency, multi-agent, simulation, neo4j, polymarket]
 permalink: /currency/currents/miroshark/
 abstract: "Multi-agent simulation engine generating swarm intelligence from documents to model cross-platform public reaction and prediction markets locally or via API."
+links:
+  - id: civic-influence-resilience
+    relation: "models public reaction and narrative dynamics relevant to civic influence resilience"
+  - id: artificial-organisations
+    relation: "uses structured multi-agent populations as an analytic method"
+  - id: persistent-agent-memory-infrastructure
+    relation: "relies on graph memory and state tracking across simulated agents"
 ---
 
-MiroShark operates as a universal swarm intelligence engine designed to simulate public discourse and market dynamics based on input documentation. It ingests text inputs such as press releases, policy drafts, or financial reports to instantiate hundreds of AI agents with distinct personas. These agents interact across simulated environments representing Twitter, Reddit, and Polymarket, tracking belief states, confidence levels, and trust metrics over time. The system functions as infrastructure for stress-testing narratives and observing emergent social behaviors without requiring live deployment.
+### Signal
+MiroShark is published at [aaronjmars/MiroShark](https://github.com/aaronjmars/MiroShark) as a swarm-intelligence simulation engine for document-driven public reaction and market modeling.
+
+### Context
+The system uses graph memory, simulated social platforms, and prediction-market mechanics to model how agents might react to documents and narratives.
+
+### Relevance
+MiroShark is relevant because it makes civic and market simulation operational, while also requiring careful limits around synthetic personas, platform assumptions, and interpretation of results.
+
+[MiroShark](https://github.com/aaronjmars/MiroShark) operates as a universal swarm intelligence engine designed to simulate public discourse and market dynamics based on input documentation. It ingests text inputs such as press releases, policy drafts, or financial reports to instantiate hundreds of AI agents with distinct personas. These agents interact across simulated environments representing Twitter, Reddit, and Polymarket, tracking belief states, confidence levels, and trust metrics over time. The system functions as infrastructure for stress-testing narratives and observing emergent social behaviors without requiring live deployment.
 
 ### Technical Architecture
 
@@ -23,6 +39,7 @@ Belief states are tracked per agent, recording stance (-1 to +1), confidence (0 
 
 ### Linkage Check
 
+*   **Repository:** https://github.com/aaronjmars/MiroShark
 *   **Neo4j:** Requires local instance or managed service for graph storage and querying.
 *   **LLM Provider:** Supports local deployment or cloud API via OpenRouter. Context window limits apply to agent memory and graph retrieval.
 *   **Polymarket API:** Requires active account and API keys for market creation and trade execution. Simulation relies on AMM pricing logic.

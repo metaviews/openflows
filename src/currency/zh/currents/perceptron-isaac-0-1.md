@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: perceptron-isaac-0-1
 abstract: "一个 20 亿参数的多模态模型，结合 Qwen3-1.7B 与 Siglip2，具备上下文学习能力，用于具身空间推理与视觉问答。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/perceptron-isaac-0-1/
 links:

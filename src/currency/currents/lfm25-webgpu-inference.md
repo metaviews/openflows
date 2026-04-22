@@ -30,7 +30,7 @@ mediation:
 ---
 
 ### Signal
-A March 2026 Bilibili video report documents the deployment of LFM2.5 models using WebGPU technology. The signal highlights the capability to run 24B and 35B parameter models on hardware with less than 16GB of VRAM without requiring local software installation or dedicated graphics cards. The content references LiquidAI's ecosystem and mentions related tools such as drawio-skill and OpenPencil for integrated workflows.
+A March 2026 [Bilibili video report](https://www.bilibili.com/video/BV1UyPdzeEgi/) documents the deployment of LFM2.5 models using WebGPU technology. Liquid AI’s own [LFM2.5 release notes](https://www.liquid.ai/blog/introducing-lfm2-5-the-next-generation-of-on-device-ai) provide the model-family reference. The signal highlights the capability to run 24B and 35B parameter models on hardware with less than 16GB of VRAM without requiring local software installation or dedicated graphics cards. The content references LiquidAI's ecosystem and mentions related tools such as drawio-skill and OpenPencil for integrated workflows.
 
 ### Context
 Traditional local inference relies heavily on CUDA cores and significant VRAM capacity, often necessitating dedicated hardware. WebGPU provides a standardized API for high-performance graphics and compute tasks directly within the browser. This signal indicates a shift toward hardware-agnostic inference where the browser runtime becomes the primary execution environment, decoupling model capability from local physical specifications.

@@ -27,7 +27,7 @@ mediation:
 ---
 
 ### Signal
-NVIDIA Technical Blog (2026-03-05) documents the integration of Alibaba's Qwen3.5 series for native multimodal agent development. The signal highlights a ~400B parameter vision-language model (VLM) featuring a hybrid architecture with built-in reasoning capabilities. Deployment is optimized for NVIDIA GPU-accelerated endpoints rather than local consumer hardware inference.
+[NVIDIA Technical Blog](https://developer.nvidia.com/blog/develop-native-multimodal-agents-with-qwen3-5-vlm-using-nvidia-gpu-accelerated-endpoints/) (2026-03-05) documents the integration of Alibaba's Qwen3.5 series for native multimodal agent development. The signal highlights a ~400B parameter vision-language model (VLM) featuring a hybrid architecture with built-in reasoning capabilities. Deployment is optimized for NVIDIA GPU-accelerated endpoints rather than local consumer hardware inference.
 
 ### Context
 The Qwen3.5 release represents a shift toward native multimodal architectures in open-weight models, moving beyond text-centric VLMs. This release aligns with broader industry trends where foundation models are optimized for specific inference hardware stacks (NVIDIA) rather than generic open formats. It competes with other multimodal signals in the KB such as Kimi.com and V-JEPA (Meta), but distinguishes itself through the NVIDIA ecosystem integration.

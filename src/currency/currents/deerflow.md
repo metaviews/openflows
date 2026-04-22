@@ -25,7 +25,7 @@ lastReviewed: 2026-03-21
 ---
 
 ### Signal
-DeerFlow is ByteDance's open source contribution to the agent framework space — an MIT-licensed LangChain-based orchestrator designed for long-running research, coding, and content generation tasks spanning minutes to hours. Self-described as a "SuperAgent harness."
+[DeerFlow](https://github.com/bytedance/deer-flow) is ByteDance's open source contribution to the agent framework space — an MIT-licensed LangChain-based orchestrator designed for long-running research, coding, and content generation tasks spanning minutes to hours. Self-described as a "SuperAgent harness."
 
 ### Context
 Built on LangChain with support for Doubao, DeepSeek, OpenAI, and Gemini as model backends. The v2.0 architecture includes long and short-term memory systems, sequential and parallel task planning, and a Docker-based All-in-One Sandbox integrating Browser, Shell, File System, MCP, and VSCode Server. Skills load progressively — only what the task requires. The project philosophy is explicit: "Originated from Open Source, give back to Open Source."

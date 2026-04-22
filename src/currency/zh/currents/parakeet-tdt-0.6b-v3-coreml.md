@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: parakeet-tdt-0.6b-v3-coreml
 abstract: "一款针对 Apple 硬件优化的 Core ML 推理多语言自动语音识别模型，参数量 0.6B，支持 25 种欧洲语言。"
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/parakeet-tdt-0.6b-v3-coreml/
 links:

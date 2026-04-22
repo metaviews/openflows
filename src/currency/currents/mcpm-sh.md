@@ -6,6 +6,7 @@ currencyType: "current"
 currencyId: mcpm-sh
 abstract: "mcpm.sh is a CLI package manager for Model Context Protocol servers that centralizes discovery, configuration, and profile management across heterogeneous client environments."
 tags:
+  - currency
   - mcp
   - cli
   - tooling

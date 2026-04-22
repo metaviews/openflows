@@ -7,7 +7,23 @@ currencyId: goose
 tags: [currency, agent, tooling]
 permalink: /currency/currents/goose/
 abstract: "goose is a native, open-source AI agent framework (desktop, CLI, API) that generalizes beyond code suggestions to any task, running locally with 15+ LLM providers and 70+ MCP extensions."
+links:
+  - id: terminal-native-agentic-workflows
+    relation: "provides a terminal-first interface for general-purpose agent work"
+  - id: agent-tooling-interoperability-infrastructure
+    relation: "uses MCP extensions as its tool interoperability layer"
+  - id: local-inference-baseline
+    relation: "supports Ollama and other local inference backends"
 ---
+
+### Signal
+goose is an open-source agent runtime associated with the [Agentic AI Foundation](https://aaif.io/) and published through public project materials and repositories.
+
+### Context
+The project combines desktop, CLI, API access, multiple model providers, and MCP extensions into a general-purpose agent environment.
+
+### Relevance
+goose is relevant because it shows open agent infrastructure moving toward governed, extensible runtimes that are not bound to a single model vendor or interface.
 
 goose is an open-source, native AI agent framework developed by the [Agentic AI Foundation (AAIF)](https://aaif.io/), an initiative at the Linux Foundation. It provides a unified experience for building and running AI agents across desktop, terminal, and API interfaces — designed to handle code tasks, research, writing, automation, data analysis, and general workflows, not just code generation.
 

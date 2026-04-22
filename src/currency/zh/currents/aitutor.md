@@ -7,6 +7,7 @@ currencyType: "current"
 currencyId: aitutor
 abstract: AITutor 是一个开源命令行工具，集成大语言模型推理，在终端会话中提供实时解释和调试辅助。
 tags:
+  - currency
   - 流通
 permalink: /zh/currency/currents/aitutor/
 links:

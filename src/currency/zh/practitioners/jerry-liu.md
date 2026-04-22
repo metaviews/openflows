@@ -8,7 +8,7 @@ currencyId: jerry-liu
 abstract: 杰瑞·刘创立了 LlamaIndex，这是一个开源数据框架，将检索增强生成（RAG）确立为一项工程实践，而非研究概念，定义了语言模型如何连接外部知识。
 tags:
   - currency
-permalink: /zh/流通/修行者/jerry-liu/
+permalink: /zh/currency/practitioners/jerry-liu/
 links:
   - id: ragflow
     relation: "基于 LlamaIndex 确立的检索模式构建的 RAG 基础设施"

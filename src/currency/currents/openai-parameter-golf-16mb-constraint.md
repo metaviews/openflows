@@ -29,7 +29,7 @@ mediation:
 ---
 
 ### Signal
-A GitHub repository from OpenAI proposes training language models constrained to a 16MB memory footprint, challenging the industry's focus on scaling parameter counts. The initiative frames model size as a primary constraint for experimentation, moving beyond standard autoregressive generation patterns toward extreme compression.
+A [GitHub repository from OpenAI](https://github.com/openai/parameter-golf) and the [Parameter Golf challenge page](https://openai.com/index/parameter-golf/) propose training language models constrained to a 16MB memory footprint, challenging the industry's focus on scaling parameter counts. The initiative frames model size as a primary constraint for experimentation, moving beyond standard autoregressive generation patterns toward extreme compression.
 
 ### Context
 The project sits within the broader efficiency movement, contrasting with trends favoring trillion-parameter models. It aligns with infrastructure goals that prioritize deployability on consumer hardware and reduced dependency on high-end GPU clusters.
