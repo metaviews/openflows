@@ -5,6 +5,70 @@ const { readEntry, saveEntry, deleteEntry } = require('../lib/entries')
 const { validateCurrencyMarkdown } = require('../lib/validation')
 
 const ALLOWED_LIMITS = [25, 50, 100]
+const ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')
+
+function normalizeSearch(value) {
+  return String(value || '').trim().replace(/\s+/g, ' ').slice(0, 120)
+}
+
+function normalizeLetter(value) {
+  const raw = String(value || '').trim().toUpperCase()
+  if (raw === '0-9' || raw === '#') return raw
+  if (/^[A-Z]$/.test(raw)) return raw
+  return ''
+}
+
+function searchableText(entry) {
+  const linkedIds = Array.isArray(entry.links)
+    ? entry.links.map(link => link && link.id).filter(Boolean).join(' ')
+    : ''
+  return [
+    entry.currencyId,
+    entry.title,
+    entry.abstract,
+    entry.currencyType,
+    entry.lang,
+    linkedIds,
+  ].filter(Boolean).join(' ').toLowerCase()
+}
+
+function titleBucket(entry) {
+  const text = String(entry.title || entry.currencyId || '').trim()
+  const first = text.match(/[A-Za-z0-9]/)?.[0] || ''
+  if (!first) return '#'
+  if (/[0-9]/.test(first)) return '0-9'
+  return first.toUpperCase()
+}
+
+function buildAlphabetBuckets(entries, activeLetter) {
+  const counts = new Map()
+  for (const entry of entries) {
+    const bucket = titleBucket(entry)
+    counts.set(bucket, (counts.get(bucket) || 0) + 1)
+  }
+  return [
+    ...ALPHABET.map(letter => ({ label: letter, value: letter, count: counts.get(letter) || 0 })),
+    { label: '0-9', value: '0-9', count: counts.get('0-9') || 0 },
+    { label: '#', value: '#', count: counts.get('#') || 0 },
+  ].map(bucket => ({
+    ...bucket,
+    active: bucket.value === activeLetter,
+    disabled: !counts.has(bucket.value),
+  }))
+}
+
+function buildEntriesUrl({ page = 1, limit, sort, sortDir, type, lang, q, letter }) {
+  const params = new URLSearchParams()
+  params.set('page', String(page))
+  params.set('limit', String(limit))
+  params.set('sort', sort)
+  params.set('dir', sortDir)
+  if (type) params.set('type', type)
+  if (lang) params.set('lang', lang)
+  if (q) params.set('q', q)
+  if (letter) params.set('letter', letter)
+  return `/entries?${params.toString()}`
+}
 
 function buildPageLinks(page, pageCount) {
   if (pageCount <= 7) {
@@ -28,6 +92,8 @@ async function entriesRoutes(fastify) {
   fastify.get('/entries', async (req, reply) => {
     const manifest = loadManifest()
     const { type, lang } = req.query
+    const searchQuery = normalizeSearch(req.query.q)
+    const letter = normalizeLetter(req.query.letter)
     const sortFields = {
       id: 'currencyId',
       type: 'currencyType',
@@ -35,12 +101,21 @@ async function entriesRoutes(fastify) {
       title: 'title',
       date: 'date',
     }
-    const sort = sortFields[req.query.sort] ? req.query.sort : 'id'
+    const sort = sortFields[req.query.sort] ? req.query.sort : (letter ? 'title' : 'id')
     const sortDir = req.query.dir === 'desc' ? 'desc' : 'asc'
     const limit = ALLOWED_LIMITS.includes(Number(req.query.limit)) ? Number(req.query.limit) : 50
     let entries = manifest?.entries || []
     if (type) entries = entries.filter(e => e.currencyType === type)
     if (lang) entries = entries.filter(e => e.lang === lang)
+    if (searchQuery) {
+      const terms = searchQuery.toLowerCase().split(/\s+/).filter(Boolean)
+      entries = entries.filter(entry => {
+        const haystack = searchableText(entry)
+        return terms.every(term => haystack.includes(term))
+      })
+    }
+    const alphabetBuckets = buildAlphabetBuckets(entries, letter)
+    if (letter) entries = entries.filter(e => titleBucket(e) === letter)
     entries = [...entries].sort((a, b) => {
       const field = sortFields[sort]
       let result
@@ -71,12 +146,26 @@ async function entriesRoutes(fastify) {
       rangeEnd,
       filterType: type || '',
       filterLang: lang || '',
+      searchQuery,
+      activeLetter: letter,
+      alphabetBuckets,
       sort,
       sortDir,
       limit,
       page,
       pageCount,
       pageLinks: buildPageLinks(page, pageCount),
+      buildUrl: (overrides = {}) => buildEntriesUrl({
+        page,
+        limit,
+        sort,
+        sortDir,
+        type: type || '',
+        lang: lang || '',
+        q: searchQuery,
+        letter,
+        ...overrides,
+      }),
       translatedIds,
     })
   })

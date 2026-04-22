@@ -6,13 +6,13 @@
     {% set nextDir = 'desc' %}
   {% endif %}
   <a class="sort-link{% if sort == key %} sort-active{% endif %}"
-     href="/entries?sort={{ key }}&dir={{ nextDir }}{% if filterType %}&type={{ filterType }}{% endif %}{% if filterLang %}&lang={{ filterLang }}{% endif %}&limit={{ limit }}">
+     href="{{ buildUrl({ page: 1, sort: key, sortDir: nextDir }) }}">
     {{ label }}
     {% if sort == key %}<span class="sort-arrow">{% if sortDir == 'asc' %}↑{% else %}↓{% endif %}</span>{% endif %}
   </a>
 {% endmacro %}
 
-{% macro pageUrl(p) %}/entries?page={{ p }}&limit={{ limit }}&sort={{ sort }}&dir={{ sortDir }}{% if filterType %}&type={{ filterType }}{% endif %}{% if filterLang %}&lang={{ filterLang }}{% endif %}{% endmacro %}
+{% macro pageUrl(p) %}{{ buildUrl({ page: p }) }}{% endmacro %}
 
 {% block content %}
 <div class="page-container">
@@ -24,6 +24,10 @@
       </span>
     </span>
     <div class="filter-bar">
+      <label class="search-control">
+        <span>Search:</span>
+        <input id="filter-search" type="search" value="{{ searchQuery | escape }}" placeholder="id, title, abstract, link" autocomplete="off">
+      </label>
       <span>Type:</span>
       <select id="filter-type" onchange="applyFilters()">
         <option value="" {% if not filterType %}selected{% endif %}>all</option>
@@ -43,9 +47,27 @@
         <option value="50"  {% if limit == 50  %}selected{% endif %}>50</option>
         <option value="100" {% if limit == 100 %}selected{% endif %}>100</option>
       </select>
+      <button class="btn btn-sm" type="button" onclick="applyFilters()">Search</button>
+      {% if searchQuery or activeLetter or filterType or filterLang %}
+        <a class="btn btn-sm" href="/entries?limit={{ limit }}&sort={{ sort }}&dir={{ sortDir }}">Clear</a>
+      {% endif %}
     </div>
   </div>
 
+  <nav class="alphabet-nav" aria-label="Browse entries alphabetically">
+    <a class="alpha-link{% if not activeLetter %} alpha-active{% endif %}" href="{{ buildUrl({ page: 1, letter: '' }) }}">All</a>
+    {% for bucket in alphabetBuckets %}
+      {% if bucket.disabled %}
+        <span class="alpha-link alpha-disabled" title="No entries">{{ bucket.label }}</span>
+      {% else %}
+        <a class="alpha-link{% if bucket.active %} alpha-active{% endif %}"
+           href="{{ buildUrl({ page: 1, letter: bucket.value, sort: 'title', sortDir: 'asc' }) }}"
+           title="{{ bucket.count }} entries">{{ bucket.label }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+
+  {% if entries.length %}
   <table class="entries-table">
     <thead>
       <tr>
@@ -78,6 +100,9 @@
       {% endfor %}
     </tbody>
   </table>
+  {% else %}
+    <p class="empty-state">No entries match the current search and filters.</p>
+  {% endif %}
 
   {% if pageCount > 1 %}
   <nav class="pagination">
@@ -111,14 +136,26 @@ function applyFilters() {
   const type = document.getElementById('filter-type').value
   const lang = document.getElementById('filter-lang').value
   const limit = document.getElementById('filter-limit').value
+  const q = document.getElementById('filter-search').value.trim()
   const params = new URLSearchParams()
   if (type) params.set('type', type)
   if (lang) params.set('lang', lang)
+  if (q) params.set('q', q)
+  {% if activeLetter %}
+  params.set('letter', '{{ activeLetter }}')
+  {% endif %}
   params.set('limit', limit)
   params.set('sort', '{{ sort }}')
   params.set('dir', '{{ sortDir }}')
   window.location.href = '/entries' + (params.toString() ? '?' + params.toString() : '')
 }
+
+document.getElementById('filter-search')?.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    event.preventDefault()
+    applyFilters()
+  }
+})
 
 async function translateEntry(id, btn) {
   btn.disabled = true
