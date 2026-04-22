@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-21T06:03:07.127Z",
+  "lastUpdated": "2026-04-22T06:10:16.871Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3704,6 +3704,70 @@
       "title": "List of large language models - Wikipedia",
       "source": "brave",
       "file": "wikipedia-list-large-language-models.md"
+    },
+    "https://www.bilibili.com/video/BV1M1DNBRE5K/": {
+      "date": "2026-04-22",
+      "decision": "skipped",
+      "title": "「Github一周热点109期」Claude Code被开源, Pretext文本排版引擎, 谷歌最新开源模型和3D建筑编辑器_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Video summary of weekly trends rather than operational documentation; contains potentially misleading claims (Claude Code open source) and leans towards hype over inspectable artifacts."
+    },
+    "https://github.com/jjang-ai/vmlx": {
+      "date": "2026-04-22",
+      "decision": "drafted",
+      "title": "vmlx",
+      "source": "github",
+      "file": "vmlx.md"
+    },
+    "https://github.com/DearVa/Everywhere": {
+      "date": "2026-04-22",
+      "decision": "drafted",
+      "title": "Everywhere",
+      "source": "github",
+      "file": "everywhere.md"
+    },
+    "https://github.com/uncSoft/anubis-oss": {
+      "date": "2026-04-22",
+      "decision": "drafted",
+      "title": "anubis-oss",
+      "source": "github",
+      "file": "anubis-native-macos-llm-benchmarking.md"
+    },
+    "https://opensourceprojects.dev/post/8ddc19f8-a7cf-42a5-9554-dd5e5653ce05": {
+      "date": "2026-04-22",
+      "decision": "drafted",
+      "title": "Google Research&apos;s foundation model for time-series forecasting.",
+      "source": "opensourceprojects",
+      "file": "google-timesfm.md"
+    },
+    "https://github.com/datawhalechina/every-embodied": {
+      "date": "2026-04-22",
+      "decision": "drafted",
+      "title": "GitHub - datawhalechina/every-embodied: 仅需Python基础，从0构建自己的具身智能机器人；从0逐步构建VLA/OpenVLA/SmolVLA/Pi0， 深入理解具身智能",
+      "source": "brave",
+      "file": "every-embodied-diy-robot-construction.md"
+    },
+    "https://github.com/yzhao062/agent-style": {
+      "date": "2026-04-22",
+      "decision": "drafted",
+      "title": "agent-style",
+      "source": "github",
+      "file": "agent-style.md"
+    },
+    "https://huggingface.co/nvidia/parakeet-unified-en-0.6b": {
+      "date": "2026-04-22",
+      "decision": "drafted",
+      "title": "nvidia/parakeet-unified-en-0.6b",
+      "source": "huggingface",
+      "file": "nvidia-parakeet-unified-0.6b-asr.md"
+    },
+    "https://www.woshipm.com/ai/6370531.html": {
+      "date": "2026-04-22",
+      "decision": "drafted",
+      "title": "开源项目Hermes Agent评测：越用越聪明的开源 AI 智能体 | 人人都是产品经理",
+      "source": "brave",
+      "file": "hermes-agent.md"
     }
   }
 }
