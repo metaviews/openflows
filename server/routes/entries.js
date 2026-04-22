@@ -100,7 +100,7 @@ async function entriesRoutes(fastify) {
     const manifest = loadManifest()
     const { type, lang } = req.query
     const searchQuery = normalizeSearch(req.query.q)
-    const letter = normalizeLetter(req.query.letter)
+    const letter = searchQuery ? '' : normalizeLetter(req.query.letter)
     const sortFields = {
       id: 'currencyId',
       type: 'currencyType',

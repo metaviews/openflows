@@ -142,7 +142,7 @@ function applyFilters() {
   if (lang) params.set('lang', lang)
   if (q) params.set('q', q)
   {% if activeLetter %}
-  params.set('letter', '{{ activeLetter }}')
+  if (!q) params.set('letter', '{{ activeLetter }}')
   {% endif %}
   params.set('limit', limit)
   params.set('sort', '{{ sort }}')
