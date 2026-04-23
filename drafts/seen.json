@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-22T06:10:16.871Z",
+  "lastUpdated": "2026-04-23T06:04:12.509Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3768,6 +3768,49 @@
       "title": "开源项目Hermes Agent评测：越用越聪明的开源 AI 智能体 | 人人都是产品经理",
       "source": "brave",
       "file": "hermes-agent.md"
+    },
+    "https://cloud.tencent.com/developer/article/2656524": {
+      "date": "2026-04-23",
+      "decision": "skipped",
+      "title": "2017-2026 年 AI 爆火核心工具、大模型完整时间线！看懂未来AI发展趋势-腾讯云开发者社区-腾讯云",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal predicts a future release (2026) as fact, indicating speculation rather than a verifiable open source artifact. Title is hype-driven and lacks operational specifics or inspectable links."
+    },
+    "https://github.com/rafska/awesome-local-llm": {
+      "date": "2026-04-23",
+      "decision": "drafted",
+      "title": "awesome-local-llm",
+      "source": "github",
+      "file": "awesome-local-llm.md"
+    },
+    "https://opensourceprojects.dev/post/e548ac30-a0c6-4396-b81e-892568966088": {
+      "date": "2026-04-23",
+      "decision": "error",
+      "title": "Fabric: 200+ reusable AI prompts you can pipe from the terminal",
+      "source": "opensourceprojects",
+      "reason": "invalid draft: missing currencyType; Missing layout.; Missing title.; Missing date.; Missing currencyId.; Missing currencyType.; Missing permalink.; tags must include currency.; Missing abstract."
+    },
+    "https://www.instaclustr.com/education/open-source-ai/top-7-open-source-llms-for-2026/": {
+      "date": "2026-04-23",
+      "decision": "drafted",
+      "title": "Top 7 open source LLMs for 2026",
+      "source": "brave",
+      "file": "top-7-open-source-llms-2026.md"
+    },
+    "https://github.com/zhikunqingtao/zhikuncode": {
+      "date": "2026-04-23",
+      "decision": "drafted",
+      "title": "zhikuncode",
+      "source": "github",
+      "file": "zhikuncode.md"
+    },
+    "https://faun.pub/the-open-source-ai-agent-frameworks-that-deserve-more-stars-on-github-6f1fd0e3fc99?gi=c0baea210252": {
+      "date": "2026-04-23",
+      "decision": "drafted",
+      "title": "The Open-Source AI Agent Frameworks That Deserve More Stars on GitHub | by TechLatest.Net | Apr, 2026 | FAUN.dev() 🐾",
+      "source": "brave",
+      "file": "open-source-ai-agent-frameworks-github-signal.md"
     }
   }
 }
