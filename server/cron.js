@@ -10,12 +10,19 @@ function startCron(db, discord = null) {
   cron.schedule('0 6 * * *', async () => {
     console.log('[cron] intake run starting')
     try {
+      const pendingBefore = db.prepare(`SELECT COUNT(*) as n FROM drafts WHERE status = 'pending'`).get()?.n || 0
       await ensureManifest()
       const intakeResult = await runScript(db, 'intake', ['--sources', 'github,huggingface,brave,opensourceprojects', '--limit', '10'])
-      await runScript(db, 'practitioners', ['--limit', '3'])
+      const practitionersResult = await runScript(db, 'practitioners', ['--limit', '3'])
       await runScript(db, 'audit')
       await commitSeen()
-      await discord?.notify('intake', { db, runId: intakeResult.runId })
+      const pendingAfter = db.prepare(`SELECT COUNT(*) as n FROM drafts WHERE status = 'pending'`).get()?.n || 0
+      await discord?.notify('intake', {
+        db,
+        runIds: [intakeResult.runId, practitionersResult.runId],
+        pendingBefore,
+        pendingAfter,
+      })
     } catch (err) {
       console.error('[cron] intake error:', err.message)
       try { await discord?.notify('error', { type: 'intake', error: err.message }) } catch {}

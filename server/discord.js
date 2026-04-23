@@ -16,10 +16,12 @@ const fs = require('fs')
 const path = require('path')
 
 const { TOOL_DEFS, executeToolCall, partitionToolCalls, summarizeToolCall } = require('./lib/peng-tools')
-const { loadManifest } = require('./lib/manifest')
+const { loadManifest, ensureManifest } = require('./lib/manifest')
+const { parseFrontmatter } = require('./lib/parse')
 const { buildStatusData } = require('./routes/status')
 const { buildQueueContext } = require('./lib/drafts')
 const { runScript } = require('./lib/runner')
+const { commitPerspective, commitSeen } = require('./lib/git')
 
 const OPENROUTER_URL = 'https://openrouter.ai/api/v1/chat/completions'
 const MAX_TOOL_ROUNDS = 4
@@ -30,7 +32,7 @@ const DISCORD_MAX = 1990
 const channelHistory = new Map()
 const pendingConfirmations = new Map()
 
-const ALLOWED_TRIGGER_TYPES = ['intake', 'synthesize', 'digest', 'audit', 'refresh', 'practitioners']
+const ALLOWED_TRIGGER_TYPES = ['intake', 'perspective', 'synthesize', 'digest', 'audit', 'refresh', 'practitioners']
 
 function isAuthorized(userId) {
   const ids = (process.env.DISCORD_AUTHORIZED_USERS || '').split(',').map(s => s.trim()).filter(Boolean)
@@ -164,6 +166,13 @@ async function sendReply(message, text) {
     } else {
       await message.channel.send(chunk)
     }
+  }
+}
+
+async function sendChannelText(channel, text) {
+  const chunks = splitMessage(text)
+  for (const chunk of chunks) {
+    await channel.send(chunk)
   }
 }
 
@@ -395,17 +404,17 @@ async function handleSlashCommand(db, client, interaction) {
     }
     await interaction.reply(`Starting **${type}** run…`)
     setImmediate(async () => {
+      const channel = await client.channels.fetch(process.env.DISCORD_CHANNEL_ID || interaction.channelId).catch(() => null)
       try {
-        const result = await runScript(db, type, [])
-        const channelId = process.env.DISCORD_CHANNEL_ID
-        if (channelId) {
-          const channel = await client.channels.fetch(channelId).catch(() => null)
-          if (channel) {
-            await channel.send(`**${type}** run complete (${result.status}).${result.summary ? ' ' + result.summary : ''}`)
-          }
+        const text = await executeDiscordTrigger(db, type)
+        if (channel) {
+          await sendChannelText(channel, text)
         }
       } catch (err) {
         console.error(`[discord] trigger ${type} error:`, err.message)
+        if (channel) {
+          await sendChannelText(channel, `**Run error** — ${type}: ${err.message}`.slice(0, DISCORD_MAX))
+        }
       }
     })
     return
@@ -424,28 +433,13 @@ async function postNotification(client, type, data) {
   }
 
   if (type === 'intake') {
-    const { db, runId } = data
-    if (!runId) return
-    const drafts = db.prepare(
-      `SELECT id, lang, type, title FROM drafts WHERE run_id = ? ORDER BY created_at LIMIT 15`
-    ).all(runId)
-    if (!drafts.length) {
-      await channel.send('**Intake complete** — no new drafts this run.')
-      return
-    }
-    const list = drafts.map(d => `• [${d.type}|${d.lang}] ${d.id}: ${d.title || '(untitled)'}`)
-    await channel.send(`**Intake complete** — ${drafts.length} new draft(s):\n${list.join('\n')}`.slice(0, DISCORD_MAX))
+    const text = buildIntakeNotificationText(data.db, data)
+    if (text) await sendChannelText(channel, text)
     return
   }
 
   if (type === 'digest') {
-    const digestPath = findLatestDigest()
-    if (!digestPath) {
-      await channel.send('**Perspective ready** — digest file not found.')
-      return
-    }
-    const content = fs.readFileSync(digestPath, 'utf8').slice(0, 1800)
-    await channel.send(`**Perspective ready**\n\n${content}`)
+    await sendChannelText(channel, buildDigestNotificationText())
     return
   }
 
@@ -454,10 +448,118 @@ async function postNotification(client, type, data) {
   }
 }
 
-function findLatestDigest() {
-  const dir = path.join(__dirname, '..', 'drafts')
+function buildIntakeNotificationText(db, { runIds = [], pendingBefore = null, pendingAfter = null } = {}) {
+  if (!db) return ''
+  const touched = listDraftsForRuns(db, runIds, 15)
+  const touchedCount = countDraftsForRuns(db, runIds)
+  const totalPending = pendingAfter ?? countPendingDrafts(db)
+
+  if (!touchedCount) {
+    if (totalPending > 0) {
+      return `**Intake complete** — no drafts added or updated this cycle. ${totalPending} pending draft(s) remain in queue.`
+    }
+    return '**Intake complete** — no drafts added or updated this cycle, and the queue is empty.'
+  }
+
+  const queueDelta = Number.isInteger(pendingBefore) && Number.isInteger(totalPending)
+    ? ` Queue: ${pendingBefore} -> ${totalPending}.`
+    : ` ${totalPending} pending total.`
+  const list = touched.map(d => `• [${d.type}|${d.lang}] ${d.id}: ${d.title || '(untitled)'}`)
+  return `**Intake complete** — ${touchedCount} draft(s) added or updated this cycle.${queueDelta}\n${list.join('\n')}`
+}
+
+function countPendingDrafts(db) {
+  const row = db.prepare(`SELECT COUNT(*) as n FROM drafts WHERE status = 'pending'`).get()
+  return row?.n || 0
+}
+
+function countDraftsForRuns(db, runIds = []) {
+  const ids = normalizeRunIds(runIds)
+  if (!ids.length) return 0
+  const placeholders = ids.map(() => '?').join(', ')
+  const row = db.prepare(
+    `SELECT COUNT(*) as n FROM drafts WHERE status = 'pending' AND run_id IN (${placeholders})`
+  ).get(...ids)
+  return row?.n || 0
+}
+
+function listDraftsForRuns(db, runIds = [], limit = 15) {
+  const ids = normalizeRunIds(runIds)
+  if (!ids.length) return []
+  const placeholders = ids.map(() => '?').join(', ')
+  return db.prepare(
+    `SELECT id, lang, type, title
+     FROM drafts
+     WHERE status = 'pending' AND run_id IN (${placeholders})
+     ORDER BY updated_at DESC, created_at DESC
+     LIMIT ?`
+  ).all(...ids, limit)
+}
+
+function normalizeRunIds(runIds) {
+  if (!Array.isArray(runIds)) return []
+  return runIds
+    .map(id => Number(id))
+    .filter(id => Number.isInteger(id) && id > 0)
+}
+
+function assertRunSuccess(type, result) {
+  if (result?.status === 'success') return result
+  const detail = result?.summary || result?.log?.trim()?.split(/\r?\n/).slice(-1)[0] || 'script failed'
+  throw new Error(`${type} failed: ${detail}`)
+}
+
+async function executeDiscordTrigger(db, type) {
+  if (type === 'intake') {
+    const pendingBefore = countPendingDrafts(db)
+    await ensureManifest()
+    const intakeResult = assertRunSuccess('intake', await runScript(db, 'intake', ['--limit', '10']))
+    const practitionersResult = assertRunSuccess('practitioners', await runScript(db, 'practitioners', ['--limit', '3']))
+    assertRunSuccess('audit', await runScript(db, 'audit'))
+    await commitSeen().catch(() => {})
+    const pendingAfter = countPendingDrafts(db)
+    return buildIntakeNotificationText(db, {
+      runIds: [intakeResult.runId, practitionersResult.runId],
+      pendingBefore,
+      pendingAfter,
+    })
+  }
+
+  if (type === 'perspective') {
+    await ensureManifest()
+    assertRunSuccess('synthesize', await runScript(db, 'synthesize'))
+    assertRunSuccess('digest', await runScript(db, 'digest'))
+    await commitPerspective().catch(() => {})
+    return buildDigestNotificationText()
+  }
+
+  if (type === 'digest') {
+    await ensureManifest()
+    const result = assertRunSuccess('digest', await runScript(db, 'digest'))
+    return `**digest** run complete (${result.status}).`
+  }
+
+  const result = assertRunSuccess(type, await runScript(db, type, []))
+  return `**${type}** run complete (${result.status}).${result.summary ? ' ' + result.summary : ''}`
+}
+
+function buildDigestNotificationText({ digestPath } = {}) {
+  const resolvedPath = digestPath || findLatestPerspectiveFile()
+  if (!resolvedPath) return '**Perspective ready** — published digest file not found.'
+
+  const raw = fs.readFileSync(resolvedPath, 'utf8')
+  const { frontmatter, body } = parseFrontmatter(raw)
+  const date = path.basename(resolvedPath, '.md')
+  const title = frontmatter.title || `Perspective ${date}`
+  const abstract = frontmatter.abstract ? `> ${frontmatter.abstract}\n\n` : ''
+  const preview = body.trim().slice(0, 1400)
+  return `**Perspective ready** — ${title}\nhttps://openflows.org/perspective/${date}/\n\n${abstract}${preview}`.slice(0, DISCORD_MAX)
+}
+
+function findLatestPerspectiveFile() {
+  const dir = path.join(__dirname, '..', 'src', 'perspective')
   try {
-    const files = fs.readdirSync(dir).filter(f => f.startsWith('digest-') && f.endsWith('.md'))
+    const files = fs.readdirSync(dir).filter(f => /^\d{4}-\d{2}-\d{2}\.md$/.test(f))
     if (!files.length) return null
     files.sort().reverse()
     return path.join(dir, files[0])
@@ -584,4 +686,10 @@ function initDiscord(db) {
   }
 }
 
-module.exports = { initDiscord }
+module.exports = {
+  initDiscord,
+  buildIntakeNotificationText,
+  buildDigestNotificationText,
+  findLatestPerspectiveFile,
+  executeDiscordTrigger,
+}
