@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-23T06:04:12.509Z",
+  "lastUpdated": "2026-04-24T06:03:51.041Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3811,6 +3811,46 @@
       "title": "The Open-Source AI Agent Frameworks That Deserve More Stars on GitHub | by TechLatest.Net | Apr, 2026 | FAUN.dev() 🐾",
       "source": "brave",
       "file": "open-source-ai-agent-frameworks-github-signal.md"
+    },
+    "https://opensourceprojects.dev/post/6fbb37b7-4fca-4a26-a550-dee671176d54": {
+      "date": "2026-04-24",
+      "decision": "skipped",
+      "title": "Mouser: Desktop App for Advanced Logitech Mouse Control",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Signal describes a general hardware utility tool for mouse control, which falls outside the open source AI ecosystem scope defined by Openflows."
+    },
+    "https://opensourceprojects.dev/post/c91fc108-f86e-4e9e-bc93-6cec445f243e": {
+      "date": "2026-04-24",
+      "decision": "skipped",
+      "title": "Extract any website styles into AI ready design docs",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Tangentially related; primarily a design extraction utility rather than core AI infrastructure. While labeled 'AI ready,' it lacks direct AI model or framework significance."
+    },
+    "https://opensourceprojects.dev/post/ccc34301-f7d6-4667-a4ae-dcf9ce2dabb5": {
+      "date": "2026-04-24",
+      "decision": "skipped",
+      "title": "Schedule and execute tasks across a cluster with zero effort",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Generic infrastructure tool; lacks explicit AI focus or integration with AI workflows, making it tangential to the core AI ecosystem scope."
+    },
+    "https://www.2090ai.com/lobsterai/25970.html": {
+      "date": "2026-04-24",
+      "decision": "skipped",
+      "title": "3月AI圈简直要疯了！100+大事件全梳理：GTC轰动、全民养虾、巨头互卷，赶紧看完，把握全年节奏！ - ai编程软件助手工具",
+      "source": "brave",
+      "score": 2,
+      "reason": "Signal is hype-driven marketing content focusing on closed commercial systems. Mentions of open-source items lack operational specifics and are buried in trend-chasing context."
+    },
+    "https://www.makeuseof.com/stopped-using-lm-studio-found-open-source-alternative/": {
+      "date": "2026-04-24",
+      "decision": "skipped",
+      "title": "I stopped using LM Studio once I found this open-source alternative",
+      "source": "brave",
+      "score": 2,
+      "reason": "Title and summary mismatch (LLM tool vs image model history). Lacks specific operational details or names the recommended alternative tool."
     }
   }
 }
