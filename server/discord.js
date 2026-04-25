@@ -450,9 +450,15 @@ async function postNotification(client, type, data) {
 
 function buildIntakeNotificationText(db, { runIds = [], pendingBefore = null, pendingAfter = null } = {}) {
   if (!db) return ''
-  const touched = listDraftsForRuns(db, runIds, 15)
-  const touchedCount = countDraftsForRuns(db, runIds)
+  let touched = listDraftsForRuns(db, runIds, 15)
+  let touchedCount = countDraftsForRuns(db, runIds)
   const totalPending = pendingAfter ?? countPendingDrafts(db)
+  const queueGrew = Number.isInteger(pendingBefore) && Number.isInteger(totalPending) && totalPending > pendingBefore
+
+  if (!touchedCount && queueGrew) {
+    touchedCount = totalPending - pendingBefore
+    touched = listNewestPendingDrafts(db, Math.min(touchedCount, 15))
+  }
 
   if (!touchedCount) {
     if (totalPending > 0) {
@@ -494,6 +500,16 @@ function listDraftsForRuns(db, runIds = [], limit = 15) {
      ORDER BY updated_at DESC, created_at DESC
      LIMIT ?`
   ).all(...ids, limit)
+}
+
+function listNewestPendingDrafts(db, limit = 15) {
+  return db.prepare(
+    `SELECT id, lang, type, title
+     FROM drafts
+     WHERE status = 'pending'
+     ORDER BY updated_at DESC, created_at DESC
+     LIMIT ?`
+  ).all(limit)
 }
 
 function normalizeRunIds(runIds) {

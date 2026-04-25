@@ -70,6 +70,31 @@ test('intake notification does not imply an empty queue when no drafts changed',
   )
 })
 
+test('intake notification lists newest drafts when queue grew but run ids were overwritten', () => {
+  const db = makeDb()
+  const insert = db.prepare(`
+    INSERT INTO drafts (id, lang, type, title, status, run_id, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+  `)
+  insert.run('alpha', 'en', 'current', 'Alpha', 'pending', 99, '2026-04-23T10:00:00.000Z', '2026-04-23T10:10:00.000Z')
+  insert.run('bravo', 'en', 'current', 'Bravo', 'pending', 99, '2026-04-23T10:01:00.000Z', '2026-04-23T10:11:00.000Z')
+  insert.run('charlie', 'en', 'current', 'Charlie', 'pending', 99, '2026-04-23T10:02:00.000Z', '2026-04-23T10:12:00.000Z')
+  insert.run('delta', 'en', 'current', 'Delta', 'pending', 99, '2026-04-23T10:03:00.000Z', '2026-04-23T10:13:00.000Z')
+
+  const text = buildIntakeNotificationText(db, {
+    runIds: [17, 18],
+    pendingBefore: 0,
+    pendingAfter: 4,
+  })
+
+  assert.match(text, /\*\*Intake complete\*\* — 4 draft\(s\) added or updated this cycle\./)
+  assert.match(text, /Queue: 0 -> 4\./)
+  assert.match(text, /delta: Delta/)
+  assert.match(text, /charlie: Charlie/)
+  assert.match(text, /bravo: Bravo/)
+  assert.match(text, /alpha: Alpha/)
+})
+
 test('digest notification reads the published perspective file', async () => {
   const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'openflows-discord-'))
   const digestPath = path.join(tempDir, '2026-04-23.md')

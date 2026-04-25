@@ -14,11 +14,13 @@ const DRAFT_LOCATIONS = [
   { dir: DRAFTS_ROOT, lang: 'en' },
   { dir: path.join(DRAFTS_ROOT, 'zh'), lang: 'zh' },
   { dir: path.join(DRAFTS_ROOT, 'practitioners'), lang: 'en' },
+  { dir: path.join(DRAFTS_ROOT, 'enriched'), lang: 'en' },
   { dir: path.join(DRAFTS_ROOT, 'blog'), lang: 'en', type: 'blog' },
   { dir: path.join(DRAFTS_ROOT, 'zh', 'blog'), lang: 'zh', type: 'blog' },
 ]
 
 const SKIP_FILES = new Set(['QUEUE.md', 'peng-attention.md'])
+const DRAFT_IMPORT_TYPES = new Set(['intake', 'intake-urls', 'practitioners', 'synthesize', 'translate', 'enrich'])
 
 // In-memory stream registry: runId -> { lines, listeners, doneListeners, done }
 // Kept for 15 minutes after completion then evicted.
@@ -120,7 +122,7 @@ function runScript(db, type, args = [], preRunId = null) {
     proc.on('close', (code) => {
       const completedAt = new Date().toISOString()
       const status = code === 0 ? 'success' : 'error'
-      const newDrafts = importDraftFiles(db, runId)
+      const newDrafts = DRAFT_IMPORT_TYPES.has(type) ? importDraftFiles(db, runId) : 0
       importSourceStats(db, log)
 
       db.prepare(
@@ -150,8 +152,8 @@ function importSourceStats(db, log) {
   }
 }
 
-// Scan draft directories and upsert any .md files into the drafts table.
-// Only updates existing pending drafts (won't touch promoted/rejected).
+// Scan draft directories and upsert changed .md files into the drafts table.
+// Only creates new drafts or updates existing pending drafts whose content changed.
 function importDraftFiles(db, runId = null) {
   const upsert = db.prepare(`
     INSERT INTO drafts (id, lang, type, title, abstract, content, run_id, status, created_at, updated_at)
@@ -181,7 +183,9 @@ function importDraftFiles(db, runId = null) {
         if (!inspection.valid) continue
         const { frontmatter } = parseFrontmatter(content)
         const stat = fs.statSync(filePath)
-        const existing = db.prepare('SELECT id FROM drafts WHERE id = ? AND lang = ?').get(id, lang)
+        const existing = db.prepare('SELECT id, content, status FROM drafts WHERE id = ? AND lang = ?').get(id, lang)
+        if (existing && existing.status !== 'pending') continue
+        if (existing && normalizeDraftContent(existing.content || '') === content) continue
         upsert.run(
           id, lang,
           frontmatter.currencyType || frontmatter.type || (frontmatter.blogId ? 'blog' : type) || null,
@@ -192,7 +196,7 @@ function importDraftFiles(db, runId = null) {
           stat.mtime.toISOString(),
           now
         )
-        if (!existing) count++
+        count++
       } catch {
         // Skip unreadable files
       }
