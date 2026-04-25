@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-24T06:03:51.041Z",
+  "lastUpdated": "2026-04-25T06:04:04.988Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3851,6 +3851,43 @@
       "source": "brave",
       "score": 2,
       "reason": "Title and summary mismatch (LLM tool vs image model history). Lacks specific operational details or names the recommended alternative tool."
+    },
+    "https://opensourceprojects.dev/post/10f13802-835e-493f-9ce0-9810ddc7abfa": {
+      "date": "2026-04-25",
+      "decision": "skipped",
+      "title": "Claude Code Source Explorer – Deep Dive into AI Agent Architecture",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Repository name (aivpn) contradicts the title's claim of exploring Claude Code architecture. Since Claude Code is proprietary, a true source explorer cannot be open source. This signal appears to be misleading clickbait or an unrelated proxy service, failing Openflows' criteria for inspectable open-source AI."
+    },
+    "https://gitcode.csdn.net/69d8d30254b52172bc6874ab.html": {
+      "date": "2026-04-25",
+      "decision": "skipped",
+      "title": "2026年4月AI大模型全景解析：GPT-6领衔，国产模型逆袭硅谷_人工智能_李德没德-AtomGit开源社区",
+      "source": "brave",
+      "score": 2,
+      "reason": "Speculative trend analysis focusing on hype and future predictions rather than operational specifics. Mentions open models like Llama but lacks inspectable technical depth or actionable documentation."
+    },
+    "https://huggingface.co/argmaxinc/whisperkit-coreml": {
+      "date": "2026-04-25",
+      "decision": "drafted",
+      "title": "argmaxinc/whisperkit-coreml",
+      "source": "huggingface",
+      "file": "whisperkit-apple-silicon-asr.md"
+    },
+    "https://opensourceprojects.dev/post/d2ad859d-2fa1-4e9d-8aa5-5e46fc35cbd3": {
+      "date": "2026-04-25",
+      "decision": "drafted",
+      "title": "Your secrets stay yours, even when the agent asks nicely.",
+      "source": "opensourceprojects",
+      "file": "clawvault-secrets-isolation.md"
+    },
+    "https://www.cnbc.com/2026/04/24/deepseek-v4-llm-preview-open-source-ai-competition-china.html": {
+      "date": "2026-04-25",
+      "decision": "drafted",
+      "title": "China's DeepSeek releases preview of long-awaited V4 model as AI race intensifies",
+      "source": "brave",
+      "file": "deepseek-v4-llm-preview-release.md"
     }
   }
 }
