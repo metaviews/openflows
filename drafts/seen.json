@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-25T06:04:04.988Z",
+  "lastUpdated": "2026-04-26T06:03:59.256Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3888,6 +3888,43 @@
       "title": "China's DeepSeek releases preview of long-awaited V4 model as AI race intensifies",
       "source": "brave",
       "file": "deepseek-v4-llm-preview-release.md"
+    },
+    "https://opensourceprojects.dev/post/2e7ff0f5-adf7-437d-9fa7-602744e661d4": {
+      "date": "2026-04-26",
+      "decision": "skipped",
+      "title": "Find every leaked secret in your stack and revoke them fast",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Openflows focuses on the AI ecosystem. This is a general security tool tangentially related to dev workflows but not AI-specific."
+    },
+    "https://opensourceprojects.dev/post/81a781e4-0444-47a2-a8ba-936aaf9c8034": {
+      "date": "2026-04-26",
+      "decision": "skipped",
+      "title": "Reverse engineer any Android app to its source code",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general Android reverse engineering tool, which is unrelated to the open source AI ecosystem (tools, frameworks, models, governance) that Openflows documents."
+    },
+    "https://gitcode.csdn.net/69e5a30a0a2f6a37c5a1008b.html": {
+      "date": "2026-04-26",
+      "decision": "drafted",
+      "title": "救命！2026大模型入门封神资源，小白&程序员速存不亏_人工智能_冻感糕人~-AtomGit开源社区",
+      "source": "brave",
+      "file": "2026-large-model-entry-resources.md"
+    },
+    "https://blog.csdn.net/weixin_40970718/article/details/160376124": {
+      "date": "2026-04-26",
+      "decision": "drafted",
+      "title": "【AI】2026年4月开源模型排行榜_2026年4月国内ai大模型最新排名-CSDN博客",
+      "source": "brave",
+      "file": "2026-april-open-source-model-landscape.md"
+    },
+    "https://gitcode.csdn.net/69e2e1a80a2f6a37c5a0b18f.html": {
+      "date": "2026-04-26",
+      "decision": "drafted",
+      "title": "2026 大模型落地实战指南：从选型到部署，一文搞定企业 / 个人 AI 应用（附可直接运行代码）_人工智能_李德没德-AtomGit开源社区",
+      "source": "brave",
+      "file": "2026-large-model-landing-practical-guide.md"
     }
   }
 }
