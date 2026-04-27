@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-26T06:03:59.256Z",
+  "lastUpdated": "2026-04-27T06:19:17.564Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3925,6 +3925,72 @@
       "title": "2026 大模型落地实战指南：从选型到部署，一文搞定企业 / 个人 AI 应用（附可直接运行代码）_人工智能_李德没德-AtomGit开源社区",
       "source": "brave",
       "file": "2026-large-model-landing-practical-guide.md"
+    },
+    "https://opensourceprojects.dev/post/4435516c-ea22-4c67-beca-9b19fa1ace44": {
+      "date": "2026-04-27",
+      "decision": "skipped",
+      "title": "Lark CLI Control Lark Platform with AI Agent Friendly Commands",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open source CLI for commercial SaaS platform (Lark). Tangential to core AI infrastructure; relies on closed system rather than advancing open AI ecosystem."
+    },
+    "https://www.bilibili.com/video/BV1zLoSByEG2/": {
+      "date": "2026-04-27",
+      "decision": "skipped",
+      "title": "为什么DeepSeek V4这么强？它到底更新了啥？_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 1,
+      "reason": "Signal focuses on commercial API pricing and a likely closed 'Pro' model, contradicting Openflows' focus on open-source, inspectable systems."
+    },
+    "https://www.clawbot.blog/blog/openclaw-the-rise-of-an-open-source-ai-agent-framework-april-2026-update/": {
+      "date": "2026-04-27",
+      "decision": "skipped",
+      "title": "OpenClaw: The Rise of an Open-Source AI Agent Framework (April 2026 Update) — clawbot.blog",
+      "source": "brave",
+      "score": 2,
+      "reason": "Claims open-source framework but relies on closed model (Claude) and cites future date (2026), making it unverifiable and potentially hype-driven per Openflows criteria."
+    },
+    "https://www.huxiu.com/article/4853936.html": {
+      "date": "2026-04-27",
+      "decision": "drafted",
+      "title": "DeepSeek-V4发布显示中美AI发展路径分化，中国模型落后美国3-6个月",
+      "source": "brave",
+      "file": "deepseek-v4-context-attention-optimization.md"
+    },
+    "https://opensourceprojects.dev/post/60c31b48-1ba2-4802-8b53-419da85009a1": {
+      "date": "2026-04-27",
+      "decision": "drafted",
+      "title": "Infinite canvas SDK with built-in AI starter kits.",
+      "source": "opensourceprojects",
+      "file": "tldraw-infinite-canvas-sdk.md"
+    },
+    "https://siliconangle.com/2026/04/24/deepseek-open-sources-v4-large-language-model-series/": {
+      "date": "2026-04-27",
+      "decision": "drafted",
+      "title": "DeepSeek open-sources V4 large language model series - SiliconANGLE",
+      "source": "brave",
+      "file": "deepseek-v4-large-language-model-open-source-release.md"
+    },
+    "https://opensourceprojects.dev/post/bf41d3c2-e5b0-431a-9ee2-0bb974f32c77": {
+      "date": "2026-04-27",
+      "decision": "drafted",
+      "title": "Off Grid Mobile AI Local LLMs Stable Diffusion and Voice AI",
+      "source": "opensourceprojects",
+      "file": "off-grid-mobile-ai-local-inference.md"
+    },
+    "https://www.sina.cn/news/detail/5292082344495461.html": {
+      "date": "2026-04-27",
+      "decision": "drafted",
+      "title": "DeepSeek-V4正式发布_新浪新闻",
+      "source": "brave",
+      "file": "deepseek-v4-formal-release.md"
+    },
+    "https://www.scensmart.com/news/official-release-of-deepseek-v4-preview-version/": {
+      "date": "2026-04-27",
+      "decision": "error",
+      "title": "DeepSeek V4预览版正式发布，比肩顶级闭源，百万上下文普惠AI | ScenSmart一站式智能制造平台",
+      "source": "brave",
+      "reason": "invalid draft: missing currencyType; Missing layout.; Missing title.; Missing date.; Missing currencyId.; Missing currencyType.; Missing permalink.; tags must include currency.; Missing abstract."
     }
   }
 }
