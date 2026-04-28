@@ -62,9 +62,9 @@ Discord bot (all optional — omit `DISCORD_BOT_TOKEN` to disable): `DISCORD_BOT
 
 **Cron** (`server/cron.js`) runs all automation:
 
-- `06:00 UTC daily` — `intake --sources github,huggingface,brave,opensourceprojects --limit 10` → `practitioners --limit 3` → `audit` → `commitSeen()` → Discord intake notification with both `runIds` and pending-draft delta
+- `06:00 and 18:00 UTC` (every 12h) — `intake --sources github,huggingface,brave,opensourceprojects --limit 10` → `practitioners --limit 3` → `audit` → `commitSeen()` → Discord intake notification with both `runIds` and pending-draft delta
 - `08:00 UTC Mon/Wed/Fri` — `synthesize` → `digest` → `commitPerspective()` → Discord digest notification
-- `09:00 UTC daily` — `refresh --limit 15 --days 7`
+- `09:00 and 21:00 UTC` (every 12h, staggered 3h after intake) — `refresh --limit 15 --days 7`
 
 Cron failures are reported via `discord?.notify('error', { type, error })`.
 

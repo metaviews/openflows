@@ -6,8 +6,8 @@ const { ensureManifest } = require('./lib/manifest')
 const { commitPerspective, commitSeen } = require('./lib/git')
 
 function startCron(db, discord = null) {
-  // Daily intake — 06:00 UTC (mirrors retired peng-intake.yml)
-  cron.schedule('0 6 * * *', async () => {
+  // Intake — 06:00 and 18:00 UTC (every 12 hours)
+  cron.schedule('0 6,18 * * *', async () => {
     console.log('[cron] intake run starting')
     try {
       const pendingBefore = db.prepare(`SELECT COUNT(*) as n FROM drafts WHERE status = 'pending'`).get()?.n || 0
@@ -44,8 +44,8 @@ function startCron(db, discord = null) {
     }
   }, { timezone: 'UTC' })
 
-  // Refresh — Daily 09:00 UTC (mirrors retired peng-refresh.yml)
-  cron.schedule('0 9 * * *', async () => {
+  // Refresh — 09:00 and 21:00 UTC (every 12 hours, staggered 3h after intake)
+  cron.schedule('0 9,21 * * *', async () => {
     console.log('[cron] refresh run starting')
     try {
       await ensureManifest()
@@ -55,7 +55,7 @@ function startCron(db, discord = null) {
     }
   }, { timezone: 'UTC' })
 
-  console.log('[cron] scheduled — intake 06:00 UTC daily, perspective MWF 08:00, refresh 09:00 daily')
+  console.log('[cron] scheduled — intake 06:00/18:00 UTC, perspective MWF 08:00, refresh 09:00/21:00 UTC')
 }
 
 module.exports = { startCron }
