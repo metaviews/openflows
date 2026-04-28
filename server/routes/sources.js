@@ -20,6 +20,7 @@ const {
   queuePractitionerSocialAudit,
   applyPractitionerSocialCandidate,
 } = require('../lib/practitioner-social')
+const { generateSourceFromUrl } = require('../lib/source-generator')
 
 const ROOT = path.join(__dirname, '..', '..')
 const MODULES_DIR = path.join(ROOT, 'scripts', 'sources')
@@ -131,6 +132,17 @@ async function sourcesRoutes(fastify) {
       return reply.send(await queueTrigger(fastify.db, 'discover-sources', []))
     } catch (err) {
       return reply.code(err.statusCode || 500).send({ error: err.message })
+    }
+  })
+
+  fastify.post('/api/sources/generate', async (req, reply) => {
+    try {
+      const url = String(req.body?.url || '').trim()
+      const source = await generateSourceFromUrl({ url })
+      return reply.send({ ok: true, source })
+    } catch (err) {
+      fastify.log.error(err)
+      return reply.code(err.statusCode || 500).send({ ok: false, error: err.message })
     }
   })
 

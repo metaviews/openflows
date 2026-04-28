@@ -12,6 +12,22 @@
     <a class="btn" href="/sources">Back to Sources</a>
   </div>
 
+  {% if mode == 'new' %}
+    <section class="panel" style="margin-bottom:1rem">
+      <div class="panel-header"><span class="panel-title">Quick start from URL</span></div>
+      <div class="panel-body">
+        <p class="muted" style="margin-top:0">Paste a project page, GitHub repo, RSS feed, or topic page. Peng will fetch it and propose values below for your review.</p>
+        <div class="source-form">
+          <label>URL <input id="source-generate-url" type="url" placeholder="https://github.com/owner/repo or https://example.com/feed.xml"></label>
+        </div>
+        <div class="edit-actions" style="margin-top:0.5rem;align-items:center;gap:0.75rem">
+          <button class="btn btn-primary" onclick="generateSource()">Generate</button>
+          <span id="source-generate-status" class="muted"></span>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+
   <div class="editor-grid">
     <section class="panel">
       <div class="panel-header"><span class="panel-title">Definition</span></div>

@@ -531,6 +531,50 @@
       }
     }
 
+    async function generateSource() {
+      const urlInput = document.getElementById('source-generate-url')
+      const status = document.getElementById('source-generate-status')
+      const button = document.querySelector('button[onclick="generateSource()"]')
+      const url = urlInput?.value.trim()
+      if (!url) {
+        if (status) status.textContent = 'Enter a URL first.'
+        return
+      }
+      if (status) status.textContent = 'Fetching and generating…'
+      if (button) button.disabled = true
+      try {
+        const resp = await fetch('/api/sources/generate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ url }),
+        })
+        const data = await resp.json().catch(() => ({}))
+        if (!resp.ok || !data.ok) {
+          if (status) status.textContent = data.error || ('Generation failed (HTTP ' + resp.status + ')')
+          return
+        }
+        const source = data.source || {}
+        const setField = (id, value) => { const el = document.getElementById(id); if (el) el.value = value || '' }
+        setField('source-id', source.id)
+        setField('source-label', source.label)
+        setField('source-notes', source.notes)
+        setField('source-config', JSON.stringify(source.config || {}, null, 2))
+        const moduleSelect = document.getElementById('source-module')
+        if (moduleSelect && source.module) {
+          const opt = [...moduleSelect.options].find(o => o.value === source.module)
+          if (opt) moduleSelect.value = source.module
+          else if (status) status.textContent = 'Generated — but module "' + source.module + '" is not available locally; pick another.'
+        }
+        if (status && (!moduleSelect?.value || moduleSelect.value === source.module)) {
+          status.textContent = 'Generated. Review fields, then Save and Commit.'
+        }
+      } catch (err) {
+        if (status) status.textContent = 'Error: ' + (err?.message || err)
+      } finally {
+        if (button) button.disabled = false
+      }
+    }
+
     async function validateSourceForm() {
       const target = document.getElementById('source-validation')
       if (!target) return null
