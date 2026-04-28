@@ -163,7 +163,7 @@
       "id": "ai-governance-security-tools",
       "module": "brave",
       "label": "AI Governance & Security Tools",
-      "enabled": false,
+      "enabled": true,
       "notes": "Surfaces new policy enforcement frameworks, runtime security toolkits, and audit mechanisms for autonomous agents, ensuring Openflows captures the compliance and safety layer.",
       "config": {
         "queries": [
