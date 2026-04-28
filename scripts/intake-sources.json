@@ -173,6 +173,18 @@
         ],
         "count": 5
       }
+    },
+    {
+      "id": "good-ai-list",
+      "module": "scrape",
+      "label": "Good AI List Directory",
+      "enabled": true,
+      "notes": "Curated directory of open-source AI repositories, developers, and categories updated daily. Scrapes a static HTML layout; monitor for structural changes and respect rate limits to avoid overwhelming the site.",
+      "config": {
+        "urls": [
+          "https://goodailist.com/repos"
+        ]
+      }
     }
   ]
 }
