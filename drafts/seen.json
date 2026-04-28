@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-27T06:19:17.564Z",
+  "lastUpdated": "2026-04-28T06:02:31.904Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -3991,6 +3991,83 @@
       "title": "DeepSeek V4预览版正式发布，比肩顶级闭源，百万上下文普惠AI | ScenSmart一站式智能制造平台",
       "source": "brave",
       "reason": "invalid draft: missing currencyType; Missing layout.; Missing title.; Missing date.; Missing currencyId.; Missing currencyType.; Missing permalink.; tags must include currency.; Missing abstract."
+    },
+    "https://www.v2ex.com/t/1209021": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "不止于写代码，更易用的 AI Agent 智能体 - 小 i - V2EX",
+      "source": "brave",
+      "score": 2,
+      "reason": "Focuses on a commercial wrapper product that abstracts open-source models, lacking operational specifics or direct open-source ecosystem value."
+    },
+    "https://opensourceprojects.dev/post/726a4b0c-1d3d-4257-916c-0fb40cca6197": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "“Claude Code Without Paying? Here’s the Trick",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Focuses on bypassing the paywall for Anthropic's proprietary Claude Code, which is closed-source and commercial. Does not document open-source AI tools, frameworks, or governance, and falls into the category of closed-system exploitation rather than open ecosystem contribution."
+    },
+    "https://www.bilibili.com/video/BV1YooeBhEfj/": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "盘点一周AI大事(4月26日)｜OpenAI王炸两连_哔哩哔哩_bilibili",
+      "source": "brave",
+      "score": 2,
+      "reason": "Hype-driven weekly roundup mixing closed and open-source announcements; lacks operational specifics and technical depth, making it tangentially relevant but unlikely to add value to an open-source ecosystem KB."
+    },
+    "https://opensourceprojects.dev/post/60836afa-7817-46a5-87c7-3100bcc3f5f1": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "Stop searching for prompts. Use this curated open-source list instead",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Curated prompt list rather than a tool, framework, or model. Lacks operational specificity and aligns with trend-chasing content rather than foundational open-source AI infrastructure."
+    },
+    "https://opensourceprojects.dev/post/9e7348d8-2dea-4af3-9f17-f3120dc4f194": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "The desktop app that manages markdown knowledge bases",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "The signal describes a general-purpose markdown knowledge base manager without explicit AI, LLM, or machine learning features. While open source, it lacks direct relevance to the AI ecosystem scope of Openflows."
+    },
+    "https://xingyun3d.csdn.net/69edbfca54b52172bc701e1b.html": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "大模型新闻简报 | 2026年4月26日_人工智能_Ares_程序猿-魔珐星云开发社区",
+      "source": "brave",
+      "score": 2,
+      "reason": "Primarily a high-level news digest focusing on closed-source models, cloud pricing, and hype-driven comparisons. Lacks the operational specifics, open-source technical details, and inspectable artifacts required by Openflows."
+    },
+    "https://www.tencentcloud.com/techpedia/144032": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "The Best Open Source AI Agents in 2026: A Developer's ...",
+      "source": "brave",
+      "score": 1,
+      "reason": "Mismatched title and summary; describes Tencent Cloud's proprietary documentation platform rather than open-source AI tools. Closed-source/commercial focus contradicts Openflows' scope."
+    },
+    "https://opensourceprojects.dev/post/e0f004f0-f157-4cbd-b002-3a52df61178e": {
+      "date": "2026-04-28",
+      "decision": "error",
+      "title": "“zvec: The SQLite of AI Vector Databases",
+      "source": "opensourceprojects",
+      "reason": "invalid draft: missing section: ### Connections"
+    },
+    "https://opensourceprojects.dev/post/daf9f534-ce6e-4c9a-b79b-9e7764e1e8a1": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "Smarter AI Without Bigger Models",
+      "source": "opensourceprojects",
+      "file": "tiny-recursive-models.md"
+    },
+    "https://blog.csdn.net/weixin_34268462/article/details/160537246": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "多智能体协作框架Multica：从原理到实践，构建AI应用新范式-CSDN博客",
+      "source": "brave",
+      "file": "multica-multi-agent-collaboration-framework.md"
     }
   }
 }
