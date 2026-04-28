@@ -1,5 +1,6 @@
 'use strict'
 
+const yaml = require('js-yaml')
 const { parseFrontmatter } = require('./parse')
 const { validateCurrencyMarkdown, validateBlogMarkdown } = require('./validation')
 
@@ -12,6 +13,7 @@ const CURRENT_SECTIONS = [
   '### Open Questions',
   '### Connections',
 ]
+const PERMALINK_DIR = { current: 'currents', circuit: 'circuits', practitioner: 'practitioners' }
 
 function normalizeDraftContent(content) {
   if (typeof content !== 'string') return ''
@@ -23,6 +25,56 @@ function normalizeDraftContent(content) {
     .replace(/^```[^\n]*\n/, '')
     .replace(/\n```\s*$/, '')
     .trimStart()
+}
+
+// Repair the two frontmatter fields LLMs drift on most often:
+//   - tags must be a list containing 'currency'
+//   - permalink must match /currency/{plural-type}/{id}/ (or /zh/... for zh)
+// Both are mechanical and derivable from currencyId + currencyType, so we
+// fix them in place rather than rejecting the draft. Substantive issues
+// (wrong currencyType, missing sections, bad links) still surface as errors.
+function autofixCurrencyDraft(content, { id, lang = 'en' } = {}) {
+  if (typeof content !== 'string') return content
+  const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n([\s\S]*)$/)
+  if (!match) return content
+
+  let frontmatter
+  try {
+    frontmatter = yaml.load(match[1], { schema: yaml.CORE_SCHEMA }) || {}
+  } catch {
+    return content
+  }
+  if (!frontmatter || typeof frontmatter !== 'object' || Array.isArray(frontmatter)) return content
+  if (frontmatter.blogId || frontmatter.layout === 'layouts/blog-item.njk') return content
+
+  const body = match[2]
+  let changed = false
+
+  if (!Array.isArray(frontmatter.tags)) {
+    const previous = frontmatter.tags
+    const merged = previous != null && previous !== '' ? [String(previous)] : []
+    frontmatter.tags = ['currency', ...merged.filter(t => t && t !== 'currency')]
+    changed = true
+  } else if (!frontmatter.tags.includes('currency')) {
+    frontmatter.tags = ['currency', ...frontmatter.tags]
+    changed = true
+  }
+
+  const dir = PERMALINK_DIR[frontmatter.currencyType]
+  const fixId = frontmatter.currencyId || id
+  if (dir && fixId) {
+    const isZh = frontmatter.lang === 'zh' || lang === 'zh'
+    const expected = isZh ? `/zh/currency/${dir}/${fixId}/` : `/currency/${dir}/${fixId}/`
+    if (frontmatter.permalink !== expected) {
+      frontmatter.permalink = expected
+      changed = true
+    }
+  }
+
+  if (!changed) return content
+
+  const fmYaml = yaml.dump(frontmatter, { schema: yaml.CORE_SCHEMA, lineWidth: -1, noRefs: true })
+  return `---\n${fmYaml}---\n${body}`
 }
 
 function inspectDraftContent({ id, lang = 'en', content, type, title, abstract, manifest, strictSections = true }) {
@@ -113,4 +165,5 @@ module.exports = {
   CURRENT_SECTIONS,
   normalizeDraftContent,
   inspectDraftContent,
+  autofixCurrencyDraft,
 }

@@ -16,7 +16,7 @@ const {
   readPractitionerSocialAudit,
   applyPractitionerSocialCandidate,
 } = require('./practitioner-social')
-const { normalizeDraftContent } = require('./draft-standard')
+const { normalizeDraftContent, autofixCurrencyDraft } = require('./draft-standard')
 
 const READ_TOOL_NAMES = new Set(['get_status', 'get_queue', 'get_entry', 'get_draft', 'get_sources', 'get_source_proposals', 'get_practitioner_social_audit', 'fetch_url'])
 const WRITE_TOOL_NAMES = new Set([
@@ -395,10 +395,16 @@ async function executeToolCall(fastify, toolCall) {
         : stripped
       return { url, text, length: stripped.length }
     }
-    case 'create_draft':
-      return upsertDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: normalizeDraftContent(args.content), sourceUrl: args.sourceUrl || null })
-    case 'update_draft':
-      return updateDraftContent(fastify.db, { id: args.currencyId, lang: args.lang || 'en', content: normalizeDraftContent(args.content) })
+    case 'create_draft': {
+      const lang = args.lang || 'en'
+      const content = autofixCurrencyDraft(normalizeDraftContent(args.content), { id: args.currencyId, lang })
+      return upsertDraft(fastify.db, { id: args.currencyId, lang, content, sourceUrl: args.sourceUrl || null })
+    }
+    case 'update_draft': {
+      const lang = args.lang || 'en'
+      const content = autofixCurrencyDraft(normalizeDraftContent(args.content), { id: args.currencyId, lang })
+      return updateDraftContent(fastify.db, { id: args.currencyId, lang, content })
+    }
     case 'promote_draft':
       return promoteDraft(fastify.db, { id: args.currencyId, lang: args.lang || 'en' })
     case 'save_entry':
