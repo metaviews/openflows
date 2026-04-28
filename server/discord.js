@@ -10,6 +10,7 @@ const {
   ActionRowBuilder,
   ButtonBuilder,
   ButtonStyle,
+  EmbedBuilder,
 } = require('discord.js')
 const crypto = require('crypto')
 const fs = require('fs')
@@ -433,19 +434,134 @@ async function postNotification(client, type, data) {
   }
 
   if (type === 'intake') {
-    const text = buildIntakeNotificationText(data.db, data)
-    if (text) await sendChannelText(channel, text)
+    const embed = buildIntakeEmbed(data.db, data)
+    if (embed) await channel.send({ embeds: [embed] })
     return
   }
 
   if (type === 'digest') {
-    await sendChannelText(channel, buildDigestNotificationText())
+    const embed = buildDigestEmbed(data || {})
+    if (embed) await channel.send({ embeds: [embed] })
     return
   }
 
   if (type === 'error') {
-    await channel.send(`**Run error** — ${data.type || 'unknown'}: ${data.error || 'unknown error'}`.slice(0, DISCORD_MAX))
+    await channel.send({ embeds: [buildErrorEmbed(data || {})] })
   }
+}
+
+const COLOR_INTAKE_NEW = 0x57c4a8
+const COLOR_INTAKE_QUIET = 0x6b7280
+const COLOR_DIGEST = 0x4a90e2
+const COLOR_ERROR = 0xd64545
+
+function adminBaseUrl() {
+  return (process.env.DISCORD_ADMIN_BASE_URL || 'https://admin.openflows.org').replace(/\/+$/, '')
+}
+
+function buildIntakeEmbed(db, { runIds = [], pendingBefore = null, pendingAfter = null } = {}) {
+  if (!db) return null
+
+  let touched = listDraftsForRuns(db, runIds, 15)
+  let touchedCount = countDraftsForRuns(db, runIds)
+  const totalPending = pendingAfter ?? countPendingDrafts(db)
+  const queueGrew = Number.isInteger(pendingBefore) && Number.isInteger(totalPending) && totalPending > pendingBefore
+
+  if (!touchedCount && queueGrew) {
+    touchedCount = totalPending - pendingBefore
+    touched = listNewestPendingDrafts(db, Math.min(touchedCount, 15))
+  }
+
+  const base = adminBaseUrl()
+  const embed = new EmbedBuilder()
+    .setTitle(touchedCount > 0
+      ? `Intake complete — ${touchedCount} draft${touchedCount === 1 ? '' : 's'}`
+      : 'Intake complete — no new drafts')
+    .setURL(`${base}/`)
+    .setColor(touchedCount > 0 ? COLOR_INTAKE_NEW : COLOR_INTAKE_QUIET)
+    .setTimestamp(new Date())
+
+  if (Number.isInteger(pendingBefore) && Number.isInteger(totalPending)) {
+    const delta = totalPending - pendingBefore
+    const sign = delta > 0 ? `+${delta}` : delta < 0 ? `${delta}` : '±0'
+    embed.addFields({ name: 'Queue', value: `${pendingBefore} → ${totalPending} (${sign})`, inline: true })
+  } else {
+    embed.addFields({ name: 'Queue', value: `${totalPending} pending`, inline: true })
+  }
+
+  if (touchedCount > 0) {
+    embed.addFields({ name: 'Touched', value: String(touchedCount), inline: true })
+  }
+
+  if (touched.length > 0) {
+    const lines = touched.map(d => {
+      const url = `${base}/queue/${encodeURIComponent(d.id)}/edit?lang=${encodeURIComponent(d.lang || 'en')}`
+      const title = (d.title || '(untitled)').slice(0, 80)
+      return `• \`[${d.type}|${d.lang}]\` [${d.id}](${url}): ${title}`
+    })
+    let value = ''
+    let fitted = 0
+    for (const line of lines) {
+      const next = value ? `${value}\n${line}` : line
+      if (next.length > 1000) break
+      value = next
+      fitted++
+    }
+    if (fitted < lines.length) {
+      const remainder = `\n_(+${lines.length - fitted} more — see dashboard)_`
+      if (value.length + remainder.length <= 1024) value += remainder
+    }
+    embed.addFields({ name: 'Drafts', value })
+  }
+
+  const validRunIds = normalizeRunIds(runIds)
+  if (validRunIds.length) {
+    embed.setFooter({ text: `Run ${validRunIds.join(', ')}` })
+  }
+
+  return embed
+}
+
+function buildDigestEmbed({ digestPath } = {}) {
+  const resolvedPath = digestPath || findLatestPerspectiveFile()
+  if (!resolvedPath) {
+    return new EmbedBuilder()
+      .setTitle('Perspective ready')
+      .setDescription('Published digest file not found.')
+      .setColor(COLOR_INTAKE_QUIET)
+  }
+
+  const raw = fs.readFileSync(resolvedPath, 'utf8')
+  const { frontmatter, body } = parseFrontmatter(raw)
+  const date = path.basename(resolvedPath, '.md')
+  const title = frontmatter.title || `Perspective ${date}`
+  const url = `https://openflows.org/perspective/${date}/`
+
+  let description = ''
+  if (frontmatter.abstract) description += `> ${String(frontmatter.abstract).trim()}\n\n`
+  description += body.trim()
+  const MAX_DESC = 4000
+  if (description.length > MAX_DESC) {
+    description = description.slice(0, MAX_DESC - 60).trim() + '\n\n_…continues at openflows.org_'
+  }
+
+  return new EmbedBuilder()
+    .setTitle(String(title).slice(0, 256))
+    .setURL(url)
+    .setDescription(description)
+    .setColor(COLOR_DIGEST)
+    .setFooter({ text: `Perspective · ${date}` })
+    .setTimestamp(new Date())
+}
+
+function buildErrorEmbed({ type, error } = {}) {
+  const message = String(error || 'unknown error')
+  const code = '```\n' + message.slice(0, 3900) + '\n```'
+  return new EmbedBuilder()
+    .setTitle(`Run error — ${type || 'unknown'}`)
+    .setDescription(code)
+    .setColor(COLOR_ERROR)
+    .setTimestamp(new Date())
 }
 
 function buildIntakeNotificationText(db, { runIds = [], pendingBefore = null, pendingAfter = null } = {}) {
@@ -706,6 +822,9 @@ module.exports = {
   initDiscord,
   buildIntakeNotificationText,
   buildDigestNotificationText,
+  buildIntakeEmbed,
+  buildDigestEmbed,
+  buildErrorEmbed,
   findLatestPerspectiveFile,
   executeDiscordTrigger,
 }

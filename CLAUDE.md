@@ -48,7 +48,7 @@ pm2 restart peng
 
 Copy `.env.example` to `.env`. Required keys: `OPENROUTER_API_KEY`, `OPENROUTER_MODEL`, `FALLBACK_OPENROUTER_MODEL`, `BRAVE_API_KEY`. Optional: `TWITTER_BEARER_TOKEN`, `PORT`, `DB_PATH`, `GIT_USER_NAME`, `GIT_USER_EMAIL`. All scripts use `scripts/lib/openrouter.js` for model calls — model is env-configurable, never hardcoded.
 
-Discord bot (all optional — omit `DISCORD_BOT_TOKEN` to disable): `DISCORD_BOT_TOKEN`, `DISCORD_GUILD_ID` (server ID for slash command registration), `DISCORD_CHANNEL_ID` (notification channel), `DISCORD_AUTHORIZED_USERS` (comma-separated user IDs for write tools and `/trigger`).
+Discord bot (all optional — omit `DISCORD_BOT_TOKEN` to disable): `DISCORD_BOT_TOKEN`, `DISCORD_GUILD_ID` (server ID for slash command registration), `DISCORD_CHANNEL_ID` (notification channel), `DISCORD_AUTHORIZED_USERS` (comma-separated user IDs for write tools and `/trigger`), `DISCORD_ADMIN_BASE_URL` (defaults to `https://admin.openflows.org`; used to render clickable draft links in intake notification embeds).
 
 ## Architecture
 
