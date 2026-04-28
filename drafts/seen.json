@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-28T06:02:31.904Z",
+  "lastUpdated": "2026-04-28T18:06:46.815Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4068,6 +4068,222 @@
       "title": "多智能体协作框架Multica：从原理到实践，构建AI应用新范式-CSDN博客",
       "source": "brave",
       "file": "multica-multi-agent-collaboration-framework.md"
+    },
+    "https://felo.ai/zh-Hans/blog/gpt-5-5-now-available-on-felo-agent/": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "GPT-5.5 现已在 Felo Agent 上线 — 免费试用 | Felo Search Blog",
+      "source": "brave",
+      "score": 1,
+      "reason": "The signal focuses on a closed-source commercial model (OpenAI's GPT-5.5) integrated into a proprietary agent platform. It emphasizes hype and free trials rather than open-source tools, frameworks, or inspectable technical details, directly contradicting Openflows' scope."
+    },
+    "https://opensourceprojects.dev/post/a8a530fc-1cbc-4838-a17a-1570e5de1af2": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "ClashMac: macOS Network Proxy Management Tool",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a general macOS network proxy utility with no connection to the open source AI ecosystem, AI tools, frameworks, or related governance. It falls entirely outside Openflows' scope."
+    },
+    "https://github.com/ruvnet/ruflo": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "GitHub - ruvnet/ruflo: 🌊 The leading agent orchestration platform for Claude. Deploy intelligent multi-agent swarms, coordinate autonomous workflows, and build conversational AI systems. Features enterprise-grade architecture, distributed swarm intelligence, RAG integration, and native Claude Code / Codex Integration",
+      "source": "ai-agent-frameworks-discovery",
+      "score": 2,
+      "reason": "Hosted on GitHub but heavily marketing-driven and tightly coupled to Claude (a closed-source model). While it fits the agent orchestration category, its closed-system dependency and hype language limit its value to the open AI ecosystem scope."
+    },
+    "https://gitcode.csdn.net/69ede5a754b52172bc702217.html": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "2026年程序员必用的6种AI大模型_人工智能_老唐777-AtomGit开源社区",
+      "source": "brave",
+      "score": 1,
+      "reason": "Primarily a commercial trend listicle focusing on closed-source models and speculative predictions. Lacks operational specifics and aligns with the hype-driven content Openflows explicitly avoids."
+    },
+    "https://cloud.google.com/blog/products/ai-machine-learning/introducing-gemini-enterprise-agent-platform": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "Introducing Gemini Enterprise Agent Platform | Google Cloud Blog",
+      "source": "ai-agent-frameworks-discovery",
+      "score": 1,
+      "reason": "Closed-source commercial platform from Google Cloud, directly contradicting Openflows' exclusion of closed systems and focus on open source AI."
+    },
+    "https://www.databricks.com/blog/ai-gateway-governance-layer-agentic-ai": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "Expanding Agent Governance with Unity AI Gateway | Databricks Blog",
+      "source": "ai-governance-security-tools",
+      "score": 2,
+      "reason": "Primarily a vendor-focused product announcement for a proprietary gateway; mentions open models but lacks the operational depth, inspectability, or open-source governance focus required by Openflows."
+    },
+    "https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ai-agents/governance-security-across-organization": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "Governance and security for AI agents across the organization - Cloud Adoption Framework | Microsoft Learn",
+      "source": "ai-governance-security-tools",
+      "score": 1,
+      "reason": "Entirely focused on Microsoft's proprietary Copilot Studio and closed-source commercial platform, lacking any open-source AI tools, frameworks, or publicly accessible governance standards relevant to Openflows."
+    },
+    "https://aws.amazon.com/blogs/security/four-security-principles-for-agentic-ai-systems/": {
+      "date": "2026-04-28",
+      "decision": "skipped",
+      "title": "Four security principles for agentic AI systems | Amazon Web Services",
+      "source": "ai-governance-security-tools",
+      "score": 2,
+      "reason": "AWS is a closed commercial entity and the content focuses on the hype-driven \"agentic AI\" trend with high-level governance advice rather than operationally specific open-source tools or frameworks."
+    },
+    "https://www.gsma.com/newsroom/press-release/pleias-andgsma-launch-commonlingua-an-open-source-language-identification-model-supporting-61-african-languages/": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "Pleias and GSMA Launch ‘CommonLingua’, an Open Source Language Identification Model supporting 61 African Languages - Newsroom",
+      "source": "brave",
+      "file": "commonlingua.md"
+    },
+    "https://github.com/microsoft/agent-framework": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "GitHub - microsoft/agent-framework: A framework for building, orchestrating and deploying AI agents and multi-agent workflows with support for Python and .NET. · GitHub",
+      "source": "ai-agent-frameworks-discovery",
+      "file": "microsoft-agent-framework.md"
+    },
+    "https://arxiv.org/html/2604.24657": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "AgentWard: A Lifecycle Security Architecture for Autonomous AI Agents",
+      "source": "ai-agent-frameworks-discovery",
+      "file": "agentward-lifecycle-security-architecture.md"
+    },
+    "https://pasqualepillitteri.it/en/news/1476/10-open-source-ai-agent-frameworks-2026": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "10 Open-Source AI Agent Frameworks to Automate Your Work in 2026",
+      "source": "brave",
+      "file": "open-source-agent-frameworks-2026-review.md"
+    },
+    "https://github.com/ComposioHQ/agent-orchestrator": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "GitHub - ComposioHQ/agent-orchestrator: Agentic orchestrator for parallel coding agents — plans tasks, spawns agents, and autonomously handles CI fixes, merge conflicts, and code reviews.",
+      "source": "ai-agent-frameworks-discovery",
+      "file": "composiohq-agent-orchestrator.md"
+    },
+    "https://thenextweb.com/news/sequoia-openclaw-mac-mini-ai-agents": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "Sequoia distributes 200 engraved Mac Minis at AI event as OpenClaw becomes the infrastructure layer VCs cannot own",
+      "source": "ai-agent-frameworks-discovery",
+      "file": "sequoia-openclaw-mac-mini-signal.md"
+    },
+    "https://github.com/microsoft/agent-governance-toolkit/blob/main/AGENTS.md": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "agent-governance-toolkit/AGENTS.md at main · microsoft/agent-governance-toolkit",
+      "source": "ai-governance-security-tools",
+      "file": "agent-governance-toolkit.md"
+    },
+    "https://www.artificialintelligence-news.com/news/microsoft-open-source-toolkit-secures-ai-agents-at-runtime/": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "Microsoft open-source toolkit secures AI agents at runtime",
+      "source": "ai-governance-security-tools",
+      "file": "microsoft-agent-governance-toolkit.md"
+    },
+    "https://www.helpnetsecurity.com/2026/04/09/asqav-ai-agent-audit-trail/": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "Asqav: Open-source SDK for AI agent governance - Help Net Security",
+      "source": "ai-governance-security-tools",
+      "file": "asqav-ai-agent-governance-sdk.md"
+    },
+    "https://faun.pub/the-open-source-ai-agent-frameworks-that-deserve-more-stars-on-github-6f1fd0e3fc99?gi=6489257d1a26": {
+      "date": "2026-04-28",
+      "decision": "drafted",
+      "title": "The Open-Source AI Agent Frameworks That Deserve More Stars on GitHub | by TechLatest.Net | Apr, 2026 | FAUN.dev() 🐾",
+      "source": "ai-agent-frameworks-discovery",
+      "file": "specialized-agent-frameworks-memory-architectures.md"
+    },
+    "https://www.phoronix.com/news/Microsoft-AI-Agent-Governance": {
+      "date": "2026-04-28",
+      "decision": "deferred",
+      "title": "Microsoft's Newest Open-Source Project: Runtime Security For AI Agents - Phoronix",
+      "source": "ai-governance-security-tools",
+      "score": 4,
+      "reason": "Explicitly open-source AI agent governance toolkit with clearly defined operational components. Directly aligns with Openflows' focus on inspectable security and governance tools in the open AI ecosystem.",
+      "signal": {
+        "title": "Microsoft's Newest Open-Source Project: Runtime Security For AI Agents - Phoronix",
+        "url": "https://www.phoronix.com/news/Microsoft-AI-Agent-Governance",
+        "summary": "Microsoft&#x27;s <strong>Agent Governance Toolkit</strong> provides Agent OS as a policy engine that intercepts every agent&#x27;s action before execution, Agent Mesh for securing agent-to-agent communication, Agent Runtime for dynamic execution rings, Agent SRE for various safeguards, Agent Compliance for automated ...",
+        "source": "ai-governance-security-tools",
+        "date": "2026-04-02T00:00:00",
+        "meta": {}
+      }
+    },
+    "https://opensourceprojects.dev/post/e5ed34df-deb5-4771-a81b-58677996ec2a": {
+      "date": "2026-04-28",
+      "decision": "deferred",
+      "title": "Impeccable: A Design System for AI Coding Agents",
+      "source": "opensourceprojects",
+      "score": 3,
+      "reason": "Open-source design system tailored for AI coding agents, addressing operational UI consistency. Publicly accessible on GitHub and aligns with Openflows' focus on practical AI tooling, though niche in scope.",
+      "signal": {
+        "title": "Impeccable: A Design System for AI Coding Agents",
+        "url": "https://opensourceprojects.dev/post/e5ed34df-deb5-4771-a81b-58677996ec2a",
+        "summary": "If you&apos;ve ever tried to get an AI coding agent to generate consistent, good-looking UI, you know the pain. They tend to produce messy, inconsistent layouts with random spacing, mismatched colors, and components that look like they fell out of a design toolbox from 2010.\n\nGitHub Repository: https://github.com/pbakaus/impeccable",
+        "source": "opensourceprojects",
+        "date": "2026-04-28T08:55:47.000Z",
+        "meta": {
+          "stars": null
+        }
+      }
+    },
+    "https://github.com/microsoft/agent-governance-toolkit": {
+      "date": "2026-04-28",
+      "decision": "deferred",
+      "title": "GitHub - microsoft/agent-governance-toolkit: AI Agent Governance Toolkit — Policy enforcement, zero-trust identity, execution sandboxing, and reliability engineering for autonomous AI agents. Covers 10/10 OWASP Agentic Top 10.",
+      "source": "ai-governance-security-tools",
+      "score": 3,
+      "reason": "Fits the governance and tools scope with clear technical features, but Microsoft's corporate stewardship and the emerging nature of agentic governance frameworks limit it to moderate relevance for an open-source AI knowledge base.",
+      "signal": {
+        "title": "GitHub - microsoft/agent-governance-toolkit: AI Agent Governance Toolkit — Policy enforcement, zero-trust identity, execution sandboxing, and reliability engineering for autonomous AI agents. Covers 10/10 OWASP Agentic Top 10.",
+        "url": "https://github.com/microsoft/agent-governance-toolkit",
+        "summary": "AI Agent Governance Toolkit — Policy enforcement, zero-trust identity, execution sandboxing, and reliability engineering for autonomous AI agents. Covers 10/10 OWASP Agentic Top 10. - microsoft/agent-governance-toolkit",
+        "source": "ai-governance-security-tools",
+        "date": "2026-04-25T03:27:16",
+        "meta": {}
+      }
+    },
+    "https://github.com/JackChen-me/open-multi-agent": {
+      "date": "2026-04-28",
+      "decision": "deferred",
+      "title": "GitHub - JackChen-me/open-multi-agent: From a goal to a task DAG, automatically. TypeScript-native multi-agent orchestration with multi-model teams and parallel execution. Three runtime dependencies. · GitHub",
+      "source": "ai-agent-frameworks-discovery",
+      "score": 3,
+      "reason": "Open-source TypeScript multi-agent orchestration framework with clear technical specifications and public repository. Fits the tools/frameworks scope and provides operational details, making it worth documenting despite the current trendiness of agent frameworks.",
+      "signal": {
+        "title": "GitHub - JackChen-me/open-multi-agent: From a goal to a task DAG, automatically. TypeScript-native multi-agent orchestration with multi-model teams and parallel execution. Three runtime dependencies. · GitHub",
+        "url": "https://github.com/JackChen-me/open-multi-agent",
+        "summary": "From a goal to a task DAG, automatically. TypeScript-native multi-agent orchestration with multi-model teams and parallel execution. Three runtime dependencies. - JackChen-me/open-multi-agent",
+        "source": "ai-agent-frameworks-discovery",
+        "date": "2026-04-22T19:05:04",
+        "meta": {}
+      }
+    },
+    "https://github.com/wshobson/agents": {
+      "date": "2026-04-28",
+      "decision": "deferred",
+      "title": "GitHub - wshobson/agents: Intelligent automation and multi-agent orchestration for Claude Code · GitHub",
+      "source": "ai-agent-frameworks-discovery",
+      "score": 3,
+      "reason": "Open-source agent orchestration framework, but specifically designed for Anthropic's closed-source Claude Code, which limits its standalone relevance to the open ecosystem. Fits the tools scope but carries a closed-system dependency.",
+      "signal": {
+        "title": "GitHub - wshobson/agents: Intelligent automation and multi-agent orchestration for Claude Code · GitHub",
+        "url": "https://github.com/wshobson/agents",
+        "summary": "Intelligent automation and multi-agent orchestration for Claude Code - wshobson/agents",
+        "source": "ai-agent-frameworks-discovery",
+        "date": "2026-04-19T11:35:02",
+        "meta": {}
+      }
     }
   }
 }
