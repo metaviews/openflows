@@ -143,6 +143,21 @@
         "limit": 20,
         "minStars": 0
       }
+    },
+    {
+      "id": "ai-agent-frameworks-discovery",
+      "module": "brave",
+      "label": "AI Agent Frameworks & Orchestration",
+      "enabled": false,
+      "notes": "Captures emerging open-source agent frameworks, orchestration engines, and multi-agent coordination tools that extend Openflows' coverage of decentralized AI runtime ecosystems.",
+      "config": {
+        "queries": [
+          "open source AI agent framework 2024",
+          "multi-agent orchestration engine github",
+          "autonomous AI agent runtime architecture"
+        ],
+        "count": 5
+      }
     }
   ]
 }
