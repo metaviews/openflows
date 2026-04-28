@@ -7,6 +7,8 @@ const { commitPerspective, commitSeen } = require('./git')
 const activeRuns = new Set()
 const ALLOWED = ['intake', 'perspective', 'synthesize', 'digest', 'translate', 'audit', 'enrich', 'refresh', 'discover-sources']
 const COMPOUND = ['intake', 'perspective']
+// Scripts that read _site/knowledge-manifest.json — rebuild it first if stale.
+const MANIFEST_DEPENDENT = new Set(['translate', 'synthesize', 'digest', 'discover-sources'])
 
 function isTriggerActive(type) {
   return activeRuns.has(type)
@@ -50,6 +52,7 @@ async function queueTrigger(db, type, args = []) {
         await runScript(db, 'digest')
         await commitPerspective().catch(() => {})
       } else {
+        if (MANIFEST_DEPENDENT.has(type)) await ensureManifest()
         await runScript(db, type, args, runId)
       }
     } catch (err) {

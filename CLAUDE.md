@@ -10,13 +10,20 @@ npm run build          # Clean _site, then Eleventy: src/ → _site/
 npm run check:links    # Validate currency links.id references
 npm run check:seo      # Validate generated SEO/discovery metadata
 
+# Tests
+npm test               # node --test tests/*.test.js
+
 # Server (Fastify dashboard)
 npm run server         # Production: node server/index.js
 npm run server:dev     # Dev: node --watch server/index.js
 
+# Maintenance
+npm run cleanup:drafts             # Prune malformed drafts from the SQLite queue
+npm run audit:practitioner-social  # Audit practitioner social profile fields
+
 # Agent scripts (run from repo root)
 node scripts/query.js "question"              # Query the KB via OpenRouter
-node scripts/intake.js [--sources github,brave] [--limit 5]
+node scripts/intake.js [--sources github,huggingface,brave,opensourceprojects] [--limit 5]
 node scripts/synthesize.js [--topic "..."] [--currents id1,id2]
 node scripts/translate.js [--id slug] [--type current] [--force]
 node scripts/audit.js                         # Quality report → audit/QUALITY.md
@@ -27,6 +34,10 @@ node scripts/queue.js                         # Regenerate drafts/QUEUE.md
 node scripts/refresh.js [--limit 10] [--id slug] [--days 7]  # Check stale entries for updates
 node scripts/practitioners.js [--limit 3]     # Enrich practitioner entries
 node scripts/intake-urls.js                   # One-shot: fetch URL list → generate drafts → queue
+node scripts/discover-sources.js              # Propose new sources for the registry
+node scripts/promote.js                       # CLI promotion of a queued draft
+node scripts/apply-update.js                  # Apply refresh-suggested updates to an entry
+node scripts/apply-updates-zh.js              # Same, for Chinese entries
 
 # Deployment (on server)
 git pull --rebase
@@ -51,15 +62,21 @@ Discord bot (all optional — omit `DISCORD_BOT_TOKEN` to disable): `DISCORD_BOT
 
 **Cron** (`server/cron.js`) runs all automation:
 
-- `06:00 UTC daily` — intake → practitioners → audit → commit → Discord intake notification
-- `08:00 UTC Mon/Wed/Fri` — synthesize → digest → commit → Discord digest notification
-- `09:00 UTC daily` — refresh
+- `06:00 UTC daily` — `intake --sources github,huggingface,brave,opensourceprojects --limit 10` → `practitioners --limit 3` → `audit` → `commitSeen()` → Discord intake notification with both `runIds` and pending-draft delta
+- `08:00 UTC Mon/Wed/Fri` — `synthesize` → `digest` → `commitPerspective()` → Discord digest notification
+- `09:00 UTC daily` — `refresh --limit 15 --days 7`
 
-**Discord bot** (`server/discord.js`): optional Peng presence. `initDiscord(db)` returns `{ notify }` or null if `DISCORD_BOT_TOKEN` is absent. Handles mention-based chat (read tools for anyone, write tools for authorized users with button confirmation), slash commands (`/ask`, `/status`, `/queue`, `/trigger`), and automated notifications after cron jobs. Per-channel conversation history capped at 20 messages. `executeToolCall` is called with `{ db }` as a duck-typed fastify object.
+Cron failures are reported via `discord?.notify('error', { type, error })`.
+
+**Discord bot** (`server/discord.js`): optional Peng presence. `initDiscord(db)` returns `{ notify }` or null if `DISCORD_BOT_TOKEN` is absent. Handles mention-based chat (read tools for anyone, write tools for authorized users with button confirmation), slash commands (`/ask`, `/status`, `/queue`, `/trigger`), and automated notifications after cron jobs. Per-channel conversation history capped at 20 messages. `executeToolCall` is called with `{ db }` as a duck-typed fastify object. Notification signatures: `notify('intake', { db, runIds, pendingBefore, pendingAfter })`, `notify('digest', { db })`, `notify('error', { type, error })`.
 
 GitHub Actions are retired. All automation runs from the self-hosted server.
 
-**OpenRouter** handles all AI calls. Never use the Anthropic API directly. Model is configurable per `.env`; `scripts/lib/openrouter.js` is the shared helper (handles env loading, 429 fallback retry).
+**OpenRouter** handles all AI calls. Never use the Anthropic API directly. Model is configurable per `.env`; `scripts/lib/openrouter.js` is the shared helper (handles env loading, 429 fallback retry). The `xactions` package backs cross-platform social posting via `scripts/lib/xactions-adapter.js`.
+
+**Blog admin** (`server/routes/blog.js`, `server/lib/blog.js`): blog drafts (`drafts.type = 'blog'`) flow through the same queue as currency drafts but promote to Markdown files in `src/blog/` (English) or `src/blog/zh/`. Hero-image upload uses `@fastify/multipart` (registered with a 5 MB / 1-file cap, gracefully disabled if the module isn't installed). Views: `blog-admin.njk`, `blog-edit.njk`.
+
+**Social publishing** (`server/routes/social.js`, `server/lib/social-publisher.js`, `scripts/sources/{twitter,bluesky,mastodon}.js`): the `/social` page composes posts to Twitter/Bluesky/Mastodon using source-registry rows whose `module` is in `SOCIAL_MODULES`. Each post is logged to the `events` table with `type = 'social_post'`. Char limits hardcoded in the route: twitter 280, bluesky 300, mastodon 500.
 
 ## Content Schema
 
@@ -128,6 +145,9 @@ The admin dashboard (`/`) has three sections:
 - `GET /queue/:id/edit?lang=` — Draft editor; Save / Promote / Reject
 - `GET /sources` — Source registry; proposals list; practitioner social audit panel
 - `GET /sources/new` · `GET /sources/:id/edit` — Source editor
+- `GET /social` — Social composer for Twitter/Bluesky/Mastodon (uses source-registry rows in `SOCIAL_MODULES`)
+- `GET /blog-admin` — Blog draft + published-post admin
+- `GET /blog-admin/new` · `GET /blog-admin/drafts/:id/edit` — Blog draft editor (with hero-image upload)
 
 **API routes** (`/api/` prefix, registered with `{ prefix: '/api' }`):
 
@@ -152,7 +172,8 @@ The admin dashboard (`/`) has three sections:
 **Route registration notes**:
 
 - `entries.js` is registered without a prefix; it hard-codes `/api/` in mutation route paths. Don't add a prefix when registering it.
-- `sources.js` is also registered without a prefix; it handles both page routes (`/sources/*`) and API routes (`/api/sources/*`) internally.
+- `sources.js`, `social.js`, and `blog.js` are also registered without a prefix; each handles both page routes and any `/api/*` endpoints internally.
+- The server vendors frontend deps under `/vendor/marked/` and `/vendor/dompurify/` from their installed package directories.
 
 Views use Nunjucks (`server/views/`) via `@fastify/view`. htmx handles panel refreshes. Content-type parser for `application/x-www-form-urlencoded` is registered explicitly (required for htmx POST requests).
 
@@ -190,3 +211,4 @@ Technical, civic, dense — no hype, no marketing voice, no blog-post feel. Trea
 - Nunjucks `in` operator does not work on JS arrays — pass membership sets as plain objects `{ id: true }` and check with `obj[key]`.
 - The live log panel (`#live-log`) is an inline panel in the dashboard right column, not a fixed overlay. `openLog()` sets `display: flex`; `closeLiveLog()` sets `display: none`.
 - `trigger.js` pre-creates the run record for single-script triggers so `runId` is available before `setImmediate` fires. For compound types (`intake`, `perspective`), `runId` is `null` in the response.
+- `server/index.js` runs `pruneMalformedDrafts(db)` on startup — drafts with bad shape are silently dropped from the queue on every restart. Check the boot log if a draft "disappears."
