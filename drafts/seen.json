@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-29T06:03:24.247Z",
+  "lastUpdated": "2026-04-29T18:05:10.176Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4259,6 +4259,101 @@
       "title": "AI Agents Authentication: How Autonomous Systems Prove Identity",
       "source": "ai-governance-security-tools",
       "file": "agent-authentication-identity-verification.md"
+    },
+    "https://opensourceprojects.dev/post/c43bbe11-92ce-423e-93ed-5cbda495239a": {
+      "date": "2026-04-29",
+      "decision": "skipped",
+      "title": "Open Source Project",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The signal describes a Kubernetes cluster management console, which is a DevOps/infrastructure tool with no direct connection to the open source AI ecosystem that Openflows documents."
+    },
+    "https://opensourceprojects.dev/post/02d15a27-6bf8-4f0c-8a53-5904a81bd72c": {
+      "date": "2026-04-29",
+      "decision": "skipped",
+      "title": "CorridorKey: Solving the 30-Year VFX Keying Problem",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Open-source VFX compositing tool with no explicit AI/ML focus; tangentially related as general open-source software but unlikely to add value to an AI-specific knowledge base."
+    },
+    "https://opensourceprojects.dev/post/4115de8d-07a2-4f20-aa2b-1102db1491d3": {
+      "date": "2026-04-29",
+      "decision": "skipped",
+      "title": "MinecraftConsoles – Reviving the Classic Console Experience",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Completely unrelated to the open source AI ecosystem; focuses on a game client modification rather than AI tools, models, or governance."
+    },
+    "https://bigid.com/blog/what-is-agentic-ai-governance/": {
+      "date": "2026-04-29",
+      "decision": "skipped",
+      "title": "Agentic AI Governance: Framework, Risks & How to Control Autonomous AI Systems",
+      "source": "ai-governance-security-tools",
+      "score": 2,
+      "reason": "Highly conceptual and trend-focused on 'agentic AI' without naming specific open-source tools, frameworks, or operational details. Lacks the inspectable, implementation-focused content Openflows prioritizes."
+    },
+    "https://opensourceprojects.dev/post/31dbb532-89a3-4e17-b793-b06223d59707": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "GitAgent Protocol – Define AI Agents as Code, Run Anywhere",
+      "source": "opensourceprojects",
+      "file": "gitagent-protocol.md"
+    },
+    "https://opensourceprojects.dev/post/6f3e6367-91e9-4e33-ab7d-95fa3fde24d7": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "AI Engineering From Scratch – Master AI Without Black Boxes",
+      "source": "opensourceprojects",
+      "file": "ai-engineering-from-scratch.md"
+    },
+    "https://huggingface.co/LGAI-EXAONE/EXAONE-4.5-33B": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "LGAI-EXAONE/EXAONE-4.5-33B",
+      "source": "huggingface",
+      "file": "exaone-4-5-33b-vlm.md"
+    },
+    "https://huggingface.co/LGAI-EXAONE/EXAONE-4.5-33B-FP8": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "LGAI-EXAONE/EXAONE-4.5-33B-FP8",
+      "source": "huggingface",
+      "file": "exaone-45-33b-fp8.md"
+    },
+    "https://huggingface.co/google/medasr": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "google/medasr",
+      "source": "huggingface",
+      "file": "google-medasr-medical-asr.md"
+    },
+    "https://huggingface.co/ibm-granite/granite-speech-4.1-2b": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "ibm-granite/granite-speech-4.1-2b",
+      "source": "huggingface",
+      "file": "ibm-granite-speech-4-1-2b.md"
+    },
+    "https://opensourceprojects.dev/post/0e95349b-cf02-4538-ac2f-47601400cc05": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "Nightingale: AI Karaoke from Your Own Music Library",
+      "source": "opensourceprojects",
+      "file": "nightingale-ai-karaoke.md"
+    },
+    "https://opensourceprojects.dev/post/9d1567ab-10ac-4d33-8341-b34582a43478": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "LLM Wiki – Build a Self-Updating Knowledge Base from Your Documents",
+      "source": "opensourceprojects",
+      "file": "llm-wiki.md"
+    },
+    "https://opensourceprojects.dev/post/d894775a-f65a-4c89-b0fa-35bb1e3557d0": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "Context Mode – Solving the AI Context Window Problem",
+      "source": "opensourceprojects",
+      "file": "context-mode.md"
     }
   }
 }
