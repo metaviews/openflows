@@ -55,6 +55,30 @@ test('tool summaries omit full content and keep operational fields', () => {
   assert.equal(Object.hasOwn(summary, 'content'), false)
 })
 
+test('create_draft summaries use frontmatter id when tool arguments drift', () => {
+  const content = `---
+layout: layouts/currency-item.njk
+title: "DeepAnalyze"
+date: 2026-04-29
+currencyType: current
+currencyId: deepanalyze
+tags:
+  - currency
+permalink: /currency/currents/deepanalyze/
+abstract: "A draft fixture for id canonicalization."
+---
+
+Body.`
+  const summary = summarizeToolCall(toolCall('create_draft', {
+    currencyId: 'deeanalyze',
+    content,
+  }))
+
+  assert.equal(summary.id, 'deepanalyze')
+  assert.equal(summary.requestedId, 'deeanalyze')
+  assert.equal(Object.hasOwn(summary, 'content'), false)
+})
+
 test('entry replacement validation preserves identity and language', () => {
   const existing = { currencyType: 'current' }
   const valid = `---

@@ -17,6 +17,7 @@ const {
   applyPractitionerSocialCandidate,
 } = require('./practitioner-social')
 const { normalizeDraftContent, autofixCurrencyDraft } = require('./draft-standard')
+const { parseFrontmatter } = require('./parse')
 
 const READ_TOOL_NAMES = new Set(['get_status', 'get_queue', 'get_entry', 'get_draft', 'get_sources', 'get_source_proposals', 'get_practitioner_social_audit', 'fetch_url'])
 const WRITE_TOOL_NAMES = new Set([
@@ -397,8 +398,10 @@ async function executeToolCall(fastify, toolCall) {
     }
     case 'create_draft': {
       const lang = args.lang || 'en'
-      const content = autofixCurrencyDraft(normalizeDraftContent(args.content), { id: args.currencyId, lang })
-      return upsertDraft(fastify.db, { id: args.currencyId, lang, content, sourceUrl: args.sourceUrl || null })
+      const normalized = normalizeDraftContent(args.content)
+      const id = canonicalCreateDraftId(args.currencyId, normalized)
+      const content = autofixCurrencyDraft(normalized, { id, lang })
+      return upsertDraft(fastify.db, { id, lang, content, sourceUrl: args.sourceUrl || null })
     }
     case 'update_draft': {
       const lang = args.lang || 'en'
@@ -458,9 +461,13 @@ function isReadTool(toolCallOrName) {
 function summarizeToolCall(toolCall) {
   const name = toolCall.function?.name || 'unknown'
   const args = parseArguments(toolCall.function?.arguments)
+  const contentId = name === 'create_draft' && typeof args.content === 'string'
+    ? canonicalCreateDraftId(args.currencyId, normalizeDraftContent(args.content))
+    : null
   const summary = {
     name,
-    id: args.currencyId || args.id || null,
+    id: contentId || args.currencyId || args.id || null,
+    requestedId: contentId && args.currencyId && contentId !== args.currencyId ? args.currencyId : null,
     candidateKey: args.candidateKey || null,
     proposalId: args.proposalId || null,
     lang: args.lang || null,
@@ -510,6 +517,12 @@ function parseArguments(raw) {
   } catch {
     return {}
   }
+}
+
+function canonicalCreateDraftId(requestedId, content) {
+  const { frontmatter } = parseFrontmatter(content || '')
+  const frontmatterId = frontmatter.currencyId || frontmatter.blogId
+  return String(frontmatterId || requestedId || '').trim()
 }
 
 module.exports = {
