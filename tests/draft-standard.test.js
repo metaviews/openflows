@@ -59,6 +59,17 @@ test('current drafts must use the shared intake section structure', () => {
   assert.match(invalid.issues.join('\n'), /missing section: ### Signal/)
 })
 
+test('Chinese current drafts do not require English intake section headings', () => {
+  const zhCurrent = VALID_CURRENT
+    .replace('title: "Example Current"', 'title: "示例流"')
+    .replace('currencyId: example-current', 'currencyId: example-current')
+    .replace('permalink: /currency/currents/example-current/', 'lang: zh\npermalink: /zh/currency/currents/example-current/')
+    .replace(/### Signal[\s\S]*/, '**信号** 这是一个中文译稿。\n\n**连接** No explicit currency link added yet.\n')
+
+  const result = inspectDraftContent({ id: 'example-current', lang: 'zh', content: zhCurrent })
+  assert.equal(result.valid, true)
+})
+
 test('draft validation rejects malformed schema consistently', () => {
   const malformed = `---
 title: "Broken"

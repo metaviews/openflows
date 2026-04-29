@@ -132,7 +132,7 @@ function inspectDraftContent({ id, lang = 'en', content, type, title, abstract, 
     issues.push('missing abstract')
   }
 
-  if (draftType === 'current' && strictSections) {
+  if (draftType === 'current' && strictSections && lang !== 'zh') {
     for (const section of CURRENT_SECTIONS) {
       if (!body.includes(section)) issues.push(`missing section: ${section}`)
     }

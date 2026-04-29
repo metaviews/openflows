@@ -19,6 +19,7 @@ const { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSyn
 const { execSync } = require('child_process');
 const { basename, join } = require('path');
 const { parseFrontmatter } = require('../server/lib/parse');
+const { inspectDraftContent, normalizeDraftContent } = require('../server/lib/draft-standard');
 const { loadEnv, createClient, getArg, hasFlag } = require('./lib/openrouter');
 
 loadEnv();
@@ -146,12 +147,6 @@ const blogSrcDir = join(__dirname, '..', 'src', 'blog');
 
 function getTranslatedIds() {
   const ids = new Set();
-  // Check drafts/zh/ (flat)
-  if (existsSync(zhDraftsDir)) {
-    for (const f of readdirSync(zhDraftsDir)) {
-      if (f.endsWith('.md')) ids.add(f.replace(/\.md$/, ''));
-    }
-  }
   // Check src/currency/zh/{currents,circuits,practitioners}/ (one level deep)
   if (existsSync(zhSrcBase)) {
     for (const sub of readdirSync(zhSrcBase)) {
@@ -163,7 +158,41 @@ function getTranslatedIds() {
       } catch { /* not a directory */ }
     }
   }
+  // Check drafts/zh/ (flat), but only count drafts the queue importer can accept.
+  for (const id of getValidZhDraftIds()) {
+    ids.add(id);
+  }
   return ids;
+}
+
+function getValidZhDraftIds() {
+  const ids = new Set();
+  if (!existsSync(zhDraftsDir)) return ids;
+  for (const f of readdirSync(zhDraftsDir)) {
+    if (!f.endsWith('.md')) continue;
+    const id = f.replace(/\.md$/, '');
+    const filePath = join(zhDraftsDir, f);
+    const content = normalizeDraftContent(readFileSync(filePath, 'utf8'));
+    const inspection = inspectDraftContent({ id, lang: 'zh', content, manifest });
+    if (inspection.valid) ids.add(id);
+  }
+  return ids;
+}
+
+function getInvalidZhDrafts() {
+  const drafts = [];
+  if (!existsSync(zhDraftsDir)) return drafts;
+  for (const f of readdirSync(zhDraftsDir)) {
+    if (!f.endsWith('.md')) continue;
+    const id = f.replace(/\.md$/, '');
+    const filePath = join(zhDraftsDir, f);
+    const content = normalizeDraftContent(readFileSync(filePath, 'utf8'));
+    const inspection = inspectDraftContent({ id, lang: 'zh', content, manifest });
+    if (!inspection.valid) {
+      drafts.push({ id, issues: inspection.issues });
+    }
+  }
+  return drafts;
 }
 
 function getTranslatedBlogIds() {
@@ -409,6 +438,7 @@ function printTranslationState() {
   const missingPublishedZh = english.filter(e => !chineseIds.has(e.currencyId));
   const translatedIds = getTranslatedIds();
   const pendingOrPublished = missingPublishedZh.filter(e => translatedIds.has(e.currencyId));
+  const invalidDrafts = getInvalidZhDrafts();
 
   if (idArg) {
     console.log(`Selected id: ${idArg}`);
@@ -421,6 +451,9 @@ function printTranslationState() {
   console.log(`English entries without published Chinese counterpart: ${missingPublishedZh.length}`);
   if (pendingOrPublished.length > 0) {
     console.log(`Entries without published Chinese counterpart but masked by an existing zh draft/source file: ${pendingOrPublished.map(e => e.currencyId).join(', ')}`);
+  }
+  if (invalidDrafts.length > 0) {
+    console.log(`Invalid Chinese draft files ignored by translation skip logic: ${invalidDrafts.map(d => d.id).join(', ')}`);
   }
   if (missingPublishedZh.length > 0 && pendingOrPublished.length === missingPublishedZh.length) {
     console.log('Use --force to regenerate existing Chinese drafts.');
