@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-28T18:06:46.815Z",
+  "lastUpdated": "2026-04-29T06:03:24.247Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4204,86 +4204,61 @@
       "file": "specialized-agent-frameworks-memory-architectures.md"
     },
     "https://www.phoronix.com/news/Microsoft-AI-Agent-Governance": {
-      "date": "2026-04-28",
-      "decision": "deferred",
+      "date": "2026-04-29",
+      "decision": "drafted",
       "title": "Microsoft's Newest Open-Source Project: Runtime Security For AI Agents - Phoronix",
       "source": "ai-governance-security-tools",
-      "score": 4,
-      "reason": "Explicitly open-source AI agent governance toolkit with clearly defined operational components. Directly aligns with Openflows' focus on inspectable security and governance tools in the open AI ecosystem.",
-      "signal": {
-        "title": "Microsoft's Newest Open-Source Project: Runtime Security For AI Agents - Phoronix",
-        "url": "https://www.phoronix.com/news/Microsoft-AI-Agent-Governance",
-        "summary": "Microsoft&#x27;s <strong>Agent Governance Toolkit</strong> provides Agent OS as a policy engine that intercepts every agent&#x27;s action before execution, Agent Mesh for securing agent-to-agent communication, Agent Runtime for dynamic execution rings, Agent SRE for various safeguards, Agent Compliance for automated ...",
-        "source": "ai-governance-security-tools",
-        "date": "2026-04-02T00:00:00",
-        "meta": {}
-      }
+      "file": "microsoft-agent-governance-toolkit.md"
     },
     "https://opensourceprojects.dev/post/e5ed34df-deb5-4771-a81b-58677996ec2a": {
-      "date": "2026-04-28",
-      "decision": "deferred",
+      "date": "2026-04-29",
+      "decision": "drafted",
       "title": "Impeccable: A Design System for AI Coding Agents",
       "source": "opensourceprojects",
-      "score": 3,
-      "reason": "Open-source design system tailored for AI coding agents, addressing operational UI consistency. Publicly accessible on GitHub and aligns with Openflows' focus on practical AI tooling, though niche in scope.",
-      "signal": {
-        "title": "Impeccable: A Design System for AI Coding Agents",
-        "url": "https://opensourceprojects.dev/post/e5ed34df-deb5-4771-a81b-58677996ec2a",
-        "summary": "If you&apos;ve ever tried to get an AI coding agent to generate consistent, good-looking UI, you know the pain. They tend to produce messy, inconsistent layouts with random spacing, mismatched colors, and components that look like they fell out of a design toolbox from 2010.\n\nGitHub Repository: https://github.com/pbakaus/impeccable",
-        "source": "opensourceprojects",
-        "date": "2026-04-28T08:55:47.000Z",
-        "meta": {
-          "stars": null
-        }
-      }
+      "file": "impeccable-design-system-ai-coding-agents.md"
     },
     "https://github.com/microsoft/agent-governance-toolkit": {
-      "date": "2026-04-28",
-      "decision": "deferred",
+      "date": "2026-04-29",
+      "decision": "drafted",
       "title": "GitHub - microsoft/agent-governance-toolkit: AI Agent Governance Toolkit — Policy enforcement, zero-trust identity, execution sandboxing, and reliability engineering for autonomous AI agents. Covers 10/10 OWASP Agentic Top 10.",
       "source": "ai-governance-security-tools",
-      "score": 3,
-      "reason": "Fits the governance and tools scope with clear technical features, but Microsoft's corporate stewardship and the emerging nature of agentic governance frameworks limit it to moderate relevance for an open-source AI knowledge base.",
-      "signal": {
-        "title": "GitHub - microsoft/agent-governance-toolkit: AI Agent Governance Toolkit — Policy enforcement, zero-trust identity, execution sandboxing, and reliability engineering for autonomous AI agents. Covers 10/10 OWASP Agentic Top 10.",
-        "url": "https://github.com/microsoft/agent-governance-toolkit",
-        "summary": "AI Agent Governance Toolkit — Policy enforcement, zero-trust identity, execution sandboxing, and reliability engineering for autonomous AI agents. Covers 10/10 OWASP Agentic Top 10. - microsoft/agent-governance-toolkit",
-        "source": "ai-governance-security-tools",
-        "date": "2026-04-25T03:27:16",
-        "meta": {}
-      }
+      "file": "microsoft-agent-governance-toolkit.md"
     },
     "https://github.com/JackChen-me/open-multi-agent": {
-      "date": "2026-04-28",
-      "decision": "deferred",
+      "date": "2026-04-29",
+      "decision": "drafted",
       "title": "GitHub - JackChen-me/open-multi-agent: From a goal to a task DAG, automatically. TypeScript-native multi-agent orchestration with multi-model teams and parallel execution. Three runtime dependencies. · GitHub",
       "source": "ai-agent-frameworks-discovery",
-      "score": 3,
-      "reason": "Open-source TypeScript multi-agent orchestration framework with clear technical specifications and public repository. Fits the tools/frameworks scope and provides operational details, making it worth documenting despite the current trendiness of agent frameworks.",
-      "signal": {
-        "title": "GitHub - JackChen-me/open-multi-agent: From a goal to a task DAG, automatically. TypeScript-native multi-agent orchestration with multi-model teams and parallel execution. Three runtime dependencies. · GitHub",
-        "url": "https://github.com/JackChen-me/open-multi-agent",
-        "summary": "From a goal to a task DAG, automatically. TypeScript-native multi-agent orchestration with multi-model teams and parallel execution. Three runtime dependencies. - JackChen-me/open-multi-agent",
-        "source": "ai-agent-frameworks-discovery",
-        "date": "2026-04-22T19:05:04",
-        "meta": {}
-      }
+      "file": "open-multi-agent.md"
     },
     "https://github.com/wshobson/agents": {
-      "date": "2026-04-28",
-      "decision": "deferred",
+      "date": "2026-04-29",
+      "decision": "drafted",
       "title": "GitHub - wshobson/agents: Intelligent automation and multi-agent orchestration for Claude Code · GitHub",
       "source": "ai-agent-frameworks-discovery",
-      "score": 3,
-      "reason": "Open-source agent orchestration framework, but specifically designed for Anthropic's closed-source Claude Code, which limits its standalone relevance to the open ecosystem. Fits the tools scope but carries a closed-system dependency.",
-      "signal": {
-        "title": "GitHub - wshobson/agents: Intelligent automation and multi-agent orchestration for Claude Code · GitHub",
-        "url": "https://github.com/wshobson/agents",
-        "summary": "Intelligent automation and multi-agent orchestration for Claude Code - wshobson/agents",
-        "source": "ai-agent-frameworks-discovery",
-        "date": "2026-04-19T11:35:02",
-        "meta": {}
-      }
+      "file": "wshobson-agents-claude-code-orchestration.md"
+    },
+    "https://www.paloaltonetworks.com/cyberpedia/agentic-ai-security-solutions": {
+      "date": "2026-04-29",
+      "decision": "skipped",
+      "title": "Agentic AI Security Solutions: Top 7 Platforms Compared - Palo Alto Networks",
+      "source": "ai-governance-security-tools",
+      "score": 2,
+      "reason": "Commercial buyer guide from a proprietary vendor; lacks open-source tool specifics, inspectable details, or public accessibility aligned with Openflows' scope."
+    },
+    "https://zhuanlan.zhihu.com/p/2026743236673246911": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "Hermes Agent 深度解析：开源自托管AI智能体，开发者的全能效率工具 - 知乎",
+      "source": "brave",
+      "file": "hermes-agent.md"
+    },
+    "https://blog.gitguardian.com/ai-agents-authentication-how-autonomous-systems-prove-identity/": {
+      "date": "2026-04-29",
+      "decision": "drafted",
+      "title": "AI Agents Authentication: How Autonomous Systems Prove Identity",
+      "source": "ai-governance-security-tools",
+      "file": "agent-authentication-identity-verification.md"
     }
   }
 }
