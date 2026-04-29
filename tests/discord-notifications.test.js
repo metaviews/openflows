@@ -11,6 +11,7 @@ const {
   buildIntakeNotificationText,
   buildDigestNotificationText,
   buildIntakeEmbed,
+  buildIntakeUrlPosts,
   buildDigestEmbed,
   buildErrorEmbed,
 } = require('../server/discord')
@@ -23,6 +24,8 @@ function makeDb() {
       lang TEXT NOT NULL DEFAULT 'en',
       type TEXT,
       title TEXT,
+      content TEXT,
+      source_url TEXT,
       status TEXT NOT NULL DEFAULT 'pending',
       run_id INTEGER,
       created_at TEXT,
@@ -127,6 +130,44 @@ test('intake embed surfaces queue delta, touched count, and clickable draft link
   } finally {
     delete process.env.DISCORD_ADMIN_BASE_URL
   }
+})
+
+test('intake notification emits one plain URL post per touched draft source', () => {
+  const db = makeDb()
+  const insert = db.prepare(`
+    INSERT INTO drafts (id, lang, type, title, content, source_url, status, run_id, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `)
+  insert.run(
+    'alpha',
+    'en',
+    'current',
+    'Alpha',
+    '### Signal\n[Alpha](https://example.org/alpha) · github · 2026-04-23',
+    null,
+    'pending',
+    17,
+    '2026-04-23T10:00:00.000Z',
+    '2026-04-23T10:10:00.000Z'
+  )
+  insert.run(
+    'bravo',
+    'en',
+    'current',
+    'Bravo',
+    '### Signal\n[Bravo](https://example.org/ignored) · github · 2026-04-23',
+    'https://example.org/bravo',
+    'pending',
+    18,
+    '2026-04-23T10:01:00.000Z',
+    '2026-04-23T10:11:00.000Z'
+  )
+
+  const posts = buildIntakeUrlPosts(db, { runIds: [17, 18], pendingBefore: 0, pendingAfter: 2 })
+
+  assert.equal(posts.length, 2)
+  assert.match(posts[0], /\*\*\[current\|en\] bravo\*\* — Bravo\nhttps:\/\/example\.org\/bravo/)
+  assert.match(posts[1], /\*\*\[current\|en\] alpha\*\* — Alpha\nhttps:\/\/example\.org\/alpha/)
 })
 
 test('intake embed handles a quiet run with no drafts touched', () => {

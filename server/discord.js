@@ -436,6 +436,9 @@ async function postNotification(client, type, data) {
   if (type === 'intake') {
     const embed = buildIntakeEmbed(data.db, data)
     if (embed) await channel.send({ embeds: [embed] })
+    for (const post of buildIntakeUrlPosts(data.db, data)) {
+      await channel.send({ content: post })
+    }
     return
   }
 
@@ -520,6 +523,47 @@ function buildIntakeEmbed(db, { runIds = [], pendingBefore = null, pendingAfter 
   }
 
   return embed
+}
+
+function buildIntakeUrlPosts(db, { runIds = [], pendingBefore = null, pendingAfter = null } = {}) {
+  const { touched } = getIntakeTouchedDrafts(db, { runIds, pendingBefore, pendingAfter })
+  const seen = new Set()
+  const posts = []
+
+  for (const draft of touched) {
+    const url = draft.source_url || extractDraftSourceUrl(draft.content || '')
+    if (!url || seen.has(url)) continue
+    seen.add(url)
+    const title = (draft.title || draft.id || '(untitled)').slice(0, 120)
+    posts.push(`**[${draft.type || 'draft'}|${draft.lang || 'en'}] ${draft.id}** — ${title}\n${url}`.slice(0, DISCORD_MAX))
+  }
+
+  return posts
+}
+
+function getIntakeTouchedDrafts(db, { runIds = [], pendingBefore = null, pendingAfter = null } = {}) {
+  if (!db) return { touched: [], touchedCount: 0, totalPending: 0 }
+
+  let touched = listDraftsForRuns(db, runIds, 15)
+  let touchedCount = countDraftsForRuns(db, runIds)
+  const totalPending = pendingAfter ?? countPendingDrafts(db)
+  const queueGrew = Number.isInteger(pendingBefore) && Number.isInteger(totalPending) && totalPending > pendingBefore
+
+  if (!touchedCount && queueGrew) {
+    touchedCount = totalPending - pendingBefore
+    touched = listNewestPendingDrafts(db, Math.min(touchedCount, 15))
+  }
+
+  return { touched, touchedCount, totalPending }
+}
+
+function extractDraftSourceUrl(content) {
+  const text = String(content || '')
+  const signal = text.match(/###\s+Signal([\s\S]*?)(?=\n###\s+|\n##\s+|$)/i)?.[1] || text
+  const markdownUrl = signal.match(/\]\((https?:\/\/[^)\s]+)\)/i)
+  if (markdownUrl) return markdownUrl[1]
+  const rawUrl = signal.match(/https?:\/\/[^\s)\]"'<>]+/i)
+  return rawUrl ? rawUrl[0] : null
 }
 
 function buildDigestEmbed({ digestPath } = {}) {
@@ -610,7 +654,7 @@ function listDraftsForRuns(db, runIds = [], limit = 15) {
   if (!ids.length) return []
   const placeholders = ids.map(() => '?').join(', ')
   return db.prepare(
-    `SELECT id, lang, type, title
+    `SELECT id, lang, type, title, source_url, content
      FROM drafts
      WHERE status = 'pending' AND run_id IN (${placeholders})
      ORDER BY updated_at DESC, created_at DESC
@@ -620,7 +664,7 @@ function listDraftsForRuns(db, runIds = [], limit = 15) {
 
 function listNewestPendingDrafts(db, limit = 15) {
   return db.prepare(
-    `SELECT id, lang, type, title
+    `SELECT id, lang, type, title, source_url, content
      FROM drafts
      WHERE status = 'pending'
      ORDER BY updated_at DESC, created_at DESC
@@ -823,6 +867,7 @@ module.exports = {
   buildIntakeNotificationText,
   buildDigestNotificationText,
   buildIntakeEmbed,
+  buildIntakeUrlPosts,
   buildDigestEmbed,
   buildErrorEmbed,
   findLatestPerspectiveFile,

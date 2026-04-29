@@ -156,13 +156,14 @@ function importSourceStats(db, log) {
 // Only creates new drafts or updates existing pending drafts whose content changed.
 function importDraftFiles(db, runId = null) {
   const upsert = db.prepare(`
-    INSERT INTO drafts (id, lang, type, title, abstract, content, run_id, status, created_at, updated_at)
-    VALUES (?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?)
+    INSERT INTO drafts (id, lang, type, title, abstract, content, source_url, run_id, status, created_at, updated_at)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?)
     ON CONFLICT(id, lang) DO UPDATE SET
       content    = excluded.content,
       type       = excluded.type,
       title      = excluded.title,
       abstract   = excluded.abstract,
+      source_url = excluded.source_url,
       run_id     = excluded.run_id,
       updated_at = excluded.updated_at
     WHERE drafts.status = 'pending'
@@ -192,6 +193,7 @@ function importDraftFiles(db, runId = null) {
           frontmatter.title || null,
           frontmatter.abstract || null,
           content,
+          extractDraftSourceUrl(content),
           runId,
           stat.mtime.toISOString(),
           now
@@ -204,6 +206,15 @@ function importDraftFiles(db, runId = null) {
   }
 
   return count
+}
+
+function extractDraftSourceUrl(content) {
+  const text = String(content || '')
+  const signal = text.match(/###\s+Signal([\s\S]*?)(?=\n###\s+|\n##\s+|$)/i)?.[1] || text
+  const markdownUrl = signal.match(/\]\((https?:\/\/[^)\s]+)\)/i)
+  if (markdownUrl) return markdownUrl[1]
+  const rawUrl = signal.match(/https?:\/\/[^\s)\]"'<>]+/i)
+  return rawUrl ? rawUrl[0] : null
 }
 
 module.exports = { runScript, importDraftFiles, getRunStream, createManualRun, appendRunLog, completeManualRun }
