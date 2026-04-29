@@ -35,6 +35,7 @@ const limit = limitArg ? parseInt(limitArg, 10) : Infinity;
 
 const manifestPath = join(__dirname, '..', '_site', 'knowledge-manifest.json');
 const rootDir = join(__dirname, '..');
+const sourceStatePath = join(__dirname, '..', '_site', '.translation-source-state.json');
 
 function loadManifest() {
   try {
@@ -44,11 +45,13 @@ function loadManifest() {
   }
 }
 
-function latestMtimeMs(dir) {
-  if (!existsSync(dir)) return 0;
+function collectSourceFiles(dir, files = []) {
+  if (!existsSync(dir)) return files;
   const rootStat = statSync(dir);
-  if (rootStat.isFile()) return rootStat.mtimeMs;
-  let latest = 0;
+  if (rootStat.isFile()) {
+    files.push(dir);
+    return files;
+  }
   for (const name of readdirSync(dir)) {
     const filePath = join(dir, name);
     let stat;
@@ -58,31 +61,72 @@ function latestMtimeMs(dir) {
       continue;
     }
     if (stat.isDirectory()) {
-      latest = Math.max(latest, latestMtimeMs(filePath));
+      collectSourceFiles(filePath, files);
     } else if (name.endsWith('.md') || name.endsWith('.njk') || name.endsWith('.js') || name.endsWith('.json')) {
-      latest = Math.max(latest, stat.mtimeMs);
+      files.push(filePath);
     }
   }
-  return latest;
+  return files;
 }
 
-function manifestIsStale() {
+function sourceSignature() {
+  return sourceFiles()
+    .map(filePath => {
+      const stat = statSync(filePath);
+      return `${filePath.replace(rootDir + '/', '')}:${stat.size}:${Math.round(stat.mtimeMs)}`;
+    })
+    .join('\n');
+}
+
+function sourceFiles() {
+  const roots = [
+    join(rootDir, 'src', 'currency'),
+    join(rootDir, 'src', 'blog'),
+    join(rootDir, 'src', '_data'),
+    join(rootDir, 'src', '_includes'),
+    join(rootDir, '.eleventy.js'),
+  ];
+  return roots.flatMap(root => collectSourceFiles(root)).sort();
+}
+
+function latestSourceMtimeMs() {
+  return sourceFiles().reduce((latest, filePath) => {
+    return Math.max(latest, statSync(filePath).mtimeMs);
+  }, 0);
+}
+
+function readSourceState() {
+  try {
+    return JSON.parse(readFileSync(sourceStatePath, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+function writeSourceState(signature) {
+  writeFileSync(sourceStatePath, JSON.stringify({
+    signature,
+    updatedAt: new Date().toISOString(),
+  }, null, 2) + '\n');
+}
+
+function manifestIsStale(signature) {
   if (!existsSync(manifestPath)) return true;
-  const manifestMtime = statSync(manifestPath).mtimeMs;
-  const latestSource = Math.max(
-    latestMtimeMs(join(rootDir, 'src', 'currency')),
-    latestMtimeMs(join(rootDir, 'src', 'blog')),
-    latestMtimeMs(join(rootDir, 'src', '_data')),
-    latestMtimeMs(join(rootDir, 'src', '_includes')),
-    latestMtimeMs(join(rootDir, '.eleventy.js'))
-  );
-  return latestSource > manifestMtime;
+  const state = readSourceState();
+  if (state?.signature === signature) return false;
+  if (!state && latestSourceMtimeMs() <= statSync(manifestPath).mtimeMs) {
+    writeSourceState(signature);
+    return false;
+  }
+  return true;
 }
 
 function ensureFreshManifest() {
-  if (!manifestIsStale()) return;
+  const signature = sourceSignature();
+  if (!manifestIsStale(signature)) return;
   console.log('[manifest] knowledge manifest missing or stale; rebuilding before translation...');
   execSync('npm run build', { cwd: rootDir, stdio: 'inherit' });
+  writeSourceState(sourceSignature());
 }
 
 ensureFreshManifest();

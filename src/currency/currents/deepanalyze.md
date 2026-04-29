@@ -12,8 +12,10 @@ tags:
 permalink: /currency/currents/deepanalyze/
 abstract: RUC DataLab and Tsinghua's open-weight 8B agentic model for end-to-end autonomous data science — from data preparation and analysis to modeling, visualization, and report generation.
 links:
-  - id: github:deepanalyze
-    relation: GitHub repository
+  - id: aider
+    relation: Data-science-specific extension of terminal and repository-aware coding assistance
+  - id: agentic-software-development-infrastructure
+    relation: Applies agentic software development patterns to autonomous data science workflows
 mediation:
   tooling: OpenRouter / [model]
   use:
