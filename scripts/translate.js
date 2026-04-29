@@ -16,13 +16,13 @@
 //   node scripts/translate.js --force                # re-translate already-drafted entries
 
 const { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync } = require('fs');
+const { execSync } = require('child_process');
 const { basename, join } = require('path');
 const { parseFrontmatter } = require('../server/lib/parse');
 const { loadEnv, createClient, getArg, hasFlag } = require('./lib/openrouter');
 
 loadEnv();
-
-const or = createClient({ title: 'Openflows Translation Agent - Peng' });
+let or;
 
 // Parse args
 const args = process.argv.slice(2);
@@ -33,12 +33,62 @@ const limitArg = getArg(args, 'limit');
 const forceFlag = hasFlag(args, 'force');
 const limit = limitArg ? parseInt(limitArg, 10) : Infinity;
 
-// Load manifest
 const manifestPath = join(__dirname, '..', '_site', 'knowledge-manifest.json');
-let manifest;
-try {
-  manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
-} catch {
+const rootDir = join(__dirname, '..');
+
+function loadManifest() {
+  try {
+    return JSON.parse(readFileSync(manifestPath, 'utf8'));
+  } catch {
+    return null;
+  }
+}
+
+function latestMtimeMs(dir) {
+  if (!existsSync(dir)) return 0;
+  const rootStat = statSync(dir);
+  if (rootStat.isFile()) return rootStat.mtimeMs;
+  let latest = 0;
+  for (const name of readdirSync(dir)) {
+    const filePath = join(dir, name);
+    let stat;
+    try {
+      stat = statSync(filePath);
+    } catch {
+      continue;
+    }
+    if (stat.isDirectory()) {
+      latest = Math.max(latest, latestMtimeMs(filePath));
+    } else if (name.endsWith('.md') || name.endsWith('.njk') || name.endsWith('.js') || name.endsWith('.json')) {
+      latest = Math.max(latest, stat.mtimeMs);
+    }
+  }
+  return latest;
+}
+
+function manifestIsStale() {
+  if (!existsSync(manifestPath)) return true;
+  const manifestMtime = statSync(manifestPath).mtimeMs;
+  const latestSource = Math.max(
+    latestMtimeMs(join(rootDir, 'src', 'currency')),
+    latestMtimeMs(join(rootDir, 'src', 'blog')),
+    latestMtimeMs(join(rootDir, 'src', '_data')),
+    latestMtimeMs(join(rootDir, 'src', '_includes')),
+    latestMtimeMs(join(rootDir, '.eleventy.js'))
+  );
+  return latestSource > manifestMtime;
+}
+
+function ensureFreshManifest() {
+  if (!manifestIsStale()) return;
+  console.log('[manifest] knowledge manifest missing or stale; rebuilding before translation...');
+  execSync('npm run build', { cwd: rootDir, stdio: 'inherit' });
+}
+
+ensureFreshManifest();
+
+let manifest = loadManifest();
+if (!manifest) {
   console.error('Manifest not found. Run `npm run build` first.');
   process.exit(1);
 }
@@ -308,9 +358,33 @@ function writeBlogDraft(blogId, markdown) {
   return outPath;
 }
 
+function printTranslationState() {
+  const entries = manifest.entries || [];
+  const english = entries.filter(e => e.lang !== 'zh');
+  const chineseIds = new Set(entries.filter(e => e.lang === 'zh').map(e => e.currencyId));
+  const missingPublishedZh = english.filter(e => !chineseIds.has(e.currencyId));
+  const translatedIds = getTranslatedIds();
+  const pendingOrPublished = missingPublishedZh.filter(e => translatedIds.has(e.currencyId));
+
+  if (idArg) {
+    console.log(`Selected id: ${idArg}`);
+  }
+  if (typeArg) {
+    console.log(`Selected type: ${typeArg}`);
+  }
+  console.log(`English currency entries: ${english.length}`);
+  console.log(`Published Chinese currency entries: ${chineseIds.size}`);
+  console.log(`English entries without published Chinese counterpart: ${missingPublishedZh.length}`);
+  if (pendingOrPublished.length > 0) {
+    console.log(`Entries without published Chinese counterpart but masked by an existing zh draft/source file: ${pendingOrPublished.map(e => e.currencyId).join(', ')}`);
+  }
+  if (missingPublishedZh.length > 0 && pendingOrPublished.length === missingPublishedZh.length) {
+    console.log('Use --force to regenerate existing Chinese drafts.');
+  }
+}
+
 async function main() {
   console.log(`\nOpenflows Translation — Peng as Translator`);
-  console.log(`Model: ${or.primaryModel}`);
   const blogPosts = getBlogPosts();
   console.log(`Knowledge base: ${manifest.count} entries`);
   console.log(`Blog posts: ${blogPosts.length}\n`);
@@ -356,9 +430,13 @@ async function main() {
 
   const candidates = [...currencyCandidates, ...blogCandidates];
   if (candidates.length === 0) {
-    console.log('Nothing to translate. All selected entries already have drafts.');
+    console.log('Nothing to translate. All selected entries already have Chinese drafts or published Chinese entries.');
+    printTranslationState();
     return;
   }
+
+  or = createClient({ title: 'Openflows Translation Agent - Peng' });
+  console.log(`Model: ${or.primaryModel}`);
 
   // Apply limit
   const toTranslate = candidates.slice(0, limit);
