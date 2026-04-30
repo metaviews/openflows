@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-29T18:05:10.176Z",
+  "lastUpdated": "2026-04-30T06:04:41.198Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4354,6 +4354,62 @@
       "title": "Context Mode – Solving the AI Context Window Problem",
       "source": "opensourceprojects",
       "file": "context-mode.md"
+    },
+    "https://opensourceprojects.dev/post/453d6fca-5ed2-4e7c-8e59-3e2cf0462cfe": {
+      "date": "2026-04-30",
+      "decision": "drafted",
+      "title": "Awesome Agent Skills: The Largest Curated Library of AI Agent Skills",
+      "source": "opensourceprojects",
+      "file": "awesome-agent-skills.md"
+    },
+    "https://gitcode.csdn.net/69f048700a2f6a37c5a68724.html": {
+      "date": "2026-04-30",
+      "decision": "drafted",
+      "title": "2026 年 4 月 AI 行业深度观察：大模型爆发、国产算力突破、应用落地进入全民普惠期_人工智能_dfusert-AtomGit开源社区",
+      "source": "brave",
+      "file": "deepseek-v4-trillion-moe-release.md"
+    },
+    "https://www.ayautomate.com/blog/best-open-source-ai-agent-frameworks": {
+      "date": "2026-04-30",
+      "decision": "drafted",
+      "title": "8 best open-source AI agent frameworks on GitHub in 2026 | AY Automate",
+      "source": "brave",
+      "file": "8-best-open-source-ai-agent-frameworks-on-github-in-2026.md"
+    },
+    "https://www.digitalapplied.com/blog/microsoft-agent-governance-toolkit-runtime-security": {
+      "date": "2026-04-30",
+      "decision": "drafted",
+      "title": "Microsoft Agent Governance Toolkit: Runtime Security",
+      "source": "ai-governance-security-tools",
+      "file": "microsoft-agent-governance-toolkit-runtime-security.md"
+    },
+    "https://chatforest.com/guides/microsoft-agent-governance-toolkit/": {
+      "date": "2026-04-30",
+      "decision": "drafted",
+      "title": "Microsoft's Agent Governance Toolkit: The First Open-Source Framework Covering All 10 OWASP Agentic Risks — ChatForest",
+      "source": "ai-governance-security-tools",
+      "file": "microsoft-agent-governance-toolkit.md"
+    },
+    "https://opensourceprojects.dev/post/82ecc90a-e6e1-4f0e-b57e-e07b72051b0f": {
+      "date": "2026-04-30",
+      "decision": "drafted",
+      "title": "One Prompt, 50+ Models, One Winner. All Open Source.",
+      "source": "opensourceprojects",
+      "file": "g0dm0d3-multi-model-routing.md"
+    },
+    "https://opensourceprojects.dev/post/668e9bb0-2f4a-4077-a2b4-4de1f1ec0782": {
+      "date": "2026-04-30",
+      "decision": "drafted",
+      "title": "Khazix Skills: A Modular System for AI Agent Capabilities",
+      "source": "opensourceprojects",
+      "file": "khazix-skills.md"
+    },
+    "https://opensourceprojects.dev/post/4927ee20-d672-4b9c-8498-0b4b4ede5542": {
+      "date": "2026-04-30",
+      "decision": "drafted",
+      "title": "DeepSeek-OCR – Next-Gen Document AI with Context Optical Compression",
+      "source": "opensourceprojects",
+      "file": "deepseek-ocr.md"
     }
   }
 }
