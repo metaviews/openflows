@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-30T06:04:41.198Z",
+  "lastUpdated": "2026-04-30T18:00:50.884Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4410,6 +4410,21 @@
       "title": "DeepSeek-OCR – Next-Gen Document AI with Context Optical Compression",
       "source": "opensourceprojects",
       "file": "deepseek-ocr.md"
+    },
+    "https://agent.minimaxi.com/max-hermes": {
+      "date": "2026-04-30",
+      "decision": "skipped",
+      "title": "MaxHermes - 与你共同成长的 AI 智能体 | MiniMax",
+      "source": "brave",
+      "score": 1,
+      "reason": "Commercial AI agent platform driven by MiniMax's proprietary model. Lacks open-source code, transparency, or public accessibility, conflicting with Openflows' focus on open ecosystems and inspectionable tools."
+    },
+    "https://github.com/caramaschiHG/awesome-ai-agents-2026": {
+      "date": "2026-04-30",
+      "decision": "drafted",
+      "title": "GitHub - caramaschiHG/awesome-ai-agents-2026: 🤖 The most comprehensive list of AI agents, frameworks & tools in 2026. 300+ resources · 20+ categories · Updated monthly.",
+      "source": "brave",
+      "file": "awesome-ai-agents-2026.md"
     }
   }
 }
