@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-04-30T18:00:50.884Z",
+  "lastUpdated": "2026-05-01T06:04:19.791Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4425,6 +4425,72 @@
       "title": "GitHub - caramaschiHG/awesome-ai-agents-2026: 🤖 The most comprehensive list of AI agents, frameworks & tools in 2026. 300+ resources · 20+ categories · Updated monthly.",
       "source": "brave",
       "file": "awesome-ai-agents-2026.md"
+    },
+    "https://opensourceprojects.dev/post/fd9e9930-5469-45a3-9ad8-211661007684": {
+      "date": "2026-05-01",
+      "decision": "skipped",
+      "title": "sbb-tui: Swiss Transport Timetables in Your Terminal",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Unrelated to the open source AI ecosystem; focuses on a transport schedule terminal utility with no AI components or relevance to Openflows' scope."
+    },
+    "https://opensourceprojects.dev/post/b2c0ca2e-8fcb-4cf5-b0ad-8ff43f771e72": {
+      "date": "2026-05-01",
+      "decision": "skipped",
+      "title": "Stop paying for Claude Design. Use this local-first toolkit instead.",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Promotional title lacks operational AI specifics; appears to be a niche design tool alternative rather than a core AI framework or model, making it only tangentially relevant."
+    },
+    "https://opensourceprojects.dev/post/53d62d87-889e-436c-b18d-13ecd4b9be82": {
+      "date": "2026-05-01",
+      "decision": "skipped",
+      "title": "The open-source tool to download courses and media files",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "The tool is a general-purpose media and course downloader with no apparent connection to AI, machine learning, or the open source AI ecosystem, falling outside Openflows' defined scope."
+    },
+    "https://opensourceprojects.dev/post/c380c195-678f-4b8e-86c6-1e463396673e": {
+      "date": "2026-05-01",
+      "decision": "drafted",
+      "title": "GBrain: The Open-Source Memory System for AI Agents",
+      "source": "opensourceprojects",
+      "file": "gbrain-memory-system-for-ai-agents.md"
+    },
+    "https://opensourceprojects.dev/post/e7d64a12-f3c9-440d-a7f9-9cfe104aa695": {
+      "date": "2026-05-01",
+      "decision": "drafted",
+      "title": "Orca IDE: The Open-Source IDE for AI Coding Agents",
+      "source": "opensourceprojects",
+      "file": "orca-ide-open-source-ide-for-ai-coding-agents.md"
+    },
+    "https://alicelabs.ai/en/insights/best-ai-agent-frameworks-2026": {
+      "date": "2026-05-01",
+      "decision": "drafted",
+      "title": "Best AI Agent Frameworks 2026: 6 Compared (Open-Source)",
+      "source": "brave",
+      "file": "best-ai-agent-frameworks-2026.md"
+    },
+    "https://javaguide.cn/open-source-project/machine-learning.html": {
+      "date": "2026-05-01",
+      "decision": "error",
+      "title": "Java 优质开源 AI 项目 | JavaGuide",
+      "source": "brave",
+      "reason": "invalid draft: Unknown links.id: ai4j."
+    },
+    "https://opensourceprojects.dev/post/5844ff7b-d9aa-476d-b90a-b65ce8ed5337": {
+      "date": "2026-05-01",
+      "decision": "drafted",
+      "title": "SuperCmd: The Open-Source AI Launcher for macOS",
+      "source": "opensourceprojects",
+      "file": "supercmd-macos-ai-launcher.md"
+    },
+    "https://www.bilibili.com/video/BV1wWQSBrErP/": {
+      "date": "2026-05-01",
+      "decision": "drafted",
+      "title": "AI圈已沸腾！DeepSeek V4 与OpenAI代号“Spud”双重核弹来袭彻底引爆，载入史册！！！| AI日报 0325_哔哩哔哩_bilibili",
+      "source": "brave",
+      "file": "anthropic-claude-mythos-zhipu-glm-5-1-releases.md"
     }
   }
 }
