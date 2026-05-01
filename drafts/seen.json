@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-01T06:04:19.791Z",
+  "lastUpdated": "2026-05-01T18:02:59.359Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4491,6 +4491,74 @@
       "title": "AI圈已沸腾！DeepSeek V4 与OpenAI代号“Spud”双重核弹来袭彻底引爆，载入史册！！！| AI日报 0325_哔哩哔哩_bilibili",
       "source": "brave",
       "file": "anthropic-claude-mythos-zhipu-glm-5-1-releases.md"
+    },
+    "https://opensourceprojects.dev/post/b6316f67-35c5-4875-a4d1-22f1d001c464": {
+      "date": "2026-05-01",
+      "decision": "skipped",
+      "title": "Vibe Coding CN — A Structured AI Coding Methodology",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Focuses on a trend-based coding methodology rather than a concrete, inspectable open-source AI tool or framework; lacks operational specificity and aligns with Openflows' avoidance of trend-chasing."
+    },
+    "https://opensourceprojects.dev/post/7b792cde-e41f-4dec-9afa-b2e4ecdb5a0a": {
+      "date": "2026-05-01",
+      "decision": "skipped",
+      "title": "Recordly — A Free Alternative to Screen Studio",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "General screen recording utility with no explicit AI integration; tangentially related to AI content creation workflows but falls outside Openflows' core focus on AI-specific tools, frameworks, and models."
+    },
+    "https://opensourceprojects.dev/post/2ce058ca-12e6-4948-a706-f9b230264306": {
+      "date": "2026-05-01",
+      "decision": "skipped",
+      "title": "doge-code: An Experimental Fork of Claude Code",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Experimental fork of a closed-source tool lacking clear open AI ecosystem integration or operational specifics. Tangentially related but unlikely to add value to Openflows."
+    },
+    "https://opensourceprojects.dev/post/a7d44f72-7d5b-4800-a4b3-5a45efc4b0c2": {
+      "date": "2026-05-01",
+      "decision": "skipped",
+      "title": "smolvm: A Lightweight MicroVM Runtime for Secure Isolation",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "General-purpose microVM runtime with no explicit AI/ML focus or integration; tangentially related to infrastructure but unlikely to directly advance open source AI ecosystem understanding."
+    },
+    "https://cloud.tencent.com/developer/article/2655358": {
+      "date": "2026-05-01",
+      "decision": "skipped",
+      "title": "Hermes Agent 是什么？一文读懂2026年最火的开源 AI 智能体-腾讯云开发者社区-腾讯云",
+      "source": "brave",
+      "score": 2,
+      "reason": "Community blog post with hype-driven language and no operational specifics; aligns with trend-chasing rather than Openflows' focus on inspectable, concrete open-source AI components."
+    },
+    "https://opensourceprojects.dev/post/572ebe88-5937-488d-83b2-0cd7e5c27528": {
+      "date": "2026-05-01",
+      "decision": "error",
+      "title": "e",
+      "source": "opensourceprojects",
+      "reason": "invalid draft: links must be a list when present."
+    },
+    "https://opensourceprojects.dev/post/5b04b18c-1ab6-4233-a0bf-3e438a1331c7": {
+      "date": "2026-05-01",
+      "decision": "drafted",
+      "title": "Agent Browser: AI-First Browser Automation CLI",
+      "source": "opensourceprojects",
+      "file": "agent-browser.md"
+    },
+    "https://byteiota.com/microsoft-agent-governance-toolkit-open-source-ai-security/": {
+      "date": "2026-05-01",
+      "decision": "drafted",
+      "title": "Microsoft Agent Governance Toolkit: Open-Source AI Security | byteiota",
+      "source": "ai-governance-security-tools",
+      "file": "microsoft-agent-governance-toolkit.md"
+    },
+    "https://opensourceprojects.dev/post/90dac82d-66fe-4370-9862-2f9e1dffd083": {
+      "date": "2026-05-01",
+      "decision": "drafted",
+      "title": "Stop Emotional Trading — Use This AI Instead",
+      "source": "opensourceprojects",
+      "file": "honeclaw-ai-trading-assistant.md"
     }
   }
 }
