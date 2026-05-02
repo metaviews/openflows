@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-02T06:03:56.237Z",
+  "lastUpdated": "2026-05-02T18:01:55.598Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4633,6 +4633,35 @@
       "title": "Video Use AI Video Editing from Chat",
       "source": "opensourceprojects",
       "file": "video-use-ai-video-editing-from-chat.md"
+    },
+    "https://www.aipuzi.cn/ai-news/qbotclaw.html": {
+      "date": "2026-05-02",
+      "decision": "skipped",
+      "title": "QBotClaw：腾讯 QQ 浏览器内置的原生 AI 智能体 | AI铺子",
+      "source": "brave",
+      "score": 1,
+      "reason": "The signal describes a proprietary, closed-source browser feature from Tencent with no open-source components or public accessibility, directly contradicting Openflows' focus on the open source AI ecosystem."
+    },
+    "https://www.llama.com/": {
+      "date": "2026-05-02",
+      "decision": "drafted",
+      "title": "Industry Leading, Open-Source AI | Llama",
+      "source": "brave",
+      "file": "llama-4-maverick.md"
+    },
+    "https://faun.pub/the-open-source-ai-agent-frameworks-that-deserve-more-stars-on-github-6f1fd0e3fc99?gi=7f12d99230f2": {
+      "date": "2026-05-02",
+      "decision": "drafted",
+      "title": "The Open-Source AI Agent Frameworks That Deserve More Stars on GitHub | by TechLatest.Net | Apr, 2026 | FAUN.dev() 🐾",
+      "source": "ai-agent-frameworks-discovery",
+      "file": "open-source-agent-frameworks-github-discovery.md"
+    },
+    "https://dev.to/sonotommy/8-open-source-frameworks-for-building-ai-agents-that-actually-work-in-2026-1hhm": {
+      "date": "2026-05-02",
+      "decision": "drafted",
+      "title": "8 Open-Source Frameworks for Building AI Agents That Actually Work in 2026 - DEV Community",
+      "source": "brave",
+      "file": "8-open-source-frameworks-for-building-ai-agents-that-actually-work-in-2026.md"
     }
   }
 }
