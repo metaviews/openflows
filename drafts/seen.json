@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-01T18:02:59.359Z",
+  "lastUpdated": "2026-05-02T06:03:56.237Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4559,6 +4559,80 @@
       "title": "Stop Emotional Trading — Use This AI Instead",
       "source": "opensourceprojects",
       "file": "honeclaw-ai-trading-assistant.md"
+    },
+    "https://opensourceprojects.dev/post/844c24a8-248c-41dd-a80d-b622186f9fd0": {
+      "date": "2026-05-02",
+      "decision": "skipped",
+      "title": "ExtensionShield Manage and Secure Your Browser Extensions",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Unrelated to the open source AI ecosystem; focuses on browser extension security with no AI/ML components or relevance to Openflows scope."
+    },
+    "https://opensourceprojects.dev/post/89f48ba6-ee89-4c98-bef3-4b83113e4347": {
+      "date": "2026-05-02",
+      "decision": "skipped",
+      "title": "Sable A Feature Rich Matrix Client with Customization",
+      "source": "opensourceprojects",
+      "score": 1,
+      "reason": "Sable is a Matrix messaging client, which is unrelated to the open source AI ecosystem and falls outside Openflows' scope."
+    },
+    "https://opensourceprojects.dev/post/bf1a1529-1e5c-4030-8d08-9fb3f12826ce": {
+      "date": "2026-05-02",
+      "decision": "skipped",
+      "title": "Codex Remote Feishu AI Coding via Chat",
+      "source": "opensourceprojects",
+      "score": 2,
+      "reason": "Niche open-source bridge to a commercial platform (Feishu); lacks broad relevance to core open source AI tools, frameworks, or governance."
+    },
+    "https://blog.csdn.net/weixin_28999139/article/details/160486419": {
+      "date": "2026-05-02",
+      "decision": "skipped",
+      "title": "Zypher Agent：构建生产就绪AI智能体的轻量级框架实践-CSDN博客",
+      "source": "brave",
+      "score": 2,
+      "reason": "Early alpha-stage project with low maturity; appears to be a niche blog post rather than a significant, inspectable open-source tool likely to add value to the KB."
+    },
+    "https://opensourceprojects.dev/post/1343a6da-513b-473d-8575-a9db745565c1": {
+      "date": "2026-05-02",
+      "decision": "drafted",
+      "title": "CLI Anything Make Any Software Agent Native",
+      "source": "opensourceprojects",
+      "file": "cli-anything-agent-native-cli-wrapping.md"
+    },
+    "https://www.langchain.com/": {
+      "date": "2026-05-02",
+      "decision": "drafted",
+      "title": "LangChain: Observe, Evaluate, and Deploy Reliable AI Agents",
+      "source": "ai-agent-frameworks-discovery",
+      "file": "langchain-observe-evaluate-deploy-reliable-ai-agents.md"
+    },
+    "https://github.com/andyrewlee/awesome-agent-orchestrators": {
+      "date": "2026-05-02",
+      "decision": "drafted",
+      "title": "GitHub - andyrewlee/awesome-agent-orchestrators: List of agent orchestrators · GitHub",
+      "source": "ai-agent-frameworks-discovery",
+      "file": "awesome-agent-orchestrators.md"
+    },
+    "https://opensourceprojects.dev/post/bc2ccafc-2bc3-4d78-a101-0866ee05708b": {
+      "date": "2026-05-02",
+      "decision": "drafted",
+      "title": "Clicky An AI Teacher That Lives on Your Desktop",
+      "source": "opensourceprojects",
+      "file": "clicky-desktop-ai-teacher.md"
+    },
+    "https://opensourceprojects.dev/post/6c059438-d332-4bad-a09c-78ae0c5146d6": {
+      "date": "2026-05-02",
+      "decision": "drafted",
+      "title": "holaOS The AI Operating System for Long Running Work",
+      "source": "opensourceprojects",
+      "file": "holaos.md"
+    },
+    "https://opensourceprojects.dev/post/7bb57609-1c70-41cc-a78d-c9161c4bfa2f": {
+      "date": "2026-05-02",
+      "decision": "drafted",
+      "title": "Video Use AI Video Editing from Chat",
+      "source": "opensourceprojects",
+      "file": "video-use-ai-video-editing-from-chat.md"
     }
   }
 }
