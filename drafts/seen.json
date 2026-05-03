@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-02T18:01:55.598Z",
+  "lastUpdated": "2026-05-03T06:00:51.576Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4662,6 +4662,21 @@
       "title": "8 Open-Source Frameworks for Building AI Agents That Actually Work in 2026 - DEV Community",
       "source": "brave",
       "file": "8-open-source-frameworks-for-building-ai-agents-that-actually-work-in-2026.md"
+    },
+    "https://www.strata.io/blog/agentic-identity/8-strategies-for-ai-agent-security/": {
+      "date": "2026-05-03",
+      "decision": "skipped",
+      "title": "What is Agentic AI Security? A Guide for 2026 | Strata",
+      "source": "ai-governance-security-tools",
+      "score": 2,
+      "reason": "Covers AI governance, a relevant topic, but lacks specific open-source tools, frameworks, or operational details. Reads as a high-level conceptual or commercial guide rather than an inspectable resource for the open AI ecosystem."
+    },
+    "https://opensourceprojects.dev/post/85849b74-d0ad-4e3b-bce8-b681a34dd281": {
+      "date": "2026-05-03",
+      "decision": "drafted",
+      "title": "Turn any LLM into an agent with persistent memory and context",
+      "source": "opensourceprojects",
+      "file": "zep-persistent-memory-agent-framework.md"
     }
   }
 }
