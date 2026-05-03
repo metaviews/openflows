@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-03T06:00:51.576Z",
+  "lastUpdated": "2026-05-03T18:01:42.138Z",
   "seen": {
     "https://github.com/1186258278/OpenClawChineseTranslation": {
       "date": "2026-03-12",
@@ -4677,6 +4677,20 @@
       "title": "Turn any LLM into an agent with persistent memory and context",
       "source": "opensourceprojects",
       "file": "zep-persistent-memory-agent-framework.md"
+    },
+    "https://huggingface.co/nvidia/nemotron-speech-streaming-en-0.6b": {
+      "date": "2026-05-03",
+      "decision": "error",
+      "title": "nvidia/nemotron-speech-streaming-en-0.6b",
+      "source": "huggingface",
+      "reason": "invalid draft: Unknown links.id: nemo-claw-gtc-2026.; Unknown links.id: fluidinference-parakeet-tdt-coreml."
+    },
+    "https://strandsagents.com/": {
+      "date": "2026-05-03",
+      "decision": "drafted",
+      "title": "Strands Agents — Open Source AI Agent SDK for Python & TypeScript",
+      "source": "ai-agent-frameworks-discovery",
+      "file": "strands-agents.md"
     }
   }
 }
